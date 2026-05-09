@@ -55,7 +55,7 @@ $dbAdmin = Zend_Controller_Plugin_DbPLugin::initDbConnection('admindb', Zend_Con
 $uzivatel = $db->select()
 ->from('vic_main.uzivatel', array('jmeno', 'pohlavi'))
 ->distinct()
-->where("anonymous = 0") // AND (email = 'info@betservice.eu' OR email = 'josef.tamok@compbet.com')") 
+->where("anonymous = 0") // AND (email = 'tomas.polz@betservice.eu' OR email = 'josef.tamok@compbet.com')") 
 ->query()
 ->fetchAll();      
 

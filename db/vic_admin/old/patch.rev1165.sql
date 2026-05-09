@@ -1,0 +1,1 @@
+ALTER TABLE `branch` ADD `balance` DECIMAL(60,4) NOT NULL 

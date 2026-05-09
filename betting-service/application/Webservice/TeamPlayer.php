@@ -2,6 +2,7 @@
 
 /**
  * Team players related static methods.
+ * @author Tomas Polz
  *
  */
 class Webservice_TeamPlayer extends Webservice_AbstractWebService  {

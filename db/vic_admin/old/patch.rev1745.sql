@@ -1,0 +1,1 @@
+DROP VIEW admin_prava_sekce;

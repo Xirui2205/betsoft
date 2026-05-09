@@ -25,10 +25,7 @@ php_value short_open_tag On
        SSLOptions +StdEnvVars
 </FilesMatch>
 
-AuthUserFile /var/www/kuchar23-test.vshosting.cz/bewa-core/web/www/.htpasswd
-AuthName "Restricted Area"
-AuthType Basic
-Require valid-user 
-Order allow,deny
-Allow from 89.239.18.34 37.187.152.230 193.165.91.2 83.167.241.226 192.168.15.77 83.3.1.60/32 255.255.255.0 192.168.15.200
-satisfy any
+#AuthUserFile /var/www/kuchar23-test.vshosting.cz/bewa-core/web/www/.htpasswd
+#AuthName "Restricted Area"
+#AuthType Basic
+#Require valid-user 

@@ -1,0 +1,1 @@
+ALTER TABLE `vic_main`.`ticket_live` CHANGE `id` `id` BIGINT( 20 ) UNSIGNED NOT NULL AUTO_INCREMENT;

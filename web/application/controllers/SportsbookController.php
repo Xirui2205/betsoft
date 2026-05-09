@@ -48,6 +48,8 @@ class SportsbookController extends Zend_Controller_Action {
 			$openUrlArr['udalost'] => 3
 		);
 
+		Zend_Registry::get('fl')->info($openUrlArr);
+
 		$this->view->urlParams = $menu->getAllLangUrlParams($urlParts);
 		$this->view->rangeValues =  Models_Helpers_Panels::getRangeValues();
 		$ws = Zend_Registry::get('ws');

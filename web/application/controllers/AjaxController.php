@@ -610,6 +610,7 @@ class AjaxController extends Zend_Controller_Action {
 	}
 
 	public function ticketsOfMonthAction() {
+			//TODO remove this function if prove unneccesary tpolz 22.1. 2014
 			$tickets = array();
 		$this->view->month = $tickets;
 	}
@@ -677,6 +678,7 @@ class AjaxController extends Zend_Controller_Action {
 		Models_Markets_MarketData::isAjax(true);
 		Models_Markets_MarketData::init($openUrlArr, null, Models_Markets_MarketData::MARKET_DATE_ORDER_DIRECTION, $this->view->timeFilter);
 		//$this->view->type = Models_Markets_MarketData::getTypes($this->view->timeFilter);
+		Zend_Registry::get('fl')->info("AJAXCONTROLLER_SPORTBOOK_ACTION");
 		$this->view->odds = Models_Markets_MarketData::getOdds();
 	}
 

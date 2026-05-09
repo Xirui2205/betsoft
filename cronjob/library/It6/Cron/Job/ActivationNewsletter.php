@@ -32,7 +32,7 @@ class It6_Cron_Job_ActivationNewsletter extends It6_Cron_Job_Abstract {
 			))
 		->joinLeft(array('uo' => 'vic_main.uzivatel_osloveni'),
 		                 'uo.jmeno = u.jmeno')
-		->where("anonymous = 0") //AND email = 'info@betservice.eu' OR email = 'josef.tamok@compbet.com'")
+		->where("anonymous = 0") //AND email = 'tomas.polz@betservice.eu' OR email = 'josef.tamok@compbet.com'")
 		->where("datum_aktivace IS NULL")
 		->where("email != ''")
 		->where("user_id NOT IN (select user_id from newsletter_history where round = $round AND newsletter_type_id = 1)")
@@ -94,7 +94,8 @@ class It6_Cron_Job_ActivationNewsletter extends It6_Cron_Job_Abstract {
 		        $userEmail = $u['email'];
 		        $mail = new Zend_Mail('UTF-8');
 //		        $mail->setFrom(MAIL_FROM_ADDRESS, MAIL_FROM_NAME);       
-//$mail->addTo("it6@gmail.com");
+//$mail->addTo("xholicka@gmail.com");
+//$mail->addTo("v.holicka@seznam.cz");
 				$mail->addTo($userEmail);
 		        $mail->setFrom(MAIL_FROM_ADDRESS, MAIL_FROM_NAME);
 				$mail->setReplyTo(REPLY_TO_ADDRESS,REPLY_TO_NAME);

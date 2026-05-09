@@ -2,6 +2,7 @@
 
 /**
  * Stem related static methods.
+ * @author Tomas Polz
  * @see Entities_Newspapers
  */
 class Webservice_Newspapers extends Webservice_AbstractWebService  {

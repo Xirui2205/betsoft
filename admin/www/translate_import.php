@@ -1,201 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', true);
 
-/*
- * Zpracování translate.csv - soubor překladů bez indexů
- * výstupem je sql soubor s inserty a updaty (pokud je $debug=false).
- * 
- * Je nutné nejprve spustit skript s $debug=true
- * - vypíšou se fráze, které je nutné řešit ručně.
- * 
- * Pro další jazyky se předpokládá úprava skriptu.
- * 
- * Na zálohy tabulky preklady je určen adresář:
- * 		/home/m/DocumentRoot/Kuchbet/db/vic_main/backup-preklady
- * LIVE SÁZKY~LIVE IN-PLAY~Live~LIVE SÁZKY~LIVE STÁVKY
- * LIVE SÁZKY~LIVE bets~~LIVE SÁZKY~LIVE STÁVKY
- * 
- */
-$debug = true;
+define('RUNNING_FROM_CLI', true);
+define('ROOT', dirname(dirname(dirname(__FILE__))) . '/');
 
-// inicializace
+set_include_path (
+		get_include_path() . PATH_SEPARATOR .
+		ROOT . 'common/library/' . PATH_SEPARATOR .
+		ROOT . 'betting-service/application/' . PATH_SEPARATOR .
+		ROOT . 'betting-service/library/' . PATH_SEPARATOR .
+		ROOT . 'admin/library/' . PATH_SEPARATOR
+);
 
-if (!defined("ROOT"))
-	define("ROOT", dirname(dirname(dirname(__FILE__))) . '/');
-if ($debug)
-	header("Content-type:text/html; charset=UTF-8");
-set_time_limit(0);
-require_once(ROOT . 'common/includes.inc.php');
-include_once(ROOT . 'common/init-global-cache.inc.php');
-require_once(ROOT . 'admin/config_local.php');
-include "common.php";
-include "template/class.TemplatePower.inc.php";
-error_reporting(E_ALL | E_STRICT);
+include(ROOT . 'common/config_util.inc.php');
 
-ini_set('display_startup_errors', 1);
-ini_set('display_errors', 1);
+$appEnv = getAppEnv();
+if (empty($appEnv)) {
+    echo "APPLICATION_ENVIRONMENT environment variable not set!\n";
+    exit(1);
+}
 
-define('CACHING', 'off');
+include(ROOT . 'common/config.php');
+include(ROOT . 'common/includes.inc.php');
 
-require_once 'common/config.php';
-require_once 'common/class/class.Help.php';
-require_once 'common/class/class.Constant.php';
-require_once 'common/class/Ip.php';
 require_once 'Zend/Loader.php';
 require_once 'Zend/Loader/Autoloader.php';
-
-Zend_Loader::loadClass('Zend_Debug');
-Zend_Loader::loadClass('Zend_Controller_Front');
-
 $autoloader = Zend_Loader_Autoloader::getInstance();
-Zend_Registry::set('autoloader', $autoloader);
-$autoloader->registerNamespace('It6_');
 $autoloader->registerNamespace('Models_');
-$autoloader->registerNamespace('DecoratorForms_');
-$autoloader->pushAutoloader(new It6_AutoloaderAdmin());
+$autoloader->registerNamespace('It6_');
+$autoloader->registerNamespace('Webservice_');
+$autoloader->registerNamespace('Entities_');
+$autoloader->registerNamespace('WarpTurn_');
+$db = Zend_Controller_Plugin_DbPLugin::initDbConnection('db', Zend_Controller_Plugin_DbPLugin::CONFIG_MAIN);
+$dbAdmin = Zend_Controller_Plugin_DbPLugin::initDbConnection('admindb', Zend_Controller_Plugin_DbPLugin::CONFIG_ADMIN);
 
-Zend_Registry::set('Zend_Locale', new Zend_Locale('cs_CZ'));
-Zend_Registry::set('langId', 1);
-date_default_timezone_set('Europe/Prague');
-mb_internal_encoding('UTF-8');
+//$sql = "TRUNCATE TABLE preklady";
+//$db->query($sql);
 
-It6_Log::initialize();
+$row = 1;
+if (($handle = fopen(ROOT."/db/servis/preklady.csv", "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, "~")) !== FALSE) {        
+        $row++;
+//setlocale(LC_ALL, 'czech');
+//setlocale(LC_CTYPE, 'cs_CZ.UTF-8');
+        
+        /*
+	    [0] => index
+	    [1] => Český
+	    [2] => English
+	    [3] => Slovensky
+		*/
+        
+        //echo "<pre>";
+        //print_r($data);
 
-$client = new Zend_XmlRpc_Client(WEB_SERVICE_URL);
-Zend_Registry::set('ws', new It6_WS(WS_WRAPPER, $client));
+//mb_convert_encoding($data[1], 'UTF-8', 'windows-1250');
+//mb_convert_encoding($data[1], 'ISO-8859-1','utf-8');
+//echo iconv('CP1250', 'UTF-8', $data[1]);
+//echo iconv('utf-8', 'us-ascii//TRANSLIT', $data[1]);
+//echo iconv("windows-1256", "utf-8//TRANSLIT//IGNORE", $data[1]);
 
-$dbPlugin = new Zend_Controller_Plugin_DbPLugin();
-$db = $dbPlugin->initDbConnection('db', Zend_Controller_Plugin_DbPLugin::CONFIG_MAIN, true);
-$dbAdmin = $dbPlugin->initDbConnection('admindb', Zend_Controller_Plugin_DbPLugin::CONFIG_ADMIN, false);
-Zend_Registry::set('db', $db);
-Zend_Registry::set('zdb_game', $db);
+//echo iconv("UTF-8", "ASCII//TRANSLIT", $data[1]);
+//echo iconv("UTF-8", "ASCII//TRANSLIT", mb_convert_case($data[1], MB_CASE_UPPER, "UTF-8"));
 
-// -----------------------------------------------------------------------------
+//echo iconv("utf-8", "us-ascii//TRANSLIT", $data[1]);
+//echo iconv("CP852", "UTF-8//IGNORE", $data[1]); 
+//echo iconv("ISO-8859-2","UTF-8", $data[1]);
 
-function insertDefaultRowsSql($indexPole, $langIds) {
-	$sql = '';
-	$db = Zend_Registry::get('db');
-	$prekladId = $db->select()
-			->from('preklady', array('preklad_id'))
-			->where('index_pole = ?', $indexPole)
-			->query()
-			->fetch(Zend_Db::FETCH_COLUMN, 0);
+echo $data[1]."<br/>";
+//echo iconv("UTF-8","ISO-8859-2//TRANSLIT//IGNORE", $data[1]);
+echo iconv("UTF-8","ISO-8859-2//TRANSLIT//IGNORE", $data[1]);
 
-	foreach ($langIds as $langId) {
-		$rowCount = $db->select()
-				->from('preklady', array('COUNT(*) as cnt'))
-				//->where('preklad_id = ?', $prekladId) // preklad_id nakonec ne, někde jsou i různé hodnoty preklad_id pro daný primární klíč (lang_id, index_pole)
-				->where('lang_id = ?', $langId)
-				->where('index_pole = ?', $indexPole)
-				->query()
-				//->__toString();
-				->fetch(Zend_Db::FETCH_COLUMN, 0);
+echo "<br/><br/>";
+//$cz = iconv("UTF-8//TRANSLIT","ISO-8859-2", $data[1]);
 
-		if ($rowCount === '0') {
-			$sql .= "REPLACE INTO `preklady` SET "
-					. "lang_id=$langId,"
-					. "index_pole='" . addslashes($indexPole);
-			if (!empty($prekladId)) {
-				$sql .= "'," . "preklad_id=$prekladId;\n";
-			} else {
-				$sql .= ";\n";
-			}
-		}
-	}
-	return $sql;
+$sql = "INSERT INTO `vic_main`.`preklady` (`lang_id`,
+										   `index_pole`,
+										   `short_text`,
+										   `text`,
+										   `translate`,
+										   `preklad_id`) 
+			VALUES ('1',
+					'" . $data[0] . "',
+					'',
+					'" . $data[1] . "',
+					'1',
+					'" . $row . "')";
+
+		//$db->query($sql);
+
+    }
+    fclose($handle);
 }
-
-header('Content-Type: text/html; charset=utf-8');
-$file = fopen("translate.csv", "r");
-$cnt = 0;
-$nenalezeno = 0;
-$nenalezenoArr = array();
-$sql = '';
-while (!feof($file)) {
-	$cnt++;
-	$line = fgetcsv($file, 0, '~');
-	// [0] => Česky Honza(aj) [1] => English Honza(aj) [2] => Slovensky Honza(aj) [3] => Česky Kalivoda(sj) [4] => Slovensky Kalivoda(sj)
-	// najít hodnotu / hodnoty index_pole
-	$indexPoleArr = array();
-	if (!empty($line[0])) {
-		// primárně z Česky Honza(aj)
-		$indexPoleArr = $db->select()
-				->from('preklady', array('index_pole'))
-				->where('lang_id = ?', 1)
-				->where('text = ?', $line[0])
-				->query()
-				->fetchAll(Zend_Db::FETCH_COLUMN, 0);
-		//print_r($indexPoleArr);
-	} else if (!empty($line[2])) {
-		// sekundárně z Slovensky Honza(aj)
-		$indexPoleArr = $db->select()
-				->from('preklady', array('index_pole'))
-				->where('lang_id = ?', 16)
-				->where('text = ?', $line[2])
-				->query()
-				->fetchAll(Zend_Db::FETCH_COLUMN, 0);
-		//echo $line[0].' ~ '.$line[1].' ~ '.$line[2].' ~ '.$line[3].' ~ '.$line[4].'<br>';
-		//print_r($indexPoleArr);
-	} else if (!empty($line[3])) {
-		// nebo ještě z Česky Kalivoda(sj)
-		$indexPoleArr = $db->select()
-				->from('preklady', array('index_pole'))
-				->where('lang_id = ?', 1)
-				->where('text = ?', $line[3])
-				->query()
-				->fetchAll(Zend_Db::FETCH_COLUMN, 0);
-		//echo $line[0].' ~ '.$line[1].' ~ '.$line[2].' ~ '.$line[3].' ~ '.$line[4].'<br>';
-		//print_r($indexPoleArr);
-	}
-
-	if (!empty($indexPoleArr)) {
-		$indexPoleAddSlashes = array();
-
-		foreach ($indexPoleArr as $indexPole) {
-			// chybí řádek pro jazyk?
-			$sql .= insertDefaultRowsSql($indexPole, array(1, 2, 16));
-			$indexPoleAddSlashes[] = addslashes($indexPole);
-		}
-		// angličtina
-		$sql .= "UPDATE `preklady` SET `text` = '" . addslashes((trim($line[1]))) . "'"
-				. " WHERE index_pole IN ('" . implode("', '", $indexPoleAddSlashes) . "'" . ") AND lang_id = 2;\n";
-		// slovenština
-		$sql .= "UPDATE `preklady` SET `text` = '" . addslashes((trim($line[4]))) . "'"
-				. " WHERE index_pole IN ('" . implode("', '", $indexPoleAddSlashes) . "'" . ") AND lang_id = 16;\n";
-		// čeština
-		$sql .= "UPDATE `preklady` SET `text` = '" . addslashes((trim($line[3]))) . "'"
-				. " WHERE index_pole IN ('" . implode("', '", $indexPoleAddSlashes) . "'" . ") AND lang_id = 1;\n";
-
-		/* if ($cnt==20) {
-		  goto summary;
-		  } */
-	} else if (!empty($line[1]) || !empty($line[3]) || !empty($line[4])) {
-		if ($debug)
-			echo $line[0] . ' ~ ' . $line[1] . ' ~ ' . $line[2] . ' ~ ' . $line[3] . ' ~ ' . $line[4] . '<br>';
-		$nenalezeno++;
-		$nenalezenoArr[] = $cnt;
-	}
-}
-
-fclose($file);
-
-summary:
-
-if ($debug) {
-	$sql = htmlspecialchars($sql);
-	echo "Zpracovaný počet řádků: $cnt<br>
---------<br>
-Nenalezeno a nutno řešit ručně: $nenalezeno, řádky: " . implode(', ', $nenalezenoArr) . "<br>
---------<br>
-SQL:
---------<br>
-$sql";
-} else {
-	header('Content-Type: text/plain');
-	header('Content-Disposition: attachment; filename="preklady.sql"');
-	/* header('Content-Transfer-Encoding: binary');
-	  header('Accept-Ranges: bytes');
-	  header('Cache-Control: private');
-	  header('Pragma: private'); */
-	//header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-	echo $sql;
-}
+?>
+</html>

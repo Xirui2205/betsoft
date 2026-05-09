@@ -1,6 +1,7 @@
 <?php
 /**
  * Affiliate banner related static methods.
+ * @author Jiri Ulbrich
  * @see Entities_AffiliateBanner
  */
 class Webservice_AffiliateBanner extends Webservice_AbstractWebService {

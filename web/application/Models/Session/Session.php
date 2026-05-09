@@ -94,7 +94,7 @@ class Models_Session_Session{
 		$jsonCallback = isset($_REQUEST['jsonp_callback']) ? $_REQUEST['jsonp_callback'] : null;
 		$pass = isset($_REQUEST['pass']) ? $_REQUEST['pass'] : null;
 		$nick = isset($_REQUEST['nick']) ? $_REQUEST['nick'] : null; 
-
+				
 		$login = ($pass !== null && $nick !== null);
 		if ($login) {
 			
@@ -321,13 +321,13 @@ class Models_Session_Session{
 							$("#feedbackMsg").html("<div class=\"notify-larger notify-error\"><p>'.$text.'</p></div>");';
 					}
 					else if($_POST['formId'] == 'loginForm') {
-//						$("#loginFeedback").html("<span style=\'font-size:20px;\'>'.$text.'</span><a href=\"\" onclick=\"javascript:$(\'#loginFeedback\').css(\'display\', \'none\');$(\'#loginForm\').css(\'display\',\'inline\');return false;\"></a>&nbsp;<a class=\"btn\">Zpět</a>");
-						$script =
+						/*$script =
 							'$("#loginForm input#pass").attr("value","");
-							$("#loginForm").css("display", "none");							
-							$("#loginFeedback").html("<span style=\'font-size:18px;\'>'.$text.'</span><a style=\'font-size:18px;\' href=\"\" onclick=\"javascript:$(\'#loginFeedback\').css(\'display\', \'none\');$(\'#loginForm\').css(\'display\',\'inline\');return false;\">&nbsp;&nbsp;Zpět</a>");
+							$("#loginForm").css("display", "none");
+							$("#loginFeedback").html("<span>'.$text.'</span><a href=\"\" onclick=\"javascript:$(\'#loginFeedback\').css(\'display\', \'none\');$(\'#loginForm\').css(\'display\',\'inline\');return false;\">Zpět</a>");
 							$("#loginFeedback").addClass("error");
 							$("#loginFeedback").css("display", "inline");';
+						*/
 					}
 				}
 				

@@ -1,0 +1,64 @@
+0000000000000000000000000000000000000000 0b97ddbfe75c4982e2870df7807cd8033609dcd9 developer_bewa <josef.tamok@gmail.com> 1415104653 +0100	branch: Created from branch refs/remotes/origin/Redesign2014
+0b97ddbfe75c4982e2870df7807cd8033609dcd9 21cc407e4226ad5d1a5c19b1e8fabf65254d6b77 developer_bewa <josef.tamok@gmail.com> 1415179086 +0100	merge refs/remotes/origin/Redesign2014: Fast-forward
+21cc407e4226ad5d1a5c19b1e8fabf65254d6b77 a8fa5a1137f9c6f00d15c887b12907b84d0370c4 developer_bewa <josef.tamok@gmail.com> 1415179192 +0100	commit: zmena hesla pro betradar
+a8fa5a1137f9c6f00d15c887b12907b84d0370c4 b2b1222be6ac752f4b5ddb39f576796855dace73 developer_bewa <josef.tamok@gmail.com> 1415179618 +0100	commit: oprava cesty pro script bimport.sh
+b2b1222be6ac752f4b5ddb39f576796855dace73 b2f1f36d5aa8f9a4e230898e7658a0fbdb3d4161 developer_bewa <josef.tamok@gmail.com> 1415287353 +0100	merge refs/remotes/origin/Redesign2014: Fast-forward
+b2f1f36d5aa8f9a4e230898e7658a0fbdb3d4161 0a6c821b541025de33c4757eb5d8f5b46507a14b developer_bewa <josef.tamok@gmail.com> 1415351896 +0100	commit: oprava nefunkcniho user profilu
+0a6c821b541025de33c4757eb5d8f5b46507a14b 2ef182d02b463d9516d7d45c3bf26a53184f5c36 developer_bewa <josef.tamok@gmail.com> 1415360146 +0100	merge refs/remotes/origin/Redesign2014: Fast-forward
+2ef182d02b463d9516d7d45c3bf26a53184f5c36 d427a9c31e762f48ff3ccf9f0659ec67e58f0715 developer_bewa <josef.tamok@gmail.com> 1415365551 +0100	commit: prihlaseni do systemu
+d427a9c31e762f48ff3ccf9f0659ec67e58f0715 672f9954d14bccecb7772c540ec71cb8fef4e68b developer_bewa <josef.tamok@gmail.com> 1415391170 +0100	commit: preklady pro homepage
+672f9954d14bccecb7772c540ec71cb8fef4e68b eb0e9df38b6a878ab4798bcf3e9f7333f6c50a24 developer_bewa <josef.tamok@gmail.com> 1415392278 +0100	commit: dočasné řešení - additional.css
+eb0e9df38b6a878ab4798bcf3e9f7333f6c50a24 5d465065314b4591ea4cae670221ef3e2a318ceb developer_bewa <josef.tamok@gmail.com> 1415392904 +0100	commit: homepage texty a odkazy
+5d465065314b4591ea4cae670221ef3e2a318ceb b8b97555a2e826f3a7a19b08610764e55f2fdc01 developer_bewa <josef.tamok@gmail.com> 1416580070 +0100	merge refs/remotes/origin/Redesign2014: Fast-forward
+b8b97555a2e826f3a7a19b08610764e55f2fdc01 51ad4f3108c36a5cc85bb74d218a6947d18f2ecc developer_bewa <josef.tamok@gmail.com> 1418646191 +0100	merge refs/remotes/origin/Redesign2014: Fast-forward
+51ad4f3108c36a5cc85bb74d218a6947d18f2ecc ca2a110d761f57472a0e0346ace6fb325ae05e06 developer_bewa <josef.tamok@gmail.com> 1419847211 +0100	merge refs/remotes/origin/Redesign2014: Fast-forward
+ca2a110d761f57472a0e0346ace6fb325ae05e06 79a9b721160c3efc8c627b7a3308625cd8a0ac0c developer_bewa <josef.tamok@gmail.com> 1420459180 +0100	commit: sportbook
+79a9b721160c3efc8c627b7a3308625cd8a0ac0c 61e148d37402db129d18f772c07660754351065e developer_bewa <josef.tamok@gmail.com> 1422024212 +0100	merge origin/Redesign2014: Fast-forward
+61e148d37402db129d18f772c07660754351065e 6551e81309de6de657d1c4a62624578b89a3baa6 developer_bewa <josef.tamok@gmail.com> 1422026014 +0100	commit: sportbook I
+6551e81309de6de657d1c4a62624578b89a3baa6 36baf953d3297f424e82d30ced7f57af7e7c7848 developer_bewa <josef.tamok@gmail.com> 1422536905 +0100	commit: sportbook II
+36baf953d3297f424e82d30ced7f57af7e7c7848 bffc4dd940ca1cf63b058e6363def693acac23cf developer_bewa <josef.tamok@gmail.com> 1422542980 +0100	commit: time filter
+bffc4dd940ca1cf63b058e6363def693acac23cf cfe54da211b40d830f9b41071bd5479c881eccd7 developer_bewa <josef.tamok@gmail.com> 1422609597 +0100	merge origin/Redesign2014: Fast-forward
+cfe54da211b40d830f9b41071bd5479c881eccd7 92e759b13c3cd08cab221f52654073e65b860f69 developer_bewa <josef.tamok@gmail.com> 1422618286 +0100	commit: gfx server + stylovani ticketu
+92e759b13c3cd08cab221f52654073e65b860f69 79410274ffb8ef68d91e3f6af75aacba0f8b7b22 developer_bewa <josef.tamok@gmail.com> 1422622065 +0100	commit: zapnuti banneru a stylovani ticketu
+79410274ffb8ef68d91e3f6af75aacba0f8b7b22 d154eae3c6aa6626a75f7d24758db52af5e7b537 developer_bewa <josef.tamok@gmail.com> 1422706323 +0100	merge origin/Redesign2014: Fast-forward
+d154eae3c6aa6626a75f7d24758db52af5e7b537 3551e6ac49fa97bb78a896451d1525bb29c6e5aa developer_bewa <josef.tamok@gmail.com> 1422707979 +0100	commit: banner
+3551e6ac49fa97bb78a896451d1525bb29c6e5aa 26af06181488b482993088029593d35c2c2fb6e8 developer_bewa <josef.tamok@gmail.com> 1422709270 +0100	commit: checkbox all
+26af06181488b482993088029593d35c2c2fb6e8 8f6b1bda892f92e14d0d88e3549fd5df374ffd63 developer_bewa <josef.tamok@gmail.com> 1422732458 +0100	commit: nezobrazeni zapasu
+8f6b1bda892f92e14d0d88e3549fd5df374ffd63 c3258c95d3668070420745d0e8332e8f422f81bb developer_bewa <josef.tamok@gmail.com> 1422901571 +0100	merge origin/Redesign2014: Fast-forward
+c3258c95d3668070420745d0e8332e8f422f81bb 9f640208faf3d5845e506a666ac9e038e18fb21f developer_bewa <josef.tamok@gmail.com> 1422959357 +0100	merge origin/Redesign2014: Fast-forward
+9f640208faf3d5845e506a666ac9e038e18fb21f f2e156494d8f11791d0e819553a6cce75706be2d developer_bewa <josef.tamok@gmail.com> 1422971608 +0100	merge origin/Redesign2014: Fast-forward
+f2e156494d8f11791d0e819553a6cce75706be2d b66eb8c2a95a1f5c3d06b0ffb3642e7baac0d4d5 developer_bewa <josef.tamok@gmail.com> 1422971681 +0100	commit: obrazky a stylovani hlavn. menu
+b66eb8c2a95a1f5c3d06b0ffb3642e7baac0d4d5 05524c58b9665e609d61dfa16a89358cbbea8c39 developer_bewa <josef.tamok@gmail.com> 1422972288 +0100	commit: schovani polozek Zapomenuté heslo a Registrace hráče po prihlaseni
+05524c58b9665e609d61dfa16a89358cbbea8c39 84c2d54561f56d4c1c4d774e64d979eca68f0d3e developer_bewa <josef.tamok@gmail.com> 1422972883 +0100	commit: oprava odhlaseni
+84c2d54561f56d4c1c4d774e64d979eca68f0d3e 7fb644da9c566beaa1e7822e898c08ef2ce1f8a7 developer_bewa <josef.tamok@gmail.com> 1422977990 +0100	commit: ikony
+7fb644da9c566beaa1e7822e898c08ef2ce1f8a7 4d0627873df8857cdc7b06366db9c63f4decdfea developer_bewa <josef.tamok@gmail.com> 1423064376 +0100	merge origin/Redesign2014: Fast-forward
+4d0627873df8857cdc7b06366db9c63f4decdfea 958d951cca01b3e8eb402cffb478bed24887f860 developer_bewa <josef.tamok@gmail.com> 1423064424 +0100	commit: detail sazky
+958d951cca01b3e8eb402cffb478bed24887f860 fa8e3583f3ff91a07c93d9e6c42b27b97957e089 developer_bewa <josef.tamok@gmail.com> 1423126940 +0100	commit: stylovani tabulky sazky
+fa8e3583f3ff91a07c93d9e6c42b27b97957e089 3fd6c4b314840bc6f44e771e8f4d1905986b0c4f developer_bewa <josef.tamok@gmail.com> 1423130112 +0100	commit: terno tab
+3fd6c4b314840bc6f44e771e8f4d1905986b0c4f d4fae801fd9f1981c9cfb95ec0b3c1975abfd350 developer_bewa <josef.tamok@gmail.com> 1423131017 +0100	commit: best odds
+d4fae801fd9f1981c9cfb95ec0b3c1975abfd350 c251f388fa904916f3ebb3964c04c2d83c8e9006 developer_bewa <josef.tamok@gmail.com> 1423137968 +0100	commit: placeholder pro prihlaseni
+c251f388fa904916f3ebb3964c04c2d83c8e9006 55125a1f02e3beb0f78097cfff3d7d06c0639fca developer_bewa <josef.tamok@gmail.com> 1423138549 +0100	commit: ikony pro volbu jazyka
+55125a1f02e3beb0f78097cfff3d7d06c0639fca db71b7ba332f2bffef76bfa97960e143c666f0e2 developer_bewa <josef.tamok@gmail.com> 1423141944 +0100	commit: live tab
+db71b7ba332f2bffef76bfa97960e143c666f0e2 e9795da92495479c1d8573992a96a5df5c98fedf developer_bewa <josef.tamok@gmail.com> 1423142574 +0100	rebase finished: refs/heads/Redesign2014 onto 748538578a172e0a04eeb6341653adfb18b2b1e7
+e9795da92495479c1d8573992a96a5df5c98fedf f669ab401761b7358cd1e4fce307e882ea563190 developer_bewa <josef.tamok@gmail.com> 1423214626 +0100	merge origin/Redesign2014: Fast-forward
+f669ab401761b7358cd1e4fce307e882ea563190 72c85ae9c51d9223cfc485942aaf314bfb9fe791 developer_bewa <josef.tamok@gmail.com> 1423474127 +0100	commit: stylovani live sazek
+72c85ae9c51d9223cfc485942aaf314bfb9fe791 4b72765c5259dffe0723beb9c7833609148f22bb developer_bewa <josef.tamok@gmail.com> 1423474375 +0100	commit: doplneni id sportu
+4b72765c5259dffe0723beb9c7833609148f22bb 0ad0c85296e135229161de412118ed93d0d059d7 developer_bewa <josef.tamok@gmail.com> 1423475510 +0100	commit: pripojeni live sazek na index
+0ad0c85296e135229161de412118ed93d0d059d7 1714070f36df02e6442793e778d914024cad23fc developer_bewa <josef.tamok@gmail.com> 1423557597 +0100	commit: live-calendar
+1714070f36df02e6442793e778d914024cad23fc 8fa175805ace70c3dedc1f0a112acb7953efb9d6 developer_bewa <josef.tamok@gmail.com> 1423752767 +0100	commit: promo
+8fa175805ace70c3dedc1f0a112acb7953efb9d6 5723ce799b15aeea1e2f2515954ae89d01ee04ab developer_bewa <josef.tamok@gmail.com> 1423752906 +0100	commit: rm picture
+5723ce799b15aeea1e2f2515954ae89d01ee04ab 1ccd492a60a1b20f6ea23787a35a0bfde8c527ea developer_bewa <josef.tamok@gmail.com> 1423753244 +0100	commit: zobrazeni kurzu
+1ccd492a60a1b20f6ea23787a35a0bfde8c527ea e65864498b64615ca87379798e1379ae4742b25b developer_bewa <josef.tamok@gmail.com> 1423753307 +0100	commit: zobrazeni kurzu
+e65864498b64615ca87379798e1379ae4742b25b ea0b89193707cb03524f619a0a7f5cf4a06f685b developer_bewa <josef.tamok@gmail.com> 1423753368 +0100	commit: zobrazeni kurzu
+ea0b89193707cb03524f619a0a7f5cf4a06f685b 3aa2869b01bcebbfb9fef1250518d9431bb0c479 developer_bewa <josef.tamok@gmail.com> 1423755718 +0100	commit: zobrazeni 1,0,2
+3aa2869b01bcebbfb9fef1250518d9431bb0c479 e76ef463700e230f2749ac9aa6288bf1a27e8328 developer_bewa <josef.tamok@gmail.com> 1423824274 +0100	merge origin/Redesign2014: Fast-forward
+e76ef463700e230f2749ac9aa6288bf1a27e8328 cd3cdf4fb961f1c5ad86923485b84c8ef0a549aa developer_bewa <josef.tamok@gmail.com> 1424086062 +0100	merge origin/Redesign2014: Fast-forward
+cd3cdf4fb961f1c5ad86923485b84c8ef0a549aa ca3a92eceac4e8066a1fd34f60c89953c62d7cde developer_bewa <josef.tamok@gmail.com> 1424086483 +0100	commit: cesta pro obrazky
+ca3a92eceac4e8066a1fd34f60c89953c62d7cde d99faa0b8d304f666a7784a98e5a44620b6b1540 developer_bewa <josef.tamok@gmail.com> 1424601771 +0100	merge origin/Redesign2014: Fast-forward
+d99faa0b8d304f666a7784a98e5a44620b6b1540 22780c4eda14b01fcec661d642d7e7932665bb29 developer_bewa <josef.tamok@gmail.com> 1424602531 +0100	commit: oprava odkazu u těch live sázek, která mají ten velký obrázek
+22780c4eda14b01fcec661d642d7e7932665bb29 90e849abadcebe6b5941763a927a86cf9a870e9c developer_bewa <josef.tamok@gmail.com> 1425289444 +0100	merge origin/Redesign2014: Fast-forward
+90e849abadcebe6b5941763a927a86cf9a870e9c f700b8dad9ab2329be91bceea06998d021e58a33 developer_bewa <josef.tamok@gmail.com> 1425371231 +0100	commit: export prekladu
+f700b8dad9ab2329be91bceea06998d021e58a33 08dc854bfbf9c4e4f985dc0cc6a4c13bef564a70 developer_bewa <josef.tamok@gmail.com> 1425371299 +0100	merge origin/Redesign2014: Merge made by recursive.
+08dc854bfbf9c4e4f985dc0cc6a4c13bef564a70 2208bfe168d16f8925a9264eafccfb368508ba3f developer_bewa <josef.tamok@gmail.com> 1425895898 +0100	merge origin/Redesign2014: Fast-forward
+2208bfe168d16f8925a9264eafccfb368508ba3f e7875f0830e01c05b3dd9802f1db1840c9504bb5 developer_bewa <josef.tamok@gmail.com> 1426687326 +0100	merge origin/Redesign2014: Fast-forward
+e7875f0830e01c05b3dd9802f1db1840c9504bb5 a8d920c19927cbc4d97929873ae72303893fef86 developer_bewa <josef.tamok@gmail.com> 1427700293 +0200	merge origin/Redesign2014: Fast-forward

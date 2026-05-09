@@ -1,0 +1,5 @@
+START TRANSACTION;
+
+ALTER TABLE `stem` ADD `sendmail` TINYINT NOT NULL DEFAULT '0';
+
+commit;

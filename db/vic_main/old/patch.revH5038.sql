@@ -1,0 +1,42 @@
+start transaction;
+set @a=(SELECT MAX(preklad_id) FROM vic_main.preklady);
+
+INSERT INTO `preklady` (`lang_id`, `index_pole`, `short_text`, `text`, `translate`, `preklad_id`) VALUES
+(1, 'founded', '', 'Založil', 1, @a + 1),
+(2, 'founded', '', 'Founded', 1, @a + 1),
+(16, 'founded', '', 'Založil', 1, @a + 1),
+(1, 'url_address', '', 'URL adresa', 1, @a + 2),
+(2, 'url_address', '', 'URL address', 1, @a + 2),
+(16, 'url_address', '', 'URL adresa', 1, @a + 2),
+(1, 'affiliate-partners', '', 'Affiliate partneři', 1, @a + 3),
+(2, 'affiliate-partners', '', 'Affiliate partners', 1, @a + 3),
+(16, 'affiliate-partners', '', 'Affiliate partneri', 1, @a + 3),
+(1, 'banners', '', 'Bannery', 1, @a + 4),
+(2, 'banners', '', 'Banners', 1, @a + 4),
+(16, 'banners', '', 'Bannery', 1, @a + 4),
+(1, 'partner', '', 'Affiliate partner', 1, @a + 5),
+(2, 'partner', '', 'Affiliate partner', 1, @a + 5),
+(16, 'partner', '', 'Affiliate partner', 1, @a + 5),
+(1, 'insert_new_partner', '', 'Vložit nového partnera', 1, @a + 6),
+(2, 'insert_new_partner', '', 'Insert new partner', 1, @a + 6),
+(16, 'insert_new_partner', '', 'Vložiť nového partnera', 1, @a + 6),
+(1, 'assign_affiliate_banner', '', 'Přiřadit affiliate banner', 1, @a + 7),
+(2, 'assign_affiliate_banner', '', 'Assign affiliate banner', 1, @a + 7),
+(16, 'assign_affiliate_banner', '', 'Priradiť affiliate banner', 1, @a + 7),
+(1, 'file_name', '', 'Název souboru', 1, @a + 8),
+(2, 'file_name', '', 'File name', 1, @a + 8),
+(16, 'file_name', '', 'Názov súboru', 1, @a + 8),
+(1, 'type_open', '', 'Typ otevření', 1, @a + 9),
+(2, 'type_open', '', 'Type open', 1, @a + 9),
+(16, 'type_open', '', 'Typ otvorenie', 1, @a + 9),
+(1, 'affiliate-banners', '', 'Affiliate bannery', 1, @a + 10),
+(2, 'affiliate-banners', '', 'Affiliate banners', 1, @a + 10),
+(16, 'affiliate-banners', '', 'Affiliate bannery', 1, @a + 10),
+(1, 'affiliate-banner', '', 'Affiliate banner', 1, @a + 11),
+(2, 'affiliate-banner', '', 'Affiliate banner', 1, @a + 11),
+(16, 'affiliate-banner', '', 'Affiliate banner', 1, @a + 11),
+(1, 'insert_new_banner', '', 'Vložit nový banner', 1, @a + 12),
+(2, 'insert_new_banner', '', 'Insert new banner', 1, @a + 12),
+(16, 'insert_new_banner', '', 'Vložiť nový banner', 1, @a + 12);
+
+commit;

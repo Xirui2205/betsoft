@@ -1,0 +1,1 @@
+ALTER TABLE `promo`  ADD `without_text` TINYINT(1) NOT NULL DEFAULT '0' COMMENT 'Hodnota 1 nevypise titulek, text ani tabulku sazek; urceno pro obrazek proma pres celou sirku.';

@@ -2,6 +2,7 @@
 
 /**
  * Zipo codes related static methods.
+ * @author Tomas Polz
  *
  */
 class Webservice_ZipCode extends Webservice_AbstractWebService  {

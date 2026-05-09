@@ -5,7 +5,7 @@ var localTimeDiff = 0;
 $(document).ready(function() {
 	hookLogin();
 
-	/*synchronizeServerTime();
+	synchronizeServerTime();
 	setInterval('setServerClock()', 1000);
 	setInterval('synchronizeServerTime()', 1000*60*3+1);
 
@@ -22,7 +22,7 @@ $(document).ready(function() {
 		return false;
 	});
 	
-	$(".tooltip").tooltip();*/
+	$(".tooltip").tooltip();
 });
 
 
@@ -366,7 +366,7 @@ function lastPostFunc() {
 		lockLastPostFunc = false;
 		return;
 	}
-	$('div#lastPostsLoader').html('<div style="text-align: center; padding: 10px; "><img src="/images/preloader-line.gif"></div>');
+	$('div#lastPostsLoader').html('<center><img src="/images/bigLoader.gif"></center>');
 	
 	//var params = qselect + query + type + onlyToday + todayAndTomorow + orderDirection + today + tomorow + dayAfterTomorow + oneHour + threeHours + sixHours + twelveHours + weekend + week + rateMin + rateMax + tenMinutes + twentyMinutes + thirtyMinutes + dateTimeRange + narrower;
 	//if (params.length) params = '?' + params;
@@ -389,12 +389,12 @@ function lastPostFunc() {
 
 function scrollSportsbook() {
 	// zatím neřešeno, způsobuje chyby
-	if (i == 2) {
-		if ( ($("#center").offset().top + $("#center").height() < $(document).scrollTop() + $('html')[0].clientHeight)) {
+	if (i == 15) {
+		//if ( ($(".col1").offset().top + $(".col1").height() < $(document).scrollTop() + $('html')[0].clientHeight)) {
 			if ( !lockLastPostFunc  && !isLast )
 				lastPostFunc();
 			i = 0;
-		}
+		//}
 	} else {
 		if ( !lockLastPostFunc  && !isLast )
 			lastPostFunc();
@@ -464,7 +464,7 @@ function getBetDetails(url, bet_id) {
 	}
 	else {
 		$("#bet_details_tr_" + bet_id).show();
-		$("#bet_details_" + bet_id).html('<p style="text-align: center; padding: 10px; "><img src="/images/preloader-line.gif"></p>');
+		$("#bet_details_" + bet_id).html('<center><img src="/images/bigLoader.gif"></center>');
 		$("#bet_details_" + bet_id).load(url, {"ajax":1});
 		$("#plusMinus" + bet_id).text('-');
 		//$("tr#" + bet_id + " td.alias").css('border-bottom-color', '#1a1a1a');

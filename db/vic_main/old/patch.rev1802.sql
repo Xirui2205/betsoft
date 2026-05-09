@@ -1,0 +1,1 @@
+ALTER TABLE `vic_main`.`point_account` ADD UNIQUE `user_id__point_type_id` ( `user_id` , `point_type_id` );

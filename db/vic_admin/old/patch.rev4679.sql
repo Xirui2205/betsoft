@@ -1,0 +1,1 @@
+INSERT INTO `vic_admin`.`parameter` (`id`, `name`, `value`, `is_host`, `is_branch`, `is_user`, `is_admin`, `is_editable`, `type`, `mandatory`, `description`) VALUES (NULL, 'betradar.Email.notifyTo', 'vesely@compbet.com', '0', '0', '0', '0', '1', NULL, '1', 'Emailové adresy pro notifikace o importu z Betradaru (pokud více, oddělené čárkou)');

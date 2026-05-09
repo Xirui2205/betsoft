@@ -1,6 +1,8 @@
 <?php
 class Models_Helpers_Panels {
 
+	private static $mainMenuActive = "sportbook";
+
 	private static $leftMenuItems = array(
 		array(
 			'conActId'	=> 35,
@@ -65,7 +67,7 @@ class Models_Helpers_Panels {
     //-- todo remove unused
     private static $timeFilterCfg = array(
         /* REQUEST key          => value */
-        'onlyToday'             => Models_Markets_MarketData::TIME_FILTER_ONLY_TODAY,
+        /*'onlyToday'             => Models_Markets_MarketData::TIME_FILTER_ONLY_TODAY,
         'todayAndTomorow'       => Models_Markets_MarketData::TIME_FILTER_TODAY_AND_TOMOROW,
         'today'                 => Models_Markets_MarketData::TIME_FILTER_TODAY,
         'tomorow'               => Models_Markets_MarketData::TIME_FILTER_TOMOROW,
@@ -79,7 +81,7 @@ class Models_Helpers_Panels {
         'tenMinutes'            => Models_Markets_MarketData::TIME_FILTER_10_MINUTES,
         'twentyMinutes'         => Models_Markets_MarketData::TIME_FILTER_20_MINUTES,
         'thirtyMinutes'         => Models_Markets_MarketData::TIME_FILTER_30_MINUTES,
-        'datetimeRange'         => Models_Markets_MarketData::TIME_FILTER_DATETIME_RANGE
+        'datetimeRange'         => Models_Markets_MarketData::TIME_FILTER_DATETIME_RANGE*/
     );
 
 
@@ -87,6 +89,21 @@ class Models_Helpers_Panels {
 		Models_Helpers_Panels::leftCol($view);
 		Models_Helpers_Panels::rightCol($view);
 		Models_Helpers_Panels::news($view);
+		$view->defaultCols = true;
+		
+		// fix pro sjednocení systému sloupců
+		$view->addHelperPath('views/helpers', 'My_View_Helper');
+		$menu = Models_Helpers_Panels::sportMenu($view);
+
+		$openUrlArr = $menu->getOpenUrl();
+
+		$urlParts = array(
+			$openUrlArr['sport'] => 1,
+			$openUrlArr['oblast'] => 2,
+			$openUrlArr['udalost'] => 3
+		);
+		$view->urlParams = array();
+		$view->urlParams = $menu->getAllLangUrlParams($urlParts);
 	}
 
 	static function leftCol($view) {
@@ -159,7 +176,7 @@ class Models_Helpers_Panels {
         }
         
 		$view->typeFilter = '';
-		if(isset($_REQUEST['type'])) {
+		/*if(isset($_REQUEST['type'])) {
 			foreach ($_REQUEST['type'] as $type)
 				$view->typeFilter .= '&type[]='.$type;
 		}
@@ -174,7 +191,7 @@ class Models_Helpers_Panels {
 		if ($view->timeFilter === Models_Markets_MarketData::TIME_FILTER_DATETIME_RANGE) {
 			$view->dateFrom = isset($_REQUEST["dateFrom"]) ? $_REQUEST["dateFrom"] : '';
 			$view->dateTo = isset($_REQUEST["dateTo"]) ? $_REQUEST["dateTo"] : '';
-		}
+		}*/
 	}
     
 	static function sportMenu($view, $justMenuObject = false) {
@@ -213,7 +230,7 @@ class Models_Helpers_Panels {
 		$view->allSportsUrl = $view->UrlSet(2);
 		$view->openMenuPath = $menu->getOpenPath();
         
-        $timeFilterApplied = false;
+        /*$timeFilterApplied = false;
         foreach (self::$timeFilterCfg as $requestKey => $value) {
             if ($view->timeFilter == $value) {
                 $view->allSportsUrl .= '?'.$requestKey.'=1';
@@ -233,9 +250,11 @@ class Models_Helpers_Panels {
                 $view->allSportsUrl .= '?rateMax=' . $view->rateMax . '&rateMin=' . $view->rateMin;
                 $view->openMenuPath .= '?rateMax=' . $view->rateMax . '&rateMin=' . $view->rateMin;
             }
-        }
+        }*/
         
 		It6_GlobalCache::maxExpiration( max(0, $menu->getExpiration() - time()) );
+
+		//Zend_Registry::get('fl')->info($menu);
 
 		return $menu;
 	}
@@ -311,7 +330,7 @@ class Models_Helpers_Panels {
 			return '';
 		}
 		
-		foreach (self::$timeFilterCfg as $requestKey => $value) {
+		/*foreach (self::$timeFilterCfg as $requestKey => $value) {
 			if ($timeFilter == $value) {
 				if ($timeFilter !== Models_Markets_MarketData::TIME_FILTER_DATETIME_RANGE) {
 					return '?'.$requestKey.'=1';
@@ -319,7 +338,7 @@ class Models_Helpers_Panels {
 					return '?'.$requestKey.'=1&dateFrom='.urlencode($_REQUEST['dateFrom']).'&dateTo='.urlencode($_REQUEST['dateTo']);
 				}
 			}
-		}
+		}*/
 		
 		return '';
 	}

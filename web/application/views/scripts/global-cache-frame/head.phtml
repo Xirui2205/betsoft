@@ -7,7 +7,7 @@
 				<li><a href="#">Contact</a></li>
 				<li><a href="#">Responsible Gaming</a></li>-->
 				<li class="langs dropdown">
-					<a href="#" class="ico ico-flag <?php echo $this->flagIcon; ?>" data-target="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $this->trans('change_lang') ?></a>
+					<a href="#" class="ico ico-flag <?= $this->flagIcon ?>" data-target="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $this->trans('change_lang') ?></a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 						<li><a href="/en/" class="ico ico-flag f-536 <?php
 							if ($this->flagIcon == "ico-eng") {
@@ -24,7 +24,7 @@
 								echo "active";
 							}
 							?>">Slovensky</a></li>
-						<!--<li><a href="/de/" class="ico ico-flag f-248 <?php
+						<li><a href="/de/" class="ico ico-flag f-248 <?php
 							if ($this->flagIcon == "ico-ger") {
 								echo "active";
 							}
@@ -33,7 +33,7 @@
 				if ($this->flagIcon == "ico-rus") {
 					echo "active";
 				}
-							?>">русский</a></li>-->
+							?>">русский</a></li>
 					</ul>
 				</li>
 <?php if ($GLOBALS['ses_status'] != 2 && $GLOBALS['ses_status'] != 3) { ?>
@@ -44,8 +44,7 @@
 			</ul>
 		</nav>
 		<div id="userbar">
-		<div id="loginFeedback">
-		</div>
+
 <?php if ($GLOBALS['ses_status'] != 2 && $GLOBALS['ses_status'] != 3) { ?>
 				<form method="post" action="/" id="loginForm">
 					<input name="" id="nick" type="text" placeholder="<?= $this->trans('reg_email'); ?>">
@@ -55,7 +54,7 @@
 <?php } else { ?>
 				<ul>
 					<li class="ico ico-item ico-user"><?= Zend_Registry::get('nick'); ?></li>
-					<li id="user-money" class="ico ico-item ico-money"><?= $this->balanceFormated; ?></li>
+					<li class="ico ico-item ico-money"><?= $this->balanceFormated; ?></li>
 					<li class="dropdown">
 						<a href="<?= $this->urlSet(52) ?>"><?= $this->trans('reg_deposit') ?></a>
 					</li>

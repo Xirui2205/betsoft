@@ -1,0 +1,1 @@
+ALTER TABLE `uzivatel` CHANGE `entry_bonus_version` `entry_bonus_version` INT( 10 ) UNSIGNED NOT NULL DEFAULT '2'

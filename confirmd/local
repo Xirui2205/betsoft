@@ -2,8 +2,6 @@
 
 APPLICATION_ENVIRONMENT=DEVEL_LOCAL;
 
-echo $! > /var/run/queue.pid;
-
 while [ true ]
 do
 	php -f ./confirm.php 2> /dev/null;

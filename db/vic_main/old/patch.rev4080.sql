@@ -1,0 +1,1 @@
+ALTER TABLE `vic_main`.`match_live` CHANGE `status` `status` ENUM( 'NOT_STARTED,BEGIN', 'END', '1_HALF', '2_HALF', '1_THIRD', '2_THIRD', '3_THIRD', '1_Q', '2_Q', '3_Q', '4_Q', 'OVERTIME', 'PAUSE', 'STOP', '1_SET', '2_SET', '3_SET', '4_SET', '5_SET', 'WARMUP', 'UNFINISHED', 'PENALTY', 'CANCELED' ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;

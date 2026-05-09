@@ -239,9 +239,7 @@ if(document.attachEvent) {
 
 function confirmTicket(data,act) {
 	if (act == 1) {
-		if (tick.confirming) {
-			return false;
-		}
+		if (tick.confirming) return false;
 		tick.confirming = true;
 		tick.betsLocked = true;
 		tick.clearNotifications();

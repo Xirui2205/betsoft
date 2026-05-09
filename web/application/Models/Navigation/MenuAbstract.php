@@ -51,7 +51,7 @@ abstract class Models_Navigation_MenuAbstract{
 						'upozice'=>'u.pozice'))
 					*/
 					array(
-						'upocet'=>'count(distinct sz.betradar_match_id)',
+						'upocet'=>'count(u.udalost_id)',
 						's.sport_id',
 						'sport_highlight'=>'s.zvyrazneni',
 						'snazev'=> 's.nazev',
@@ -64,27 +64,27 @@ abstract class Models_Navigation_MenuAbstract{
 						'u.udalost_id',
 						'uzvyrazneni'=>'u.zvyrazneni',
 						'upozice'=>'u.pozice'))
-				->join(array('u'=>'udalost'),'s.sport_id=u.sport_id', array())
+					->join(array('u'=>'udalost'),'s.sport_id=u.sport_id', array())
 				->join(array('o'=>'oblast'),'u.oblast_id=o.oblast_id', array())
 				->joinLeft(array('tro' => 'preklady'),'o.nazev=tro.index_pole AND tro.lang_id='.intval($lang_id),array())
 				->join(
 					array('sz'=>'sazky'),
-					'sz.udalost_id=u.udalost_id AND sz.live = 0 AND sz.status = 0 AND sz.risk_limit > sz.risk_limit_balance AND sz.platna_od<= \''.$now.'\' AND sz.platna_do>=\''.$now.'\' ',
+					'sz.udalost_id=u.udalost_id AND sz.live = 0 AND sz.status = 0 AND sz.risk_limit > sz.risk_limit_balance',
 					array()
 				)
 				->join(array('t'=>'typ'), 'sz.typ_id=t.typ_id', array())
 				->where('s.zobrazeno=?',1)
 				->where('s.hide_in_sportmenu=?',0)
-				//->where('sz.platna_od<=?',$now )
-				//->where('sz.platna_do>=?',$now )
-				//->where('sz.live = 0')
-				//->where('sz.status=0')
-				//->where('sz.risk_limit > sz.risk_limit_balance')
+				->where('sz.platna_od<=?',$now )
+				->where('sz.platna_do>=?',$now )
+				->where('sz.live = 0')
+				->where('sz.status=0')
+				->where('sz.risk_limit > sz.risk_limit_balance')
 				->where('u.zobrazeno=?',1)
 				->where('t.zobrazeno=?',1)
 				->where('u.platne_od<=?',$now)
 				->where('u.platne_do>=?',$now)
-				->group(array('s.sport_id', 'u.udalost_id'))
+				->group(array('s.sport_id','u.udalost_id'))
 				->order(array('sport_pozice','opozice', 'onazev','upozice'));
 			
 			if (Models_Markets_MarketData::TIME_FILTER_ONLY_TODAY == $timeFilter ||
@@ -93,8 +93,8 @@ abstract class Models_Navigation_MenuAbstract{
 					Models_Markets_MarketData::TIME_FILTER_TOMOROW == $timeFilter ||
 					Models_Markets_MarketData::TIME_FILTER_DAY_AFTER_TOMOROW == $timeFilter)
 			{
-				//$timeWhere = Models_Markets_MarketData::getTodayToomorowTimeInterval($timeFilter);
-				//$select = $select->where($timeWhere);
+				$timeWhere = Models_Markets_MarketData::getTodayToomorowTimeInterval($timeFilter);
+				$select = $select->where($timeWhere);
 			}
 			elseif (Models_Markets_MarketData::TIME_FILTER_1_HOUR == $timeFilter || Models_Markets_MarketData::TIME_FILTER_3_HOURS == $timeFilter || Models_Markets_MarketData::TIME_FILTER_6_HOURS == $timeFilter || Models_Markets_MarketData::TIME_FILTER_12_HOURS == $timeFilter){
 				$timeWhere = Models_Markets_MarketData::getHourTimeInterval($timeFilter);
@@ -116,7 +116,6 @@ abstract class Models_Navigation_MenuAbstract{
 				$select = $select->where($timeWhere);
 			}
 			
-                        ////echo  $select; exit;
 			$rows  = $select->query()->fetchAll();
 			$keys = array();
 			foreach ($rows as $row) {

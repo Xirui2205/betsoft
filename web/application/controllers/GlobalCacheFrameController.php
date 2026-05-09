@@ -39,14 +39,14 @@ class GlobalCacheFrameController extends Zend_Controller_Action {
 		$lang = $this->_request->getParam('lang');
 		$key = It6_GlobalCache::createLocalizedKey(It6_GlobalCache::KEY_PREFIX_LIVE_CALENDAR_SMALL, $lang);
 		$html = It6_GlobalCache::getKey($key, $fetched);
-		//if (!$fetched) {
+		if (!$fetched) {
 			$this->view->liveOnline = Zend_Registry::get('ws')->MatchLive->getHpCalendarSmallOnLine();
 			$this->view->liveComing = Zend_Registry::get('ws')->MatchLive->getHpCalendarSmallComing();
 			$html = $this->view->render('global-cache-frame/live-calendar-small-content.phtml');
 			unset($this->view->liveOnline);
 			unset($this->view->liveComing);
 			It6_GlobalCache::setKey($key, $html);
-		//}
+		}
 		$this->view->content = It6_Models_Livebetting::replaceSessionIdPlaceholders($html);
 		It6_Controller_Util::setResponseExpiration($this->_response, time() + 5*60);
 	}
@@ -56,13 +56,13 @@ class GlobalCacheFrameController extends Zend_Controller_Action {
 		$lang = $this->_request->getParam('lang');
 		$key = It6_GlobalCache::createLocalizedKey(It6_GlobalCache::KEY_PREFIX_LIVE_CALENDAR, $lang);
 		$html = It6_GlobalCache::getKey($key, $fetched);
-		//if (!$fetched) {
+		if (!$fetched) {
 			$this->view->liveCalendarMatches = Zend_Registry::get('ws')->MatchLive->getHpCalendar();
 			//$this->view->liveCom = Models_LiveBetting_Calendar::getComming(false);
 			$html = $this->view->render('global-cache-frame/live-calendar-content.phtml');
 			unset($this->view->liveCalendarMatches);
 			It6_GlobalCache::setKey($key, $html);
-		//}
+		}
 		$this->view->content = It6_Models_Livebetting::replaceSessionIdPlaceholders($html);
 		It6_Controller_Util::setResponseExpiration($this->_response, time() + 5*60);
 	}

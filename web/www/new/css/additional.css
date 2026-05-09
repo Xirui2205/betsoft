@@ -205,84 +205,26 @@ legend {
 .ico-tennis:before{ background-position: 0 -260px; }
 .ico-volleyball:before{ background-position: 0 -280px; }
 
-#t1001:before{ background-position: 0 -220px; }
-#t1003:before{ background-position: 0 -260px; }
 #t1006:before{ background-position: 0 -60px; }
 #t1011:before{ background-position: 0 -160px; }
-#t1012:before{ background-image: url(/images/ico/supertip.png); }
-#t1013:before{ background-position: 0 -280px; }
-#t1014:before{ background-image: url(/images/ico/sipky.png); }
-#t1015:before{ background-position: 0 -200px; }
-#t1016:before{ background-position: 0 -240px; }
-#t1017:before{ background-image: url(/images/ico/race.png); }
-#t1018:before{ background-image: url(/images/ico/klaslyzovani.png); }
-#t1019:before{ background-image: url(/images/ico/snooker.png); }
-#t1020:before{ background-position: 0 -140px; }
-#t1021:before{ background-image: url(/images/ico/politika.png); }
-#t1022:before{ background-position: 0 -100px; }
-#t1024:before{ background-image: url(/images/ico/box.png); }
-#t1025:before{ background-image: url(/images/ico/baseball.png); }
-#t1027:before{ background-image: url(/images/ico/kolo.png); }
-#t1028:before{ background-image: url(/images/ico/golf.png); }
 #t1029:before{ background-position: 0 -180px; }
+#t1015:before{ background-position: 0 -200px; }
+#t1001:before{ background-position: 0 -220px; }
+#t1020:before{ background-position: 0 -140px; }
+#t1027:before{ background-position: 0 -300px; }
+#t1003:before{ background-position: 0 -260px; }
+#t1013:before{ background-position: 0 -280px; }
+#t1022:before{ background-position: 0 -100px; }
 #t1035:before{ background-position: 0 -140px; }
-#t1036:before{ background-image: url(/images/ico/olympiada.png); }
-#t1030:before{ background-image: url(/images/ico/race.png); }
-#t1031:before{ background-image: url(/images/ico/supertip.png); }
-#t1032:before{ background-image: url(/images/ico/polo.png); }
-#t1034:before{ background-image: url(/images/ico/biatlon.png); }
-#t1036:before{ background-image: url(/images/ico/olympiada.png); }
-#t1037:before{ background-image: url(/images/ico/curling.png); }
-#t1038:before{ background-image: url(/images/ico/plochadraha.png); }
-#t1039:before{ background-image: url(/images/ico/cricket.png); }
-#t1040:before{ background-position: 0 -140px; }
-#t1041:before{ background-image: url(/images/ico/plavani.png); }
-#t1042:before{ background-image: url(/images/ico/atletika.png); }
-#t1043:before{ background-image: url(/images/ico/pozhokej.png); }
-#t1044:before{ background-image: url(""); }
-#t1047:before{ background-image: url(/images/ico/bandy.png); }
-#t1048:before{ background-image: url(/images/ico/bowls.png); }
-#t1051:before{ background-image: url(/images/ico/hokejbal.png); }
-#t1052:before{ background-image: url(/images/ico/sachy.png); }
-#t1055:before{ background-image: url(/images/ico/pesapallo.png); }
-#t1056:before{ background-image: url(/images/ico/supertip.png); }
-#t1061:before{ background-image: url(/images/ico/australskyfootbal.png); }
-#t1064:before{ background-image: url(/images/ico/volejbal.png); }
-#t1065:before{ background-image: url(/images/ico/esport.png); }
+#t1016:before{ background-position: 0 -240px; }
 
 .active-rate a {
-	background-color: #CC6; 
+	background: #CC6; 
 	color: #333;
 }
-
-.active-rate a:focus {
-	background-color: #ffe55e;
-	color: #333;
-}
-
 .table>tbody>tr>td.active-rate {
-	background-color: #CC6; 
+	background: #CC6; 
 	color: #333;
-}
-
-.table>tbody>tr>td.active-rate a:focus {
-	background-color: #CC6;
-	color: #333;
-}
-
-.table>tbody>tr>td.kurz .table>tbody>tr>td.a {
-	display: block;
-	height: 100%;
-	border: 1px solid red;
-	position: absolute;
-	top: 0px;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	padding-top: 10px;
-}
-.table>tbody>tr>td.odds {
-	height: 100%;
 }
 
 td.pozor, ul.errors {
@@ -326,488 +268,77 @@ span.match-win-amount{
 .ico-flag:before {
 }
 
-.f-245:before{ background-image: url(/images/flags/small/usa.png); }
-.bigf-245:before{ background-image: url(/images/flags/big/usa.png); }
-.f-246:before{ background-image: url(/images/flags/small/England.png); }
-.bigf-246:before{ background-image: url(/images/flags/big/England.png); }
 .f-247:before{ background-image: url(/images/flags/small/CzechRepublic.png); }
 .bigf-247:before{ background-image: url(/images/flags/big/CzechRepublic.png); }
 .f-248:before{ background-image: url(/images/flags/small/Germany.png); }
 .bigf-248:before{ background-image: url(/images/flags/big/Germany.png); }
-.f-249:before{ background-image: url(/images/flags/small/Poland.png); }
-.bigf-249:before{ background-image: url(/images/flags/big/Poland.png); }
-.f-250:before{ background-image: url(/images/flags/small/France.png); }
-.bigf-250:before{ background-image: url(/images/flags/big/France.png); }
-.f-256:before{ background-image: url(/images/flags/small/Albania.png); }
-.bigf-256:before{ background-image: url(/images/flags/big/Albania.png); }
-.f-257:before{ background-image: url(/images/flags/small/Armenia.png); }
-.bigf-257:before{ background-image: url(/images/flags/big/Armenia.png); }
-.f-261:before{ background-image: url(/images/flags/small/Argentina.png); }
-.bigf-261:before{ background-image: url(/images/flags/big/Argentina.png); }
-.f-263:before{ background-image: url(/images/flags/small/Austria.png); }
-.bigf-263:before{ background-image: url(/images/flags/big/Austria.png); }
-.f-264:before{ background-image: url(/images/flags/small/Australia.png); }
-.bigf-264:before{ background-image: url(/images/flags/big/Australia.png); }
-.f-267:before{ background-image: url(/images/flags/small/BosniaHerzegovina.png); }
-.bigf-267:before{ background-image: url(/images/flags/big/BosniaHerzegovina.png); }
-.f-269:before{ background-image: url(/images/flags/small/Bangladesh.png); }
-.bigf-269:before{ background-image: url(/images/flags/big/Bangladesh.png); }
-.f-270:before{ background-image: url(/images/flags/small/Belgium.png); }
-.bigf-270:before{ background-image: url(/images/flags/big/Belgium.png); }
-.f-272:before{ background-image: url(/images/flags/small/Bulgaria.png); }
-.bigf-272:before{ background-image: url(/images/flags/big/Bulgaria.png); }
-.f-278:before{ background-image: url(/images/flags/small/Bolivia.png); }
-.bigf-278:before{ background-image: url(/images/flags/big/Bolivia.png); }
-.f-279:before{ background-image: url(/images/flags/small/Brazil.png); }
-.bigf-279:before{ background-image: url(/images/flags/big/Brazil.png); }
-.f-284:before{ background-image: url(/images/flags/small/Belarus.png); }
-.bigf-284:before{ background-image: url(/images/flags/big/Belarus.png); }
-.f-286:before{ background-image: url(/images/flags/small/Canada.png); }
-.bigf-286:before{ background-image: url(/images/flags/big/Canada.png); }
-.f-291:before{ background-image: url(/images/flags/small/Switzerland.png); }
-.bigf-291:before{ background-image: url(/images/flags/big/Switzerland.png); }
-.f-294:before{ background-image: url(/images/flags/small/Chile.png); }
-.bigf-294:before{ background-image: url(/images/flags/big/Chile.png); }
-.f-296:before{ background-image: url(/images/flags/small/China.png); }
-.bigf-296:before{ background-image: url(/images/flags/big/China.png); }
-.f-297:before{ background-image: url(/images/flags/small/Colombia.png); }
-.bigf-297:before{ background-image: url(/images/flags/big/Colombia.png); }
-
-.f-302:before{ background-image: url(/images/flags/small/Cyprus.png); }
-.bigf-302:before{ background-image: url(/images/flags/big/Cyprus.png); }
+.f-536:before{ background-image: url(/images/flags/small/England.png); }
+.bigf-536:before{ background-image: url(/images/flags/big/England.png); }
 .f-304:before{ background-image: url(/images/flags/small/Denmark.png); }
 .bigf-304:before{ background-image: url(/images/flags/big/Denmark.png); }
-.f-308:before{ background-image: url(/images/flags/small/Equador.png); }
-.bigf-308:before{ background-image: url(/images/flags/big/Equador.png); }
-.f-309:before{ background-image: url(/images/flags/small/Estonia.png); }
-.bigf-309:before{ background-image: url(/images/flags/big/Estonia.png); }
-.f-310:before{ background-image: url(/images/flags/small/Egypt.png); }
-.bigf-310:before{ background-image: url(/images/flags/big/Egypt.png); }
-.f-313:before{ background-image: url(/images/flags/small/Spain.png); }
-.bigf-313:before{ background-image: url(/images/flags/big/Spain.png); }
-.f-315:before{ background-image: url(/images/flags/small/Finland.png); }
-.bigf-315:before{ background-image: url(/images/flags/big/Finland.png); }
-.f-331:before{ background-image: url(/images/flags/small/Greece.png); }
-.bigf-331:before{ background-image: url(/images/flags/big/Greece.png); }
-.f-340:before{ background-image: url(/images/flags/small/Croatia.png); }
-.bigf-340:before{ background-image: url(/images/flags/big/Croatia.png); }
-.f-342:before{ background-image: url(/images/flags/small/Hungary.png); }
-.bigf-342:before{ background-image: url(/images/flags/big/Hungary.png); }
-.f-344:before{ background-image: url(/images/flags/small/Ireland.png); }
-.bigf-344:before{ background-image: url(/images/flags/big/Ireland.png); }
+.f-250:before{ background-image: url(/images/flags/small/France.png); }
+.bigf-250:before{ background-image: url(/images/flags/big/France.png); }
+.f-432:before{ background-image: url(/images/flags/small/Sweden.png); }
+.bigf-432:before{ background-image: url(/images/flags/big/Sweden.png); }
 .f-351:before{ background-image: url(/images/flags/small/Italy.png); }
 .bigf-351:before{ background-image: url(/images/flags/big/Italy.png); }
+.f-315:before{ background-image: url(/images/flags/small/Finland.png); }
+.bigf-315:before{ background-image: url(/images/flags/big/Finland.png); }
 .f-354:before{ background-image: url(/images/flags/small/Japan.png); }
 .bigf-354:before{ background-image: url(/images/flags/big/Japan.png); }
-.f-373:before{ background-image: url(/images/flags/small/Lithuania.png); }
-.bigf-373:before{ background-image: url(/images/flags/big/Lithuania.png); }
-.f-374:before{ background-image: url(/images/flags/small/Luxembourg.png); }
-.bigf-374:before{ background-image: url(/images/flags/big/Luxembourg.png); }
-.f-375:before{ background-image: url(/images/flags/small/Latvia.png); }
-.bigf-375:before{ background-image: url(/images/flags/big/Latvia.png); }
-.f-378:before{ background-image: url(/images/flags/small/Monaco.png); }
-.bigf-378:before{ background-image: url(/images/flags/big/Monaco.png); }
-.f-395:before{ background-image: url(/images/flags/small/Mexico.png); }
-.bigf-395:before{ background-image: url(/images/flags/big/Mexico.png); }
-.f-396:before{ background-image: url(/images/flags/small/Malaysia.png); }
-.bigf-396:before{ background-image: url(/images/flags/big/Malaysia.png); }
-
-.f-404:before{ background-image: url(/images/flags/small/Netherlands.png); }
-.bigf-404:before{ background-image: url(/images/flags/big/Netherlands.png); }
+.f-342:before{ background-image: url(/images/flags/small/Hungary.png); }
+.bigf-342:before{ background-image: url(/images/flags/big/Hungary.png); }
 .f-405:before{ background-image: url(/images/flags/small/Norway.png); }
 .bigf-405:before{ background-image: url(/images/flags/big/Norway.png); }
-.f-412:before{ background-image: url(/images/flags/small/Peru.png); }
-.bigf-412:before{ background-image: url(/images/flags/big/Peru.png); }
+.f-249:before{ background-image: url(/images/flags/small/Poland.png); }
+.bigf-249:before{ background-image: url(/images/flags/big/Poland.png); }
+.f-263:before{ background-image: url(/images/flags/small/Austria.png); }
+.bigf-263:before{ background-image: url(/images/flags/big/Austria.png); }
+.f-533:before{ background-image: url(/images/flags/small/Scotland.png); }
+.bigf-533:before{ background-image: url(/images/flags/big/Scotland.png); }
+.f-313:before{ background-image: url(/images/flags/small/Spain.png); }
+.bigf-313:before{ background-image: url(/images/flags/big/Spain.png); }
+.f-291:before{ background-image: url(/images/flags/small/Switzerland.png); }
+.bigf-291:before{ background-image: url(/images/flags/big/Switzerland.png); }
+.f-245:before{ background-image: url(/images/flags/small/usa.png); }
+.bigf-245:before{ background-image: url(/images/flags/big/usa.png); }
+.f-261:before{ background-image: url(/images/flags/small/Argentina.png); }
+.bigf-261:before{ background-image: url(/images/flags/big/Argentina.png); }
+.f-264:before{ background-image: url(/images/flags/small/Australia.png); }
+.bigf-264:before{ background-image: url(/images/flags/big/Australia.png); }
+.f-308:before{ background-image: url(/images/flags/small/Ecuador.png); }
+.bigf-308:before{ background-image: url(/images/flags/big/Ecuador.png); }
+.f-485:before{ background-image: url(/images/flags/small/israel.png); }
+.bigf-485:before{ background-image: url(/images/flags/big/israel.png); }
+.f-302:before{ background-image: url(/images/flags/small/Cyprus.png); }
+.bigf-302:before{ background-image: url(/images/flags/big/Cyprus.png); }
+.f-404:before{ background-image: url(/images/flags/small/Netherlands.png); }
+.bigf-404:before{ background-image: url(/images/flags/big/Netherlands.png); }
 .f-420:before{ background-image: url(/images/flags/small/Portugal.png); }
 .bigf-420:before{ background-image: url(/images/flags/big/Portugal.png); }
 .f-425:before{ background-image: url(/images/flags/small/Romania.png); }
 .bigf-425:before{ background-image: url(/images/flags/big/Romania.png); }
 .f-426:before{ background-image: url(/images/flags/small/RussianFederation.png); }
 .bigf-426:before{ background-image: url(/images/flags/big/RussianFederation.png); }
-.f-432:before{ background-image: url(/images/flags/small/Sweden.png); }
-.bigf-432:before{ background-image: url(/images/flags/big/Sweden.png); }
-.f-435:before{ background-image: url(/images/flags/small/Slovenia.png); }
-.bigf-435:before{ background-image: url(/images/flags/big/Slovenia.png); }
 .f-437:before{ background-image: url(/images/flags/small/Slovakia.png); }
 .bigf-437:before{ background-image: url(/images/flags/big/Slovakia.png); }
-.f-439:before{ background-image: url(/images/flags/small/SanMarino.png); }
-.bigf-439:before{ background-image: url(/images/flags/big/SanMarino.png); }
-.f-451:before{ background-image: url(/images/flags/small/Thailand.png); }
-.bigf-451:before{ background-image: url(/images/flags/big/Thailand.png); }
-.f-455:before{ background-image: url(/images/flags/small/Tunisia.png); }
-.bigf-455:before{ background-image: url(/images/flags/big/Tunisia.png); }
 .f-458:before{ background-image: url(/images/flags/small/Turkey.png); }
 .bigf-458:before{ background-image: url(/images/flags/big/Turkey.png); }
 .f-463:before{ background-image: url(/images/flags/small/Ukraine.png); }
 .bigf-463:before{ background-image: url(/images/flags/big/Ukraine.png); }
-.f-468:before{ background-image: url(/images/flags/small/VaticanCity.png); }
-.bigf-468:before{ background-image: url(/images/flags/big/VaticanCity.png); }
 .f-470:before{ background-image: url(/images/flags/small/Venezuela.png); }
 .bigf-470:before{ background-image: url(/images/flags/big/Venezuela.png); }
-.f-479:before{ background-image: url(/images/flags/small/Serbia.png); }
-.bigf-479:before{ background-image: url(/images/flags/big/Serbia.png); }
-.f-485:before{ background-image: url(/images/flags/small/israel.png); }
-.bigf-485:before{ background-image: url(/images/flags/big/israel.png); }
-.f-486:before{ background-image: url(/images/flags/small/NewZealand.png); }
-.bigf-486:before{ background-image: url(/images/flags/big/NewZealand.png); }
-.f-487:before{ background-image: url(/images/flags/small/SouthKorea.png); }
-.bigf-487:before{ background-image: url(/images/flags/big/SouthKorea.png); }
-.f-488:before{ background-image: url(/images/ico/488_wta.png); }
-.bigf-488:before{ background-image: url(/images/ico/488_wta.png); }
-.f-489:before{ background-image: url(/images/ico/489_atp.png); }
-.bigf-489:before{ background-image: url(/images/ico/489_atp.png); }
-.f-490:before{ background-image: url(/images/ico/490_challenger.png); }
-.bigf-490:before{ background-image: url(/images/ico/490_challenger.png); }
-.f-491:before{ background-image: url(/images/flags/491_daviscup.png); }
-.bigf-491:before{ background-image: url(/images/flags/491_daviscup.png); }
-.f-492:before{ background-image: url(/images/flags/492_international.png); }
-.bigf-492:before{ background-image: url(/images/flags/492_international.png); }
-.f-493:before{ background-image: url(/images/flags/493_itf.png); }
-.bigf-493:before{ background-image: url(/images/flags/493_itf.png); }
-.f-494:before{ background-image: url(/images/flags/494_hopman_cup.png); }
-.bigf-494:before{ background-image: url(/images/flags/494_hopman_cup.png); }
-.f-495:before{ background-image: url(/images/flags/495_international_friendly.png); }
-.bigf-495:before{ background-image: url(/images/flags/495_international_friendly.png); }
-.f-496:before{ background-image: url(""); }
-.bigf-496:before{ background-image: url(""); }
+.f-279:before{ background-image: url(/images/flags/small/Brazil.png); }
+.bigf-279:before{ background-image: url(/images/flags/big/Brazil.png); }
+
 .f-497:before{ background-image: url(/images/flags/497_international_clubs.png); }
 .bigf-497:before{ background-image: url(/images/flags/497_international_clubs.png); }
-.f-498:before{ background-image: url(/images/flags/498_golf_pga.png); }
-.bigf-498:before{ background-image: url(/images/flags/498_golf_pga.png); }
-.f-499:before{ background-image: url(/images/flags/499_epga_tour.png); }
-.bigf-499:before{ background-image: url(/images/flags/499_epga_tour.png); }
-.f-500:before{ background-image: url(/images/flags/500_ryder_cup.png); }
-.bigf-500:before{ background-image: url(/images/flags/500_ryder_cup.png); }
-.f-501:before{ background-image: url(""); }
-.bigf-501:before{ background-image: url(""); }
-.f-502:before{ background-image: url(""); }
-.bigf-502:before{ background-image: url(""); }
-.f-503:before{ background-image: url(""); }
-.bigf-503:before{ background-image: url(""); }
-.f-504:before{ background-image: url(""); }
-.bigf-504:before{ background-image: url(""); }
-.f-505:before{ background-image: url(""); }
-.bigf-505:before{ background-image: url(""); }
-.f-506:before{ background-image: url(""); }
-.bigf-506:before{ background-image: url(""); }
-.f-507:before{ background-image: url(/images/flags/507_rugbyleague.png); }
-.bigf-507:before{ background-image: url(/images/flags/507_rugbyleague.png); }
 .f-508:before{ background-image: url(/images/flags/508_rugbyunion.png); }
 .bigf-508:before{ background-image: url(/images/flags/508_rugbyunion.png); }
-.f-509:before{ background-image: url(""); }
-.bigf-509:before{ background-image: url(""); }
-.f-510:before{ background-image: url(""); }
-.bigf-510:before{ background-image: url(""); }
-.f-511:before{ background-image: url(/images/ico/lyzovani2.png); }
-.bigf-511:before{ background-image: url(/images/ico/lyzovani2.png); }
-.f-512:before{ background-image: url(/images/ico/lyzovani2.png); }
-.bigf-512:before{ background-image: url(/images/ico/lyzovani2.png); }
-.f-513:before{ background-image: url(/images/flags/small/CostaRica.png); }
-.bigf-513:before{ background-image: url(/images/flags/big/CostaRica.png); }
-.f-514:before{ background-image: url(/images/flags/small/Iceland.png); }
-.bigf-514:before{ background-image: url(/images/flags/big/Iceland.png); }
-.f-515:before{ background-image: url(/images/flags/small/Uruguay.png); }
-.bigf-515:before{ background-image: url(/images/flags/big/Uruguay.png); }
-.f-516:before{ background-image: url(/images/ico/supertip.png); }
-.bigf-516:before{ background-image: url(/images/ico/supertip.png); }
-.f-517:before{ background-image: url(""); }
-.bigf-517:before{ background-image: url(""); }
-.f-518:before{ background-image: url(/images/flags/small/EuropeanUnion.png); }
-.bigf-518:before{ background-image: url(/images/flags/big/EuropeanUnion.png); }
-.f-519:before{ background-image: url(/images/flags/small/Qatar.png); }
-.bigf-519:before{ background-image: url(/images/flags/big/Qatar.png); }
-.f-520:before{ background-image: url(/images/flags/small/Monaco.png); }
-.bigf-520:before{ background-image: url(/images/flags/big/Monaco.png); }
-.f-521:before{ background-image: url(/images/flags/521_Catalonia.svg.png); }
-.bigf-521:before{ background-image: url(/images/flags/521_Catalonia.svg.png); }
-.f-522:before{ background-image: url(/images/ico/biatlon.png); }
-.bigf-522:before{ background-image: url(/images/ico/biatlon.png); }
-.f-523:before{ background-image: url(/images/ico/skoky.png); }
-.bigf-523:before{ background-image: url(/images/ico/skoky.png); }
-.f-524:before{ background-image: url(/images/ico/race.png); }
-.bigf-524:before{ background-image: url(/images/ico/race.png); }
-.f-524:before{ background-image: url(""); }
-.bigf-524:before{ background-image: url(""); }
-.f-525:before{ background-image: url(""); }
-.bigf-525:before{ background-image: url(""); }
-.f-526:before{ background-image: url(""); }
-.bigf-526:before{ background-image: url(""); }
-.f-527:before{ background-image: url(""); }
-.bigf-527:before{ background-image: url(""); }
-.f-528:before{ background-image: url(""); }
-.bigf-528:before{ background-image: url(""); }
-.f-529:before{ background-image: url(/images/flags/small/Bahrain.png); }
-.bigf-529:before{ background-image: url(/images/flags/big/Bahrain.png); }
-.f-530:before{ background-image: url(""); }
-.bigf-530:before{ background-image: url(""); }
-.f-531:before{ background-image: url(""); }
-.bigf-531:before{ background-image: url(""); }
-.f-532:before{ background-image: url(/images/flags/small/NorthernIreland.png); }
-.bigf-532:before{ background-image: url(/images/flags/big/NorthernIreland.png); }
-.f-533:before{ background-image: url(/images/flags/small/Scotland.png); }
-.bigf-533:before{ background-image: url(/images/flags/big/Scotland.png); }
-.f-534:before{ background-image: url(/images/flags/small/Wales.png); }
-.bigf-534:before{ background-image: url(/images/flags/big/Wales.png); }
-.f-536:before{ background-image: url(/images/flags/small/England.png); }
-.bigf-536:before{ background-image: url(/images/flags/big/England.png); }
-.f-537:before{ background-image: url(/images/flags/537_fedcup.svg.png); }
-.bigf-537:before{ background-image: url(/images/flags/537_fedcup.svg.png); }
-.f-538:before{ background-image: url(/images/flags/small/Namibia.png); }
-.bigf-538:before{ background-image: url(/images/flags/big/Namibia.png); }
-.f-539:before{ background-image: url(/images/ico/politika.png); }
-.bigf-539:before{ background-image: url(/images/ico/politika.png); }
-.f-540:before{ background-image: url(""); }
-.bigf-540:before{ background-image: url(""); }
-.f-541:before{ background-image: url(""); }
-.bigf-541:before{ background-image: url(""); }
-.f-542:before{ background-image: url(""); }
-.bigf-542:before{ background-image: url(""); }
-.f-543:before{ background-image: url(""); }
-.bigf-543:before{ background-image: url(""); }
-.f-544:before{ background-image: url(""); }
-.bigf-544:before{ background-image: url(""); }
-.f-545:before{ background-image: url(""); }
-.bigf-545:before{ background-image: url(""); }
-.f-546:before{ background-image: url(""); }
-.bigf-546:before{ background-image: url(""); }
-.f-547:before{ background-image: url(""); }
-.bigf-547:before{ background-image: url(""); }
-.f-548:before{ background-image: url(/images/ico/box.png); }
-.bigf-548:before{ background-image: url(/images/ico/box.png); }
-.f-549:before{ background-image: url(/images/ico/kolo.png); }
-.bigf-549:before{ background-image: url(/images/ico/kolo.png); }
-.f-550:before{ background-image: url(""); }
-.bigf-550:before{ background-image: url(""); }
-.f-551:before{ background-image: url(""); }
-.bigf-551:before{ background-image: url(""); }
-.f-552:before{ background-image: url(""); }
-.bigf-552:before{ background-image: url(""); }
-.f-553:before{ background-image: url(""); }
-.bigf-553:before{ background-image: url(""); }
-.f-554:before{ background-image: url(/images/ico/hazena.png); }
-.bigf-554:before{ background-image: url(/images/ico/hazena.png); }
-.f-555:before{ background-image: url(/images/ico/bandy.png); }
-.bigf-555:before{ background-image: url(/images/ico/bandy.png); }
-.f-556:before{ background-image: url(""); }
-.bigf-556:before{ background-image: url(""); }
-.f-557:before{ background-image: url(""); }
-.bigf-557:before{ background-image: url(""); }
-.f-558:before{ background-image: url(/images/ico/softball.png); }
-.bigf-558:before{ background-image: url(/images/ico/softball.png); }
-.f-559:before{ background-image: url(""); }
-.bigf-559:before{ background-image: url(""); }
-.f-560:before{ background-image: url(/images/ico/plavani.png); }
-.bigf-560:before{ background-image: url(/images/ico/plavani.png); }
-.f-561:before{ background-image: url(/images/ico/tenis.png); }
-.bigf-561:before{ background-image: url(/images/ico/tenis.png); }
-.f-562:before{ background-image: url(/images/ico/volejbal.png); }
-.bigf-562:before{ background-image: url(/images/ico/volejbal.png); }
-.f-563:before{ background-image: url(/images/ico/polo.png); }
-.bigf-563:before{ background-image: url(/images/ico/polo.png); }
-.f-564:before{ background-image: url(""); }
-.bigf-564:before{ background-image: url(""); }
-.f-565:before{ background-image: url(""); }
-.bigf-565:before{ background-image: url(""); }
-.f-566:before{ background-image: url(""); }
-.bigf-566:before{ background-image: url(""); }
-.f-567:before{ background-image: url(""); }
-.bigf-567:before{ background-image: url(""); }
-.f-568:before{ background-image: url(""); }
-.bigf-568:before{ background-image: url(""); }
-.f-569:before{ background-image: url(/images/ico/pingpong.png); }
-.bigf-569:before{ background-image: url(/images/ico/pingpong.png); }
-.f-570:before{ background-image: url(""); }
-.bigf-570:before{ background-image: url(""); }
-.f-571:before{ background-image: url(/images/flags/small/Singapore.png); }
-.bigf-571:before{ background-image: url(/images/flags/big/Singapore.png); }
-.f-572:before{ background-image: url(/images/flags/small/SaudiArabia.png); }
-.bigf-572:before{ background-image: url(/images/flags/big/SaudiArabia.png); }
-.f-573:before{ background-image: url(/images/flags/small/Faroes.png); }
-.bigf-573:before{ background-image: url(/images/flags/big/Faroes.png); }
-.f-575:before{ background-image: url(/images/flags/small/Paraguay.png); }
-.bigf-575:before{ background-image: url(/images/flags/big/Paraguay.png); }
-.f-576:before{ background-image: url(/images/flags/small/Montenegro.png); }
-.bigf-576:before{ background-image: url(/images/flags/big/Montenegro.png); }
-.f-612:before{ background-image: url(/images/ico/supertip.png); }
-.bigf-612:before{ background-image: url(/images/ico/supertip.png); }
-.f-613:before{ background-image: url(""); }
-.bigf-613:before{ background-image: url(""); }
-.f-614:before{ background-image: url(""); }
-.bigf-614:before{ background-image: url(""); }
-.f-615:before{ background-image: url(""); }
-.bigf-615:before{ background-image: url(""); }
-.f-616:before{ background-image: url(""); }
-.bigf-616:before{ background-image: url(""); }
-.f-617:before{ background-image: url(""); }
-.bigf-617:before{ background-image: url(""); }
-.f-618:before{ background-image: url(""); }
-.bigf-618:before{ background-image: url(""); }
-.f-619:before{ background-image: url(""); }
-.bigf-619:before{ background-image: url(""); }
-.f-620:before{ background-image: url(/images/flags/small/Andorra.png); }
-.bigf-620:before{ background-image: url(/images/flags/big/Andorra.png); }
-.f-621:before{ background-image: url(/images/flags/small/UnitedArabEmirates.png); }
-.bigf-621:before{ background-image: url(/images/flags/big/UnitedArabEmirates.png); }
-.f-622:before{ background-image: url(/images/flags/small/Afghanistan.png); }
-.bigf-622:before{ background-image: url(/images/flags/big/Afghanistan.png); }
-.f-623:before{ background-image: url(/images/flags/small/AntiguaBarbuda.png); }
-.bigf-623:before{ background-image: url(/images/flags/big/AntiguaBarbuda.png); }
-.f-624:before{ background-image: url(/images/flags/small/Anguilla.png); }
-.bigf-624:before{ background-image: url(/images/flags/big/Anguilla.png); }
-
-/* zeme_AN */
-.f-625:before{ background-image: url(/images/flags/small/Anguilla.png); }
-.bigf-625:before{ background-image: url(/images/flags/big/Anguilla.png); }
-
-.f-626:before{ background-image: url(/images/flags/small/Angola.png); }
-.bigf-626:before{ background-image: url(/images/flags/big/Angola.png); }
-.f-627:before{ background-image: url(/images/flags/small/Antarctica.png); }
-.bigf-627:before{ background-image: url(/images/flags/big/Antarctica.png); }
-.f-628:before{ background-image: url(/images/flags/small/AmericanSamoa.png); }
-.bigf-628:before{ background-image: url(/images/flags/big/AmericanSamoa.png); }
-.f-629:before{ background-image: url(/images/flags/small/Aruba.png); }
-.bigf-629:before{ background-image: url(/images/flags/big/Aruba.png); }
-.f-630:before{ background-image: url(/images/flags/small/Azerbaijan.png); }
-.bigf-630:before{ background-image: url(/images/flags/big/Azerbaijan.png); }
-.f-631:before{ background-image: url(/images/flags/small/Barbados.png); }
-.bigf-631:before{ background-image: url(/images/flags/big/Barbados.png); }
-.f-632:before{ background-image: url(/images/flags/small/BurkinaFaso.png); }
-.bigf-632:before{ background-image: url(/images/flags/big/BurkinaFaso.png); }
-.f-633:before{ background-image: url(/images/flags/small/Burundi.png); }
-.bigf-633:before{ background-image: url(/images/flags/big/Burundi.png); }
-.f-634:before{ background-image: url(/images/flags/small/Benin.png); }
-.bigf-634:before{ background-image: url(/images/flags/big/Benin.png); }
-.f-635:before{ background-image: url(/images/flags/small/Bermuda.png); }
-.bigf-635:before{ background-image: url(/images/flags/big/Bermuda.png); }
-.f-636:before{ background-image: url(/images/flags/small/Brunei.png); }
-.bigf-636:before{ background-image: url(/images/flags/big/Brunei.png); }
-.f-637:before{ background-image: url(/images/flags/small/Bahamas.png); }
-.bigf-637:before{ background-image: url(/images/flags/big/Bahamas.png); }
-.f-638:before{ background-image: url(/images/flags/small/Bhutan.png); }
-.bigf-638:before{ background-image: url(/images/flags/big/Bhutan.png); }
-.f-639:before{ background-image: url(/images/flags/small/Norway.png); }
-.bigf-639:before{ background-image: url(/images/flags/big/Norway.png); }
-.f-640:before{ background-image: url(/images/flags/small/Botswana.png); }
-.bigf-640:before{ background-image: url(/images/flags/big/Botswana.png); }
-.f-641:before{ background-image: url(/images/flags/small/Belize.png); }
-.bigf-641:before{ background-image: url(/images/flags/big/Belize.png); }
-
-/* zeme_CC http://en.wikipedia.org/wiki/Cocos_%28Keeling%29_Islands */
-.f-642:before{ background-image: url(""); }
-.bigf-642:before{ background-image: url(""); }
-
-.f-643:before{ background-image: url(/images/flags/small/Congo-Kinshasa.png); }
-.bigf-643:before{ background-image: url(/images/flags/big/Congo-Kinshasa.png); }
-.f-644:before{ background-image: url(/images/flags/small/CentralAfricanRepublic.png); }
-.bigf-644:before{ background-image: url(/images/flags/big/CentralAfricanRepublic.png); }
-.f-645:before{ background-image: url(/images/flags/small/Congo-Brazzaville.png); }
-.bigf-645:before{ background-image: url(/images/flags/big/Congo-Brazzaville.png); }
-.f-646:before{ background-image: url(/images/flags/small/CotedIvoire.png); }
-.bigf-646:before{ background-image: url(/images/flags/big/CotedIvoire.png); }
-.f-647:before{ background-image: url(/images/flags/small/CookIslands.png); }
-.bigf-647:before{ background-image: url(/images/flags/big/CookIslands.png); }
-.f-648:before{ background-image: url(/images/flags/small/Cameroon.png); }
-.bigf-648:before{ background-image: url(/images/flags/big/Cameroon.png); }
-.f-649:before{ background-image: url(/images/flags/small/Cuba.png); }
-.bigf-649:before{ background-image: url(/images/flags/big/Cuba.png); }
-.f-650:before{ background-image: url(/images/flags/small/CapeVerde.png); }
-.bigf-650:before{ background-image: url(/images/flags/big/CapeVerde.png); }
-
-/* zeme_CX http://cs.wikipedia.org/wiki/V%C3%A1no%C4%8Dn%C3%AD_ostrov */
-.f-651:before{ background-image: url(/images/flags/small/Cuba.png); }
-.bigf-651:before{ background-image: url(/images/flags/big/Cuba.png); }
-
-.f-652:before{ background-image: url(/images/flags/small/Djibouti.png); }
-.bigf-652:before{ background-image: url(/images/flags/big/Djibouti.png); }
-.f-653:before{ background-image: url(/images/flags/small/Dominica.png); }
-.bigf-653:before{ background-image: url(/images/flags/big/Dominica.png); }
-.f-654:before{ background-image: url(/images/flags/small/DominicanRepublic.png); }
-.bigf-654:before{ background-image: url(/images/flags/big/DominicanRepublic.png); }
-.f-655:before{ background-image: url(/images/flags/small/Algeria.png); }
-.bigf-655:before{ background-image: url(/images/flags/big/Algeria.png); }
-
-.f-650:before{ background-image: url(/images/flags/small/Cuba.png); }
-.bigf-650:before{ background-image: url(/images/flags/big/Cuba.png); }
-.f-650:before{ background-image: url(/images/flags/small/Cuba.png); }
-.bigf-650:before{ background-image: url(/images/flags/big/Cuba.png); }
-.f-650:before{ background-image: url(/images/flags/small/Cuba.png); }
-.bigf-650:before{ background-image: url(/images/flags/big/Cuba.png); }
-.f-650:before{ background-image: url(/images/flags/small/Cuba.png); }
-.bigf-650:before{ background-image: url(/images/flags/big/Cuba.png); }
-.f-650:before{ background-image: url(/images/flags/small/Cuba.png); }
-.bigf-650:before{ background-image: url(/images/flags/big/Cuba.png); }
-.f-650:before{ background-image: url(/images/flags/small/Cuba.png); }
-.bigf-650:before{ background-image: url(/images/flags/big/Cuba.png); }
-.f-650:before{ background-image: url(/images/flags/small/Cuba.png); }
-.bigf-650:before{ background-image: url(/images/flags/big/Cuba.png); }
-.f-650:before{ background-image: url(/images/flags/small/Cuba.png); }
-.bigf-650:before{ background-image: url(/images/flags/big/Cuba.png); }
-.f-650:before{ background-image: url(/images/flags/small/Cuba.png); }
-.bigf-650:before{ background-image: url(/images/flags/big/Cuba.png); }
-.f-650:before{ background-image: url(/images/flags/small/Cuba.png); }
-.bigf-650:before{ background-image: url(/images/flags/big/Cuba.png); }
-.f-674:before{ background-image: url(/images/flags/small/Guatemala.png); }
-.bigf-674:before{ background-image: url(/images/flags/big/Guatemala.png); }
-.f-683:before{ background-image: url(/images/flags/small/India.png); }
-.bigf-683:before{ background-image: url(/images/flags/big/India.png); }
-.f-696:before{ background-image: url(/images/flags/small/Kuwait.png); }
-.bigf-696:before{ background-image: url(/images/flags/big/Kuwait.png); }
-.f-698:before{ background-image: url(/images/flags/small/Kazakhstan.png); }
-.bigf-698:before{ background-image: url(/images/flags/big/Kazakhstan.png); }
-
-
-.f-707:before{ background-image: url(/images/flags/small/Morocco.png); }
-.bigf-707:before{ background-image: url(/images/flags/big/Morocco.png); }
-.f-708:before{ background-image: url(/images/flags/small/Moldova.png); }
-.bigf-708:before{ background-image: url(/images/flags/big/Moldova.png); }
-.f-719:before{ background-image: url(/images/flags/small/Malta.png); }
-.bigf-719:before{ background-image: url(/images/flags/big/Malta.png); }
-.f-727:before{ background-image: url(/images/flags/small/Nigeria.png); }
-.bigf-727:before{ background-image: url(/images/flags/big/Nigeria.png); }
-.f-745:before{ background-image: url(/images/flags/small/SaudiArabia.png); }
-.bigf-745:before{ background-image: url(/images/flags/big/SaudiArabia.png); }
-.f-755:before{ background-image: url(/images/flags/small/ElSalvador.png); }
-.bigf-755:before{ background-image: url(/images/flags/big/ElSalvador.png); }
-.f-777:before{ background-image: url(/images/flags/small/VietNam.png); }
-.bigf-777:before{ background-image: url(/images/flags/big/VietNam.png); }
-.f-783:before{ background-image: url(/images/flags/small/SouthAfrica.png); }
-.bigf-783:before{ background-image: url(/images/flags/big/SouthAfrica.png); }
-
-/* tenis */
-.f-488:before{ background-image: url(/images/ico/488_wta.png); }
-.bigf-488:before{ background-image: url(/images/ico/488_wta.png); }
-.f-489:before{ background-image: url(/images/ico/489_atp.png); }
-.bigf-489:before{ background-image: url(/images/ico/489_atp.png); }
-.f-490:before{ background-image: url(/images/ico/490_challenger.png); }
-.bigf-490:before{ background-image: url(/images/ico/490_challenger.png); }
-
 .f-492:before{ background-image: url(/images/flags/492_international.png); }
 .bigf-492:before{ background-image: url(/images/flags/492_international.png); }
-.f-497:before{ background-image: url(/images/flags/497_international_clubs.png); }
-.bigf-497:before{ background-image: url(/images/flags/497_international_clubs.png); }
-.f-499:before{ background-image: url(""); }
-.bigf-499:before{ background-image: url(""); }
-.f-507:before{ background-image: url(/images/flags/492_international.png); }
-.bigf-507:before{ background-image: url(/images/flags/492_international.png); }
-.f-508:before{ background-image: url(/images/flags/508_rugbyunion.png); }
-.bigf-508:before{ background-image: url(/images/flags/508_rugbyunion.png); }
-.f-510:before{ background-image: url(/images/flags/492_international.png); }
-.bigf-510:before{ background-image: url(/images/flags/492_international.png); }
-.f-522:before{ background-image: url(/images/flags/492_international.png); }
-.bigf-522:before{ background-image: url(/images/flags/492_international.png); }
 .f-537:before{ background-image: url(/images/flags/537_fedcup.png); }
 .bigf-537:before{ background-image: url(/images/flags/537_fedcup.png); }
-.f-545:before{ background-image: url(/images/flags/492_international.png); }
-.bigf-545:before{ background-image: url(/images/flags/492_international.png); }
-.f-612:before{ background-image: url(/images/flags/492_international.png); }
-.bigf-612:before{ background-image: url(/images/flags/492_international.png); }
-
-
-/* slovak flag for top menu */
-.ico-svk:before{ 
-	background-image: url(/images/flags/small/Slovakia.png);
-	margin: 2px 0 0 0;
-}
 
 /* === top match backgrounds === */
 .match-badminton{ background-image: url(../images/live_badminton.jpg); }

@@ -105,7 +105,7 @@ function showhidedetail(id) {
 									<?php endif?>
 								</span> 
 							<?=$match['awayTeam']?></span>
-							<?=$this->trans('live_state_'. $match['status']); ?>
+							1<sup>st</sup> <?=$this->trans('live_state_'. $match['status']); ?>
 						</a>
 						<?php continue; } ?>
 
@@ -119,7 +119,8 @@ function showhidedetail(id) {
 										-:-
 									<?php endif?>
 								</td>
-								<td colspan="2" class="text-right"><?=$this->trans('live_state_'. $match['status']); ?></td>
+								<td>2<sup>nd</sup> Half</td>
+								<td class="text-right"><?=$this->trans('live_state_'. $match['status']); ?></td>
 							</tr>
 						</table>
 					<?php

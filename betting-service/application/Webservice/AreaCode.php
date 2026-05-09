@@ -2,6 +2,8 @@
 
 /**
  * Zipo codes related static methods.
+ * @author Tomas Polz
+ *
  */
 class Webservice_AreaCode extends Webservice_AbstractWebService  {
 

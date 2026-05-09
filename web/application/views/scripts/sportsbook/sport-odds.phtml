@@ -32,8 +32,14 @@ foreach($this->odds as $sport_id=>$data): ?>
 
 			<?php $this->firstTable = true; foreach($dataS['type'] as $typ_id=>$dataT): ?>
 				<?php foreach($dataT as $podtyp_id=>$dataPT): ?>
+					<?php if($dataPT['radek_sloupec'] == 0): ?>
 						<?php $this->Adata = $dataPT; ?>
 						<?=$this->render('sportsbook/typeA.phtml')?>
+					<?php else: ?>
+						<?php $this->Adata = $dataPT; ?>
+<?php Zend_Registry::get('fl')->info("typeB"); ?>
+						<?=$this->render('sportsbook/typeB.phtml')?>
+					<?php endif; ?>
 				<?php endforeach; ?>
 
 			<?php $this->firstTable = false; endforeach; ?>

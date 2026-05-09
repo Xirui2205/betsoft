@@ -2,6 +2,7 @@
 
 /**
  * Team player.
+ * @author Tomas Polz
  * @see Webservice_TeamPlayer
  * 
  */

@@ -23,9 +23,9 @@ Array
 
     [sid] => 0VT67QserCm9Rt1g8YT
     [login] => trosa
-    [name] => Test
-    [surname] => test
-    [email] => it6@seznam.cz
+    [name] => Tomáš
+    [surname] => Rosa
+    [email] => trosa@seznam.cz
     [credit] => 271.81
     [lastincome] => 2004-05-04 01:02:37
     [auth_phone] => 

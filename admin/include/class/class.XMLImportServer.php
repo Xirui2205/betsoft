@@ -407,16 +407,8 @@ public function commitImport(){
 									$this->AddMatch($match->item($o),$sport_id,$udalost_id,$act_datum,$j_sport_id,$j_udalost_id);
 							} //match
 							$this->createCombinations();
-							
-							/*if (empty($logSportName) ||
-										empty($logRegionName) ||
-										empty($logEventName) ||
-										empty($udalost_id)) {
-								mail('it6@seznam.cz', 'class.XMLImportServer', 'volani log($logSportName, $logRegionName, $logEventName, $udalost_id) s hodnotami: '
-									. "$logSportName, $logRegionName, $logEventName, $udalost_id");								
-							}*/
 
-								It6_Models_BetradarImportLog::log($logSportName, $logRegionName, $logEventName, $udalost_id);
+							It6_Models_BetradarImportLog::log($logSportName, $logRegionName, $logEventName, $udalost_id);
 	
 						} //tournament
 					} //category

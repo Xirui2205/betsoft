@@ -2074,7 +2074,16 @@ class Webservice_User extends Webservice_AbstractWebService  {
 	
 	public static function sendActivationMail($userId, $userEmail, $activateUrl, $view) {
 		$activationLink = self::getActivationLink($userId, $userEmail, $activateUrl);
-		
+		// -- local --
+		/*
+		$config = array('auth' => 'login',
+                'username' => 'mirkuv@gmail.com',
+                'password' => 'jpvmrpzgrrjloury',
+                'ssl' => 'tls');
+		*/
+		// -- local --
+		//$transport = new Zend_Mail_Transport_Smtp('smtp.gmail.com', $config);
+
 		$mail = new Zend_Mail('UTF-8');
 		$mail->setBodyHtml($view->trans('activation_email_1') . ',<br>'
 				. $view->trans('activation_email_2').':<br>'

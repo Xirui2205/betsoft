@@ -1,0 +1,1553 @@
+------------------------------------------------------------------------
+r5756 | tpolz | 2013-11-21 16:05:44 +0100 (Čt, 21 lis 2013) | 1 line
+
+pridano nastaveni jazyka
+------------------------------------------------------------------------
+r5754 | tpolz | 2013-11-21 15:57:59 +0100 (Čt, 21 lis 2013) | 1 line
+
+Zmeneno volani prekladu
+------------------------------------------------------------------------
+r5752 | tpolz | 2013-11-21 14:40:13 +0100 (Čt, 21 lis 2013) | 1 line
+
+Novy typ vyjimky It6_XmlRpc_HostException
+------------------------------------------------------------------------
+r5750 | tpolz | 2013-11-21 14:12:00 +0100 (Čt, 21 lis 2013) | 1 line
+
+odstraneni bloku try catch v metode login
+------------------------------------------------------------------------
+r5743 | tpolz | 2013-11-21 12:35:46 +0100 (Čt, 21 lis 2013) | 1 line
+
+zmena typu vyhozenych vyjimek
+------------------------------------------------------------------------
+r5741 | tpolz | 2013-11-21 12:23:48 +0100 (Čt, 21 lis 2013) | 1 line
+
+Poupraveno vyhazovani vyjimek pri prihlasovani do kasy
+------------------------------------------------------------------------
+r5738 | tpolz | 2013-11-21 10:52:39 +0100 (Čt, 21 lis 2013) | 1 line
+
+pridany nove errorcody do exception
+------------------------------------------------------------------------
+r5736 | tpolz | 2013-11-21 10:46:19 +0100 (Čt, 21 lis 2013) | 1 line
+
+opraveny dvoji stredniky
+------------------------------------------------------------------------
+r5734 | tpolz | 2013-11-21 10:44:29 +0100 (Čt, 21 lis 2013) | 1 line
+
+chyby pri prihlaseni vyhazuju jako vyjimky s patricnym error codem
+------------------------------------------------------------------------
+r5729 | vbenes | 2013-11-21 09:45:52 +0100 (Čt, 21 lis 2013) | 4 lines
+
+Mantis: 0000264
+Youtrack: 1-149
+
+- Webova sluzba pro nacteni ulozeneho kuponu
+------------------------------------------------------------------------
+r5724 | tpolz | 2013-11-21 09:22:27 +0100 (Čt, 21 lis 2013) | 1 line
+
+v Admin.login nacitam i blokovane adminy, at pak muzu vyhodit spravnou chybu pri prihlasovani do kasy
+------------------------------------------------------------------------
+r5704 | tpolz | 2013-11-18 12:12:36 +0100 (Po, 18 lis 2013) | 1 line
+
+Opraven nazev volane tridy i18n (mantis:26)
+------------------------------------------------------------------------
+r5688 | julbrich | 2013-11-14 16:06:18 +0100 (Čt, 14 lis 2013) | 1 line
+
+promazani cache presunuto do controlleru
+------------------------------------------------------------------------
+r5682 | tpolz | 2013-11-13 10:28:23 +0100 (St, 13 lis 2013) | 1 line
+
+odebrano predavani zbytecnych hodnot v poli (mantis: 293)
+------------------------------------------------------------------------
+r5679 | tpolz | 2013-11-13 09:58:25 +0100 (St, 13 lis 2013) | 1 line
+
+Pro cash overview nacteny parametry anjednou namisto postupne pro kazdou pobocku zvlast (mantis: 293)
+------------------------------------------------------------------------
+r5674 | tpolz | 2013-11-12 15:52:13 +0100 (Út, 12 lis 2013) | 1 line
+
+optimalizace sekce cash overview (mantis: 293)
+------------------------------------------------------------------------
+r5668 | tpolz | 2013-11-12 14:08:31 +0100 (Út, 12 lis 2013) | 1 line
+
+do getinout predany z getallinout prednactena data o hostu (mantis: 293)
+------------------------------------------------------------------------
+r5660 | julbrich | 2013-11-08 15:59:26 +0100 (Pá, 08 lis 2013) | 1 line
+
+- oprava aktualizace pri volani setActualMatches z cronu livek
+------------------------------------------------------------------------
+r5658 | tpolz | 2013-11-08 15:22:45 +0100 (Pá, 08 lis 2013) | 1 line
+
+oprava nastaveni servisy Document
+------------------------------------------------------------------------
+r5644 | tpolz | 2013-11-07 10:37:18 +0100 (Čt, 07 lis 2013) | 1 line
+
+reintegrated branch jtamok_267 into trunk
+------------------------------------------------------------------------
+r5629 | jtamok | 2013-11-04 16:21:46 +0100 (Po, 04 lis 2013) | 1 line
+
+oprava casu u WS počítadlo tisku A4 (mantis:60)
+------------------------------------------------------------------------
+r5626 | jtamok | 2013-11-04 16:04:05 +0100 (Po, 04 lis 2013) | 1 line
+
+problém při výpočtu s hodnotami z tabulky contract_parameter. (mantis:289)
+------------------------------------------------------------------------
+r5590 | tpolz | 2013-11-01 14:55:00 +0100 (Pá, 01 lis 2013) | 1 line
+
+Nova servisa Document (mantis: 26)
+------------------------------------------------------------------------
+r5577 | tpolz | 2013-10-31 10:34:25 +0100 (Čt, 31 říj 2013) | 1 line
+
+rozliseni chybovych stavu pri prihlaseni obsluhy (mantis: 233)
+------------------------------------------------------------------------
+r5568 | tpolz | 2013-10-30 17:35:24 +0100 (St, 30 říj 2013) | 1 line
+
+mantis 273
+------------------------------------------------------------------------
+r5564 | tpolz | 2013-10-30 14:17:13 +0100 (St, 30 říj 2013) | 1 line
+
+uprava ve vracei live tiketu
+------------------------------------------------------------------------
+r5562 | tpolz | 2013-10-30 14:10:48 +0100 (St, 30 říj 2013) | 1 line
+
+opravena chyba ve vraceni pouze 100 live tiketu
+------------------------------------------------------------------------
+r5530 | tpolz | 2013-10-17 14:43:31 +0200 (Čt, 17 říj 2013) | 1 line
+
+vraceno pouze 100 poslednich live tiketu
+------------------------------------------------------------------------
+r5524 | jtamok | 2013-10-17 11:52:12 +0200 (Čt, 17 říj 2013) | 1 line
+
+pridani uzivatelskeho jmeno do sms a emailu (mantis:231)
+------------------------------------------------------------------------
+r5519 | jtamok | 2013-10-17 10:05:42 +0200 (Čt, 17 říj 2013) | 1 line
+
+notifikace hrace pri zablokovani (mantis:231)
+------------------------------------------------------------------------
+r5487 | mdemcak | 2013-10-14 14:37:00 +0200 (Po, 14 říj 2013) | 1 line
+
+mantis261: odstraneni metod k unsubscribu ze servisy user
+------------------------------------------------------------------------
+r5476 | tpolz | 2013-10-14 09:53:09 +0200 (Po, 14 říj 2013) | 1 line
+
+Odstraneno povoleni jen urcitych id uzivatelu pro prihlaseni
+------------------------------------------------------------------------
+r5452 | mdemcak | 2013-10-10 10:31:28 +0200 (Čt, 10 říj 2013) | 1 line
+
+mantis258: blocked IPs - vraceni zbyvajiciho casu, zacleneni konstanty MAX_LOGIN_TIMEOUT
+------------------------------------------------------------------------
+r5433 | mdemcak | 2013-10-09 09:51:08 +0200 (St, 09 říj 2013) | 1 line
+
+mantis261: metody pro unsubscribe
+------------------------------------------------------------------------
+r5414 | jtamok | 2013-10-08 11:04:56 +0200 (Út, 08 říj 2013) | 1 line
+
+notifikace hrace pri zablokovani (mantis:231)
+------------------------------------------------------------------------
+r5406 | mdemcak | 2013-10-07 11:50:58 +0200 (Po, 07 říj 2013) | 1 line
+
+mantis258: pridal jsem metodu User::getBlockedIps($userId) - blokovane ip adresy na zaklade poctu neuspesnych prihlaseni
+------------------------------------------------------------------------
+r5401 | mdemcak | 2013-10-04 16:48:27 +0200 (Pá, 04 říj 2013) | 1 line
+
+mantis243: provize - naber; oprava funkcnosti Webservice_ContractTemplate::getById()
+------------------------------------------------------------------------
+r5394 | vholicka | 2013-10-04 13:04:57 +0200 (Pá, 04 říj 2013) | 1 line
+
+bugfix related to r5387 offergen overload fix
+------------------------------------------------------------------------
+r5392 | tpolz | 2013-10-04 09:43:42 +0200 (Pá, 04 říj 2013) | 1 line
+
+do getBranches pridano vraceni mista
+------------------------------------------------------------------------
+r5388 | tpolz | 2013-10-04 09:14:30 +0200 (Pá, 04 říj 2013) | 1 line
+
+uprava v metode getTransactionsSum aby slo scitat i transakce, ktere nejsou ve stavu OK
+------------------------------------------------------------------------
+r5387 | vholicka | 2013-10-04 09:13:22 +0200 (Pá, 04 říj 2013) | 1 line
+
+vholicka: quickfix offergen - omezeni poctu prijatych pozadavku od pobocky/klienta (pozor! pri nasazeni jsou jak na produkcnim tak testovacim prostredi vzdy lokalni zmeny v b-s/www/offer/index.php(chtelo by to tahat adresu offergen z konfiguraku))
+------------------------------------------------------------------------
+r5375 | mdemcak | 2013-10-03 09:33:14 +0200 (Čt, 03 říj 2013) | 1 line
+
+mantis234: pridani metody getByLoginNameOrCardNumber do konfigu do pole $GLOBALS['SERVICE_METHODS']
+------------------------------------------------------------------------
+r5369 | mdemcak | 2013-10-02 14:26:51 +0200 (St, 02 říj 2013) | 1 line
+
+mantis234: doplneni metody pro vraceni uzivatele (pro prihlaseni na pobocce) sjednocujici typy prihlaseni kartou, prezdivkou
+------------------------------------------------------------------------
+r5364 | mdemcak | 2013-10-02 12:21:24 +0200 (St, 02 říj 2013) | 2 lines
+
+mantis234: metoda pro vraceni uzivatele (pro prihlaseni na pobocce) sjednocujici typy prihlaseni kartou, prezdivkou
+
+------------------------------------------------------------------------
+r5356 | julbrich | 2013-10-01 15:40:04 +0200 (Út, 01 říj 2013) | 1 line
+
+- storno tiketu z pobocky: pridana podminka pro superadmina a na hodnotu transakce
+------------------------------------------------------------------------
+r5339 | tpolz | 2013-09-30 15:00:19 +0200 (Po, 30 zář 2013) | 1 line
+
+odstraneno debugovani
+------------------------------------------------------------------------
+r5334 | tpolz | 2013-09-30 14:32:03 +0200 (Po, 30 zář 2013) | 1 line
+
+oprava v getLiveBalancing
+------------------------------------------------------------------------
+r5320 | tpolz | 2013-09-30 10:28:27 +0200 (Po, 30 zář 2013) | 1 line
+
+mantis 240
+------------------------------------------------------------------------
+r5316 | julbrich | 2013-09-27 15:31:34 +0200 (Pá, 27 zář 2013) | 1 line
+
+- kontrola na dvoji odeslani storna tiketu z pobocky
+------------------------------------------------------------------------
+r5307 | tpolz | 2013-09-27 10:30:23 +0200 (Pá, 27 zář 2013) | 1 line
+
+Opraven prekled v podmince (mantis: 238)
+------------------------------------------------------------------------
+r5301 | jtamok | 2013-09-27 09:39:15 +0200 (Pá, 27 zář 2013) | 1 line
+
+oprava pri smazani pobockovych parametru
+------------------------------------------------------------------------
+r5297 | jtamok | 2013-09-26 15:20:41 +0200 (Čt, 26 zář 2013) | 1 line
+
+notifikace hrace pri zablokovani (mantis:231)
+------------------------------------------------------------------------
+r5291 | julbrich | 2013-09-26 14:46:37 +0200 (Čt, 26 zář 2013) | 3 lines
+
+- vraceni do puvodniho stavu currentBalance a oprava expects parameter 2 to be array
+- logovani balanceLog
+- vycisteni logu
+------------------------------------------------------------------------
+r5287 | jtamok | 2013-09-26 14:35:30 +0200 (Čt, 26 zář 2013) | 1 line
+
+notifikace hrace pri zablokovani (mantis:231)
+------------------------------------------------------------------------
+r5279 | jtamok | 2013-09-26 09:53:13 +0200 (Čt, 26 zář 2013) | 1 line
+
+poslani emailu a sms pouze na transakce typu NAME_USER_WITHDRAW_CASH (mantis:115)
+------------------------------------------------------------------------
+r5266 | julbrich | 2013-09-25 15:57:18 +0200 (St, 25 zář 2013) | 1 line
+
+- mazani zaznamu z incomplete_registration po uspesne registraci
+------------------------------------------------------------------------
+r5257 | julbrich | 2013-09-25 13:44:40 +0200 (St, 25 zář 2013) | 3 lines
+
+- pri zalozeni tiketu zjisti jestli je user od affiliate partnera a pokud je, tak se vlozi zaznam do spojovaci tabulky a zaloguje se tato udalost
+- jmeno partnera do sql a odstraneni chyby v sql v tiket servise (ambiguous column)
+- odstraneni firebug logu v affiliate partner servise
+------------------------------------------------------------------------
+r5238 | jtamok | 2013-09-24 12:37:08 +0200 (Út, 24 zář 2013) | 1 line
+
+sledovani tisku na kase (mantis:60)
+------------------------------------------------------------------------
+r5224 | julbrich | 2013-09-23 14:53:14 +0200 (Po, 23 zář 2013) | 1 line
+
+- oprava default joinu
+------------------------------------------------------------------------
+r5220 | julbrich | 2013-09-23 13:34:09 +0200 (Po, 23 zář 2013) | 1 line
+
+- uprava sql dotazu
+------------------------------------------------------------------------
+r5218 | julbrich | 2013-09-23 13:04:02 +0200 (Po, 23 zář 2013) | 1 line
+
+- oprava chyby v joinu
+------------------------------------------------------------------------
+r5212 | julbrich | 2013-09-23 11:14:30 +0200 (Po, 23 zář 2013) | 2 lines
+
+- uprava funkce na zjisteni uzivatelu partnera, funkce na zjisteni aktualni nevyplacene provize
+- v tiketech uprava sql sloupcu a default joinu
+------------------------------------------------------------------------
+r5185 | julbrich | 2013-09-19 16:11:23 +0200 (Čt, 19 zář 2013) | 2 lines
+
+- funkce pro aktualni nevyplacenou provizi
+- v tiketech definovany nove sql sloupce do dotazu (ne nove sloupce do tabulky tiketu) pro zobrazeni v affiliate programu
+------------------------------------------------------------------------
+r5146 | julbrich | 2013-09-17 12:50:08 +0200 (Út, 17 zář 2013) | 1 line
+
+- uprava funkce pro uzivatele
+------------------------------------------------------------------------
+r5134 | jtamok | 2013-09-16 15:59:39 +0200 (Po, 16 zář 2013) | 1 line
+
+pristupova prava u parametru
+------------------------------------------------------------------------
+r5040 | jtamok | 2013-09-11 10:51:31 +0200 (St, 11 zář 2013) | 1 line
+
+možnost zadání více poboček do filtru u provize poboček
+------------------------------------------------------------------------
+r5039 | julbrich | 2013-09-11 10:42:17 +0200 (St, 11 zář 2013) | 2 lines
+
+- zjistovani affiliate partnera u administratora
+- uprava sloupcu u banneru
+------------------------------------------------------------------------
+r5022 | jtamok | 2013-09-10 09:56:11 +0200 (Út, 10 zář 2013) | 1 line
+
+pobockove parametry
+------------------------------------------------------------------------
+r4987 | jtamok | 2013-09-09 12:11:24 +0200 (Po, 09 zář 2013) | 1 line
+
+0000080: nove funkce v pobockovych parametrech
+------------------------------------------------------------------------
+r4969 | tpolz | 2013-09-06 13:27:43 +0200 (Pá, 06 zář 2013) | 1 line
+
+typ sazky vitez pro sport zabava
+------------------------------------------------------------------------
+r4963 | julbrich | 2013-09-04 16:40:45 +0200 (St, 04 zář 2013) | 1 line
+
+- prehled registrovanych uzivatelu affiliate partnera
+------------------------------------------------------------------------
+r4948 | jtamok | 2013-09-04 09:22:48 +0200 (St, 04 zář 2013) | 1 line
+
+0000080: oprava pobockovych parametru
+------------------------------------------------------------------------
+r4940 | julbrich | 2013-09-03 13:27:09 +0200 (Út, 03 zář 2013) | 1 line
+
+- presunuti tabulek do vic_main
+------------------------------------------------------------------------
+r4934 | jtamok | 2013-09-03 12:50:52 +0200 (Út, 03 zář 2013) | 1 line
+
+000080: oprava funkcnosti pobockovych parametru
+------------------------------------------------------------------------
+r4932 | tpolz | 2013-09-03 11:26:18 +0200 (Út, 03 zář 2013) | 1 line
+
+Pokud dle handlu nenaleznu info k uzivateli, tak vyhodim rovnou vyjimku
+------------------------------------------------------------------------
+r4928 | tpolz | 2013-09-03 11:01:57 +0200 (Út, 03 zář 2013) | 1 line
+
+oprava podminky pro typ sazky
+------------------------------------------------------------------------
+r4926 | tpolz | 2013-09-03 10:53:42 +0200 (Út, 03 zář 2013) | 1 line
+
+Pridana zabava do vracenych sazek s typem sazky celkovy vitez
+------------------------------------------------------------------------
+r4914 | julbrich | 2013-09-02 15:53:49 +0200 (Po, 02 zář 2013) | 1 line
+
+- servisy pro affiliate
+------------------------------------------------------------------------
+r4906 | julbrich | 2013-09-02 09:51:14 +0200 (Po, 02 zář 2013) | 2 lines
+
+- sjednoceni hlasek
+- logovani nekterych chyb
+------------------------------------------------------------------------
+r4895 | jtamok | 2013-08-29 08:14:49 +0200 (Čt, 29 srp 2013) | 1 line
+
+0000080: oprava v editaci pobockovych parametru
+------------------------------------------------------------------------
+r4886 | julbrich | 2013-08-27 15:07:32 +0200 (Út, 27 srp 2013) | 2 lines
+
+- preklady hlasek
+- cisteni logu
+------------------------------------------------------------------------
+r4884 | julbrich | 2013-08-27 11:21:57 +0200 (Út, 27 srp 2013) | 1 line
+
+- kontrola na obcanku ve webservise
+------------------------------------------------------------------------
+r4879 | julbrich | 2013-08-26 14:51:22 +0200 (Po, 26 srp 2013) | 2 lines
+
+- oprava porovnani s limity vyberovych transakci
+- vycisteni logu
+------------------------------------------------------------------------
+r4876 | julbrich | 2013-08-26 13:19:21 +0200 (Po, 26 srp 2013) | 1 line
+
+- pri zadosti o vyber se pocita s limity vyberovych transakci
+------------------------------------------------------------------------
+r4864 | julbrich | 2013-08-24 17:30:39 +0200 (So, 24 srp 2013) | 1 line
+
+- nove aliasy
+------------------------------------------------------------------------
+r4823 | jtamok | 2013-08-16 14:04:56 +0200 (Pá, 16 srp 2013) | 1 line
+
+oprava funkce getProvisions
+------------------------------------------------------------------------
+r4814 | jtamok | 2013-08-16 12:23:49 +0200 (Pá, 16 srp 2013) | 1 line
+
+0000003: oprava selectu.
+------------------------------------------------------------------------
+r4797 | jtamok | 2013-08-16 08:36:19 +0200 (Pá, 16 srp 2013) | 1 line
+
+0000003: pridani filtru podle is_active
+------------------------------------------------------------------------
+r4776 | jtamok | 2013-08-14 15:13:10 +0200 (St, 14 srp 2013) | 1 line
+
+0000003: oprava filtru pro Contract Type
+------------------------------------------------------------------------
+r4773 | tpolz | 2013-08-14 15:01:36 +0200 (St, 14 srp 2013) | 1 line
+
+nova metoda pro vraceni aktivnivh hostu
+------------------------------------------------------------------------
+r4769 | tpolz | 2013-08-14 14:06:06 +0200 (St, 14 srp 2013) | 1 line
+
+nastaveno vraceni zobrazitelnych pobocek a nezakazanych
+------------------------------------------------------------------------
+r4766 | jtamok | 2013-08-14 13:07:03 +0200 (St, 14 srp 2013) | 1 line
+
+odkomentovani update
+------------------------------------------------------------------------
+r4757 | tpolz | 2013-08-14 11:28:44 +0200 (St, 14 srp 2013) | 1 line
+
+Opraven id u transakce pro vyber z konta
+------------------------------------------------------------------------
+r4754 | julbrich | 2013-08-14 11:24:43 +0200 (St, 14 srp 2013) | 1 line
+
+- fix alias_new pro pobocku
+------------------------------------------------------------------------
+r4751 | jtamok | 2013-08-14 11:20:22 +0200 (St, 14 srp 2013) | 1 line
+
+0000003: oprava vypoctu
+------------------------------------------------------------------------
+r4745 | julbrich | 2013-08-14 10:45:00 +0200 (St, 14 srp 2013) | 1 line
+
+- uprava zjistovani vyplacenych a vybranych tiketu pro reporty
+------------------------------------------------------------------------
+r4739 | tpolz | 2013-08-14 09:50:53 +0200 (St, 14 srp 2013) | 1 line
+
+povoleni dalsi testovaci uzivatele
+------------------------------------------------------------------------
+r4737 | jtamok | 2013-08-14 09:40:15 +0200 (St, 14 srp 2013) | 1 line
+
+oprava funkci currentBalance
+------------------------------------------------------------------------
+r4732 | jtamok | 2013-08-13 16:37:51 +0200 (Út, 13 srp 2013) | 1 line
+
+poslat sms a email po transakci pokud je userId nastaveny
+------------------------------------------------------------------------
+r4726 | julbrich | 2013-08-13 14:55:29 +0200 (Út, 13 srp 2013) | 1 line
+
+- uprava getBalancing pro vyplacene tikety
+------------------------------------------------------------------------
+r4724 | mdemcak | 2013-08-13 10:59:29 +0200 (Út, 13 srp 2013) | 1 line
+
+mantis181: uprava selectu podle konvenci II.
+------------------------------------------------------------------------
+r4722 | mdemcak | 2013-08-13 10:23:54 +0200 (Út, 13 srp 2013) | 1 line
+
+mantis181: pouziti pole CONV v service pro jazyk
+------------------------------------------------------------------------
+r4720 | jtamok | 2013-08-13 10:05:41 +0200 (Út, 13 srp 2013) | 1 line
+
+oprava nacitani parametru pro kasu
+------------------------------------------------------------------------
+r4713 | tpolz | 2013-08-13 09:44:33 +0200 (Út, 13 srp 2013) | 1 line
+
+Vraceno info jestli je sazka terno nebo neni a upraven vraceny alias
+------------------------------------------------------------------------
+r4700 | mdemcak | 2013-08-12 13:56:14 +0200 (Po, 12 srp 2013) | 1 line
+
+mantis181: default join na jazyk kvuli zobrazeni url pro nahled
+------------------------------------------------------------------------
+r4697 | jtamok | 2013-08-12 13:47:28 +0200 (Po, 12 srp 2013) | 1 line
+
+pobockove parametry
+------------------------------------------------------------------------
+r4674 | mdemcak | 2013-08-12 09:21:58 +0200 (Po, 12 srp 2013) | 1 line
+
+mantis146: zjednoduseni vybirani aliasu
+------------------------------------------------------------------------
+r4666 | julbrich | 2013-08-10 00:21:39 +0200 (So, 10 srp 2013) | 3 lines
+
+- zjednoduseni getByAlias
+- rozkladani zustava, nyni se ale posilaji stringy
+- u jednotek a desitek se posila jeden parametr jako prazdny string
+------------------------------------------------------------------------
+r4663 | julbrich | 2013-08-09 19:42:02 +0200 (Pá, 09 srp 2013) | 1 line
+
+- fix u nenastavenych rozsahu
+------------------------------------------------------------------------
+r4657 | tpolz | 2013-08-09 16:36:55 +0200 (Pá, 09 srp 2013) | 1 line
+
+Odstraneno defaultni razeni, neslo pak pretizit
+------------------------------------------------------------------------
+r4652 | mdemcak | 2013-08-09 13:33:41 +0200 (Pá, 09 srp 2013) | 1 line
+
+mantis156: metoda pro vraceni poctu podpurek (vyuzita ve vypisu v casti promo); v registraci jde o odstraneni nekterych varningu (viz take common)
+------------------------------------------------------------------------
+r4649 | julbrich | 2013-08-09 12:46:46 +0200 (Pá, 09 srp 2013) | 1 line
+
+- oprava pro jednomistne a dvoumistne aliasy
+------------------------------------------------------------------------
+r4646 | jtamok | 2013-08-09 10:43:36 +0200 (Pá, 09 srp 2013) | 1 line
+
+oprava razeni a duplicit
+------------------------------------------------------------------------
+r4631 | jtamok | 2013-08-08 13:01:21 +0200 (Čt, 08 srp 2013) | 1 line
+
+oprava vypoctu
+------------------------------------------------------------------------
+r4625 | jtamok | 2013-08-08 10:01:48 +0200 (Čt, 08 srp 2013) | 1 line
+
+0000003: oprava vypoctu
+------------------------------------------------------------------------
+r4582 | julbrich | 2013-08-06 14:54:22 +0200 (Út, 06 srp 2013) | 1 line
+
+- odstranena podminka na aktivni uzivatele jejichz registrace je starsi jak rok (historicke duvody pro uctovani)
+------------------------------------------------------------------------
+r4569 | jtamok | 2013-08-06 12:33:14 +0200 (Út, 06 srp 2013) | 1 line
+
+0000003: oprava selectu
+------------------------------------------------------------------------
+r4565 | jtamok | 2013-08-06 10:48:02 +0200 (Út, 06 srp 2013) | 1 line
+
+0000003: pridani datumu do selectu
+------------------------------------------------------------------------
+r4558 | jtamok | 2013-08-06 10:27:24 +0200 (Út, 06 srp 2013) | 1 line
+
+0000003: pridani filtru na calculation a calculation_net
+------------------------------------------------------------------------
+r4514 | tpolz | 2013-08-05 13:52:34 +0200 (Po, 05 srp 2013) | 1 line
+
+Oprava chyby, kdy se nezakladali anonymni uzivatele
+------------------------------------------------------------------------
+r4508 | tpolz | 2013-08-02 15:04:34 +0200 (Pá, 02 srp 2013) | 1 line
+
+Opraveno id pro ragby
+------------------------------------------------------------------------
+r4502 | jtamok | 2013-08-02 14:34:48 +0200 (Pá, 02 srp 2013) | 1 line
+
+0000003: pridani podminky do selectu na calculation a calculation_net
+------------------------------------------------------------------------
+r4500 | tpolz | 2013-08-02 12:43:32 +0200 (Pá, 02 srp 2013) | 1 line
+
+pridany nove sporty (mantis: 144)
+------------------------------------------------------------------------
+r4481 | jtamok | 2013-08-01 14:47:44 +0200 (Čt, 01 srp 2013) | 1 line
+
+0000003:Provize poboček
+------------------------------------------------------------------------
+r4440 | mdemcak | 2013-08-01 09:35:19 +0200 (Čt, 01 srp 2013) | 1 line
+
+mantis163: datum v seznamu clanku
+------------------------------------------------------------------------
+r4437 | tpolz | 2013-07-31 17:24:07 +0200 (St, 31 čec 2013) | 1 line
+
+Pridana poznamka k registracnimu a narozeninovemu bonusu.
+------------------------------------------------------------------------
+r4431 | julbrich | 2013-07-31 16:14:56 +0200 (St, 31 čec 2013) | 1 line
+
+- oprava notisu
+------------------------------------------------------------------------
+r4429 | julbrich | 2013-07-31 15:44:25 +0200 (St, 31 čec 2013) | 1 line
+
+- uprava pro ziskavani sazek z novych aliasu
+------------------------------------------------------------------------
+r4391 | tpolz | 2013-07-30 17:30:24 +0200 (Út, 30 čec 2013) | 1 line
+
+osetrene nacteni hracu pro narozeninovy a registracni bonus II.
+------------------------------------------------------------------------
+r4390 | tpolz | 2013-07-30 17:25:47 +0200 (Út, 30 čec 2013) | 1 line
+
+osetrene nacteni hracu pro narozeninovy a registracni bonus
+------------------------------------------------------------------------
+r4369 | mdemcak | 2013-07-30 12:04:13 +0200 (Út, 30 čec 2013) | 1 line
+
+mantis146: Metoda getBetAlias($betId) - vraci aliasNew, pripadne stary alias; pokud SP neni aktualni, tak null
+------------------------------------------------------------------------
+r4347 | tpolz | 2013-07-29 17:41:15 +0200 (Po, 29 čec 2013) | 1 line
+
+registracni a narozeninovy bonus (mantis: 147)
+------------------------------------------------------------------------
+r4330 | mdemcak | 2013-07-29 15:34:54 +0200 (Po, 29 čec 2013) | 1 line
+
+mantis146: Detail článku - alias
+------------------------------------------------------------------------
+r4321 | aorlov | 2013-07-29 13:29:44 +0200 (Po, 29 čec 2013) | 1 line
+
+mantis 0000124: Registration into 2 steps, new graphics for registration form and top navigation
+------------------------------------------------------------------------
+r4256 | julbrich | 2013-07-23 10:22:57 +0200 (Út, 23 čec 2013) | 1 line
+
+- konfiguracni soubory, kopirovaci skript do 'config_local.php' pro pozadovanou konfiguraci
+------------------------------------------------------------------------
+r4226 | mdemcak | 2013-07-19 16:16:24 +0200 (Pá, 19 čec 2013) | 1 line
+
+metoda SeoUrl::getByPrimaryKey a jeji pouziti v getSportRegionEventUrl (mantis:84)
+------------------------------------------------------------------------
+r4203 | tpolz | 2013-07-18 13:29:24 +0200 (Čt, 18 čec 2013) | 1 line
+
+prubezny commit provize
+------------------------------------------------------------------------
+r4192 | mdemcak | 2013-07-17 15:32:56 +0200 (St, 17 čec 2013) | 1 line
+
+poradi clanku  v getPublished  (mantis:84)
+------------------------------------------------------------------------
+r4177 | mdemcak | 2013-07-16 16:28:00 +0200 (Út, 16 čec 2013) | 1 line
+
+pro vyber tipu se nebudou vypisovat nabidky s kurzem 1.00 (mantis:84)
+------------------------------------------------------------------------
+r4162 | julbrich | 2013-07-15 16:58:16 +0200 (Po, 15 čec 2013) | 1 line
+
+- parametry hlavni rozsahu pro nove aliasy
+------------------------------------------------------------------------
+r4150 | julbrich | 2013-07-12 14:52:51 +0200 (Pá, 12 čec 2013) | 1 line
+
+- test funkci getByAlias a getByAliasWithCorrelated
+------------------------------------------------------------------------
+r4144 | julbrich | 2013-07-12 10:19:28 +0200 (Pá, 12 čec 2013) | 1 line
+
+- uprava getLiveBalancing pro datumy z reportu cronu
+------------------------------------------------------------------------
+r4123 | mdemcak | 2013-07-11 14:14:45 +0200 (Čt, 11 čec 2013) | 1 line
+
+articles -  upravy pro tipy bookmakera (mantis:84)
+------------------------------------------------------------------------
+r4112 | julbrich | 2013-07-11 13:37:28 +0200 (Čt, 11 čec 2013) | 2 lines
+
+- uprava funkce getByAlias pro nove 5-mistne aliasy
+- uprava uvolnovani aliasu pro nove 5-mistne aliasy
+------------------------------------------------------------------------
+r4110 | mdemcak | 2013-07-11 13:31:03 +0200 (Čt, 11 čec 2013) | 1 line
+
+sms - it6 datumy (mantis:105)
+------------------------------------------------------------------------
+r4102 | mdemcak | 2013-07-10 15:22:13 +0200 (St, 10 čec 2013) | 1 line
+
+metoda getLiveBalancing: oprava zpracovani datumu a nastaveni navratovych hodnot na 0 misto null  (mantis 98)
+------------------------------------------------------------------------
+r4099 | julbrich | 2013-07-10 13:42:28 +0200 (St, 10 čec 2013) | 1 line
+
+- upravy pro 5-mistne aliasy
+------------------------------------------------------------------------
+r4085 | mdemcak | 2013-07-08 12:40:46 +0200 (Po, 08 čec 2013) | 1 line
+
+Articles - pridani aliasu do vyberu tipu, nazvy promennych, pouzivani It6_Date (mantis 84); odstraneni komentare v kodu k Sms (mantis 105)
+------------------------------------------------------------------------
+r4083 | jtamok | 2013-07-08 12:38:05 +0200 (Po, 08 čec 2013) | 1 line
+
+0000115: oprava textu z důvodu, že sms-ky nemůžou obsahovat diakritiku.
+------------------------------------------------------------------------
+r4079 | mdemcak | 2013-07-08 11:16:29 +0200 (Po, 08 čec 2013) | 1 line
+
+oprava metody SMS::insert (mantis 84)
+------------------------------------------------------------------------
+r4070 | jtamok | 2013-07-04 13:59:19 +0200 (Čt, 04 čec 2013) | 1 line
+
+0000115: informace emailem a sms-kou že josu peníze připravené na pobočce
+------------------------------------------------------------------------
+r4059 | mdemcak | 2013-07-04 09:26:05 +0200 (Čt, 04 čec 2013) | 1 line
+
+ article url a zpracovani pripominek (mantis 84)
+------------------------------------------------------------------------
+r4044 | mdemcak | 2013-07-02 09:00:59 +0200 (Út, 02 čec 2013) | 1 line
+
+article - formatovani (mezery->tabulatory) (mantis 84)
+------------------------------------------------------------------------
+r4043 | mdemcak | 2013-07-02 08:57:06 +0200 (Út, 02 čec 2013) | 1 line
+
+merged:4042
+------------------------------------------------------------------------
+r4042 | mdemcak | 2013-07-02 08:51:48 +0200 (Út, 02 čec 2013) | 1 line
+
+articles - vazba na jazyk (mantis 84)
+------------------------------------------------------------------------
+r4031 | mdemcak | 2013-07-01 15:04:10 +0200 (Po, 01 čec 2013) | 1 line
+
+articles -  bookmaker tips - pridani statusu sazky (pro rozhodovani o aktualnosti) (mantis 84)
+------------------------------------------------------------------------
+r4023 | tpolz | 2013-07-01 13:41:16 +0200 (Po, 01 čec 2013) | 1 line
+
+getUserInfo vraci pocet otevrenych live tiketu
+------------------------------------------------------------------------
+r4015 | mdemcak | 2013-07-01 09:32:58 +0200 (Po, 01 čec 2013) | 1 line
+
+articles - bookmaker tips (mantis 84)
+------------------------------------------------------------------------
+r3995 | julbrich | 2013-06-28 14:16:59 +0200 (Pá, 28 čen 2013) | 2 lines
+
+- cancel transakce vytvareny bez pouziti fce cancelOkTransaction
+- uprava pro vytvoreni nulove nocash transakce vyplaty z korunky (na ucet klient primo z korunky)
+------------------------------------------------------------------------
+r3987 | julbrich | 2013-06-27 16:19:28 +0200 (Čt, 27 čen 2013) | 1 line
+
+- dodelani cancel transakci z korunky
+------------------------------------------------------------------------
+r3975 | mdemcak | 2013-06-27 12:23:39 +0200 (Čt, 27 čen 2013) | 1 line
+
+sekce clanky (mantis 84)
+------------------------------------------------------------------------
+r3971 | julbrich | 2013-06-26 14:55:41 +0200 (St, 26 čen 2013) | 3 lines
+
+- vyvoj api pro korunku
+- nove typy transakci
+- opravy logu v transakcich (neprovedena transakce nema transactioId a nastavanou promennou data)
+------------------------------------------------------------------------
+r3904 | jtamok | 2013-06-20 13:35:52 +0200 (Čt, 20 čen 2013) | 1 line
+
+0000080: oprava hlavicky
+------------------------------------------------------------------------
+r3879 | jtamok | 2013-06-18 10:59:32 +0200 (Út, 18 čen 2013) | 1 line
+
+mantis0000112:zobrazit defaultni hodnotu u pobočkových parametru pokud se liší jeho hodnota.
+------------------------------------------------------------------------
+r3877 | jtamok | 2013-06-17 17:02:42 +0200 (Po, 17 čen 2013) | 1 line
+
+0000080: editaci pobockovych parametru
+------------------------------------------------------------------------
+r3867 | tpolz | 2013-06-13 15:41:43 +0200 (Čt, 13 čen 2013) | 1 line
+
+nacteni uzivatelova bankovniho uctu pridano zvlast
+------------------------------------------------------------------------
+r3857 | julbrich | 2013-06-13 12:24:06 +0200 (Čt, 13 čen 2013) | 1 line
+
+- oprava chyby u neprihlaseneho uzivatele
+------------------------------------------------------------------------
+r3854 | tpolz | 2013-06-13 10:13:56 +0200 (Čt, 13 čen 2013) | 1 line
+
+zvednut cas platnosti session
+------------------------------------------------------------------------
+r3849 | tpolz | 2013-06-12 14:28:06 +0200 (St, 12 čen 2013) | 1 line
+
+Publikace live servisy
+------------------------------------------------------------------------
+r3830 | julbrich | 2013-06-10 15:54:05 +0200 (Po, 10 čen 2013) | 1 line
+
+- uprava fce getStatus pro zjisteni limitu sebeomezujiciho opatreni
+------------------------------------------------------------------------
+r3822 | tpolz | 2013-06-10 15:06:15 +0200 (Po, 10 čen 2013) | 1 line
+
+merged 372 from branch new_betting-service
+------------------------------------------------------------------------
+r3817 | tpolz | 2013-06-10 11:12:51 +0200 (Po, 10 čen 2013) | 1 line
+
+pridano odesilani sazek typu Zapas v zakl. hraci dobe
+------------------------------------------------------------------------
+r3810 | mdemcak | 2013-06-10 09:22:38 +0200 (Po, 10 čen 2013) | 1 line
+
+(jeste zakomentovani requiru pro puvodni mobilem_api)
+------------------------------------------------------------------------
+r3809 | mdemcak | 2013-06-10 09:21:12 +0200 (Po, 10 čen 2013) | 1 line
+
+sendAuthorizationSms nove pouziva PlainSms sendSms()
+------------------------------------------------------------------------
+r3806 | mdemcak | 2013-06-07 16:26:01 +0200 (Pá, 07 čen 2013) | 1 line
+
+vyvoj sekce pro sms prubezny commit pro komunikaci (metody)
+------------------------------------------------------------------------
+r3804 | mdemcak | 2013-06-07 13:59:53 +0200 (Pá, 07 čen 2013) | 1 line
+
+vyvoj sekce pro sms prubezny commit
+------------------------------------------------------------------------
+r3778 | julbrich | 2013-06-05 14:46:27 +0200 (St, 05 čen 2013) | 1 line
+
+- novy alert pro risk limit
+------------------------------------------------------------------------
+r3752 | julbrich | 2013-05-29 14:28:44 +0200 (St, 29 kvě 2013) | 1 line
+
+- optimalizace getProvisions a filtru v provizich, nyni cykl pouze pro vypsane pobocky (nebo pro vsechny pri nezadani)
+------------------------------------------------------------------------
+r3746 | julbrich | 2013-05-28 16:48:51 +0200 (Út, 28 kvě 2013) | 1 line
+
+- uprava pro nalezeni vice sazek se stejnym aliasem
+------------------------------------------------------------------------
+r3742 | julbrich | 2013-05-28 15:56:43 +0200 (Út, 28 kvě 2013) | 1 line
+
+- uprava fce getByAlias pro obrazovku sazek
+------------------------------------------------------------------------
+r3732 | julbrich | 2013-05-28 11:16:48 +0200 (Út, 28 kvě 2013) | 1 line
+
+- zamezeni odesilani emailu pri vytvareni anonymniho uzivatele nove vztvorene pobocce
+------------------------------------------------------------------------
+r3731 | tpolz | 2013-05-28 11:15:39 +0200 (Út, 28 kvě 2013) | 1 line
+
+Po smazani novin zavolani i smazani na FTP
+------------------------------------------------------------------------
+r3727 | julbrich | 2013-05-27 13:51:58 +0200 (Po, 27 kvě 2013) | 1 line
+
+- revert fce na odesilani sms autorizace
+------------------------------------------------------------------------
+r3721 | julbrich | 2013-05-24 10:22:23 +0200 (Pá, 24 kvě 2013) | 1 line
+
+- oprava nazvu promenne
+------------------------------------------------------------------------
+r3719 | julbrich | 2013-05-24 10:11:18 +0200 (Pá, 24 kvě 2013) | 1 line
+
+- doplnen limit do dotazu ve fci getBalance
+------------------------------------------------------------------------
+r3710 | tpolz | 2013-05-22 10:59:38 +0200 (St, 22 kvě 2013) | 1 line
+
+Pridano vypnuti NOSNTOP provozu pobocek
+------------------------------------------------------------------------
+r3679 | tpolz | 2013-05-15 14:15:40 +0200 (St, 15 kvě 2013) | 1 line
+
+pridano stahovani sazek prvni tretina pro MS 2013 playoff
+------------------------------------------------------------------------
+r3673 | tpolz | 2013-05-15 10:20:28 +0200 (St, 15 kvě 2013) | 1 line
+
+vraceni vice mene pro CR - svycarsko 5,5
+------------------------------------------------------------------------
+r3662 | julbrich | 2013-05-15 09:30:45 +0200 (St, 15 kvě 2013) | 1 line
+
+- kontrolu unikatnosti nad jmenem, prijmenim, datumem narozeni a adresou pri vkladani uzivatele
+------------------------------------------------------------------------
+r3585 | tpolz | 2013-04-30 14:52:10 +0200 (Út, 30 dub 2013) | 1 line
+
+repalce into nahrazen insert into
+------------------------------------------------------------------------
+r3583 | tpolz | 2013-04-30 14:28:12 +0200 (Út, 30 dub 2013) | 1 line
+
+delete session fix
+------------------------------------------------------------------------
+r3578 | tpolz | 2013-04-30 14:02:30 +0200 (Út, 30 dub 2013) | 1 line
+
+pridano cisteno starych session pri prihlasovaneho uzivatele
+------------------------------------------------------------------------
+r3568 | tpolz | 2013-04-29 13:08:52 +0200 (Po, 29 dub 2013) | 1 line
+
+Uprava WS por Live APP
+------------------------------------------------------------------------
+r3560 | julbrich | 2013-04-26 16:18:06 +0200 (Pá, 26 dub 2013) | 1 line
+
+- uprava updateovaci funkce pro ukladani null hodnot
+------------------------------------------------------------------------
+r3506 | julbrich | 2013-04-13 08:42:04 +0200 (So, 13 dub 2013) | 1 line
+
+- nove funkce pro validaci user-limits-setting
+------------------------------------------------------------------------
+r3492 | julbrich | 2013-04-11 16:44:47 +0200 (Čt, 11 dub 2013) | 1 line
+
+- webservisa pro uzivatelske limity k certifikaci
+------------------------------------------------------------------------
+r3481 | tpolz | 2013-04-10 09:48:05 +0200 (St, 10 dub 2013) | 1 line
+
+Upraven algorimtus aktualizace prirazeni typu sazek k udalosti v metode updatetypeevent
+------------------------------------------------------------------------
+r3472 | julbrich | 2013-04-09 13:06:50 +0200 (Út, 09 dub 2013) | 1 line
+
+- oprava funkce getLiveBalancing
+------------------------------------------------------------------------
+r3455 | tpolz | 2013-04-09 09:33:11 +0200 (Út, 09 dub 2013) | 1 line
+
+Nova servisa pro noviny Victorka
+------------------------------------------------------------------------
+r3436 | tpolz | 2013-04-03 14:57:13 +0200 (St, 03 dub 2013) | 1 line
+
+Opraven vypocet ceny tiketu se vstupnim manipulakem
+------------------------------------------------------------------------
+r3428 | tpolz | 2013-04-02 16:01:18 +0200 (Út, 02 dub 2013) | 1 line
+
+vracim i offset
+------------------------------------------------------------------------
+r3398 | julbrich | 2013-03-27 11:02:31 +0100 (St, 27 bře 2013) | 1 line
+
+- odstraneni logu po odmergovani revizi od v.cerneho
+------------------------------------------------------------------------
+r3372 | julbrich | 2013-03-22 23:05:23 +0100 (Pá, 22 bře 2013) | 1 line
+
+- upravena funkce pro reporty na vyplacene tikety
+------------------------------------------------------------------------
+r3345 | tpolz | 2013-03-21 15:00:20 +0100 (Čt, 21 bře 2013) | 1 line
+
+odmergnuty upravy kolem generovani dokumentu
+------------------------------------------------------------------------
+r3325 | julbrich | 2013-03-21 13:47:35 +0100 (Čt, 21 bře 2013) | 1 line
+
+- pridan sloupec sendMail
+------------------------------------------------------------------------
+r3314 | julbrich | 2013-03-21 11:05:56 +0100 (Čt, 21 bře 2013) | 1 line
+
+- pridan sloupec filename
+------------------------------------------------------------------------
+r3307 | julbrich | 2013-03-20 13:53:04 +0100 (St, 20 bře 2013) | 1 line
+
+- oprava vypoctu collect_foreign_ticket_count a collect_foreign_ticket_amount
+------------------------------------------------------------------------
+r3292 | vcerny | 2013-03-18 14:36:02 +0100 (Po, 18 bře 2013) | 1 line
+
+- rozsireni sluzby pro dokumenty pobocek, viz revision 3290
+------------------------------------------------------------------------
+r3286 | julbrich | 2013-03-15 09:46:00 +0100 (Pá, 15 bře 2013) | 1 line
+
+- uprava fce pro reporty
+------------------------------------------------------------------------
+r3283 | julbrich | 2013-03-13 20:44:35 +0100 (St, 13 bře 2013) | 1 line
+
+- uprava funkci pro reporty
+------------------------------------------------------------------------
+r3276 | julbrich | 2013-03-12 17:23:32 +0100 (Út, 12 bře 2013) | 1 line
+
+- uprava funkce, nyni i pro mesicni kmenovy report
+------------------------------------------------------------------------
+r3274 | julbrich | 2013-03-12 15:26:04 +0100 (Út, 12 bře 2013) | 1 line
+
+- funkce pro denni report kmene
+------------------------------------------------------------------------
+r3256 | julbrich | 2013-03-06 12:49:01 +0100 (St, 06 bře 2013) | 1 line
+
+- funkce pro reporty pobocek upraveny a presunutu do Branch.php
+------------------------------------------------------------------------
+r3253 | lsenohrabek | 2013-03-06 10:41:30 +0100 (St, 06 bře 2013) | 2 lines
+
+- novy controller pro sekci limity
+- plus vse souvisejici
+------------------------------------------------------------------------
+r3247 | julbrich | 2013-03-05 14:05:37 +0100 (Út, 05 bře 2013) | 1 line
+
+- funkce pro reporty
+------------------------------------------------------------------------
+r3243 | tpolz | 2013-03-05 10:55:21 +0100 (Út, 05 bře 2013) | 1 line
+
+pridan dopocitany sloupoec s castkou tiketu vcetne vstupniho manipulaku amountMp
+------------------------------------------------------------------------
+r3233 | julbrich | 2013-02-28 14:13:29 +0100 (Čt, 28 úno 2013) | 2 lines
+
+- oprava chyby pri zadani neexistujici pobocky
+- funkce pro zjisteni jmena pobocky z id nebo handle
+------------------------------------------------------------------------
+r3225 | tpolz | 2013-02-28 10:30:11 +0100 (Čt, 28 úno 2013) | 1 line
+
+new method getBranches()
+------------------------------------------------------------------------
+r3203 | julbrich | 2013-02-23 18:55:48 +0100 (So, 23 úno 2013) | 1 line
+
+- uprava podminky v dotazu na sloupce
+------------------------------------------------------------------------
+r3197 | tpolz | 2013-02-22 14:53:37 +0100 (Pá, 22 úno 2013) | 1 line
+
+Fixes
+------------------------------------------------------------------------
+r3166 | tpolz | 2013-02-21 14:29:41 +0100 (Čt, 21 úno 2013) | 1 line
+
+new methos getBranchIds()
+------------------------------------------------------------------------
+r3163 | tpolz | 2013-02-21 14:12:59 +0100 (Čt, 21 úno 2013) | 1 line
+
+execution time
+------------------------------------------------------------------------
+r3162 | tpolz | 2013-02-21 14:11:09 +0100 (Čt, 21 úno 2013) | 1 line
+
+execution time set
+------------------------------------------------------------------------
+r3159 | tpolz | 2013-02-21 13:52:41 +0100 (Čt, 21 úno 2013) | 1 line
+
+live calculation uncommented
+------------------------------------------------------------------------
+r3152 | julbrich | 2013-02-21 13:17:27 +0100 (Čt, 21 úno 2013) | 1 line
+
+- uprava sql parametru pro hlavni sazky
+------------------------------------------------------------------------
+r3149 | tpolz | 2013-02-21 10:30:21 +0100 (Čt, 21 úno 2013) | 1 line
+
+odstraanena kontrola hostId v metode getBalance
+------------------------------------------------------------------------
+r3138 | tpolz | 2013-02-20 18:35:07 +0100 (St, 20 úno 2013) | 1 line
+
+merge fixes
+------------------------------------------------------------------------
+r3137 | julbrich | 2013-02-20 18:27:46 +0100 (St, 20 úno 2013) | 1 line
+
+- slouceni host.php
+------------------------------------------------------------------------
+r3135 | tpolz | 2013-02-20 16:51:23 +0100 (St, 20 úno 2013) | 1 line
+
+new service for host funding
+------------------------------------------------------------------------
+r3131 | vholicka | 2013-02-20 13:19:10 +0100 (St, 20 úno 2013) | 1 line
+
+upravna ip adresa live test servru
+------------------------------------------------------------------------
+r3126 | julbrich | 2013-02-20 12:22:44 +0100 (St, 20 úno 2013) | 2 lines
+
+- uprava dotazu v Bet pro zjistovani sum vsazenych castek na sazky
+- uprava dotazu v Event pro zjistovani relevantnich sloupcu (podsazek) ke hlavni sazce
+------------------------------------------------------------------------
+r3109 | julbrich | 2013-02-19 13:34:02 +0100 (Út, 19 úno 2013) | 1 line
+
+- oprava razeni tipu
+------------------------------------------------------------------------
+r3075 | julbrich | 2013-02-15 22:16:42 +0100 (Pá, 15 úno 2013) | 1 line
+
+- odkomentovani podminky na datum
+------------------------------------------------------------------------
+r3074 | julbrich | 2013-02-15 17:37:19 +0100 (Pá, 15 úno 2013) | 1 line
+
+- nove funkce pro statistiky sazek a jejich graficke zobrazeni
+------------------------------------------------------------------------
+r3054 | vholicka | 2013-02-13 00:02:22 +0100 (St, 13 úno 2013) | 1 line
+
+upraveny adresy produkcnich servru livek
+------------------------------------------------------------------------
+r3026 | julbrich | 2013-02-11 14:50:37 +0100 (Po, 11 úno 2013) | 1 line
+
+- oprava funkce getBalance()
+------------------------------------------------------------------------
+r3024 | vholicka | 2013-02-08 15:37:22 +0100 (Pá, 08 úno 2013) | 1 line
+
+sending authorization sms thru hbq smsgateway
+------------------------------------------------------------------------
+r3021 | julbrich | 2013-02-07 14:31:33 +0100 (Čt, 07 úno 2013) | 2 lines
+
+- nepouzivan sloupec BranchHandleMax
+- oprava sumarizacniho radku
+------------------------------------------------------------------------
+r2991 | julbrich | 2013-02-05 12:13:40 +0100 (Út, 05 úno 2013) | 1 line
+
+- oprava filtru used a unused
+------------------------------------------------------------------------
+r2989 | vholicka | 2013-02-05 12:10:12 +0100 (Út, 05 úno 2013) | 1 line
+
+added ips of new production live servers
+------------------------------------------------------------------------
+r2986 | julbrich | 2013-02-01 16:40:41 +0100 (Pá, 01 úno 2013) | 2 lines
+
+- uprava funkce pro vkladani nove karty
+- uprava hlaseni chyby pri vkladani duplicitni karty
+------------------------------------------------------------------------
+r2981 | julbrich | 2013-02-01 15:39:35 +0100 (Pá, 01 úno 2013) | 1 line
+
+- upravy servis pro sekci klientskych karet
+------------------------------------------------------------------------
+r2883 | tpolz | 2013-01-15 17:40:33 +0100 (Út, 15 led 2013) | 1 line
+
+getbyalias fix
+------------------------------------------------------------------------
+r2881 | tpolz | 2013-01-15 17:22:56 +0100 (Út, 15 led 2013) | 1 line
+
+oprava hledani sazky dle aliasu - tri mistne typ aliasy
+------------------------------------------------------------------------
+r2879 | tpolz | 2013-01-15 17:01:03 +0100 (Út, 15 led 2013) | 1 line
+
+osetreni kvuli trimistnym aliasum v metode getByAlias
+------------------------------------------------------------------------
+r2877 | vholicka | 2013-01-09 16:23:11 +0100 (St, 09 led 2013) | 1 line
+
+pridana ip adresa pro testovaci livka na nasich servrech
+------------------------------------------------------------------------
+r2867 | julbrich | 2013-01-03 15:40:30 +0100 (Čt, 03 led 2013) | 1 line
+
+- upravy filtrovani v dennich uzaverkach, nyni host, pobocka id a handle pobocky
+------------------------------------------------------------------------
+r2861 | tpolz | 2013-01-02 17:13:56 +0100 (St, 02 led 2013) | 1 line
+
+dolpnen join na tabulku tiketu
+------------------------------------------------------------------------
+r2859 | tpolz | 2013-01-02 16:27:01 +0100 (St, 02 led 2013) | 1 line
+
+Opraveno zobrazeni vyhernich tiketu dle poradi
+------------------------------------------------------------------------
+r2857 | tpolz | 2013-01-02 12:32:24 +0100 (St, 02 led 2013) | 1 line
+
+opraveno nastaveni mesice pro vraceni top tiketu
+------------------------------------------------------------------------
+r2855 | tpolz | 2013-01-02 10:37:40 +0100 (St, 02 led 2013) | 1 line
+
+Oprava sql dotazu pro zobrazeni top tiketu
+------------------------------------------------------------------------
+r2853 | tpolz | 2013-01-02 10:26:00 +0100 (St, 02 led 2013) | 1 line
+
+Top tikety se zobrazuji jen pro aktualni mesic
+------------------------------------------------------------------------
+r2775 | julbrich | 2012-12-13 16:11:12 +0100 (Čt, 13 pro 2012) | 2 lines
+
+souteze:
+- po zruseni tiketu volani invalidovani cache
+------------------------------------------------------------------------
+r2756 | julbrich | 2012-12-13 10:07:18 +0100 (Čt, 13 pro 2012) | 2 lines
+
+-dotazy pro soutěžě v administraci
+-zakomentování logu
+------------------------------------------------------------------------
+r2745 | julbrich | 2012-12-06 10:44:51 +0100 (Čt, 06 pro 2012) | 1 line
+
+- upravy pro administraci v cash overview a v dennich uzaverkach
+------------------------------------------------------------------------
+r2740 | julbrich | 2012-11-30 13:54:27 +0100 (Pá, 30 lis 2012) | 1 line
+
+- merge větve double_transaction, vytvoření alertu při zdvojené transakci (žádost o výběr)
+------------------------------------------------------------------------
+r2725 | tpolz | 2012-11-28 14:12:58 +0100 (St, 28 lis 2012) | 1 line
+
+Opraveno zasilani sms
+------------------------------------------------------------------------
+r2716 | tpolz | 2012-11-26 09:12:33 +0100 (Po, 26 lis 2012) | 1 line
+
+Registrace do klubu
+------------------------------------------------------------------------
+r2672 | tpolz | 2012-11-18 19:27:05 +0100 (Ne, 18 lis 2012) | 1 line
+
+merged redesign branch
+------------------------------------------------------------------------
+r2628 | mbohal | 2012-11-13 15:05:25 +0100 (Út, 13 lis 2012) | 1 line
+
+mantis:968
+------------------------------------------------------------------------
+r2461 | mbohal | 2012-10-17 18:19:28 +0200 (St, 17 říj 2012) | 1 line
+
+věrnostní_karty (mantis:889)
+------------------------------------------------------------------------
+r2457 | mbohal | 2012-10-17 17:59:06 +0200 (St, 17 říj 2012) | 1 line
+
+věrnostní_karty (mantis:889)
+------------------------------------------------------------------------
+r2442 | tpolz | 2012-10-15 12:59:56 +0200 (Po, 15 říj 2012) | 1 line
+
+Opraveno filtrovani platnych udalosti
+------------------------------------------------------------------------
+r2371 | mbohal | 2012-09-18 18:02:49 +0200 (Út, 18 zář 2012) | 1 line
+
+klikatko na nastaveni typ_order_type_id (mantis:1287)
+------------------------------------------------------------------------
+r2338 | tpolz | 2012-09-14 13:21:21 +0200 (Pá, 14 zář 2012) | 1 line
+
+Opraveno fitlrovani platnych (manris:1268)
+------------------------------------------------------------------------
+r2327 | tpolz | 2012-09-13 10:04:11 +0200 (Čt, 13 zář 2012) | 1 line
+
+Pridano nacitani pouze platnych udalosti (mantis:1268)
+------------------------------------------------------------------------
+r2310 | tpolz | 2012-09-11 12:20:39 +0200 (Út, 11 zář 2012) | 1 line
+
+uprava registrace (mantis:1236)
+------------------------------------------------------------------------
+r2303 | tpolz | 2012-09-10 17:34:28 +0200 (Po, 10 zář 2012) | 1 line
+
+uprava registrace (mantis:1236)
+------------------------------------------------------------------------
+r2257 | tpolz | 2012-09-06 14:30:14 +0200 (Čt, 06 zář 2012) | 1 line
+
+uprava registrace (mantis:1236)
+------------------------------------------------------------------------
+r2232 | tpolz | 2012-08-31 16:58:49 +0200 (Pá, 31 srp 2012) | 1 line
+
+Opravene nacteni seznamu mest pobocek (mantis:1238)
+------------------------------------------------------------------------
+r2208 | mbohal | 2012-08-28 15:41:38 +0200 (Út, 28 srp 2012) | 1 line
+
+extremne pomala query u ucetniho deniku (mantis:1239)
+------------------------------------------------------------------------
+r2204 | mbohal | 2012-08-28 15:30:53 +0200 (Út, 28 srp 2012) | 1 line
+
+extremne pomala query u ucetniho deniku (mantis:1239)
+------------------------------------------------------------------------
+r2194 | mbohal | 2012-08-27 13:30:36 +0200 (Po, 27 srp 2012) | 1 line
+
+věrnostní_karty (mantis:889)
+------------------------------------------------------------------------
+r2182 | tpolz | 2012-08-24 15:10:10 +0200 (Pá, 24 srp 2012) | 1 line
+
+K pobocce pridano misto (mantis:1234)
+------------------------------------------------------------------------
+r2170 | mbohal | 2012-08-23 09:53:52 +0200 (Čt, 23 srp 2012) | 1 line
+
+věrnostní_karty (mantis:889)
+------------------------------------------------------------------------
+r2159 | tpolz | 2012-08-20 15:16:35 +0200 (Po, 20 srp 2012) | 1 line
+
+Opraven filtr dle typu smlouvy v obrazovce Provize pobocek (mantis:1217)
+------------------------------------------------------------------------
+r2098 | tpolz | 2012-08-14 08:28:51 +0200 (Út, 14 srp 2012) | 1 line
+
+Uprava sekce pobocek na webu - doplnen vyber dle mesta(mantis:1146)
+------------------------------------------------------------------------
+r2085 | mbohal | 2012-08-13 14:41:09 +0200 (Po, 13 srp 2012) | 1 line
+
+Hláška 'V tuto chvíli nenabízíme žádnou sázku' (mantis:1039)
+------------------------------------------------------------------------
+r1990 | tpolz | 2012-08-02 16:32:32 +0200 (Čt, 02 srp 2012) | 1 line
+
+uprava naseptavace pro zadavani stelcu (mantis:777)
+------------------------------------------------------------------------
+r1962 | tpolz | 2012-08-01 07:58:44 +0200 (St, 01 srp 2012) | 1 line
+
+nová ticket game pro tikety mesice (mantis:1079)
+------------------------------------------------------------------------
+r1891 | pstastny | 2012-07-25 12:05:47 +0200 (St, 25 čec 2012) | 1 line
+
+Branch app version exception has now own code (mantis:1154)
+------------------------------------------------------------------------
+r1888 | tpolz | 2012-07-25 11:56:41 +0200 (St, 25 čec 2012) | 1 line
+
+Osetreno ulozeni prazdne hodnoty atributu banned u stanice pobocky (mantis:1059)
+------------------------------------------------------------------------
+r1860 | tpolz | 2012-07-24 15:46:34 +0200 (Út, 24 čec 2012) | 1 line
+
+Doplnena sprava hracu k tymu a jejich naseptavani k urcitemu typu sazek v obrazovce Vytvorit sazku (mantis:777)
+------------------------------------------------------------------------
+r1831 | pstastny | 2012-07-23 17:32:20 +0200 (Po, 23 čec 2012) | 1 line
+
+New feature of branch.allowed.app.versions parameter (mantis:1135)
+------------------------------------------------------------------------
+r1805 | pstastny | 2012-07-23 11:44:06 +0200 (Po, 23 čec 2012) | 1 line
+
+Global parameter ticket.max.group.count.maxikombi now returned together with host parameters (mantis:1139)
+------------------------------------------------------------------------
+r1774 | pstastny | 2012-07-20 11:00:59 +0200 (Pá, 20 čec 2012) | 1 line
+
+Colorful indication of user skills in confirmation screen (mantis:625)
+------------------------------------------------------------------------
+r1772 | pstastny | 2012-07-20 10:53:15 +0200 (Pá, 20 čec 2012) | 1 line
+
+Fixed call of It6_Models_Bet::changeUserHistory() when renewing ticket (mantis:1142)
+------------------------------------------------------------------------
+r1758 | pstastny | 2012-07-19 13:26:26 +0200 (Čt, 19 čec 2012) | 1 line
+
+Added new method Bet.getMergedChangesAfterId (mantis:884)
+------------------------------------------------------------------------
+r1754 | vholicka | 2012-07-19 11:50:56 +0200 (Čt, 19 čec 2012) | 3 lines
+
+mantis:1072
+
+Obrazovka tiketů: přidat do zobrazovaných informací tiketu bookmakera, který schválil ve schvalovačce
+------------------------------------------------------------------------
+r1743 | pstastny | 2012-07-18 15:30:12 +0200 (St, 18 čec 2012) | 1 line
+
+Fixed internet provisions computing - including canceled into income (mantis:1133)
+------------------------------------------------------------------------
+r1741 | pstastny | 2012-07-18 14:58:37 +0200 (St, 18 čec 2012) | 1 line
+
+Fixed internet provisions computing (mantis:1133)
+------------------------------------------------------------------------
+r1736 | kcap | 2012-07-18 14:05:50 +0200 (St, 18 čec 2012) | 1 line
+
+Pridani filtru, (mantis:1061)
+------------------------------------------------------------------------
+r1674 | tpolz | 2012-07-13 09:37:32 +0200 (Pá, 13 čec 2012) | 1 line
+
+Do obrazovky Provize pobocek pridan filtr dle handlu pobocek (mantis:1083)
+------------------------------------------------------------------------
+r1663 | pstastny | 2012-07-12 18:14:27 +0200 (Čt, 12 čec 2012) | 1 line
+
+Fixed unwanted client card update (mantis:1110)
+------------------------------------------------------------------------
+r1661 | tpolz | 2012-07-12 16:45:17 +0200 (Čt, 12 čec 2012) | 1 line
+
+V obrazovce provize pobocek dopleny k typu smlouvy jeji detaily (mantis:1055)
+------------------------------------------------------------------------
+r1656 | tpolz | 2012-07-12 10:59:02 +0200 (Čt, 12 čec 2012) | 1 line
+
+do WS objektu User pridan najoinovany sloupec branchHandle (mantis:h1094)
+------------------------------------------------------------------------
+r1647 | pstastny | 2012-07-10 17:17:56 +0200 (Út, 10 čec 2012) | 1 line
+
+Added coupon ID into logged info during confirmation process (mantis:1100)
+------------------------------------------------------------------------
+r1631 | vholicka | 2012-07-10 12:19:25 +0200 (Út, 10 čec 2012) | 3 lines
+
+(mantis:1054,1055,1056)
+
+Uprava profilu pobocky - Kmeny
+------------------------------------------------------------------------
+r1628 | pstastny | 2012-07-10 12:08:33 +0200 (Út, 10 čec 2012) | 1 line
+
+Support for WS control of bet changelog usage by branches (mantis:884)
+------------------------------------------------------------------------
+r1618 | pklinger | 2012-07-09 14:26:22 +0200 (Po, 09 čec 2012) | 1 line
+
+mantis:1093
+------------------------------------------------------------------------
+r1608 | pstastny | 2012-07-09 10:55:44 +0200 (Po, 09 čec 2012) | 1 line
+
+New WS method Host.getResourcesOnTheWay for ordered deposit and withdraw transfers - fixed (mantis:839)
+------------------------------------------------------------------------
+r1606 | pstastny | 2012-07-09 10:49:11 +0200 (Po, 09 čec 2012) | 1 line
+
+New WS method Host.getResourcesOnTheWay for ordered deposit and withdraw transfers - more compact code (mantis:839)
+------------------------------------------------------------------------
+r1605 | pstastny | 2012-07-09 10:47:46 +0200 (Po, 09 čec 2012) | 1 line
+
+New WS method Host.getResourcesOnTheWay for ordered deposit and withdraw transfers (mantis:839)
+------------------------------------------------------------------------
+r1600 | pstastny | 2012-07-09 09:52:18 +0200 (Po, 09 čec 2012) | 1 line
+
+User filtering using user ID and client card number, update of client card number (mantis:744)
+------------------------------------------------------------------------
+r1596 | pstastny | 2012-07-04 18:18:44 +0200 (St, 04 čec 2012) | 1 line
+
+Setting branch id for new user pre-registered at branch (mantis:991)
+------------------------------------------------------------------------
+r1590 | pstastny | 2012-07-04 16:59:40 +0200 (St, 04 čec 2012) | 2 lines
+
+(mantis:1054,1055,1056)  Uprava profilu pobocky - Kmeny - oprava komentare
+
+------------------------------------------------------------------------
+r1589 | pstastny | 2012-07-04 16:56:03 +0200 (St, 04 čec 2012) | 2 lines
+
+(mantis:1054,1055,1056)  Uprava profilu pobocky - Kmeny - oprava whitespace
+
+------------------------------------------------------------------------
+r1581 | pstastny | 2012-07-04 13:45:48 +0200 (St, 04 čec 2012) | 1 line
+
+Added score into bet data in ticket (mantis:829)
+------------------------------------------------------------------------
+r1547 | pklinger | 2012-07-02 11:04:47 +0200 (Po, 02 čec 2012) | 1 line
+
+Pridani kontroly povinych udaju pri zakladani uzivatele. (mantis 968)
+------------------------------------------------------------------------
+r1545 | vholicka | 2012-07-02 09:23:25 +0200 (Po, 02 čec 2012) | 3 lines
+
+(mantis:1054,1055,1056)
+
+Uprava profilu pobocky - Kmeny
+------------------------------------------------------------------------
+r1533 | pstastny | 2012-06-29 11:19:59 +0200 (Pá, 29 čen 2012) | 1 line
+
+Fixed missing records of fin.transaction history for zero balance (mantis:1053)
+------------------------------------------------------------------------
+r1482 | pstastny | 2012-06-26 16:20:04 +0200 (Út, 26 čen 2012) | 1 line
+
+Hiding .svn subdirectories and their content (mantis:1040)
+------------------------------------------------------------------------
+r1452 | pklinger | 2012-06-25 17:29:49 +0200 (Po, 25 čen 2012) | 1 line
+
+Povoleni cachevani balanci.
+------------------------------------------------------------------------
+r1441 | vholicka | 2012-06-25 15:50:19 +0200 (Po, 25 čen 2012) | 2 lines
+
+
++ ukol 669 synchronizace + transakce
+------------------------------------------------------------------------
+r1434 | pstastny | 2012-06-25 14:18:43 +0200 (Po, 25 čen 2012) | 1 line
+
+Admin management by 'sales' role (mantis:984)
+------------------------------------------------------------------------
+r1300 | pstastny | 2012-06-13 17:49:47 +0200 (St, 13 čen 2012) | 1 line
+
+Fixed transaction type high limit issue (mantis:1012)
+------------------------------------------------------------------------
+r1296 | pstastny | 2012-06-13 16:12:49 +0200 (St, 13 čen 2012) | 1 line
+
+Now possible to edit controller convert request ctl/actions (mantis:974)
+------------------------------------------------------------------------
+r1263 | pstastny | 2012-06-08 23:54:49 +0200 (Pá, 08 čen 2012) | 1 line
+
+Fixed translation in ticket-game ticket detail (mantis:1005)
+------------------------------------------------------------------------
+r1254 | pstastny | 2012-06-08 16:02:04 +0200 (Pá, 08 čen 2012) | 1 line
+
+Fixed logical bogus when fetching correlated bets (mantis:999)
+------------------------------------------------------------------------
+r1251 | pstastny | 2012-06-08 15:43:14 +0200 (Pá, 08 čen 2012) | 1 line
+
+Fixed logical bogus when fetching correlated bets (mantis:999)
+------------------------------------------------------------------------
+r1245 | mbohal | 2012-06-07 17:25:24 +0200 (Čt, 07 čen 2012) | 1 line
+
+Zalozeni tiketu s kurzem pod 7 s kurzovym zvyhodnenim za body (mantis:933)
+------------------------------------------------------------------------
+r1200 | pstastny | 2012-06-06 15:05:22 +0200 (St, 06 čen 2012) | 1 line
+
+Fixed docblock of getMergedChanges() for Zend_Server_Reflection (mantis:884)
+------------------------------------------------------------------------
+r1183 | pstastny | 2012-06-05 18:29:37 +0200 (Út, 05 čen 2012) | 1 line
+
+Translated field names in bet changelog returned from WS (mantis:884)
+------------------------------------------------------------------------
+r1173 | pstastny | 2012-06-05 14:38:19 +0200 (Út, 05 čen 2012) | 1 line
+
+reversing changes from H1172
+------------------------------------------------------------------------
+r1172 | pstastny | 2012-06-05 14:33:44 +0200 (Út, 05 čen 2012) | 1 line
+
+Changed PhpDoc of getMergedChanges (mantis:884)
+------------------------------------------------------------------------
+r1168 | pstastny | 2012-06-05 11:50:39 +0200 (Út, 05 čen 2012) | 1 line
+
+Global parameter validation.ticket.maximal.win.maxikombi now returned among host parameters from Parameter.getHostParameters (mantis:813)
+------------------------------------------------------------------------
+r1162 | pstastny | 2012-06-04 16:38:48 +0200 (Po, 04 čen 2012) | 1 line
+
+Improved URL parameters handling (mantis:990)
+------------------------------------------------------------------------
+r1149 | pstastny | 2012-06-01 18:13:07 +0200 (Pá, 01 čen 2012) | 1 line
+
+Ticket game support - iPad EURO 2012 - fixed missing minimal stake check (mantis:976)
+------------------------------------------------------------------------
+r1144 | pstastny | 2012-06-01 16:08:47 +0200 (Pá, 01 čen 2012) | 1 line
+
+Ticket game support - implemented re-evaluation (mantis:976)
+------------------------------------------------------------------------
+r1138 | pstastny | 2012-06-01 12:07:53 +0200 (Pá, 01 čen 2012) | 3 lines
+
+Implementation if ticket games support and used for "IPad EURO 2012" game
+Fixes some bugs in global cache 
+(mantis:976)
+------------------------------------------------------------------------
+r1133 | mbohal | 2012-05-31 13:29:58 +0200 (Čt, 31 kvě 2012) | 1 line
+
+Problémy s provázáním prematch sázek a live sázek 	(mantis:975)
+------------------------------------------------------------------------
+r1132 | mbohal | 2012-05-31 10:58:11 +0200 (Čt, 31 kvě 2012) | 1 line
+
+Problémy s provázáním prematch sázek a live sázek 	(mantis:975)
+------------------------------------------------------------------------
+r1117 | mbohal | 2012-05-29 17:37:49 +0200 (Út, 29 kvě 2012) | 1 line
+
+automatické schvalování transakcí (mantis:552)
+------------------------------------------------------------------------
+r1102 | mbohal | 2012-05-28 14:18:33 +0200 (Po, 28 kvě 2012) | 1 line
+
+BUG120449 - Filtru - Moje tikety a Moje LIVE tikety – neošetřená pole (mantis:970)
+------------------------------------------------------------------------
+r1092 | pstastny | 2012-05-24 10:32:21 +0200 (Čt, 24 kvě 2012) | 1 line
+
+Fixed null return value cacheing in getOverloadedParameter() (mantis:972)
+------------------------------------------------------------------------
+r1089 | mbohal | 2012-05-23 16:20:53 +0200 (St, 23 kvě 2012) | 1 line
+
+BUG120511 - Vernostni program - maximum pripsanych bodu za den (mantis:972)
+------------------------------------------------------------------------
+r1062 | pstastny | 2012-05-22 15:17:53 +0200 (Út, 22 kvě 2012) | 1 line
+
+Helpers for selectbox options from WS entities, used in admin EventController (mantis:958)
+------------------------------------------------------------------------
+r1034 | pstastny | 2012-05-20 02:04:39 +0200 (Ne, 20 kvě 2012) | 1 line
+
+Added logging of fialed validation into insert() (mantis:963)
+------------------------------------------------------------------------
+r1025 | pstastny | 2012-05-18 14:16:15 +0200 (Pá, 18 kvě 2012) | 1 line
+
+Withdraw request - improved ordering in branch selectbox (mantis:953)
+------------------------------------------------------------------------
+r980 | mbohal | 2012-05-16 09:20:49 +0200 (St, 16 kvě 2012) | 1 line
+
+k live sázkám dodat score a region (mantis:872)
+------------------------------------------------------------------------
+r948 | pstastny | 2012-05-15 15:15:21 +0200 (Út, 15 kvě 2012) | 1 line
+
+Fixed possible choice of branch for withdraw that is banned (mantis:953)
+------------------------------------------------------------------------
+r939 | pstastny | 2012-05-14 18:40:24 +0200 (Po, 14 kvě 2012) | 1 line
+
+Fixed possible choice of branch for withdraw that is banned (mantis:953)
+------------------------------------------------------------------------
+r930 | mbohal | 2012-05-14 16:01:32 +0200 (Po, 14 kvě 2012) | 1 line
+
+k live sázkám dodat score a region (mantis:872)
+------------------------------------------------------------------------
+r918 | mbohal | 2012-05-14 15:53:07 +0200 (Po, 14 kvě 2012) | 1 line
+
+k live sázkám dodat score a region (mantis:872)
+------------------------------------------------------------------------
+r914 | pstastny | 2012-05-14 15:47:13 +0200 (Po, 14 kvě 2012) | 1 line
+
+User profile version for bookmakers (mantis:936)
+------------------------------------------------------------------------
+r912 | mbohal | 2012-05-14 14:14:01 +0200 (Po, 14 kvě 2012) | 1 line
+
+k live sázkám dodat score a region (mantis:872)
+------------------------------------------------------------------------
+r904 | mbohal | 2012-05-14 11:24:00 +0200 (Po, 14 kvě 2012) | 1 line
+
+k live sázkám dodat score a region (mantis:872)
+------------------------------------------------------------------------
+r869 | pklinger | 2012-05-11 10:54:18 +0200 (Pá, 11 kvě 2012) | 1 line
+
+Oprava vypoctu sumy v ucetnim deniku (mantis:925)
+------------------------------------------------------------------------
+r812 | pstastny | 2012-05-04 18:22:30 +0200 (Pá, 04 kvě 2012) | 1 line
+
+Now WS can serve merge bet changelog (mantis:884)
+------------------------------------------------------------------------
+r722 | pstastny | 2012-05-04 11:49:49 +0200 (Pá, 04 kvě 2012) | 1 line
+
+Configurable time offset 2ns halfs etc. (mantis:907)
+------------------------------------------------------------------------
+r690 | pklinger | 2012-05-03 16:15:34 +0200 (Čt, 03 kvě 2012) | 1 line
+
+Zamezeni opakovanemu tisteni smlouvy (mantis:917)
+------------------------------------------------------------------------
+r689 | pstastny | 2012-05-03 16:12:18 +0200 (Čt, 03 kvě 2012) | 1 line
+
+Initial implementation of bet changelog (mantis:884)
+------------------------------------------------------------------------
+r681 | pklinger | 2012-05-03 15:54:20 +0200 (Čt, 03 kvě 2012) | 1 line
+
+Zamezeni opakovanemu tisteni smlouvy (mantis:917)
+------------------------------------------------------------------------
+r664 | pklinger | 2012-05-03 15:40:50 +0200 (Čt, 03 kvě 2012) | 1 line
+
+Zamezeni opakovanemu tisteni smlouvy (mantis:917)
+------------------------------------------------------------------------
+r654 | pklinger | 2012-05-03 14:13:59 +0200 (Čt, 03 kvě 2012) | 1 line
+
+Zamezit aby sla nacvaknout jina karticka nez ta ktera, prislusi na danou pobocku. (mantis:915)
+------------------------------------------------------------------------
+r641 | mbohal | 2012-05-02 18:26:55 +0200 (St, 02 kvě 2012) | 1 line
+
+deleni pobocek na top a normlani (mantis:751)
+------------------------------------------------------------------------
+r576 | pstastny | 2012-04-27 15:07:36 +0200 (Pá, 27 dub 2012) | 1 line
+
+Fixed unchecked extensions output manipulation in getOneWhere (mantis:885)
+------------------------------------------------------------------------
+r573 | pstastny | 2012-04-27 11:57:17 +0200 (Pá, 27 dub 2012) | 3 lines
+
+Support for WsExtension pre/postprocessing forcing/surpressing
+Surpressed postprocessing of automatically added Paginator in AbstractWebservice
+(mantis:885)
+------------------------------------------------------------------------
+r571 | pstastny | 2012-04-26 20:19:32 +0200 (Čt, 26 dub 2012) | 1 line
+
+Fixed microsleep() -> usleep() (mantis:885)
+------------------------------------------------------------------------
+r569 | pstastny | 2012-04-26 20:12:14 +0200 (Čt, 26 dub 2012) | 1 line
+
+Attempt to avoid always two necessary calls to Ticket.acceptAuthorisedTicket (mantis:885)
+------------------------------------------------------------------------
+r567 | pstastny | 2012-04-26 19:46:39 +0200 (Čt, 26 dub 2012) | 1 line
+
+Optimized alert Transaction, it was easy, because implementation was reeeaaally dumb (mantis:885)
+------------------------------------------------------------------------
+r565 | pstastny | 2012-04-26 19:00:35 +0200 (Čt, 26 dub 2012) | 1 line
+
+Fixed bad variable name minAmount -> maxAmount (mantis:885)
+------------------------------------------------------------------------
+r563 | pstastny | 2012-04-26 18:49:15 +0200 (Čt, 26 dub 2012) | 1 line
+
+Various optimizations in ticket creation and transactions (mantis:885)
+------------------------------------------------------------------------
+r560 | pstastny | 2012-04-26 17:25:39 +0200 (Čt, 26 dub 2012) | 1 line
+
+Fixed constant use (mantis:885)
+------------------------------------------------------------------------
+r559 | pstastny | 2012-04-26 17:22:12 +0200 (Čt, 26 dub 2012) | 1 line
+
+Fixed constant use (mantis:885)
+------------------------------------------------------------------------
+r552 | pstastny | 2012-04-25 16:42:44 +0200 (St, 25 dub 2012) | 1 line
+
+Optimized campaing parameters handling (mantis:885)
+------------------------------------------------------------------------
+r540 | pstastny | 2012-04-25 10:53:04 +0200 (St, 25 dub 2012) | 1 line
+
+New cache algorithm for ACL (mantis:885)
+------------------------------------------------------------------------
+r539 | pstastny | 2012-04-24 15:58:13 +0200 (Út, 24 dub 2012) | 1 line
+
+Optimized SQL in getEffectiveValue (mantis:885)
+------------------------------------------------------------------------
+r532 | pstastny | 2012-04-24 14:43:32 +0200 (Út, 24 dub 2012) | 1 line
+
+Cached coupon validity (mantis:885)
+------------------------------------------------------------------------
+r464 | pstastny | 2012-04-23 14:38:12 +0200 (Po, 23 dub 2012) | 1 line
+
+Optimization of Zend XML-RPC server initialization (mantis:881)
+------------------------------------------------------------------------
+r429 | pstastny | 2012-04-19 16:36:27 +0200 (Čt, 19 dub 2012) | 1 line
+
+Fixed issue of more day last transactions in one second leading to incorrect balance (mantis:854)
+------------------------------------------------------------------------
+r388 | pstastny | 2012-04-17 15:18:12 +0200 (Út, 17 dub 2012) | 1 line
+
+Fixed pages metadata filter by controller id, fixed default HTML title behavior (mantis:618)
+------------------------------------------------------------------------
+r269 | pstastny | 2012-04-11 17:21:22 +0200 (St, 11 dub 2012) | 1 line
+
+Pages metadata refactored - fixtures (mantis:618)
+------------------------------------------------------------------------
+r162 | pstastny | 2012-04-10 12:16:39 +0200 (Út, 10 dub 2012) | 1 line
+
+Pages metadata refactored (mantis:618)
+------------------------------------------------------------------------
+r63 | pstastny | 2012-04-03 18:44:34 +0200 (Út, 03 dub 2012) | 1 line
+
+Columns validation features (mantis:793)
+------------------------------------------------------------------------
+r59 | pklinger | 2012-04-03 11:35:49 +0200 (Út, 03 dub 2012) | 1 line
+
+Pokus o opravu chybneho ucotvani stornen bodovych tiketu vsazenych na pobocce (mantis:804)
+------------------------------------------------------------------------
+r12 | pstastny | 2012-03-28 11:37:39 +0200 (St, 28 bře 2012) | 1 line
+
+Initial import
+------------------------------------------------------------------------
+r1 | pklinger | 2012-03-22 15:18:22 +0100 (Čt, 22 bře 2012) | 1 line
+
+initial import
+------------------------------------------------------------------------

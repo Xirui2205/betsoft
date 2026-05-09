@@ -2546,23 +2546,6 @@ protected function importOutrightResults(&$import, $dbSport, $dbTournament) {
  * @param It6_Betradar_Category $category
  * @param It6_Betradar_Tournament $tournament Don't set for outright
  */
-public function import1(&$import, &$sport, &$category, &$tournament = null) {
-	if ($this->isOutright)
-		$this->importOutright($import, $sport, $category);
-	else
-		$this->importMatch($import, $sport, $category, $tournament);
-	$tournamentId = ($this->isOutright ? $this->tournamentId : $tournament->brId);
-	/*if (empty($sport->text) ||
-		empty($category->text) ||
-		empty($tournament->text) ||
-		empty($tournamentId)) {
-		mail('it6@seznam.cz', 'Match', 'volani log($logSportName, $logRegionName, $logEventName, $udalost_id) s hodnotami: '
-			. "$sport->text, $category->text, $tournament->text, $tournamentId <br><br> debug_backtrace:"
-		    . json_encode(debug_backtrace()));
-	}*/
-	It6_Models_BetradarImportLog::log($sport->text, $category->text, $tournament->text, $tournamentId);
-}
-
 public function import(&$import, &$sport, &$category, &$tournament = null) {
 	if ($this->isOutright)
 		$this->importOutright($import, $sport, $category);

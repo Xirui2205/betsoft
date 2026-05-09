@@ -18,8 +18,6 @@ if (empty($appEnv)) {
     exit(1);
 }
 
-//$test = in_array('test', $argv);
-
 include(ROOT . 'common/config.php');
 include(ROOT . 'common/includes.inc.php');
 
@@ -52,9 +50,6 @@ foreach ($_jazyky as $_jazyk) {
 * seznam prekladu
 */
 $translateQuery = $db->select()->from("preklady");
-if (isset($_GET['maxId'])) {
-	$translateQuery->where('preklad_id <= ' . $_GET['maxId']);
-}
 $_preklady = $db->fetchAll($translateQuery);
 
 $preklady = array();

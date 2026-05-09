@@ -30,7 +30,7 @@
 									</td>
 
 									<?php if(count($data['usedColumns']) == 3) : $c1 = $data['usedColumns'][0]; $c2 = $data['usedColumns'][1]; $c3 = $data['usedColumns'][2]; ?>
-										<td class="odds" id="b<?=$bet_id?>c<?=$c1?>_lastminute">
+										<td class="text-center" id="b<?=$bet_id?>c<?=$c1?>_lastminute">
 												<?php if($data['sloupec'][$c1]['rate'] != 1) : ?>
 													<a
 														class="kurz"
@@ -43,7 +43,7 @@
 													-
 												<?php endif?>
 										</td>
-										<td class="odds" id="b<?=$bet_id?>c<?=$c2?>_lastminute">
+										<td class="text-center" id="b<?=$bet_id?>c<?=$c2?>_lastminute">
 												<?php if($data['sloupec'][$c2]['rate'] != 1) : ?>
 													<a
 														class="kurz"
@@ -56,7 +56,7 @@
 													-
 												<?php endif?>
 										</td>
-										<td class="odds" id="b<?=$bet_id?>c<?=$c3?>_lastminute">
+										<td class="text-center" id="b<?=$bet_id?>c<?=$c3?>_lastminute">
 												<?php if($data['sloupec'][$c3]['rate'] != 1) : ?>
 													<a
 														class="kurz"
@@ -69,7 +69,7 @@
 												<?php endif?>
 										</td>
 								<?php elseif(count($data['usedColumns']) == 2) : $c1 = $data['usedColumns'][0]; $c2 = $data['usedColumns'][1]; ?>
-										<td class="odds" id="b<?=$bet_id?>c<?=$c1?>_lastminute">
+										<td class="text-center" id="b<?=$bet_id?>c<?=$c1?>_lastminute">
 												<?php if($data['sloupec'][$c1]['rate'] != 1) : ?>
 													<a
 														class="kurz"
@@ -85,7 +85,7 @@
 										<td class="text-center" id="b<?=$bet_id?>cNONE_lastminute">
 											-
 										</td>
-										<td class="odds" id="b<?=$bet_id?>c<?=$c2?>_lastminute">
+										<td class="text-center" id="b<?=$bet_id?>c<?=$c2?>_lastminute">
 												<?php if($data['sloupec'][$c2]['rate'] != 1) : ?>
 													<a
 														class="kurz"

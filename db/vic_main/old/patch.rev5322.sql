@@ -1,0 +1,5 @@
+CREATE TABLE `vic_main`.`coupon_cancel` (
+ `coupon_id` INT(10) UNSIGNED NOT NULL PRIMARY KEY,
+ `admin_id` INT(10) UNSIGNED NOT NULL,
+ `requested_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) Engine=MyISAM;

@@ -1,0 +1,11 @@
+* Directories
+	= DB names
+
+* Files in directories
+	.credentials ... user creation script
+	db.struc.sql ... database structure
+	table.TABLE.data.sql ... data for table TABLE, please, for single inserted row on line use something like: sed 's/),(/),\n(/g'
+
+* Export
+	You can use dbdump.sh script (see inside) for export (will remove and recreate directory of dumped DB!!!), use at your own risk.
+	Files $DBNAME_tables are used by dbdump.sh, contain all tables at time of their creation, only tables listed will be exported during dump.

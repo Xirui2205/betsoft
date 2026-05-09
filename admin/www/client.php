@@ -1,5 +1,5 @@
 <?php
-host    = "127.0.0.1";
+$host    = "127.0.0.1";
 $port    = 25001;
 $message = "Hello Server";
 echo "Message To server :".$message;

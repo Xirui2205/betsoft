@@ -2,6 +2,7 @@
 
 /**
  * Stem dao.
+ * @author Vladimir Holicka
  * @see Webservice_Stem
  *
  */

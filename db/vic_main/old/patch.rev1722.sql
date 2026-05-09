@@ -1,0 +1,1 @@
+ALTER TABLE `vic_main`.`ticket` ADD `cancel_time` DATETIME NULL;

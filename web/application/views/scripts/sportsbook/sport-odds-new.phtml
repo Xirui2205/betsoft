@@ -109,25 +109,20 @@ foreach($this->odds as $sport_id=>$data) {
 							|| $currentCell === $dataOddsCount?>
 							
 					<td class="resultB">
-						<strong><?//=$this->escape($this->Adata['sloupec'][$sl_id]); // ?? ?></strong>
-						<?php
-						// typ sázky
-						if($odds != 1){
-							echo $dataPT["sloupec"][$sl_id];
-						}else{
-							echo '-';
-						}
-						?>
+						<strong><?=$this->escape($this->Adata['sloupec'][$sl_id]); ?></strong>
 					</td>
 					<td id="b<?=$bet_id?>c<?=$sl_id?>" class="rateB">
-						<?php // pouze kurz ?>
+						<?php if($odds != 1) : echo $dataPT["sloupec"][$sl_id];?>
 							<a
 								class="kurz"
 								href="javascript:void(0);"
-								onclick="ticketUpdate(<?=$bet_id .','. $sl_id .',\''. $this->EscapeJs($dataOdds['text'], true, true) .'\',\''. $this->EscapeJs($dataPT["text"], true, true) .'\',\''. $dataPT["sloupec"][$sl_id] .'\',null,'.	$dataOdds['simple']; ?>);"
+								onclick="ticketUpdate(<?=$bet_id .','. $sl_id .',\''. $this->EscapeJs($dataOdds['text'], true, true) .'\',\''. $this->EscapeJs($this->Adata['fullText'], true, true) .'\',\''. $this->Adata['sloupec'][$sl_id] .'\',null,'.	$dataOdds['simple']; ?>);"
 							>
 								<?=$odds?>
 							</a>
+						<?php else : ?>
+							-
+						<?php endif?>
 					</td>
 					
 					<?php 

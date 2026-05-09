@@ -1,5 +1,5 @@
 #!/bin/sh
-cd /var/www/kuchar23-test.vshosting.cz/bewa-core/bimportd
+#cd /var/www/kuchar23-test.vshosting.cz/bewa-core/bimportd
 
 ADMINPATH=$(readlink -f ../files/betradar/import)
 ADMINPATH_QUEUE="$ADMINPATH/queue"

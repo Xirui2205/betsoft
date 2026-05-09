@@ -382,7 +382,8 @@ class Webservice_Transaction extends Webservice_AbstractWebService  {
 		$admindb = static::getAdminDb();
 		$db = static::getMainDb();
 
-		
+		It6_DbTransaction::begin($db);
+		It6_DbTransaction::begin($admindb);
 
 		try {
 
@@ -453,15 +454,14 @@ class Webservice_Transaction extends Webservice_AbstractWebService  {
 
 			$user->balance = $finalBalance;
 
-			//It6_DbTransaction::commit($db);
-			//It6_DbTransaction::commit($admindb);
+			It6_DbTransaction::commit($db);
+			It6_DbTransaction::commit($admindb);
 			
 			return  $finalBalance;
 
 		}
 		else if ( Webservice_TransactionType::ACCOUNT_TYPE_HOST == $accountType ) {
-			It6_DbTransaction::begin($db);
-			It6_DbTransaction::begin($admindb);
+
 			if ( $transaction->value < 0 && !Webservice_Host::isOutAllowed($transaction->hostId)  )
 				throw new Exception("Out transactions are disabled for this host.");
 

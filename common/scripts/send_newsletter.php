@@ -44,7 +44,7 @@ $uzivatel = $db->select()
 ->from('vic_main.uzivatel')
 ->joinLeft(array('uo' => 'vic_main.uzivatel_osloveni'),
                  'uo.jmeno = uzivatel.jmeno')
-->where("anonymous = 0") //AND email = 'info@betservice.eu' OR email = 'josef.tamok@compbet.com'")
+->where("anonymous = 0") //AND email = 'tomas.polz@betservice.eu' OR email = 'josef.tamok@compbet.com'")
 ->where("datum_aktivace IS NULL")
 ->query()
 ->fetchAll();     

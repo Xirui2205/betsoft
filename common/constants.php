@@ -114,5 +114,4 @@ if(!defined ('MIN_BALANCE')) define('MIN_BALANCE',-999999999.99);
 if (!defined('RISK_LIMIT')) define('RISK_LIMIT', 0); // value? (legacy, found in class.XMLImportServer.php)
 
 /* GFX */
-//if (!defined('GFX_SERVER')) define('GFX_SERVER', "//img.test.compbet.com/");
-if (!defined('GFX_SERVER')) define('GFX_SERVER', "/images/gallery/");
+if (!defined('GFX_SERVER')) define('GFX_SERVER', "http://img.test.compbet.com/");

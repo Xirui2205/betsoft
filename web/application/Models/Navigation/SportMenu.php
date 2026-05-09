@@ -468,14 +468,10 @@ final class Models_Navigation_SportMenu extends Models_Navigation_MenuAbstract{
 		->where('t.zobrazeno=?',1)
 		->where('u.platne_od<=?',$now)
 		->where('u.platne_do>=?',$now);
-                
-		$timeWhere = Models_Markets_MarketData::getTodayToomorowTimeInterval($timeFilter);
-		$select = $select->where($timeWhere);
 
-		//$select = $select->where($query);
-                
+		$select = $select->where($query);
+
 		$row  = $select->query()->fetch();
-                
 		return $row['count'];
 	}
 

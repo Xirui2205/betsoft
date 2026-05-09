@@ -1,0 +1,1 @@
+INSERT INTO `vic_admin`.`parameter` (`id`, `name`, `value`, `is_host`, `is_branch`, `is_user`, `type`, `mandatory`, `is_admin`, `is_editable`, `description`) VALUES (NULL, 'provider.registration.to', 'bohal@compbet.com', '0', '0', '0', NULL, '1', '0', '1', 'Email address where the branch provider egistration form will be emailed to.');

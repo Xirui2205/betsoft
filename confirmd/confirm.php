@@ -5,8 +5,6 @@ date_default_timezone_set('Europe/Prague');
 
 define('ROOT', dirname(dirname(__FILE__)) . '/');
 
-
-
 require_once(ROOT . 'confirmd/config_local.php');
 include(ROOT.'common/includes.inc.php');
 require_once(ROOT . 'common/config.php');

@@ -294,20 +294,6 @@ class Models_Markets_MarketData{
 	 * @return array
 	 */
 	private static function loadMarkets($dateOrder, $timeFilter, $detailView = FALSE){
-		
-		if (!$timeFilter) {
-			if (strpos($_SERVER["HTTP_REFERER"],'today=1') !== false) {
-				$timeFilter = self::TIME_FILTER_TODAY; //11
-			}
-			if (strpos($_SERVER["HTTP_REFERER"],'tomorow=1') !== false) {
-				$timeFilter = self::TIME_FILTER_TOMOROW; //3
-			}
-			if (strpos($_SERVER["HTTP_REFERER"],'todayAndTomorow=1') !== false) {
-				$timeFilter = self::TIME_FILTER_TODAY_AND_TOMOROW; //2
-			}			
-		}
-		//echo "<br/>timefilter:".$timeFilter."<br/>";
-
 		$now = It6_Date::dbNow();
 		$db = Zend_Registry::get('db');
 		try{
@@ -363,9 +349,8 @@ class Models_Markets_MarketData{
 						)
 					->where('sz.live=0')
 					->where('sz.status=0')
+					->where('sz.platna_od<=?',$now )
 					->where('sz.platna_do >= ?',$now)
-					->where('sz.platna_od <=?', $now )
-
 					->where('sz.risk_limit > sz.risk_limit_balance')
 					->where('u.platne_od<=?',$now)
 					->where('u.platne_do>=?',$now )
@@ -426,7 +411,8 @@ class Models_Markets_MarketData{
 
 				if (self::$isAjax && !$detailView)
 					$select->limit(1, $page);
-                                $query = $select->query();
+				$query = $select->query();
+
 
 				$events = array();
 				if ($event = $query->fetch()) {
@@ -554,7 +540,7 @@ class Models_Markets_MarketData{
 						->where('sz.live=0')
 						->where('sz.status=0')
 						->where('sz.platna_od<=?',$now )
-						->where('sz.platna_do >= ?',$now)							
+						->where('sz.platna_do >= ?',$now)
 						->where('sz.risk_limit > sz.risk_limit_balance')
 						->where('u.platne_od<=?',$now)
 						->where('u.platne_do>=?',$now)
@@ -600,11 +586,6 @@ class Models_Markets_MarketData{
 					}
 					$selectFirstTry = $select->where('tu.is_binded = 1');
 					
-					//$timeWhere = self::getTodayToomorowTimeInterval($timeFilter);
-					//$select = $select->where($timeWhere);
-					
-					//echo "<br/>".$timeFilter."-".$select."<br/>";
-
 					$rows2 = $select->query()->fetchAll();
 
 					if (!empty($rows2))
@@ -642,6 +623,9 @@ class Models_Markets_MarketData{
 			}
 			unset($dateCache);
 			$dict = It6_Models_Translator::translate(array_keys($dict), $_SESSION['lang_id'], $db);
+
+			Zend_Registry::get('fl')->info("rows:");		 
+			Zend_Registry::get('fl')->info($rows);		 
 
 			foreach ($rows as &$event) {
 				$event['snazev'] = $dict[$event['snazev']];
@@ -875,10 +859,9 @@ class Models_Markets_MarketData{
 	 * @return array
 	 */
 	public static function getTypes($timeFilter = null){
-		
-                $now = It6_Date::dbNow();
+		$now = It6_Date::dbNow();
+
 		try{
-                    
 			$frontendOptions = array(
 				'lifetime' => MARKETS_CACHE_LIFETIME, // cache lifetime of 2 hours
 				'automatic_serialization' => true
@@ -903,8 +886,8 @@ class Models_Markets_MarketData{
 				->join(array('tu'=>'typ_udalost'),'tu.typ_id=t.typ_id and tu.udalost_id=u.udalost_id')
 				->where('sz.live=?',0)
 				->where('sz.status=?',0)
-				->where('sz.platna_od<=?',$now)
-				->where('sz.platna_do>=?', $now)
+				->where('sz.platna_od<=?',$now )
+				->where('sz.platna_do>=?',$now )
 				->where('sz.risk_limit > sz.risk_limit_balance')
 				->where('tu.is_binded=1')
 				->group('t.typ_id')
@@ -926,11 +909,8 @@ class Models_Markets_MarketData{
 					$select =  $select->where('o.oblast_id=?',self::$openUrl['oblast']);
 				if(self::$openUrl['udalost'] != 0 && ctype_digit(self::$openUrl['udalost']))
 					$select =  $select->where('u.udalost_id=?',self::$openUrl['udalost']);
-                                
-                                //echo  $select; exit; 
-                                
-                                // which gives exact mysql query.
-                                $row  = $select->query()->fetchAll();
+
+				$row  = $select->query()->fetchAll();
 				//$cache->save($row, 'type_'.$_SESSION['lang_id'].self::$cacheString);
 			//}
 		}
@@ -1073,85 +1053,59 @@ ORDER BY sz.typ_id ASC, sz.platna_do ASC, sz.sazka_id DESC, k.poradi"
 	 * @return string The sql code to be used in a where staement 
 	 */
 	public static function getTodayToomorowTimeInterval($timeFilter) {
-		$start = date("Y-m-d H:i:s",time());
+		$start = time();
 		
 		$dbEndDayTime = Zend_Registry::get('ws')->Parameter->getGlobalparameter('offer.today.timeFrame.end');
 		$dbEndDayTimeArr = explode(':', $dbEndDayTime);
 		if (empty($dbEndDayTimeArr[1])) $dbEndDayTimeArr[1] = '00';
 		if (empty($dbEndDayTimeArr[2])) $dbEndDayTimeArr[2] = '00';
-			
-		if (strpos($_SERVER["HTTP_REFERER"],'?all') !== false) {
-			$timeWhere = "sz.platna_do >= '$start'";
-			return $timeWhere;
-		}
-		if (strpos($_SERVER["HTTP_REFERER"],'today=1') !== false) {
-			$timeFilter = self::TIME_FILTER_TODAY; //11
-		}
-		if (strpos($_SERVER["HTTP_REFERER"],'tomorow=1') !== false) {
-			$timeFilter = self::TIME_FILTER_TOMOROW; //3
-		}
-		if (strpos($_SERVER["HTTP_REFERER"],'todayAndTomorow=1') !== false) {
-			$timeFilter = self::TIME_FILTER_TODAY_AND_TOMOROW; //2
-		}
-
+		
 		switch ($timeFilter) {
 			case static::TIME_FILTER_ONLY_TODAY:
-			case static::TIME_FILTER_TODAY: // 11
-				$start = date("Y-m-d H:i:s",time());
-				$end = date("Y-m-d H:i:s",mktime(
-								 $dbEndDayTimeArr[0],
-								 $dbEndDayTimeArr[1],
-								 $dbEndDayTimeArr[2],
-								 date('m', strtotime($start)),
-								 date('d', strtotime($start))+1,
-								 date('Y', strtotime($start))));
+			case static::TIME_FILTER_TODAY:
+				$endDayOffset = 0;
+				$startDayOffset = 0;
 				break;
-			case static::TIME_FILTER_TOMOROW: // 3
-				$start = date("Y-m-d H:i:s",mktime(0,
-												   0,
-								                   0,
-								                   date('m', time()),
-								                   date('d', time())+1,
-								                   date('Y', time())));
-				//$start = strtotime($start);
-
-				$end = date("Y-m-d H:i:s",mktime(
-								 $dbEndDayTimeArr[0],
-								 $dbEndDayTimeArr[1],
-								 $dbEndDayTimeArr[2],
-								 date('m', strtotime($start)),
-								 date('d', strtotime($start))+1,
-								 date('Y', strtotime($start))));
+				
+			case static::TIME_FILTER_TOMOROW:
+				$startDayOffset = 0;
+				$endDayOffset = 1;
 				break;
 			case static::TIME_FILTER_TODAY_AND_TOMOROW:
-				$start = date("Y-m-d H:i:s",time());
-				$end = date("Y-m-d H:i:s",mktime(
-								 $dbEndDayTimeArr[0],
-								 $dbEndDayTimeArr[1],
-								 $dbEndDayTimeArr[2],
-								 date('m', strtotime($start)),
-								 date('d', strtotime($start))+2,
-								 date('Y', strtotime($start))));
+				$endDayOffset = 1;
+				$startDayOffset = 0;
 				break;
+				
 			case static::TIME_FILTER_DAY_AFTER_TOMOROW:
-				$start = date("Y-m-d H:i:s",time());
-				$end = date("Y-m-d H:i:s",mktime(
-								 $dbEndDayTimeArr[0],
-								 $dbEndDayTimeArr[1],
-								 $dbEndDayTimeArr[2],
-								 date('m', strtotime($start)),
-								 date('d', strtotime($start))+1,
-								 date('Y', strtotime($start))));
+				$endDayOffset = 2;
+				$startDayOffset = 1;
 				break;
 		}
 
-//echo "<br/>TT:".$timeFilter."<br/>";
-//echo "start:".date("Y-m-d H:i:s", $start);			
-//echo "start:".$start;
-//echo "end:".$end;
+		$endTimeOffset = $dbEndDayTimeArr[0] * 3600 + $dbEndDayTimeArr[1] * 60 + $dbEndDayTimeArr[2];
+
+		$tm = localtime(time(), true);
+		$end = mktime(23, 59, 59 + $endTimeOffset, $tm['tm_mon'] + 1, $tm['tm_mday'] + $endDayOffset, $tm['tm_year'] + 1900);
+		$end = It6_Date::timestampToDb($end);
+		
+		if (static::TIME_FILTER_TOMOROW == $timeFilter || static::TIME_FILTER_DAY_AFTER_TOMOROW == $timeFilter) {
+			$dbStartDateTime = It6_Date::dbNowAsDate(($startDayOffset + 1) * 24 *3600).' '.$dbEndDayTimeArr[0].':'.$dbEndDayTimeArr[1].':'.$dbEndDayTimeArr[2];
+			$startDayTime = It6_Date::fromDbAsTime($dbStartDateTime);
+			$startDayTimeArr = explode(':', $startDayTime);
+			$startTimeOffset = $startDayTimeArr[0] * 3600 + $startDayTimeArr[1] * 60 + $startDayTimeArr[2];
+
+			$start = mktime(
+					23,
+					59,
+					59	 + $startTimeOffset,
+					$tm['tm_mon'] + 1,
+					$tm['tm_mday'] +$startDayOffset ,
+					$tm['tm_year'] + 1900
+			);
+			$start = It6_Date::timestampToDb($start);
+		}
 	
 		$timeWhere = "sz.platna_do BETWEEN '$start' AND '$end'";
-//echo "<br/>***".$timeWhere."***<br/>";
 
 		return $timeWhere;
 	}

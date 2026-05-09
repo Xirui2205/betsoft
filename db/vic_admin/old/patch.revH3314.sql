@@ -1,0 +1,5 @@
+START TRANSACTION;
+
+ALTER TABLE `stem` ADD `filename` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_czech_ci NULL DEFAULT NULL;
+
+commit;

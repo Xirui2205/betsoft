@@ -1,0 +1,9 @@
+0000000000000000000000000000000000000000 16d7e7c4d7c4ab0bc325bcbfd8fc51685f594084 developer_bewa <josef.tamok@gmail.com> 1413318158 +0200	
+16d7e7c4d7c4ab0bc325bcbfd8fc51685f594084 ea6e03449617b7cbc11f4edc1696102af29f2bf9 developer_bewa <josef.tamok@gmail.com> 1413545559 +0200	merge refs/remotes/origin/master: Fast-forward
+ea6e03449617b7cbc11f4edc1696102af29f2bf9 60a7cecdffc1e6eee22fce9770c283e7ed7727e9 developer_bewa <josef.tamok@gmail.com> 1414057158 +0200	commit: oprava .htaccess
+60a7cecdffc1e6eee22fce9770c283e7ed7727e9 5263b3065503795833c30a2cc44dee6cd6a4b154 developer_bewa <josef.tamok@gmail.com> 1414178428 +0200	commit: nezobrazení sekce pobočky
+5263b3065503795833c30a2cc44dee6cd6a4b154 f63898b5336e65b5f70843c79ba9b87b41aaf6c8 developer_bewa <josef.tamok@gmail.com> 1415009623 +0100	merge refs/remotes/origin/master: Fast-forward
+f63898b5336e65b5f70843c79ba9b87b41aaf6c8 ac5f0d25f3044603c2d24d73caeb20959db97d44 developer_bewa <josef.tamok@gmail.com> 1415020002 +0100	commit: vypnuti scrolováni na stránce
+ac5f0d25f3044603c2d24d73caeb20959db97d44 21cc407e4226ad5d1a5c19b1e8fabf65254d6b77 developer_bewa <josef.tamok@gmail.com> 1415179776 +0100	merge refs/remotes/origin/master: Fast-forward
+21cc407e4226ad5d1a5c19b1e8fabf65254d6b77 b2b1222be6ac752f4b5ddb39f576796855dace73 developer_bewa <josef.tamok@gmail.com> 1415179889 +0100	merge refs/heads/Redesign2014: Fast-forward
+b2b1222be6ac752f4b5ddb39f576796855dace73 ccd7205904a637c15937d4142e02ad1d51497bac Xirui2205 <cyril.regner@icloud.com> 1778305352 +0800	pull: fast-forward

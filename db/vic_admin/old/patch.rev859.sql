@@ -1,0 +1,1 @@
+ALTER TABLE `sekce` ADD `action` VARCHAR(64) NULL DEFAULT NULL AFTER `controller`;

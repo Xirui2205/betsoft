@@ -1,0 +1,12 @@
+UPDATE sekce SET parent_id = 160 WHERE sekce_id IN (80,82,98);
+UPDATE `vic_admin`.`sekce` SET `zobrazeno` = '0' WHERE `sekce`.`sekce_id` =127;
+UPDATE `vic_admin`.`sekce` SET `zobrazeno` = '0' WHERE `sekce`.`sekce_id` =130;
+UPDATE `vic_admin`.`sekce` SET `zobrazeno` = '0' WHERE `sekce`.`sekce_id` =132;
+UPDATE `vic_admin`.`sekce` SET `zobrazeno` = '0' WHERE `sekce`.`sekce_id` =128;
+UPDATE `vic_admin`.`sekce` SET `zobrazeno` = '0' WHERE `sekce`.`sekce_id` =129;
+UPDATE `vic_admin`.`sekce` SET `nazev` = 'Branch (NEW)' WHERE `sekce`.`sekce_id` =159;
+UPDATE `vic_admin`.`sekce` SET `parent_id` = '2' WHERE `sekce`.`sekce_id` =77;
+UPDATE `vic_admin`.`sekce` SET `zobrazeno` = '0' WHERE `sekce`.`sekce_id` =47;
+UPDATE `vic_admin`.`sekce` SET `parent_id` = '1' WHERE `sekce`.`sekce_id` =133;
+UPDATE `vic_admin`.`sekce` SET `parent_id` = '133' WHERE `sekce`.`sekce_id` =214;
+UPDATE `vic_admin`.`sekce` SET `parent_id` = '133' WHERE `sekce`.`sekce_id` =218;

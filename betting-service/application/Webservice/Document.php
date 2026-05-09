@@ -1,6 +1,7 @@
 <?php
 /**
  * Stem related static methods.
+ * @author Tomas Polz
  * @see Entities_Newspapers
  */
 class Webservice_Document extends Webservice_AbstractWebService  {

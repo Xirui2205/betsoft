@@ -1,6 +1,7 @@
 <?php
 /**
  * Affiliate partners webervice.
+ * @author Jiri Ulbrich
  */
 class Webservice_AffiliatePartner extends Webservice_AbstractWebService  {
 

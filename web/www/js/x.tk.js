@@ -613,12 +613,10 @@ TTCupon.prototype.SendData = function(t){
 	if (!error) {
 		//$('#ticket_data_sender').attr('value', this.words['okf10']); // button value
 		$('#ticket_data_sender').text(this.words['okf10']); // změna na <a> podle nové šablony
-    tick.confirming = false;
 		confirmTicket(this.getCouponData(true), 1);
 	}
-	else{
-		$('#ticket_content :input').removeAttr('disabled');
-	}
+	else
+		$('#ticket_content :input').attr('disabled', '');
 
 	return false;
 };

@@ -1,0 +1,1 @@
+ALTER TABLE `finacni_transakce` CHANGE `castka` `castka` DECIMAL( 11, 2 ) NOT NULL DEFAULT '0.00'

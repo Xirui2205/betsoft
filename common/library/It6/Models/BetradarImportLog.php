@@ -66,9 +66,6 @@ public static function init($timestamp) {
  */
 public static function log($sport, $region, $event, $brTournamentId) {
 	static::$_logs[$sport][$region][$event][intval($brTournamentId)] = true;
-	if(empty($sport) || empty($region) || empty($event)){
-		It6_Log::notice('Empty sport, region or event in It6_Models_BetradarImportLog::log.',It6_Log::TAG_ADMIN_OPERATION);
-	}
 }
 
 /**

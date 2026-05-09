@@ -2963,13 +2963,6 @@ public function readBetColumnNames(&$db = null) {
 
 public function readBetSportEvents(&$db = null) {
 	$betIds = $this->getBetIds();
-	
-	if (empty($betIds)) {
-		// ošetření chyby na detailu tiketu
-		// v případě, že sázky byly promazány (typicky na localhostu)
-		return;
-	}
-	
 	static::assureDbParam($db);
 	$rows = $db->select()
 		->from(array('sz' => 'sazky'), array('betId' => 'sazka_id'))

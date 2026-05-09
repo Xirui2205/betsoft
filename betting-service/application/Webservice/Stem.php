@@ -2,6 +2,7 @@
 
 /**
  * Stem related static methods.
+ * @author Vladimir Holicka
  * @see Entities_Stem
  */
 class Webservice_Stem extends Webservice_AbstractWebService  {

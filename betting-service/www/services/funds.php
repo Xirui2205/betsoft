@@ -96,8 +96,8 @@ public function fundHost($hosts) {
                     "typeName" => ($host["amount"] > 0) ? "branch.deposit" : "branch.withdraw",
                     "currencyId" => 8,//CZK             
                     "hostId" => $host["hostId"],
-                    "createAdminId" => 223, 
-                    "confirmAdminId" => 223 
+                    "createAdminId" => 223, //tpolz
+                    "confirmAdminId" => 223 //tpolz
                 );
 
             $ws = Zend_Registry::get('ws');

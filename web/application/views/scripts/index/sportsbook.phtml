@@ -1,4 +1,5 @@
 <?php
+//Zend_Registry::get('fl')->info("home");
 
 // todo: nastavit sloupce v kontroleru metodou leftAndRightColAndNews(),
 //       tuto šablonu redukovat a testovat
@@ -75,12 +76,11 @@
 							<?php } ?>
 						</ol>
 
-					<?php //if (empty($this->bannersRight)) : ?>
+					<?php if (!empty($this->bannersRight)) : ?>
 							<div class="carousel-inner">
 						
 						<?php 
 						$activeBanner=1; 
-
 						foreach ($this->promo as $promo) {
 							// text alignment
 							$textAlignment = "";
@@ -144,7 +144,7 @@
 								</div>
 						<?php } // foreach ($this->promo as $promo) ?>
 							</div>
-					<?php //endif?>
+					<?php endif?>
 					</div>
 
 					<script type="text/javascript">
@@ -154,20 +154,11 @@
 							$('#tab-top-last').load('<?= $this->urlSet(81) ?>');
 							$('#supertipTab').load('<?= $this->urlSet(110) ?>');
 						});
-						
-						var myVar = setInterval(function(){ liveTimer() }, 5000);
- 
-						function liveTimer() {
-							if ( $('li.menu').hasClass('active') ) {
-								$('#tab-top-live').load('<?= $this->urlSet(72) ?>');
-							}
-						}
-
 					</script>
 		
 					<h2 class="boxheader">Top Betting Odds</h2>
 					<ul class="nav nav-tabs" role="tablist">
-						<li class="menu active"><a href="#tab-top-live" role="tab" data-toggle="tab">Live bets</a></li>
+						<li class="active"><a href="#tab-top-live" role="tab" data-toggle="tab">Live bets</a></li>
 						<li><a id="#tab-top-last" href="#tab-top-last" role="tab" data-toggle="tab"><?=$this->trans('last'); ?></a></li>
 						<li><a id="#tab-top-best" href="#tab-top-best" role="tab" data-toggle="tab"><?=$this->trans('terno'); ?></a></li>
 						<li><a id="#supertipTab" href="#supertipTab" role="tab" data-toggle="tab">Best Odds</a></li>
