@@ -1,0 +1,23 @@
+<span id="languageSelector">
+	<a id="currentLang" class="flag f-<?=$this->Lang('currentFlagId') ?>"
+		href="#" onclick="javascript: $('#languageSelector ul').toggle(); return false;">
+		<span><?=$this->Lang('currentText'); ?></span>
+	</a>
+	<a class="txt" href="#" onclick="javascript: $('#languageSelector ul').toggle(); return false;">
+		<img src="/images/darr.png" alt="&darr;"/>
+	</a>
+	<ul>
+		<?php $i = 0; ?>
+		<?php foreach ($this->Lang('all') as $iso => $lang): ?>
+			<li>
+				<a
+					class="flag f-<?=$lang['flag_oblast_id']; ?>" 
+					href="/<?=$iso?>/"
+					title="<?=$lang['text']?>">
+					&nbsp;
+				</a>
+			</li>
+			<?php $i++; ?>
+		<?php endforeach; ?>
+	</ul>
+</span>

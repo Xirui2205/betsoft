@@ -1,0 +1,40 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+		<tr class="<?=($row["affiliateProvisionPaidOut"] == 'ano') ? 'ticket-loss': 'ticket-win'?>">
+			<?php foreach($this->layout()->columns as $column) : ?>
+				<td class="trt">
+					<?php if ($column[0] != 'ticket_status') : ?>
+						<?=(is_string($row[$column[1]])) ? i18n::tr($row[$column[1]]) : $row[$column[1]]?>
+					<?php else : ?>
+						<strong>
+							<?php if (!empty($row['paidOut'])) : ?>
+								<?php if (!empty($row['collectionTime'])) : ?>
+									<?=I18n::tr('ticket_status_collected')?>
+								<?php elseif ($row['isLoss']) : ?>
+									<?=I18n::tr('ticket_status_loss')?>
+								<?php else : ?>
+									<?=I18n::tr('ticket_status_winning')?>
+								<?php endif?>
+							<?php elseif ($row['canceled']) : ?>
+								<?=I18n::tr('ticket_status_canceled')?>
+							<?php else : ?>
+								<?=I18n::tr('Not paid out')?>
+							<?php endif?>
+							<?=!empty($row['forfeit']) ? '(Výhra propadla '.$row['forfeit'].')' : ''?>
+						</strong>
+					<?php endif?>
+				</td>
+			<?php endforeach?>
+		</tr>
+	<?php endforeach?>
+	<tr></tr>
+	<tr>
+		<td class="summary trt" colspan="5"><b>Celkový součet:</b></td>
+		<td class="summary trt"><b><?=number_format($this->totalAmount, 2, '.', ' ')?></b></td>
+		<td class="summary trt">&nbsp;</td>
+		<td class="summary trt"><b><?=number_format($this->totalWin, 2, '.', ' ')?></b></td>
+		<td class="summary trt"><b><?=number_format($this->provision, 2, '.', ' ')?></b></td>
+		<td class="summary trt">&nbsp;</td>
+		<td class="summary trt">&nbsp;</td>
+	</tr>
+</tbody>

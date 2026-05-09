@@ -1,0 +1,102 @@
+<?php $i = 0; ?>
+<?php $mainBets = array(); ?>
+<tr>
+	<td><input id="allChecker" type="checkbox" onclick="checkAllCombs(this,<?=preg_replace('/^sazka\\[([0-9]+)\\]\\[kombinace_jine\\]/','\\1',$_REQUEST['opener'])?>);" /><?=$this->trans('select_all')?></td>
+	<td colspan="9"></td>
+</tr>
+<?php foreach ($this->layout()->data as $bet) : ?>
+<?php $i++;?>
+<?php if (in_array($bet['typeId'],$this->typesToShow)) : ?>
+	<tr class="noBg">
+		<?php $mainBets[] = $i  ?>
+		<td style="width:60px">
+				<input type="hidden" id="bet_show_<?=$i?>" value="1" />
+				<input type="checkbox" class="checker" id="c<?=$i?>" name="c<?=$i?>" onclick="setBetsAndCombs(<?=$i?>,<?=preg_replace('/^sazka\\[([0-9]+)\\]\\[kombinace_jine\\]/','\\1',$_REQUEST['opener'])?>);" />
+				<button onclick="
+					javascript:window.opener.document.getElementById('<?=$this->opener?>').value+='<?=$bet['betId']?>;';
+					return false;
+					">&laquo;</button>
+		</td>
+<?php else : ?>
+	<tr style="display:none">
+		<input type="hidden" id="bet_show_<?=$i?>" value="0" />
+		<td></td>
+<?php endif; ?>
+	<td class="border-left <?=$bet['alias']?>" style="width:20px" id="bet_id_<?=$i?>"><?=$bet['betId']?></td>
+	<td class="border-left" style="width:20px" id="bet_alias_<?=$i?>"><?=$bet['alias']?></td>
+	<td class="border-left" id="bet_<?=$i?>"><?=$bet['name']?></td>
+	<td class="border-left" id="bet_to_<?=$i?>"><?=It6_Date::fromDb($bet['validToTime'])?></td>
+	<td class="border-left" style="width:20px"><?=$this->typesTranslation[$bet['typeId']]?></td>
+	<td class="border-left" style="display:none;width:20px" id="bet_parent_<?=$i?>"><?=$bet['parentId']?></td>
+</tr>
+<?php endforeach; ?>
+
+<input type="hidden" name="opt_par" value="<?=$this->opt_par?>" />
+<input type="hidden" name="event_id" value="<?=$this->event_id?>" />
+<script type="text/javascript">
+	var mainBets = [<?=implode(',',$mainBets)?>];
+	var countPerPage = <?=$this->opt_par?>;
+	
+	function checkAllCombs(obj, sazka_index) {
+		$('.checker').attr('checked',obj.checked);
+		for (var j=0; j<=mainBets.length; j++) {
+			//alert(mainBets[j]);
+			setBetsAndCombs(mainBets[j],sazka_index);
+		}
+	}
+	
+	function setBetsAndCombs(betId, sazka_index) {
+		var max = countPerPage;
+		var combs = new Array();
+		var combsAdd = new Array();
+		var combsList = new Array();
+		var combsDel = new Array();
+		var id = 0;
+		
+		for (var j=0; j<mainBets.length; j++) {
+			id = mainBets[j];
+			if ($('#c'+id).is(':checked')==true) {
+				combsAdd.push(id);
+			} else 
+				combsDel.push(id);
+		}
+
+		for (i=1;i<=max;i++) {
+			if ( sazka_index == undefined )
+				si = i;
+			else
+				si = sazka_index;
+			var betText = '#sazka\\[' + si + '\\]\\[text\\]';
+			/*var betValidFrom = '#sazka\\[' + i + '\\]\\[platna_od\\]';*/
+			var betValidTo = '#sazka\\[' + si + '\\]\\[platna_do\\]';
+			var betCombs = '#sazka\\[' + si + '\\]\\[kombinace_jine\\]';
+			var betParent = '#sazka\\[' + si + '\\]\\[bet_parent_id\\]';
+
+			if (combsAdd.indexOf(combsAdd[i-1])==i-1) {
+				window.opener.$(betText).val($('#bet_'+combsAdd[i-1]).text());
+				/*window.opener.$(betValidFrom).val($('#bet_from_'+combsAdd[i-1]).text());*/
+				window.opener.$(betValidTo).val($('#bet_to_'+combsAdd[i-1]).text());
+
+				if ($('#bet_parent_'+combsAdd[i-1]).val() == 0)
+					window.opener.$(betParent).val($('#bet_id_'+combsAdd[i-1]).text());
+				var alias = $('#bet_alias_'+combsAdd[i-1]).text();
+				if (0 < alias.length)
+					$("." + alias).each(function(index) { combs.push($(this).text()); });
+				window.opener.$(betCombs).val(combs.join(';'));
+				var combs = new Array();
+			}
+			
+			else {
+				if (combsDel.indexOf(combsDel[i-1])==i-1 && sazka_index == undefined) {
+					window.opener.$(betText).val('');
+					/*window.opener.$(betValidFrom).val('');*/
+					window.opener.$(betValidTo).val('');
+					window.opener.$(betCombs).val('');
+					window.opener.$(betParent).val('');
+				}
+			}
+
+
+		}
+	}
+</script>

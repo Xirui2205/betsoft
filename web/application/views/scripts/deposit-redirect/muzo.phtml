@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Vitoria-Tip - redirect to gate of online payment system</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="<?= JQUERY_URI ?>" type="text/javascript"></script>
+</head>
+<body>
+  <?php if (!empty($this->error)): ?>
+    <div><?= $this->error ?></div>
+  <?php else: ?>
+    <form id="theForm" action="<?= htmlspecialchars($this->formAction) ?>" method="post" enctype="application/x-www-form-urlencoded">
+      <?php foreach ($this->params as $name => $value): ?>
+      <input type="hidden" name="<?= htmlspecialchars($name) ?>" value="<?= htmlspecialchars($value) ?>" />
+      <?php endforeach; ?>
+      <input type="submit" />
+    </form>
+    <script type="text/javascript"> $(document).ready(function() { $('#theForm').submit(); });</script>
+  <?php endif; ?>
+</body>
+</html>

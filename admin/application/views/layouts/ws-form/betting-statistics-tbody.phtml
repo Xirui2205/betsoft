@@ -1,0 +1,33 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+		<tr>
+			<td>
+				<!-- <input type="checkbox" class="row-selector" value="<?//=$row['betId']?>" name="selectedItems[]" /> -->
+				<!-- <input type="button" onClick="viewBetStatDetail(<?//=$row['betId']?>)" class="sbutton" value="<?//=i18n::tr('view')?>" /> -->
+				<a class="stat tip" title="" name="<?=$row['betId']?>"><div>&nbsp;</div></a>
+			</td>
+			<td>
+				<input type="button" 
+					onClick="toggleBetStatDetail('<?=$row['betId']?>', '<?=$this->viewSectionId?>', 'betDetail_<?php ?><?=$row['betId']?>')" class="sbutton" 
+					value="<?=i18n::tr('charts')?>" />
+			</td>
+			<?php foreach($this->layout()->columns as $column) : ?>
+				<?php if(!empty($column[1])) : ?>
+					<td>
+						<?php if (!empty($row[$column[1]])) : ?>
+							<?php if (is_numeric($column[1])) : ?>
+								<?=$row[$column[1]][0]?>
+								<a class="stat" onClick="javascript:toggleBetStatDetail('<?=$row[$column[1]][1]?>', '<?=$this->viewCurrentSectionId?>', 'betDetail_<?=$row['betId']?>')">
+									<div>&nbsp;</div>
+								</a>
+							<?php else : ?>
+								<?=$row[$column[1]]?>
+							<?php endif?>
+						<?php endif?>
+					</td>
+				<?php endif?>
+			<?php endforeach?>
+		</tr>
+		<tr><td colspan="15" class="bet-detail" id="betDetail_<?=$row['betId']?>" style="display:none">&nbsp;</td></tr>
+	<?php endforeach?>
+</tbody>

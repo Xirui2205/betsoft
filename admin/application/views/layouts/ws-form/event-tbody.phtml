@@ -1,0 +1,90 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+	    <?php 
+	    $_style = '';
+    	if ($row['navigationVisible'] != 1) {
+	   		$_style = 'class="red"';	    		
+		} else {
+		    if ($row['validToTime'] <= It6_Date::dbNow()) {
+	    		$_style = 'style="background-color:#990066; color:#fff;"';
+	    	}
+		}
+	    ?>
+
+
+		<tr <?php //($row['navigationVisible'] == 1 ? '' : 'class="red"')?> <?= $_style ?> >
+			<td>
+				<input 
+					name="select[]" 
+					value="<?=$row['eventId']?>" type="checkbox"
+					class="row-selector" />
+			</td>
+			<td>
+				<input
+					type="button"
+					onClick="viewEventDetail(<?=intval($row['eventId'])?>)"
+					value="<?=$this->trans('detail')?>"
+					class="sbutton"
+				/>
+			</td>
+			<td>
+				<input
+					type="submit"
+					name="delete[<?=$row['eventId']?>]"
+					value="<?=$this->trans('delete')?>"
+					class="sbutton"
+					onClick="return confirm('<?=I18n::tr('confirm_delete')?>')"
+				/>
+			</td>
+			<td>
+				<input
+					type="submit"
+					name="<?=($row['navigationVisible'] == '1' ? "hide" : "show")?>[<?=$row['eventId']?>]"
+					value="<?=($row['navigationVisible'] == '1' ? $this->trans("hide") : $this->trans("show"))?>"
+					class="sbutton"
+				/>
+			</td>
+			<td><?=$row['regionName']?></td>
+			<td><?=$row['name']?></td>
+			<td><?=$row['betradarId']?></td>
+			<td><?=$row['betAliasFrom']?></td>
+			<td><?=$row['betAliasTo']?></td>
+			<td><?=$row['navigationVisible']?></td>
+			<td><?=It6_Date::fromDb($row['validFromTime'])?></td>
+			<td><?=It6_Date::fromDb($row['validToTime'])?></td>
+			<td><?=$row['betradarTimeOffset']?></td>
+			<td><?=$row['sportName']?></td>
+			<td>
+				<input
+					id="change_navigationOrder_<?=$row['eventId']?>"
+					class="change-order-input-<?=$row['eventId']?> change-order-input"
+					size="4"
+					type="text"
+					value="<?=$row['navigationOrder']?>"
+					onclick="window.open('<?=HOST?>?section=300&sportId=<?=$row['sportId']?>&eventValueCol=navigationOrder&eventId=<?=$row['eventId']?>&submitButton=changeOrderSubmit_<?=$row['eventId']?>', 'event selector', 'height=150px, width=600px, menubar=no, locatiobar=no')"
+				/>
+			</td>
+			<td>
+				<input
+					id="change_navigationOrderOffergen_<?=$row['eventId']?>"
+					class="change-order-input-<?=$row['eventId']?> change-order-input"
+					size="4"
+					type="text"
+					value="<?=$row['navigationOrderOffergen']?>"
+					onclick="window.open('<?=HOST?>?section=300&sportId=<?=$row['sportId']?>&eventValueCol=navigationOrderOffergen&eventId=<?=$row['eventId']?>&submitButton=changeOrderSubmit_<?=$row['eventId']?>', 'event selector', 'height=150px, width=600px, menubar=no, locatiobar=no')"
+				/>
+			</td>
+			<td>
+				<input
+					id="changeOrderSubmit_<?=$row['eventId']?>"
+					value="<?=$this->trans('set')?>"
+					type="submit"
+					name="changeOrder[<?=$row['eventId']?>]"
+					onclick="submitEventPositions(<?=$row['sportId']?>, <?=$row['regionId']?>, <?=$row['eventId']?>); return false;"
+				/>
+			</td>
+			<td><?=$row['navigationHighlight']?></td>
+			<td><?=$row['navigationDelimiter']?></td>
+		</tr>
+	<?php endforeach?>
+</tbody>

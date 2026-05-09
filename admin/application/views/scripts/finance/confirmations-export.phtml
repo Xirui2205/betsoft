@@ -1,0 +1,58 @@
+<?php if (!empty($this->lastExport)): ?>
+<div>
+	<?= i18n::tr('Transactions exported as: ') ?>
+	<a href="<?= htmlspecialchars($this->lastExport['url']) ?>">
+		<?= $this->lastExport['title'] ?>
+	</a>
+</div>
+<?php endif; ?>
+
+<h3><?=i18n::tr('Transactions to export')?></h3>
+
+<?php if (0 == count($this->ts)): ?>
+<div><?= UiUtil::printWarnings(i18n::tr('No transactions to export')) ?></div>
+<?php else: ?>
+<table class='table-list width-100'>
+	<tr>
+		<th>Transaction ID<?= /*$this->tr('')*/ '' ?></th>
+		<th>User</th>
+		<th>Branch</th>
+		<th>Amount</th>
+	</tr>
+<?php foreach ($this->ts as $t): ?>
+	<tr>
+		<td><?= $t['transactionId']?></td>
+		<td><?= $t['userHandle']?> - <?= $t['userNick']?></td>
+		<td><?= $t['branchHandle']?> - <?= $t['branchName']?></td>
+		<td><?= $t['value']?></td>
+	</tr>
+<?php endforeach; ?>
+</table>
+<form action="" method="post">
+<input type="submit" value="Export" />
+</form>
+<?php endif; ?>
+
+<h3><?=i18n::tr('Older exports')?></h3>
+<?php if (0 == count($this->exports)): ?>
+<div><?= UiUtil::printWarnings(i18n::tr('No export found')) ?></div>
+<?php else :?>
+<table>
+<?php foreach ($this->exports as $e): ?>
+	<tr><td><a href="<?= htmlspecialchars($e['url']) ?>"><?= $e['title'] ?></a></td></tr>
+<?php endforeach; ?>
+</table>
+<?php endif;
+
+/*
+<form method="post" action="?section=<?=$this->sectionId?>" id="formUsersFilter">
+	<?=$this->filter?>
+	<?=$this->paginator?>
+
+	<table class='table-list width-100'>
+		<?=$this->tHead?>
+		<?=$this->tBody?>
+	</table>
+</form>
+
+*/

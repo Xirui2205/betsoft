@@ -1,0 +1,84 @@
+<h3><?=i18n::tr('point_transactions')?></h3>
+
+<?=$this->form?>
+<?php if( count($this->transactions) > 0) : ?>
+  <table class="table-list">
+    <tr>
+      <th style="width:1%">&nbsp;</th>
+      <th style="width:60px" class="border-left">
+        <?=i18n::tr('id')?>
+      </th>
+      <th class="border-left">
+        <?=i18n::tr('time')?>
+        <?=$this->orderButton['time']?>
+      </th>
+      <th class="border-left">
+        <?=i18n::tr('time-pass')?>
+      </th>
+      <th class="border-left">
+        <?=i18n::tr('type-id')?>
+      </th>
+      <th class="border-left">
+        <?=i18n::tr('type-name')?>
+        <?=$this->orderButton['typeName']?>
+      </th>
+      <th class="border-left">
+        <?=i18n::tr('value')?>
+      </th>
+      <th class="border-left">
+        <?=i18n::tr('point_type')?>
+      </th>
+      <th class="border-left">
+        <?=i18n::tr('user_handle')?>
+      </th>
+      <th class="border-left">
+        <?=i18n::tr('user-nick')?>
+        <?=$this->orderButton['userNick']?>
+      </th>
+      <th class="border-left">
+        <?=i18n::tr('ticket-id')?>
+      </th>
+      <th class="border-left">
+        <?=i18n::tr('notes')?>
+      </th>
+    </tr>
+    <?php foreach ( $this->transactions as $item ):?>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+          <?=$item->pointsTransactionId?>
+        </td>
+        <td>
+          <?=It6_Date::fromDb($item->time)?>
+        </td>
+        <td>
+          <!--  time pass -->
+        </td>
+        <td>
+          <?=$item->typeId?>
+        </td>
+        <td>
+          <?=i18n::tr($item->typeName)?>
+        </td>
+        <td style="text-align: right">
+          <?=$item->value?>
+        </td>
+        <td>
+          <?=$item->pointType?>
+        </td>
+        <td>
+          <?=$item->userHandle?>
+        </td>
+        <td>
+          <?=$item->userNick?>
+        </td>
+        <td>
+          <?=$item->ticketId?>
+        </td>
+        <td>
+          <?=$item->notes?>
+        </td>
+      </tr>
+    <?php endforeach; ?>
+  </table>
+<?php endif;?>

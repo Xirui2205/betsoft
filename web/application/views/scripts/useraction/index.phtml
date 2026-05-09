@@ -1,0 +1,19 @@
+<div class="col1wrap">
+	<div class="col1">
+		<h2 class="boxheader"><span><?=$this->trans('forget_pass');?></span></h2>
+		<div class="grayBorder">
+		  <?php if(isset($this->prompt)) : ?>
+			<?=$this->trans($this->prompt)?>
+			<form method="post" action="<?=$this->UrlSet(65)?>">
+			  <input type="hidden" name="actionHash" value="<?=$this->actionHash?>" />
+			  <input type="submit" value="<?=$this->trans('user_action_submit')?>" />
+			</form>
+		  <?php else : ?>
+			<p><?=It6_FeedbackMsg::printError('action-doesnt-exist')?></p>
+		  <?php endif?>
+		</div>
+	</div>
+</div>
+
+<?=$this->render('index/leftCol.phtml'); ?>
+<?=$this->render('index/rightCol.phtml'); ?>

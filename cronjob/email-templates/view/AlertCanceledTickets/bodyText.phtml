@@ -1,0 +1,12 @@
+<?=I18n::tr('canceled_tickets')?>
+
+=======================
+
+<?php if ( empty($this->canceledTickets) ): ?>
+<?=I18n::tr('no_records')?>
+<?php else:?>
+<?php foreach( $this->canceledTickets as $ticket ):?>
+#<?=$ticket['ticketId']?> <?=$ticket['canceledByBookmakerNick']?>
+
+<?php endforeach;?>
+<?php endif; ?>

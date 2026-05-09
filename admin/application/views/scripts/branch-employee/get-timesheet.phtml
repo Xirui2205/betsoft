@@ -1,0 +1,23 @@
+<?php if(!isset($this->timesheet)) : ?>
+<?php elseif(count($this->timesheet)== 0) : ?>
+	<?=UiUtil::printWarnings(array('No timesheet for this period.'));?></span>
+<?php else  : ?>
+<table class="table-list" >
+	<tr>
+		<th colspan="3"><?=i18n::tr('Timesheet')?></th>
+	</tr>
+	<tr>
+		<th><?=i18n::tr('Day')?></th>
+		<th><?=i18n::tr('Arrival')?></th>
+		<th><?=i18n::tr('Departure')?></th>
+	</tr>
+	<?php foreach($this->timesheet as $t) : ?>
+		<tr>
+			<td><?=$t['day']?></td>
+			<td><?=$t['arrival']?></td>
+			<td><?=$t['departure']?></td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<?php endif; ?>
+

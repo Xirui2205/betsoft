@@ -1,0 +1,47 @@
+<h3><?=i18n::tr('client_cards')?></h3>
+
+<?=$this->feedbackMsg?>
+
+<ul class="idTabs" style="display:none">
+	<li>
+		<a class="selected" href="#client_cards"><?=i18n::tr('client_cards')?></a>
+	</li>
+</ul>
+
+
+<div id="client-card-container" class="tab-container hidden">
+	<input type="hidden" class="tabsLoaded" id="card-main-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="card-event-loaded" value="0" />
+
+	<input type="hidden" name="clientCardId" id="clientCardId" value="">
+
+	<div id="client-card-main" class="tab" style="display: none;">
+	</div>
+</div>
+
+
+<div id="list">
+	<form method="post" action="?section=<?=$this->indexSectionId?>" id="client-card-index-form">
+		<div class="actions">
+			<input type="button" onClick="insertClientCard()" class="input" name="insert_new" value="<?=i18n::tr('insert_new_card')?>" />
+		</div>
+		<?=$this->filter?>
+		<div class="actions">
+			<input type="button" onClick="blockMoreCards('#client-card-index-form')" class="input" name="block_more_cards" value="<?=i18n::tr('block_more_cards')?>" />
+			|
+			<input type="button" onClick="unblockMoreCards('#client-card-index-form')" class="input" name="unblock_more_cards" value="<?=i18n::tr('unblock_more_cards')?>" />
+			|
+			<input type="button" onClick="cardsToBranch('#client-card-index-form')" class="input" name="marked_to_branch" value="<?=i18n::tr('fast_assignment_cards_to_branch')?>" />
+			<select name="cardsToBranchId">
+				<?php foreach($this->branches as $key => $value) : ?>
+					<option value="<?=$key?>"><?=$value?></option>
+				<?php endforeach?>
+			</select>
+		</div>
+		<?=$this->paginator?>
+		<table class='table-list width-100'>
+			<?=$this->tHead?>
+			<?=$this->tBody?>
+		</table>
+	</form>
+</div>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:complexType name="tPage">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+      <xs:element name="langId" type="xs:positiveInteger" />
+      <xs:element name="template" type="xs:string" />
+      <xs:element name="layoutId" type="xs:positiveInteger" />
+      <xs:element name="visible" type="xs:boolean" />
+      <xs:element name="title" type="xs:string" />
+      <xs:element name="description" type="xs:string" />
+      <xs:element name="keywords" type="xs:string" />
+      <xs:element name="content" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tPages">
+    <xs:sequence>
+      <xs:element name="page" type="tPage" maxOccurs="unbounded" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tData">
+    <xs:sequence>
+      <xs:element name="pages" type="tPages" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="data" type="tData" />
+</xs:schema>

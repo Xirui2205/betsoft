@@ -1,0 +1,23 @@
+<div class="actions">
+	<?php if ($this->supervisionLogged == false) :?>
+	<button onClick="loadGeneric(<?=$this->updateSectionId?>, 'user-parameters', { userId : <?=$this->userId?> });"><?=i18n::tr('Edit')?></button>
+	<?php endif;?>
+	<button onclick="hideDetail('user-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<?=$this->feedbackMsg?>
+
+<table class="table-list">
+	<tr>
+		<th><?=i18n::tr('Parameter')?></th>
+		<th><?=i18n::tr('Value')?></th>
+		<th><?=i18n::tr('Description')?></th>
+	</tr>
+	<?php foreach ($this->parameter as $parameter) :?>
+		<tr>
+			<td><?=i18n::tr($parameter['name'])?></td>
+			<td><?=$parameter['value']?></td>
+			<td><?=$parameter['description']?></td>
+		</tr>
+	<?php endforeach; ?>
+</table>

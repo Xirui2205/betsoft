@@ -1,0 +1,51 @@
+13-07-01 09:18:01 SELECT
+            `s`.`sport_id`,
+            s.nazev AS `snazev`,
+            u.nazev AS `unazev`,
+            `u`.`udalost_id`,
+            o.nazev AS `onazev`,
+            COALESCE(`sz`.`alias`, '----') AS `alias`,
+            `sz`.`typ_id`,
+            COALESCE(`rt`.`typ_alias_id`,`t`.`typ_alias_id`) AS `typ_alias_id`,
+            `t`.`poradi` AS `typ_poradi`,
+            COALESCE(`rt`.`poradi`,`t`.`poradi`) AS `typ_poradi2`,
+            `sz`.`sazka_id`,
+            `sz`.`jednoducha`,
+             IF(sz.ticket_text IS NULL OR sz.ticket_text='',sz.text,sz.ticket_text) AS `mtext`,
+            `sz`.`podtyp_id`,
+            `t`.`nazev` AS `tnazev`,
+            COALESCE(`tsn`.`text_note`, '') AS `tnote`,
+            `ps`.`nazev` AS `pnazev`,
+            `ps`.`sloupec_id`,
+            `sk`.`kurz`,
+            `sz`.`ako`,
+            DATE_FORMAT(sz.platna_do,"%%k:%%i") AS `hour`,
+            DATE_FORMAT(sz.platna_do,"%%Y-%%m-%%d %%k:%%i") AS `platna_do`,
+            p.`text` AS `ptext`,
+            p.`radek_sloupec`,
+            `sz`.`info`,
+            `tot`.`name` AS `typeOrder`
+            FROM `sazky` AS `sz`
+            INNER JOIN `udalost` AS `u` ON sz.udalost_id=u.udalost_id
+            INNER JOIN `sport` AS `s` ON s.sport_id=u.sport_id
+            INNER JOIN `oblast` AS `o` ON o.oblast_id=u.oblast_id
+            INNER JOIN `typ` AS `t` ON sz.typ_id=t.typ_id AND t.offer_category_id<=%(category)s
+            LEFT JOIN `typ` AS `rt` ON COALESCE(sz.real_typ_id, sz.typ_id)=rt.typ_id
+            LEFT JOIN `typ_order_type` AS `tot` ON rt.order_type_id=tot.id
+            INNER JOIN `podtyp` AS `p` ON sz.podtyp_id=p.podtyp_id
+            INNER JOIN `typ_udalost` AS `tu` ON tu.typ_id=t.typ_id and tu.udalost_id=u.udalost_id
+            LEFT JOIN `typ_sport_note` AS `tsn` ON tsn.typ_id=t.typ_id and tsn.sport_id=s.sport_id
+            INNER JOIN `sazka_kurz_aktualni` AS `sk` ON sk.sazka_id = sz.sazka_id
+            INNER JOIN `podtyp_sloupce` AS `ps` ON ps.sloupec_id = sk.sloupec_id
+            WHERE (sz.live=0)
+            AND (sz.status=0)
+            AND (sz.risk_limit > sz.risk_limit_balance)
+            AND (sz.platna_do >= %(date_from)s)
+            AND (sz.platna_do <= %(date_to)s)
+            AND (s.zobrazeno=1) AND (u.zobrazeno=1) AND (t.zobrazeno=1)
+            AND (u.platne_od <= %(date_from)s)
+            AND (tu.is_binded = 1) ORDER BY `u`.`pozice_offergen` ASC, `u`.`nazev` ASC, `tu`.`order` ASC, `typ_poradi2` ASC, 
+                    `p`.`podtyp_id` ASC, `sz`.`platna_do` ASC,`sz`.`alias`, `ps`.`poradi` ASC  {'category': 3, 'date_from2': '2013-07-01 23:59:59', 'date_from': '2013-07-01 07:18:01', 'date_to': '3000-01-01 00:00:00'}
+13-07-01 09:18:01 SELECT `index_pole`,`text` FROM `preklady` WHERE `lang_id`=1 AND `index_pole` IN (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) (u'', u'10', u'12', u'Tenis', u'te-wtc-dus', u'vitez_zapasu', u'02', u'DUELY', u'1', u'0', u'2', u'ff-duel', u'Ledni_hokej', u'atp', u'h-cze-1liga-Poff', u'zeme_CZ', u'zapas', u'Olympic_games_Soc')
+13-07-01 09:18:02 UPDATE offergen_tiskopis SET pripraven = now(), pocet_stran = %s
+            WHERE id_tiskopis = %s [1, 19L]

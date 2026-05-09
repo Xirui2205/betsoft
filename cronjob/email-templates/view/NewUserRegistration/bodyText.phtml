@@ -1,0 +1,43 @@
+<?=I18n::tr('new_user_registration')?>
+
+<?=str_replace($this->detailTemplatePlaceholders, $this->detailTemplateValues, I18n::tr('mail_reg_detail'))?>
+
+
+<?=I18n::tr('branches_close_by')?>
+
+==========================================================
+<?=PROTOCOL?><?=WEBHOST?>/<?=$this->branchController['langIso']?>/<?=$this->branchController['reqController']?><?=$this->branchController['reqAction'] != 'index' ? '/'.$this->branchController['reqAction'] : ''?>?addr=<?=urlencode($this->user['street'].' '.$this->user['town'])?>&zoom=city&markerType=home
+
+
+<?php foreach($this->clBranches as $branch) : ?>
+<?=$branch['town']?> - <?=$branch['street']?> - <?=$branch['zip']?>
+
+----------------------------------------------------------
+<?=I18n::tr('map_detail')?>: <?=PROTOCOL?><?=WEBHOST?>/<?=$this->branchController['langIso']?>/<?=$this->branchController['reqController']?><?=$this->branchController['reqAction'] != 'index' ? '/'.$this->branchController['reqAction'] : ''?>?branchId=<?=$branch['id']?>
+
+
+<?php foreach($branch['openingHours'] as $dayNumber => $day) : ?>
+<?php if($dayNumber == 0) : ?>
+<?=I18n::tr('monday')?>
+<?php elseif($dayNumber == 1) : ?>
+<?=I18n::tr('tuesday')?>
+<?php elseif($dayNumber == 2) : ?>
+<?=I18n::tr('wednesday')?>
+<?php elseif($dayNumber == 3) : ?>
+<?=I18n::tr('thursday')?>
+<?php elseif($dayNumber == 4) : ?>
+<?=I18n::tr('friday')?>
+<?php elseif($dayNumber == 5) : ?>
+<?=I18n::tr('saturday')?>
+<?php elseif($dayNumber == 6) : ?>
+<?=I18n::tr('sunday')?>
+<?php endif?>
+	:<?php if(empty($day)) : ?><?=I18n::tr('closed')?><?php else : ?><?php foreach($day as $dayHours) : ?><?=$dayHours['from']?> - <?=$dayHours['to']?><?php endforeach?><?php endif?>
+
+<?php endforeach?>
+
+
+<?php endforeach?>
+
+<?=I18n::tr('age_disclaimer')?>
+<?=I18n::tr('copyright')?>

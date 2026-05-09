@@ -1,0 +1,14 @@
+<?php if (!empty($this->paginator)) { ?>
+	<div id="articles" class="grayBg bottom10">
+
+	<?php
+	$firstArticle = true;
+	foreach($this->paginator as $article) {
+		include 'article-list-item.phtml';
+	}
+	?>
+
+	<?= $this->paginationControl($this->paginator, 'Sliding', 'pagination/pagination-1.phtml'); ?>
+
+	</div><!-- #articles -->
+<? } ?>

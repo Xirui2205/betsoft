@@ -1,0 +1,48 @@
+<?php if(false){ ?>
+<!-- Start left col-->
+<div id="left">
+	<?=$this->render('index/sportMenuLoader.phtml')?>
+	<?php /* It6_GlobalCache::frame('/global-cache-frame/sport-menu?'. parse_url($_SERVER['REQUEST_URI'],PHP_URL_QUERY)) */ ?>
+	<?php if(!empty($this->bannersLeft)) : ?>
+		<?php foreach($this->bannersLeft as $banner) : ?>
+			<div class="banner">
+				<a
+					href="<?=$banner['url']?>"
+					<?php if($banner['target'] == '_blank') : ?>
+						onclick="window.open (this.href, 'child'); return false"
+					<?php endif?>
+					class="layer1"
+				>
+					<?=$banner['title']?>
+				</a>
+				<div class="layer2"></div>
+				<div class="layer3">
+					<img src="/images/gallery/<?=$banner['imageName']?>" alt="<?=$banner['imageName']?>" />
+				</div>
+			</div>
+		<?php endforeach;?>
+	<?php endif;?>
+
+<!--<iframe id="facebook"
+	src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FBetService%3Ffref%3Dts&amp;width=205&amp;height=258&amp;show_faces=true&amp;colorscheme=dark&amp;stream=false&amp;show_border=false&amp;header=false">
+</iframe>-->
+
+</div><!-- End left col-->
+<?php } ?>
+<div id="left">
+	<?=$this->render('index/timeFilter.phtml')?>
+
+	<a href="/cs/sazky/?all"><h3 class="boxheader"><span class="highlight" id="all-bets-count">0</span> Bets</h3></a>
+
+	<div id="sportMenuContainer">
+		<?=$this->render('index/sportMenuLoader.phtml')?>
+	</div>
+
+	<div class="boxheader">Bet &amp; Win Live!</div>
+	<div class="contentbox no-padding">
+		<a href="#"><img src="<?=GFX_SERVER?>left_banner.jpg" alt="Bet &amp; Win Live!"></a>
+	</div>
+	<div class="contentbox description">
+		Here could be a description of banner above
+	</div>
+</div>

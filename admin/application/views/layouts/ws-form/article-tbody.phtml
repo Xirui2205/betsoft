@@ -1,0 +1,30 @@
+<tbody>
+  <?php foreach($this->layout()->data as $article) : ?>
+    <tr>
+      <td>
+        <button onClick="updateArticle(<?=$article['articleId']?>); return false;"><?=i18n::tr('article_update')?></button>
+        <button onClick="previewArticle(<?= "'".WEBHOST.'\', \''.$article["langIso"].'\', '.$article['articleId'].', \''.Zend_Registry::get('ws')->Article->getPublisherKey($article['articleId'])."'" ?>);"><?=i18n::tr('article_preview')?></button>
+		<button onClick="deleteArticle(<?=$article['articleId']?>); return false;"><?=i18n::tr('article_delete')?></button>
+      </td>
+      <td class="border-left txtrt"><?=$article['articleId']?></td>
+      <td class="border-left txtrt"><?=$article['articleTitle']?></td>
+      <td class="border-left txtlt" title="<?= i18n::tr('article_priority')?>">
+          <?//= ($article['articlePriority'] === 1) ? i18n::tr('yes') : i18n::tr('no') ?>
+              <?php 
+              if (($article['articlePriority'] == 1)) {
+                  ?>
+                      <input type="submit" onclick="return confirm('Přenastavit prioritu?')"
+                             value="<?= i18n::tr('article_priority_remove')?>" name="setPriority0[<?=$article['articleId']?>]">
+                  <?php
+              } else {
+                  ?>
+                      <input type="submit" onclick="return confirm('Přenastavit prioritu?')"
+                             value="<?= i18n::tr('article_priority_set')?>" name="setPriority1[<?=$article['articleId']?>]">
+                  <?php
+              }
+              ?>
+      </td>
+      <td class="border-left txtrt"><?=$article['articlePublished']?></td>
+    </tr>
+  <?php endforeach?>
+</tbody>

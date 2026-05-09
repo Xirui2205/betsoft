@@ -1,0 +1,60 @@
+<div id="right">
+	<h2 class="boxheader"><?= $this->trans('point_transactions') ?></h2>
+	<form method="get" action="<?= $this->UrlSet(58) ?>" id="formUsersFilter">
+		<div class="contentbox">
+			<?php foreach ($this->user->points as $point) { ?>
+				<table class="table">
+					<caption><?= $this->trans('point_acount_limits') ?></caption>
+					<thead>
+						<tr>
+							<th><?= $this->trans('point_balance') ?></th>
+							<th><?= $this->trans('point_day_limit') ?></th>
+							<th><?= $this->trans('preference_rate_day_limit') ?></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><?= round($point->balance) ?> / <?= round($point->balanceTotalLimit) ?> B</td>
+							<td><?= round($point->balanceDayLimit - $point->balanceLimit) ?> / <?= round($point->balanceDayLimit) ?> B</td>
+							<td><?= round(-$point->preferenceRateLimits->daySum) ?> / <?= round($point->preferenceRateLimits->maxDayLimit) ?> B</td>
+						</tr>
+					</tbody>
+				</table>
+			<?php } ?>
+		</div>
+		<?php if (!empty($this->layout()->data)) echo $this->filter ?>
+		<div class="contentbox">
+			<?php if (!empty($this->layout()->data)) { ?>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th style="width: 10%"><?= $this->trans('id') ?></th>
+							<th style="width: 20%"><?= $this->trans('ptrans_type') ?></th>
+							<th style="width: 20%"><?= $this->trans('ptrans_time') ?></th>
+							<th style="width: 25%"><?= $this->trans('ptrans_value') ?></th>
+							<th style="width: 25%"><?= $this->trans('ptrans_balance') ?></th>
+						</tr>
+					</thead>
+					<?= $this->tbody ?>
+				</table>
+				<?= $this->paginator ?>
+			<?php } else { ?>
+				<?= It6_FeedbackMsg::printWarning('no-data'); ?>
+			<?php } ?>
+		</div>
+	</form>
+	<script type="text/javascript">
+		// datepicker dočasně, pak přidat do komponenty
+		$('.calendar-icon').each(function(i, elem){
+			var id = $(elem).prev().attr('id');
+			$(elem).wrap('<label for="'+id+'"></label>');
+		});
+		$(document).ready(function() {
+			$('.dateOnly').datepicker({
+				'dateFormat': 'dd.mm.yy'
+			});
+		});
+	</script>
+</div>
+
+<?= $this->render('myaccount/user-profile-left-col.phtml'); ?>

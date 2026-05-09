@@ -1,0 +1,90 @@
+					<table class="hpBetsTable" cellspacing="0">
+						<thead>
+							<tr>
+								<th class="betName" colspan="2"><span class="left"><?=$this->trans('match'); ?></span></th>
+								<th class="betDateTime"><?=$this->trans('time'); ?></th>
+								<th class="w2">1</th>
+								<th class="w2">0</th>
+								<th class="w2">2</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							$cnt = 0;
+							foreach($this->supertip as $bet_id => $data) : ?>
+								<tr class="<?php $cnt++; echo ($cnt % 2 == 0) ? 'odd' : 'even'; ?>">
+								<?php if(count($data['usedColumns']) == 3) : $c1 = $data['usedColumns'][0]; $c2 = $data['usedColumns'][1]; $c3 = $data['usedColumns'][2]; ?>
+										<td class="betName">
+											<span class="alias"><?= $data['aliasNew'] ?></span>
+											<span class="name">
+												<strong><?=$data['mtext']; ?></strong>
+											</span>
+											<div class="clear narrower"></div>
+											<span class="alias narrower"><?= $data['aliasNew'] ?></span>
+											<span class="datetimeNarrower"><?=$data['date']; ?></span>
+											<div class="clear"></div>
+											<span class="betInfo"><?= mb_strtoupper($this->escape($data['snazev']), 'UTF-8') ?> | <?= $this->escape($data['onazev']) ?>: <?= $this->escape($data['unazev']) ?></span>
+										</td>
+										<td>
+											<?php if (!empty($data["info"])) :?>
+												<span class="liveInfoAko tooltip" title="<?= $this->escape($data['info']) ?>">i</span>
+											<?php endif; ?>
+											<?php if($data['ako']):?>
+												<span class="liveInfoAko tooltip" title="<?= $this->escape($data['ako']) ?>AKO"><?= $this->escape($data['ako']) ?>!</span>
+											<?php endif;?>
+										</td>
+										<td class="betDateTime">
+											<span><?=$data['date']; ?></span>
+										</td>
+										<td class="w2" id="b<?=$bet_id?>c<?=$c1?>_supertip">
+												<?php if($data['sloupec'][$c1]['rate'] != 1) : ?>
+													<a
+														class="kurz"
+														href="javascript: void(0)"
+														onclick="ticketUpdate(<?=$bet_id ?>, <?=$c1?>, '<?=$this->escapeJs($data['mtext'], true, true) ?>', '<?=$this->escapeJs($data['tnazev'], true, true) ?>', '1', <?=$data['sloupec'][$c1]['rate'] ?>, <?=$data['jednoducha'] ?>)"
+													>
+														<?=$data['sloupec'][$c1]['rate']?>
+													</a>
+												<?php else : ?>
+													-
+												<?php endif?>
+										</td>
+										<td class="w2" id="b<?=$bet_id?>c<?=$c2?>_supertip">
+												<?php if($data['sloupec'][$c2]['rate'] != 1) : ?>
+													<a
+														class="kurz"
+														href="javascript: void(0)"
+														onclick="ticketUpdate(<?=$bet_id ?>, <?=$c2?>, '<?=$this->escapeJs($data['mtext'], true, true) ?>', '<?=$this->escapeJs($data['tnazev'], true, true) ?>', 'X', <?=$data['sloupec'][$c2]['rate'] ?>, <?=$data['jednoducha'] ?>)"
+													>
+														<?=$data['sloupec'][$c2]['rate']?>
+													</a>
+												<?php else : ?>
+													-
+												<?php endif?>
+										</td>
+										<td class="w2 w2-last" id="b<?=$bet_id?>c<?=$c3?>_supertip">
+												<?php if($data['sloupec'][$c3]['rate'] != 1) : ?>
+													<a
+														class="kurz"
+														href="javascript: void(0)"
+														onclick="ticketUpdate(<?=$bet_id ?>, <?=$c3?>, '<?=$this->escapeJs($data['mtext'], true, true) ?>', '<?=$this->escapeJs($data['tnazev'], true, true) ?>', '2', <?=$data['sloupec'][$c3]['rate'] ?>, <?=$data['jednoducha'] ?>)"
+													>
+														<?=$data['sloupec'][$c3]['rate']?>
+													</a>
+												<?php else : ?>
+													-
+												<?php endif?>
+										</td>
+								<?php endif; ?>
+								</tr>
+							<?php endforeach?>
+						</tbody>
+					</table>
+					<script type="text/javascript">
+						if (tick)
+							tick.selectAllBetRates();
+						
+						$(function() {
+							$('.tooltip').tooltip();
+						});
+					</script>

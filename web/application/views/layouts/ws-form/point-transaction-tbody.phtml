@@ -1,0 +1,16 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+		<tr>
+			<td class="id"><?=$row['handle']?></td>
+			<td class="name" style="width: 348px">
+				<?=$this->trans($row['typeName'])?>
+				<?=empty($row['ticketHandle']) ? '' : '<a href="'.$this->UrlSet(18).'t/'. $row['ticketHandle'].'">#' . $row['ticketHandle'].'</a>'?>
+			</td>
+			<td class="value" style="width: 150px"><?=It6_Date::fromDb($row['time'])?></td>
+			<td class="value <?=($row['value'] <= 0 ? 'text-red' : 'text-green')?>" style="width: 75px">
+				<?=$row['value']?>
+			</td>
+			<td class="value"  style="width: 75px"><?=$row['balance']?></td>
+		</tr>
+	<?php endforeach?>
+</tbody>

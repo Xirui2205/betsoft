@@ -1,0 +1,266 @@
+<script type="text/javascript">
+	/*$('#showOtherAreas').click(function() {
+		$(".hidden-area").each(function(el) {
+			$(this).delay(10).slideDown('slow');
+		});
+		$("#showOtherAreas").hide();
+	});
+
+	$('#qfilter .normal').click(function() {
+		$("#qselect").val($(this).attr('id'));
+		$('#qfilter .normal').removeClass('active');
+		$(this).addClass('active');
+	});
+
+	$(function() {
+		$("#sel").accordion({
+			collapsible: true,
+			heightStyle: "content",
+			icons: null,
+		});
+	});
+
+	$(function() {
+		$("#sel_2").accordion({
+			collapsible: true,
+			heightStyle: "content",
+			icons: null,
+		});
+	});
+*/
+</script>
+
+<script type="text/javascript">
+/*
+	var step = 1;
+	var values = [<?= $this->rangeValues ?>];
+	var minValue = 1.0;
+	var maxValue = values[values.length - 1];
+	var rMin = 0;
+	var rMax = values.length - 1;
+	var str_od = new String();
+	var str_do = new String();
+
+	function closest(num, arr) {
+		var curr = arr[0];
+		var diff = Math.abs(num - curr);
+		for (var val = 0; val < arr.length; val++) {
+			var newdiff = Math.abs(num - arr[val]);
+			if (newdiff < diff) {
+				diff = newdiff;
+				curr = val;
+			}
+		}
+		return curr;
+	}
+
+	function getKeyMin(num, array) {
+		if (num == 0 || num == 1)
+			return rMin;
+		else
+			return closest(num, array);
+	}
+
+	function getKeyMax(num, array) {
+		if (num == 0)
+			return rMax;
+		else
+			return closest(num, array);
+	}
+
+	rMin = getKeyMin(<?= isset($this->rateMin) ? $this->rateMin : 0 ?>, values);
+	rMax = getKeyMax(<?= isset($this->rateMax) ? $this->rateMax : 0 ?>, values);
+
+	var slider = $("#qslider-range").slider({
+
+		range: true,
+		min: 0,
+		max: values.length - 1,
+		values: [rMin, rMax],
+		step: step,
+		animate: true,
+		slide: function(event, ui) {
+			if (ui.values[1] - ui.values[0] < 2) return false;
+
+			if ($('#tooltipFilter').val() == 'X') $('#qfilterButton').load('<?=$this->urlSet(112)?>?button=on');
+
+			val_0 = values[ui.values[0]].toString();
+			val_1 = values[ui.values[1]].toString();
+			var str_od = '';
+			var str_do = '';
+
+			if (val_0.length == 3 && val_0.indexOf('.') != -1)
+				str_od = '0';
+			if (val_0.length == 1 && val_0.indexOf('.') == -1 && values[ui.values[0]] < 5)
+				str_od = '.00';
+			if (val_1.length == 3 && val_1.indexOf('.') != -1)
+				str_do = '0';
+			if (val_1.length == 1 && val_1.indexOf('.') == -1 && values[ui.values[1]] < 5)
+				str_do = '.00';
+
+			$("#kurzod").val(values[ui.values[0]].toString().concat(str_od));
+			$("#kurzdo").val(values[ui.values[1]].toString().concat(str_do));
+		},
+	});
+
+	val_0 = values[$("#qslider-range").slider("values", 0)].toString();
+	val_1 = values[$("#qslider-range").slider("values", 1)].toString();
+
+	if (val_0.length == 3 && val_0.indexOf('.') != -1)
+		str_od = '0';
+	if (val_0.length == 1 && val_0.indexOf('.') == -1 && values[$("#qslider-range").slider("values", 0)] < 5)
+		str_od = '.00';
+	if (val_1.length == 3 && val_1.indexOf('.') != -1)
+		str_do = '0';
+	if (val_1.length == 1 && val_1.indexOf('.') == -1 && values[$("#qslider-range").slider("values", 1)] < 5)
+		str_do = '.00';
+
+	$("#kurzod").val(values[$("#qslider-range").slider("values", 0)].toString().concat(str_od));
+	$("#kurzdo").val(values[$("#qslider-range").slider("values", 1)].toString().concat(str_do));
+
+	$("#kurzod").change(function() {
+		var newValue = parseFloat($("#kurzod").val());
+		var newValueSlider = getKeyMin($("#kurzod").val(), values);
+
+		if (newValue < minValue || newValue > maxValue) {
+			alert("Hodnota musí být v rozmezí " + minValue + " a " + maxValue + "!");
+			return;
+		}
+
+		$("#qslider-range").slider("values", 0, newValueSlider);
+		if ($('#tooltipFilter').val() == 'X') $('#qfilterButton').load('<?=$this->urlSet(112)?>?button=on');
+	});
+
+	$("#kurzdo").change(function() {
+		var newValue = parseFloat($("#kurzdo").val());
+		var newValueSlider = getKeyMax($("#kurzdo").val(), values);
+
+		if (newValue < minValue || newValue > maxValue) {
+			alert("Hodnota musí být v rozmezí " + minValue + " a " + maxValue + "!");
+			return;
+		}
+
+		$("#qslider-range").slider("values", 1, newValueSlider);
+		if ($('#tooltipFilter').val() == 'X') $('#qfilterButton').load('<?=$this->urlSet(112)?>?button=on');
+	});
+*/
+</script>
+
+<script type="text/javascript">
+	$(function() {
+		toggleDefaultValue('searchInBetOffers', '<?= $this->trans('search_in_bet_offers'); ?>');
+	});
+</script>
+
+<div class="box">
+	<div class="content">
+		<?php if (count($this->sportMenu) > 0): ?>
+		<ul class="nav icos">
+			<?php $xSport = 0; $betsCount = 0 ?>
+			<?php foreach ($this->sportMenu as $sid => $sData): ?>
+				<?php
+					$betsCount += $sData['pocet'];
+				?>
+				<li <?= $sData['open'] == 1 ? 'class="sel"' : '' ?> <?= $sData['open'] == 1 ? 'id="sel"' : '' ?>>
+					<a id="t<?= $sid ?>" class="s-<?= $sid; ?> ico ico-sport t<?= $sid ?> parent" 
+						href="<?= $sData['open'] != 1 ? $this->UrlSet(2, '', '', $sData['url']) : '#' ?>">
+							<?= $this->escape($sData['text']); ?>
+						<span class="count"><?= $sData['pocet'] ?></span>
+					</a>
+					<!-- <a  href="javascript:childHide('sport_menu_<?= $sid ?>');void(0);">SH</a> -->
+					<?php if (1 == $sData['open']): ?>
+						<ul id="sport_menu_<?= $sid ?>">
+							<!-- OBLAST IP -->
+							<?php
+							$areas = 0;
+							$maxAreas = $this->maxAreas;
+							if ($xSport == 0 && $this->OblastIP && isset($sData['oblast'][$this->OblastIP])):
+								?>
+								<li style="display:<?php if (($xSport == 0 && $this->OblastIP && isset($sData['oblast'][$this->OblastIP]) && !$this->isOpen ) || ($this->isOpen && $sData['open'] == 1))
+									echo 'block';
+									else
+									echo 'none';
+									?>">
+									<a class="f-<?= $this->OblastIP; ?>" 
+										href="<?= $this->UrlSet(2, '', '', $sData['oblast'][$this->OblastIP]['url']); ?>" >
+										<?= $sData['oblast'][$this->OblastIP]['text']; ?>
+										<span class="count"><?= $sData['oblast'][$this->OblastIP]['pocet'] ?></span>
+									</a>
+									<!-- <a href="javascript:childHide2('oblast_menu_<?//=$sid . '_' . $this->OblastIP ?>');void(0);">SH</a> -->
+
+									<!-- UDALOST -->
+									<ul id="oblast_menu_<?= $sid . '_' . $this->OblastIP; ?>">
+										<?php foreach ($sData['oblast'][$this->OblastIP]['udalost'] as $uData): ?>
+											<li>
+												<a href="<?= $this->UrlSet(2, '', '', $uData['url']); ?>">
+													<?= $uData['text']; ?>
+													<span class="count"><?php $uData['pocet'] ?></span>
+												</a>
+											</li>
+										<?php endforeach; ?>
+									</ul>
+									<!-- ENDUDALOST -->
+								</li>
+							<?php endif; ?>
+							<!-- ENDOBLAST IP -->
+
+							<!-- OBLAST -->
+							<?php foreach ($sData['oblast'] as $oId => $oData): ?>
+								<li <?= $areas > $maxAreas && $this->showAllAreas == false ? 'class="hidden-area"' : '' ?> 
+									class="" <?= $oData['open'] == 1 ? 'id="sel_2"' : '' ?>>
+									<?php if ($xSport == 0 && $oId == $this->OblastIP) continue; ?>
+									<a class="f-<?php echo $oId; ?> ico ico-flag ico-fra"
+										href="<?= $oData['open'] != 1 ? $this->UrlSet(2, '', '', $oData['url']) : "#" ?>">
+										<?= $oData['text'] ?>
+										<span class="count"><?= $oData['pocet'] ?></span>
+									</a>
+									<!-- <a href="javascript:childHide2('oblast_menu_<?//=$sid . '_' . $oId ?>');void(0);">SH</a> -->
+
+									<!-- UDALOST -->
+									<?php if (1 == $oData['open']): ?>
+										<ul id="oblast_menu_<?= $sid . '_' . $oId; ?>">
+											<?php foreach ($oData['udalost'] as $uData): ?>
+												<li <?php if ($uData['open'] == 1): ?><?php endif; ?>>
+													<a href="<?= $this->UrlSet(2, '', '', $uData['url']); ?>">
+														<?= $uData['text'] ?>
+														<span class="count"><?= $uData['pocet'] ?></span>
+													</a>
+												</li>
+											<?php endforeach; ?>
+										</ul>
+									<?php endif; ?>
+									<!-- ENDUDALOST -->
+								</li>
+							<?php
+							$areas++;
+							/* if ($areas == $maxAreas && $this->showAllAreas == false) break; */
+							endforeach;
+							?>
+							<!-- END OBLAST -->
+							<!--
+							<?php if ($areas >= $maxAreas && $this->showAllAreas == false): ?>
+								<li id="otherAreas">
+									<a id="showOtherAreas" href="javascript:void(0)">
+										Další (<?= (count($sData['oblast']) - $maxAreas) ?>)
+									</a>
+								</li>
+							<?php endif; ?>
+							-->
+						</ul>
+					<?php endif; ?>
+				</li>
+			<?php $xSport++; ?>
+			<?php endforeach; ?>
+		</ul>		
+	<?php else: ?>				
+		<p id="sportMenuNoItem"><?= $this->trans('sport_menu_no_item'); ?></p>
+	<?php endif; ?>
+	</div>
+	
+    <script type="text/javascript">
+    	document.getElementById("all-bets-count").textContent = "<?= $betsCount ?>";
+    </script>
+
+	<!--<div class="contentbox show-more"><a href="#" class="more">Show more sports</a></div>-->
+
+</div>

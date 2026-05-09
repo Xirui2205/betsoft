@@ -1,0 +1,23 @@
+<div class="box box-wide">
+
+  <div class="ticket-search">
+    <form action="<?=$this->UrlSet(83)?>" method="get">
+		  <input
+			  type="text"
+			  name="t"
+			  class="txt"
+			  value=""
+			  onfocus=""
+              id="findTicketByNumber"
+			  maxlength="9"
+		 />
+		<input type="submit" class="sbm" value="hledat"/>
+    </form>
+    <script type="text/javascript">
+        $(function() {
+            toggleDefaultValue('findTicketByNumber', '<?=$this->trans('ticket_search'); ?>');
+        });
+    </script>
+  </div>
+
+</div>

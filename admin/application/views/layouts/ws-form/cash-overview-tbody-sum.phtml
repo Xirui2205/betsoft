@@ -1,0 +1,23 @@
+<tbody>
+  <?php if (empty($this->layout()->data)): ?>
+    <tr>
+      <td colspan="12"><?=i18n::tr('no_items')?></td>
+    </tr>
+  <?php else: ?>
+    <?php foreach($this->layout()->data as $row) : ?>
+      <tr>
+        <td><?=$row['branchHandle']?></td>
+        <td><?=$row['branchName']?></td>
+        <td><?=$row['hostName']?></td>
+        <td class="balance"><?=$row['balanceSum'] == 0 ? 0 : number_format($row['balanceSum'], '2', '.', ' ')?></td>
+        <td class="balance"><?=$row['onTheWayDepositSum'] == 0 ? 0 : number_format($row['onTheWayDepositSum'], '2', '.', ' ')?></td>
+        <td class="balance"><?=$row['onTheWayWithdrawSum'] == 0 ? 0 : number_format($row['onTheWayWithdrawSum'], '2', '.', ' ')?></td>
+        <td class="balance"><?=$row['winTicketsCashSum'] == 0 ? 0 : number_format($row['winTicketsCashSum'], '2', '.', ' ')?></td>
+        <td class="balance"><?=$row['userWithdrawsCashSum'] == 0 ? 0 : number_format($row['userWithdrawsCashSum'], '2', '.', ' ')?></td>
+        <td class="balance"><?=$row['totalCollectSum'] == 0 ? 0 : number_format($row['totalCollectSum'], '2', '.', ' ')?></td>
+        <td class="balance"><?=$row['recommendedWithdrawSum'] == 0 ? 0 : number_format($row['recommendedWithdrawSum'], '2', '.', ' ')?></td>
+        <td class="balance"><?=$row['recommendedDepositSum'] == 0 ? 0 : number_format($row['recommendedDepositSum'], '2', '.', ' ')?></td>
+      </tr>
+    <?php endforeach?>
+  <?php endif; ?>
+</tbody>

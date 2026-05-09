@@ -1,0 +1,254 @@
+@CHARSET "UTF-8";
+
+html,body {
+	margin: 0em auto 0px auto;
+	padding: 0em;
+	height: 100%;
+	height: 100%;
+}
+
+.Loading {
+	background-image: url(../_img/loading.gif);
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+}
+
+.Loading>* {
+	display: none;
+}
+
+.Hidden {
+	display: none;
+}
+
+.Inquiry {
+	width: 100%;
+	height: 100%;
+	margin: 0px auto 0px auto;
+	padding: 0px 0px 0px 0px;
+	color: #4b4849;
+	font-family: Verdana;
+	font-size: 12px;
+}
+
+.Inquiry input[type="checkbox"],
+.Inquiry input[type="radio"]{
+	width:auto !important;
+}
+
+.Inquiry h1 {
+	margin: 0px 0px 0px 0px;
+	padding: 10px 0px 10px 0px;
+}
+
+.Inquiry .Loading {
+	
+}
+
+.InquiryForm {
+	
+}
+
+.InquiryForm .Readonly {
+	border: none;
+}
+
+.InquiryForm .Cleaner {
+	float: none;
+	clear: both;
+}
+
+.InquiryForm fieldset {
+	border: none;
+	float: left;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	display: block;
+	overflow: auto;
+}
+
+.InquiryForm .General {
+	width: 40%;
+	overflow: auto;
+}
+
+.InquiryForm .General .Label {
+	display: block;
+	margin: 0px 0px 0px 0px;
+	padding: 5px 0px 5px 0px;
+}
+
+.InquiryForm .General .Label label {
+	display: block;
+	float: left;
+	padding: 2px;
+	width: 40%;
+}
+
+.InquiryForm .General .Label div label {
+	width: auto;
+	display: inline;
+	float: none;
+}
+
+.InquiryForm .Answers {
+	width: 50%;
+	float: right;
+	overflow: auto;
+	text-align: right;
+	padding: 10px 0px 0px 0px;
+}
+
+.InquiryForm .Questions {
+	overflow: auto;
+	float: right;
+	width: 50%;
+	text-align: right;
+	padding: 10px 0px 0px 0px;
+}
+
+.InquiryForm .Visualization {
+	width: 40%;
+	overflow: auto;
+	clear: right;
+	float: left;
+	padding: 10px 0px 0px 0px;
+}
+
+.InquiryForm .Filter {
+	clear: both;
+	width: 100%;
+	margin: 10px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+.InquiryForm .Filter .Form {
+	clear: both;
+	float: none;
+}
+
+.InquiryForm .Filter .Form .Label {
+	display: block;
+	float: left;
+	margin: 0px 0px 0px 0px;
+}
+
+.InquiryForm .Filter .Form .Label>select {
+	width: 100%;
+}
+
+.InquiryForm .Filter .Form .Label>input {
+	width: 100%;
+}
+
+.InquiryForm .Filter .Form .Answer {
+	margin: 0px 0px 0px 60px;
+	width: 212px;
+}
+
+.InquiryForm .Filter .Form .Nick {
+	width: 108px;
+}
+
+.InquiryForm .Filter .Form .Age {
+	width: 106px;
+}
+
+.InquiryForm .Filter .Form .Age select {
+	width: 45% !important;
+	padidng: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+}
+
+.InquiryForm .Filter .Form .Gender {
+	width: 66px;
+}
+
+.InquiryForm .Filter .Form .Country {
+	width: 106px;
+}
+
+.InquiryForm .Filter .Form .Time {
+	width: 256px;
+	text-align: center;
+}
+
+.InquiryForm .Filter .Form .Time input {
+	margin: 0px;
+	padding: 0px;
+	width: 34%;
+	/*
+	width:0px;
+	height:0px;
+	font-size:0px;
+	border:none;
+	line-height:0px;*/
+}
+
+.InquiryForm .Navbar {
+	text-align: right;
+	float: none;
+	clear: both;
+	width: 100%;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+}
+
+.InquiryForm .Navbar button {
+	
+}
+
+.InquiryForm .General .Navbar {
+	width: 50%;
+	text-align: left;
+	float: right;
+}
+
+.InquiryForm .General .Navbar .Update {
+	display: block;
+	width: 100px;
+	text-align: center;
+	padding: 4px 0px 4px 0px;
+	height: 12px;
+}
+
+.InquiryForm .General .Navbar .Loading {
+	background-image: url(/img/loading.gif);
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	font-size: 0px;
+}
+
+.InquiryForm .Error {
+	display: none;
+}
+
+.InquiryForm .Graphs {
+	
+}
+
+.InquiryForm .LoadingGraph {
+	background-image: url(/img/loading.gif);
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+}
+
+.InquiryForm .LoadingGraph>* {
+	display: none;
+}
+
+table.scroll tbody td {
+	cursor: pointer;
+}
+
+.modalwin {
+	position: absolute !important;
+	top: 33% !important;
+	left: 33% !important;
+}
+
+.jqmWindow {
+	position: absolute !important;
+	top: 33% !important;
+	left: 33% !important;
+}

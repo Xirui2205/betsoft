@@ -1,0 +1,11 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) :?>
+		<tr>
+			<td>
+				<input type="checkbox" class="row-selector" value="<?=$row['affiliateBannerId']?>" name="selectedItems[]" />
+				<input type="button" onClick="viewAffiliateBannerDetail(<?=$row['affiliateBannerId']?>)" class="sbutton" value="<?=i18n::tr('view')?>" />
+			</td>
+			<?php include('partial-iter-cols.phtml')?>
+		</tr>
+	<?php endforeach?>
+</tbody>

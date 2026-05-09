@@ -1,0 +1,2 @@
+13-07-01 09:18:02 127.0.0.1 "GET /docrq?DocumentType=Offer&PageFormat=Portrait&Category=3&DateFilter=All HTTP/1.1" 200 -
+13-07-01 09:18:02 127.0.0.1 "GET /pdf/19 HTTP/1.1" 200 -

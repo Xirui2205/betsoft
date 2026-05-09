@@ -1,0 +1,56 @@
+<?php foreach ($this->layout()->data as $log):?>
+	<tr class="head" onclick="$('#log-<?=$log['_id']?>').toggle();">
+		<td class="vlgntp"><?=$log['_id']?></td>
+		<td class="vlgntp" style="width:130px"><?=It6_Date::timestampToDateTime($log['time']->sec)?></td>
+		<td class="vlgntp"><?=$log['ip']?></td>
+        <td class="vlgntp"><?=$log['user_id']?></td>
+        <td class="vlgntp"><?=$log['admin_id']?></td>
+        <td class="vlgntp"><?=$log['host_id']?></td>
+        <td class="vlgntp"><?=$log['bet_id']?></td>
+        <td class="vlgntp"><?=$log['ticket_id']?></td>
+        <td class="vlgntp"><?=$log['coupon_id']?></td>
+		<td class="vlgntp" style="width:160px"><?=i18n::tr($log['tag'])?></td>
+		<td class="vlgntp"><?=$log['priority']?></td>
+		<td class="vlgntp" style="width:50%">
+			<?php if(strlen($log['message']) > 140) : ?>
+				<span class="<?=$log['_id']?>-teaser">
+					<?=substr($log['message'], 0, 140)?>...
+				</span>
+			<?php else : ?>
+				<?=$log['message']?>
+			<?php endif?>
+	</td>
+	</tr>
+	<tr id="log-<?=$log['_id']?>" class="log-detail">
+		<td colspan="9">
+		<table class="table-detail">
+			<tr>
+				<th><?=i18n::tr('Message')?></th>
+				<td><?=$log['message']?></td>
+			</tr>
+			<tr>
+				<th><?=i18n::tr('Arguments')?></th>
+				<td>
+					<?=$this->parseJson($log['args']); ?>
+				</td>
+			</tr>
+			<tr>
+				<th><?=i18n::tr('Exception')?></th>
+				<td class="vlgntp">
+						<?=$log['exception']?>
+				</td>
+			</tr>
+			<tr>
+				<th><?=i18n::tr('File')?></th>
+				<td class="vlgntp">
+						<?=$log['file']?>
+				</td>
+			</tr>
+			<tr>
+				<th><?=i18n::tr('Line #')?></th>
+				<td class="vlgntp"><?=$log['line']?></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+<?php endforeach;?>

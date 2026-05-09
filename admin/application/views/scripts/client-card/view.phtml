@@ -1,0 +1,52 @@
+<?=$this->feedbackMsg?>
+
+<?php if ($this->clientCard) : ?>
+
+	<input name="clientCardId" id="clientCardId" type="hidden" value="<?=$this->clientCard['clientCardId']?>" />
+	<div class="actions">
+		<button 
+			<?=!empty($this->clientCard['used']) ? 'disabled="disabled"' : ''?> 
+			onClick="editClientCardDetail(<?=$this->clientCard['clientCardId']?>)"><?=i18n::tr('edit')?>
+		</button>
+		<button onclick="hideDetail('client-card-container')"><?=i18n::tr('close_detail')?></button>
+		<button onclick="blockClientCard(<?=$this->clientCard['clientCardId']?>, '#client-card-index-form')"><?=i18n::tr('block')?></button>
+		<button onclick="unblockClientCard(<?=$this->clientCard['clientCardId']?>, '#client-card-index-form')"><?=i18n::tr('unblock')?></button>
+	</div>
+
+	<table class="table-detail">
+		<tr>
+			<th class="header" colspan="2"><?=i18n::tr('client_card')?></th>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('Id')?></th>
+			<td id="client_card_id"><?=$this->clientCard['clientCardId']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('generated')?></th>
+			<td id="generated"><?=$this->clientCard['generated']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('admin_id')?></th>
+			<td><?=$this->clientCard['adminId']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('branch_name')?></th>
+			<td id="branch"><?=$this->clientCard['branchName']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('set')?></th>
+			<td id="set"><?=$this->clientCard['set']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('used')?></th>
+			<td id="used"><?=$this->clientCard['used']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('blocked')?></th>
+			<td id="blocked">
+				<?=$this->clientCard['blocked']?>
+			</td>
+		</tr>
+	</table>
+
+<?php endif; ?>

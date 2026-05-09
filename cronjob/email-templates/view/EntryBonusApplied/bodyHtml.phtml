@@ -1,0 +1,20 @@
+<table width="640" cellpadding="0" cellspacing="0" style="color: #8E8D8D; font-size: 11px; font-family: arial, verdana, helvetica, sans-serif; background: url('<?=PROTOCOL?><?=WEBHOSTL3?>/images/email_body_bg.png'); padding: 20px">
+	<tbody>
+		<tr>
+			<td colspan="2">
+				<h1 style="color: #F4CA6D; font-size: 19px; margin: 15px 0;">
+					<?=I18n::tr('entry_bonus')?>
+				</h1>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>Gratulujeme.</p>
+				<p>Právě jste splnil(a) všechny podmínky pro aktivování bonusu z Vašeho úvodního vkladu.</p>
+				<p>Váš vstupní bonus ve výši <font style="color: #F4CA6D; font-weight: bold;"><?= $this->formatCurrency($this->bonus['applied'], $this->bonus['currencyName']) ?></font> byl aktivován.
+				<p>Přejeme hodně štěstí ve hře.</p>
+				<p><br />CompBet</p>
+			</td>
+		</tr>
+	</tbody>
+</table>

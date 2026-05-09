@@ -1,0 +1,27 @@
+<?php if($this->isValid == true):?>
+<?php else:?>
+              <?php if(count($this->error[$this->form]) > 0): ?>
+                <td class="pozor pozor-active">
+                  <span class="chyba">
+                    <img src="/images/exclamation_mark.png"  id="<?= $this->form?>_img"  alt="!!" />
+                    <span class="error" id="<?=$this->form?>_er_info" style="display:none">
+
+                      <?php foreach($this->error[$this->form] as $data): ?>
+                        <?=$data; 
+                        if ($this->form == "email") break;
+                        ?>
+                      <?php endforeach; ?>
+
+                    </span>
+                  </span>
+                  <script>regInfo("<?=$this->form?>");</script>
+                </td>
+              <?php else: ?>
+                <td class="pozor">
+                  <div class="chyba">
+                    <img src="/images/exclamation_mark.png" alt="!!" />
+                  </div>
+                  </td>
+              <?php endif; ?>
+
+<?php endif;?>

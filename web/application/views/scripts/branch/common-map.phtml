@@ -1,0 +1,315 @@
+<script src="https://maps-api-ssl.google.com/maps/api/js?sensor=false&language=cs"></script>
+<script type="text/javascript" src="/js/markerclusterer_compiled.js"></script>
+<script type="text/javascript">
+	var topOnly = <?=$this->topOnly == true ? 'true' : 'false'?>;
+	
+	function initialize(load, centerLat, centerLong, zoom, markerType) {
+		var addr = '<?=$this->addr?>';
+		var branchId = '<?=$this->branchId?>';
+		var branches = getBranches();
+
+		if(markerType === undefined) {
+			if('<?=$this->markerType?>' == '')
+				markerType = 'branch';
+			else
+				markerType = '<?=$this->markerType?>';
+		}
+
+
+		if(addr != '') {
+			geocoder = new google.maps.Geocoder();
+			geocoder.geocode( { 'address': '<?=$this->addr?>'}, function(results, status) {
+				if(status == 'OK') {
+					var centerLat = results[0].geometry.location.lat();
+					var centerLong = results[0].geometry.location.lng();
+					var map = loadMap(centerLat, centerLong, <?=!empty($this->zoom) ? $this->zoom : $this->countryZoom?>);
+
+					if(markerType == 'home') {
+						var infoWindow = new google.maps.InfoWindow({
+							content: '<strong><?=$this->trans('your_home')?></strong><p><?=$this->addr?></p>'
+						})
+
+						var marker = new google.maps.Marker({
+							map: map,
+							position: new google.maps.LatLng(centerLat, centerLong),
+							icon: '/images/house-small.png',
+						});
+
+						google.maps.event.addListener(marker, 'click', (function(marker) {
+							return function() {
+								infoWindow.open(map, marker);
+							}
+						})(marker));
+					}
+				}
+				else
+					var map = loadMap(<?=$this->mapCenterLat?>, <?=$this->mapCenterLong?>, <?=$this->countryZoom?>);
+
+				addBranchMarkers(map);
+				addr = '';
+			});
+		}
+
+		else if(branchId != '') {
+			for (var i in branches) {
+				if(branchId == branches[i].branchId) {
+					var map = loadMap(branches[i].latitude, branches[i].longitude, <?=$this->detailZoom?>);
+					break;
+				}
+			};
+	
+			loadBranchDetails();
+			$.get(
+				'<?=$this->urlSet(89)?>',
+				{branchId: branchId},
+				function(data){
+					showBranchDetails(data);
+				}
+			);
+			
+			addBranchMarkers(map);
+			branchId = '';
+		}
+
+		else {
+			if(centerLat === undefined)
+				centerLat = <?=$this->mapCenterLat?>;
+			if(centerLong === undefined)
+				centerLong = <?=$this->mapCenterLong?>;
+			if(zoom === undefined)
+				zoom = <?=$this->countryZoom?>;
+
+			var map = loadMap(centerLat, centerLong, zoom);
+			addBranchMarkers(map);
+		}
+	}
+
+
+	function loadMap(centerLat, centerLong, zoom) {
+		var center = new google.maps.LatLng(centerLat, centerLong);
+		var map = new google.maps.Map(document.getElementById('branch-map'), {
+			zoom: zoom,
+			center: center,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			scrollwheel: false
+		});
+		
+		return map;
+	}
+
+
+	function getBranches() {
+		return <?=$this->branchesJson?>;
+	}
+
+
+	function addBranchMarkers(map) {
+		var markers	= [];
+		var branches = getBranches();
+
+		for (var i = 0; i < branches.length; i++) {
+			var branch = branches[i];
+			var latLng = new google.maps.LatLng(branch.latitude, branch.longitude);
+			var marker = createMarker(map, latLng, branch);
+
+			markers.push(marker);
+		}
+
+		var mcOptions = {'imagePath': 'https://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclustererplus/images/m'	};
+		var markerCluster = new MarkerClusterer(map, markers, mcOptions);
+		google.maps.event.addListener(markerCluster, 'clusterclick', function(cluster) {
+			google.maps.event.addListenerOnce(map, 'idle', function(){
+				var bounds =  map.getBounds();
+				var ne = bounds.getNorthEast();
+	            var sw = bounds.getSouthWest();
+	            loadBranchDetails();
+	    		$.get(
+	    			'<?=$this->urlSet(89)?>',
+	    			{
+	    				maxLat: ne.lat(),
+	    				maxLng: ne.lng(),
+	    				minLat: sw.lat(),
+	    				minLng: sw.lng(),
+	    				topOnly: topOnly
+	    			},
+	    			function(data){
+	    				showBranchDetails(data);
+	    			}
+	    		);
+	   		});						
+			
+		});
+				
+	}
+
+
+	function createMarker(map, latLng, branch) {
+		var marker = new google.maps.Marker({
+			position: latLng, 
+		});
+
+		google.maps.event.addListener(marker, "click", function() {
+			loadBranchDetails();
+			$.get(
+				'<?=$this->urlSet(89)?>',
+				{branchId: branch.branchId},
+				function(data){
+					showBranchDetails(data);
+				}
+			);
+		});
+
+		return marker;
+	}
+
+
+	function focusLocation() {
+		var locationId = $('#location-selector').val();
+		$('#town-selector').val(0);
+			var locArrIndex = $('#location-selector').val();
+		var locations = <?=$this->locationsJson?>;
+		var localZoom = <?=$this->locationZoom?>;
+		if(locArrIndex == 13) // Prague requires bigger zoom then other locations
+			localZoom = <?=$this->cityZoom?>;
+		else if (locArrIndex == 0)
+			localZoom =  <?=$this->countryZoom?>;
+		var map = loadMap(locations[locArrIndex].latitude, locations[locArrIndex].longitude, localZoom);
+		addBranchMarkers(map);
+		loadBranchDetails();
+		$.get(
+			'<?=$this->urlSet(89)?>',
+			{
+				locationId: locationId,
+				topOnly: topOnly
+			},
+			function(data){
+				showBranchDetails(data);
+			}
+		);
+	}
+
+
+	function focusTown() {
+		var townId = $('#town-selector').val();
+		$('#location-selector').val(0);
+		if(townId != 0) {
+			var localZoom = <?=$this->cityZoom?>;
+
+			var markers	= [];
+			var branches = getBranches();
+			var towns = <?=$this->townsJson?>;
+			var selectedTown = towns[townId];
+			var map = loadMap(towns[townId][0].latitude, towns[townId][0].longitude, localZoom);
+			
+			for (var i = 0; i < branches.length; i++) {
+				var branch = branches[i];
+				if(branch.town.match(new RegExp('^'+towns[townId][0].town+'.*$'))) {
+					var latLng = new google.maps.LatLng(branch.latitude, branch.longitude);
+					var marker = createMarker(map, latLng, branch);
+					markers.push(marker);
+				}
+			}
+
+			var markerCluster = new MarkerClusterer(map, markers);
+			google.maps.event.addListener(markerCluster, 'clusterclick', function(cluster) {
+				google.maps.event.addListenerOnce(map, 'idle', function(){
+					var bounds =  map.getBounds();
+					var ne = bounds.getNorthEast();
+		            var sw = bounds.getSouthWest();
+		            loadBranchDetails();
+		    		$.get(
+		    			'<?=$this->urlSet(89)?>',
+		    			{
+		    				maxLat: ne.lat(),
+		    				maxLng: ne.lng(),
+		    				minLat: sw.lat(),
+		    				minLng: sw.lng(),
+		    				topOnly: topOnly
+		    			},
+		    			function(data){
+		    				showBranchDetails(data);
+		    			}
+		    		);
+		   		});						
+				
+			});
+			$.get(
+				'<?=$this->urlSet(89)?>',
+				{
+					townName: towns[townId][0].town,
+					topOnly: topOnly
+				},
+				function(data){
+					showBranchDetails(data);
+				}
+			);
+		}
+		else focusLocation();
+	}
+
+
+	function loadBranchDetails() {
+		$('#branch-info-container').fadeOut('fast', function(){
+			$('#branch-info-container').html('<div class="loader-big list-item"></div>');
+		});
+		$('#branch-info-container').fadeIn('fast');
+	}
+
+
+	function showBranchDetails(data) {
+		$('#branch-info-container').fadeOut('fast', function(){
+			$('#branch-info-container').html(data);
+		});
+		$('#branch-info-container').fadeIn('fast');
+		$('html, body').animate({
+			scrollTop: $('#branchResultsMarker').offset().top
+		}, 200);
+	}
+
+	function showAllBranches(){
+		$("#location-selector").val(0);
+		focusLocation();
+	}
+
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<div class="bottom10">
+	<div class="tabs flex">
+		<ul>
+			<li class="sel alone">
+				<a onclick="return false;" href="" class="first">Filtr</a>
+			</li>
+		</ul>
+	</div>
+	<div class="clear"></div>
+	<div class="content grayBg" id="branchFilter">
+		<form>
+			<div class="left regionDiv">
+				<label for="location-selector"><?=$this->trans('pick_location')?></label>
+				<select onChange="focusLocation()" id="location-selector" class="goldSelect192">
+					<?php foreach($this->locations as $location) : ?>
+						<option value="<?=$location['id']?>"><?=$location['name']?></option>
+					<?php endforeach?>
+				</select>
+			</div>
+			<div class="left left10 townDiv">
+				<label for="town-selector"><?=$this->trans('pick_town')?></label>
+				<select onChange="focusTown()" id="town-selector" class="goldSelect192">
+					<option value="0" ><?=$this->trans('select_town')?></option>
+					<?php foreach($this->towns as $id => $town) : ?>
+						<option value="<?=$id?>"><?=$town?></option>
+					<?php endforeach?>
+				</select>
+			</div>
+			<div class="right allBranchesDiv">
+				<input class="sbm-branches" type="button" value="Všechny pobočky" onclick="showAllBranches();"/>
+			</div>
+			<div class="clear"></div>
+			
+		</form>
+	</div>
+</div>
+
+<a id="map"></a>
+<div id="branch-map" class="grayBorder padding0 bottom10"><img src="/images/preloader-line.gif" alt="loading map ..." id="mapLoader"/></div>

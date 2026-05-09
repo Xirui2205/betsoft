@@ -1,0 +1,12 @@
+<div class="legend">
+  Vymaže cache jedné nebo více zvolených webových stránek.
+</div>
+<form action="" method="post">
+  <input type="hidden" name="ncc" value="<?= NodeCommController::CMD_INVALIDATE_WEB_PAGE ?>" />
+  <select multiple="multiple" name="ccids[]" size="20">
+<?php foreach ($this->commands[NodeCommController::CMD_INVALIDATE_WEB_PAGE]['pages'] as $page): ?>
+    <option value="<?= $page['controllerId'] ?>"><?= $page['controller'] ?> / <?= $page['action'] ?> (<?= $this->escape($page['text']) ?>)</option>
+<?php endforeach; ?>
+  </select><br />
+  <input type="submit" />
+</form>

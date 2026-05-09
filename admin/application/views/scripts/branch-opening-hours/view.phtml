@@ -1,0 +1,51 @@
+<div class="actions">
+	<?php if ($this->callcenterLogged == false) :?>
+	<button onclick="editBranchOpeningHours(<?=$this->branchId?>);"><?=i18n::tr('Edit')?></button>
+	<?php endif;?>
+	<button onclick="hideDetail('branch-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<?php if(!empty($this->openingHours)) : ?>
+	<table class="table-list">
+		<?php foreach($this->openingHours as $dayNumber => $day) : ?>
+			<tr >
+				<th rowspan="<?=(count($day) != 0 ? count($day) : '1')?>">
+					<?php if($dayNumber == 0) : ?>
+						<?=i18n::tr('monday')?>
+					<?php elseif($dayNumber == 1) : ?>
+						<?=i18n::tr('tuesday')?>
+					<?php elseif($dayNumber == 2) : ?>
+						<?=i18n::tr('wednesday')?>
+					<?php elseif($dayNumber == 3) : ?>
+						<?=i18n::tr('thursday')?>
+					<?php elseif($dayNumber == 4) : ?>
+						<?=i18n::tr('friday')?>
+					<?php elseif($dayNumber == 5) : ?>
+						<?=i18n::tr('saturday')?>
+					<?php elseif($dayNumber == 6) : ?>
+						<?=i18n::tr('sunday')?>
+					<?php endif?>
+				</th>
+
+				<?php if(!empty($day->collection)) : ?>
+					<?php foreach($day as $key => $interval) : ?>
+						<?php if($key != 0) : ?>
+							<tr>
+						<?php endif?>
+						
+						<td><?=$interval['from']?></td>
+						<td>-</td>
+						<td><?=$interval['to']?></td>
+						
+						</tr>
+					<?php endforeach?>
+				<?php else : ?>
+					<td colspan="3"><?=$this->trans('closed')?></td>
+					</tr>
+					<?php if($dayNumber != 6) : ?>
+						<tr>
+					<?php endif?>
+				<?php endif?>
+		<?php endforeach?>
+	</table>
+<?php endif?>

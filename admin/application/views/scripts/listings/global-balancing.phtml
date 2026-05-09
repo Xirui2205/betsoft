@@ -1,0 +1,304 @@
+<h3><?=i18n::tr('global_balancing')?></h3>
+
+<?=$this->form?>
+
+<?php if( !empty($this->balancing) ): ?>
+<table class="table-list td-align-right float-left">
+<thead><tr><th colspan="2"><?=I18n::tr('total_tickets')?></th></tr></thead>
+  <tr>
+    <th><?=i18n::tr('ticket_count')?></th>
+    <td><?=$this->formatFloat($this->ticketCountTotal, 0);?></td>
+  </tr>
+  <?php if($this->distinguishBranchesAndInternet == 1 ):?>
+  <tr>
+    <th><?=i18n::tr('net_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->netBalancing->ticketCount, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('branch_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->balancing->ticketCount - $this->netBalancing->ticketCount, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('live_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->liveBalancing->count, 0);?></td>
+  </tr>
+  <?php endif;?>
+  <tr>
+    <th><?=i18n::tr('ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->ticketAmountTotal, 2);?></td>
+  </tr>
+  <?php if($this->distinguishBranchesAndInternet == 1 ):?>
+    <tr>
+      <th><?=i18n::tr('net_ticket_amount')?></th>
+      <td><?=$this->formatFloat($this->netBalancing->ticketAmount, 2);?></td>
+    </tr>
+    <tr>
+      <th><?=i18n::tr('branch_ticket_amount')?></th>
+      <td><?=$this->formatFloat($this->balancing->ticketAmount-$this->netBalancing->ticketAmount, 2);?></td>
+    </tr>
+    <tr>
+      <th><?=i18n::tr('live_ticket_amount')?></th>
+      <td><?=$this->formatFloat($this->liveBalancing->amount, 2);?></td>
+    </tr>
+  <?php endif;?>
+  <tr>
+    <th><?=i18n::tr('point_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->balancing->ticketCountPoints, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->balancing->ticketAmountPoints, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('storno_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->stornoTicketCountTotal, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('storno_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->stornoTicketAmountTotal, 2);?></td>
+  </tr>
+    <tr>
+    <th><?=i18n::tr('not_storno_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->notStornoTicketCountTotal, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('not_storno_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->notStornoTicketAmountTotal, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_storno_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->balancing->stornoTicketCountPoints, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_storno_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->balancing->stornoTicketAmountPoints, 2);?></td>
+  </tr>
+    <tr>
+    <th><?=i18n::tr('point_not_storno_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->balancing->ticketCountPoints-$this->balancing->stornoTicketCountPoints, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_not_storno_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->balancing->ticketAmountPoints-$this->balancing->stornoTicketAmountPoints, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('collect_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->collectTicketCountTotal, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('collect_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->collectTicketAmountTotal, 2);?></td>
+  </tr>
+    <?php if($this->distinguishBranchesAndInternet == 1 ):?>
+  <tr>
+    <th><?=i18n::tr('net_collect_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->netBalancing->collectTicketAmount, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('branch_collect_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->balancing->collectTicketAmountReal - $this->netBalancing->collectTicketAmount, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('live_collect_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->liveBalancing->amountPaid, 2);?></td>
+  </tr>
+  <?php endif;?>
+  <tr>
+    <th><?=i18n::tr('win_ratio_cashflow')?></th>
+    <td><?=$this->formatFloat($this->winRatioCashflowTotal, 2);?>%</td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('deposits')?></th>
+    <td><?=$this->formatFloat($this->balancing->deposits, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('withdraws')?></th>
+    <td><?=$this->formatFloat($this->balancing->withdraws, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('user_deposits')?></th>
+    <td><?=$this->formatFloat($this->balancing->userDeposits, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('user_withdraws')?></th>
+    <td><?=$this->formatFloat($this->balancing->userWithdraws, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('registered_users')?></th>
+    <td><?=$this->formatFloat($this->balancing->registeredUsers, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('activated_users')?></th>
+    <td><?=$this->formatFloat($this->balancing->activatedUsers, 0);?></td>
+  </tr>
+  <tr>
+    <th class="last"><?=i18n::tr('active_users')?></th>
+    <td><?=$this->formatFloat($this->activeUsersTotal, 0);?></td>
+  </tr>
+</table>
+
+<?php if( $this->distinguishBranchesAndInternet ): ?>
+<table class="table-list td-align-right float-left">
+<thead><tr><th colspan="2"><?=I18n::tr('internet_tickets')?></th></tr></thead>
+  <tr>
+    <th><?=i18n::tr('ticket_count')?></th>
+    <td><?=$this->formatFloat($this->netBalancing->ticketCount, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->netBalancing->ticketAmount, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->netBalancing->ticketCountPoints, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->netBalancing->ticketAmountPoints, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('storno_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->netBalancing->stornoTicketCount, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('storno_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->netBalancing->stornoTicketAmount, 2);?></td>
+  </tr>
+    <tr>
+    <th><?=i18n::tr('not_storno_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->netBalancing->ticketCount-$this->netBalancing->stornoTicketCount, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('not_storno_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->netBalancing->ticketAmount-$this->netBalancing->stornoTicketAmount, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_storno_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->netBalancing->stornoTicketCountPoints, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_storno_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->netBalancing->stornoTicketAmountPoints, 2);?></td>
+  </tr>
+    <tr>
+    <th><?=i18n::tr('point_not_storno_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->netBalancing->ticketCountPoints-$this->netBalancing->stornoTicketCountPoints, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_not_storno_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->netBalancing->ticketAmountPoints-$this->netBalancing->stornoTicketAmountPoints, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('collect_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->netBalancing->collectTicketCount, 0);?></td>
+  </tr>
+  <tr>
+    <th class="last"><?=i18n::tr('collect_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->netBalancing->collectTicketAmount, 2);?></td>
+  </tr>
+  <tr>
+</table>
+
+<table class="table-list td-align-right float-left">
+<thead><tr><th colspan="2"><?=I18n::tr('branch_tickets')?></th></tr></thead>
+  <tr>
+    <th><?=i18n::tr('ticket_count')?></th>
+    <td><?=$this->formatFloat($this->balancing->ticketCount-$this->netBalancing->ticketCount, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->balancing->ticketAmount-$this->netBalancing->ticketAmount, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->balancing->ticketCountPoints-$this->netBalancing->ticketCountPoints, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->balancing->ticketAmountPoints-$this->netBalancing->ticketAmountPoints, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('storno_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->balancing->stornoTicketCount-$this->netBalancing->stornoTicketCount, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('storno_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->balancing->stornoTicketAmount-$this->netBalancing->stornoTicketAmount, 2);?></td>
+  </tr>
+    <tr>
+    <th><?=i18n::tr('not_storno_ticket_count')?></th>
+    <td><?=$this->formatFloat(($this->balancing->ticketCount-$this->balancing->stornoTicketCount)-($this->netBalancing->ticketCount-$this->netBalancing->stornoTicketCount), 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('not_storno_ticket_amount')?></th>
+    <td><?=$this->formatFloat(($this->balancing->ticketAmount-$this->balancing->stornoTicketAmount)-($this->netBalancing->ticketAmount-$this->netBalancing->stornoTicketAmount), 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_storno_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->balancing->stornoTicketCountPoints-$this->netBalancing->stornoTicketCountPoints, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_storno_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->balancing->stornoTicketAmountPoints-$this->netBalancing->stornoTicketAmountPoints, 2);?></td>
+  </tr>
+    <tr>
+    <th><?=i18n::tr('point_not_storno_ticket_count')?></th>
+    <td><?=$this->formatFloat(($this->balancing->ticketCountPoints-$this->balancing->stornoTicketCountPoints)-($this->netBalancing->ticketCountPoints-$this->netBalancing->stornoTicketCountPoints), 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_not_storno_ticket_amount')?></th>
+    <td><?=$this->formatFloat( ($this->balancing->ticketAmountPoints-$this->balancing->stornoTicketAmountPoints)-($this->netBalancing->ticketAmountPoints-$this->netBalancing->stornoTicketAmountPoints) , 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('collect_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->balancing->collectTicketCountReal - $this->netBalancing->collectTicketCount, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('collect_ticket_amount')?></th>
+    <td><?=$this->formatFloat( ($this->balancing->collectTicketAmountReal - $this->netBalancing->collectTicketAmount), 2);?></td>
+  </tr>
+  <tr>
+    <th class="no-use"><?=i18n::tr('collect_ticket_count_real')?></th>
+    <td><?=$this->formatFloat($this->balancing->collectTicketCount - $this->netBalancing->collectTicketCount, 0);?></td>
+  </tr>
+  <tr>
+    <th class="last no-use"><?=i18n::tr('collect_ticket_amount_real')?></th>
+    <td><?=$this->formatFloat( ($this->balancing->collectTicketAmount - $this->netBalancing->collectTicketAmount), 2);?></td>
+  </tr>
+</table>
+
+<table class="table-list td-align-right float-left">
+<thead><tr><th colspan="2"><?=I18n::tr('live_tickets')?></th></tr></thead>
+  <tr>
+    <th><?=i18n::tr('ticket_count')?></th>
+    <td><?=$this->formatFloat($this->liveBalancing->count, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->liveBalancing->amount, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('storno_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->liveBalancing->countCancel, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('storno_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->liveBalancing->amountCancel, 2);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('collect_ticket_count')?></th>
+    <td><?=$this->formatFloat($this->liveBalancing->countPaid, 0);?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('collect_ticket_amount')?></th>
+    <td><?=$this->formatFloat($this->liveBalancing->amountPaid, 2);?></td>
+  </tr>
+  <tr>
+    <th class="last"><?=i18n::tr('active_users')?></th>
+    <td><?=$this->formatFloat($this->liveBalancing->activeUsers, 0);?></td>
+  </tr>
+</table>
+<?php endif; ?>
+
+<div style="clear:both;"></div>
+<?php endif; ?>

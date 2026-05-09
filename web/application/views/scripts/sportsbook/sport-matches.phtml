@@ -1,0 +1,98 @@
+<?php if ( !$this->isAjax ) { ?>
+<script type="text/javascript">
+  //<![CDATA[
+	$(window).load(function(){
+		scrollSportsbook();
+	});
+	/*function setFilterHeaderRadius(enable){
+		if(enable) {
+			$('#betTypeFilter h2').addClass('alone');
+			$('#betTypeFilter h2').css('margin-bottom', 0);
+		} else {
+			$('#betTypeFilter h2').removeClass('alone');
+		}
+	}*/
+  //]]>
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".filters").hide();
+	$(".filter-hide").show();
+ 
+    $('.filter-hide').click(function(){
+		$(".filters").slideToggle();
+    });
+});
+</script>
+
+          <h2 class="boxheader">
+            <?php
+            $h1_title = $this->trans('bets');
+            if (!empty($this->h1)) $h1_title .= ' ' .$this->trans('on') . ' ' . $this->h1;
+            echo $h1_title;
+            ?>
+          </h2>
+          
+          <div class="filter filter-cols-4">
+			<div class="filters">
+				<form class="form-inline">
+
+				<?php 
+				$i=0;
+				foreach($this->type as $data) {
+				  $chId='ch'.($i+1);
+				?>
+
+				  <div class="checkbox"><label for="<?=$chId; ?>">
+					<input type="checkbox" 
+					id="<?= $chId; ?>"
+					name="type[]"
+					value="<?= $data['typ_id']; ?>"
+					<?= in_array($data['typ_id'],$this->types) ? 'checked="checked"':''; ?> />
+					<?= $this->trans($data['tnazev']); ?> </label>
+				  </div>
+
+				  <?php ++$i; } ?>
+
+				  <div class="checkbox"><label for="chAll">
+					<input type="checkbox" id="chAll" name="all"
+					<?= count($this->types) == count($this->type) ? 'checked="checked"':''; ?> />
+					<?= $this->trans(isset($data['all']) ? $data['all'] : 'all'); ?> </label>
+				  </div>
+
+				  <input type="submit" class="btn btn-big" value="<?= $this->trans('send_form'); ?>" name="send" />
+
+				</form>
+			</div>
+            <a href="#" class="filter-hide">Filter</a>			
+          </div>
+
+<?php } ?>
+
+ <?=$this->render('sportsbook/sport-odds.phtml'); ?>
+
+ <div class="wrdLatest" id="P-<?=$this->page?>"></div>
+
+<?php if ( !$this->isAjax ): ?>
+	<div id="lastPostsLoader"></div>
+<?php endif?>
+	
+<?php if ( empty($this->nextOddsUrls) && !$this->isAjax ): ?>
+	<div class="notify-larger notify-warning">
+		<p><?=$this->trans('no_bets')?></p>
+	</div>
+<?php elseif( !$this->isAjax) : ?>
+	<div class="vic-button-container" id="show-more-odds-button">
+		<a onClick="scrollSportsbook(); return false;" class="vic-button button-orange" href="#">
+			<?=$this->trans('show_more')?>
+		</a>
+		<script type="text/javascript">
+			$(window).scroll(function() {
+			   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+				   scrollSportsbook(); return false;
+			   }
+			});
+		</script>
+	</div>
+<?php endif; ?>

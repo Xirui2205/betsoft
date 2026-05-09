@@ -1,0 +1,16 @@
+
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+		<tr>
+			<td>
+ 			  <input type="button" onClick="viewParamDetail(<?=$row['id']?>)" class="sbutton" value="<?=i18n::tr('view')?>" />
+
+			</td>
+			<!--<td><?=$row['id']?></td>-->
+			<td><?=Help::Html($row['nazev'])?></td>
+			<td><?=Help::Html($row['mandatory'])?></td>
+			<td><?=Help::Html($row['nasobnost'])?></td>
+			<td><?=Help::Html($row['dt_nazev'])?></td>
+		</tr>
+	<?php endforeach?>
+</tbody>

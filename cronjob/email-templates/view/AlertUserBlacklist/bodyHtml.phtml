@@ -1,0 +1,11 @@
+<?=I18n::tr('forbiden_users')?><br />
+=======================<br />
+<br />
+<?php if ( empty($this->blacklist) ): ?>
+<?=I18n::tr('no_records')?>
+<?php else:?>
+<?php foreach( $this->blacklist as $user ) : ?>
+#<?=$user['userId']?> <a href="<?=PROTOCOL?><?=ADMINHOST ?>/?section=40#%7B%22userId%22:%22<?=$user['userId']?>%22%7D"><?=$user['username']?></a> <br />
+
+<?php endforeach;?>
+<?php endif;?>

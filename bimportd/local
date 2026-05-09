@@ -1,0 +1,14 @@
+#!/bin/sh
+#cd /var/www/kuchar23-test.vshosting.cz/bewa-core/bimportd
+
+ADMINPATH=$(readlink -f ../files/betradar/import)
+ADMINPATH_QUEUE="$ADMINPATH/queue"
+
+for file in $(find $ADMINPATH_QUEUE -type f -name '*.xml' | sort -n); do
+  archiDirName=$(basename $file | awk -F '_' '{ print $2 }' | cut -c 1-10 )
+  php -q -f bimport.php $file > /dev/null
+  mkdir -m 775 -p $ADMINPATH/archives/$archiDirName
+  if [ -e $file ]; then
+    mv $file $ADMINPATH/archives/$archiDirName
+  fi
+done

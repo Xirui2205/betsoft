@@ -1,0 +1,13 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+		<tr>
+			<?php foreach($this->layout()->columns as $column) : ?>
+				<?php if ( $column[1] == 'banned' ) continue;?>
+				<td<?php if ( !It6_Date::isNullDbDate($row['banned']) 
+								&& It6_Date::nowAsTimestamp() >= It6_Date::fromDbAsTimestamp($row['banned']) ) echo " class='banned-branch'";?>>
+					<?=$row[$column[1]]?>
+				</td>
+			<?php endforeach?>
+		</tr>
+	<?php endforeach?>
+</tbody>

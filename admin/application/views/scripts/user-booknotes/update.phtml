@@ -1,0 +1,22 @@
+<div class="actions">
+	<button onClick="loadGeneric(<?=$this->viewSectionId?>, 'user-booknotes', { userId : <?=$this->userId?> });"><?=i18n::tr('View')?></button>
+	<button onclick="hideDetail('user-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<?php echo $this->feedbackMsg?>
+
+<form method="post" name="UserBooknotesForm" id="UserBooknotesForm" action="?section=<?=$this->updateSectionId?>">
+	<table>
+		<tr>
+			<td><h3><?=i18n::tr('Bookmaker Notes')?></h3></td>
+		</tr>
+		<tr>
+			<td><textarea name="book_info_value" cols="80" rows="40" ><?=$this->noteBookmaker?></textarea></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="Uložit" onClick="submitGeneric(<?=$this->updateSectionId?>, 'UserBooknotesForm', 'user-booknotes', '&save=1&userId=<?=$this->userId?>')"/></td>
+		</tr>
+	</table>
+</form>
+
+

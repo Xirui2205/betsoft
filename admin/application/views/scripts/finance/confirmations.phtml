@@ -1,0 +1,106 @@
+<h3><?=i18n::tr('Confirmations')?></h3>
+
+<?=$this->result?>
+<form method="get" action="?section=225">
+	<?=$this->form?>
+
+	<?php if($this->transactions === false) : ?>
+		<?=UiUtil::printWarnings(I18n::tr('Please select type of transaction first.'))?>
+
+	<?php elseif(!empty($this->transactions)) : ?>
+		<table class="table-list">
+			<tr>
+				<th>&nbsp;</th>
+				<th colspan="2">&nbsp;</th>
+				<th style="width:60px" class="border-left">
+					<?=i18n::tr('id')?>
+				</th>
+				<th class="border-left">
+					<div class="ordering">
+						<input style="display:block" type="image" src="/_img/adm_asc.png" class="setOrder" value="^" name="order[time_ASC]" />
+						<input type="image" src="/_img/adm_desc.png"  class="setOrder" value="v" name="order[time_DESC]" />
+					</div>
+					<?=i18n::tr('time')?>
+				</th>
+				<th class="border-left">
+					<?=i18n::tr('time-pass')?>
+				</th>
+				<th class="border-left">
+					<?=i18n::tr('type-id')?>
+				</th>
+				<th class="border-left">
+					<div class="ordering">
+						<input style="display:block" type="image" src="/_img/adm_asc.png" class="setOrder" value="^" name="order[typeName_ASC]" />
+						<input type="image" src="/_img/adm_desc.png"  class="setOrder" value="v" name="order[typeName_DESC]" />
+					</div>
+					<?=i18n::tr('type-name')?>
+				</th>
+				<th class="border-left">
+					<?=i18n::tr('value')?>
+				</th>
+				<th class="border-left">
+					<?=i18n::tr('currency')?>
+				</th>
+				<th class="border-left">
+					<?=i18n::tr('user_handle')?>
+				</th>
+				<th class="border-left">
+					<?=i18n::tr('host-id')?>
+				</th>
+				<th class="border-left">
+					<div class="ordering">
+						<input style="display:block" type="image" src="/_img/adm_asc.png" class="setOrder" value="^" name="order[userNick_ASC]" />
+						<input type="image" src="/_img/adm_desc.png"  class="setOrder" value="v" name="order[userNick_DESC]" />
+					</div>
+					<?=i18n::tr('user-nick')?>
+				</th>
+				<th class="border-left">
+					<?=i18n::tr('branch-name')?>
+				</th>
+				<th class="border-left">
+					<?=i18n::tr('ticket-id')?>
+				</th>
+				<th class="border-left">
+					<?=i18n::tr('bankAccount')?>
+				</th>
+
+				<th class="border-left">
+					<?=i18n::tr('notes')?>
+				</th>
+			</tr>
+			<?php $i = 0; foreach ( $this->transactions as $item ) : ++$i;?>
+				<tr>
+					<td><input name="select[<?=$i?>]" value="<?=$item->transactionId?>" type="checkbox" /></td>
+					<td><input type="submit" name="confirmTransactionId[<?=$item->transactionId?>]" value="<?=I18n::tr('confirm')?>"></td>
+					<td><input type="submit" name="cancelTransactionId[<?=$item->transactionId?>]" value="<?=I18n::tr('cancel')?>"></td>
+					<td><?=$item->transactionId?></td>
+					<td><?=It6_Date::fromDb($item->time)?></td>
+					<td><!--  time pass --></td>
+					<td><?=$item->typeId?></td>
+					<td><?=i18n::tr($item->typeName)?></td>
+					<td style="text-align: right"><?=$item->value?></td>
+					<td><?=$item->currencyCode?></td>
+					<td><?=$item->userHandle?></td>
+					<td><?=$item->hostId?></td>
+					<td><?=$item->userNick?></td>
+					<td><?=$item->branchName?></td>
+					<td><?=$item->ticketId?></td>
+					<td>
+						<?=empty($item->bankAccountPrefix)?'':$item->bankAccountPrefix.'-'?><?=$item->bankAccountNumber?>/<?=$item->bankAccountBankCode?>
+					</td>
+					<td><?=$item->notes?></td>
+					
+				</tr>
+			<?php endforeach; ?>
+		</table>
+		<br />
+		<input type="submit" name="confirm_selected" value="<?=i18n::tr('confirm-selected')?>" />
+		<input type="submit" name="cancel_selected" value="<?=i18n::tr('cancel-selected')?>" >
+
+	<?php else : ?>
+		<?=UiUtil::printWarnings('No data.')?>
+	<?php endif?>
+</form>
+<div>
+	<a href="/?section=<?= FinanceController::CONFIRMATIONS_EXPORT_ID ?>"><?=i18n::tr('export_list')?></a>
+</div>

@@ -1,0 +1,25 @@
+<?=$this->feedbackMsg?>
+
+<?php if ($this->affiliateBanner) : ?>
+
+	<input name="affiliateBannerId" id="affiliateBannerId" type="hidden" value="<?=$this->affiliateBanner['affiliateBannerId']?>" />
+	<div class="actions">
+		<button onclick="hideDetail('affiliate-banner-container')"><?=i18n::tr('close_detail')?></button>
+	</div>
+
+	<table class="table-detail">
+		<tr>
+			<th class="header" colspan="2"><?=i18n::tr('article_image')?></th>
+		</tr>
+		<tr>
+			<td>
+				<img 
+					src="<?=PROTOCOL . WEBHOST . "affiliate/banners/" . $this->affiliateBanner['fileName']?>" 
+					title="<?=$this->affiliateBanner['title']?>" 
+					alt="<?=$this->affiliateBanner['fileName']?>"
+				/>
+			</td>
+		</tr>
+	</table>
+
+<?php endif; ?>

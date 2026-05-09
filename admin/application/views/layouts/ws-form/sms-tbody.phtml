@@ -1,0 +1,13 @@
+<tbody>
+  <?php foreach($this->layout()->data as $sms) : ?>
+    <tr>
+      <!--<td>
+        <button onClick="viewSmsDetail(<?=$sms['smsId']?>);return false;"><?=i18n::tr('View')?></button>
+      </td>-->
+      <td class="border-left txtrt"><?=$sms['smsPhoneNumber']?></td>
+	  <td class="border-left txtrt"><?=$sms['smsMessageText']?></td>
+      <td class="border-left txtrt"><?=$sms['smsTypeName']?></td>
+      <td class="border-left txtrt"><?=$sms['smsSend']?></td>
+    </tr>
+  <?php endforeach?>
+</tbody>

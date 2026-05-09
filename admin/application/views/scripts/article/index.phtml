@@ -1,0 +1,36 @@
+<h3><?=i18n::tr('Articles')?></h3>
+
+<?=$this->feedbackMsg?>
+
+<ul class="idTabs" style="display:none">
+    <li>
+        <a class="selected" href="#article-detail"><?=i18n::tr('article')?></a>
+    </li>
+</ul>
+
+<div id="article-container" class="tab-container hidden">
+	<input type="hidden" class="tabsLoaded" id="article-detail-loaded" value="0" />
+	<input type="hidden" name="articleId" id="articleId" value="">
+    
+	<div id="article-detail" class="tab" style="display: none;">
+    </div>
+</div>
+
+<div id="list">
+    <form method="post" action="?section=<?=$this->indexSectionId?>" id="formArticleFilter">
+        
+        <div class="actions">
+            <!--<button onclick="insertArticle();"><?=i18n::tr('article_insert')?></button>-->
+            <input type="button" onClick="insertArticle();" class="input" name="insert_new" value="<?=i18n::tr('article_insert')?>" />
+        </div>
+        
+        <?=$this->filter?>
+        <?=$this->paginator?>
+
+        <table class='table-list width-100'>
+            <?=$this->tHead?>
+            <?=$this->tBody?>
+        </table>
+        
+    </form>
+</div>

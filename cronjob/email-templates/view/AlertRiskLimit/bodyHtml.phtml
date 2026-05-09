@@ -1,0 +1,12 @@
+<b><?=I18n::tr('risk_limit_exceeded')?></b><br />
+===============================================================<br />
+<?php if(empty($this->bet)): ?>
+<?=I18n::tr('no_records')?>
+<?php else:?>
+<b>betId:</b> <?=$this->bet["betId"]?><br />
+<b>alias:</b> <?=$this->bet["fullAlias"]?><br />
+<b>typeName:</b> <?=$this->bet["typeName"]?><br />
+<b>ticketName:</b> <?=$this->bet["ticketName"]?><br />
+<b>riskLimit:</b> <?=$this->bet["riskLimit"]?><br />
+<b>riskLimitBalance:</b> <?=$this->bet["riskLimitBalance"]?>
+<?php endif;?>

@@ -1,0 +1,8 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="loadGeneric(<?=$this->viewSectionId?>, 'event-main', { eventId : <?=$this->eventId?> })"><?=i18n::tr('View')?></button>
+	<button onclick="hideDetail('event-main')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<?=$this->eventMainForm?>

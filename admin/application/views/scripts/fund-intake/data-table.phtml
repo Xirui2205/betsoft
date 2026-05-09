@@ -1,0 +1,105 @@
+<?php if(
+	empty($this->filtOrdData['filter']['odd-type-ids'])
+	&& empty($this->filtOrdData['filter']['bet-alias'])
+	&& empty($this->filtOrdData['filter']['bet-id'])
+
+) : ?>
+	<?=I18n::tr('set_filter_to_view_data')?>
+<?php elseif(!empty($this->bets)) : ?>
+	<table class="table-list fund-takeins">
+		
+		<thead>
+			<tr>
+				<th class="match-name"></th>
+				<?php foreach($this->tableHeadArr as $typeId => $type) : ?>
+					<th colspan="<?=count($this->typeColCount[$typeId]) * 3?>"><?=$type['name']?></th>
+				<?php endforeach?>
+			</tr>
+			<tr>
+				<th class="match-name"></th>
+				<?php foreach($this->tableHeadArr as $typeId => $type) : ?>
+					<?php foreach($type['oddTypes'] as $oddTypeId => $oddType) : ?>
+						<th colspan="<?=count($oddType['cols']) * 3?>"><?=$oddType['name']?></th>
+					<?php endforeach?>
+				<?php endforeach?>
+			</tr>
+			<tr>
+				<th class="match-name"></th>
+				<?php foreach($this->tableHeadArr as $typeId => $type) : ?>
+					<?php foreach($type['oddTypes'] as $betOddTypeId => $betOddType) : ?>
+						<?php foreach($betOddType['cols'] as $colName) : ?>
+							<th colspan="3"><?=$colName?></th>
+						<?php endforeach?>
+					<?php endforeach?>
+				<?php endforeach?>
+			</tr>
+			<tr>
+				<th class="match-name"></th>
+				<?php foreach($this->tableHeadArr as $typeId => $type) : ?>
+					<?php foreach($type['oddTypes'] as $betOddTypeId => $betOddType) : ?>
+						<?php foreach($betOddType['cols'] as $colName) : ?>
+							<th><?=I18n::tr('weigh.')?></th>
+							<th><?=I18n::tr('absol.')?></th>
+							<th><?=I18n::tr('count')?></th>
+						<?php endforeach?>
+					<?php endforeach?>
+				<?php endforeach?>
+			</tr>
+		</thead>
+		
+
+		<tbody>
+			<?php foreach($this->bets as $bet) : ?>
+				<tr>
+					<td class="match-name">
+						<?=$bet['alias']?>
+						-
+						<a href="?section=146&filtr=1&sazka_id=<?=$bet['betId']?>&stav[]=0&udalost[]=0">
+							<?=$bet['betId']?>
+						</a>
+						<?=$bet['sportName']?>
+						<?=$bet['regionName']?>
+						<?=$bet['eventName']?>
+						<div>
+							<strong><?=$bet['name']?></strong>
+						</div>
+					</td>
+					<?php foreach($this->types as $typeId => $type) : ?>
+						<?php if($bet['typeId'] == $typeId) : ?>
+							<?php foreach($this->oddTypes as $oddTypeId => $oddType) : ?>
+								<?php if($bet['oddTypeId'] == $oddTypeId) : ?>
+									<?php foreach($bet['cols'] as $colId => $col) : ?>
+										<?php foreach($col as $colType => $value) : ?>
+											<td class="txtrt <?=$colId == $bet['topColId'] && $bet['topColType'] == $colType ? 'red' : ''?>">
+												<?=$value?>
+											</td>
+										<?php endforeach?>
+									<?php endforeach?>
+								<?php else : ?>
+									<?php if(isset($this->oddTypeColCount[$typeId][$oddTypeId])) : ?> 
+										<?php foreach($this->oddTypeColCount[$typeId][$oddTypeId] as $col) : ?>
+											<td></td>
+											<td></td>
+											<td></td>
+										<?php endforeach?>
+									<?php endif?>
+								<?php endif?>
+							<?php endforeach?>
+						<?php else : ?>
+							<?php if(isset($this->typeColCount[$typeId])) : ?> 
+								<?php foreach($this->typeColCount[$typeId] as $col) : ?>
+									<td></td>
+									<td></td>
+									<td></td>
+								<?php endforeach?>
+							<?php endif?>
+						<?php endif?>
+					<?php endforeach?>
+				</tr>
+			<?php endforeach?>
+		</tbody>
+		
+	</table>
+<?php else : ?>
+	<?=I18n::tr('no_items')?>
+<?php endif?>

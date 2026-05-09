@@ -1,0 +1,34 @@
+<?=UiUtil::printWarnings($warnings)?>
+
+<?php if(empty($tickets)) : ?>
+	<?=UiUtil::printWarnings(I18n::tr('No tickets to  be processed.'))?>
+<?php else : ?>
+	<table class="table-detail">
+		<tr>
+			<th><?=I18n::tr('paid_out_tickets')?>:</th>
+		</tr>
+		<?php foreach($tickets as $ticketId => $ticket) : ?>
+			<?php if(!in_array($ticketId, $failedTickets)) : ?>
+				<tr>
+					<td>#<?=$ticketId?></td>
+				</tr>
+			<?php else: ?>
+				<tr>
+					<td><?=UiUtil::printErrors("Can't payout ticket '".$ticketId."': '".$failedTickets[$ticketId]->getMessage()."'")?></td>
+				</tr>
+			<?php endif?>
+		<?php endforeach?>
+	</table>
+
+	<?php if($isLastBatch === false) : ?>
+		<form method="post" action="?section=<?=$sectionId?>">
+			<table class="table-detail">
+				<tr>
+					<td colspan="2">
+						<input type="submit" name="ticket_ok" value="<?=I18n::tr('payout_tickets')?>" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	<?php endif?>
+<?php endif?>

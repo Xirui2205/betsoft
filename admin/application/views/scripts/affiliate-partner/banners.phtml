@@ -1,0 +1,51 @@
+<?=$this->feedbackMsg?>
+
+<? if (empty($this->affiliateBannerId)) : ?>
+
+	<input name="affiliatePartnerId" id="affiliatePartnerId" type="hidden" value="<?=$this->affiliatePartnerId?>" />
+	<div class="actions">
+		<button onClick="assignAffiliateBanner('<?=$this->affiliatePartnerId?>')"><?=i18n::tr('assign_affiliate_banner')?></button>
+		<button onclick="hideDetail('affiliate-partner-container')"><?=i18n::tr("close_detail")?></button>
+	</div>
+
+	<table class="table-detail">
+		<tr>
+			<th class="header"><?=i18n::tr("id")?></th>
+			<th class="header"><?=i18n::tr("article_title")?></th>
+			<th class="header"><?=i18n::tr("file_name")?></th>
+			<th class="header">ALT</th>
+			<th class="header"><?=i18n::tr("type_open")?></th>
+			<th class="header"><?=i18n::tr("valid_from")?></th>
+			<th class="header"><?=i18n::tr("valid_to")?></th>
+			<th class="header">HTML Code</th>
+		</tr>
+
+		<?php if (!empty($this->banners)) : ?>
+			<?php foreach ($this->banners as $banner) : ?>
+				<tr>
+					<td><?=$banner["id"]?></td>
+					<td><?=$banner["image_title"]?></td>
+					<td><?=$banner["file_name"]?></td>
+					<td><?=$banner["alt"]?></td>
+					<td><?=$banner["target"]?></td>
+					<td><?=$banner["valid_from"]?></td>
+					<td><?=$banner["valid_to"]?></td>
+					<td>
+						<a onclick="javascript:toggleCodeDetail('<?=$this->affiliatePartnerId?>', '<?=$banner["id"]?>', '<?=$this->bannersSectionId?>', 'bannerDetail_<?=$banner["id"]?>')" class="stat">
+							<div>&nbsp;</div>
+						</a>
+					</td>
+				</tr>
+				<tr><td colspan="8" class="view-detail" id="bannerDetail_<?=$banner['id']?>" style="display:none;">&nbsp;</td></tr>
+			<?php endforeach;?>
+		<?php else : ?>
+			<tr><td colspan="8"><?=i18n::tr("no_banners")?></td></tr>
+		<?php endif;?>
+
+	</table>
+
+<? else :?>
+
+	<textarea style="margin:5px" rows="3" cols="110"><a title="<?=$this->codeBanner["imageTitle"]?>" target="<?=$this->codeBanner["target"]?>" href="<?=PROTOCOL.WEBHOST?>cs/registrace/?partner=<?=$this->affiliatePartnerId?>&banner=<?=$this->affiliateBannerId?>"><img alt="<?=$this->codeBanner["alt"]?>" src="<?=PROTOCOL.WEBHOST."affiliate/banners/".$this->codeBanner['fileName']?>"/></a></textarea>
+
+<? endif;?>

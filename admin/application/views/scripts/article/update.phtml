@@ -1,0 +1,22 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="previewArticle(<?= "'".WEBHOST.'\', \''.$this->updateForm->getValue('langIso').'\', '.$this->articleId.', \''.$this->publisherKey."'" ?>)"><?=i18n::tr('article_preview')?></button>
+	<button onclick="deleteArticle(<?=$this->articleId?>)"><?=i18n::tr('article_delete')?></button>
+	<button onclick="hideDetail('article-container')"><?=i18n::tr('close')?></button>
+</div>
+
+<?=$this->updateForm?>
+
+<span id="tipsDataJson" style="display:none"><?=$this->tipsDataJson?></span>
+<script type="text/javascript">
+    $(function() {
+		var tipsDataJson = $.parseJSON($('#tipsDataJson').text());
+		loadOddTips(tipsDataJson);
+	});
+</script>
+
+<?php
+include 'image.phtml';
+include(ROOT.'admin/include/class/Template/tinymce.phtml');
+?>

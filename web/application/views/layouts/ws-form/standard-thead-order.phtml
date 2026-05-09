@@ -1,0 +1,15 @@
+<thead>
+	<tr>
+		<?php foreach($this->layout()->columns as $column) : ?>
+			<th>
+				<?php if(!empty($column[0])) : ?>
+					<?=$this->trans($column[0])?><br/>
+				<?php endif?>
+				<?php if(!empty($column[1])) : ?>
+					<input type="submit" class="setOrder" value="^" name="order[<?=$column[1]?>_ASC]" />
+					<input type="submit" class="setOrder" value="v" name="order[<?=$column[1]?>_DESC]" />
+				<?php endif?>
+			</th>
+		<?php endforeach?>
+	</tr>
+</thead>

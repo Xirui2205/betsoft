@@ -1,0 +1,23 @@
+<tbody>
+  <?php if (empty($this->layout()->data)): ?>
+    <tr>
+      <td colspan="12"><?=i18n::tr('no_items')?></td>
+    </tr>
+  <?php else: ?>
+    <?php foreach($this->layout()->data as $row) : ?>
+      <tr>
+        <td><?=number_format($row['branchHandle'], '0', '', ' ')?></td>
+        <td><?=$row['branchName']?></td>
+        <td><?=$row['hostName']?></td>
+        <td class="balance"><?=$row['balance'] == 0 ? 0 : number_format($row['balance'], '2', '.', ' ')?></td>
+        <td class="balance"><?=$row['onTheWayDeposit'] == 0 ? 0 : number_format($row['onTheWayDeposit'], '2', '.', ' ')?></td>
+        <td class="balance"><?=$row['onTheWayWithdraw'] == 0 ? 0 : number_format($row['onTheWayWithdraw'], '2', '.', ' ')?></td>
+        <td class="balance"><?=$row['winTicketsCash'] == 0 ? 0 : number_format($row['winTicketsCash'], '2', '.', ' ')?></td>
+        <td class="balance"><?=$row['userWithdrawsCash'] == 0 ? 0 : number_format($row['userWithdrawsCash'], '2', '.', ' ')?></td>
+        <td class="balance"><?=$row['totalCollect'] == 0 ? 0 : number_format($row['totalCollect'], '2', '.', ' ')?></td>
+        <td class="balance"><?=$row['recommendedWithdraw'] == 0 ? 0 : number_format($row['recommendedWithdraw'], '2', '.', ' ')?></td>
+        <td class="balance"><?=$row['recommendedDeposit'] == 0 ? 0 : number_format($row['recommendedDeposit'], '2', '.', ' ')?></td>
+      </tr>
+    <?php endforeach?>
+  <?php endif; ?>
+</tbody>

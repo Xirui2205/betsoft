@@ -1,0 +1,48 @@
+<h3><?=i18n::tr('Branch management')?></h3>
+
+<ul class="idTabs" style="display: none;">
+	<li><a class="selected" href="#branch-main"><?=i18n::tr('branch_main')?></a></li>
+	<li><a href="#branch-opening-hours" onClick="loadTabGeneric(286, 'branch-opening-hours', { branchId : $('#branchId').val() })"><?=i18n::tr('branch_opening_hours')?></a></li>	
+	<?php if ($this->callcenterLogged == false) :?>
+	<li><a href="#branch-parameter" onClick="loadTabGeneric(166, 'branch-parameter', { branchId : $('#branchId').val() })"><?=i18n::tr('branch_parameters')?></a></li>
+	<li><a href="#branch-bank" onClick="loadTabGeneric(164, 'branch-bank', { branchId : $('#branchId').val() })"><?=i18n::tr('branch_bank_accounts')?></a></li>
+	<li><a href="#branch-contract" onClick="loadTabGeneric(165, 'branch-contract', { branchId : $('#branchId').val() })"><?=i18n::tr('branch_contracts')?></a></li>
+	<?php endif;?>
+	<li><a href="#branch-employee" onClick="loadTabGeneric(185, 'branch-employee', { branchId : $('#branchId').val() })"><?=i18n::tr('branch_employees')?></a></li>
+	<?php if ($this->callcenterLogged == false) :?>
+	<li><a href="#branch-user" onClick="loadTabGeneric(183, 'branch-user', { branchId : $('#branchId').val() })"><?=i18n::tr('branch_users')?></a></li>
+	<?php endif;?>
+	<li><a href="#branch-host" onClick="loadTabGeneric(180, 'branch-host', { branchId : $('#branchId').val() })"><?=i18n::tr('branch_hosts')?></a></li>
+	
+</ul>
+
+<div id="branch-container" class="tab-container hidden">
+	<input type="hidden" class="tabsLoaded" id="branch-parameter-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="branch-bank-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="branch-contract-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="branch-employee-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="branch-user-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="branch-host-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="branch-opening-hours-loaded" value="0" />
+
+	<div id="branch-main" class="tab">
+	</div>
+	<div id="branch-parameter"  class="tab" style="display: none;">
+	</div>
+	<div id="branch-bank" class="tab" style="display: none;">
+	</div>
+	<div id="branch-contract" class="tab" style="display: none;">
+	</div>
+	<div id="branch-employee" class="tab" style="display: none;">
+	</div>
+	<div id="branch-user" class="tab" style="display: none;">
+	</div>
+	<div id="branch-host" class="tab" style="display: none;">
+	</div>
+	<div id="branch-opening-hours" class="tab" style="display: none;">
+	</div>
+</div>
+<div id="list">
+	<!-- seznam vsech hostu -->
+	<?php include('branch-list.phtml'); ?>
+</div>

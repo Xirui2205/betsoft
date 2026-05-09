@@ -1,0 +1,28 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="hideDetail('sms-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<table class="table-list">
+	<tr>
+		<th><?=i18n::tr('id')?></th>
+		<td><?=$this->smsDetail['smsId']?></td>
+	</tr>
+    <tr>
+		<th><?=i18n::tr('sms_type_name')?></th>
+		<td><?=$this->smsDetail['smsTypeName']?></td>
+	</tr>
+	<tr>
+		<th><?=i18n::tr('sms_phone_number')?></th>
+		<td><?=$this->smsDetail['smsPhoneNumber']?></td>
+	</tr>
+	<tr>
+		<th><?=i18n::tr('sms_message_text')?></th>
+		<td><?=$this->smsDetail['smsMessageText']?></td>
+	</tr>
+    <tr>
+		<th><?=i18n::tr('sms_send')?></th>
+		<td><?=$this->smsDetail['smsSend']?></td>
+	</tr>
+</table>

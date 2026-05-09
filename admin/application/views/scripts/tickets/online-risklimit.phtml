@@ -1,0 +1,49 @@
+<?php if ( empty($this->ajax) ): ?>
+<h3><?=i18n::tr('Online_risklimit')?></h3>
+
+<script>
+  $(window).load(function() {
+    setInterval(refresh,<?=1000*TicketsController::ONLINE_RISKLIMIT_REFRESH_IN?>); 
+  });
+
+  from = '<?=$this->to?>';
+  function refresh() {
+    $.ajax({
+      url: '?section=295&ajax=1',
+      success: function(data,status){
+            $('#online-risklimit').html(data);
+      },
+    })
+  }
+</script>
+
+<?php endif ?>
+
+<div  id="online-risklimit">
+<table class="table-list">
+<tr id="header">
+  <th class="id"><?=i18n::tr('bet_id')?></th>
+
+  <th><?=i18n::tr('bet_name')?></th>
+  <th><?=i18n::tr('event_name')?></th>
+  <th><?=i18n::tr('sport_name')?></th>
+  <th><?=i18n::tr('type_name')?></th>
+  <th><?=i18n::tr('risk_limit')?></th>
+
+  <th><?=i18n::tr('risk_limit_balance')?></th>
+  <th><?=i18n::tr('risk_factor')?></th>
+</tr>
+<?php foreach($this->data as $row): ?>
+  <tr>
+    <td><?=$row['betId']?></td>
+    <td><a href="?section=146&filtr=1&sazka_id=<?=$row['betId']?>&stav[]=0&udalost[]=0" target="_blank"><?=$row['name']?></a></td>
+    <td><?=i18n::tr($row['eventName'])?></td>
+    <td><?=i18n::tr($row['sportName'])?></td>
+    <td><?=i18n::tr($row['typeName'])?></td>
+    <td><?=$row['riskLimit']?></td>
+    <td><?=$row['riskLimitBalance']?></td>
+    <td><strong><?=round(100*$row['factor'])?>%</strong></td>
+  </tr>
+<?php endforeach;?>
+</table>
+</div>

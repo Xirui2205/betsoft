@@ -1,0 +1,47 @@
+<h3><?=i18n::tr('affiliate-partners')?></h3>
+
+<?=$this->feedbackMsg?>
+
+<ul class="idTabs" style="display:none">
+	<li><a class="selected" href="#affiliate-partner-main"><?=i18n::tr('partner')?></a></li>
+	<li>
+		<a href="#affiliate-partner-banner" 
+		onClick="loadTabGeneric(388, 'affiliate-partner-banner', { affiliatePartnerId : $('#affiliatePartnerId').val() })">
+			<?=i18n::tr('banners')?>
+		</a>
+	</li>
+	<li>
+		<a href="#affiliate-partner-users" 
+		onClick="loadTabGeneric(390, 'affiliate-partner-users', { affiliatePartnerId : $('#affiliatePartnerId').val() })">
+			<?=i18n::tr('Users')?>
+		</a>
+	</li>
+	<li>
+		<a href="#affiliate-partner-actual-provision" 
+		onClick="loadTabGeneric(391, 'affiliate-partner-actual-provision', { affiliatePartnerId : $('#affiliatePartnerId').val() })">
+			<?=i18n::tr('actual_no_paidout_provision')?>
+		</a>
+	</li>
+</ul>
+
+<div id="affiliate-partner-container" class="tab-container hidden">
+	<input type="hidden" name="affiliatePartnerId" id="affiliatePartnerId" value="" />
+	<input type="hidden" class="tabsLoaded" id="affiliate-partner-banner-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="affiliate-partner-users-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="affiliate-partner-actual-provision-loaded" value="0" />
+	<div id="affiliate-partner-main" class="tab"></div>
+	<div id="affiliate-partner-banner" class="tab" style="display: none;"></div>
+	<div id="affiliate-partner-users" class="tab" style="display: none;"></div>
+	<div id="affiliate-partner-actual-provision" class="tab" style="display: none;"></div>
+</div>
+
+<div id="list">
+	<form method="post" action="?section=<?=$this->partnerIndexSectionId?>" id="affiliate-partner-index-form">
+		<?=$this->filter?>
+		<?=$this->paginator?>
+		<table class='table-list width-100'>
+			<?=$this->tHead?>
+			<?=$this->tBody?>
+		</table>
+	</form>
+</div>

@@ -1,0 +1,133 @@
+<?php if (count($tickets)>0) : ?>
+	<script type="text/javascript">
+		function toggleTicketDetail(ticketId) {
+			var container = $("#ticketDetail_" + ticketId);
+			if (container.is(":visible")) {
+				container.hide();
+				return false;
+			}
+			else
+				loadGeneric(<?=$ticketDetailSectionId?>, "ticketDetail_" + ticketId, {ticketId:ticketId});
+			return false;
+		}
+		function toggleTicketActions(ticketId) {
+			$("#ticketAction_" + ticketId).toggle();
+			return false;
+		}
+	</script>
+	
+	<table class="table-list table-tickets">
+		<tr>
+			<th></th>
+			<th class="id"><?=I18n::tr('ticket_id')?></th>
+			<th class="user"><?=I18n::tr('User')?></th>
+			<th><?=I18n::tr('ticket_branch')?></th>
+			<th><?=I18n::tr('currency')?></th>
+			<th><?=I18n::tr('ticket_bet_count')?></th>
+			<th><?=I18n::tr('ticket_group_count')?></th>
+			<th class="txtrt"><?=I18n::tr('stake')?></th>
+			<th class="txtrt"><?=I18n::tr('rate')?></th>
+			<th class="txtrt"><?=I18n::tr('ticket_winning')?></th>
+			<th class="date"><?=I18n::tr('ticket_date_created')?></th>
+			<th><?=I18n::tr('ticket_evaluation')?></th>
+			<th class="status"><?=I18n::tr('ticket_status')?></th>
+			<?php if (!$isGovSupervisor) : ?>
+				<th><?=I18n::tr('ticket_bookmaker_paid_off')?></th>
+			<?php endif?>
+			<th class="date"><?=I18n::tr('ticket_pay_out_date')?></th>
+			<th><?=I18n::tr('note')?></th>
+			<th><?=I18n::tr('ticket_type')?></th>
+			<th><?=I18n::tr('action')?></th>
+		</tr>
+		
+		<?php foreach($tickets as $ticketId => $ticket) : ?>
+			<tr
+				class="
+					head
+					<?php if(!empty($ticket['vyplacen']) && empty($ticket['collection_time'])) : ?>
+						<?php if ($ticket['isLoss']) : ?>
+							ticket-loss
+						<?php else : ?>
+							ticket-win
+						<?php endif?>
+					<?php elseif($ticket['zruseno']) : ?>
+						ticket-canceled
+					<?php endif?>"
+				id="ticket-row-<?=$ticketId?>"
+			>
+				<td class="magn">
+					<img onclick="toggleTicketDetail(<?=$ticketId?>);" src="_img/magnifier.png" alt="detail" title="detail"/>
+				</td>
+				<td><b><?=$ticket['ticket_id']?></b></td>
+
+				<?php if($canUpdate) : ?>
+					<td>
+						<a href="?section=<?=($isSuperAdmin) ? '40' : '318'?>&user_id=<?=$ticket['user_id']?>"><?=$ticket['user']?></a>
+					</td>
+				<?php else : ?>
+					<td class="user"><?=$ticket['user']?></td>
+				<?php endif?>
+				
+				<td><?=$ticket['hostName']?></td>
+				<td><?=$ticket['currencyName']?></td>
+				<td class="txtrt"><?=$ticket['betCount']?></td>
+				<td class="txtrt"><?=$ticket['group_count']?></td>
+				<td class="txtrt">
+					<?=It6_Models_Ticket::formatAmount($ticket['stake'], $ticket['mena_id'], false)?>
+					(<?=round($ticket['stakeInPoints'])?>)
+				</td>
+				<td class="txtrt">
+					<?=It6_Models_Ticket::formatRate($ticket['total_rate'])?>
+				</td>
+				<td class="txtrt">
+					<?=It6_Models_Ticket::formatAmount($ticket['winning'], $ticket['mena_id'], false);?>
+				</td>
+				<td class="date"><?=$ticket['zalozen']?></td>
+				
+				<td
+					<?php if(0 < $ticket['betEvalCount']) : ?>
+						<?=$ticket['betEvalCount'] == $ticket['betCount'] ? 'class="red"' : 'class="blue"'?>
+					<?php endif?>
+				>
+					<?=$ticket['betEvalCount']?>/<?=$ticket['betCount']?>
+				</td>
+				<td class="status">
+					<strong>
+						<?php if (!empty($ticket['vyplacen'])) : ?>
+							<?php if (!empty($ticket['collection_time'])) : ?>
+								<?=I18n::tr('ticket_status_collected')?>
+							<?php elseif ($ticket['isLoss']) : ?>
+								<?=I18n::tr('ticket_status_loss')?>
+							<?php else : ?>
+								<?=I18n::tr('ticket_status_winning')?>
+							<?php endif?>
+						<?php elseif ($ticket['zruseno']) : ?>
+							<?=I18n::tr('ticket_status_canceled')?>
+						<?php else : ?>
+							<?=I18n::tr('Not paid out')?>
+						<?php endif?>
+						<?=!empty($ticket['forfeit']) ? '(Výhra propadla '.$ticket['forfeit'].')' : ''?>
+					</strong>
+				</td>
+				<?=!$isGovSupervisor ? '<td>'.$ticket['vyplatil'].'</td>' : ''?>
+				<td class="date"><?=$ticket['vyplacen_date']?></td>
+				<td>
+					<?php $note = TicketUtil::getTicketNotes($ticket)?>
+					<?=!empty($note) ? '<img src="/_img/note.png" title="'.$note.'" />' : ''?>
+				</td>
+				<td><?=I18n::tr($ticket['type'])?></td>
+				<?php if($canUpdate) : ?>
+					<td class="ticket-actions">
+						<?=TicketUtil::getTicketAction($ticket, $ticket['ticket_id'], $nomenu, $isSuperAdmin)?>
+					</td>
+				<?php else :?>
+					<td></td>
+				<?php endif?>
+			</tr>
+			<tr class="ticket-detail" id="ticketDetail_<?=$ticketId?>" style="display:none"></tr>
+		<?php endforeach?>
+		
+	</table>	
+<?php else : ?>
+	<?=UiUtil::printWarnings(array(I18n::tr('warn_no_tickets_found')))?>
+<?php endif?>

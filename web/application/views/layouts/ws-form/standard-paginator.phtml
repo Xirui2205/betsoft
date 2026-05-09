@@ -1,0 +1,25 @@
+<div class="pager listing">
+		<?=$this->paginationControl(
+			$this->layout()->paginator,
+			'Sliding',
+			$this->layout()->paginatorControls,
+			$this->layout()->recsPerPage)
+		?>
+
+		<div class="float-right">
+		<?=$this->trans('Records per page')?>:
+		<?php if(!empty($this->layout()->recsPerPageOpts)) : ?>
+		<select class="recs-per-page" name="paginator[recsPerPage]" onchange="$(this).closest('form').submit();">
+				<?php foreach($this->layout()->recsPerPageOpts as $key => $opt) : ?>
+					<option value="<?=$key?>" <?=$opt == $this->layout()->recsPerPage ? 'selected="selected"' : ''?>>
+						<?=$this->trans($opt)?>
+					</option>
+				<?php endforeach?>
+			</select>
+		<?php else : ?>
+			<input type="text" class="recs-per-page" name="paginator[recsPerPage]" size="4" value="<?=$this->layout()->recsPerPage?>" />
+		<?php endif?>
+		<!--<input type="submit" class="btn" name="submit" value="<?=$this->trans('Submit')?>" />-->
+		</div>
+	<div class="clear"></div>
+</div>

@@ -1,0 +1,74 @@
+<?php
+/* $Id:$
+* template with page browser (as part of form with method POST)
+* IN:
+*    $lister - instance of class Lister
+*    $params - additional data
+*            'formId' ... DOM id of form in which lister is present
+*            'jsPreSubmit' ... JavaScript to be executed before submiting form
+*/
+if (!isset($lister))
+	return;
+$_browseInfo = $lister->getPagesUrls();
+if (!isset($counter))
+	$counter = '';
+$_fnPost = 'listerPost_' . $lister->getId();
+$_fnPostCount = 'listerPostCount_' . $lister->getId();
+if (empty($counter)): ?>
+<script type="text/javascript">
+// <![CDATA[
+	function <?= $_fnPost ?>(from) {
+		<?php if (!empty($params['jsPreSubmit'])) echo $params['jsPreSubmit']; ?>
+		$('#<?= $params['formId'] ?> input[type=hidden][name=<?= $lister->getParamNameFrom() ?>]').attr('value', from);
+	}
+	function <?= $_fnPostCount ?>(countId) {
+		<?php if (!empty($params['jsPreSubmit'])) echo $params['jsPreSubmit']; ?>
+		$('#<?= $params['formId'] ?> input[type=hidden][name=<?= $lister->getParamNameCount() ?>]').attr('value', $('#' + countId).attr('value'));
+	}
+// ]]>
+</script>
+<?php endif; ?>
+<?php if (!empty($_browseInfo['pagesCount'])) :?>
+<input type="hidden" name="<?= $lister->getParamNameFrom() ?>" value="<?= $lister->getFrom()?>" />
+<input type="hidden" name="<?= $lister->getParamNameCount() ?>" value="<?= $lister->getCount()?>" />
+<div class="lister">
+	<div class="fltrt">
+		<label for="<?= $lister->getParamNameCount() . $counter ?>"><?=I18n::tr('Records per page')?>:</label>
+		<input type="text" id="<?= $lister->getParamNameCount() . $counter ?>" size="4" value="<?= $lister->getCount() ?>"  />
+		<input type="submit" class="lister-post-submit" name="listerCount_<?= $lister->getId() ?>" value="ok" onclick="<?= $_fnPostCount ?>('<?= $lister->getParamNameCount() . $counter ?>');" />
+	</div>
+	<div class="lister-navigation-post">
+		<ul>
+			<?php if (isset($_browseInfo['first'])): ?>
+				<li><input type="submit" name="listerFrom_first" value="&lt;&lt;" onclick="<?= $_fnPost ?>(<?= $_browseInfo['first'][$lister->getParamNameFrom()] ?>);" /></li>
+			<?php endif;
+			if (isset($_browseInfo['prev'])): ?>
+			  <li class="prev"><input type="submit" class="nb" name="listerFrom_prev" value="&#171; <?=I18n::tr('Previous')?>" onclick="<?= $_fnPost ?>(<?= $_browseInfo['prev'][$lister->getParamNameFrom()] ?>);" /></li>
+			<?php endif;
+			if ($_browseInfo['urls']) :
+			foreach ($_browseInfo['urls'] as $_i => $_params):
+			  if ($_i == $_browseInfo['index']): ?>
+			  <li class="active">&nbsp;&nbsp;<?= $_i ?>&nbsp;&nbsp;</li>
+				<?php else: ?>
+					<li><input type="submit" name="listerFrom_<?= $_i ?>" value="<?= $_i ?>" onclick="<?= $_fnPost ?>(<?= $_params[$lister->getParamNameFrom()] ?>);" /></li>
+				<?php endif;
+				endforeach;
+			endif;
+			if (isset($_browseInfo['next'])): ?>
+				<li class="next"><input type="submit" class="nb" name="listerFrom_next" value="<?=I18n::tr('Next')?> &#187;" onclick="<?= $_fnPost ?>(<?= $_browseInfo['next'][$lister->getParamNameFrom()] ?>);" /></li>
+			<?php endif;
+			if (isset($_browseInfo['last'])): ?>
+				<li><input type="submit" name="listerFrom_last" value="&gt;&gt;" onclick="<?= $_fnPost ?>(<?= $_browseInfo['last'][$lister->getParamNameFrom()] ?>);" /></li>
+			<?php endif; ?>
+			<li class="counts">
+				<?php if (!empty($_browseInfo['pagesCount'])) :?>
+				[<?= number_format($_browseInfo['pagesCount'], 0, ',', ' ') ?> <?=I18n::tr('lister_total_pages')?>]
+				<?php endif; ?>
+				<?php if (!empty($_browseInfo['totalCount'])) :?>
+				(<strong><?= number_format($_browseInfo['totalCount'], 0, ',', ' ') ?></strong> <?=I18n::tr('lister_total_items')?>)
+				<?php endif; ?>
+			</li>
+		</ul>
+	</div>
+</div>
+<?php endif; ?>

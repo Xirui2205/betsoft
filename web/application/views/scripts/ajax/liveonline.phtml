@@ -1,0 +1,20 @@
+
+
+<?php if($this->s == 1 || $this->s == 2): ?>
+  <?=$this->render('livebetting/online.phtml'); ?>
+
+<?php elseif($this->s == 3): ?>
+
+  <?php if(isset($this->info['html'])): ?>
+    <?=$this->render('livebetting/basic_html'.$this->info['sport_id'].'.phtml'); ?>
+  <?php elseif(isset($this->info['sport_id'])): ?>
+    <?=$this->render('livebetting/basic_json'.$this->info['sport_id'].'.phtml'); ?>
+  <?php else: ?>
+    {}
+   <?php endif; ?>
+
+<?php elseif($this->s == 4): ?>
+  <?=$this->render('livebetting/basic_json.phtml'); ?>
+
+
+<?php endif; ?>

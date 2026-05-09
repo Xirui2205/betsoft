@@ -1,0 +1,3 @@
+#!/bin/sh
+
+APPLICATION_ENVIRONMENT=DEVEL_LOCAL php -f ./confirm.php 2> /dev/null

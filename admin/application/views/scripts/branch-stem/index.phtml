@@ -1,0 +1,20 @@
+<h4><?=i18n::tr('insert_admin')?></h4>
+
+<div class="actions">
+	<button onclick="insertGeneric(<?=$this->insertSectionId?>, 'branch-stem');"><?=i18n::tr('add_stem')?></button>
+</div>
+
+<div id="branch-stem" class="tab" style="display: none;">
+</div>
+
+<div id="list">
+	<form method="get" action="/" id="formStemFilter">
+		<input type="hidden" name="section" value="<?=$this->indexSectionId?>" />
+		<?=$this->filter?>
+		<?=$this->paginator?>
+		<table class='table-list width-100'>
+			<?=$this->tHead?>
+			<?=$this->tBody?>
+		</table>
+	</form>
+</div>

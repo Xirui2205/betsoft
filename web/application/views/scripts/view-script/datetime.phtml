@@ -1,0 +1,44 @@
+<?php // to-do
+$id = $this->element->getId();
+?>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#<?= $id ?>-dateViewFormat').datepicker({
+			altField: '#<?= $id ?>-dateSys',
+			altFormat : 'yy-mm-dd'
+		});
+
+		$('#<?= $id ?>-timeHHmm').timepicker({
+			/*hourGrid: 4,
+			minuteGrid: 10,*/
+			timeFormat: 'HH:mm',
+
+			//'showTimepicker': false
+
+		});
+		
+		<?= $id ?>ElementUpdate();
+		
+		$('#<?= $id ?>-dateViewFormat, #<?= $id ?>-timeHHmm').change(function (){
+			<?= $id ?>ElementUpdate();
+		});
+	});
+	
+	function <?= $id ?>ElementUpdate() {
+		var date = $('#<?= $id ?>-dateSys').val();
+		var time = $('#<?= $id ?>-timeHHmm').val();
+
+		if (date !== '' && time !== '') {
+			$('#<?= $id ?>').val(date + ' ' + time);
+		}
+	}
+</script>
+
+<label for="<?= $id ?>-dateViewFormat"><?= $this->element->getLabel() ?> (datum</label>
+<label for="<?= $id ?>-timeHHmm">a čas)</label>
+<input type="text" id="<?= $id ?>-dateViewFormat" name="<?= $id ?>-dateViewFormat" value="" class="datetime-date" /><input
+	type="text" id="<?= $id ?>-timeHHmm" name="<?= $id ?>-timeHHmm" value="<?= $this->element->getAttrib('defaultTime') ?>" maxlength="5" class="datetime-time" />
+<input type="hidden" id="<?= $id ?>-dateSys" name="" value="" />
+<input type="text" id="<?= $id ?>" name="" value="" />
+
+<?= empty($this->element->getMessages()) ? '' : $this->formErrors($this->element->getMessages()) ?>

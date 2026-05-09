@@ -1,0 +1,21 @@
+<tbody>
+	<?php foreach($this->layout()->data as $branch) : ?>
+		<?php if($branch['isActive'] == 0) : ?>
+			<tr class="archived">
+		<?php elseif( 1 == $branch['typeId'] || $branch['isListed'] == 0) : ?>
+			<tr class="flag-special">
+		<?php else : ?>
+			<tr>
+		<?php endif?>
+			<td>
+				<button onClick="viewBranchDetail(<?=$branch['branchId']?>);return false;"><?=i18n::tr('View')?></button>
+			</td>
+			<td class="border-left txtrt"><?=$branch['branchId']?></td>
+			<td class="border-left txtrt"><?=$branch['handle']?></td>
+			<td class="border-left"><?=$branch['name']?></td>
+			<?php /* <td class="border-left"><?=$branch['statusName']?></td> */ ?>
+			<td class="border-left"><?=$branch['contractName']?></td>
+			<td class="border-left"><?=$branch['isActive']?></td>
+		</tr>
+	<?php endforeach?>
+</tbody>

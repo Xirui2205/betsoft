@@ -1,0 +1,82 @@
+<div id="welcome">
+	<div class="wrapper">
+		<p class="welcome-big animate-in" data-anim-type="bounce-in-left" data-anim-delay="450"><?= $this->trans('homepage_line1') ?></p>
+		<p class="welcome-big welcome-highlight animate-in" data-anim-type="bounce-in-right" data-anim-delay="900"><?= $this->trans('homepage_line2') ?></p>
+		<p class="welcome-text animate-in" data-anim-type="fade-in" data-anim-delay="1600"><?= $this->trans('homepage_text') ?></p>
+		<a href="<?= $this->UrlSet(24); ?>" class="btn animate-in" data-anim-type="fade-in" data-anim-delay="2000"><?= $this->trans('homepage_button') ?></a>
+	</div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="boxes-4">
+	<div class="container">
+		<div class="box">
+			<a href="<?= $this->urlSet(117) ?>">
+				<h2><?= $this->trans('bets') ?></h2>
+				<div class="box-image"><img src="/new/images/boxes/sportsbook.jpg" alt="Sportsbook"></div>
+				<p><?= $this->trans('homepage_sportsbook_text') ?></p>
+			</a>
+		</div>
+		<div class="box">
+			<a href="#">
+				<h2><?= $this->trans('homepage_live_bets_title') ?></h2>
+				<div class="box-image"><img src="/new/images/boxes/livebets.jpg" alt="Livebets"></div>
+				<p><?= $this->trans('homepage_live_bets_text') ?></p>
+			</a>
+		</div>
+		<div class="box">
+			<a href="welcome_casino.php">
+				<h2><?= $this->trans('homepage_live_casino_title') ?></h2>
+			    <div class="box-image"><img src="/new/images/boxes/casino_online.jpg" alt="Casino Online"></div>
+				<p><?= $this->trans('homepage_live_casino_text') ?></p>
+			</a>
+		</div>
+		<div class="box">
+			<a href="#">
+				<h2><?= $this->trans('homepage_poker_games_title') ?></h2>
+				<div class="box-image"><img src="/new/images/boxes/poker_games.jpg" alt="Poker Games"></div>
+				<p><?= $this->trans('homepage_poker_games_text') ?></p>
+			</a>
+		</div>
+	</div>
+</div>
+
+<div class="boxes-4">
+	<div class="container">
+		<div class="box">
+			<a href="#">
+				<h2><?= $this->trans('homepage_live_scores_title') ?></h2>
+				<div class="box-image"><img src="/new/images/boxes/live_scores.jpg" alt="Live Scores"></div>
+				<p><?= $this->trans('homepage_live_scores_text') ?></p>
+			</a>
+		</div>
+		<div class="box">
+			<a href="#">
+				<h2><?= $this->trans('homepage_mobile_title') ?></h2>
+				<div class="box-image"><img src="/new/images/boxes/mobile.jpg" alt="Mobile"></div>
+				<p><?= $this->trans('homepage_mobile_text') ?></p>
+			</a>
+		</div>
+		<div class="box">
+			<a href="#">
+				<h2><?= $this->trans('homepage_bonus_title') ?></h2>
+				<div class="box-image"><img src="/new/images/boxes/bonus.jpg" alt="Bonus"></div>
+				<p><?= $this->trans('homepage_bonus_text') ?></p>
+			</a>
+		</div>
+		<div class="box">
+			<a href="#">
+				<h2><?= $this->trans('homepage_games_title') ?></h2>
+				<div class="box-image"><img src="/new/images/boxes/games.jpg" alt="Games"></div>
+				<p><?= $this->trans('homepage_games_text') ?></p>
+			</a>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#footer-nav ul').addClass('logos');
+});
+</script>

@@ -1,0 +1,131 @@
+html {
+    min-height: 100%;
+    _height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 0.8em; /*MSIE 5*/
+    fo\nt-size: 0.8em;
+    color: black;
+    background-color: white;
+    margin: 0px;
+    padding: 0px;
+}
+
+samp,code,kbd {
+    font-size: 90%;
+}
+
+html>body {
+    font-size: 80%;
+}
+
+/**/
+.img {
+    border-width: 0px;
+}
+
+/*Zarovnani vpravo*/
+.floatright {
+    float: right;
+}
+
+/*Zarovnani vlevo*/
+.floatleft {
+    float: left;
+}
+
+h1 {
+    width: auto;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 500;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+h2 {
+    width: auto;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+img {
+    display: none;
+}
+
+img.view {
+    display: block;
+    page-break-after: always;
+}
+
+input.sbutton {
+    display: none;
+}
+
+input [type=submit] {
+    display: none;
+}
+
+small {
+    display: none;
+}
+
+html>body h1 {
+    background-position: 0px 9px;
+    padding: 6px 0px 2px 22px;
+}
+
+input,textarea,select {
+    border: 1px solid black;
+}
+
+div#lmenu {
+    display: none;
+}
+
+div#hlavicka {
+    display: none;
+}
+
+table th {
+    font-size: 1em;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: left;
+}
+
+table th a {
+    text-decoration: none;
+    font-weight: 700;
+}
+
+a {
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: underline;
+    color: black;
+}
+
+a:after {
+    content: " [" attr(href) "] ";
+}
+
+table {
+    width: auto;
+}
+
+.textright {
+    text-align: right;
+}
+
+.textleft {
+    text-align: left;
+}
+.noprint{
+	display:none;
+}

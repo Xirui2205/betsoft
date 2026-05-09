@@ -1,0 +1,37 @@
+@charset "utf-8";
+#left .nav.colors li a{ border-top: 0 !important; }
+#left .nav.colors li a.ico-soccer{ background-color: #4c6119; }
+#left .nav.colors li a.ico-icehockey{ background-color: #155c78; }
+#left .nav.colors li a.ico-tennis{ background-color: #af5807;}
+#left .nav.colors li a.ico-basketball{ background-color: #640c05; }
+#left .nav.colors li a.ico-badminton{ background-color: #628d88;}
+#left .nav.colors li a.ico-tabletennis{ background-color: #433752; }
+#left .nav.colors li a.ico-baseball{ background-color: #a5a932; }
+#left .nav.colors li a.ico-volleyball{ background-color: #273486; }
+
+.live-soccer{ background-color: rgba(73,101,22,0.5); }
+.live-icehockey{ background-color: rgba(10,27,75,0.5); }
+.live-tennis{ background-color: rgba(153,63,0,0.5); }
+.live-basketball{ background-color: rgba(89,0,16,0.5); }
+.live-badminton{ background-color: rgba(59,99,91,0.5); }
+.live-tabletennis{ background-color: rgba(56,41,77,0.5); }
+.live-baseball{ background-color: rgba(96,99,23,0.5); }
+.live-volleyball{ background-color: rgba(39,52,134,0.5); }
+
+.table.live-soccer > thead > tr > th, .live-soccer td{ border-color: rgba(185,204,155,0.2) !important; }
+.table.live-tennis > thead > tr > th, .live-tennis td{ border-color: rgba(255,177,112,0.2) !important; }
+.table.live-icehockey > thead > tr > th, .live-icehockey td{ border-color: rgba(172,205,184,0.2) !important; }
+.table.live-basketball > thead > tr > th, .live-basketball td{ border-color: rgba(199,195,165,0.2) !important; }
+.table.live-badminton > thead > tr > th, .live-badminton td{ border-color: rgba(166,206,198,0.2) !important; }
+.table.live-tabletennis > thead > tr > th, .live-tabletennis td{ border-color: rgba(166,206,198,0.2) !important; }
+.table.live-baseball > thead > tr > th, .live-baseball td{ border-color: rgba(199,202,126,0.2) !important; }
+.table.live-volleyball > thead > tr > th, .live-volleyball td{ border-color: rgba(166,184,221,0.2) !important; }
+
+.live-soccer .match-info{ color: #b2c399; }
+.live-tennis .match-info{ color: #b2c399; }
+.live-icehockey .match-info{ color: #8cab9e; }
+.live-basketball .match-info{ color: #b4a595; }
+.live-badminton .match-info{ color: #78ada3; }
+.live-tabletennis .match-info{ color: #8c7d97; }
+.live-baseball .match-info{ color: #aaae50; }
+.live-volleyball .match-info{ color: #a6b8dd; }

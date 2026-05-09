@@ -1,0 +1,20 @@
+<h3><?=i18n::tr('Combinations')?></h3>
+<div id="inner" class="hidden">
+	<?php if($this->combination) : ?>
+		<h4><?=i18n::tr('Team')?> <?=$this->combination['name']?></h4>
+	<?php endif; ?>
+</div>
+
+<form method="post" action="?section=<?=$this->indexSectionId?>" id="formUsersFilter">
+	<input type="hidden" name="opener" id="opener" value="<?=$this->opener?>" />
+	<?=$this->filter?>
+	<?=$this->paginator?>
+
+	<table class='table-list width-100'>
+		<?=$this->tHead?>
+		<?=$this->tBody?>
+	</table>
+</form>
+
+
+

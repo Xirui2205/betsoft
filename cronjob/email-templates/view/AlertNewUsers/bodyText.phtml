@@ -1,0 +1,12 @@
+<?=I18n::tr('newly_allowed_users')?>
+
+=======================
+
+<?php if ( empty($this->newUsers) ): ?>
+<?=I18n::tr('no_records')?>
+<?php else:?>
+<?php foreach( $this->newUsers as $user ) : ?>
+#<?=$user['userId']?> <?=$user['username']?> <?=It6_Date::fromDb($user['activationTime'])?> <?=$user['branchId']?>
+
+<?php endforeach?>
+<?php endif;?>

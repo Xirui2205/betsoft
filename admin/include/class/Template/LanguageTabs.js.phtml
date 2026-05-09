@@ -1,0 +1,50 @@
+<?php
+/* $Id:$
+* template with labguage tabs
+* IN:
+*    $tabs - instance of class LanguageTabs
+*    $activate - array(tabsId => 'ISO of language that tab should be activated for')
+*/
+
+if (!isset($tabs))
+	return;
+$jsLangIds = implode("','", $tabs->getLanguageIsoValues());
+if (!empty($jsLangIds))
+	$jsLangIds =  "'$jsLangIds'";
+?>
+<script type="text/javascript">
+	// <![CDATA[
+	function activateLanguageTab(langId, tabsId) {
+		var langIds = new Array(<?= $jsLangIds ?>);
+		var valid = false;
+		for (key in langIds) {
+			if (langId == langIds[key]) {
+				valid = true;
+				break;
+			}
+		}
+		if (valid) {
+			var tabsIdInfix = '';
+			if (undefined !== tabsId)
+				tabsIdInfix = '_' + tabsId;
+			for (key in langIds) {
+				var id = langIds[key];
+				var jsTabId = '#<?= $tabs->getTabsIdPrefix() ?>' + tabsIdInfix + '_' + id;
+				var jsLinkId = '#<?= $tabs->getLinkIdPrefix() ?>' + tabsIdInfix + '_' + id;
+				if (langId == id) {
+					$(jsTabId).css("display", "block");
+					$(jsLinkId).addClass("active");
+				}
+				else {
+					$(jsTabId).css("display", "none");
+					$(jsLinkId).removeClass("active");
+				}
+			}
+		}
+	}
+<?php foreach ($activate as $tabId => $iso) :
+	$tabId = (empty($tabId) ? '' : ", '$tabId'"); ?>
+	activateLanguageTab('<?= $iso ?>'<?= $tabId ?>);
+<?php endforeach; ?>
+	//]]>
+</script>

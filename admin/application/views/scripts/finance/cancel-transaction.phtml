@@ -1,0 +1,40 @@
+<h3><?=i18n::tr('cancel transaction')?></h3>
+
+<?=i18n::tr($this->message)?>
+<?php if ( $this->transaction ): ?>
+  <table class="table-detail">
+    <tr>
+     <th>
+       <?=i18n::tr('Transaction')?>
+     </th>
+     <td>
+     <?=$this->transaction->transactionId?>
+     </td>
+    </tr>
+    <tr>
+     <th>
+       <?=i18n::tr('Amount')?>
+     </th>
+     <td>
+     <?=$this->transaction->value?> <?=$this->currency->name?>
+     </td>
+   </tr>
+   <tr>
+     <th>
+       <?=i18n::tr('Type')?>
+     </th>
+     <td>
+     <?=$this->type->name?>
+     </td>
+   </tr>
+   <tr>
+     <th>
+       <?=i18n::tr('Date')?>
+     </th>
+     <td>
+     <?=It6_Date::fromDb($this->transaction->time)?>
+     </td>
+   </tr>
+  </table>
+<?php endif;?>
+<?=$this->form?>

@@ -1,0 +1,56 @@
+<?php
+/* $Id:$
+* template with page browser
+* IN:
+*    $url - instance of class Url which wrapps current page URL (lister GET params will be appended using this wrapper)
+*    $lister - instance of class Lister
+*    $params - additional GET params
+*/
+
+if (!isset($lister))
+	return;
+if (empty($url))
+	$url = new Url();
+if (!isset($counter))
+	$counter = '';
+$_browseInfo = $lister->getPagesUrls();
+?>
+<?php if (!empty($_browseInfo['urls'])) : ?>
+<div class="lister">
+	<div class="fltrt">
+		<form action="<?= $url->getUrl(true, null, false) ?>" method="get">
+		<?= $url->getXhtmlFormFields() ?>
+		<label for="<?= $lister->getParamNameCount() . $counter ?>"><?= 'Počet na stránce' ?>:</label>
+		<input type="text" id="<?= $lister->getParamNameCount() . $counter ?>" name="<?= $lister->getParamNameCount() ?>" size="4" value="<?= $lister->getCount() ?>"  />
+		<input type="submit" value="Odeslat" />
+	</form>
+	</div>
+	<div class="lister-navigation-get">
+		<ul>
+		<?php if (isset($_browseInfo['first'])) : ?>
+			<li><a href="<?=$url->getUrl(true, $_browseInfo['first'])?>">&#171;&#171;</a></li>
+		<?php endif; ?>
+		<?php if (isset($_browseInfo['prev'])) : ?>
+			<li class="prev"><a href="<?=$url->getUrl(true, $_browseInfo['prev'])?>">&#171; <?=I18n::tr('Previous')?></a></li>
+		<?php endif; ?>
+		<?php foreach ($_browseInfo['urls'] as $i => $urlParams) : ?>
+			<?php if ($i == $_browseInfo['index']) : ?>
+				<li class="active"><?=$i?></li>
+			<?php else : ?>
+				<li><a href="<?=$url->getUrl(true, $urlParams)?>"><?=$i?></a></li>
+			<?php endif; ?>
+		<?php endforeach; ?>
+		<?php if (isset($_browseInfo['next'])) : ?>
+			<li><a href="<?=$url->getUrl(true, $_browseInfo['next'])?>"><?=I18n::tr('Next')?> &#187;</a></li>
+		<?php endif; ?>
+		<?php if (isset($_browseInfo['last'])) : ?>
+			<li><a href="<?=$url->getUrl(true, $_browseInfo['last'])?>">&#187;&#187;</a></li>
+		<?php endif; ?>
+		<?php if (!empty($_browseInfo['pagesCount'])) : ?>
+			 (<?=$_browseInfo['pagesCount']?>)
+		<?php endif; ?>
+		</ul>
+	</div>
+</div>
+<?php endif; ?>
+

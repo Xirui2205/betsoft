@@ -1,0 +1,27 @@
+<tbody>
+  <?php if (empty($this->layout()->data)): ?>
+    <tr>
+      <td colspan="12"><?=$this->notFilter ? i18n::tr('set_filter_to_view_data') : i18n::tr('no_items')?></td>
+    </tr>
+  <?php else: ?>
+    <?php foreach($this->layout()->data as $row) : ?>
+      <tr>
+        <td class="border-left txtrt"><?=$row['id']?></td>
+        <td class="border-left"><?=It6_Date::fromDb($row['date'])?></td>
+        <td class="border-left"><?=It6_Date::fromDb($row['dateChange'])?></td>
+        <td class="border-left"><?=$row['order']?></td>
+        <td class="border-left"><?=$row['account']?></td>
+        <td class="border-left"><?=$row['amount']?></td>
+        <td class="border-left"><?=$row['description']?></td>
+        <td class="border-left"><?=$row['varSymbol']?></td>
+        <td class="border-left"><?=$row['hostId']?></td>
+        <td class="border-left"><?=$row['userHandle']?></td>
+        <td class="border-left"><?=$row['ticketId']?></td>
+        <td class="border-left"><?=$row['ticketHandle']?></td>
+        <td class="border-left"><?=$row['currencyCode']?></td>
+        <td class="border-left"><?=$row['branchHandle']?></td>
+        <td class="border-left"><?=$row['branchName']?></td>
+      </tr>
+    <?php endforeach?>
+  <?php endif; ?>
+</tbody>

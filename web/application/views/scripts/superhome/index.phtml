@@ -1,0 +1,112 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+			$("#slides").slides({
+				container: 'slides_container',
+				preload: true,
+				preloadImage: '',
+				pagination: true,
+				paginationClass: 'pagination',
+				generatePagination: false,
+				play: 3000,
+				pause: 2000,
+				hoverPause: false
+			});
+		});
+</script>
+
+
+<div id="superhp">
+
+	<div id="slides">
+		<div class="mbanner ad-gallery-wide slides_container">
+			<?php foreach($this->promo as $promoId => $promo) : ?>
+				<?php include('It6/promo/promo-wide.phtml')?>
+			<?php endforeach?>
+		</div>
+		<div class="pager-container">
+			<div class="pager">
+				<div class="cl"></div>
+				<ul class="cc pagination">
+					<?php for($i=1; $i<=count($this->promo); $i++) : ?>
+						<li class="point"><a href=""></a></li>
+					<?php endfor?>
+				</ul>
+				<div class="cr"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="adbox adbox363">
+		<?php //double links is a hack for opera 10.5?>
+		<a href="<?=$this->content1['url']?>" class="layer4"></a>
+		<a href="<?=$this->content1['url']?>">
+			<div class="head">
+				<h3><?=$this->content1['title']?></h3>
+			</div>
+			<div class="content">
+				<span
+					class="layer1"
+					<?php if($this->content1['target'] == '_blank') : ?>
+						onclick="window.open (this.href, 'child'); return false"
+					<?php endif?>
+				>
+					<?=$this->content1['text']?>
+				</span>
+				<div class="layer2"></div>
+				<div class="layer3">
+					<img alt="img" src="/images/gallery/<?=$this->content1['imageName']?>" />
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<div class="adbox-spacer"></div>
+
+	<div class="adbox adbox363">
+		<?php //double links is a hack for opera 10.5?>
+		<a href="<?=$this->content2['url']?>" class="layer4"></a>
+		<a href="<?=$this->content2['url']?>">
+			<div class="head">
+				<h3><?=$this->content2['title']?></h3>
+			</div>
+			<div class="content">
+				<span
+
+					class="layer1"
+					<?php if($this->content1['target'] == '_blank') : ?>
+						onclick="window.open (this.href, 'child'); return false"
+					<?php endif?>
+				>
+					<?=$this->content2['text']?>
+				</span>
+				<div class="layer2"></div>
+				<div class="layer3">
+					<img alt="img" src="/images/gallery/<?=$this->content2['imageName']?>" />
+				</div>
+			</div>
+		</a>
+	</div>
+	
+	<div class="adbox-spacer"></div>
+	
+	<div class="adbox adbox240 adbox-gold">
+		<?php //double links is a hack for opera 10.5?>
+		<a href="<?=$this->UrlSet(24);?>" class="layer4"></a>
+		<a href="<?=$this->UrlSet(24);?>">
+			<div class="head">
+				<h3><?=$this->trans('registration')?></h3>
+			</div>
+			<div class="content">
+				<span class="layer1">
+					Registrujte se nyní!<?=$this->content3['text']?>
+				</span>
+				<div class="layer2"></div>
+				<div class="layer3">
+					<img alt="img" src="/images/registrace.jpg" />
+				</div>
+			</div>
+		</a>
+	</div>
+
+</div>
+

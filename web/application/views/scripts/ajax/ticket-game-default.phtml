@@ -1,0 +1,29 @@
+<?php
+			if (!empty($this->tickets)) : ?>
+	<img src="/images/Corvette.png" class="corvette" />		
+				<?php $i = 0; foreach($this->tickets as $data) : ++$i ?>
+					<div class="user">
+						<div class="img">
+							<table>
+								<tr>
+									<td>
+										<img src="/images/user-ico.png" alt="<?= $this->trans($this->game['gameName']) ?>" />
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="txt">
+							<h4><?= $data['nick'] ?></h4>
+							<?= ucfirst($this->trans($this->evaluationName)) ?>:
+							<span class="white"><?= $data['evaluation'] ?></span><br />
+							<?= $this->trans('win') ?>:
+							<span class="white"><?= $this->NumberFormat($data['won']) ?> <?= $data['currencyName'] ?></span>
+						</div>
+						<a href="<?= $this->UrlSet(95)?>g/<?= $this->game['gameId'] ?>/t/<?= $i ?>" class="btn button-orange">
+							<?= $this->trans('ticket_game_ticket_info') ?>
+						</a>
+					</div>
+				<?php endforeach?>
+			<?php else : ?>
+				<span class="white"><?= $this->trans('no_tickets_in_game') ?></span>
+			<?php endif?>

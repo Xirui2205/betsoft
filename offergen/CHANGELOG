@@ -1,0 +1,20 @@
+0.5.0
+    - ako z databaze do PDF
+    - chyba "zadny vystup" - cesky, dokument s 0 stranami v cache ignorovat
+    - oprava cache
+
+0.4.0
+    - implementace filtru podle data
+    - web odpoved - hezci format, cesky
+
+0.3.0
+    - sazky s vice nez peti tipy - kazdy tip na vlastni radek
+    - web formular - vypis chyb stejnym zpusobem jako vysledek
+
+0.2.0
+    - uprava sablony - cislo, datum
+    - web formular - vysledek dotazu zobrazit na stejne strance, pres ajax
+                   - ceske popisky
+
+0.1.0
+    - prototyp

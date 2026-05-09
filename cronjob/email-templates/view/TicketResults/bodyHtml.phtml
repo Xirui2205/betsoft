@@ -1,0 +1,356 @@
+<table width="640" cellpadding="0" cellspacing="0" style="color: #8E8D8D; font-size: 11px; font-family: arial, verdana, helvetica, sans-serif;background: url('<?=PROTOCOL?><?=WEBHOSTL3?>/images/email_body_bg.png');">
+	<tr>
+		<td colspan="2">
+			<h1 style="font-size: 19px; margin: 15px 20px;">
+				<?=I18n::tr('evaluated_bets')?>
+			</h1>
+		</td>
+	</tr>
+
+	<?php foreach($this->tickets as $ticket_id => $ticket):?>
+		<tr>
+			<td colspan="2">
+				<h2 style="font-size: 19px; margin: 15px 20px;">
+					<?=I18n::tr('ticket_no')?>: <?=$ticket['ticketHandle']?>
+					<?php if($ticket['state'] == 'ticket_state_1') : ?>
+						<span>
+					<?php elseif($ticket['state'] == 'ticket_state_2' || $ticket['state'] == 'ticket_state_1W') : ?>
+						<span style="color: #1FD763">
+					<?php elseif($ticket['state'] == 'ticket_state_3' || $ticket['state'] == 'ticket_state_1L') : ?>
+						<span style="color: #FD2E2E">
+					<?php elseif($ticket['state'] == 'ticket_state_4') : ?>
+						<span style="color: #FD2E2E">
+					<?php endif?>
+						<?=I18n::tr($ticket['state'])?>
+					</span>
+				</h2>
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan="2" style="padding: 0 0 20px 0;">
+				<table width="600" cellpadding="0" cellspacing="0" style="margin: 0 0 0 20px;background: #312f30;color: #8E8D8D;">
+					<tr>
+						<td style="padding: 10px">
+							<table width="580" cellpadding="0" cellspacing="0" style="font-size: 11px; font-family: arial, verdana, helvetica, sans-serif;color: #8E8D8D;">
+								<tr>
+									<td style="font-weight: bold; text-align: left; padding: 10px 12px;">
+										<?=I18n::tr('bet_name')?>
+									</td>
+									<td style="width: 66px; font-weight: bold; text-align: center; padding: 10px 0;">
+										<?=I18n::tr('rate')?>
+									</td>
+									<td style="width: 66px; font-weight: bold; text-align: center; padding: 10px 0;">
+										<?=I18n::tr('tip')?>
+									</td>
+									<td style="width: 66px; font-weight: bold; text-align: center; padding: 10px 0;">
+										<?=I18n::tr('result')?>
+									</td>
+								</tr>
+
+								<?php $j = 1?>
+								<?php foreach($ticket['groups'] as $group):?>
+									<?php foreach($group['tips'] as $match) : ?>
+										<tr>
+											<td style="text-align: left; border-top: #3f3f3f 1px solid; padding: 10px 12px;">
+												<div style="width:20px; display:inline-block;">
+													<?=$j++?>.
+													<?php if ('system' == $ticket['type'] || 'maxikombi' == $ticket['type']) : ?>
+														<br/><br/><strong><?=$match['groupName']?></strong>
+													<?php endif?>
+												</div>
+												<div style="width:200px; display:inline-block;">
+													<strong><?= $this->escape($match['betName']) ?></strong>
+													<br />
+													<?= $this->escape(I18n::tr($match['sportName'])) ?> - <?= $this->escape(I18n::tr($match['eventName'])) ?>
+													<br />
+													<?=It6_Date::fromDb($match['validTo'])?>
+													&nbsp;
+													<?=$match['typeName']?>
+												</div>
+											</td>
+											<td style="text-align: center; border-top: #3f3f3f 1px solid; padding: 10px 0;">
+												<?php if (!empty($match['canceled'])) : ?>
+													<?=I18n::tr('rate_1')?>
+												<?php else : ?>
+													<?=It6_View_Helper_FormatRate::formatRateStatic($match['rate'])?>
+												<?php endif?>
+											</td>
+											<td style="text-align: center; border-top: #3f3f3f 1px solid; padding: 10px 0;">
+												<?=$match['oddsOutcomeName']?>
+											</td>
+											<td style="
+												<?php if(It6_Models_Ticket::RESULT_LOST == $match['winResult']) : ?>
+													color: #ff1800;
+												<?php elseif(It6_Models_Ticket::RESULT_WON == $match['winResult']) : ?>
+													color: #1FD763;
+												<?php endif?>
+												text-align: center; border-top: #3f3f3f 1px solid; padding: 10px 0;"
+											>
+												<?php if(empty($match['resultNames'])) : ?>
+													-
+												<?php else : ?>
+													<?php foreach($match['resultNames'] as $result) : ?>
+														<?=I18n::tr($result)?>
+													<?php endforeach?>
+												<?php endif?>
+											</td>
+										</tr>
+									<?php endforeach?>
+								<?php endforeach?>
+
+								<?php if($ticket['type']=='maxikombi' || $ticket['type']=='system'):?>
+									<tr>
+										<td style="font-weight: bold; text-align: left; padding: 10px 12px;">
+											<?=I18n::tr('combination')?>
+										</td>
+										<td style="width: 66px; font-weight: bold; text-align: center; padding: 10px 0;">
+											<?=I18n::tr('rate')?>
+										</td>
+										<td style="width: 66px; font-weight: bold; text-align: center; padding: 10px 0;">
+											<?=I18n::tr('won')?>
+										</td>
+										<td style="width: 66px; font-weight: bold; text-align: center; padding: 10px 0;">
+											<?=I18n::tr('result')?>
+										</td>
+									</tr>
+
+									<?php foreach ($ticket['combinations'] as $k => $comb) : ?>
+										<?php foreach ($comb['data'] as $c): ?>
+											<tr>
+												<td style="text-align: left; border-top: #3f3f3f 1px solid; padding: 10px 12px;">
+													<?=$c['name']?></td>
+												<td style="text-align: center; border-top: #3f3f3f 1px solid; padding: 10px 0;">
+													<?=$this->formatRate($c['rate'])?>
+												</td>
+												<td style="text-align: center; border-top: #3f3f3f 1px solid; padding: 10px 0;">
+													<?=$this->formatCurrency($c['win'])?>
+												</td>
+												<td style="
+													<?php if($c['result'] == 'result_loss') : ?>
+														color: #ff1800;
+													<?php elseif($c['result'] == 'result_win') : ?>
+														color: #1FD763;
+													<?php endif?>
+													text-align: center; border-top: #3f3f3f 1px solid; padding: 10px 0;"
+												>
+													<?=I18n::tr($c['result'])?>
+												</td>
+											</tr>
+										<?php endforeach?>
+									<?php endforeach?>
+								<?php endif?>
+							</table>
+						</td>
+					</tr>
+				</table>
+				<table cellpadding="0" cellspacing="0" style="margin: 0 0 0 20px;background: #312f30;color: #8E8D8D;">
+					<tr>
+						<td style="padding: 0 10px 10px 10px;">
+							<table cellpadding="0" cellspacing="0" style="font-size: 11px; font-family: arial, verdana, helvetica, sans-serif;color: #8E8D8D;">
+								<?php if($ticket['type'] == 'kombi') : ?>
+									<tr>
+										<td style="font-weight: bold; text-align: left; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+											<?=I18n::tr('bet_rows_qty')?>:
+										</td>
+										<td style="width: 130px; text-align: right; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+											<?=sizeof($ticket['groups'][1]['tips'])?>
+										</td>
+									</tr>
+								<?php endif?>
+								<?php if( !empty($ticket['rateAdvance']) && $ticket['rateAdvance'] > 1 ) : ?>
+									<tr>
+										<td style="font-weight: bold; text-align: left; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+											<?=I18n::tr('total_rate_without_advance')?>:
+										</td>
+										<td style="width: 130px; text-align: right; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+											<?=$this->formatRate($ticket['rateWithoutAdvance'])?>
+										</td>
+									</tr>
+									<tr>
+										<td style="font-weight: bold; text-align: left; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+											<?=I18n::tr('rate_advance')?>:
+										</td>
+										<td style="width: 130px; text-align: right; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+											<?=$this->formatRate($ticket['rateAdvance'])?>
+										</td>
+									</tr>
+								<?php endif?>
+								<tr>
+									<td style="font-weight: bold; text-align: left; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+										<?=I18n::tr('bet_type')?>:
+									</td>
+									<td style="width: 130px; text-align: right; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+										<?=I18n::tr($ticket['type'])?>
+									</td>
+								</tr>
+								<tr>
+									<td style="font-weight: bold; text-align: left; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+										<?=I18n::tr('date')?>:
+									</td>
+									<td style="width: 130px; text-align: right; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+										<?=It6_Date::fromDb($ticket['createdTime'])?>
+									</td>
+								</tr>
+								<tr>
+									<td style="font-weight: bold; text-align: left; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+										<?=I18n::tr('stake')?>:
+									</td>
+									<td style="width: 130px; text-align: right; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+										<?=$this->formatCurrency($ticket['amount'], $ticket['currencyName'])?>
+									</td>
+								</tr>
+								<?php if($ticket['type'] == 'kombi') : ?>
+									<tr>
+										<td style="font-weight: bold; text-align: left; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+											<?=I18n::tr('rate')?>:
+										</td>
+										<td style="width: 130px; text-align: right; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+											<?=$this->formatRate($ticket->totalOdds)?>
+										</td>
+									</tr>
+								<?php endif?>
+								<tr>
+									<td style="font-weight: bold; text-align: left; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+										<?=I18n::tr('win')?>:
+									</td>
+									<td style="width: 130px; text-align: right; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+										<?=$this->formatCurrency($ticket['won'], $ticket['currencyName'])?>
+									</td>
+								</tr>
+<!--
+	<tr>
+		<td style="font-weight: bold; text-align: left; border-top: #3f3f3f 1px solid; padding: 5px 12px;">
+			<?=I18n::tr('result')?>:
+		</td>
+		<td style="
+			<?php if($ticket['state'] == 'ticket_state_3' || $ticket['state'] == 'ticket_state_4') : ?>
+				color: #ff1800;
+			<?php elseif($ticket['state'] == 'ticket_state_2') : ?>
+				color: #1FD763;
+			<?php endif?>
+			width: 130px; text-align: right; border-top: #3f3f3f 1px solid; padding: 5px 12px;"
+		>
+			<strong>
+				<?=I18n::tr($ticket['state'])?>
+			</strong>
+		</td>
+	</tr>
+-->
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	<?php endforeach?>
+
+	<?php if(!empty($this->terno)) : ?>
+		<tr>
+			<td colspan="2" style=""><img src="linka.gif" width="640" height="2" alt="" border="0" /></td>
+		</tr>
+	
+		<tr>
+			<td colspan="2">
+				<h2 style=" font-size: 19px; margin: 15px 20px;"><?=I18n::tr('hot_bets')?></h2>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="padding: 0 0 20px 0;">
+				<table width="600" cellpadding="0" cellspacing="0" style=" font-size: 11px; font-family: arial, verdana, helvetica, sans-serif; margin: 0 0 0 20px;background: #312f30;color: #8E8D8D;">
+	<!--
+					<tr>
+						<td colspan="4" style="font-weight: bold; font-size: 12px; text-align: left; text-transform: uppercase; border-bottom: #0a134d 2px solid; padding: 10px 12px;">
+							<?=I18n::tr('terno_desc')?>
+						</td>
+					</tr>
+	-->
+					<tr>
+						<td style=" font-weight: bold; text-align: left; padding: 5px 10px;">
+							<?=I18n::tr('match')?>
+						</td>
+						<td style=" font-weight: bold; text-align: center; padding: 5px 10px;">
+							<?=I18n::tr('time')?>
+						</td>
+						<td style=" font-weight: bold; text-align: center; padding: 5px 10px;">
+							1
+						</td>
+						<td style=" font-weight: bold; text-align: center; padding: 5px 10px;">
+							x
+						</td>
+						<td style=" font-weight: bold; text-align: center; padding: 5px 10px;">
+							2
+						</td>
+					</tr>
+					
+					<?php foreach($this->terno as $terno) : ?>
+						<tr>
+							<td style="text-align: left; border-top: #3f3f3f 1px solid; padding: 5px 10px;">
+								<a href="<?=PROTOCOL?><?=WEBHOSTL3?>" style="color: #8E8D8D;">
+									<?=$terno['mtext']?>
+								</a>
+							</td>
+							<td style="text-align: center; border-top: #3f3f3f 1px solid; padding: 5px 10px;">
+								<?=$terno['date']?>
+							</td>
+							
+							<?php if($terno['typ_id'] == 19) : ?>
+								<td style="text-align: center; border-top: #3f3f3f 1px solid; padding: 5px 10px;">
+									<div>
+										<?php if(!empty($terno['sloupec'][138]['rate'])) : ?>
+											<?=$terno['sloupec'][138]['rate']?>
+										<?php else : ?>
+											-
+										<?php endif?>
+									</div>
+								</td>
+								<td style="text-align: center; border-top: #3f3f3f 1px solid; padding: 5px 10px;">
+									<div>
+										<?php if(!empty($terno['sloupec'][139]['rate'])) : ?>
+											<?=$terno['sloupec'][139]['rate']?>
+										<?php else : ?>
+											-
+										<?php endif?>
+									</div>
+								</td>
+								<td style="text-align: center; border-top: #3f3f3f 1px solid; padding: 5px 10px;">
+									<div>
+										<?php if(!empty($terno['sloupec'][140]['rate'])) : ?>
+											<?=$terno['sloupec'][140]['rate']?>
+										<?php else : ?>
+											-
+										<?php endif?>
+									</div>
+								</td>
+								
+							<?php elseif($terno['typ_id'] == 22) : ?>
+								<td style="text-align: center; border-top: #3f3f3f 1px solid; padding: 5px 10px;">
+									<div>
+										<?php if($terno['sloupec'][152]['rate'] != 1) : ?>
+											<?=$terno['sloupec'][152]['rate']?>
+										<?php else : ?>
+											-
+										<?php endif?>
+									</div>
+								</td>
+								<td style="text-align: center; border-top: #3f3f3f 1px solid; padding: 5px 10px;">
+									-
+								</td>
+								<td style="text-align: center; border-top: #3f3f3f 1px solid; padding: 5px 10px;">
+									<div>
+										<?php if($terno['sloupec'][153]['rate'] != 1) : ?>
+											<?=$terno['sloupec'][153]['rate']?>
+										<?php else : ?>
+											-
+										<?php endif?>
+									</div>
+								</td>
+							<?php endif?>
+							
+						</tr>
+					<?php endforeach?>
+				</table>
+			</td>
+		</tr>
+	<?php endif?>
+</table>

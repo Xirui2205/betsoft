@@ -1,0 +1,23 @@
+<?=I18n::tr('Not confirmed live tickets')?>
+
+=======================
+
+<?php if ( empty($this->tickets) ): ?>
+<?=I18n::tr('no_records')?>
+<?php else:?>
+<?php foreach( $this->tickets as $ticket ) : ?>
+id=<?=$ticket['id']?>
+
+handle=<?=$ticket['handle']?>
+
+liveID=<?=$ticket['idLive']?>
+
+------------------------
+
+<?php endforeach?>
+
+<?php if ( !empty($this->nextTicketsCount) ): ?>
+...<?=I18n::tr('next_tickets_count')?>: <?=$this->nextTicketsCount?> !!!
+<?php endif;?>
+
+<?php endif;?>

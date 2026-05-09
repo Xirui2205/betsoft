@@ -1,0 +1,14 @@
+<h3><?=i18n::tr('bets_catalog')?></h3>
+<form method="post" action="?section=<?=$this->indexSectionId?>" id="formBetsFilter">
+	<input type="hidden" name="opener" id="opener" value="<?=$this->opener?>" />
+	<?=$this->filter?>
+	<?=$this->paginator?>
+
+	<table class='table-list width-100'>
+		<?=$this->tHead?>
+		<?=$this->tBody?>
+	</table>
+</form>
+
+
+

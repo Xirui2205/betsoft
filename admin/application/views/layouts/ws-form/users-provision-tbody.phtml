@@ -1,0 +1,25 @@
+<tbody>
+  <?php if (empty($this->layout()->data)): ?>
+    <tr>
+      <td colspan="12"><?=i18n::tr('no_items')?></td>
+    </tr>
+  <?php else: ?>
+    <?php
+    foreach($this->layout()->data as $row) : 
+    ?>
+      <tr>
+        <td><input type="checkbox" class="row-selector" name="userIds[]" value="<?=$row['admin_id']?>" /></td>
+        <td style="text-align:center;"><?=$row['handle']?></td>
+        <td style="text-align:center;"><?=$row['name']?></td>
+        <td style="text-align:center;"><?=$row['jmeno']?></td>
+        <td style="text-align:center;"><?=$row['prijmeni']?></td>
+        <td style="text-align:center;"><?=$row['email']?></td>
+        <td style="text-align:center;"><?=$row['telefon']?></td>
+        <td style="text-align:center;"><?=$row['playerCount']?></td>
+        <td style="text-align:center;"><?=number_format($row['provision'], 2, ',', ' ')?> Kč</td>
+      </tr>
+    <?php endforeach?>
+  <?php 
+  endif;
+  ?>
+</tbody>

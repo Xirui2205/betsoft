@@ -1,0 +1,17 @@
+<?=I18n::tr('win_ratio')?>
+<br />
+=======================
+<br />
+<br />
+<?php if ( empty($this->users) ): ?>
+<?=I18n::tr('no_records')?>
+<?php else:?>
+<?php foreach( $this->users as $user ) : ?>
+	#<?=$user['userId']?>
+	<a href="<?=PROTOCOL?><?=ADMINHOST ?>/?section=40#%7B%22userId%22:%22<?=$user['userId']?>%22%7D">
+		<?=$user['loginName']?>
+	</a>
+	<?=$user['winRatio'] * 100?>%
+	<br />
+<?php endforeach?>
+<?php endif?>

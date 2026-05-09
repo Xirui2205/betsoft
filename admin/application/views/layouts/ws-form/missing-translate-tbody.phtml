@@ -1,0 +1,18 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+		<tr>
+			<td>
+				<input
+					type="submit"
+					name="delete[<?=$row['translateKey']?>]"
+					value="<?=I18n::tr('Delete')?>"
+					onClick="return confirm('<?=I18n::tr('confirm_delete')?>')"
+				/>
+			</td>
+			<td><?=htmlspecialchars($row['translateKey'])?></td>
+			<td><?=$row['languageId']?></td>
+			<td><?=$row['languageName']?></td>
+			<td><?=$row['status']?></td>
+		</tr>
+	<?php endforeach?>
+</tbody>

@@ -1,0 +1,24 @@
+<h3><?=i18n::tr('Teams')?></h3>
+
+<div id="inner" class="hidden">
+	<?php if($this->team) : ?>
+		<h4><?=i18n::tr('Team')?> <?=$this->team['name']?></h4>
+	<?php endif; ?>
+</div>
+
+
+<div class="actions">
+	<button onclick="insertGeneric('<?=$this->insertSectionId?>&superb=1', 'inner');"><?=i18n::tr('Create team')?></button>
+</div>
+<div id="list">
+<form method="post" action="?section=<?=$this->indexSectionId?>" id="formUsersFilter">
+	<?=$this->filter?>
+	<?=$this->paginator?>
+
+	<table class='table-list width-100'>
+		<?=$this->tHead?>
+		<?=$this->tBody?>
+	</table>
+</form>
+
+</div>

@@ -1,0 +1,76 @@
+<?php Zend_Registry::get('fl')->info("A"); ?>
+<?php
+$mainBetId = Zend_Controller_Front::getInstance()->getRequest()->getParam('id');
+
+if ($this->isAjax || !empty($this->isDetailView)) { ?>
+
+<?php 
+foreach($this->odds as $sport_id=>$data): ?>
+	<?php foreach($data as $udalost_id=>$dataS): ?>
+<?php if (!$this->isDetailView): ?>
+          <h2 class="boxheader ico ico-flag flag-big bigf-<?=$dataS["oblast_id"]?>"><div class="ico ico-sport" id="t<?=$sport_id?>"><span class="text-normal"><?=$dataS['text']?></span></div></h2>
+
+<?php else:
+	if (isset($dataS['type'][19])) :
+		// detail view - název zápasu (19 - zápas)
+		reset($dataS['type'][19]);
+		$subTypeId = key($dataS['type'][19]);
+
+		reset($dataS['type'][19][$subTypeId]);
+		$date = key($dataS['type'][19][$subTypeId]['date']);
+
+		reset($dataS['type'][19][$subTypeId]['date'][$date]);
+		$betId = key($dataS['type'][19][$subTypeId]['date'][$date]);
+
+		$matchName = $dataS['type'][19][$subTypeId]['date'][$date][$betId]['text'];
+
+		if (isset($matchName)) : ?>
+			<h2 class="boxheader event betDetail"><span><?= $matchName; ?></span></h2>
+		<?php endif; ?>
+	<?php endif; ?>
+<?php endif; ?>
+
+			<?php $this->firstTable = true; foreach($dataS['type'] as $typ_id=>$dataT): ?>
+				<?php foreach($dataT as $podtyp_id=>$dataPT): ?>
+						<?php $this->Adata = $dataPT; ?>
+						<?=$this->render('sportsbook/typeA.phtml')?>
+				<?php endforeach; ?>
+
+			<?php $this->firstTable = false; endforeach; ?>
+	<?php endforeach; ?>
+<?php endforeach; ?>
+
+<script type="text/javascript">
+	if (tick) {
+		tick.selectAllBetRates();
+	}
+  
+  <?php
+	  if($mainBetId > 0) { // main bet details (used in promo links) ?>
+		$(function() {
+			mainBetTrId = '#'+<?= intval($mainBetId) ?>;
+			if (typeof $(mainBetTrId).html() !== 'undefined' ) {
+				var code = $(mainBetTrId + " td.plus a").attr('href');
+				if (typeof code === 'string') {
+					eval(code); // perform (+) onclick code
+				}
+				location.href = mainBetTrId; // scroll to main bet
+			}
+		});
+	<? } ?>
+</script>
+<?php } ?>
+
+<?php if (!empty($this->nextOddsUrls)): ?>
+<script type="text/javascript">
+nextOddsUrls=[];
+<?php foreach($this->nextOddsUrls as $url) { ?>
+  nextOddsUrls.push({'url':'<?= $url . ((!$mainBetId>0)?'':'id/'.intval($mainBetId)) ?>', 'loaded': false});
+<?php } ?>
+</script>
+<?php endif; ?>
+<script type="text/javascript">
+	$(function() {
+		$('.tooltip').tooltip();
+	});
+</script>

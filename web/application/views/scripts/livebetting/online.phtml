@@ -1,0 +1,38 @@
+<!--
+<?=$this->UrlSet(1); ?>
+-->
+
+
+<?php if(count($this->bet) > 0):?>
+
+  <?php if($this->s == 1):?>
+    <div style="font-weight:bold"><?php echo $this->trans('running_now');?></div>
+  <?php elseif($this->s == 2):?>
+    <div style="font-weight:bold"><?php echo $this->trans('comming_up');?></div>
+  <?php endif;?>
+
+
+  <?php $change = 0; ?>
+  <?php foreach($this->bet as $h): ?>
+
+
+    <?php if($change != $h['l_sport_id']): ?>
+      <div>
+        <?=$this->trans($h['snazev']); ?>
+      </div>
+      <?php $change = $h['l_sport_id']; ?>
+    <?php endif; ?>
+
+    <div>
+      <?=$h['start_date_hour']; ?>
+      <a href="<?=$this->UrlSet(13,'','','n/'. $h['url'] .'/'); ?>">
+        <?=$h['home_team'] .' - '.$h['away_team']; ?>
+      </a><br />
+      <?=$h['minute']; ?><br />
+      <?=$this->trans($h['unazev']); ?><br />
+      <?=$this->trans('live_state_'. $h['stav']); ?>
+    </div>
+    <hr />
+  <?php endforeach; ?>
+
+<?php endif; ?>

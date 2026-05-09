@@ -1,0 +1,42 @@
+<h3><?=i18n::tr('Host dashboard')?></h3>
+
+<?=$this->message?>
+
+
+<?php if ( !empty($this->tbody) ): ?>
+	<form method="post" action="?section=<?=$this->viewSectionId?>" id="formActions">
+		<div class="actions">
+			<?php if ( !$this->allBanned ):?>
+				<input type="submit" name="banAll" value="<?=i18n::tr('ban_all')?>" onclick="if(!confirm('<?=i18n::tr('Are you sure to ban all hosts?')?>'))return false;" />
+			<?php else: ?>
+				<input type="submit" name="allowAll" value="<?=i18n::tr('allow_all')?>" onclick="if(!confirm('<?=i18n::tr('Are you sure to allow all hosts?')?>'))return false;" />
+			<?php endif; ?>
+			<?php if ( !$this->allInBanned ):?>
+				<input type="submit" name="banAllIn" value="<?=i18n::tr('ban_all_in')?>" onclick="if(!confirm('<?=i18n::tr('Are you sure to ban all hosts?')?>'))return false;" />
+			<?php else: ?>
+				<input type="submit" name="allowAllIn" value="<?=i18n::tr('allow_all_in')?>" onclick="if(!confirm('<?=i18n::tr('Are you sure to allow in all hosts?')?>'))return false;" />
+			<?php endif;?>
+			<?php if ( !$this->allOutBanned ):?>
+				<input type="submit" name="banAllOut" value="<?=i18n::tr('ban_all_out')?>" onclick="if(!confirm('<?=i18n::tr('Are you sure to ban out all hosts?')?>'))return false;" />
+			<?php else: ?>
+				<input type="submit" name="allowAllOut" value="<?=i18n::tr('allow_all_out')?>" onclick="if(!confirm('<?=i18n::tr('Are you sure to allow out all hosts?')?>'))return false;" />
+			<?php endif;?>
+		</div>
+	</form>
+<?php endif?>
+	
+	
+<form method="post" action="?section=<?=$this->viewSectionId?>" id="formUsersFilter">
+	<?=$this->filter?>
+	<?php if ( !empty($this->tbody) ): ?>
+		<?=$this->paginator?>
+
+		<table class='table-list width-100'>
+			<?=$this->thead?>
+			<?=$this->tbody?>
+		</table>
+	<?php else : ?>
+		<?=UiUtil::printWarnings(I18n::tr('No data.'))?>
+	<?php endif?>
+</form>
+

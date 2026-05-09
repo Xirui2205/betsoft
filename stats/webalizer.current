@@ -1,0 +1,407 @@
+# Webalizer V2.01-10 Incremental Data - 04/16/2014 11:54:05
+2014 4 16 11 54 5
+1121 1024 6 114 18 4 4063666 392 13 0 0 0
+1 98 142 1 16
+148 146 690887 1 63 1 0 0
+142 140 638901 1 58 1 0 0
+0 0 0 0 0 0 0 0
+94 89 237592 1 16 2 0 0
+9 9 98106 1 2 1 0 0
+301 252 907430 1 99 2 0 0
+0 0 0 0 0 0 0 0
+130 128 519015 1 48 1 0 0
+193 157 648117 2 85 3 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+6 6 32313 1 2 1 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+98 97 291305 1 19 1 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+98 97 291305 19 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+95 92 249025 19 0 0
+6 6 32313 2 0 0
+8 8 98051 1 0 0
+125 123 405070 40 0 0
+46 45 430557 46 0 0
+177 138 539259 66 0 0
+230 227 840666 71 0 0
+254 249 926309 88 0 0
+82 39 251111 40 0 0
+0
+0
+0
+1024
+0
+0
+0
+0
+0
+0
+0
+4
+16
+0
+77
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+# -urls- 
+/phpmyadmin/themes/original/img/s_status.png
+1 8 0 2504 0 0 0 0
+/phpmyadmin/main.php
+0 11 0 73833 0 0 0 0
+/phpmyadmin/themes/original/img/b_deltbl.png
+1 10 0 2912 0 0 0 0
+/
+0 2 0 1719 1 0 0 0
+/phpmyadmin/themes/original/img/b_calendar.png
+1 1 0 308 0 0 0 0
+/phpmyadmin/themes/original/img/logo_left.png
+1 10 0 54832 0 0 0 0
+/js/jquery.dynDateTime.js
+0 1 0 14870 0 0 0 0
+/phpmyadmin/themes/original/img/b_primary.png
+1 4 0 1664 0 0 0 0
+/phpmyadmin/themes/original/img/b_empty.png
+1 10 0 2384 0 0 0 0
+/phpmyadmin/themes/original/img/arrow_ltr.png
+1 9 0 2216 0 0 0 0
+/phpmyadmin/themes/original/img/s_success.png
+1 10 0 4896 0 0 0 0
+/phpmyadmin/themes/original/img/b_edit.png
+1 9 0 3608 0 0 0 0
+/phpmyadmin/calendar.php
+0 1 0 1127 0 0 0 0
+/phpmyadmin/themes/original/img/b_tblimport.png
+1 10 0 2240 0 0 0 0
+/phpmyadmin/themes/original/img/s_desc.png
+1 1 0 221 0 0 0 0
+/phpmyadmin/js/common.js
+0 10 0 24944 0 0 0 0
+/phpmyadmin/themes/original/img/b_selboard.png
+1 10 0 2192 0 0 0 0
+/phpmyadmin/themes/original/img/b_newdb.png
+1 8 0 3264 0 0 0 0
+/phpmyadmin/themes/original/img/b_newtbl.png
+1 8 0 3272 0 0 0 0
+/phpmyadmin/themes/original/img/s_process.png
+1 8 0 2896 0 0 0 0
+/phpmyadmin/themes/original/img/s_asc.png
+1 8 0 1704 0 0 0 0
+/phpmyadmin/themes/original/img/b_unique.png
+1 4 0 1124 0 0 0 0
+/phpmyadmin/themes/original/img/b_tblexport.png
+1 10 0 2264 0 0 0 0
+/phpmyadmin/
+0 36 0 53077 7 0 0 0
+/phpmyadmin/js/mooRainbow/mooRainbow.js
+0 8 0 35760 0 0 0 0
+/phpmyadmin/tbl_sql.php
+0 16 0 55971 0 0 0 0
+/phpmyadmin/themes/original/img/b_index.png
+1 4 0 1260 0 0 0 0
+/phpmyadmin/themes/original/img/s_db.png
+1 10 0 2280 0 0 0 0
+/phpmyadmin/themes/original/img/b_sbrowse.png
+1 10 0 1576 0 0 0 0
+/phpmyadmin/js/mooRainbow/images/rainbow.png
+1 8 0 6352 0 0 0 0
+/phpmyadmin/themes/original/img/s_fulltext.png
+1 9 0 2464 0 0 0 0
+/phpmyadmin/themes/original/img/s_theme.png
+1 8 0 5896 0 0 0 0
+/phpmyadmin/tbl_change.php
+0 8 0 57091 0 0 0 0
+/phpmyadmin/js/mooRainbow/images/moor_slider.png
+1 8 0 4720 0 0 0 0
+/phpmyadmin/themes/original/img/b_tblops.png
+1 10 0 2760 0 0 0 0
+/phpmyadmin/themes/original/img/b_sqlhelp.png
+1 10 0 2296 0 0 0 0
+/phpmyadmin/js/tbl_change.js
+0 4 0 11876 0 0 0 0
+/phpmyadmin/themes/original/img/s_warn.png
+1 8 0 2088 0 0 0 0
+/phpmyadmin/themes/original/img/s_asci.png
+1 8 0 2032 0 0 0 0
+/phpmyadmin/themes/original/img/b_tblanalyse.png
+1 8 0 2368 0 0 0 0
+/phpmyadmin/themes/original/img/s_vars.png
+1 8 0 2448 0 0 0 0
+/phpmyadmin/themes/original/img/b_ftext.png
+1 2 0 554 0 0 0 0
+/_img/ajax-loader.gif
+1 1 0 29519 0 0 0 0
+/phpmyadmin/themes/original/img/bd_select.png
+1 8 0 4192 0 0 0 0
+/phpmyadmin/themes/original/img/b_insrow.png
+1 10 0 2264 0 0 0 0
+/phpmyadmin/navigation.php
+0 46 0 334079 0 0 0 0
+/phpmyadmin/themes/original/img/b_props.png
+1 10 0 2352 0 0 0 0
+/phpmyadmin/themes/original/img/s_error2.png
+1 8 0 1896 0 0 0 0
+/js/mainscript.js
+0 1 0 11274 0 0 0 0
+/css/blueprint/print.css
+0 1 0 661 0 0 0 0
+/phpmyadmin/themes/original/img/s_notice.png
+1 9 0 1976 0 0 0 0
+/phpmyadmin/themes/original/img/s_views.png
+1 9 0 2576 0 0 0 0
+/phpmyadmin/themes/original/img/window-new.png
+1 9 0 4664 0 0 0 0
+/favicon.ico
+0 1 0 1150 0 0 0 0
+/phpmyadmin/themes/original/img/s_host.png
+1 10 0 2528 0 0 0 0
+/phpmyadmin/themes/original/img/b_docs.png
+1 10 0 2336 0 0 0 0
+/_clip/logo-betservice-new.png
+1 1 0 28212 0 0 0 0
+/phpmyadmin/js/tooltip.js
+0 10 0 13384 0 0 0 0
+/phpmyadmin/js/navigation.js
+0 10 0 12168 0 0 0 0
+/phpmyadmin/themes/original/img/s_passwd.png
+1 8 0 4040 0 0 0 0
+/phpmyadmin/themes/original/img/b_select.png
+1 8 0 4320 0 0 0 0
+/phpmyadmin/themes/original/img/bd_empty.png
+1 8 0 2384 0 0 0 0
+/phpmyadmin/themes/original/img/b_home.png
+1 10 0 2960 0 0 0 0
+/phpmyadmin/themes/original/img/s_loggoff.png
+1 10 0 2096 0 0 0 0
+/phpmyadmin/js/querywindow.js
+0 1 0 501 0 0 0 0
+/phpmyadmin/js/mootools.js
+0 10 0 167216 0 0 0 0
+/phpmyadmin/themes/original/img/b_views.png
+1 9 0 3816 0 0 0 0
+/phpmyadmin/tbl_select.php
+0 18 0 92232 0 0 0 0
+/phpmyadmin/themes/original/img/b_info.png
+1 8 0 1872 0 0 0 0
+/phpmyadmin/themes/original/img/error.ico
+0 4 0 1272 0 0 0 0
+/phpmyadmin/themes/original/img/bd_browse.png
+1 8 0 2120 0 0 0 0
+/phpmyadmin/js/functions.js
+0 12 0 96656 0 0 0 0
+/phpmyadmin/print.css
+0 12 0 2799 0 0 0 0
+/phpmyadmin/themes/original/img/s_lang.png
+1 8 0 3376 0 0 0 0
+/phpmyadmin/themes/original/img/logo_right.png
+1 10 0 50922 0 0 0 0
+/phpmyadmin/js/mootools-domready-rainbow.js
+0 8 0 2544 0 0 0 0
+/phpmyadmin/themes/original/img/bd_index.png
+1 3 0 945 0 0 0 0
+/phpmyadmin/themes/original/img/b_print.png
+1 9 0 4592 0 0 0 0
+/phpmyadmin/tbl_row_action.php
+0 1 0 7507 0 0 0 0
+/phpmyadmin/themes/original/img/eye.png
+1 10 0 6000 0 0 0 0
+/css/blueprint/screen.css
+0 1 0 3154 0 0 0 0
+/phpmyadmin/js/mooRainbow/images/moor_boverlay.png
+1 8 0 6392 0 0 0 0
+/phpmyadmin/tbl_replace.php
+0 4 0 35099 0 0 0 0
+/phpmyadmin/themes/original/img/b_bookmark.png
+1 9 0 2976 0 0 0 0
+/phpmyadmin/themes/original/img/b_help.png
+1 11 0 2061 0 0 0 0
+/phpmyadmin/sql.php
+0 140 0 1332843 0 2 0 0
+/phpmyadmin/themes/original/img/s_error.png
+1 1 0 272 0 0 0 0
+/phpmyadmin/import.php
+0 32 0 150276 0 1 0 0
+/phpmyadmin/themes/original/img/b_sql.png
+1 10 0 2576 0 0 0 0
+/phpmyadmin/phpmyadmin.css.php
+0 29 0 92939 0 0 0 0
+/phpmyadmin/themes/original/img/b_import.png
+1 8 0 2480 0 0 0 0
+/phpmyadmin/themes/original/img/b_drop.png
+1 9 0 2488 0 0 0 0
+/phpmyadmin/tbl_structure.php
+0 10 0 78543 1 0 0 0
+/phpmyadmin/js/mooRainbow/images/moor_woverlay.png
+1 8 0 6144 0 0 0 0
+/phpmyadmin/themes/original/img/b_engine.png
+1 8 0 2896 0 0 0 0
+/phpmyadmin/js/keyhandler.js
+0 2 0 1328 0 0 0 0
+/css/adm.css
+0 1 0 8697 0 0 0 0
+/phpmyadmin/themes/original/img/bd_ftext.png
+1 4 0 1108 0 0 0 0
+/phpmyadmin/js/mootools-more.js
+0 10 0 405992 0 0 0 0
+/phpmyadmin/favicon.ico
+0 9 0 170118 0 0 0 0
+/phpmyadmin/querywindow.php
+0 1 0 3079 0 0 0 0
+/phpmyadmin/themes/original/img/bd_unique.png
+1 3 0 861 0 0 0 0
+/phpmyadmin/themes/original/img/b_browse.png
+1 10 0 2120 0 0 0 0
+/phpmyadmin/themes/original/img/b_search.png
+1 10 0 4840 0 0 0 0
+/phpmyadmin/js/mooRainbow/images/moor_cursor.gif
+1 8 0 640 0 0 0 0
+/phpmyadmin/themes/original/img/b_export.png
+1 8 0 2504 0 0 0 0
+/phpmyadmin/themes/original/img/item_ltr.png
+1 10 0 1384 0 0 0 0
+/phpmyadmin/js/mooRainbow/images/moor_arrows.gif
+1 8 0 752 0 0 0 0
+/phpmyadmin/themes/original/img/b_relations.png
+1 8 0 2240 0 0 0 0
+/phpmyadmin/themes/original/img/s_sync.png
+1 8 0 4408 0 0 0 0
+/phpmyadmin/db_structure.php
+0 17 0 341141 0 0 0 0
+/phpmyadmin/themes/original/img/s_tbl.png
+1 10 0 2016 0 0 0 0
+/phpmyadmin/themes/original/img/bd_primary.png
+1 3 0 1167 0 0 0 0
+/phpmyadmin/js/mooRainbow/mooRainbow.css
+0 8 0 6088 0 0 0 0
+# End Of Table - urls
+# -sites- (monthly)
+92.43.56.2
+0 98 97 291305 1 1397649245
+/phpmyadmin/sql.php 0 0
+37.188.225.56
+0 6 6 32313 1 1397407367
+- 0 0
+37.188.239.94
+0 105 70 446352 2 1397076591
+- 0 0
+78.45.136.190
+0 773 714 2676575 7 1397078359
+- 0 0
+37.188.226.88
+0 130 128 519015 1 1396997612
+- 0 0
+37.188.231.15
+0 9 9 98106 1 1396721366
+- 0 0
+# End Of Table - sites (monthly)
+# -sites- (daily)
+92.43.56.2
+0 98 97 291305 1 1397649245
+/phpmyadmin/sql.php 0 0
+# End Of Table - sites (daily)
+# -referrers- 
+- (Direct Request)
+0 25
+http://bewa.livescore.re/phpmyadmin/
+1 55
+http://bewa.livescore.re/phpmyadmin/index.php
+1 65
+http://bewa.livescore.re/phpmyadmin/navigation.php
+1 212
+http://bewa.livescore.re/phpmyadmin/tbl_structure.php
+1 24
+http://bewa.livescore.re/phpmyadmin/import.php
+1 48
+http://bewa.livescore.re/phpmyadmin/tbl_select.php
+1 19
+http://bewa.livescore.re/phpmyadmin/db_structure.php
+1 145
+http://bewa.livescore.re/phpmyadmin/tbl_sql.php
+1 16
+http://bewa.livescore.re/phpmyadmin/sql.php
+1 200
+http://bewa.livescore.re/phpmyadmin/js/mooRainbow/mooRainbow.css
+1 16
+http://bewa.livescore.re/phpmyadmin/main.php
+1 195
+http://bewa.livescore.re/phpmyadmin/tbl_replace.php
+1 2
+http://bewa.livescore.re/phpmyadmin/tbl_row_action.php
+1 1
+http://bewa.livescore.re/phpmyadmin/querywindow.php
+1 2
+http://bewa.livescore.re/
+1 8
+http://bewa.livescore.re/phpmyadmin/phpmyadmin.css.php
+1 75
+http://bewa.livescore.re/phpmyadmin/tbl_change.php
+1 13
+# End Of Table - referrers
+# -agents- 
+Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:20.0) Gecko/20100101 Firefox/20.0
+0 227
+Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:28.0) Gecko/20100101 Firefox/28.0
+0 98
+Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:20.0) Gecko/20100101 Firefox/20.0 FirePHP/0.7.4
+0 23
+Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0
+0 773
+# End Of Table - agents
+# -search strings- 
+# End Of Table - search strings
+# -usernames- 
+# End Of Table - usernames

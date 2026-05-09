@@ -1,0 +1,62 @@
+
+
+                                         *** DUELY ***
+                                  * DUELY - Fotbal - ff-duel *
+číslo  příležitost                  1       0       2       10      12      02   AKO   datum    
+90501    krvelacni - smrtonosi     2.00    2.00    8.70    1.00    1.63    1.63    030.09. 10:18
+
+                                         *** Fotbal ***
+                        * Fotbal - Mezinárodní - MS kval. Asie - sk. B *
+číslo  příležitost                  1       0       2       10      12      02   AKO   datum    
+8544     Omán - Irák               3.08    1.92    3.94    1.18    1.73    1.29    030.06. 15:00
+
+číslo  příležitost                  1       0       2       10      12      02   AKO   datum    
+8545     Omán - Irák               2.63    2.38    3.34    1.25    1.47    1.39    030.06. 15:00
+
+číslo  příležitost                                          1       0       2    AKO   datum    
+8507     Omán - Irák 0:1                                   4.44    3.78    1.56    030.06. 15:00
+
+číslo  příležitost                                                  1       2    AKO   datum    
+8504     Omán - Irák                                               1.66    2.13    030.06. 15:00
+
+číslo  příležitost                                                   více   méně AKO   datum    
+8521     Omán - Irák 2,5                                           2.30    1.58    030.06. 15:00
+
+                                         Poločas/konec 
+8551 Omán - Irák 30.06. 15:00 0
+  1/1      4.33   1/0     17.80   1/2     36.80   0/1      5.34   0/0      5.22   0/2      6.53 
+
+
+                                       Přesný  výsledek 
+8552 Omán - Irák 30.06. 15:00 0
+  1:0      7.04   2:0      9.98   2:1     10.50   3:0     29.90   3:1     22.60   3:2     49.90 
+  4:0     65.70   4:1     77.70   4:2     105.00  5:0     105.00  5:1     105.00  6:0     105.00
+  0:0      7.67   1:1      7.67   2:2     24.70   3:3     105.00  0:1      8.82   0:2     14.20 
+  0:3     44.10   0:4     105.00  0:5     105.00  0:6     105.00  1:2     13.10   1:3     32.00 
+
+
+číslo  příležitost                                  0       1       2       3+   AKO   datum    
+8584     Omán - Irák                               3.02    2.64    3.99    6.73    030.06. 15:00
+
+číslo  příležitost                  1       0       2       10      12      02   AKO   datum    
+8501     Omán - Irák               2.25    3.37    2.96    1.35    1.28    1.58    030.06. 15:00
+
+číslo  příležitost                                                 ano      ne   AKO   datum    
+8542     Omán - Irák                                               1.99    1.64    030.06. 15:00
+
+číslo  příležitost                                                  Lichá  Sudá  AKO   datum    
+8450     Japonsko - Austrálie                                      1.96    1.85    030.06. 12:30
+8550     Omán - Irák                                               2.02    1.80    030.06. 15:00
+
+číslo  příležitost                                  0       1       2       3+   AKO   datum    
+8585     Omán - Irák                               2.49    2.60    4.66    9.20    030.06. 15:00
+
+                                         *** HOKEJ ***
+                            * HOKEJ - Česko - Extraliga - playoff *
+číslo  příležitost                                          1       0       2    AKO   datum    
+300401   Slavia -                                          3.00    2.00    3.98    030.09. 10:18
+
+                                         *** TENIS ***
+                       * TENIS - ATP - Düsseldorf, SP družstev, antuka *
+číslo  příležitost                                                  1       2    AKO   datum    
+500903   trutnov - prerov                                          1.05    7.55    013.09. 13:37

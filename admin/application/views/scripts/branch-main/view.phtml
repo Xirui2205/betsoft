@@ -1,0 +1,162 @@
+<?php if($this->branch) : ?>
+
+	<input name="branchId" id="branchId" type="hidden" value="<?=$this->branch['branchId']?>" />
+
+	<div class="actions">
+		<?php if ($this->callcenterLogged == false) :?>
+		<button onclick="editBranchDetail(<?=$this->branchId?>)"><?=i18n::tr('Edit')?></button>
+		<?php endif;?>
+		<button onclick="hideDetail('branch-container')"><?=i18n::tr('Close Detail')?></button>
+	</div>
+
+
+	<table class="table-detail" >
+		<tr>
+			<th class="header" colspan="2">
+				<?=i18n::tr('branch')?>
+			</th>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('branch id')?></th>
+			<td id="branchHandle"><?=$this->branch['handle']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('name')?></th>
+			<td id="branchName"><?=$this->branch['name']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('ticket_header')?></th>
+			<td><?=$this->branch['ticketHeader']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('Status')?></th>
+			<td id="branchStatus"><?=$this->branch['statusId']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('branch_type')?></th>
+			<td id="branchStatus"><?=$this->branch['typeName']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('stem')?></th>
+			<td><?=$this->branch['stemId']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('Street')?></th>
+			<td><?=$this->branch['street']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('Town')?></th>
+			<td><?=$this->branch['town']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('place')?></th>
+			<td><?=$this->branch['place']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('ZIP')?></th>
+			<td><?=$this->branch['zip']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('longitude')?></th>
+			<td><?=It6_Locale_Format::toNumber($this->branch['longitude'])?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('latitude')?></th>
+			<td><?=It6_Locale_Format::toNumber($this->branch['latitude'])?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('branch_location')?></th>
+			<td id="branchStatus"><?=$this->branch['locationName']?></td>
+		</tr>
+
+		<tr>
+			<th><?=i18n::tr('Phone')?></th>
+			<td><?=$this->branch['phone']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('Email')?></th>
+			<td><?=$this->branch['email']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('note')?></th>
+			<td><?=$this->branch['note']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('info')?></th>
+			<td><?=$this->branch['info']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('banned')?></th>
+			<td><?=(empty($this->branch['banned'])) ? I18n::tr('no') : $this->branch['banned']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('listed_on_www')?></th>
+			<td><?=(empty($this->branch['isListed'])) ? I18n::tr('no') : I18n::tr('yes')?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('is_active')?></th>
+			<td><?=(empty($this->branch['isActive'])) ? I18n::tr('no') : I18n::tr('yes')?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('is_top')?></th>
+			<td><?=(empty($this->branch['isTop'])) ? I18n::tr('no') : I18n::tr('yes')?></td>
+		</tr>
+		<tr>
+			<th class="header" colspan="2">
+				<?=i18n::tr('branch_provider')?>
+			</th>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('provider_name')?></th>
+			<td><?=$this->branch['providerName']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('provider_ic')?></th>
+			<td><?=$this->branch['providerIc']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('provider_dic')?></th>
+			<td><?=$this->branch['providerDic']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('provider_address')?></th>
+			<td><?=$this->branch['providerAddress']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('provider_email')?></th>
+			<td><?=$this->branch['providerEmail']?></td>
+		</tr>
+		<tr>
+			<th class="header" colspan="2">
+				<?=i18n::tr('manipulation_fees')?>
+			</th>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('manipulation_fee')?></th>
+			<td><?=$this->branch['mp']*100?>%</td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('manipulation_fee_win')?></th>
+			<td><?=$this->branch['mpWin']*100?>%</td>
+		</tr>
+
+		<tr>
+			<th class="header" colspan="2">
+				<?=i18n::tr('Branch provisions')?>
+			</th>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('calculation')?></th>
+			<td><?=($this->branch['calculation'] == 1) ? I18n::tr('yes') : I18n::tr('no')?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('calculation_net')?></th>
+			<td><?=($this->branch['calculationNet'] == 1) ? I18n::tr('yes') : I18n::tr('no')?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('calculation_net_type')?></th>
+			<td><?=(empty($this->branch['calculationNetType'])) ? I18n::tr('not defined') : $this->branch['calculationNetType']?></td>
+		</tr>
+	</table>
+
+<?php endif; ?>

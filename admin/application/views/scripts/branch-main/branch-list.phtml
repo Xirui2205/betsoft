@@ -1,0 +1,19 @@
+
+
+<form method="post" action="?section=<?=$this->indexSectionId?>" id="formUsersFilter">
+	<?php if ($this->callcenterLogged == false)://podminka pridana aby se callcenteru nezobrazoval zluty poruzek kvuli prazdnemu divu, jelikoz nema pravo na vkladani poboček?> 
+	<div class="actions">
+		<input type="button" onclick="insertBranchMain(<?=$this->insertSectionId?>)" name="insert_new" value="<?=i18n::tr('insert_branch')?>"/>		
+		<!--<input type="submit" class="input"  name="banAll" value="<?=i18n::tr('ban_selected')?>" />
+		<input type="submit" class="input"  name="allowAll" value="<?=i18n::tr('allow_selected')?>" />-->
+	</div>
+	<?php endif;?>
+	
+	<?=$this->filter?>
+	<?=$this->paginator?>
+
+	<table class='table-list width-100'>
+		<?=$this->tHead?>
+		<?=$this->tBody?>
+	</table>
+</form>

@@ -1,0 +1,21 @@
+<tbody>
+  <?php foreach($this->layout()->data as $document) : ?>
+    <tr>
+      <td>
+       
+<?php if (!isset($document["newspapers"]) || $document["newspapers"] == false) : ?>
+        <button onClick="viewGeneric(<?=$this->viewSectionId?>,'document', {document_id: <?=$document["documentId"] ?>});return false;"><?=i18n::tr('View')?></button>
+        <input
+					type="submit"
+					name="delete[<?=$document['documentId']?>]"
+					value="<?=$this->trans('delete')?>"
+					class="sbutton"
+					onclick="return confirm('<?=I18n::tr('confirm_delete_document')?>')"
+				/>
+<?php endif; ?>
+      </td>
+      <td class="border-left txtrt"><?=$document['name']?></td>
+	    <td class="border-left txtrt"><?=$document['url']?></td>
+    </tr>
+  <?php endforeach?>
+</tbody>

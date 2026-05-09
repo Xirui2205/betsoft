@@ -1,0 +1,61 @@
+<div class="col1wrap">
+<div class="col1">
+	<h2 class="boxheader"><span><?=$this->trans('provider_registration')?></span></h2>
+	<div class="provider_registration">
+		<?=$this->feedbackMsg?>
+		<form action="<?=$this->form->getAction()?>" method="post" class="legendBg">
+			<?=$this->form?>
+
+			<fieldset>
+				<legend><?=$this->trans('submit')?></legend>
+				<div class="grayBg">
+				<table class="form">
+					<tbody>
+						<tr>
+							<td class="cell-label">
+								<label class="colored">
+									<?=$this->trans('captcha'); ?> *
+								</label>
+							</td>
+							<td>
+								<span id="captcha">
+								<?= $this->render('ajax/captcha.phtml') ?>
+								</span><br/>
+								<a href="" class="yellow" id="reloadCaptcha"><?php echo $this->translate('reload_captcha'); ?></a>
+								<script type="text/javascript">
+									//<![CDATA[
+									function reloadCaptcha() {
+										$.get(
+											'<?= $this->UrlSet(40) ?>',
+											{ name: '<?= ProviderRegistrationController::CAPTCHA_NAME ?>' },
+											function(data){ $('#captcha').html(data); },
+											'html'
+										);
+									}
+									$('#reloadCaptcha').click( function(e){ e.preventDefault(); reloadCaptcha(); } )
+									//]]>
+								</script>
+								<?php if(!empty($this->captchaErrors)) : ?>
+									<ul class="errors">
+									<?php foreach($this->captchaErrors as $error) : ?>
+										<li><?=$this->translate($error)?></li>
+									<?php endforeach?>
+									</ul>
+								<?php endif?>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="submit" name="submit" id="submit" /></td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+</div>
+
+<?=$this->render('index/leftCol.phtml')?>
+<?=$this->render('index/rightCol.phtml')?>

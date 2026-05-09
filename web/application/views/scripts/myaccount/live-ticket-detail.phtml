@@ -1,0 +1,94 @@
+<table class="ticketDetail table table-striped table-hover">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th><?= $this->trans('match') ?></th>
+			<th><?= $this->trans('sport') ?></th>
+			<th><?= $this->trans('rate') ?></th>
+			<th><?= $this->trans('tip') ?></th>
+			<th><?= $this->trans('result') ?></th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php $j = 1 ?>
+		<?php foreach ($this->ticket['tips'] as $match) : ?>
+			<tr <?php if (!empty($match['canceled'])) echo 'class="bet-canceled" ' ?>>
+				<td><?= $j ?></td>
+				<td><?= $match['players'] ?></td>
+				<td><?= $match['sport'] ?></td>
+				<td>
+					<?php if (!empty($match['canceled'])): ?>
+						<?= $this->trans('rate_1'); ?>
+					<?php else: ?>
+						<?= $this->formatRate($match['rate']) ?>
+					<?php endif; ?>
+				</td>
+				<td><?= $match['tip'] ?></td>
+				<td>
+					<?php if (empty($match['resultValid'])) : ?>
+						-
+					<?php else : ?>
+						<?= $match['result'] ?>
+					<?php endif ?>
+				</td>
+			</tr>
+		<?php endforeach ?>
+	</tbody>
+</table>
+
+<div class="summary">
+	<table class="table">
+		<tbody>
+			<?php if (empty($this->hideHandle)): ?>
+				<tr>
+					<td>
+						<?= $this->trans('ticket_public_url') ?>:
+					</td>
+					<td class="text-right">
+						<a href="<?= $this->UrlSet(83) ?>?t=<?= $this->ticketHandle ?>" style="float:right">
+							<?= $this->UrlSet(83, '', null, '', true) ?>?t=<?= $this->ticketHandle ?>
+						</a>
+					</td>
+				</tr>
+			<?php endif; ?>
+			<tr>
+				<td><?= $this->trans('date') ?></td>
+				<td class="text-right">
+					<?= It6_Date::fromDb($this->ticket['timeCreated']) ?>
+				</td>
+			</tr>
+			<?php if ($this->ticket['type'] == 'kombi') : ?>
+				<tr>
+					<td><?= $this->trans('bet_rows_qty') ?></td>
+					<td class="text-right">1</td>
+				</tr>
+			<?php endif ?>
+
+			<tr>
+				<td><?= $this->trans('total_rate') ?></td>
+				<td class="text-right"><?= $this->formatRate($this->ticket['rate']) ?></td>
+			</tr>
+
+			<tr>
+				<td colspan="2" class="summary-money"><?= $this->trans('stake') ?>
+					<span>
+						<?= $this->formatCurrency($this->ticket['stake'], $this->currency) ?>
+					</span>
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="2" class="summary-money highlight"><?= 'ticket_state_1' == $this->ticket['state'] ? $this->trans('expected_win') : $this->trans('win') ?>
+					<span>
+						<?php if ($this->ticket['isLoss'] == true) : ?>
+							<?= $this->formatCurrency(0, $this->currency) ?>
+						<?php elseif ($this->ticket['stateNo'] == 4) : ?>
+							<?= $this->formatCurrency($this->ticket['won'], $this->currency) ?>
+						<?php else : ?>
+							<?= $this->formatCurrency($this->ticket['win'], $this->currency) ?>
+						<?php endif ?>
+					</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

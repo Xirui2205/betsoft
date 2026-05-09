@@ -1,0 +1,124 @@
+<?php
+reset($this->Adata['date']);
+$firstKey = key($this->Adata['date']);
+if(!empty($firstKey)) : ?>
+<table class="betOfferTable<?= (!$this->firstTable) ? '' : ' first'?><?= isset($_REQUEST['narrower']) ? ' narrower' : '' ?>">
+	<thead>
+		<tr>
+			<?php if ($this->isDetailView) : ?>
+				<th class="alias borderRight"></th>
+			<?php endif; ?>
+			<th class="aliasAndName" <?= ($this->isDetailView) ? '' : ' colspan="2"' ?>>
+				<span><?=$this->Adata['text']?> <?=$this->Adata['textNote']?></span>
+			</th>
+
+			<?php ksort($this->Adata['sloupec'])?>
+
+			<?php foreach($this->Adata['sloupec'] as $dataSlName): ?>
+				<th class="rate"><?=$this->escape($dataSlName); ?></th>
+			<?php endforeach; ?>
+			
+			<th class="datetime"></th>
+			<th class="plus"></th>
+			<th class="stats"></th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<?php foreach($this->Adata['date'] as $datum=>$dataDate): ?>
+			<?php foreach($dataDate as $bet_id=>$dataOdds):
+				$array_diff = array_diff_key($this->Adata['sloupec'], $dataOdds['sloupec']);
+				foreach ($array_diff as $key => $value) {
+					$array_diff[$key] = 1;
+				}
+				$dataOdds['sloupec'] = $dataOdds['sloupec'] + $array_diff;
+				ksort($dataOdds['sloupec']);
+				?>
+
+				<tr id="<?= $bet_id ?>">
+					<?php $i=0; $n=sizeof($dataOdds['sloupec']); ?>
+					<td class="alias borderRight">
+						<?=(!empty($dataOdds['alias_new'])) ? $dataOdds['alias_new'] : $dataOdds['alias']?>
+					</td>
+					
+					<td class="name borderLeft">
+						<span class="name"><?= $this->escape($dataOdds['text']) ?></span>
+						<div class="clear"></div>
+						<span class="datetimeNarrower"><?= substr($datum, 0, -4); ?> | <?=$dataOdds['hour']; ?></span>
+						<?php //if (!empty($dataOdds['betradar_match_id'])) : ?>
+							<!-- <a
+								onclick="window.open(this.href,'_blank');return false;"
+								href="<?//=BETRADAR_STATS_URL?>&amp;matchid=<?//=$dataOdds['betradar_match_id']?>"
+								class="statsNarrower"
+							>
+								<img src="/images/graph-crop.png" alt="<?//=$this->trans('stats'); ?>" title="<?//=$this->trans('stats'); ?>" />
+							</a> -->
+						<?php //endif; ?>
+						<?php if(!empty($dataOdds['liveBetId'])) : ?>
+							<a class="liveInfoAko tooltip" title="<?=$this->trans('available_as_live')?>"
+							   href="<?=It6_Models_Livebetting::getUrl($dataOdds['liveBetId'], true, false)?>">L</a>
+						<?php endif?>
+						<?php if(mb_strlen($dataOdds['info']) > 0): ?>
+							<span class="liveInfoAko tooltip" title="<?=$this->escape($dataOdds['info']); ?>">i</span>
+						<?php endif?>
+						<?php if($dataOdds['ako']): ?>
+							<span class="liveInfoAko tooltip" title="<?=$this->escape($dataOdds['ako']); ?>AKO"><?=$this->escape($dataOdds['ako']); ?>!</span>
+						<?php endif; ?>
+					</td>
+					
+					<?php foreach ($dataOdds['sloupec'] as $sloupec_id => $odds): ++$i; ?>
+						<td id="b<?=$bet_id; ?>c<?=$sloupec_id; ?>" class="rate">
+							<?php if($odds != 1) : ?>
+								<a
+									class="kurz"
+									href="javascript:void(0);"
+									onclick="ticketUpdate(<?=$bet_id .','. $sloupec_id .',\''. $this->EscapeJs($dataOdds['text'], true, true) .'\',\''. $this->EscapeJs($this->Adata['fullText'], true, true) .'\',\''. $this->Adata['sloupec'][$sloupec_id] .'\',null,'.  $dataOdds['simple']; ?>);"
+								>
+									<?=$odds?>
+								</a>
+							<?php else : ?>
+								-
+							<?php endif?>
+						</td>
+					<?php endforeach?>
+					
+					<td class="datetime borderRight borderLeft">
+						<?= substr($datum, 0, -4); ?> | <?=$dataOdds['hour']; ?>
+					</td>
+					
+					<?php $isPlus = intval($dataOdds['plus']) > 0 && !$this->isDetailView; ?>
+					<td class="plus borderLeft borderRight">
+						<?php if($isPlus): ?>
+							<a href="javascript:getBetDetails('<?=$this->UrlSet(9,$this->seoUrl($dataOdds['text']) . '-m'. $bet_id .'/'); ?>',<?=$bet_id?>)">
+								<span id="plusMinus<?=$bet_id?>">+</span><?=$dataOdds['plus']; ?>
+							</a>
+						<?php endif; ?>
+					</td>
+					<td class="stats borderLeft">
+						<!-- <div>
+							<?php //if (!empty($dataOdds['betradar_match_id'])) : ?>
+								<a
+									onclick="window.open(this.href,'_blank');return false;"
+									href="<?//=BETRADAR_STATS_URL?>&amp;matchid=<?//=$dataOdds['betradar_match_id']?>"
+								>
+									<img src="/images/graph_smaller_without_bck.png" alt="<?//=$this->trans('stats'); ?>" title="<?//=$this->trans('stats'); ?>" />
+								</a>
+							<?php //endif?>
+						</div> -->
+					</td>
+				</tr>
+				<?php if($isPlus): 
+				$cellCount = 8 + count($dataOdds['sloupec']);
+				?>
+				<tr id="bet_details_tr_<?=$bet_id?>" style="display:none">
+					<td class="bet_detail" colspan="<?= $cellCount ?>">
+						<div id="bet_details_<?=$bet_id?>"></div>
+					</td>
+				</tr>
+				<?php endif?>
+			<?php endforeach?>
+		<?php endforeach?>
+	</tbody>
+
+</table>
+<?php endif; ?>

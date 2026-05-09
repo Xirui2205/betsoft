@@ -1,0 +1,76 @@
+<?php foreach($banners as $banner) : ?>
+	<form action="?section=<?=$sectionId?>" method="post" class="promo-form" id="banner-form-<?=$banner['banner_id']?>">
+		<input type="hidden" name="controller_id" value="<?=$banner['controller_id']?>" />
+		<input type="hidden" name="location_id" value="<?=$banner['location_id']?>" />
+		<input type="hidden" name="lang_id" value="<?=$banner['lang_id']?>" />
+		<input type="hidden" name="banner_id" value="<?=$banner['banner_id']?>" />
+
+		<table class="table-list">
+			<tr>
+				<th><?=I18n::tr('Controller')?></th>
+				<td><?=$banner['controller_id']?> - <?=$banner['controllerName']?></td>
+			</tr>
+			<tr>
+				<th><?=I18n::tr('Location Id')?></th>
+				<td><?=$banner['location_id']?></td>
+			</tr>
+			<tr>
+				<th><?=I18n::tr('Title')?></th>
+				<td>
+					<input
+						type="text"
+						name="title"
+						value="<?=$banner['title']?>"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<th><?=I18n::tr('URL')?></th>
+				<td>
+					<input
+						type="text"
+						name="url"
+						value="<?=$banner['url']?>"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<th><?=I18n::tr('Open in')?></th>
+				<td>
+					<select name="target">
+						<option value="_self"><?=I18n::tr('Same Window')?></option>
+						<option value="_blank" <?=($banner['target'] == '_blank' ? 'selected="selected"' : '')?>>
+							<?=I18n::tr('New Window')?>
+						</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th><?=I18n::tr('Image')?></th>
+				<td>
+					<input
+						type="text"
+						name="image_name"
+						value="<?=$banner['image_name']?>"
+						id="image_name_<?=$banner['banner_id']?>"
+					/>
+					<a href="javascript:window.open('/galery.php?type=1&node=image_name_<?=$banner['banner_id']?>','','width=640,height=480,scrollbars=yes');void(0);">
+						<img src="_clip/image_aktivni.gif" alt="" class="img" />
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<th><?=I18n::tr('Text')?></th>
+				<td>
+					<textarea name="text" class="smallTa"><?=$banner['text']?></textarea>
+				</td>
+			</tr>
+			<tr>
+				<th></th>
+				<td>
+					<input type="submit" value="<?=I18n::tr('Submit')?>" name="update_content" />
+				</td>
+			</tr>
+		</table>
+	</form>
+<?php endforeach?>

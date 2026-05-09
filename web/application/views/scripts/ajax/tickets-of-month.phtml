@@ -1,0 +1,29 @@
+			<?php if (!empty($this->month)) : ?>
+				<?php $i=0; ?>
+				<?php foreach($this->month as $data) : ?>
+					<?php $i++?>
+					<div class="user">
+						<div class="img">
+							<table>
+								<tr>
+									<td>
+										<img src="/images/user-ico.png" alt="<?=$this->trans('month_ticket'); ?>" />
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="txt">
+							<h4><?=$data['username']; ?></h4>
+							<?=ucfirst($this->trans('rate')); ?>:
+							<span class="white"><?=$data['realTotalOdds']; ?></span><br />
+							<?=$this->trans('win'); ?>:
+							<span class="white"><?=$this->NumberFormat(3900); ?> <?=$data['currencyName']?></span>
+						</div>
+						<a href="<?=$this->UrlSet(27)?>t/<?=$i?>" class="btn button-orange">
+							<?=$this->trans('month_ticket_info_mor'); ?>
+						</a>
+					</div>
+				<?php endforeach?>
+			<?php else : ?>
+				<span class="white"><?=$this->trans('no_ticket_of_month')?></span>
+			<?php endif?>

@@ -1,0 +1,63 @@
+<div id="right">
+	<h2 class="boxheader"><?= $this->trans('deposit_card') ?></h2>
+	<div class="contentbox">
+		<?php if (!empty($this->error)): ?>
+			<?= $this->error ?>
+
+		<?php elseif (!empty($this->popUpUrl)): ?>
+			<div><?= $this->translate('deposit_card_window') ?></div>
+			<div>
+				<a href="<?= $this->popUpUrl ?>"><?= $this->translate('deposit_card_window_link') ?></a>
+			</div>
+
+			<script type="text/javascript">
+				// <![CDATA[
+				// window.open('<?=$this->popUpUrl?>', 'BetServiceOnlineDeposit');
+				window.location = '<?=$this->popUpUrl?>';
+				// ]]>
+			</script>
+
+			<?php if (GOOGLE_AD_CONVERSION_DEPOSIT) echo $this->render(GOOGLE_AD_CONVERSION_DEPOSIT); ?>
+
+		<?php else: ?>
+			<?= $this->form ?>
+			
+			<div class="text-center">
+				<img src="/images/GP_webpay150.gif" alt="WebPay" />
+				<img src="/images/visa66.jpg" alt="VISA" />
+				<img src="/images/visa_electron66.jpg" alt="VISA Electron" />
+				<img src="/images/mastercard_65.gif" alt="MasterCard" />
+				<img src="/images/maestro_65.gif" alt="Maestro" />
+			</div>
+			
+			<script type="text/javascript">
+				// <![CDATA[
+				var currenciesCount = <?=count($this->currencies)?>;
+				var currencies = new Array();
+				<?php foreach ($this->currencies as $id => $c): ?>
+					currencies['<?= $c['isoCode'] ?>'] = { 'feeFix': <?= $c['feeFix'] ?>, 'feeRel': <?= $c['feeRel'] ?>, 'name': '<?= $c['name'] ?>' };
+				<?php endforeach; ?>
+				$(document).ready(function () { updateFeeAndTotal("#depositCurrency","#depositAmount","#depositFee","#depositTotal"); });
+				$('#depositAmount<?=count($this->currencies) > 1 ? ',#depositCurrency' : ''?>').bind('change', function () { updateFeeAndTotal("#depositCurrency","#depositAmount","#depositFee","#depositTotal"); });
+			   // ]]>
+			</script>
+			
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$.each($($('ul.errors').parent()), function( index, value ) {
+						$('input,select,textarea', this)
+								.addClass('errBg')
+								.attr('data-original-title', $.trim($('li', this).text()))
+								.attr('data-placement', 'right')
+								.tooltip();
+					});
+					$('input,select,textarea', $('ul.errors').parent()).change(function() {
+						$(this).removeClass('errBg').tooltip('disable');
+					});
+				});
+			</script>
+		<?php endif; ?>
+	</div>
+</div>
+
+<?=$this->render('myaccount/user-profile-left-col.phtml'); ?>

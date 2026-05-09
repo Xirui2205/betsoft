@@ -1,0 +1,12 @@
+<?=I18n::tr('frequent_transactions')?>
+
+===============================================================
+
+<?php if ( empty($this->transactions) ): ?>
+<?=I18n::tr('no_records')?>
+<?php else:?>
+<?php foreach( $this->transactions as $transaction ):?>
+#<?=$transaction['branchId']?> #<?=$transaction['userId']?> <?=$transaction['value']?>
+
+<?php endforeach;?>
+<?php endif;?>

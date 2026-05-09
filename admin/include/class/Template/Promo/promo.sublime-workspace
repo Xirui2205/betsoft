@@ -1,0 +1,1068 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"prev",
+				"prevWin"
+			],
+			[
+				"promos",
+				"promosRaw"
+			],
+			[
+				"le",
+				"left"
+			],
+			[
+				"lon",
+				"long"
+			],
+			[
+				"Cz",
+				"cz"
+			],
+			[
+				"fon",
+				"font-family"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"ma",
+				"machScore"
+			],
+			[
+				"if",
+				"if?	$… = ( … ) ? … : …"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/home/tamok/bewa/web/application/views/scripts/myaccount/ticket-detail.phtml",
+			"settings":
+			{
+				"buffer_size": 8615,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/tamok/bewa/web/www/css/main.css",
+			"settings":
+			{
+				"buffer_size": 92461,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/home/tamok/bewa/admin/include/class/class.Main.php",
+			"settings":
+			{
+				"buffer_size": 26311,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/home/tamok/bewa/web/application/views/scripts/index/leftCol.phtml",
+			"settings":
+			{
+				"buffer_size": 1436,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/home/tamok/bewa/web/application/views/scripts/sportsbook/typeA.phtml",
+			"settings":
+			{
+				"buffer_size": 5137,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/home/tamok/bewa/admin/application/controllers/BranchMainController.php",
+			"settings":
+			{
+				"buffer_size": 9667,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/tamok/bewa/admin/include/class/class.PodTyp.php",
+			"settings":
+			{
+				"buffer_size": 29770,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/home/tamok/bewa/admin/include/class/class.Promo.php",
+			"settings":
+			{
+				"buffer_size": 14023,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/home/tamok/bewa/admin/include/class/class.Utils.php",
+			"settings":
+			{
+				"buffer_size": 1857,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/tamok/bewa/admin/www/js/promoAdministration.js",
+			"settings":
+			{
+				"buffer_size": 2828,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "list-promos.phtml",
+			"settings":
+			{
+				"buffer_size": 6101,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "new-promo.phtml",
+			"settings":
+			{
+				"buffer_size": 5018,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "preview-promo.phtml",
+			"settings":
+			{
+				"buffer_size": 1083,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/tamok/bewa/common/views/It6/promo/promo-standart.phtml",
+			"settings":
+			{
+				"buffer_size": 2049,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/tamok/bewa/common/views/It6/promo/promo-wide.phtml",
+			"settings":
+			{
+				"buffer_size": 577,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 33.0,
+		"selected_items":
+		[
+			[
+				"svn inf",
+				"SVN: Info"
+			],
+			[
+				"svn lo",
+				"SVN: Log"
+			],
+			[
+				"svn com",
+				"SVN: Commit…"
+			],
+			[
+				"svnin",
+				"SVN: Info"
+			],
+			[
+				"svndi",
+				"SVN: Diff"
+			],
+			[
+				"svns",
+				"SVN: Status"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"log",
+				"SVN: (File) Log"
+			],
+			[
+				"revrt",
+				"SVN: (File) Revert"
+			],
+			[
+				"comm",
+				"SVN: (File) Commit"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 503.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/tamok/bewa/common/class/class.I18n.php",
+		"/home/tamok/bewa/admin/include/class/Template/Promo/ab-new-promo.phtml",
+		"/home/tamok/bewa/common/library/It6/DbTransaction.php",
+		"/home/tamok/bewa/admin/www/css/adm.css",
+		"/home/tamok/bewa/admin/library/It6/MemberArray.php",
+		"/home/tamok/bewa/admin/application/views/scripts/branch-main/branch-list.phtml",
+		"/home/tamok/bewa/admin/application/Models/Form/BranchMain.php",
+		"/home/tamok/bewa/common/library/It6/Locale/Format.php",
+		"/home/tamok/bewa/betting-service/application/Webservice/Branch.php",
+		"/home/tamok/bewa/admin/application/views/scripts/approval-group/index.phtml",
+		"/home/tamok/bewa/betting-service/application/It6/Alert/Foo.php",
+		"/home/tamok/bewa/admin/include/class/class.OnlineBook.php",
+		"/home/tamok/bewa/admin/application/views/scripts/branch-main/view.phtml",
+		"/home/tamok/bewa/admin/application/views/layouts/layout.phtml",
+		"/home/tamok/bewa/admin/include/class/class.LiveSport.php",
+		"/home/tamok/bewa/admin/www/_tpl/head.tpl",
+		"/home/tamok/bewa/common/library/Zend/Auth/Adapter/Http.php",
+		"/home/tamok/bewa/admin/www/js/common.ajax.js",
+		"/home/tamok/bewa/admin/www/js/branch.ajax.js",
+		"/home/tamok/bewa/common/library/It6/GlobalCache/Invalidator.php",
+		"/home/tamok/bewa/admin/application/views/scripts/branch-main/index.phtml",
+		"/home/tamok/bewa/admin/application/bootstrap.php",
+		"/home/tamok/bewa/common/library/Zend/Registry.php",
+		"/home/tamok/bewa/betting-service/application/Webservice/User.php",
+		"/home/tamok/bewa/common/library/It6/Models/ControllerConvert.php",
+		"/home/tamok/bewa/common/library/Zend/Db/Expr.php",
+		"/home/tamok/bewa/admin/www/latlng.php",
+		"/home/tamok/bewa/web/application/views/scripts/global-cache-frame/foot.phtml",
+		"/home/tamok/bewa/web/application/controllers/TicketController.php",
+		"/home/tamok/bewa/web/application/Models/MyAccount/Ticket.php",
+		"/home/tamok/bewa/web/application/views/layouts/ws-form/tickets-tbody.phtml",
+		"/home/tamok/bewa/web/application/controllers/MyaccountController.php",
+		"/home/tamok/bewa/web/application/views/scripts/sportsbook/sport-matches.phtml",
+		"/home/tamok/bewa/web/application/views/scripts/index/foot.phtml",
+		"/home/tamok/bewa/web/application/views/scripts/sportsbook/index.phtml",
+		"/home/tamok/bewa/web/application/views/scripts/sportsbook/typeB.phtml",
+		"/home/tamok/bewa/web/application/views/scripts/index/sportMenuLoader.phtml",
+		"/home/tamok/bewa/admin/application/views/scripts/branch-main/update.phtml",
+		"/home/tamok/bewa/admin/application/views/scripts/settings-global-parameters/update-branch.phtml",
+		"/home/tamok/bewa/common/library/It6/Validate/Float.php",
+		"/home/tamok/bewa/common/library/It6/ArrayWrapper.php",
+		"/home/tamok/bewa/web/application/views/scripts/global-cache-frame/live-calendar-small-content.phtml",
+		"/home/tamok/bewa/web/application/controllers/SportsbookController.php",
+		"/home/tamok/bewa/web/application/views/scripts/ajax/terno-tab.phtml",
+		"/home/tamok/bewa/web/application/views/scripts/sportsbook/sport-odds.phtml",
+		"/home/tamok/bewa/web/application/views/scripts/index/leftCol.phtml",
+		"/home/tamok/bewa/web/application/Models/BasicRender.php",
+		"/home/tamok/bewa/web/application/Models/Ticket/OldTicket.php",
+		"/home/tamok/bewa/web/application/Models/Control/Ticket.php",
+		"/home/tamok/bewa/web/application/Models/Helpers/Panels.php",
+		"/home/tamok/bewa/web/application/views/scripts/ticket/index.phtml",
+		"/home/tamok/bewa/web/application/controllers/ScoresController.php",
+		"/home/tamok/bewa/web/application/controllers/UseractionController.php",
+		"/home/tamok/bewa/admin/www/sazky.php",
+		"/home/tamok/Dokumenty/med/css/main.css",
+		"/home/tamok/Dokumenty/med/index.html",
+		"/home/tamok/.config/sublime-text-2/Packages/User/HTML.sublime-settings",
+		"/tmp/sublime-svn-1369315357/SVN",
+		"/home/tamok/bewa/admin/application/Models/Userkolekce.php",
+		"/home/tamok/bewa/admin/include/class/class.Oblast.php",
+		"/home/tamok/bewa/web/application/Models/Helpers/Help.php",
+		"/home/tamok/bewa/common/class/class.Help.php",
+		"/home/tamok/bewa/admin/application/controllers/NodeCommController.php",
+		"/home/tamok/bewa/web/application/views/scripts/myaccount/ticket-head.phtml",
+		"/home/tamok/bewa/web/application/views/layouts/ws-form/tickets-thead.phtml",
+		"/home/tamok/bewa/web/application/views/layouts/default.phtml",
+		"/home/tamok/bewa/common/library/Zend/Controller/Plugin/DbPLugin.php",
+		"/home/tamok/bewa/common/init-global-cache-instance.inc.php",
+		"/home/tamok/bewa/common/config.php",
+		"/home/tamok/bewa/common/library/It6/WsForm/Paginator.php",
+		"/home/tamok/bewa/admin/application/controllers/UserProfileController.php",
+		"/home/tamok/bewa/admin/library/It6/Controller/Plugin/SetController.php",
+		"/home/tamok/bewa/admin/config_local.php",
+		"/home/tamok/bewa/admin/application/Models/Host.php",
+		"/home/tamok/bewa/admin/application/controllers/BranchParameterController.php",
+		"/home/tamok/Dokumenty/default",
+		"/home/tamok/bewa/admin/include/class/Template/SazkaTicket/ticketForm.phtml",
+		"/home/tamok/bewa/common/library/It6/WsForm/Table.php",
+		"/home/tamok/bewa/common/library/It6/GlobalCache.php",
+		"/home/tamok/bewa/admin/include/class/class.SazkaZobraz.php",
+		"/tmp/sublime-svn-1369036301/SVN"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 102.0,
+		"where_history":
+		[
+			"",
+			"*.phtml",
+			"",
+			"*.phtml",
+			"",
+			"*.phtml",
+			"",
+			"*.php",
+			"*.phtml",
+			"",
+			"*.phtml",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"image",
+			"updatePreviewWin",
+			"undefined",
+			"onKeyup",
+			"tit",
+			"onKeyup",
+			"showFullPromo",
+			"    ",
+			"textDomSelector",
+			"updatePreviewText",
+			"test",
+			"processTemplate",
+			"preview-promo.phtml",
+			"previewPromo",
+			"processTemplate",
+			"previewPromo",
+			"321",
+			"openPreviewWin",
+			"promo-standart.phtml",
+			"previewPromo",
+			"321",
+			"openPreviewWin",
+			"confirm-promo-delete",
+			"NewPromo",
+			"new-promo",
+			"openPreviewWin",
+			"confirm-promo-delete",
+			"errormsg",
+			"fore",
+			"mus",
+			"musí být uveden",
+			" musí mít minimálně 1 znak ",
+			"']);\n",
+			"Interní popis musí být uveden",
+			"interninazev",
+			"CreatePodTyp",
+			"ion rollback",
+			"rollback",
+			"create		",
+			"create",
+			"DuplicatePodtyp",
+			"dupli",
+			"duppl",
+			"errorm",
+			"errormsg",
+			"DeletePodtyp",
+			"delete",
+			"Vymazat",
+			"del",
+			"dele",
+			"form",
+			"clear=\"all\"",
+			"#wrapper",
+			"id=\"wrapper\"",
+			"id=\"wrapper\" style=\"margin-left:210px\"",
+			"wrapper",
+			"lear",
+			"POdTyp",
+			"ShowPodTyp",
+			"EditPodtyp",
+			"Edit",
+			"boot",
+			"wrapper ",
+			"phtml",
+			"function getrequest",
+			"function getparame",
+			"class it6",
+			"it6_controller",
+			"<td class=\"cell-label\">",
+			"editBranchDetail",
+			"submitAndReloadLongitudeLatitude",
+			"submitAndReloadGeneric",
+			"submit",
+			"viewBranchDetailOnly",
+			"longi",
+			"<input name=\"longitude\" id=\"longitude\"",
+			"Zend_Locale",
+			"getInstance",
+			"Zend_Locale",
+			"invalidateResources",
+			"translateResource",
+			"23",
+			"translateResource",
+			"update",
+			"longitude",
+			"update",
+			"latitude",
+			"update",
+			"\"branch\"",
+			"\n\"branch\"",
+			"update(\"branch\"",
+			"longitude",
+			"print_r",
+			"var js, fjs",
+			"color:blue",
+			"blue",
+			"fb-like-box",
+			"facebook",
+			"print_r",
+			"print",
+			"print_r",
+			"left-name",
+			"print_r",
+			"date-row",
+			"type-row",
+			"date-row",
+			"face",
+			"faceboo",
+			"http://www.facebook",
+			"mhs pluginBoxDivider",
+			"class=\"fsl",
+			"xxxxxxxx",
+			"span class=\"left",
+			"class=\"nazev",
+			"class=\"w2",
+			"tim",
+			"class=\"time",
+			"time",
+			"wrdLatest",
+			"kurzova",
+			"ticket-win-tag",
+			"$sql",
+			"sql",
+			"<?",
+			"insert into",
+			"insert",
+			"update",
+			"totalOdds"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 9,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/home/tamok/bewa/web/application/views/scripts/myaccount/ticket-detail.phtml",
+					"settings":
+					{
+						"buffer_size": 8615,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3379,
+								3379
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1056.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/tamok/bewa/web/www/css/main.css",
+					"settings":
+					{
+						"buffer_size": 92461,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								35797,
+								35797
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 47980.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/tamok/bewa/admin/include/class/class.Main.php",
+					"settings":
+					{
+						"buffer_size": 26311,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								19660,
+								19660
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 10453.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/tamok/bewa/web/application/views/scripts/index/leftCol.phtml",
+					"settings":
+					{
+						"buffer_size": 1436,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1403,
+								1403
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/home/tamok/bewa/web/application/views/scripts/sportsbook/typeA.phtml",
+					"settings":
+					{
+						"buffer_size": 5137,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								648,
+								648
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 594.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/home/tamok/bewa/admin/application/controllers/BranchMainController.php",
+					"settings":
+					{
+						"buffer_size": 9667,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7480,
+								7480
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4642.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/home/tamok/bewa/admin/include/class/class.PodTyp.php",
+					"settings":
+					{
+						"buffer_size": 29770,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7335,
+								7335
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5586.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/home/tamok/bewa/admin/include/class/class.Promo.php",
+					"settings":
+					{
+						"buffer_size": 14023,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13946,
+								13946
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 10778.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/home/tamok/bewa/admin/include/class/class.Utils.php",
+					"settings":
+					{
+						"buffer_size": 1857,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								505,
+								505
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 572.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/home/tamok/bewa/admin/www/js/promoAdministration.js",
+					"settings":
+					{
+						"buffer_size": 2828,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2264,
+								2264
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1106.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "list-promos.phtml",
+					"settings":
+					{
+						"buffer_size": 6101,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1236,
+								1236
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 410.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "new-promo.phtml",
+					"settings":
+					{
+						"buffer_size": 5018,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1395,
+								1395
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 608.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "preview-promo.phtml",
+					"settings":
+					{
+						"buffer_size": 1083,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								603,
+								603
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "/home/tamok/bewa/common/views/It6/promo/promo-standart.phtml",
+					"settings":
+					{
+						"buffer_size": 2049,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								349,
+								349
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 66.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "/home/tamok/bewa/common/views/It6/promo/promo-wide.phtml",
+					"settings":
+					{
+						"buffer_size": 577,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10,
+								10
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 38.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"i18n",
+				"common/class/class.I18n.php"
+			],
+			[
+				"podtyp",
+				"admin/include/class/class.PodTyp.php"
+			],
+			[
+				"it6localeformat",
+				"common/library/It6/Locale/Format.php"
+			],
+			[
+				"modelsformbranchmain",
+				"admin/application/Models/Form/BranchMain.php"
+			],
+			[
+				"zendregistry",
+				"common/library/Zend/Registry.php"
+			],
+			[
+				"it6modelscontrollerconvert",
+				"common/library/It6/Models/ControllerConvert.php"
+			],
+			[
+				"it6globalcacheinvalidator",
+				"common/library/It6/GlobalCache/Invalidator.php"
+			],
+			[
+				"zenddbexpr",
+				"common/library/Zend/Db/Expr.php"
+			],
+			[
+				"viewparameterbranch",
+				"admin/application/views/scripts/settings-global-parameters/update-branch.phtml"
+			],
+			[
+				"updatebranch",
+				"admin/application/views/scripts/settings-global-parameters/update-branch.phtml"
+			],
+			[
+				"it6validatefloat",
+				"common/library/It6/Validate/Float.php"
+			],
+			[
+				"it6arraywrapper",
+				"common/library/It6/ArrayWrapper.php"
+			],
+			[
+				"sport-matches.phtml",
+				"web/application/views/scripts/sportsbook/sport-matches.phtml"
+			],
+			[
+				"sportmenul",
+				"web/application/views/scripts/index/sportMenuLoader.phtml"
+			],
+			[
+				"sazky",
+				"admin/www/sazky.php"
+			],
+			[
+				"main",
+				"admin/include/class/class.Main.php"
+			],
+			[
+				"help",
+				"web/application/Models/Helpers/Help.php"
+			],
+			[
+				"modelsmyaccountticket",
+				"web/application/Models/MyAccount/Ticket.php"
+			],
+			[
+				"modelshelperspanels",
+				"web/application/Models/Helpers/Panels.php"
+			],
+			[
+				"ticketcon",
+				"web/application/controllers/TicketController.php"
+			],
+			[
+				"ticket",
+				"admin/include/class/Template/SazkaTicket/ticketForm.phtml"
+			],
+			[
+				"dbpl",
+				"common/library/Zend/Controller/Plugin/DbPLugin.php"
+			],
+			[
+				"it6wsformpaginator",
+				"common/library/It6/WsForm/Paginator.php"
+			],
+			[
+				"it6controllerpluginsetcontroller",
+				"admin/library/It6/Controller/Plugin/SetController.php"
+			],
+			[
+				"sazkazo",
+				"admin/include/class/class.SazkaZobraz.php"
+			],
+			[
+				"it6globalcache",
+				"common/library/It6/GlobalCache.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 282.0,
+	"status_bar_visible": true
+}

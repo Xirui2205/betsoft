@@ -1,0 +1,26 @@
+<?php if ( !empty($this->oldTicket) ):?>
+	<div class="old-ticket">
+		<h2 class="boxheader"><span><?=$this->trans('Ticket')?></span></h2>
+		<?=$this->oldTicket ?>
+	</div>
+<?php else:?>
+
+	<?php if ( empty($this->err) ):?>
+		<?php if ( $this->live ): ?>
+			<h2 class="boxheader"><span><?=$this->trans('Live ticket')?></span></h2>
+		<?php else:?>
+			<h2 class="boxheader"><span><?=$this->trans('ticket')?></span></h2>
+		<?php endif;?>
+			<div class="contentbox no-padding">
+				<?php if ( $this->live ): ?>
+					<?=$this->render('myaccount/live-ticket-detail.phtml')?>
+				<?php else:?>
+					<?=$this->render('myaccount/ticket-detail.phtml')?>
+				<?php endif; ?>
+				<?//=$this->render('myaccount/ticket-footer.phtml')?>
+			</div>
+	<?php else:?>
+		<h2 class="boxheader"><span><?=$this->trans($this->err)?></span></h2>
+	<?php endif;?>
+	
+<?php endif;?>

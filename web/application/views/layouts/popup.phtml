@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?=$this->isoLang; ?>" lang="<?=$this->isoLang ?>">
+
+<head>
+
+  <meta http-equiv="content-language" content="" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="<?= $this->description ?>" />
+  <meta name="keywords" content="<?= $this->keywords ?>" />
+  <title><?= $this->title ?></title>
+
+  <?php if (!$this->print) { ?>
+	  <link href="/<?= MINIFY_PREFIX ?>css/main.css?r=<?= RELEASE_REV ?>" rel="stylesheet" type="text/css" media="screen" />
+	  <link href="/<?= MINIFY_PREFIX ?>css/global.css?r=<?= RELEASE_REV ?>" rel="stylesheet" type="text/css" media="screen" />
+	  <link href="/css/ico.css?r=<?= RELEASE_REV ?>" rel="stylesheet" type="text/css" media="screen" />
+
+	  <link rel="stylesheet" href="/css/tooltip/jquery.tooltip.css?r=<?= RELEASE_REV ?>" />  
+  <?php } ?>
+  
+  <script type="text/javascript" src="<?= JQUERY_URI ?>" type="text/javascript"></script>
+  <script type="text/javascript" src="/<?= MINIFY_PREFIX ?>js/main.js?r=<?= RELEASE_REV ?>" type="text/javascript"></script>
+  <script type="text/javascript" src="/js/tooltip/jquery.tooltip.min.js?r=<?= RELEASE_REV ?>" type="text/javascript"></script>
+  <script type="text/javascript">
+	/* <![CDATA[ */
+    var lang_id = <?= $this->lang_id ?>;
+    var currency = '<?= $this->currencyName ?>';
+    var precision = <?= $this->currencyPrecision ?>;
+    /* ]]> */
+  </script>
+
+</head>
+
+<body>
+
+	<div id="main-bg">
+		<div id="main" class="wrapper">
+			<div id="content">
+				<?=$this->layout()->content ?>
+			</div>
+		</div>
+	</div>
+
+	<?php if (GOOGLE_ANALYTICS_CODE) echo $this->render(GOOGLE_ANALYTICS_CODE); ?>
+</body>

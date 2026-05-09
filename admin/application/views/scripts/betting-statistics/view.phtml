@@ -1,0 +1,175 @@
+<?=$this->feedbackMsg?>
+
+<?php if (!empty($this->bet)) : ?>
+	<input name="betId" id="betId" type="hidden" value="<?=$this->bet['betId']?>" />
+	<?php if (!empty($this->main_bet)) : ?>
+		<div style="display:inline-block;margin:5px;">
+			<script type="text/javascript">
+				$(function () {
+					var chart;
+					$(document).ready(function() {
+						chart = new Highcharts.Chart({
+							chart: {
+								renderTo: '<?=$this->bet["betId"]?>',
+								type: 'column'
+							},
+							title: {
+								text: '<?=$this->bet["typeName"]?>'
+							},
+							exporting: {
+								buttons: {
+									printButton: {
+										enabled: false
+									},
+									exportButton: {
+										enabled: false
+									},
+								}
+							},
+							subtitle: {
+								text: '<?=$this->bet["name"]?>'
+							},
+							xAxis: {
+								categories: [''],
+								title: {
+									text: '<?=i18n::tr('tip')?>'
+								}
+							},
+							yAxis: {
+								min: 0,
+								title: {
+									text: '<?=i18n::tr('bet_rows_qty')?>'
+								}
+							},
+							legend: {
+								layout: 'vertical',
+								backgroundColor: '#FFFFFF',
+								align: 'left',
+								verticalAlign: 'top',
+								x: 300,
+								y: 0,
+								floating: true,
+								shadow: true
+							},
+							tooltip: {
+								formatter: function() {
+									var serie = this.series;
+									var s = '<p style="font-weight:bolder;color:' + serie.color + '">';
+									s += '<?=i18n::tr('tip')?> ' + serie.options.name + ':</p><br />';
+									s += '<?=i18n::tr('count')?>' + ': <b>' + this.y + 'x</b><br/>';
+									$.each(serie.options.composition, function(name, value) {
+										s += name + '<b>' + value + ' kč</b>';
+									});
+									return s;
+								},
+								positioner: function() {
+									return { x: 80, y: 50 };
+								}
+							},
+							plotOptions: {
+								column: {
+									pointPadding: 0.2,
+									borderWidth: 0
+								}
+							},
+							series: [
+								<?php foreach ($this->main_bet as $main) : ?>
+									{name: '<?=$main["nazev"]?>', composition: {'<?=i18n::tr('amount')?>': '<?=$main["amount"]?>'},data: [<?=$main["count"]?>]},
+								<?php endforeach?>
+							]
+						});
+					});
+				});
+			</script>
+			<div id="<?=$this->bet["betId"]?>" style="width:400px;height:200px;"></div>
+		</div>
+	<?php endif?>
+
+	<?php if (!empty($this->childbets->collection)) : ?>
+		<?php foreach ($this->childbets as $childbet) : ?>
+			<?php if (!empty($this->columns[$childbet->betId])) : ?>
+				<div style="display:inline-block;margin:5px;">
+					<script type="text/javascript">
+						$(function () {
+							var chart;
+							$(document).ready(function() {
+								chart = new Highcharts.Chart({
+									chart: {
+										renderTo: '<?=$childbet->betId?>',
+										type: 'column'
+									},
+									title: {
+										text: '<?=$childbet->typeName?>'
+									},
+									exporting: {
+										buttons: {
+											printButton: {
+												enabled: false
+											},
+											exportButton: {
+												enabled: false
+											},
+										}
+									},
+									subtitle: {
+										text: '<?=$childbet->name?>'
+									},
+									xAxis: {
+										categories: [''],
+										title: {
+											text: '<?=i18n::tr('tip')?>'
+										}
+									},
+									yAxis: {
+										min: 0,
+										title: {
+											text: '<?=i18n::tr('bet_rows_qty')?>'
+										}
+									},
+									legend: {
+										layout: 'vertical',
+										backgroundColor: '#FFFFFF',
+										align: 'left',
+										verticalAlign: 'top',
+										x: 300,
+										y: 0,
+										floating: true,
+										shadow: true
+									},
+									tooltip: {
+										formatter: function() {
+											var serie = this.series;
+											var s = '<p style="font-weight:bolder;color:' + serie.color + '">';
+											s += '<?=i18n::tr('tip')?> ' + serie.options.name + ':</p><br />';
+											s += '<?=i18n::tr('count')?>' + ': <b>' + this.y + 'x</b><br/>';
+											$.each(serie.options.composition, function(name, value) {
+												s += name + '<b>' + value + ' kč</b>';
+											});
+											return s;
+										},
+										positioner: function() {
+											return { x: 80, y: 50 };
+										}
+									},
+									plotOptions: {
+										column: {
+											pointPadding: 0.2,
+											borderWidth: 0
+										}
+									},
+									series: [
+										<?php foreach ($this->columns[$childbet->betId] as $column) : ?>
+											{name: '<?=$column->nazev?>', composition: {'<?=i18n::tr('amount')?>': '<?=$column->amount?>'},data: [<?=$column->count?>]},
+										<?php endforeach?>
+									]
+								});
+							});
+						});
+					</script>
+					<div id="<?=$childbet->betId?>" style="width:400px;height:200px;"></div>
+				</div>
+			<?php endif ?>
+		<?php endforeach; ?>
+	<?php endif ?>
+
+<?php endif ?>

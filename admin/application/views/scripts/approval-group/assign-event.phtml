@@ -1,0 +1,47 @@
+<h4><?=i18n::tr('Assign an event to an approval group')?></h4>
+<?=$this->feedbackMsg?>
+<form id="assignEventForm">
+				<table class="table-filter">
+
+					<tr>
+						<th colspan="2">1. <?=i18n::tr('Choose an event(s) by sport/region')?>
+							<div class="actions">
+								<input onclick="submitGeneric('<?=$this->assignEventSectionId?>', 'assignEventForm', 'inner', '&submit=1');" type="button" value="<?=I18n::tr('Filter >>')?>"/>
+							</div>
+						</th>
+						<th>
+							<?=I18n::tr('Selected events')?> (<?=I18n::tr('Choose and assign')?>)
+						</th>
+						<th  class="vlgntp">
+							2. <?=i18n::tr('Choose an approval group')?>
+							
+						</th>
+					</tr>
+					<tr>
+						<td class="vlgntp"><?=$this->sportOpts?></td>
+						<td class="vlgntp"><?=$this->regionOpts?></td>
+						<td class="vlgntp"><?=$this->eventOpts?></td>
+						<td class="vlgntp" style="width:300px">
+							<div class="actions">
+								<?=$this->groups?>
+								<button onclick="submitGeneric('<?=$this->assignEventSectionId?>', 'assignEventForm', 'inner', '&submit=1');return false;"><?=i18n::tr('Submit')?></button>
+							</div>
+						</td>
+
+					</tr>
+				</table>
+
+			</td>
+			<td class="vlgntp">
+				
+				
+			</td>
+		</tr>
+	</table>
+</form>
+
+
+<div id="list">
+	<!-- seznam vsech hostu -->
+	<!--<?php include('group-list.phtml'); ?>-->
+</div>

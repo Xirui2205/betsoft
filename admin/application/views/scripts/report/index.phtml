@@ -1,0 +1,14 @@
+<h3><?=i18n::tr('reports')?></h3>
+
+<div id="list">
+<form method="post" action="?section=<?=$this->indexSectionId?>" id="formReportsFilter">
+	<?=$this->filter?>
+	<?=$this->paginator?>
+
+	<table class='table-list width-100'>
+		<?=$this->tHead?>
+		<?=$this->tBody?>
+	</table>
+</form>
+
+</div>

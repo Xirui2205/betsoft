@@ -1,0 +1,42 @@
+
+
+<h2>Pracovníci</h2>
+
+<form method="post" action="{ACTION}">
+{DETAIL}
+<a href="javascript:$('#new_user').show();void(0);" >Nový pracovník</a> <br /><br />
+<div class="errormsg">{ERROR}</div>
+<div class="okmsg">{OK}</div>
+<div id="new_user" style="display:{DISPLAY}">
+
+  <table class="fTable">
+    <tr><td class="fHead">Jméno:</td><td><input type="text" value="{JMENO}" id="jmeno" name="jmeno" class="digit7 mandatory" /></td></tr>
+    <tr><td class="fHead">Prijmeni:</td><td><input type="text" value="{PRIJMENI}" id="prijmeni" name="prijmeni" class="digit7 mandatory" /></td></tr>
+    <tr><td class="fHead">Nick:</td><td><input type="text" value="{NICK}" id="nick" name="nick" class="mandatory" /></td></tr>
+    <tr><td class="fHead">Heslo:</td><td><input type="password" value="" id="heslo" name="heslo" class="mandatory" /></td></tr>
+    <tr><td class="fHead">Heslo znovu:</td><td><input type="password" value="" id="heslo_znovu" name="heslo_znovu" class="mandatory" /></td></tr>
+    <tr><td class="fHead">Email :</td><td><input type="text" value="{EMAIL}" id="email" name="email" class="" /></td></tr>
+   </table>
+  
+<input type="submit" value="VYTVOŘIT" id="insert" name="insert"  class="" />
+</div>
+<input type="hidden" value="{POBOCKA_ID}" id="pobocka_id" name="pobocka_id"  class="" />
+</form>
+<hr />
+
+  <table class="prava">
+    <tr><th>ID</th><th>Jméno</th><th>Přijmení</th><th>Nick</th><th>Email</th><th>Nové heslo</th><th>Akce</th><th>&nbsp;</th></tr>
+    <!-- START BLOCK : user -->
+    <tr <td>#{ID}</td><td>{JM}</td><td>{PR}</td><td>{NC}</td><td>{EM}</td><td>{PASS}</td><td style="background:{BACKGROUND}">{OT}</td><td>{ONLINE}</td></tr>
+     <!-- END BLOCK : user --> 
+ </table>
+
+
+<br />
+
+<input type="hidden" value="{POBOCKA_ID}" id="pobocka_id" name="pobocka_id"  class="" />
+
+
+<br /><br />
+<img class="img" src="http://admin.vic.cz/_clip/mandatory.gif"/>
+<small>Takto označený údaj je povinný</small>

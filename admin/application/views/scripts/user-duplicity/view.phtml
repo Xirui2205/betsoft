@@ -1,0 +1,98 @@
+<?php /*
+<div class="actions">
+	<button onClick="loadGeneric(<?=$this->updateSectionId?>, 'user-duplicity', { userId : <?=$this->userId?> });"><?=i18n::tr('Edit')?></button>
+	<button onclick="hideDetail('user-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+trackingId
+time
+persistentId
+sessionId
+remoteIp
+xForward
+userAgent
+userId
+username
+*/
+?>
+
+<script type="text/javascript">
+//<![CDATA[
+
+	function canSend() {
+		return $('#chkByCookie').is(':checked') || $('#chkByIp').is(':checked');
+	}
+
+	function onMatchingChanged() {
+		$('#btnSendMatchingXhr').attr('disabled', canSend() ? '' : 'disabled');
+	}
+
+	function sendMatchingXhr() {
+		if (!canSend())
+			return false;
+		var data = {
+			'userId': <?= $this->userId ?>,
+			'byCookie': ($('#chkByCookie').is(':checked') ? 1 : 0),
+			'byIp': ($('#chkByIp').is(':checked') ? 1 : 0)
+		};
+		loadGeneric(<?=$this->viewMatchedSectionId?>, 'user-duplicity', data);
+		return true;
+	}
+
+	function sendPagerXhr() {
+		var data = {
+			'userId': <?= $this->userId ?>,
+			'byCookie': ($('#chkByCookie').is(':checked') ? 1 : 0),
+			'byIp': ($('#chkByIp').is(':checked') ? 1 : 0),
+			'udupPager[recsPerPage]' : parseInt($('#udupPager_recsPerPage').val()),
+			'udupPager[pageNum]' : parseInt($('#udupPager_targetPage').val())
+		};
+		loadGeneric(<?=$this->viewSectionId?>, 'user-duplicity', data);
+		return false;
+	}
+
+	$(document).ready(function () { onMatchingChanged(); });
+//]]>
+</script>
+
+<?=$this->feedbackMsg?>
+
+<?php if(!empty($this->tracks)):?>
+	
+	<div class="actions">
+		<span>Shoda:</span>
+		<input type="checkbox" name="chkByCookie" id="chkByCookie" <?= $this->byCookie ? 'checked="checked"' : '' ?> onchange="onMatchingChanged();"/><label for="chkByCookie">PC</label>
+		<input type="checkbox" name="chkByIp" id="chkByIp" <?= $this->byIp ? 'checked="checked"' : '' ?> onchange="onMatchingChanged();" /><label for="chkByIp">IP</label>
+		<button onclick="sendMatchingXhr()" id="btnSendMatchingXhr"><?=i18n::tr('Send')?></button>
+	</div>
+	<form id="udupPagerForm" onsubmit="return sendPagerXhr();" action="" method="post">
+		<?= $this->pager ?>
+	</form>
+<?php /*	<form id="udupListerForm" onsubmit="sendXhr()">
+		<?= $this->lister->getOutput(null, 0, array('formId' => 'udupListerForm')); ?>
+	</form>
+*/ ?>
+	<table class="table-detail">
+		<thead>
+			<th>ID</th>
+			<th><?=i18n::tr('nick')?></th>
+			<th><?=i18n::tr('Date')?></th>
+			<th>PC</th>
+			<th>IP</th>
+		</thead>
+		<tbody>
+			<?php foreach($this->tracks as $track):?>
+				<tr>
+					<td><?=$track['trackingId']?></td>
+					<td><?=$track['username']?> (#<?=$track['userId']?>)</td>
+					<td><?=$track['time']?></td>
+					<td><?=$track['persistentId']?></td>
+					<td><?=$track['remoteIp']?></td>
+				</tr>
+			<?php endforeach?>
+		</tbody>
+	</table>
+<?php else:?>
+	<?=i18n::tr('There are no notes attached to this user.')?>
+<?php endif?>
+

@@ -1,0 +1,256 @@
+<div class="actions">
+	<?php include('ab-promo-calendar.phtml')?>
+	<?php include('ab-new-promo.phtml')?>
+	<?php include('ab-filter.phtml')?>
+	<?php include('ab-hide-all.phtml')?>
+	<?php include('ab-show-all.phtml')?>
+</div>
+
+<?php if(!empty($promos)) : ?>
+	<?php $i = 0; foreach($promos as $promo) : ++$i; ?>
+		
+		<script type="text/javascript">
+			if(maxLengths == undefined)
+				var maxLengths = new Array();
+			maxLengths['titleField<?=$promo['promo_id']?>MaxLength']	= <?=$promoTitleMaxLength?>;
+			maxLengths['textField<?=$promo['promo_id']?>MaxLength']		= <?=$promoTextMaxLength?>;
+
+			if(countFields == undefined)
+				var countFields = new Array();
+
+			countFields.push('titleField<?=$promo['promo_id']?>');
+			countFields.push('textField<?=$promo['promo_id']?>');
+		</script>
+		<?php include 'alias-to-bet-id.phtml'; ?>
+
+		
+		<form
+			method="post"
+			enctype="multipart/form-data"
+			action="?section=<?=$sectionId?>&amp;mode=<?=$mode?>"
+			class="promo-form"
+			id="promo-form-<?=$promo['promo_id']?>"
+		>			
+			<input type="hidden" name="promo_id" value="<?=$promo['promo_id']?>" />
+			<input type="hidden" name="lang_id" value="<?=$promo['lang_id']?>" />
+			
+			<table class="table-list">
+				<tr>
+					<th><?=I18n::tr('Title')?></th>
+					<td>
+						<textarea id="titleField<?=$promo['promo_id']?>" class="superSmallTa" name="title"><?=$promo['title']?></textarea>
+						<div>
+							<?=I18n::tr('Characters Left:')?>
+							<span id="titleField<?=$promo['promo_id']?>Counter" class="char-counter"></span>
+						</div>
+					</td>
+				</tr>
+				
+				<tr>
+					<th><?=I18n::tr('Image')?></th>
+					<td>
+						<input
+							type="text"
+							value="<?=$promo['img_name']?>"
+							name="img_name"
+							id="imgSrcField<?=$promo['promo_id']?>"
+						/>
+						<a href="javascript:window.open('/galery.php?type=1&node=imgSrcField<?=$promo['promo_id']?>','','width=640,height=480,scrollbars=yes');void(0);">
+							<img src="_clip/image_aktivni.gif" alt="" class="img" />
+						</a>
+					</td>
+				</tr>
+				
+				<tr>
+					<th><?=I18n::tr('Without text part')?></th>
+					<td>
+						<input type="checkbox" value="1" name="without_text"
+							   <?= ($promo['without_text'] == 1) ? 'checked="checked"' : '' ?> />
+					</td>
+				</tr>
+				
+				<tr>
+					<th><?=I18n::tr('URL')?></th>
+					<td>
+						<input
+							type="text"
+							value="<?=$promo['url']?>"
+							name="url"
+						/>
+					</td>
+				</tr>
+				
+				<tr>
+					<th><?=I18n::tr('bet_alias')?></th>
+					<td>
+						<input
+							type="text"
+							class="span-2"
+							name="bet_alias"
+							id="bet_alias<?=$promo['promo_id']?>"
+							onblur="setPromoBetId(this, 'sazka_id<?=$promo['promo_id']?>')"
+							onclick="$('#bet_alias<?=$promo['promo_id']?>-info').show();"
+							value="<?=(!empty($promo['alias']) ? $promo['alias'] : '')?>"
+						/>
+						<span id="bet_alias<?=$promo['promo_id']?>-info" style="display:none"><a href="javascript:void(0)"><?=I18n::tr('load')?></a></span>
+					</td>
+				</tr>
+				
+				<tr style="display:none">
+					<th><?=I18n::tr('Match Id')?></th>
+					<td>
+						<input
+							type="text"
+							class="span-2"
+							value="<?=$promo['sazka_id']?>"
+							name="sazka_id"
+							id="sazka_id<?=$promo['promo_id']?>"
+						/>
+					</td>
+				</tr>
+				
+				<tr>
+					<th><?=I18n::tr('Page Id')?></th>
+					<td>
+						<input
+							type="text"
+							class="span-2"
+							value="<?=$promo['menu_id']?>"
+							name="menu_id"
+						/>
+					</td>
+				</tr>
+				
+				<tr>
+					<th><?=I18n::tr('Open in')?></th>
+					<td>
+						<select name="promo_okno">
+							<option value="_self"><?=I18n::tr('Same Window')?></option>
+							<option value="_blank" <?=($promo['target']=='_blank' ? 'selected="selected"' : '')?>>
+								<?=I18n::tr('New Window')?>
+							</option>
+						</select>
+					</td>
+				</tr>
+				
+				<tr>
+					<th><?=I18n::tr('Active from')?></th>
+					<td>
+						<input
+							type="text"
+							class="promoInputField dateTime"
+							value="<?=It6_Date::fromDb($promo['platne_od'])?>"
+							name="platne_od"
+						/>
+						<img src="images/ico/calendar.gif" class="calendar-icon">
+					</td>
+				</tr>
+				
+				<tr>
+					<th><?=I18n::tr('Active until')?></th>
+					<td>
+						<input
+							type="text"
+							class="promoInputField dateTime"
+							value="<?=It6_Date::fromDb($promo['platne_do'])?>"
+							name="platne_do"
+						/>
+						<img src="images/ico/calendar.gif" class="calendar-icon">
+					</td>
+				</tr>
+				
+						
+				<tr>
+					<td colspan="2">
+						<div class="show-hide-promo" onClick="showFullPromo(this, <?=$i?>)">
+							v v v
+						</div>
+					</td>
+				</tr>
+
+				<tr class="hideMe<?=$i?> hidden">
+					<th><?=I18n::tr('Show')?></th>
+					<td>
+						<table>
+						<?php foreach($controllers as $controller) : ?>
+							<tr>
+								<td>
+									<label for="show-on-<?=$controller['c_id']?>">
+										<?=$controller['text']?> (<?=$controller['c_id']?>)
+									</label>
+								</td>
+								<td>
+									<input
+										type="checkbox"
+										id="show-on-<?=$controller['c_id']?>"
+										class="promoInputField"
+										value="true"
+										name="show[<?=$controller['c_id']?>]"
+										<?php if(in_array($controller['c_id'], $promo['controllers'])) : ?>
+											checked="checked"
+										<?php endif?>
+									/>
+								</td>
+							</tr>
+						<?php endforeach?>
+						</table>
+					</td>
+				</tr>
+				
+				<tr class="hideMe<?=$i?> hidden">
+					<th><?=I18n::tr('Priority')?></th>
+					<td>
+						<input
+							type="text"
+							value="<?=$promo['priority']?>"
+							name="priority"
+						/>
+					</td>
+				</tr>
+				
+				<tr class="hideMe<?=$i?> hidden" >
+					<th><?=I18n::tr('Button Text')?></th>
+					<td>
+						<input
+							type="text"
+							class="promoInputField"
+							value="<?=$promo['button_text']?>"
+							name="button_text"
+						/>
+					</td>
+				</tr>
+				
+				<tr class="hideMe<?=$i?> hidden">
+					<th><?=I18n::tr('Text')?></th>
+					<td>
+						<textarea name="text" class="smallTa" id="textField<?=$promo['promo_id']?>"><?=$promo['text']?></textarea>
+						<div>
+							<?=I18n::tr('Characters Left:')?>
+							<span id="textField<?=$promo['promo_id']?>Counter" class="char-counter"></span>
+						</div>
+					</td>
+				</tr>
+				
+				<tr class="hideMe<?=$i?> hidden">
+					<th></th>
+					<td>
+						<input type="submit" value="<?=I18n::tr('Update')?>" name="save" />
+						<input
+							type="submit"
+							value="<?=I18n::tr('Delete')?>"
+							name="delete"
+							onClick="setPromoBetId($('#'+'bet_alias<?=$promo['promo_id']?>'), 'sazka_id<?=$promo['promo_id']?>'); if(!confirm('<?=I18n::tr('confirm-promo-delete')?>')) return false;"
+						/>
+						<button	onClick="window.open('http://' + '<?= WEBHOST . $promo['lang_iso']?>'+'?promoId='+'<?=$promo['promo_id']?>'+'&k='+'<?=sha1('57b'.$promo['promo_id'].' )(*)'.$promo['promo_id'].'^s%L')?>', '_blank');">
+								<?=i18n::tr('preview')?>
+						</button>
+					</td>
+				</tr>
+			</table>
+			
+		</form>
+	<?php endforeach?>
+	
+<?php else : ?>
+	<?=UiUtil::printErrors(I18n::tr('no_data'))?>
+<?php endif?>

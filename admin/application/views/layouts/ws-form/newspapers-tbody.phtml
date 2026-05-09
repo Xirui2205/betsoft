@@ -1,0 +1,23 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+		<tr>
+			<td style="width: 1%;">
+			<input 
+				type="button" 
+				value="<?=i18n::tr('Detail')?>" 
+				onClick="loadGeneric('<?=$this->updateSectionId?>', 'branch-stem', { stemId : <?=$row['newspaperId']?> })" 
+			/>
+			</td>
+			<td>
+			<input 
+				type="submit" 
+				value="<?=i18n::tr('delete')?>" 
+				name="delete[<?=$row["newspaperId"]?>]" 
+				onClick="return confirm('<?=i18n::tr("delete_newspapers")?>');" 
+			/>
+			</td>
+			<td class="border-left"><?=$row['validTo']?></td>
+			<td class="border-left"><a href="<?=PROTOCOL . WEBHOST . "pdf/newspapers/" . $row['fileName']?>"><?=$row['fileName']?></a></td>
+		</tr>
+	<?php endforeach?>
+</tbody>

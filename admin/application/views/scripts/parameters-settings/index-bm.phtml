@@ -1,0 +1,68 @@
+<h3><?=i18n::tr('Users')?> (BM)</h3>
+
+<?=$this->feedbackMsg?>
+
+<ul class="idTabs" style="display:none">
+	<li><a class="selected" href="#parameters-settings"><?=i18n::tr('user_profile')?></a></li>
+	<li><a href="#user-balance" onClick="loadTabGeneric(231, 'user-balance', { userId : $('#userId').val() })"><?=i18n::tr('user_balance')?></a></li>
+	<li><a href="#user-booknotes" onClick="loadTabGeneric(235, 'user-booknotes', { userId : $('#userId').val() })"><?=i18n::tr('user_bookmaker_notes')?></a></li>
+	<li><a href="#user-duplicity" onClick="loadTabGeneric(241, 'user-duplicity', { userId : $('#userId').val() })"><?=i18n::tr('user_match_check')?></a></li>
+	<li>
+		<form method="get" action="" id="formTabUserBetStats">
+			<input type="hidden" name="section" value="76" />
+			<?php if (isset($_GET['superb'])): ?><input type="hidden" name="superb" value="1" /><?php endif; ?>
+			<input type="hidden" id="tabUserBetStatsUserId" name="user" value="" />
+			<a href="?section=76&user=<?=$this->userId.(isset($_GET['superb'])?"&superb=1":"")?>" onclick="$('#tabUserBetStatsUserId').val(); $('#formTabUserBetStats').submit(); return false;"><?=i18n::tr('user_bet_stats')?></a>
+		</form>
+	</li>
+	<li><a href="#user-parameters"  onClick="loadTabGeneric(239, 'user-parameters', { userId : $('#userId').val() })"><?=i18n::tr('user_profile_params')?></a></li>
+</ul>
+
+
+<div id="user-container" class="tab-container hidden">
+
+	<input type="hidden" class="tabsLoaded" id="parameters-settings-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="user-balance-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="user-password-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="user-notes-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="user-booknotes-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="user-duplicity-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="user-parameters-loaded" value="0" />
+
+	<input type="hidden" name="id" id="userId" value="">
+
+	<div id="parameters-settings" class="tab" style="display: none;">
+	</div>
+	<div id="user-balance"  class="tab" style="display: none;">
+	</div>
+	<div id="user-booknotes" class="tab" style="display: none;">
+	</div>
+	<div id="user-duplicity" class="tab" style="display: none;">
+	</div>
+	<div id="user-parameters" class="tab" style="display: none;">
+	</div>
+
+</div>
+
+
+<div id="list">
+
+	<form method="post" action="?section=<?=$this->indexSectionId?>" id="formUsersFilter">
+		<!--
+		<div class="actions">
+		</div>
+		-->
+		<?=$this->filter?>
+		<?=$this->paginator?>
+
+		<table class='table-list width-100'>
+			<?=$this->tHead?>
+			<?=$this->tBody?>
+		</table>
+	</form>
+</div>
+<?php if (!empty($_GET['user_id'])): ?>
+<script>
+	viewUserDetail(<?=intval($_GET['user_id'])?>,<?= $this->view->viewSectionId?>);
+</script>
+<?endif;?>

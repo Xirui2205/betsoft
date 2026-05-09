@@ -1,0 +1,32 @@
+<tbody>
+  <?php foreach($this->layout()->data as $admin) : ?>
+    <tr>
+      <td>
+        <button onClick="viewAdminDetail(<?=$admin['adminId']?>);return false;"><?=i18n::tr('View')?></button>
+      </td>
+      <td class="border-left txtrt"><?=$admin['adminId']?></td>
+      <td class="border-left txtrt"><?=$admin['loginName']?></td>
+      <td class="border-left"><?=$admin['branchName']?></td>
+      <td class="border-left"><?=$admin['firstName']?></td>
+      <td class="border-left"><?=$admin['lastName']?></td>
+      <td class="border-left"><?=$admin['phone']?></td>
+      <td class="border-left"><?=$admin['email']?></td>
+      <td class="border-left">
+        <?php if ($admin['isBanned']==0) : ?>
+          <span class="allowed"><?=i18n::tr('Allowed')?></span>
+        <?php else: ?>
+          <span class="blocked"><?=i18n::tr('Banned')?></span>
+        <?php endif; ?>
+      </td>
+      <td class="border-left">
+      <?php if ($admin['block']==0) : ?>
+         <span class="allowed"><?=i18n::tr('Unblocked')?></span>
+       <?php else: ?>
+         <span class="blocked"><?=i18n::tr('Blocked')?></span>
+       <?php endif; ?>
+      </td>
+      <td class="border-left"><?=$admin['blockIp']?></td>
+      <td class="border-left"><?=It6_Date::fromDb($admin['lastLogin'])?></td>
+    </tr>
+  <?php endforeach?>
+</tbody>

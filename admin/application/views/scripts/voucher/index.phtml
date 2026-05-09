@@ -1,0 +1,34 @@
+<h3><?=i18n::tr('Vouchers')?></h3>
+
+<?=$this->feedbackMsg?>
+
+<ul class="idTabs" style="display:none">
+	<li><a class="selected" href="#voucher-main"><?=I18n::tr('main')?></a></li>
+</ul>
+
+
+<div id="voucher-container" class="tab-container hidden">
+	<input type="hidden" class="tabsLoaded" id="voucher-main-loaded" value="0" />
+
+	<input type="hidden" name="voucherId" id="voucherId" value="">
+
+	<div id="voucher-main" class="tab" style="display: none;">
+	</div>
+</div>
+
+
+<div id="list">
+	<form method="get" action="/" id="formVoucherFilter">
+		<input type="hidden" name="section" value="<?=$this->indexSectionId?>" />
+		<div class="actions">
+			<input type="button" onclick="insertVoucher(<?=$this->insertSectionId?>)" name="insert_new" value="<?=i18n::tr('insert_voucher')?>" />
+		</div>
+		<?=$this->filter?>
+		<?=$this->paginator?>
+
+		<table class='table-list width-100'>
+			<?=$this->tHead?>
+			<?=$this->tBody?>
+		</table>
+	</form>
+</div>

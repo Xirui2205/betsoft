@@ -1,0 +1,56 @@
+<?=I18n::tr('transactions_for_confirmation')?>
+<br />
+=======================
+<br />
+<br />
+
+<?php if ( empty($this->transactions) ): ?>
+	<?=I18n::tr('no_records')?>
+<?php else:?>
+	<table>
+		<thead>
+			<tr>
+				<th><?=I18n::tr('id')?></th>
+				<th><?=I18n::tr('time')?></th>
+				<th><?=I18n::tr('type_id')?></th>
+				<th><?=I18n::tr('type_name')?></th>
+				<th><?=I18n::tr('value')?></th>
+				<th><?=I18n::tr('currency')?></th>
+				<th><?=I18n::tr('user_handle')?></th>
+				<th><?=I18n::tr('host_id')?></th>
+				<th><?=I18n::tr('user_nick')?></th>
+				<th><?=I18n::tr('branch_name')?></th>
+				<th><?=I18n::tr('ticket_id')?></th>
+				<th><?=I18n::tr('bank_account')?></th>
+				<th><?=I18n::tr('notes')?></th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<?php foreach($this->transactions as $transaction) : ?>
+				<tr>
+					<td><?=$transaction['transactionId']?></td>
+					<td><?=It6_Date::fromDb($transaction['time'])?></td>
+					<td><?=$transaction['typeId']?></td>
+					<td><?=I18n::tr($transaction['typeName'])?></td>
+					<td><?=$transaction['value']?></td>
+					<td><?=$transaction['currencyCode']?></td>
+					<td><?=$transaction['userHandle']?></td>
+					<td><?=$transaction['hostId']?></td>
+					<td><?=$transaction['userNick']?></td>
+					<td><?=$transaction['branchName']?></td>
+					<td><?=$transaction['ticketId']?></td>
+					<td>
+						<?php if (!empty($transaction['bankAccountNumber']) && !empty($transaction['bankAccountBankCode'])) : ?>
+							<?php if (!empty($transaction['bankAccountPrefix'])) : ?>
+								<?=$transaction['bankAccountPrefix']?>-
+							<?php endif?>
+							<?=$transaction['bankAccountNumber']?>/<?=$transaction['bankAccountBankCode']?>
+						<?php endif?>
+					</td>
+					<td><?=$transaction['notes']?></td>
+				</tr>
+			<?php endforeach?>
+		</tbody>
+	</table>
+<?php endif?>

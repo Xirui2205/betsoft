@@ -1,0 +1,23 @@
+<?=$this->feedbackMsg?>
+<div class="actions">
+	<button onclick="editParameterSystem()"><?=i18n::tr('edit')?></button>
+</div>
+
+<table class="table-detail">
+
+	<tr>
+		<th class="header" colspan="4">
+			<?=i18n::tr('system_parameter_defaults')?>
+		</th>
+	</tr>
+
+	<?php if (!empty($this->systemParameters)) { foreach($this->systemParameters as $param):?>
+		<tr>
+			<th><?=$param['name']?></th>
+			<td><?=strlen($param['value']) > 50 ? substr($param['value'], 0, 50).'...' : $param['value']?></td>
+			<td><?=($param['isEditable'] == 1 ? I18n::tr('editable') : I18n::tr('not_editable'))?></td>
+			<td><?=$param['description']?></td>
+		</tr>
+	<?php endforeach; } ?>
+
+</table>

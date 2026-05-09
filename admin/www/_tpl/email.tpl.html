@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Mail Templates</title>
+		<style>
+			.Layout .West{
+				float:left;
+				width:45%;
+				overflow-x:scroll;
+			}
+			.Layout .West table{
+				width:100%;
+			}
+			.Layout .Center{
+				float:left;
+				width:55%;
+			}
+			.Layout .East{
+				float:right;
+				
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div class="Layout">
+			<div class="North">
+				<h1>Mail Sender</h1>
+			</div>
+			<div class="West">
+				<fieldset>
+					<legend>Recipients</legend>
+					<form method="post" action="" enctype="multipart/form-data">
+						<!-- START BLOCK : userbox_anonymous -->
+						<div class="Error"></div>
+						<!-- END BLOCK : userbox_anonymous -->
+						<div>
+							<label>Csv File</label>
+							<input type="file" name="Csv" value="" /><br >
+							<input type="submit" name="upload" value="Upload" />
+							<input type="submit" name="clear" value="Clear" />
+						</div>
+					</form>
+					<form method="post" action="" enctype="application/x-www-form-urlencoded">
+						<div>
+							<label>Language</label>
+							<select name="MailTemplateLanguageID">
+								<!-- START BLOCK : SendLanguage -->
+								<option value="{LanguageID}" {LanguageSelected}>{LanguageText}</option>
+								<!-- END BLOCK : SendLanguage -->
+							</select>
+							<label>Template</label>
+							<select name="MailTemplateID">
+								<!-- START BLOCK : MailTemplate -->
+								<option value="{MailTemplateID}">{MailTemplateName}</option>
+								<!-- END BLOCK : MailTemplate -->
+							</select>
+							<input type="submit" name="Send" value="Send" onclick="return confirm('You are about to send emails to all recipients, are you sure?')" />
+							<input type="submit" name="EditTemplate" value="Edit Template" />
+							<input type="submit" name="NewTemplate" value="New Template" />
+						</div>
+					</form>
+					<!-- START BLOCK : Recipients -->
+					<table border="1">
+						<tr><th>Salutation</th><th>Prename</th><th>Surname</th><th>Nick</th><th>Email</th></tr>
+						<!-- START BLOCK : Item -->
+						<tr>
+							<td>{Salutation}</td>
+							<td>{Prename}</td>
+							<td>{Surname}</td>
+							<td>{Nick}</td>
+							<td>{Email}</td>
+						</tr>
+						<!-- END BLOCK : Item -->
+					</table>
+					<!-- END BLOCK : Recipients -->
+				</fieldset>
+			</div>
+			
+			<div class="Center">
+				<fieldset>
+					<legend>Template</legend>
+					<form method="post" action="" name="templeteeditor" enctype="application/x-www-form-urlencoded">
+						<div>
+							<label>ID</label>
+							<input type="text" size="6" name="MailTemplateID" value="{MailTemplateID}" readonly="readonly" />
+						</div>
+						<div>
+							<label>Name</label>
+							<input type="text" name="MailTemplateName" value="{MailTemplateName}" />
+						</div>
+						<div>
+							<label>From</label>
+							<input type="text" name="MailTemplateFrom" value="{MailTemplateFrom}" />
+						</div>
+						<div>
+							<label>Language</label>
+							<select name="MailTemplateLanguageID" onchange="document.templeteeditor.submit();">
+								<!-- START BLOCK : Language -->
+								<option value="{LanguageID}" {LanguageSelected}>{LanguageText}</option>
+								<!-- END BLOCK : Language -->
+							</select>
+							<input type="submit" name="SaveTemplate" value="SaveTemplate" />
+						</div>
+						<div>
+							<label>Subject</label>
+							<input type="text" name="MailTemplateSubject" value="{MailTemplateSubject}" />
+						</div>
+						<div>
+							<label>HTML Content *</label><br />	
+							<textarea rows="30" cols="60" name="MailTemplateContent">{MailTemplateContent}</textarea>
+							<ul style="float:right;padding:0px;list-style-type:none;margin:0px">
+								<li><b>Povolene tagy</b></li>
+								<li>Prename</li>
+								<li>Surname</li>
+								<li>Salutation</li>
+								<li>Email</li>
+								<li>Nick</li>
+							</ul>
+						</div>
+						<div>* email content is restricted to the only html. If you paste here non html page, the email will be sent as html.</div>
+					</form>
+				</fieldset>
+			</div>
+		</div>
+	</body>
+</html>

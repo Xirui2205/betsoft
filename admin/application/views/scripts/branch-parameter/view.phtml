@@ -1,0 +1,90 @@
+<?=$this->feedbackMsg?>
+
+<div id="new-param-form" style="border: 1px solid white; background-color:#0099FF; color:white;">
+	<table>
+	    <tr>
+	    	<td>
+			    <h3><?=i18n::tr('new_param')?><br /><br />
+			    <?=i18n::tr('name')?>: <input type="text" name="name" id="name" value="" />
+			    <?=i18n::tr('value')?>: <input type="text" name="value" id="value" value="" />
+			    <?=i18n::tr('description')?>: <input type="text" name="description" id="description" value="" />
+				<button onclick="newParam(<?=$this->branchId?>, document.getElementById('name').value, document.getElementById('value').value, document.getElementById('description').value)"><?=i18n::tr('new_param')?></button>
+	    	</td>
+	    </tr>
+	</table>
+</div>
+
+<script type="text/javascript">
+function getInfo(paramId, branchId) {
+	if ( $('#info').length ) {
+		$("#info").remove();
+	}
+	var $data = infoParameterBranch(paramId, branchId);
+}
+</script>
+
+<script type="text/javascript">
+function closeInfo() {
+	$("#info").remove();
+}
+
+$( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) { // ESC
+		$("#info").remove();
+    }
+});
+</script>
+
+<div class="actions">
+	<button onclick="editBranchParameter(<?=$this->branchId?>);"><?=i18n::tr('Edit')?></button>
+	<button onclick="hideDetail('branch-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<table class="table-list">
+	<tr>
+		<th style="text-align:left;"><?=i18n::tr('Parameter')?></th>
+		<th style="text-align:left;"><?=i18n::tr('Value')?></th>
+		<th style="text-align:left;"><?=i18n::tr('Description')?></th>
+		<th>&nbsp;</th>
+		<th style="text-align:left;">INFO</th>
+	</tr>
+
+	<?php foreach ($this->parameter as $key=>$value) :?>
+	    <?php
+	    $localParameterStyle = ""; 
+	    if ( $value['local_parameter'] == 1 ) {
+	    	$localParameterStyle = "font-weight:bold;";
+	    }
+	    ?>
+		<tr>
+			<td style="text-align:left;<?=$localParameterStyle?>"><?=$value['name']?></td>
+			<td style="text-align:left;<?=$localParameterStyle?>">
+				<?php
+	   		    	if (isset($value['default_value'])) {
+   				        $_value = '<a style="color: green; text-decoration: none;">'.$value['value'].'</a>';
+			    		$_value = $_value . ' <br />default value: '. $value['default_value'];
+			    	} else {
+				        $_value = $value['value'];
+			    	}
+			    	echo $_value;
+				?>
+			</td>
+			<td style="text-align:left;<?=$localParameterStyle?>"><?=$value['description']?></td>
+			<td>
+				<?php
+				if ( $value['local_parameter'] == 1 || $value['local_parameter'] == 2 ) {
+				?>
+					<button onclick="if(confirm('Are you sure you want to delete parameter: <?="[".$value["name"]."]"?>')) deleteParam(<?=$this->branchId.','. $value['parameterId']?>)"><?=i18n::tr('smazat')?></button>
+				<?php
+				} else {
+					echo '&nbsp;';
+				}
+				?>
+			</td>
+
+			<!--<td style="text-align:center;"><a class="stat tip" title="" href='#' onmouseenter='getInfo(<?=$value['parameterId']?>, <?=$this->branchId?>);' onmouseleave='closeInfo();'><div>&nbsp;</div></a></td>-->
+			<td style="text-align:center;"><a class="stat tip" title="" href='#' onClick='getInfo(<?=$value['parameterId']?>, <?=$this->branchId?>);'><div>&nbsp;</div></a></td>
+
+		</tr>
+	<?php endforeach; ?>
+</table>

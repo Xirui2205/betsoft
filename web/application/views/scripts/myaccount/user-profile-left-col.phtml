@@ -1,0 +1,24 @@
+<div id="left">
+	<h2 class="boxheader ico ico-item ico-user"><?= $this->trans('profile_menu'); ?></h2>
+	<nav id="left-nav">
+		<ul class="nav arrows">
+			<?php foreach ($this->leftMenuItems as $menuItem) { ?>
+				<?php if((BRANCHES_ENABLED || $menuItem['label'] !== 'deposit_by_branch')) { ?>
+				<li>
+					<a <?= $menuItem['active'] === true ? 'href="' . $this->urlSet($menuItem['conActId']) . '"' : '' ?>
+						<?= strpos($this->urlSet($menuItem['conActId']), $_SERVER['REQUEST_URI']) === false ?
+							'' : ' class="active"'  ?>>
+						<?= $this->trans($menuItem['label']); ?>
+					</a>
+				</li>
+				<?php } ?>
+			<?php } ?>
+		</ul>
+	</nav>
+
+	<h2 class="boxheader ico ico-item ico-user"><?= $this->trans('ptrans_balance') ?></h2>
+	<div class="contentbox balance">
+		<?= $this->trans('your_current_balance_br') ?>
+		<div><?= $this->balanceFormated ?></div>
+	</div>
+</div>

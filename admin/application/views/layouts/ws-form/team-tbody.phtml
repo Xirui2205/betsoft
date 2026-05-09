@@ -1,0 +1,21 @@
+<?php foreach ($this->layout()->data as $team) : ?>
+	<tr>
+		<td>
+			<input
+				type="button"
+				onClick="loadGeneric('<?=$this->updateSectionId?>', 'inner', { teamId : <?=$team['teamId']?> })"
+				value="<?=i18n::tr('Detail')?>"
+			/>
+			<input
+				type="button"
+				onClick="loadGeneric('<?=$this->playersSectionId?>', 'inner', { teamId : <?=$team['teamId']?> })"
+				value="<?=i18n::tr('Players')?>"
+			/>
+		</td>
+		<td class="border-left"><?=$team['teamId']?></td>
+		<td class="border-left"><?=$team['betradarId']?></td>
+		<td class="border-left"><?=$team['sportName']?></td>
+		<td class="border-left"><?=$team['name']?></td>
+		<td class="border-left"><?=$team['shortName']?></td>
+	</tr>
+<?php endforeach; ?>

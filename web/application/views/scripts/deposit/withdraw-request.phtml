@@ -1,0 +1,97 @@
+<div id="right">
+		<h2 class="boxheader"><?= $this->trans('withdrawal_request') ?></h2>
+		<div class="contentbox">
+			<?php if ($this->errorAccessDenied) : ?>
+				<?=$this->errorAccessDenied?>
+			<?php else :?>
+				<?php if (BRANCHES_ENABLED && (!isset($this->success) || !$this->success)) { ?>
+					<form action="/">
+							<div>
+								<input
+									name="withdrawMethod"
+									id="withdrawMethod-0"
+									value="0"
+									<?=(isset($_POST['withdrawMethod']) && $_POST['withdrawMethod']=='withdrawBank' || !isset($_POST['withdrawMethod'])) ? 'checked="checked"' : '' ?>
+									onclick="$('#fba').show();$('#fbb').hide();"
+									type="radio"
+								/>
+								<label for="withdrawMethod-0">
+									<?=$this->trans('withdraw_via_bank')?>
+								</label>
+							</div>
+							<div>
+								<input
+									name="withdrawMethod"
+									id="withdrawMethod-1"
+									value="1"
+									<?=(isset($_POST['withdrawMethod']) && $_POST['withdrawMethod']=='withdrawBranch') ? 'checked="checked"' : '' ?>
+									onclick="$('#fba').hide();$('#fbb').show();"
+									type="radio"
+								/>
+								<label for="withdrawMethod-1">
+									<?=$this->trans('withdraw_via_branch')?>
+								</label>
+							</div>
+					</form>
+				<?php } ?>
+
+				<div class="clear"></div>
+				<div class="withdraw-form" id="fba" <?=(isset($_POST['withdrawMethod']) && $_POST['withdrawMethod']=='withdrawBank' || !isset($_POST['withdrawMethod'])) ? 'style="display:block"' : 'style="display:none"' ?>>
+					<?php if ($this->errorBankDenied) : ?>
+						<?=$this->errorBankDenied?>
+					<?php else :?>
+						<?=$this->resultBank?>
+						<div class="clear"></div>
+						<?=$this->formBank?>
+						<?=$this->trans('bank_account_withdrawel_info')?>
+					<?php endif;?>
+				</div>
+				
+				<div class="withdraw-form" id="fbb" <?=(isset($_POST['withdrawMethod']) && $_POST['withdrawMethod']=='withdrawBranch') ? 'style="display:block"' : 'style="display:none"' ?>>
+					<?=$this->resultBranch?>
+					<div style="clear:both"></div>
+					<?=$this->formBranch?>
+					<?=$this->trans('branch_withdrawel_info')?>
+				</div>
+
+				<div class="cb"></div>
+
+				<script type="text/javascript">
+					// <![CDATA[
+					var currenciesCount = <?=count($this->currencies)?>;
+					var currencies = new Array();
+					<?php foreach ($this->currencies as $id => $c) : ?>
+						currencies['<?= $c['isoCode'] ?>'] = { 'feeFix': <?= $c['feeFix'] ?>, 'feeRel': <?= $c['feeRel'] ?>, 'name': '<?= $c['name'] ?>' };
+					<?php endforeach; ?>
+					$(document).ready(function () {
+						updateFeeAndTotal("#withdrawCurrency","#amountwithdrawBank","#withdrawFee","#withdrawTotal");
+						<?php if (!BRANCHES_ENABLED) { // jenom banka ?>
+					    $('#fba').show();
+						$('#fbb').hide();
+						$('#withdrawMethod-0').attr('checked', true);
+						$('#withdrawMethod-1').attr('checked', false);	
+						<?php } else { // banka nebo pobočka ?>
+						if('<?=$this->trgt?>' == 'bank' || '<?=$this->resultBank?>' != '' ) {
+							$('#fba').show();
+							$('#fbb').hide();
+							$('#withdrawMethod-0').attr('checked', true);
+							$('#withdrawMethod-1').attr('checked', false);
+						}
+						else {
+							$('#fba').hide();
+							$('#fbb').show();
+							$('#withdrawMethod-0').attr('checked', false);
+							$('#withdrawMethod-1').attr('checked', true);
+						}
+						<?php } ?>
+					});
+					$('#amountwithdrawBank<?=count($this->currencies) > 1 ? ',#withdrawCurrency' : ''?>').bind('change', function () {
+						updateFeeAndTotal("#withdrawCurrency","#amountwithdrawBank","#withdrawFee","#withdrawTotal");
+					});
+					// ]]>
+				</script>
+			<?php endif?>
+	</div>
+</div>
+
+<?=$this->render('myaccount/user-profile-left-col.phtml'); ?>

@@ -1,0 +1,53 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="hideDetail('branch-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+
+
+<?php $exists =  (count($this->employees) > 0); ?>
+<?php if(!$exists) : ?>
+	<?=UiUtil::printWarnings(I18n::tr('warn_no_branch_employees'));?>
+<?php else: ?>
+	<?php if($this->employee) : ?>
+		<form id="employeeTimesheetForm">
+			<div class="actions">
+				From: <input type="text" name="timesheetFrom" class="dateOnly" />
+				<img src="_clip/calendar.gif" class="calendar-icon">
+				To: <input type="text" name="timesheetTo" class="dateOnly" />
+				<img src="_clip/calendar.gif" class="calendar-icon">
+				<button onclick="showEmployeeTimesheet(<?=$this->employee['bookmakerId']?>);return false;"><?=i18n::tr('show_employee_timesheet')?></button>
+			</div>
+		</form>
+		<!-- dochazka uzivatele -->
+		<div id="timesheet">
+			<?php include('get-timesheet.phtml'); ?>
+		</div>
+		<table class="table-detail" >
+			<tr>
+				<th><?=i18n::tr('nick_name')?></th>
+				<td><?=$this->employee['loginName']?></td>
+			</tr>
+			<tr>
+				<th><?=i18n::tr('full_name')?></th>
+				<td><?=$this->employee['firstName']?> <?=$this->employee['lastName']?></td>
+			</tr>
+			<tr>
+				<th><?=i18n::tr('Phone')?></th>
+				<td><?=$this->employee['phone']?></td>
+			</tr>
+			<tr>
+				<th><?=i18n::tr('Email')?></th>
+				<td><?=$this->employee['email']?></td>
+			</tr>
+			<tr>
+				<th><?=i18n::tr('banned')?></th>
+				<td><img src="/_img/but_<?=$this->employee['isBanned'] == 1 ? 'red' : 'green'?>.gif" alt="online status"/></td>
+			</tr>
+		</table>
+	<?php endif; ?>
+<?php endif; ?>
+<!-- seznam vsech uzivatelu na pobocce -->
+<?php include('employee-list.phtml'); ?>
+

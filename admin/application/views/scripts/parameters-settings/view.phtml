@@ -1,0 +1,50 @@
+<?=$this->feedbackMsg?>
+<div class="actions">
+	<?php if ($this->supervisionLogged == false) :?>
+	<button onclick="editParamDetail(<?=$this->paramId?>);"><?=i18n::tr('Edit')?></button>
+	<?php endif;?>
+	<button onclick="hideParamDetail('parameters-settings-main')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<table class="table-detail" >
+	<tr>
+		<th class="header" colspan="2">
+			<?=i18n::tr('Parametr')?>
+		</th>
+	</tr>
+	<tr>
+		<th><?=i18n::tr('nazev')?></th>
+		<td id="branchHandle"><?=$this->params['nazev']?></td>
+	</tr>
+	<tr>
+		<th><?=i18n::tr('mandatory')?></th>
+		<td id="mandatory"><?=$this->params['mandatory']?></td>
+	</tr>
+	<tr>
+		<th><?=i18n::tr('nasobnost')?></th>
+		<td id="nasobnost"><?=$this->params['nasobnost']?></td>
+	</tr>
+	<tr>
+		<th><?=i18n::tr('dt_nazev')?></th>
+		<td id="dt_nazev"><?=$this->params['dt_nazev']?></td>
+	</tr>
+</table>
+
+<table class="table-list">
+	<tr>
+		<th>id</th>
+		<th style="text-align:right;">role</th>
+		<th style="text-align:center;">h</th>
+		<th style="text-align:center;">r</th>
+		<th style="text-align:center;">rw</th>
+	</tr>
+    <?php foreach ($this->privileges as $p) { ?>
+	<tr>
+		<td><?= $p['acl_role_id']?></td>
+		<td><?= $p['acl_role_name']?></td>
+		<td style="text-align:center;"><?= $p['h']?></td>
+		<td style="text-align:center;"><?= $p['r']?></td>
+		<td style="text-align:center;"><?= $p['rw']?></td>
+	</tr>
+<?php } ?>
+</table>

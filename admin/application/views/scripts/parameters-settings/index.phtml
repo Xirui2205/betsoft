@@ -1,0 +1,40 @@
+<h3><?=i18n::tr('parameters_settings')?></h3>
+
+<ul class="idTabs">
+	<li><a href="#parameters-settings" onClick="loadTabGeneric(356, 'parameters-settings-main', { paramId : $('#paramId').val() })"><?=i18n::tr('parameters_settings')?></a></li>	
+    <!--
+	<li><a href="#data-settings" onClick="loadTabGeneric(359, 'data-settings', { paramId : $('#paramId').val() })"><?=i18n::tr('data_typ')?></a></li>-->	
+</ul>
+
+<div id="parameters-settings-container" class="tab-container hidden">
+	<div id="parameters-settings-main" class="tab">
+	</div>
+	<!--
+	<div id="data-settings" class="tab">
+	</div>
+    -->
+</div>
+
+<div id="list">
+
+	<form method="post" action="?section=<?=$this->indexSectionId?>" id="formParamsFilter">
+		<div class="actions">
+			<?php if($this->callcenterLogged === false):?>
+			<input type="button" onClick="insertParam()" class="input"  name="insert_new" value="<?=i18n::tr('new_param')?>" />
+			<?php endif;?>
+		</div>
+		<?=$this->filter?>
+		<?=$this->paginator?>
+
+		<table class='table-list width-100'>
+			<?=$this->tHead?>
+			<?=$this->tBody?>
+		</table>
+	</form>
+</div>
+
+<?php if (!empty($_GET['id'])): ?>
+<script>
+	viewParamDetail(<?=intval($_GET['id'])?>);
+</script>
+<?endif;?>

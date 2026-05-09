@@ -1,0 +1,12 @@
+<?=I18n::tr('banned_branches')?>
+
+=======================
+
+<?php if ( empty($this->blacklist) ): ?>
+<?=I18n::tr('no_records')?>
+<?php else:?>
+<?php foreach( $this->blacklist as $branch ):?>
+#<?=$branch['branchId']?> <?=$branch['name']?> <?=It6_Date::fromDb($branch['banned'])?>
+
+<?php endforeach;?>
+<?php endif;?>

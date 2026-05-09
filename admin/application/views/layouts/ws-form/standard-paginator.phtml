@@ -1,0 +1,9 @@
+<div class="lister">
+	<div class="fltrt">
+		<label><?=I18n::tr('Records per page')?>:</label>
+		<input class="lister-post-count" type="text" name="<?= $this->layout()->paginatorName ?>[recsPerPage]"
+			id="<?= $this->layout()->paginatorName ?>_recsPerPage" size="4" value="<?=$this->layout()->recsPerPage?>" />
+		<input class="lister-post-submit" type="submit" name="submit" value="<?=I18n::tr('ok')?>" />
+	</div>
+	<?=$this->paginationControl($this->layout()->paginator, 'Sliding', $this->layout()->paginatorControls, $this->layout()->recsPerPage)?>
+</div>

@@ -1,0 +1,229 @@
+<!-- /cs/live-sazky/index - unused/old page, template not up-to-date  -->
+
+<!--
+  <?=$this->UrlSet(1); ?>
+-->
+
+<script type="text/javascript">
+  getOnline('liveOnline','<?=$this->UrlSet(14,'','','1/1/'); ?>');
+  getOnline('livecomming','<?=$this->UrlSet(14,'','','1/2/'); ?>');
+  setInterval("getOnline('liveOnline','<?=$this->UrlSet(14,'','','1/1/'); ?>')",<?=LIVEBET_LIST_REFRESH_ONLINE?>);
+  setInterval("getOnline('livecomming','<?=$this->UrlSet(14,'','','1/2/'); ?>')",<?=LIVEBET_LIST_REFRESH_COMING?>);
+  function showCalendarTabObdobi() {
+      document.getElementById('tab-obdobi').style.display = 'block';
+      document.getElementById('tab-sport').style.display = 'none';
+      document.getElementById('tab-header-sport').className = '';
+      document.getElementById('tab-header-obdobi').className = 'sel';
+      document.getElementById('kbox').className = 'kbox kbox-tiny';
+  }
+
+  function showCalendarTabSport() {
+      document.getElementById('tab-obdobi').style.display = 'none';
+      document.getElementById('tab-sport').style.display = 'block';
+      document.getElementById('tab-header-sport').className = 'sel';
+      document.getElementById('tab-header-obdobi').className = '';
+      document.getElementById('kbox').className = 'kbox';
+  }
+</script>
+
+<?=$this->render('index/leftCol.phtml'); ?>
+
+<div id="text"> 
+	<h2 class="boxheader">Kalendář</h2>
+	<div class="kbox kbox-tiny" id="kbox">
+		<div class="tabs">
+			<ul>
+				<li id="tab-header-sport"><a href="/" class="first" onclick="showCalendarTabSport(); return false;">Sport</a></li>
+				<li id="tab-header-obdobi"><a href="#" onclick="showCalendarTabObdobi(); return false;">Období</a></li>                                                  
+			</ul>
+			<div class="ct"></div>
+		</div>
+		<div class="content">
+			<div class="cc" id="tab-sport">
+				<form method="post" action="/">
+					<?php foreach($this->sportForm as $h):?>
+						<div class="item">
+							<input 
+								class="chck" type="checkbox" name="<?php echo strtolower($h['nazev']);?>" id="<?php echo strtolower($h['nazev']);?>"
+								<?php if ( $h['sport_id']==$this->sport_id || $this->sport_id=='all' ) : ?>
+									checked="checked" 
+								<?php  endif; ?>
+								onclick="location.href='<?php echo $this->UrlSet(3,'','','index/sport/'.$h['sport_id'].'/'); ?>'"/>
+							<label for="<?php echo strtolower($h['nazev']);?>" class="blabel <?php echo strtolower($h['nazev']);?>">
+								<?php echo $this->trans($h['nazev']);?>
+							</label>
+						</div> 
+					<?php endforeach;?>
+					<div class="line">
+						<div class="left">
+							<input 
+								class="" type="checkbox" name="all" id="all"
+								<?php if ( $this->sport_id == 'all' ) : ?>
+									checked="checked" 
+								<?php  endif; ?>
+								onclick="location.href='<?php echo $this->UrlSet(3,'','','index/sport/all/');?>'"/>
+							<label for="all">Vybrat vše</label>
+						</div>
+						<!-- 
+						<div class="right">
+							<input class="sbm" value="zobrazit vybraný sport" type="submit" />
+						</div>
+						 -->
+					</div>
+				</form>
+			</div> <!-- tab-sport -->
+			<div class="cc" id="tab-obdobi">
+				 <!-- 
+				<li>
+					<a href="">
+						
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo $this->UrlSet(3,'','','index/calendar/tommorow/'); ?>">
+						
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo $this->UrlSet(3,'','','index/calendar/week/'); ?>">
+						<?php echo $this->trans('this_week');?>
+					</a>
+				</li>
+				 --> 
+				<form method="post" action="/">
+						<div class="cluster">
+								<input
+									type="checkbox" name="dnes" id="dnes"
+									<?php if ( 'today' == $this->obdobi ) : ?>
+										checked="checked" 
+								<?php  endif; ?>
+									onclick="location.href='<?php echo $this->UrlSet(3,'','','index/calendar/today/'); ?>'"/>
+								<label for="dnes">
+									<?php echo $this->trans('today_offer');?>
+								</label>
+						</div>
+						<div class="cluster">
+								<input 
+									type="checkbox" name="zitra" id="zitra"
+									<?php if ( 'tommorow' == $this->obdobi ) : ?>
+										checked="false" 
+									<?php  endif; ?>
+									onclick="location.href='<?php echo $this->UrlSet(3,'','','index/calendar/tommorow/'); ?>'"/>
+								<label for="zitra">
+									<?php echo $this->trans('tommorow');?>
+								</label>
+						</div>
+						<div class="cluster">
+								<label for="datum"><?=$this->trans('date');?></label>
+								<select id="datum">
+                                      <?php foreach ( array_keys($this->date) as $date ): ?>
+										<option><?=$date?></option>
+                                      <?php endforeach; ?>
+								</select>
+						</div>
+						<!-- 
+						<div class="cluster last">
+								<input type="submit" class="sbm" value="zobrazit vybrané datum" />
+						</div>
+						 -->
+				</form>
+			</div> <!-- tab-obdobi -->
+			<script type="text/javascript">
+				<?php if ( $this->tab == 'calendar' ):  ?>
+					showCalendarTabObdobi();
+				<?php else: ?>
+					showCalendarTabSport();
+				<?php endif;?>
+			</script>
+			<div class="cb"></div>
+		</div> <!-- content -->
+	</div> <!-- kbox -->
+	<?php if(count($this->pagging['page']) == 0):?>  
+			<?php echo $this->trans('no_data_found');?> 
+	<?php else:?>
+		<div class="ctable ctable-notabs ctable-kalendar">
+
+			
+			<div class="content">
+        <div class="tabs">
+          <div class="ct"></div>
+        </div>
+
+          <?php foreach( $this->date as $dt => $ids ) : ?>
+          <table>
+          <thead>
+            <tr>
+              <th rowspan="3">
+                <?php if ( $dt == date('d.m.Y') ):?>
+                  <?php echo $this->trans('today_offer');?>
+                <?php elseif( $dt == date('d.m.Y', ( 86400 + time() ) ) ):?>
+                  <?php echo $this->trans('tommorow');?>
+                <?php else: ?> 
+                  <?php echo $dt;?>
+                <?php endif; ?>
+                <?php //echo $this->trans($h['snazev']);?>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+          <?php foreach( $ids as $key ) : ?>
+            <?php $h = $this->data[$key]; ?>
+            <tr>
+              <th class="cas">
+                <?=It6_Date::fromDbAsTime($h->start)?>
+              </th>
+              <td class="nazev s-1001">
+                <a href="">
+                  <strong>
+                    <?$h->homeTeam?> - <?=$h->awayTeam?>
+                  </strong>
+                </a>
+                <br />
+                <span class="flag f-247"><?php echo $this->trans($h['unazev']);?></span>
+              </td>
+              <td class="stav">
+                <?=$h->minute?>
+                <span class="<?=$h->status?>">
+                  <?php echo $this->trans('live_state_'. $h->status)?>
+                </span>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+        </table>
+            
+				<?php endforeach; ?>
+				<div class="cb"></div>
+				<div class="right">
+					<div class="cpager">
+					
+						<?php if(isset($this->pagging['prev'])) : ?> 
+							<a href="<?php echo $this->UrlSet(13,'','',$this->url.'page/'. $this->pagging['prev'] .'/'); ?>">
+								<img src="images/k-larr.png" alt="&larr;" />
+							</a>
+						<?php endif;?>
+			
+						<?php foreach($this->pagging['page'] as $k => $h) : ?>
+							<?php if($this->pagging['act'] != $h):?> 
+								<!-- <a href="<?php echo $this->UrlSet(13,'','',$this->url.'page/'. $k .'/'); ?>"><?php echo $h;?></a>  -->
+							<?php else:?> 
+								<!-- <?php echo $h;?>  -->
+							<?php endif;?>
+						<?php endforeach;?>
+
+						<?php if(isset($this->pagging['next'])):?> 
+							<a href="<?php echo $this->UrlSet(13,'','',$this->url.'page/'. $this->pagging['next'] .'/'); ?>">
+								<img src="images/k-rarr.png" alt="&rarr;" />
+							</a>
+						<?php endif;?>
+						
+					</div> <!-- cpager -->
+				</div> <!-- right -->
+			</div> <!-- content -->
+			<!--<div class="cb"></div>-->
+		</div> <!-- ctable -->
+	<?php endif; ?>
+</div> <!-- text -->
+
+<?=$this->render('index/rightCol.phtml'); ?>
+

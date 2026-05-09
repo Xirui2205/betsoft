@@ -1,0 +1,210 @@
+<?php
+
+// todo: nastavit sloupce v kontroleru metodou leftAndRightColAndNews(),
+//       tuto šablonu redukovat a testovat
+
+?>
+	<main id="content" role="main">
+		<div id="true-content" class="welcome">
+			<div class="wrapper">
+		
+				<div id="left">
+					<!--
+					<h2 class="boxheader">Top Bets</h2>
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="active"><a href="#tab-odds" role="tab" data-toggle="tab">Odds</a></li>
+						<li><a href="#tab-live" role="tab" data-toggle="tab">Live</a></li>
+					</ul>
+					<div class="tab-content">
+						<div id="tab-odds" class="tab-pane fade in active no-padding">
+							<ul class="nav icos">
+								<li>
+									<a href="odds.html" class="ico ico-sport ico-soccer parent">Premier League <span class="count">145</span></a>
+									<ul class="no-bg">
+										<li><a href="odds.html" class="ico ico-item ico-star">Barclays Premier <span class="count">145</span></a></li>
+										<li><a href="odds.html" class="ico ico-item ico-star">CocaCola League <span class="count">145</span></a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="odds.html" class="ico ico-sport ico-tennis parent">ATP500 <span class="count">145</span></a>
+									<ul class="no-bg">
+										<li><a href="odds.html" class="ico ico-item ico-star">Australian Open <span class="count">145</span></a></li>
+										<li><a href="odds.html" class="ico ico-item ico-star">Melbourne <span class="count">145</span></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div id="tab-live" class="tab-pane fade no-padding">
+							<ul class="nav icos">
+								<li>
+									<a href="#" class="ico ico-sport ico-soccer">Premier League <span class="count">145</span></a>
+									<ul class="no-bg">
+										<li><a href="odds.html" class="ico ico-item ico-star">Barclays Premier <span class="count">145</span></a></li>
+										<li><a href="odds.html" class="ico ico-item ico-star">CocaCola League <span class="count">145</span></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+					-->
+
+					<?=$this->render('index/timeFilter.phtml')?>
+
+					<a href="/cs/sazky/?all"><h3 class="boxheader"><span class="highlight" id="all-bets-count">0</span> Bets</h3></a>
+
+					<div id="sportMenuContainer">
+						<?=$this->render('index/sportMenuLoader.phtml')?>
+					</div>
+
+					<div class="boxheader">Bet &amp; Win Live!</div>
+					<div class="contentbox no-padding">
+						<a href="#"><img src="<?=GFX_SERVER?>left_banner.jpg" alt="Bet &amp; Win Live!"></a>
+					</div>
+					<div class="contentbox description">
+						Here could be a description of banner above
+					</div>
+				</div>
+				
+				<div id="center">
+					<h2 class="boxheader">Hot Betting News</h2>
+
+					<div id="carousel-sportsbook" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<?php for ($i=1; $i<=count($this->promo) ;$i++) { ?>
+							<li data-target="#carousel-sportsbook" data-slide-to="0" class="active"></li>
+							<?php } ?>
+						</ol>
+
+					<?php //if (empty($this->bannersRight)) : ?>
+							<div class="carousel-inner">
+						
+						<?php 
+						$activeBanner=1; 
+
+						foreach ($this->promo as $promo) {
+							// text alignment
+							$textAlignment = "";
+							if ( $promo["without_text"] == 1 ) { $textAlignment = "carousel-caption-right"; }
+						
+							// link
+							$mainBetUrl = '';
+							$promoLink = '';
+							if (!empty($promo['bets']['data'])) {
+								$mainBetId = $promo['bets']['data'][0]['main_bet_id'];
+								$mainBetUrl = $this->urlSet(2) .
+									Zend_Registry::get('ws')->Bet->getSportRegionEventUrl($mainBetId, $_SESSION['lang_id']) .
+									'/id/'.$mainBetId.'-'.$this->seoUrl($promo['bets']['data'][0]['text']);
+							}
+							if (!empty($promo['url'])) {
+								$promoLink = $promo['url'];
+							} else if(!empty($mainBetUrl)) {
+								$promoLink = $mainBetUrl;
+							}
+
+							$promoOnClick = isset($promo['target']) && $promo['target'] == '_blank' ?
+								'window.open (this.href, \'child\'); return false' : '';
+
+
+							$text = explode("#", $promo["text"]);
+						?>
+								<div class="item <?= isset($activeBanner) ? 'active' : '';?> ">
+									<a href="<?= $promoLink ?>" onclick="<?= $promoOnClick ?>"
+										<?php 
+											$activeBanner=null;
+											if ($promo['target'] == '_blank') { ?>
+												onclick="window.open (this.href, 'child'); return false"
+										<?php } ?>
+										>
+										<img src="<?=GFX_SERVER?><?=$promo['img']?>" alt="<?=$this->trans('banner image')?>">
+										<div class="carousel-caption <?=$textAlignment?>">
+											<div class="carousel-info"><?=$text[0]?></div>
+											<h3><?=$promo[title]?></h3>
+											<p><?=$text[1]?></p>
+										</div>
+									</a>
+							        <?php if ( !empty($promo['bets']['data']) ) { ?>
+									<ul class="carousel-bets">	
+									<?php foreach ($promo['bets']['data'] as $bet) { 
+									if ( strlen($bet["podtyp_sloupce_nazev"]) != 1 ) { continue; } ?>
+										<li><a href="javascript:void(0);" 
+											onclick="ticketUpdate(<?php echo($bet['sazka_id']);?>, 
+											<?php echo($bet['sloupec_id']);?>,
+											'<?php echo($bet['text']); ?>',
+											'<?php echo($bet['podtyp_sloupce_preklad']); ?>',
+											'<?php echo($bet['podtyp_sloupce_nazev']); ?>',
+											<?php echo($bet['kurz']); ?>,
+											<?php echo($bet['jednoducha']); ?>
+										);">
+											<?=$bet['podtyp_sloupce_nazev']?> <span><?=$bet['kurz']?></span>
+										</a></li>											
+									<?php } // foreach bets ?>
+									</ul>
+									<?php } // if data ?>
+
+								</div>
+						<?php } // foreach ($this->promo as $promo) ?>
+							</div>
+					<?php //endif?>
+					</div>
+
+					<script type="text/javascript">
+						$(document).ready(function() {
+							$('#tab-top-live').load('<?= $this->urlSet(72) ?>');
+							$('#tab-top-best').load('<?= $this->urlSet(82) ?>');
+							$('#tab-top-last').load('<?= $this->urlSet(81) ?>');
+							$('#supertipTab').load('<?= $this->urlSet(110) ?>');
+						});
+						
+						var myVar = setInterval(function(){ liveTimer() }, 5000);
+ 
+						function liveTimer() {
+							if ( $('li.menu').hasClass('active') ) {
+								$('#tab-top-live').load('<?= $this->urlSet(72) ?>');
+							}
+						}
+
+					</script>
+		
+					<h2 class="boxheader">Top Betting Odds</h2>
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="menu active"><a href="#tab-top-live" role="tab" data-toggle="tab">Live bets</a></li>
+						<li><a id="#tab-top-last" href="#tab-top-last" role="tab" data-toggle="tab"><?=$this->trans('last'); ?></a></li>
+						<li><a id="#tab-top-best" href="#tab-top-best" role="tab" data-toggle="tab"><?=$this->trans('terno'); ?></a></li>
+						<li><a id="#supertipTab" href="#supertipTab" role="tab" data-toggle="tab">Best Odds</a></li>
+					</ul>
+					<div class="tab-content">
+						<div id="tab-top-live" class="tab-pane fade in active contentbox no-padding"></div>
+						<div id="tab-top-last" class="tab-pane fade contentbox no-padding"></div>
+						<div id="tab-top-best" class="tab-pane fade contentbox no-padding"></div>
+						<div id="supertipTab" class="tab-pane fade contentbox no-padding"></div>
+					</div>
+					<!--<div class="contentbox show-more"><a href="#" class="more">Show more odds</a></div>-->
+
+
+					<span style="display:none" id="articlesHpMarker"></span>
+
+					<script type="text/javascript">
+						$(function() {
+							$.get('<?= $this->urlSet(107) ?>', { },
+							function(data) {
+								$("#articlesHpMarker").after(data);
+							});
+						});
+					</script>
+				</div>
+
+				<div id="rightcol">					
+					<?=$this->render('sportsbook/ticket.phtml');?>
+					
+					<div class="box box-wide box-okna" id="rightColLiveCalendarSmall">
+						<div class="loader-small"></div>
+					</div>
+					<script type="text/javascript">
+						$(document).ready(function() { $('#rightColLiveCalendarSmall').load('<?= $this->urlSet(71) ?>'); });
+						setInterval("$('#rightColLiveCalendarSmall').load('<?=$this->urlSet(71)?>')",<?=LIVECALENDAR_REFRESH_LIST?>);
+					</script>
+				</div>
+
+			</div>
+		</div>
+	</main>

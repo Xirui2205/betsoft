@@ -1,0 +1,70 @@
+<div id="true-header">
+	<div class="wrapper">
+		<h1><a href="/"><img src="/new/images/logo.png" alt="YourLogo.com – A Pure Joy from Betting!"></a></h1>
+		<nav id="header-nav">
+			<ul class="nav navbar-nav">
+				<!--<li><a href="#">Help</a></li>
+				<li><a href="#">Contact</a></li>
+				<li><a href="#">Responsible Gaming</a></li>-->
+				<li class="langs dropdown">
+					<a href="#" class="ico ico-flag <?php echo $this->flagIcon; ?>" data-target="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $this->trans('change_lang') ?></a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+						<li><a href="/en/" class="ico ico-flag f-536 <?php
+							if ($this->flagIcon == "ico-eng") {
+								echo "active";
+							}
+							?>">English</a></li>
+						<li><a href="/cs/" class="ico ico-flag f-247 <?php
+							if ($this->flagIcon == "ico-cze") {
+								echo "active";
+							}
+							?>">Česky</a></li>
+						<li><a href="/sk/" class="ico ico-flag f-437 <?php
+							if ($this->flagIcon == "ico-svk") {
+								echo "active";
+							}
+							?>">Slovensky</a></li>
+						<!--<li><a href="/de/" class="ico ico-flag f-248 <?php
+							if ($this->flagIcon == "ico-ger") {
+								echo "active";
+							}
+							?>">Deutsch</a></li>
+						<li><a href="/ru/" class="ico ico-flag f-426 <?php
+				if ($this->flagIcon == "ico-rus") {
+					echo "active";
+				}
+							?>">русский</a></li>-->
+					</ul>
+				</li>
+<?php if ($GLOBALS['ses_status'] != 2 && $GLOBALS['ses_status'] != 3) { ?>
+					<li><a href="<?= $this->UrlSet(25); ?>"><?= $this->trans('forget_pass'); ?></a></li>
+					<li><a href="<?= $this->UrlSet(24); ?>"><?= $this->trans('registration'); ?></a></li>
+			<?php } ?>
+
+			</ul>
+		</nav>
+		<div id="userbar">
+		<div id="loginFeedback">
+		</div>
+<?php if ($GLOBALS['ses_status'] != 2 && $GLOBALS['ses_status'] != 3) { ?>
+				<form method="post" action="/" id="loginForm">
+					<input name="" id="nick" type="text" placeholder="<?= $this->trans('reg_email'); ?>">
+					<input name="" id="pass" type="password" placeholder="<?= $this->trans('password'); ?>">
+					<input type="submit" class="btn" value="<?= $this->trans('login'); ?>" id="login" />						
+				</form>
+<?php } else { ?>
+				<ul>
+					<li class="ico ico-item ico-user"><?= Zend_Registry::get('nick'); ?></li>
+					<li id="user-money" class="ico ico-item ico-money"><?= $this->balanceFormated; ?></li>
+					<li class="dropdown">
+						<a href="<?= $this->urlSet(52) ?>"><?= $this->trans('reg_deposit') ?></a>
+					</li>
+					<li class="dropdown">
+						<a href="<?= $this->urlSet(35) ?>"><?= $this->trans('profile_menu') ?></a>
+					</li>
+					<li><a href="<?= $this->UrlSet(63); ?>"><?= $this->trans('logoff'); ?></a></li>
+				</ul>
+<?php } ?>
+		</div>
+	</div>
+</div>

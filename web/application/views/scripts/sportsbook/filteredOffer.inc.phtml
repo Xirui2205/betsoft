@@ -1,0 +1,7 @@
+
+<?php if ( !$this->isAjax ): ?>
+<div id="lcol" class="column">
+<?php It6_GlobalCache::frame('/global-cache-frame/sport-menu');?>
+</div>
+<?php endif; ?>
+<?=$this->render('sportsbook/sport-matches.phtml'); ?>

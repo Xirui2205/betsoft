@@ -1,0 +1,128 @@
+<link rel="stylesheet" href="/css/smoothness/jquery-ui-1.10.1.custom.min.css" />
+
+<h3><?=i18n::tr('betting_statistics')?></h3>
+
+<?=$this->feedbackMsg?>
+
+<ul class="idTabs" style="display:none">
+	<li>
+		<a class="selected" href="#betting_statistics"><?=i18n::tr('betting-statistics')?></a>
+	</li>
+</ul>
+
+
+<div id="betting-statistics-container" class="tab-container hidden">
+	<input type="hidden" class="tabsLoaded" id="card-main-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="card-event-loaded" value="0" />
+	<input type="hidden" name="betId" id="betId" value="">
+	<div id="betting-statistics-main" class="tab" style="display: none;">
+	</div>
+</div>
+
+<div id="list">
+	<form method="post" action="?section=<?=$this->indexSectionId?>">
+		<input type="hidden" value="<?=$this->indexSectionId?>" name="section" />
+		<table class="table-filter">
+			<tr>
+				<th><?=I18n::tr('sport')?></th>
+				<th><?=I18n::tr('event')?></th>
+				<th><?=I18n::tr('main_bet_id')?></th>
+				<th>&nbsp;</th>
+				<th><?=I18n::tr('time_period')?></th>
+				<th>&nbsp;</th>
+				<th><?=I18n::tr('bet_status')?></th>
+			</tr>
+			<tr>
+				<td style="vertical-align: top;">
+					<select onClick="loadEvents()" name="filter[sportId]" id="sport-id-selector">
+						<option value="0"><?=I18n::tr('select')?></option>
+						<?=$this->eventFilter[0]?>
+					</select>
+				</td>
+				<td rowspan="2" style="vertical-align: top;">
+					<select name="filter[typeId][]" id="event-ids-selector" size="7" multiple="multiple">
+						<?=$this->eventFilter[1]?>
+					</select>
+				</td>
+				<td style="vertical-align: top;">
+					<input name="filter[betId]" type="text" id="filter-betId" 
+						value="<?=$this->betIdValue?>" style="width: 100px;"/>
+				</td>
+				<td>&nbsp;</td>
+				<td style="vertical-align:top; text-align:right">
+					<b><?=Help::Html(I18n::tr('bet_valid_from_hint'))?>:</b>
+					<input type="text" name="filter[od_start]" id="od_start" class="sinput3 dateTime" style="width: 150px;"
+						value="<?=$this->odStart?>" />
+						<img src="images/ico/calendar.gif" class="calendar-icon" />
+				</td>
+				<td style="vertical-align: top;">
+					<input type="text" name="filter[od_end]" id="od_end" class="sinput3 dateTime" style="width: 150px;"
+						value="<?=$this->odEnd?>" />
+						<img src="images/ico/calendar.gif" class="calendar-icon" />
+				</td>
+				<td rowspan="2">
+					<select name="filter[stav]" id="stav" size="9" multiple="multiple">
+						<option value="0" <?=(!isset($_REQUEST['filter']['stav']) || isset($_REQUEST['filter']['stav']) && $_REQUEST['filter']['stav'] == 0) ? "selected=\"selected\"" : ""?>>
+							<?=I18n::tr('all')?>
+						</option>
+						<option value="1" <?=(isset($_REQUEST['filter']['stav']) && $_REQUEST['filter']['stav'] == 1) ? "selected=\"selected\"" : ""?>>
+							<?=I18n::tr('bet_status_current')?>
+						</option>
+						<option value="2" <?=(isset($_REQUEST['filter']['stav']) && $_REQUEST['filter']['stav'] == 2) ? "selected=\"selected\"" : ""?>>
+							<?=I18n::tr('bet_status_unevaluated')?>
+						</option>
+						<option value="3" <?=(isset($_REQUEST['filter']['stav']) && $_REQUEST['filter']['stav'] == 3) ? "selected=\"selected\"" : ""?>>
+							<?=I18n::tr('bet_status_evaluated')?>
+						</option>
+						<option value="4" <?=(isset($_REQUEST['filter']['stav']) && $_REQUEST['filter']['stav'] == 4) ? "selected=\"selected\"" : ""?>>
+							<?=I18n::tr('bet_status_confirmed')?>
+						</option>
+						<option value="500" <?=(isset($_REQUEST['filter']['stav']) && $_REQUEST['filter']['stav'] == 500) ? "selected=\"selected\"" : ""?>>
+							<?=I18n::tr('bet_status_suspended')?>
+						</option>
+						<option value="501" <?=(isset($_REQUEST['filter']['stav']) && $_REQUEST['filter']['stav'] == 501) ? "selected=\"selected\"" : ""?>>
+							<?=I18n::tr('bet_status_suspended_br')?>
+						</option>
+						<option value="6" <?=(isset($_REQUEST['filter']['stav']) && $_REQUEST['filter']['stav'] == 6) ? "selected=\"selected\"" : ""?>>
+							<?=I18n::tr('bet_status_canceled')?>
+						</option>
+						<option value="8" <?=(isset($_REQUEST['filter']['stav']) && $_REQUEST['filter']['stav'] == 8) ? "selected=\"selected\"" : ""?>>
+							<?=I18n::tr('bet_status_paid_out')?>
+						</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td style="vertical-align: bottom;">
+					<input type="submit" value="Vyhledat" name="submit" />
+				</td>
+				<td style="vertical-align: top;">
+					<b><?=I18n::tr('main_bet_alias')?></b><br />
+					<input name="filter[alias]" type="text" id="filter-alias" 
+						value="<?=$this->betAliasValue?>" style="width: 100px;"/>
+				</td>
+				<td>&nbsp;</td>
+				<td style="vertical-align:top; text-align:right">
+					<b><?=Help::Html(I18n::tr('bet_valid_to_hint'))?>:</b>
+					<input type="text" name="filter[do_start]" id="do_start" class="sinput3 dateTime" style="width: 150px;"
+						value="<?=$this->doStart?>" />
+					<img src="images/ico/calendar.gif" class="calendar-icon" />
+				</td>
+				<td style="vertical-align: top;">
+					<input type="text" name="filter[do_end]" id="do_end" class="sinput3 dateTime" style="width: 150px;"
+						value="<?=$this->doEnd?>" />
+					<img src="images/ico/calendar.gif" class="calendar-icon" />
+				</td>
+			</tr>
+		</table>
+		<?=$this->choice?>
+		<?//=$this->filter?>
+		<?=$this->paginator?>
+		<?php if (!empty($this->paginator)) :?>
+			<table id="tab1" class='table-list width-100'>
+				<?=$this->tHead?>
+				<?=$this->tBody?>
+			</table>
+		<?php endif?>
+	</form>
+</div>

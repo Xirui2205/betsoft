@@ -1,0 +1,18 @@
+<script>
+	$(document).ready(function() {
+		window.print()
+	});
+</script>
+
+<h2 class="boxheader"><span><?=$this->trans('ticket')?></span></h2>
+<div class="ctable ctable-ticket">
+	<?php include('ticket-head.phtml')?>
+	<div class="content">
+		<?php include('live-ticket-detail.phtml')?>
+		<div class="cb"></div>
+	</div>
+</div>
+
+<?php if(!is_array($this->ticket) || count($this->ticket) == 0) : ?>
+	<?=It6_FeedbackMsg::printError('no_ticket2')?>
+<?php endif?>

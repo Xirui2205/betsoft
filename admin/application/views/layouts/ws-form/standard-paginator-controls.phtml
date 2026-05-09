@@ -1,0 +1,64 @@
+<?php if ($this->pageCount) : ?>
+	<div class="lister-navigation-post">
+		<input type="hidden" id="<?= $this->layout()->paginatorName ?>_targetPage" disabled="disabled" value="<?=$this->current?>" />
+		<input type="hidden" value="<?=$this->current?>" name="<?= $this->layout()->paginatorName ?>[pageNumCur]" id="<?= $this->layout()->paginatorName ?>_pageNumCur"/>
+		<ul>
+
+			<!-- First page link -->
+			<li class="prev"> <input type="submit" class="nb" value="<?=I18n::tr('first_page')?>"
+				name="<?= $this->layout()->paginatorName ?>[pageFirst]"
+				onclick="$('#<?= $this->layout()->paginatorName ?>_targetPage').val(<?= $this->first ?>);" /> 
+			</li>
+			<input type="hidden" value="<?=$this->first?>" name="<?= $this->layout()->paginatorName ?>[pageNumFirst]" id="<?= $this->layout()->paginatorName ?>_pageNumFirst"/>
+
+			<!-- Previous page link -->
+			<?php if (isset($this->previous)) : ?>
+				<li class="prev"> <input type="submit" class="nb" value="<?=I18n::tr('Previous')?>"
+					name="<?= $this->layout()->paginatorName ?>[pagePrev]"
+					onclick="$('#<?= $this->layout()->paginatorName ?>_targetPage').val(<?= $this->previous ?>);" /> 
+				</li>
+				<input type="hidden" value="<?=$this->previous?>" name="<?= $this->layout()->paginatorName ?>[pageNumPrev]" id="<?= $this->layout()->paginatorName ?>_pageNumPrev"/>
+			<?php else : ?>
+				<!--<span class="disabled">Previous</span> -->
+			<?php endif?>
+			<!-- Numbered page links -->
+			<?php foreach ($this->pagesInRange as $page): ?>
+				<?php if ($page != $this->current): ?>
+				<li>
+					<input type="submit" value="<?=$page?>"
+						name="<?= $this->layout()->paginatorName ?>[pageNum]"
+						onclick="$('#<?= $this->layout()->paginatorName ?>_targetPage').val(<?= $page ?>);" /> 
+				</li>
+				<?php else : ?>
+				<li class="active"> <?=$page?> </li>
+				<?php endif?>
+			<?php endforeach?>
+
+			<!-- Next page link -->
+			<?php if (isset($this->next)) : ?>
+				<li class="next">
+					<input type="submit" class="nb" value="<?=I18n::tr('Next')?>"
+						name="<?= $this->layout()->paginatorName ?>[pageNext]" id="<?= $this->layout()->paginatorName ?>_pageNumNext"
+						onclick="$('#<?= $this->layout()->paginatorName ?>_targetPage').val(<?= $this->next ?>);" /> 
+					</li>
+				<input type="hidden" value="<?=$this->next?>" name="<?= $this->layout()->paginatorName ?>[pageNumNext]" />
+			<?php else : ?>
+				<!--<span class="disabled">Next</span>-->
+			<?php endif?>
+
+			<!-- Last page link -->
+			<li class="last">
+				<input type="submit" class="nb" value="<?=I18n::tr('last_page')?>"
+					name="<?= $this->layout()->paginatorName ?>[pageLast]" id="<?= $this->layout()->paginatorName ?>_pageNumLast"
+					onclick="$('#<?= $this->layout()->paginatorName ?>_targetPage').val(<?= $this->last ?>);" /> 
+			</li>
+			<input type="hidden" value="<?=$this->last?>" name="<?= $this->layout()->paginatorName ?>[pageNumLast]" />
+
+			<li class="counts">
+				[<?= number_format($this->pageCount, 0, ',', ' ') ?> <?=I18n::tr('pages')?>]
+				(<strong><?= number_format($this->totalItemCount, 0, ',', ' ') ?></strong> <?=I18n::tr('items')?>)
+			</li>
+		</ul>
+
+	</div>
+<?php endif?>

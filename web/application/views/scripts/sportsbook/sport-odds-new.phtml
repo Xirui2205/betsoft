@@ -1,0 +1,157 @@
+<?php
+$mainBetId = Zend_Controller_Front::getInstance()->getRequest()->getParam('id');
+foreach($this->odds as $sport_id=>$data) {
+	foreach($data as $udalost_id=>$dataS) {
+		foreach($dataS['type'] as $typ_id=>$dataT) {
+			foreach($dataT as $podtyp_id=>$dataPT) {
+				//echo "<pre>";
+				//print_r($dataPT);
+
+				if( $dataPT['radek_sloupec'] == 0) {
+?>
+					<table>
+						<thead>
+							<tr>
+								<th colspan="2"><?=$dataPT["text"]?></th>
+								<?php foreach ($dataPT["sloupec"] as $key) { ?>
+									<th class="text-center"><?=$key?></th>
+								<?php } ?>
+							</tr>
+						</thead>
+						<tbody>
+<?php
+					foreach($dataPT["date"] as $datum=>$dataDate) {
+						foreach($dataDate as $bet_id=>$dataOdds) {
+							$array_diff = array_diff_key($dataPT['sloupec'], $dataOdds['sloupec']);
+							foreach ($array_diff as $key => $value) {
+								$array_diff[$key] = 1;
+							}
+							$dataOdds['sloupec'] = $dataOdds['sloupec'] + $array_diff;
+							ksort($dataOdds['sloupec']);
+							
+							//echo "bet_id".$bet_id."<pre>";
+							//print_r($dataOdds);
+?>
+								<tr id="<?= $bet_id ?>">
+									<td class="match-date"><?=$datum?><span><?=$dataOdds["hour"]?></span></td>
+									<td class="text-left"><?=$dataOdds['text']?></td>
+
+									<?php foreach ($dataOdds['sloupec'] as $sloupec_id => $odds): ++$i; ?>
+									<td id="b<?=$bet_id; ?>c<?=$sloupec_id; ?>" class="text-center odds" >
+										<?php if($odds != 1) { ?>
+											<a
+												class=""
+												href="javascript:void(0);"
+												onclick="ticketUpdate(<?=$bet_id .','. $sloupec_id .',\''. $this->EscapeJs($dataOdds['text'], true, true) .'\',\''. $this->EscapeJs($this->Adata['fullText'], true, true) .'\',\''. $this->Adata['sloupec'][$sloupec_id] .'\',null,'.  $dataOdds['simple']; ?>);"
+											><?=$odds?></a>
+										<?php } else { ?>
+											-
+										<?php } ?>
+									</td>
+									<?php endforeach?>
+								</tr>
+
+
+<?php
+						}
+					}
+?>
+							</tbody>
+						</table>
+<?php
+				} else {
+?>
+					<table>
+						<thead>
+							<tr>
+								<th colspan="2"><?=$dataPT["text"]?></th>
+							</tr>
+						</thead>
+						<tbody>
+<?php
+				//echo "<pre>";
+				//print_r($dataPT);
+					foreach($dataPT["date"] as $datum=>$dataDate) {
+						foreach($dataDate as $bet_id=>$dataOdds) {
+							$dataOddsCount = count($dataOdds['sloupec']);
+							$sl_pocet = ceil($dataOddsCount/$dataPT['sloupec_pocet_max']);
+							$linesCount = ceil(($dataOddsCount) / $sl_pocet);
+							$fillingCellsCount = ($sl_pocet - ($dataOddsCount % $sl_pocet)) % $sl_pocet;
+							/*echo "dataOddsCount:".$dataOddsCount;
+							echo " sl_pocet:".$sl_pocet;
+							echo " fillingCellsCount:".$fillingCellsCount;
+							echo " linesCount:".$linesCount;*/
+						}
+					}
+?>
+							<tr>
+								<td class="match-date"><?=$datum?><span><?=$dataOdds["hour"]?></span></td>
+								<td><?=$dataOdds['text']?></td>
+							</tr>
+						</tbody>
+						</table>
+
+
+
+		<table class="betOfferTable betOfferTypeResultsTable" cellspacing="0">
+			<tbody>
+				<?php $sl_help = 0?>
+				<?php $sl_last = true; $first = true; $currentLine = 1; $currentCell = 0; ?>				
+				<?php foreach($dataOdds['sloupec'] as $sl_id=>$odds) : $currentCell++; ?>
+				
+					<?php if ($sl_last) : ?>
+						<tr<?=$first?' class="first"':''?>>
+							<td class="alias borderRight"></td>
+							<td class="leftPaddingCols<?= $sl_pocet ?> borderLeft"></td>
+					<?php endif?>
+							
+					<?php $sl_last = (0 == ++$sl_help % $sl_pocet)
+							|| $currentCell === $dataOddsCount?>
+							
+					<td class="resultB">
+						<strong><?//=$this->escape($this->Adata['sloupec'][$sl_id]); // ?? ?></strong>
+						<?php
+						// typ sázky
+						if($odds != 1){
+							echo $dataPT["sloupec"][$sl_id];
+						}else{
+							echo '-';
+						}
+						?>
+					</td>
+					<td id="b<?=$bet_id?>c<?=$sl_id?>" class="rateB">
+						<?php // pouze kurz ?>
+							<a
+								class="kurz"
+								href="javascript:void(0);"
+								onclick="ticketUpdate(<?=$bet_id .','. $sl_id .',\''. $this->EscapeJs($dataOdds['text'], true, true) .'\',\''. $this->EscapeJs($dataPT["text"], true, true) .'\',\''. $dataPT["sloupec"][$sl_id] .'\',null,'.	$dataOdds['simple']; ?>);"
+							>
+								<?=$odds?>
+							</a>
+					</td>
+					
+					<?php 
+					if ($sl_last) {
+					if ($currentLine == $linesCount) {
+						for ($i = 0; $i < $fillingCellsCount; $i++) :
+							?><td class="resultB"></td><td class="rateB"></td>
+							<?php
+						endfor;
+					}
+					$currentLine++;
+					?>
+					<td class="datetime datetimeB borderLeft borderRight"></td>
+					<td class="plus borderLeft borderRight"></td>
+					<td class="stats borderLeft"></td>
+					</tr>
+					<?php } ?>
+				<?php $first = false; endforeach?>
+			</tbody>
+		</table>
+<?php	
+				}
+			}
+		}
+	};
+};
+?>

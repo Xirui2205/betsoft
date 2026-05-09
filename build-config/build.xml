@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="BBAS" default="config-local">
+
+	 <property name="srcdir"   value="${project.basedir}/.." override="true" />
+	 <property name="builddir" value="/var/www/kuchar23-test.vshosting.cz/bewa-core" override="true" />
+	
+
+
+    <!-- ============================================  -->
+    <!-- Target: prepare                               -->
+    <!-- ============================================  -->
+    <target name="init" >
+        <echo msg="Start building" />
+
+    </target>
+	
+    <!-- ============================================  -->
+    <!-- Target: copy                        -->
+    <!-- ============================================  -->
+    <target name="copy" depends="init" description="copy">
+     <echo msg="Copy task start" />
+     <copy todir="${builddir}">
+        	<fileset dir="${srcdir}" >
+        	  <include name="**" />
+			  <exclude name="**/bewa-core/tmp/*" />
+			  <exclude name="**/tmp/*" />
+        	</fileset>
+        </copy>
+    </target>
+	
+	<!-- ============================================  -->
+	<!-- Target: config local                     -->
+	<!-- ============================================  -->
+	    <target name="config-local" depends="copy" description="create config files">
+	      <echo msg="Create config local files task start" />
+	      <exec command="./configure.sh" dir="${builddir}" />
+	    </target>
+
+</project>

@@ -1,0 +1,173 @@
+<?=$this->feedbackMsg?>
+
+<script type="text/javascript">
+	$('#tabUserBetStatsUserId').val('<?= $this->userId ?>');
+</script>
+
+<div class="actions">
+	<?php if ($this->supervisionLogged == false) :?>
+	<button onclick="loadGeneric(<?=$this->updateSectionId?>, 'user-profile',{ userId : <?=$this->userId?> });"><?=i18n::tr('Edit')?></button>
+	<?php endif;?>
+	<button onclick="hideDetail('user-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<table class="table-list">
+	<tr>
+		<th><?=i18n::tr('User ID')?></th>
+		<td><?=$this->user['userId']?></td>
+	</tr>
+<!--
+	<tr>
+		<th><?=i18n::tr('handle')?></th>
+		<td><?=$this->user['userHandle']?></td>
+	</tr>
+-->
+	<tr>
+		<th><?=I18n::tr('Profile')?></th>
+		<td><?=($this->user['isUserOnline']?'<span class="blue floatright">online</span>':'<span class="red floatright" >offline</span>')?></td>
+		<?php if(It6_Date::fromDbAsTimestamp($this->user['selfExcludedUntil'], false) > time()):?>
+			<tr style="background:Scrollbar">
+				<td colspan="5">Uživatel se zablokoval do</td>
+				<td colspan="4">
+					<?=It6_Date::fromDb($this->user['selfExcludedUntil'])?>
+				</td>
+			</tr>
+		<?php endif?>
+	</tr>
+
+
+	<?php $a = 0?>
+	<?php if(isset($this->user['fbs'])):?>
+		<?php foreach($this->user['fbs'] as $fbs_h):?>
+			<tr>
+				<td colspan="2"><?=($fbs_h['id']==1?'FreeBet:':'FSB Kod:')?><em></em></td>
+				<td colspan="2">Vybral: <?=($fbs_h['withdrawed']==1?'ANO':'NE')?></td>
+				<td colspan="2">
+					Částka: <?=$fbs_h['bonusAmmount']?>
+					<?=$mena_array[$this->user['menaId']]?>
+					(<?=$fbs_h['note']?> <?=$fbs_h['rel']?>)
+				</td>
+				<td>Obtained:<em><?=$fbs_h['dtIn']?></em></td>
+				<td>
+					User ID:
+					<em><?=($fbs_h['id']==2? '<a href="?section=40&user_id=56109">'.$fbbPo[$a].'</a>' : 'Nobody')?></em>
+				</td>
+			</tr>
+
+			<?php if($fbs_h['id']==2):?>
+				<?php $a++?>
+			<?php endif?>
+		<?php endforeach?>
+	<?php endif?>
+
+
+<!--
+	<tr>
+		<td colspan="4">Finance rating </td>
+		<td colspan="4">
+			1<input type="radio" class="no" name="finance_rating" '.($this->user['finance_rating']==1?'checked="checked"':'').' value="1" />
+			2<input type="radio" class="no" name="finance_rating" '.($this->user['finance_rating']==2?'checked="checked"':'').' value="2" />
+			3<input type="radio" class="no" name="finance_rating" '.($this->user['finance_rating']==3?'checked="checked"':'').' value="3" />
+			4<input type="radio" class="no" name="finance_rating" '.($this->user['finance_rating']==4?'checked="checked"':'').' value="4" />
+			5<input type="radio" class="no" name="finance_rating" '.($this->user['finance_rating']==5?'checked="checked"':'').' value="5" />
+			6<input type="radio" class="no" name="finance_rating" '.($this->user['finance_rating']==6?'checked="checked"':'').' value="6" />
+			7<input type="radio" class="no" name="finance_rating" '.($this->user['finance_rating']==7?'checked="checked"':'').' value="7" />
+			8<input type="radio" class="no" name="finance_rating" '.($this->user['finance_rating']==8?'checked="checked"':'').' value="8" />
+			9<input type="radio" class="no" name="finance_rating" '.($this->user['finance_rating']==9?'checked="checked"':'').' value="9" />
+			10<input type="radio" class="no" name="finance_rating" '.($this->user['finance_rating']==10?'checked="checked"':'').' value="10" />
+			11<input type="radio" class="no" name="finance_rating" '.($this->user['finance_rating']==11?'checked="checked"':'').' value="11" />
+		</td>
+	</tr>
+-->
+
+
+	<tr>
+		<th><?=I18n::tr('Individual bet limit')?></th>
+		<td>
+			<?=Help::Html($this->user['maxBet'])?>
+			by <?=($this->maxBetSetup ? $this->maxBetSetup["value"].' at '.$this->maxBetSetup["ts"]:'registration')?>
+		</td>
+	</tr>
+	<tr>
+		<th>
+			<?=I18n::tr('Forbidden')?>
+		</th>
+		<td>
+			<?=($this->user['isForbiden']==2?'<span style="color:orange">'.i18n::tr('account_canceled').'</span>':($this->user['isForbiden']==1?'<span class="red">'.i18n::tr('yes').'</span>':'<span class="blue">'.i18n::tr('no').'</span>'))?>
+		</td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('Blocked')?></th>
+		<td>
+			<?=($this->user['block']?'<span class="red">'.i18n::tr('yes').' ('.$this->user['block'].' '.i18n::tr('attempts').', IP: '.$this->user['blockIp'].')</span><br/><span class="red">'.i18n::tr('Block time').': '.It6_Date::fromDb($this->user['blockTime']).'</span>':'<span class="blue">'.i18n::tr('no').'</span>')?>
+		</td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('Watched')?></th>
+		<td>
+			<?=($this->user['watched']?'<span class="red">'.i18n::tr('yes').'</span>':'<span class="blue">'.i18n::tr('no').'</span>')?>
+		</td>
+	</tr>
+	<tr>
+		<th>
+			<?=I18n::tr('Certified for withdrawal')?>
+		</th>
+		<td>
+			<?=($this->user['canWithdraw']?'<span class="blue">'.i18n::tr('yes').'</span>':'<span class="red">'.i18n::tr('no').'</span>')?>
+		</td>
+	</tr>
+	<tr>
+		<th>
+			<?=I18n::tr('Testing user')?>
+		</th>
+		<td>
+		<?=($this->user['isTesting'] == 'ne'?'<span class="blue">není testovací</span>.':'<span class="red">je testovací</span> ('.$this->user['isTesting'].')')?>
+		</td>
+	</tr>
+
+	<tr>
+		<th><?=I18n::tr('Name')?></th>
+		<td><?=Help::Html($this->user['firstName'])?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('Surname')?></th>
+		<td><?=Help::Html($this->user['lastName'])?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('Username')?></th>
+		<td><?=Help::Html($this->user['username'])?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('Currency')?></th>
+		<td><?=$this->user['currencyName']?></td>
+	</tr>
+
+	<tr>
+		<th><?=I18n::tr('Activation Date')?></th>
+		<td><?=It6_Date::fromDb($this->user['activationTime'])?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('Branch')?></th>
+		<td>
+			<a href="/?section=159#%7B%22branchId%22:%22<?=$this->user['branchId']?>%22%7D"?>
+				<?=$this->user['branchName']?>
+			</a>
+		</td>
+	</tr>
+	<tr>
+		<th>
+			<?= I18n::tr('Entry bonus') ?><br/>
+			<?= I18n::tr('from') ?> (<?= I18n::tr('version') ?>): 
+			<?= I18n::tr('spent') ?> | <?= I18n::tr('first_stake') ?> | <?= I18n::tr('received') ?>
+		</th>
+		<td>
+			<?php if (!empty($this->user['ebFrom'])): ?>
+			<?= It6_Date::fromDb($this->user['ebFrom']) ?> (<?= $this->user['ebVersion'] ?>):
+			<?= $this->user['ebBalance'] ?> | <?= $this->user['ebAmount'] ?>
+			| <?= isset($this->user['ebApplied']) ? $this->user['ebApplied'] : '-' ?>
+			<?php else: ?>
+			-
+			<?php endif; ?>
+		</td>
+	</tr>
+</table>

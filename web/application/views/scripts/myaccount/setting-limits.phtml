@@ -1,0 +1,27 @@
+<div id="right">
+	<h2 class="boxheader"><?= $this->trans('setting_limits') ?></h2>
+	<div class="contentbox">
+		<div class="limits-form">
+			<?= $this->result ?>
+			<?= $this->reached ?>
+			<div style="clear:both"></div>
+			<?= $this->form ?>
+			<?= $this->trans('setting_limits_info') ?>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	// datepicker dočasně, pak přidat do komponenty
+	// timepicker dát zvlášť
+	$(document).ready(function() {
+		$('.calendar-icon').each(function(i, elem){
+			var id = $(elem).prev().attr('id');
+			$(elem).wrap('<label for="'+id+'"></label>');
+		});
+		$('.dateTime').datetimepicker({
+			'dateFormat': 'dd.mm.yy',
+			'timeFormat': 'HH:mm:ss'
+		});
+	});
+</script>
+<?= $this->render('myaccount/user-profile-left-col.phtml'); ?>

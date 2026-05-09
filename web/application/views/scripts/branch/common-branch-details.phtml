@@ -1,0 +1,55 @@
+<div id="branchResultsMarker">
+<?php foreach($this->branches as $branch) : ?>
+	<div class="grayBorder bottom10">
+		<h3 class="under">
+			<?=$branch['town']?><?php if (!empty($branch["place"])) :?> - <?=$branch['place']?><?php endif;?>, <?=$branch['street']?> <?=$branch['zip']?>
+			<?php if(!empty($branch['latitude']) && !empty($branch['longitude'])) : ?>
+				<a href="#map" onClick="initialize(null, <?=$branch['latitude']?>, <?=$branch['longitude']?>, <?=$this->detailZoom?>)">
+					<?=$this->trans('map_detail')?>
+				</a>
+			<?php endif?>
+		</h3>
+
+		<table class="w100pctCenter">
+			<tbody>
+				<tr>
+					<?php foreach($branch['openingHours'] as $dayNumber => $day) : ?>
+						<th>
+							<?php if($dayNumber == 0) : ?>
+								<?=$this->trans('monday')?>
+							<?php elseif($dayNumber == 1) : ?>
+								<?=$this->trans('tuesday')?>
+							<?php elseif($dayNumber == 2) : ?>
+								<?=$this->trans('wednesday')?>
+							<?php elseif($dayNumber == 3) : ?>
+								<?=$this->trans('thursday')?>
+							<?php elseif($dayNumber == 4) : ?>
+								<?=$this->trans('friday')?>
+							<?php elseif($dayNumber == 5) : ?>
+								<?=$this->trans('saturday')?>
+							<?php elseif($dayNumber == 6) : ?>
+								<?=$this->trans('sunday')?>
+							<?php endif?>
+						</th>
+					<?php endforeach?>
+				</tr>
+				<tr>
+					<?php foreach($branch['openingHours'] as $day) : ?>
+						<td>
+							<?php if(empty($day)) : ?>
+								<?=$this->trans('closed')?>
+							<?php else : ?>
+								<?php foreach($day as $dayHours) : ?>
+									<?=$dayHours['from']?> - <?=$dayHours['to']?><br />
+								<?php endforeach?>
+							<?php endif?>
+						</td>
+					<?php endforeach?>
+				</tr>
+			</tbody>
+		</table>
+
+		<?=$branch['info']?>
+	</div>
+<?php endforeach?>
+</div>

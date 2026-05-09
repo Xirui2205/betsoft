@@ -1,0 +1,9 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+		<tr>
+			<?php foreach($this->layout()->columns as $column) : ?>
+				<td><?=$row[$column[1]]?></td>
+			<?php endforeach?>
+		</tr>
+	<?php endforeach?>
+</tbody>

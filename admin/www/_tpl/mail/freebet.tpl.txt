@@ -1,0 +1,7 @@
+##txt:mail_noactiv_subj##
+
+##txt:nletter_osloveni_{gender}## {name}
+
+##txt:mail_noactiv_descr#V[amount;{amount}]#
+
+FREE BET {amount} EUR

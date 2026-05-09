@@ -1,0 +1,54 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="loadGeneric(<?=$this->updateSectionId?>, 'voucher-main',{ voucherId : <?=$this->voucherId?> });"><?=i18n::tr('Edit')?></button>
+	<button onclick="hideDetail('voucher-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<table class="table-list">
+	<tr>
+		<th><?=i18n::tr('id')?></th>
+		<td><?=$this->voucher['voucherId']?></td>
+	</tr>
+	<tr>
+		<th><?=i18n::tr('handle')?></th>
+		<td><?=$this->voucher['handle']?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('created')?></th>
+		<td><?=It6_Date::fromDb($this->voucher['created'])?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('valid_from')?></th>
+		<td><?=It6_Date::fromDb($this->voucher['validFrom'])?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('valid_to')?></th>
+		<td><?=It6_Date::fromDb($this->voucher['validTo'])?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('used')?></th>
+		<td><?=$this->voucher['used']?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('used_time')?></th>
+		<td><?=It6_Date::fromDb($this->voucher['usedTime'])?></td>
+	</tr>
+	
+	<tr>
+		<th><?=I18n::tr('amount')?></th>
+		<td><?=$this->voucher['amount']?> B</td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('pointTypeId')?></th>
+		<td><?=$this->voucher['pointTypeId']?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('user_nick')?></th>
+		<td><?=$this->voucher['userNick']?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('point_transaction_id')?></th>
+		<td><?=$this->voucher['pointTransactionId']?></td>
+	</tr>
+</table>

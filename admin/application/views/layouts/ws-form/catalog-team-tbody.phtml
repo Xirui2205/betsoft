@@ -1,0 +1,28 @@
+<?php foreach ($this->layout()->data as $team) : ?>
+<tr>
+	<td>
+			<button onclick="
+				<?='javascript:window.opener.document.getElementById(\''.$this->opener.'\').value+=\''.$team['name'].'\';
+				if (\''.$team['shortName'].'\'==\'???\' || \''.$team['shortName'].'\'==\'\')
+					javascript:window.opener.document.getElementById(\''.$this->opener2.'\').value+=\''.$team['name'].'\';
+				else javascript:window.opener.document.getElementById(\''.$this->opener2.'\').value+=\''.$team['shortName'].'\';
+				var tc= document.getElementById(\'teamCount\');
+				tc.value = parseInt(tc.value)+1;
+				if (document.getElementById(\'teamCount\').value == 1) {
+						javascript:window.opener.document.getElementById(\''.$this->opener.'\').value+=\' - \'; 
+						javascript:window.opener.document.getElementById(\''.$this->opener2.'\').value+=\' - \';
+						void(0);
+					} else if (document.getElementById(\'teamCount\').value == 2) {
+						self.close(); void(0);
+					};
+					return false;'
+				?>">&laquo; <?=i18n::tr('Add')?>
+	</button>
+	<td class="border-left"><?=$team['teamId']?></td>
+	<td class="border-left"><?=$this->sportsCollection[$team['sportId']]?></td>
+	<td class="border-left"><?=$team['name']?></td>
+	<!--<td class="border-left"><?=$team['betradarId']?></td>-->
+	<td class="border-left"><?=$team['shortName']?></td>
+	
+</tr>
+<?php endforeach; ?>

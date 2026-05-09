@@ -1,0 +1,25 @@
+<h3><?=i18n::tr('profile_tickets')?></h3>
+
+<?=$this->feedbackMsg?>
+
+<div id="tickets-partner-container" class="tab-container hidden">
+	<input type="hidden" name="affiliatePartnerId" id="affiliatePartnerId" value="" />
+	<div id="affiliate-partner-main" class="tab"></div>
+</div>
+
+<div id="list">
+	<form method="post" action="?section=<?=$this->partnerTicketsSectionId?>" id="affiliate-partner-index-form">
+		<?=$this->filter?>
+		<?=$this->paginator?>
+		<table class='table-list table-tickets width-100'>
+			<?=$this->tHead?>
+			<?=$this->tBody?>
+		</table>
+		<table class="legend">
+			<tr>
+				<td class="paidOutYes"><?=i18n::tr('provision_paid_out')?></td>
+				<td class="paidOutNo"><?=i18n::tr('provision_paid_out_no')?></td>
+			</tr>
+		</table>
+	</form>
+</div>

@@ -1,0 +1,175 @@
+<h3><?=i18n::tr('balancing')?></h3>
+
+<?=$this->feedbackMsg?>
+
+<?=$this->form?>
+
+<?php if ( !empty($this->balancing) ): ?>
+
+<table class="table-list">
+  <tr>
+    <th><?=i18n::tr('balance')?></th>
+    <td><?=$this->inOut->balance == 0 ? 0 : number_format($this->inOut->balance, '4', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('userWithdrawsCash')?></th>
+    <td><?=$this->inOut->userWithdrawsCash == 0 ? 0 : number_format($this->inOut->userWithdrawsCash, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('winTicketsCash')?></th>
+    <td><?=$this->inOut->winTicketsCash == 0 ? 0 : number_format($this->inOut->winTicketsCash, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('sources')?></th>
+    <td><?=$this->inOut->sources == 0 ? 0 : number_format($this->inOut->sources, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('onTheWayDeposit')?></th>
+    <td><?=$this->inOut->onTheWayDeposit == 0 ? 0 : number_format($this->inOut->onTheWayDeposit, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('onTheWayWithdraw')?></th>
+    <td><?=$this->inOut->onTheWayWithdraw == 0 ? 0 : number_format($this->inOut->onTheWayWithdraw, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('recommendedDeposit')?></th>
+    <td><?=$this->inOut->recommendedDeposit == 0 ? 0 : number_format($this->inOut->recommendedDeposit, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('recommendedWithdraw')?></th>
+    <td><?=$this->inOut->recommendedWithdraw == 0 ? 0 : number_format($this->inOut->recommendedWithdraw, '2', '.', ' ')?></td>
+  </tr>
+</table>
+
+<table class="table-list">
+  <tr>
+    <th><?=i18n::tr('start_balance')?></th>
+    <td><?=$this->balancing->startBalance == 0 ? 0 : number_format($this->balancing->startBalance, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('ticket_count')?></th>
+    <td><?=$this->balancing->ticketCount == 0 ? 0 : number_format($this->balancing->ticketCount, '0', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('ticket_amount')?></th>
+    <td><?=$this->balancing->ticketAmount == 0 ? 0 : number_format($this->balancing->ticketAmount, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_ticket_count')?></th>
+    <td><?=$this->balancing->ticketCountPoints == 0 ? 0 : number_format($this->balancing->ticketCountPoints, '0', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_ticket_amount')?></th>
+    <td><?=$this->balancing->ticketAmountPoints == 0 ? 0 : number_format($this->balancing->ticketAmountPoints, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('storno_ticket_count')?></th>
+    <td><?=$this->balancing->stornoTicketCount == 0 ? 0 : number_format($this->balancing->stornoTicketCount, '0', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('storno_ticket_amount')?></th>
+    <td><?=$this->balancing->stornoTicketAmount == 0 ? 0 : number_format($this->balancing->stornoTicketAmount, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_storno_ticket_count')?></th>
+    <td><?=$this->balancing->stornoTicketCountPoints == 0 ? 0 : number_format($this->balancing->stornoTicketCountPoints, '0', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('point_storno_ticket_amount')?></th>
+    <td><?=$this->balancing->stornoTicketAmountPoints == 0 ? 0 : number_format($this->balancing->stornoTicketAmountPoints, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('collect_ticket_count')?></th>
+    <td><?=$this->balancing->collectTicketCount == 0 ? 0 : number_format($this->balancing->collectTicketCount, '0', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('collect_ticket_amount')?></th>
+    <td><?=$this->balancing->collectTicketAmount == 0 ? 0 : number_format($this->balancing->collectTicketAmount, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th>MP</th>
+    <td><?=$this->balancing->winMp == 0 ? 0 : number_format($this->balancing->winMp, '0', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('deposits')?></th>
+    <td><?=$this->balancing->deposits == 0 ? 0 : number_format($this->balancing->deposits, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('withdraws')?></th>
+    <td><?=$this->balancing->withdraws == 0 ? 0 : number_format($this->balancing->withdraws, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('end_balance')?></th>
+    <td><?=$this->balancing->endBalance == 0 ? 0 : number_format($this->balancing->endBalance, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('collect_foreign_ticket_count')?></th>
+    <td><?=$this->balancing->collectForeignTicketCount == 0 ? 0 : number_format($this->balancing->collectForeignTicketCount, '0', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('collect_foreign_ticket_amount')?></th>
+    <td><?=$this->balancing->collectForeignTicketAmount == 0 ? 0 : number_format($this->balancing->collectForeignTicketAmount, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('collect_elsewhere_ticket_count')?></th>
+    <td><?=$this->balancing->collectElsewhereTicketCount == 0 ? 0 : number_format($this->balancing->collectElsewhereTicketCount, '0', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('collect_elsewhere_ticket_amount')?></th>
+    <td><?=$this->balancing->collectElsewhereTicketAmount == 0 ? 0 : number_format($this->balancing->collectElsewhereTicketAmount, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('win_ratio_cashflow')?></th>
+    <td><?=round($this->balancing->winRatioCashflow*100, 2)?>%</td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('overall_state_user_accounts')?></th>
+    <td><?=$this->balancing->acountUsers == 0 ? 0 : number_format($this->balancing->acountUsers, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('user_deposits')?></th>
+	<td><?=$this->balancing->userDeposits == 0 ? 0 : number_format($this->balancing->userDeposits, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('user_withdraws')?></th>
+    <td><?=$this->balancing->userWithdraws == 0 ? 0 : number_format($this->balancing->userWithdraws, '2', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('registered_users')?></th>
+    <td><?=$this->balancing->registeredUsers == 0 ? 0 : number_format($this->balancing->registeredUsers, '0', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('activated_users')?></th>
+    <td><?=$this->balancing->activatedUsers == 0 ? 0 : number_format($this->balancing->activatedUsers, '0', '.', ' ')?></td>
+  </tr>
+  <tr>
+    <th><?=i18n::tr('active_users')?></th>
+    <td><?=$this->balancing->activeUsers == 0 ? 0 : number_format($this->balancing->activeUsers, '0', '.', ' ')?></td>
+  </tr>
+</table>
+
+<?php endif; ?>
+
+<script type="text/javascript">
+	$("#hosts").change(function () {
+		$("#branchId, #branchHandle").attr("disabled", $(this).val() != '0'); 
+	});
+
+	$('#branchId').keyup(function () {
+		$("#hosts, #branchHandle").attr("disabled", $(this).val().length != '0');
+	});
+
+	$('#branchHandle').keyup(function () {
+		$("#hosts, #branchId").attr("disabled", $(this).val().length != '0');
+	});
+
+	window.onload = function(e) {
+		if ($("#hosts").val() != '0') {
+			$("#branchId, #branchHandle").attr("disabled", true);
+		} else if ($("#branchId").val().length != '0') {
+			$("#hosts, #branchHandle").attr("disabled", true);
+		} else if ($("#branchHandle").val().length != '0') {
+			$("#hosts, #branchId").attr("disabled", true);
+		}
+	}
+</script>

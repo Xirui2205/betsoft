@@ -1,0 +1,149 @@
+<script type="text/javascript">
+	function allow_bann_user(userId, ban_allow_action) {
+		$('[name=ban_allow_user_id]').val(userId);
+		$('[name=ban_allow_action]').val(ban_allow_action);
+
+		if ( ban_allow_action == "bann" ) {
+			$("#dialog").dialog("option", "title", "<?=i18n::tr('question_ban_user')?> (" + userId + ")");
+		} else {
+			$("#dialog").dialog("option", "title", "<?=i18n::tr('question_allow_user')?> (" + userId + ")");
+		}
+
+		$("#dialog").dialog("open");
+	}
+
+	function bannAllowSelectedUser(ban_allow_action) {
+		$('[name=ban_allow_action]').val(ban_allow_action);
+
+		if ( ban_allow_action == "bann" ) {
+			$("#dialog").dialog("option", "title", "Block all checked user access?");
+		} else {
+			$("#dialog").dialog("option", "title", "Allow all checked user access?");
+		}
+
+		$("#dialog").dialog("open");
+	}
+	
+	$(document).ready(function($){
+		$("#dialog").dialog({
+			resizable: false,
+			autoOpen: false,
+			width: 450,
+			modal: true,
+			buttons: {
+				"Yes": function() {
+					if ($('#sendEmailChck').is(':checked')) {
+						$('#sendEmail').val(1);
+					}
+					if ($('#sendSMSChck').is(':checked')) {
+						$('#sendSMS').val(1);
+					}
+					
+					$('[name=submit]').attr('name', 'submit2');
+					$('#formUsersFilter').submit();
+					$(this).dialog("close");
+				},
+				"No": function() {
+					$(this).dialog("close");
+				}
+			}
+		});
+	});
+</script>
+
+<h3><?=i18n::tr('Users')?></h3>
+
+<?=$this->feedbackMsg?>
+
+<ul class="idTabs" style="display:none">
+	<li><a class="selected" href="#user-profile"><?=i18n::tr('user_profile')?></a></li>
+	<?php if($this->callcenterLogged === false):?>
+	<li><a href="#user-balance" onClick="loadTabGeneric(231, 'user-balance', { userId : $('#userId').val() })"><?=i18n::tr('user_balance')?></a></li>
+	<?php endif;?>
+	<li><a href="#user-password" onClick="loadTabGeneric(234, 'user-password', { userId : $('#userId').val() })"><?=i18n::tr('password')?></a></li>
+	<li><a href="#user-notes" onClick="loadTabGeneric(229, 'user-notes', { userId : $('#userId').val() })"><?=i18n::tr('user_notes')?></a></li>
+	<?php if($this->callcenterLogged === false):?>
+	<li><a href="#user-booknotes" onClick="loadTabGeneric(235, 'user-booknotes', { userId : $('#userId').val() })"><?=i18n::tr('user_bookmaker_notes')?></a></li>
+	<li><a href="#user-duplicity" onClick="loadTabGeneric(241, 'user-duplicity', { userId : $('#userId').val() })"><?=i18n::tr('user_match_check')?></a></li>
+	<li>
+		<form method="get" action="" id="formTabUserBetStats">
+			<input type="hidden" name="section" value="76" />
+			<?php if (isset($_GET['superb'])): ?><input type="hidden" name="superb" value="1" /><?php endif; ?>
+			<input type="hidden" id="tabUserBetStatsUserId" name="user" value="" />
+			<a href="?section=76&user=<?=$this->userId.(isset($_GET['superb'])?"&superb=1":"")?>" onclick="$('#tabUserBetStatsUserId').val(); $('#formTabUserBetStats').submit(); return false;"><?=i18n::tr('user_bet_stats')?></a>
+		</form>
+	</li>
+	<li><a href="#user-parameters"  onClick="loadTabGeneric(239, 'user-parameters', { userId : $('#userId').val() })"><?=i18n::tr('user_profile_params')?></a></li>
+	<?php endif;?>
+</ul>
+
+<div id="user-container" class="tab-container hidden">
+
+	<input type="hidden" class="tabsLoaded" id="user-profile-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="user-balance-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="user-password-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="user-notes-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="user-booknotes-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="user-duplicity-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="user-parameters-loaded" value="0" />
+
+	<input type="hidden" name="userId" id="userId" value="">
+
+	<div id="user-profile" class="tab" style="display: none;">
+	</div>
+	<div id="user-balance"  class="tab" style="display: none;">
+	</div>
+	<div id="user-password" class="tab" style="display: none;">
+	</div>
+	<div id="user-notes" class="tab" style="display: none;">
+	</div>
+	<div id="user-booknotes" class="tab" style="display: none;">
+	</div>
+	<div id="user-duplicity" class="tab" style="display: none;">
+	</div>
+	<div id="user-parameters" class="tab" style="display: none;">
+	</div>
+
+</div>
+
+<div id="list">
+
+	<form method="post" action="?section=<?=$this->indexSectionId?>" id="formUsersFilter" class="formUsersFilter" onready="document.getElementByName('banAllCmd').blur();">
+		<div class="actions">
+			<?php if($this->callcenterLogged === false):?>
+			<input type="button" onClick="insertUser()" class="input"  name="insert_new" value="<?=i18n::tr('insert_user')?>" />
+			<?php endif;?>
+			
+			<label style="cursor: pointer; font-weight: bold; background-color: red; color: white; font-size: 15px; padding: 2px 5px 2px 5px;" onclick="bannAllowSelectedUser('bann')"><?=i18n::tr('ban_selected')?></label>
+			
+			<label style="cursor: pointer; font-weight: bold; background-color: green; color: white; font-size: 15px; padding: 2px 5px 2px 5px;" onclick="bannAllowSelectedUser('allow')"><?=i18n::tr('allow_selected')?></label>
+
+			<?php if($this->callcenterLogged === false):?>
+			<input type="button" onClick="exportUsers()" class="input" id="insert_new" name="insert_new" value="<?=i18n::tr('export_users')?>" />
+			<?php endif;?>
+		</div>
+
+		<?=$this->filter?>
+		<?=$this->paginator?>
+
+		<div id="dialog" title="Allow/Block user access">
+			<input type="checkbox" id="sendEmailChck" value="1" /><label for="sendEmailChck">Send Email after change</label><br />
+			<input type="checkbox" id="sendSMSChck" value="1" /><label for="sendSMSChck">Send SMS after change</label><br /><br />
+		</div>
+
+		<input type="hidden" id="sendEmail" name="sendEmail" value="0" />
+		<input type="hidden" id="sendSMS" name="sendSMS" value="0" />
+		<input type="hidden" id="ban_allow_user_id" name="ban_allow_user_id" value="0" />
+		<input type="hidden" id="ban_allow_action" name="ban_allow_action" value="bann" />
+
+		<table class='table-list width-100'>
+			<?=$this->tHead?>
+			<?=$this->tBody?>
+		</table>
+	</form>
+</div>
+<?php if (!empty($_GET['user_id'])) { ?>
+<script>
+	viewUserDetail(<?=intval($_GET['user_id'])?>);
+</script>
+<?php } ?>

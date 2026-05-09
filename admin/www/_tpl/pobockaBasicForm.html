@@ -1,0 +1,111 @@
+<form method="post" action="{ACTION}">
+
+<h2>{HEADLINE}</h2>
+
+<div>
+ {DETAIL}
+
+</div>
+
+<div class="errormsg">{ERROR}</div>
+<div class="okmsg">{SUCCESS}</div>
+
+<fieldset>
+  <legend>Obecné</legend>
+
+  <div class="errormsg">{ERROR_0}</div>
+  <table class="fTable">
+    <tr><td class="fHead">Jméno (Název pobočky):</td><td><input type="text" value="{JMENO}" id="jmeno" name="jmeno" class="digit7 mandatory" /></td></tr>
+    <tr><td class="fHead">Ulice:</td><td><input type="text" value="{ULICE}" id="ulice" name="ulice" class="digit7 mandatory" /></td></tr>
+    <tr><td class="fHead">PSČ:</td><td><input type="text" value="{PSC}" id="psc" name="psc" class="mandatory" /></td></tr>
+    <tr><td class="fHead">Město:</td><td><input type="text" value="{MESTO}" id="mesto" name="mesto" class="mandatory" /></td></tr>
+    <tr><td class="fHead">Umístění:</td><td><input type="text" value="{UMISTENI}" id="umisteni" name="umisteni" class="mandatory" /></td></tr>
+    <tr><td class="fHead">Datum platnosti:</td><td><input type="text" value="{PLATNOST_OD}" id="platnost_od" name="platnost_od" class="mandatory dateOnly" /><img src="_clip/calendar.gif" class="calendar-icon"></td></tr>
+    <tr><td class="fHead">Email:</td><td><input type="text" value="{EMAIL}" id="email" name="email" class="digit7" /></td></tr>
+    <tr><td class="fHead">Telefon:</td><td><input type="text" value="{TELEFON_PREDVOLBA}" id="telefon_predvolba" name="telefon_predvolba" class="digit5" /> <input type="" value="{TELEFON}" id="telefon" name="telefon" class="digit6 mandatory" /></td></tr>
+  </table>
+
+</fieldset>
+
+
+<fieldset>
+  <legend>Bankovní spojení - dotace</legend>
+
+  <div class="errormsg">{ERROR_1}</div>
+  <table class="fTable">
+    <tr><td class="fHead">Název pobočky:</td><td><input type="text" value="{BANK_NAZEV_POBOCKY}" id="bank_nazev_pobocky" name="bank_nazev_pobocky"  class="digit7" /></td></tr>
+    <tr><td class="fHead">Název banky:</td><td><input type="text" value="{BANK_NAZEV_BANKY}" id="bank_nazev_banky" name="bank_nazev_banky"  class="digit7" /></td></tr>
+    <tr><td class="fHead">Předčíslý a číslo účtu:</td><td><input type="text" value="{BANK_PREDCISLY}" id="bank_predcisly" name="bank_predcisly" class="digit5" /> <input type="" value="{BANK_CISLOUCTU}" id="bank_cislouctu" name="bank_cislouctu" class="digit6" /></td></tr>
+    <tr><td class="fHead">Kód banky:</td><td><input type="text" value="{BANK_KOD_BANKY}" id="bank_kod_banky" name="bank_kod_banky"  class="" /></td></tr>
+    <tr><td class="fHead">Měna:</td><td><input type="text" value="{BANK_MENA}" id="bank_mena" name="bank_mena"  class="" /></td></tr>
+    <tr><td class="fHead">Název měny:</td><td><input type="text" value="{BANK_NAZEV_MENY}" id="bank_nazev_meny" name="bank_nazev_meny"  class="" /></td></tr>
+  </table>
+
+</fieldset>
+
+<fieldset>
+  <legend>Bankovní spojení - provize</legend>
+
+  <div class="errormsg">{ERROR_2}</div>
+  <table class="fTable">
+    <tr><td class="fHead">Název pobočky:</td><td><input type="text" value="{PROVIZE_NAZEV_POBOCKY}" id="provize_nazev_pobocky" name="provize_nazev_pobocky"  class="digit7" /></td></tr>
+    <tr><td class="fHead">Název banky:</td><td><input type="text" value="{PROVIZE_NAZEV_BANKY}" id="provize_nazev_banky" name="provize_nazev_banky"  class="digit7" /></td></tr>
+    <tr><td class="fHead">Předčíslý a číslo účtu:</td><td><input type="text" value="{PROVIZE_PREDCISLY}" id="provize_predcisly" name="provize_predcisly" class="digit5" /> <input type="" value="{PROVIZE_CISLOUCTU}" id="provize_cislouctu" name="provize_cislouctu" class="digit6" /></td></tr>
+    <tr><td class="fHead">Kód banky:</td><td><input type="text" value="{PROVIZE_KOD_BANKY}" id="provize_kod_banky" name="provize_kod_banky"  class="" /></td></tr>
+    <tr><td class="fHead">Měna:</td><td><input type="text" value="{PROVIZE_MENA}" id="provize_mena" name="provize_mena"  class="" /></td></tr>
+    <tr><td class="fHead">Název měny:</td><td><input type="text" value="{PROVIZE_NAZEV_MENY}" id="provize_nazev_meny" name="provize_nazev_meny"  class="" /></td></tr>
+    <tr><td class="fHead">Kontakntí osoba:</td><td><input type="text" value="{PROVIZE_KONTAKNTI_OSOBA}" id="provize_kontaktni_osoba" name="provize_kontaktni_osoba"  class="" /></td></tr>
+  </table>
+
+</fieldset>
+
+<fieldset>
+  <legend>Smlouva</legend>
+
+  <div class="errormsg">{ERROR_3}</div>
+   <table class="fTable">
+    <tr><td class="fHead">Datum:</td><td><input type="" value="{SMLOUVA_DATUM}" id="smlouva_datum" name="smlouva_datum"  class="mandatory dateOnly" /><img src="_clip/calendar.gif" class="calendar-icon"></td></tr>
+    <tr><td class="fHead">Provoz pobočky:</td><td>po.<input type="checkbox" {SMLOUVA_PROVOZ_PO}  id="smlouva_provoz[po]" value="po" name="smlouva_provoz[po]"  class="chck" /> út.<input type="checkbox" {SMLOUVA_PROVOZ_UT}  id="smlouva_provoz[ut]" value="ut" name="smlouva_provoz[ut]"  class="chck" /> st.<input type="checkbox" {SMLOUVA_PROVOZ_ST}  id="smlouva_provoz[st]" value="st" name="smlouva_provoz[st]"  class="chck" /> čt.<input type="checkbox" {SMLOUVA_PROVOZ_CT}  id="smlouva_provoz[ct]" value="ct" name="smlouva_provoz[ct]"  class="chck" /> pá.<input type="checkbox" {SMLOUVA_PROVOZ_PA}  id="smlouva_provoz[pa]" value="pa" name="smlouva_provoz[pa]"  class="chck" /> so.<input type="checkbox" {SMLOUVA_PROVOZ_SO}  id="smlouva_provoz[so]" value="so" name="smlouva_provoz[so]"  class="chck" /> ne.<input type="checkbox" {SMLOUVA_PROVOZ_NE}  id="smlouva_provoz[ne]" value="ne" name="smlouva_provoz[ne]"  class="chck" /></td></tr>
+    <tr><td class="fHead">Přestávka od/do:</td><td><input type="text" value="{SMLOUVA_PRESTAVKA_OD}" id="smlouva_prestavka_od" name="smlouva_prestavka_od"  class="digit5" /> - <input type="text" value="{SMLOUVA_PRESTAVKA_DO}" id="smlouva_prestavka_do" name="smlouva_prestavka_do"  class="digit5" /></td></tr>
+    <tr><td class="fHead">Datum účinnosti:</td><td><input type="text" value="{SMLOUVA_DATUM_UCINNOSTI}" id="smlouva_datum_ucinnosti" name="smlouva_datum_ucinnosti"  class="mandatory dateOnly" /><img src="_clip/calendar.gif" class="calendar-icon"></td></tr>
+    <tr><td class="fHead">Datum podpisu:</td><td><input type="text" value="{SMLOUVA_DATUM_PODPISU}" id="smlouva_datum_podpisu" name="smlouva_datum_podpisu"  class="mandatory dateOnly" /><img src="_clip/calendar.gif" class="calendar-icon"></td></tr>
+    <tr><td class="fHead">Datum ukončení:</td><td><input type="text" value="{SMLOUVA_DATUM_UKONCENI}" id="smlouva_datum_ukonceni" name="smlouva_datum_ukonceni"  class="dateOnly" /><img src="_clip/calendar.gif" class="calendar-icon"></td></tr>
+    <tr><td class="fHead">Ulice:</td><td><input type="text" value="{SMLOUVA_ULICE}" id="smlouva_ulice" name="smlouva_ulice"  class="" /></td></tr>
+    <tr><td class="fHead">Město:</td><td><input type="text" value="{SMLOUVA_MESTO}" id="smlouva_mesto" name="smlouva_mesto"  class="" /></td></tr>
+    <tr><td class="fHead">Manipulační poplatek:</td><td><input type="text" value="{SMLOUVA_MANIPULACNI_POPLATEK}" id="smlouva_manipulacni_poplatek" name="smlouva_manipulacni_poplatek"  class="digit5 mandatory" />%</td></tr>
+    <tr><td class="fHead">Druh smlouvy:</td><td><input type="text" value="{SMLOUVA_DRUH_SMLOUVY}" id="smlouva_druh_smlouvy" name="smlouva_druh_smlouvy"  class="" /></td></tr>
+    <tr><td class="fHead">Věrnostní program:</td><td>ano <input type="radio" value="1" {SMLOUVA_VERNOSTNI_PROGRAM_1} id="smlouva_vernostni_program" name="smlouva_vernostni_program"  class="chck" /> ne <input type="radio" value="0" {SMLOUVA_VERNOSTNI_PROGRAM_0} id="smlouva_vernostni_program" name="smlouva_vernostni_program"  class="chck" /></td></tr>
+    <tr><td class="fHead">Vyúčtování:</td><td><select id="smlouva_vyuctovani" name="smlouva_vyuctovani">
+    <option  value="0">Zvolte</option>
+      <!-- START BLOCK : smlouva_vyuctovani -->
+      <option {SEL} value="{VAL}">{VAL}</option>
+      <!-- END BLOCK : smlouva_vyuctovani -->
+
+    </select></td></tr>
+    <tr><td class="fHead">Zálohy:</td><td><select id="smlouva_zalohy" name="smlouva_zalohy">
+    <option  value="0">Zvolte</option>
+      <!-- START BLOCK : smlouva_zalohy -->
+      <option {SEL} value="{VAL}">{VAL}</option>
+      <!-- END BLOCK : smlouva_zalohy -->
+
+    </select></td></tr>
+    <tr><td class="fHead">Kraj:</td><td><select id="smlouva_kraj" name="smlouva_kraj">
+    <option  value="0">Zvolte</option>
+      <!-- START BLOCK : smlouva_kraj -->
+      <option {SEL} value="{VAL2}">{VAL}</option>
+      <!-- END BLOCK : smlouva_kraj -->
+
+    </select></td></tr>
+    <tr><td class="fHead">Regionální manager:</td><td><input type="text" value="{SMLOUVA_REG_MANAGER}" id="smlouva_reg_manager" name="smlouva_reg_manager"  class="digit7" /></td></tr>
+    </table>
+
+</fieldset>
+
+<br />
+<input type="submit" value="ULOŽIT" id="send" name="send"  class="" />
+<input type="hidden" value="{POBOCKA_ID}" id="pobocka_id" name="pobocka_id"  class="" />
+</form>
+
+<br /><br />
+<img class="img" src="http://admin.vic.cz/_clip/mandatory.gif"/>
+<small>Takto označený údaj je povinný</small>

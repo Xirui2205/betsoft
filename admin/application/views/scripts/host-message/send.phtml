@@ -1,0 +1,52 @@
+<style>
+#HostExport {
+	border: 0px solid red;
+	background: none;
+}
+</style>
+<h3><?=i18n::tr('Send message')?></h3>
+
+<?=$this->message;?>
+
+<?=$this->form?>
+
+<h3>Message History</h3>
+
+<form id="MessageExport" enctype="application/x-www-form-urlencoded" method="post" action="">
+	  <div class="actions">
+    <input
+      type="submit"
+      name="export"
+      value="<?=i18n::tr('Export')?>"/>
+  </div>
+</form>
+
+<table class="table-list width-100">
+<thead>
+<tr>
+	<th>host_id</th>
+	<th><?=i18n::tr('valid_from')?></th>
+	<th><?=i18n::tr('valid_to')?></th>
+	<th><?=i18n::tr('message')?></th>
+	<th><?=i18n::tr('restart')?></th>
+	<th><?=i18n::tr('version')?></th>
+</tr>
+</thead>
+
+<?php
+foreach ($this->messages as $message) { 
+	$runned = "";
+	if ( It6_Date::fromDb($message["time"]) <= It6_Date::fromDb(It6_Date::dbNow()) && 
+		 It6_Date::fromDb($message["time_to"]) >= It6_Date::fromDb(It6_Date::dbNow()) ) {
+		$runned = "color:red;";
+	}?>
+	<tr style="<?=$runned?>">
+		<td><?=$message["hostId"];?></td>
+		<td><?=It6_Date::fromDb($message["time"]);?></td>
+		<td><?=It6_Date::fromDb($message["time_to"]);?></td>
+		<td><?=$message["message"];?></td>
+		<td><?=$message["restart"];?></td>
+		<td><?=$message["version"];?></td>
+	</tr>
+<?php } ?>
+</table>

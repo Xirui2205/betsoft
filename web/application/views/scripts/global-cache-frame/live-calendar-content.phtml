@@ -1,0 +1,34 @@
+<table class="table table-striped table-hover matches calendar">
+	<thead>
+		<tr>
+			<th><?=$this->trans('match'); ?></th>
+			<th class="text-center"><?=$this->trans('score'); ?></th>
+			<th><?=$this->trans('time'); ?></th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php
+		$cnt = 0;
+		if(count($this->liveCalendarMatches)>0): foreach($this->liveCalendarMatches as $data) : ?>
+		<tr>
+			<td class="ico ico-sport ico-tennis" id="t<?=$data['sportId'] ?>"><a href="<?= It6_Models_Livebetting::getUrl($data->id, true, true) ?>"><strong><?=$data->homeTeam?> - <?=$data->awayTeam?></strong></a><br><?=$data->region?> | <?=$data->league?></td>
+			<td class="text-center">
+				<?php if($data->scoreHome != null && $data->scoreAway != null) : ?>
+					<?=$data->scoreHome?>:<?=$data->scoreAway?>
+				<?php else : ?>
+					-:-
+				<?php endif?>
+			</td>
+			<td><?=$data->status != 'NOT_STARTED' ? $this->trans('live_state_'.$data->status) : It6_Date::fromDb($data->start)?></td>
+		</tr>
+		<?php
+		if ( $cnt === 10 ) break;
+		endforeach; else: ?>
+			<tr class="even"><td colspan="4"><?=$this->trans('no_bets')?></td></tr>
+		<?php endif; ?>
+	</tbody>
+</table>
+<script type="text/javascript">
+	if (tick)
+		tick.selectAllBetRates();
+</script>

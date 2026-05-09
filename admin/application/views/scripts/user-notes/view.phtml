@@ -1,0 +1,29 @@
+<div class="actions">
+	<?php if($this->callcenterLogged == false):?>
+	<button onClick="loadGeneric(<?=$this->updateSectionId?>, 'user-notes', { userId : <?=$this->userId?> });"><?=i18n::tr('Edit')?></button>
+	<?php endif;?>
+	<button onclick="hideDetail('user-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<?=$this->feedbackMsg?>
+
+<?php if(!empty($this->userNotes)):?>
+	<table class="table-list">
+		<thead>
+			<th><?=i18n::tr('By Admin')?></th>
+			<th><?=i18n::tr('Date')?></th>
+			<th><?=i18n::tr('Text')?></th>
+		</thead>
+		<tbody>
+			<?php foreach($this->userNotes as $note):?>
+				<tr>
+					<td><?=$note['adminId']?></td>
+					<td><?=$note['date']?></td>
+					<td><?=$note['text']?></td>
+				</tr>
+			<?php endforeach?>
+		</tbody>
+	</table>
+<?php else:?>
+	<?=i18n::tr('There are no notes attached to this user.')?>
+<?php endif?>

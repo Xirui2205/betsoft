@@ -1,0 +1,12 @@
+<?=I18n::tr('branch_funding')?>
+
+==============================
+
+<?php if ( empty($this->transactions) ): ?>
+<?=I18n::tr('no_records')?>
+<?php else:?>
+<?php foreach( $this->transactions as $transaction ):?>
+#<?=$transaction['hostId']?> <?=$transaction['hostName']?> <?=$transaction['value']?> <?=It6_Date::fromDb($transaction['okTime'])?>
+
+<?php endforeach;?>
+<?php endif; ?>

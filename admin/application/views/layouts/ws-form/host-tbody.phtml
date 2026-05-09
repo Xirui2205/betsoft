@@ -1,0 +1,59 @@
+<?php foreach ( $this->layout()->data as $host ) : ?>
+	<tr>
+		<td class="border-left">
+			<?php if( empty($host['banned']) ):?>
+				<input type="submit" name="ban:<?=$host['hostId']?>" value="<?=i18n::tr('host_ban')?>" />
+			<?php else: ?>
+				<input type="submit" name="allow:<?=$host['hostId']?>" value="<?=i18n::tr('host_allow')?>" />
+			<?php endif; ?>
+			<?php if( $host['inAllowed'] ):?>
+				<input type="submit" name="banIn:<?=$host['hostId']?>" value="<?=i18n::tr('host_ban_in')?>" />
+			<?php else: ?>
+				<input type="submit" name="allowIn:<?=$host['hostId']?>" value="<?=i18n::tr('host_allow_in')?>" />
+			<?php endif; ?>
+			<?php if( $host['outAllowed'] ):?>
+				<input type="submit" name="banOut:<?=$host['hostId']?>" value="<?=i18n::tr('host_ban_out')?>" />
+			 <?php else: ?>
+				<input type="submit" name="allowOut:<?=$host['hostId']?>" value="<?=i18n::tr('host_allow_out')?>" />
+			<?php endif; ?>
+			<input
+				type="submit"
+				name="clearFingerprint:<?=$host['hostId']?>"
+				value="<?=i18n::tr('host_clear_fingerprint')?>"
+				onClick="return confirm('<?=I18n::tr('host_clear_fingerprint_confirm')?>')"
+			/>
+		</td>
+		<td class="border-left"><?=$host['hostId']?></td>
+		<td class="border-left"><?=$host['name']?></td>
+		<td class="border-left"><?=$host['branchHandle']?></td>
+		<td class="border-left"><?=$host['branchName']?></td>
+		<td class="border-left"><?=$host['ip']?></td>
+		<td class="border-left"><?=$host['version']?></td>
+		<!--<td class="border-left"><?='TODO'?></td>-->
+		<td class="border-left"><?=$host['branchAddress']?></td>
+		<td class="border-left"><?=$host['branchPhone']?></td>
+		<td class="border-left"><img src="/_img/but_<?= $host['onlineStatus'] ? 'green' : 'red' ?>.gif"/><?= $host['lastAccess'] ? $host['lastAccess'] : '' ?></td>
+		<td class="border-left"><img src="/_img/but_<?= $host['fingerprint'] ? 'green' : 'red' ?>.gif"/></td>
+		<td class="border-left"><?=$host['banned']?>
+			<?php if (is_null($host['banned'])) : ?>
+				<span class="allowed"><?=i18n::tr('host_allowed')?></span>
+			<?php else: ?>
+				<span class="blocked"><?=i18n::tr('host_banned')?></span>
+			<?php endif; ?>
+		</td>
+		<td class="border-left">
+			<?php if ($host['inAllowed']==1) : ?>
+				<span class="allowed"><?=i18n::tr('host_allowed_in')?></span>
+			<?php else: ?>
+				<span class="blocked"><?=i18n::tr('host_blocked_in')?></span>
+			<?php endif; ?>
+		</td>
+		<td class="border-left">
+			<?php if ($host['outAllowed']==1) : ?>
+				<span class="allowed"><?=i18n::tr('host_allowed_out')?></span>
+			<?php else: ?>
+				<span class="blocked"><?=i18n::tr('host_blocked_out')?></span>
+			<?php endif; ?>
+		</td>
+	</tr>
+<?php endforeach?>

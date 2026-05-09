@@ -1,0 +1,18 @@
+<div id="topnav">
+	<div id="loginWrapper" class="right">
+		<!--
+		<a id="operationTime" class="txt" href="<?php //$this->UrlSet(116); ?>">
+			<?php //$this->trans('operation_time');?>
+		</a>-->
+		<a class="txt" href="<?=$this->UrlSet(20); ?>">
+			<?=$this->trans('game_plan');?>
+		</a>
+		<a class="txt" href="<?=$this->UrlSet(104); ?>">
+			<?php //$this->trans('responsible_betting');?>
+		</a>
+		<a class="txt" href="<?= $this->UrlSet(21) /* 21 was deposit/withdraw info page, 53 is bank deposit */ ?>">
+			<?=$this->trans('dep_with');?>
+		</a>
+		<?= $this->render('index/loginForm.phtml') ?>
+	</div>
+</div>

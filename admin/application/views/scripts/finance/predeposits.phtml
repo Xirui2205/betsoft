@@ -1,0 +1,112 @@
+<h3><?=i18n::tr('predeposits')?></h3>
+
+<?=$this->result?>
+
+<?=$this->form?>
+
+<?php if($this->transactions === false) : ?>
+	<?=UiUtil::printWarnings(I18n::tr('Please select type of transaction first.'))?>
+<?php elseif(!empty($this->transactions)) : ?>
+	<form method="POST">
+	  <table class="table-list">
+		<tr>
+		  <th>&nbsp;</th>
+		  <th colspan="2">&nbsp;</th>
+		  <th style="width:60px" class="border-left">
+			<?=i18n::tr('id')?>
+		  </th>
+		  <th class="border-left">
+			<?=i18n::tr('time')?>
+			<?=$this->orderButton['time']?>
+		  </th>
+		  <th class="border-left">
+			<?=i18n::tr('time-pass')?>
+		  </th>
+		  <th class="border-left">
+			<?=i18n::tr('type-id')?>
+		  </th>
+		  <th class="border-left">
+			<?=i18n::tr('type-name')?>
+			<?=$this->orderButton['typeName']?>
+		  </th>
+		  <th class="border-left">
+			<?=i18n::tr('value')?>
+		  </th>
+		  <th class="border-left">
+			<?=i18n::tr('currency')?>
+		  </th>
+		  <th class="border-left">
+			<?=i18n::tr('user_handle')?>
+		  </th>
+		  <th class="border-left">
+			<?=i18n::tr('host-id')?>
+		  </th>
+		  <th class="border-left">
+			<?=i18n::tr('user-nick')?>
+			<?=$this->orderButton['userNick']?>
+		  </th>
+		   <th class="border-left">
+			<?=i18n::tr('branch-name')?>
+		  </th>
+		  <th class="border-left">
+			<?=i18n::tr('ticket-id')?>
+		  </th>
+		</tr>
+		<?php $i = 0; foreach ( $this->transactions as $item ): ++$i;?>
+		  <tr>
+			<td>
+			  <input name="select[<?=$i?>]" value="<?=$item->transactionId?>" type="checkbox" />
+			</td>
+			<td>
+			  <?=$item->confirmButton?>
+			</td>
+			<td>
+			  <?=$item->cancelButton?>
+			</td>
+			<td>
+			  <?=$item->transactionId?>
+			</td>
+			<td>
+			  <?=It6_Date::fromDb($item->time)?>
+			</td>
+			<td>
+			  <!--  time pass -->
+			</td>
+			<td>
+			  <?=$item->typeId?>
+			</td>
+			<td>
+			  <?=i18n::tr($item->typeName)?>
+			</td>
+			<td style="text-align: right">
+			  <?=$item->value?>
+			</td>
+			<td>
+			  <?=$item->currencyCode?>
+			</td>
+			<td>
+			  <?=$item->userHandle?>
+			</td>
+			 <td>
+			  <?=$item->hostId?>
+			</td>
+			<td>
+			  <?=$item->userNick?>
+			</td>
+			 <td>
+			<?=$item->branchName?>
+		   </td>
+			<td>
+			  <?=$item->ticketId?>
+			</td>
+		  </tr>
+		<?php endforeach; ?>
+	  </table>
+	  <br />
+	  <input type="submit" name="deposit_selected" value="<?=i18n::tr('deposit-selected')?>"/>
+	  <input type="submit" name="cancel_selected" value="<?=i18n::tr('no-deposit-selected')?>"/>
+      <input type="submit" name="export" value="<?=i18n::tr('export_list')?>"/>
+	</form>
+<?php else : ?>
+	<?=UiUtil::printWarnings('No data.')?>
+<?php endif?>

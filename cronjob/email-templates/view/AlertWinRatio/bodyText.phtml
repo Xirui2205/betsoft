@@ -1,0 +1,12 @@
+<?=I18n::tr('win_ratio')?>
+
+=======================
+
+<?php if ( empty($this->users) ): ?>
+<?=I18n::tr('no_records')?>
+<?php else:?>
+<?php foreach( $this->users as $user ) : ?>
+#<?=$user['userId']?> <?=$user['loginName']?> <?=$user['winRatio'] * 100?>%
+
+<?php endforeach?>
+<?php endif;?>

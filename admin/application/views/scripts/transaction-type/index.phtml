@@ -1,0 +1,76 @@
+<h3><?=I18n::tr('Transaction Types')?></h3>
+
+<ul class="idTabs">
+	<li><a href="#tab-fees"><?=i18n::tr('transaction_fees')?></a></li>
+	<li><a href="#tab-limits"><?=i18n::tr('transaction_limits')?></a></li>
+</ul>
+
+<div class="tab-container" id="tab-container">
+	<div id="tab-fees">
+		<div id="fees-detail"></div>
+		<div id="feeList">
+		<?php if (!empty($this->feeEditable)) : ?>
+			<table class="table-list">
+				<tr>
+					<th></th>
+					<th><?=i18n::tr('Type Id')?></th>
+					<th><?=i18n::tr('Name')?></th>
+					<th><?=i18n::tr('Description')?></th>
+					<th><?=i18n::tr('fixed_fee_value')?></th>
+					<th><?=i18n::tr('relative_fee_value')?></th>
+				</tr>
+				<?php foreach($this->feeEditable as $type) : ?>
+					<tr>
+						<td>
+							<button onClick="loadDetail('fees-detail', <?=$this->updateFeeSectionId?>, <?=$type['transactionTypeId']?>)">
+								<?=i18n::tr('Edit')?>
+							</button>
+						</td>
+						<td><?=$type['transactionTypeId']?></td>
+						<td><?=$type['name']?></td>
+						<td><?=$type['note']?></td>
+						<td><?=($type['feeFix'] != null ? $type['feeFix'] : i18n::tr('undefined'))?></td>
+						<td><?=($type['feeRel'] != null ? $type['feeRel'] : i18n::tr('undefined'))?></td>
+					</tr>
+				<?php endforeach?>
+			</table>
+		<?php else : ?>
+			<?=UiUtil::printWarnings('no_transaction_editable')?>
+		<?php endif;?>
+		</div>
+	</div>
+
+	<div id="tab-limits">
+		<div id="limits-detail"></div>
+		<div id="limitList">
+			<?php if (!empty($this->limitEditable)) : ?>
+				<table class="table-list">
+					<tr>
+						<th></th>
+						<th><?=i18n::tr('Type Id')?></th>
+						<th><?=i18n::tr('Name')?></th>
+						<th><?=i18n::tr('Description')?></th>
+						<th><?=i18n::tr('Low Limit')?></th>
+						<th><?=i18n::tr('High Limit')?></th>
+					</tr>
+					<?php foreach($this->limitEditable as $type) : ?>
+						<tr>
+							<td>
+								<button onClick="loadDetail('limits-detail', <?=$this->updateLimitSectionId?>, <?=$type['transactionTypeId']?>)">
+									<?=i18n::tr('Edit')?>
+								</button>
+							</td>
+							<td><?=$type['transactionTypeId']?></td>
+							<td><?=$type['name']?></td>
+							<td><?=$type['note']?></td>
+							<td><?=($type['lowLimit'] != null ? $type['lowLimit'] : '&#8734;')?></td>
+							<td><?=($type['highLimit'] != null ? $type['highLimit'] :'&#8734;')?></td>
+						</tr>
+					<?php endforeach?>
+				</table>
+			<?php else : ?>
+				<?=UiUtil::printWarnings('no_transaction_editable')?>
+			<?php endif;?>
+		</div>
+	</div>
+</div>

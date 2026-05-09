@@ -1,0 +1,321 @@
+<form method="post" action="<?=$url?>" id="formTiketyFiltr">
+	<div class="table-filter">
+		<input type="hidden" name="filtr" />
+		<table class="form">
+			<tr>
+				<td class="cell-label">
+					<label><?=I18n::tr('user_id')?></label>
+				</td>
+				<td class="cell-data">
+					<input
+						type="text"
+						name="uid"
+						value="<?=$userId?>"
+					/>
+				</td>
+				<td class="cell-label">
+					<label><?=I18n::tr('branch_id')?></label>
+				</td>
+				<td class="cell-data">
+					<input
+						type="text"
+						name="branch_id"
+						value="<?=$branchId?>"
+					/>
+					<input
+						type="checkbox"
+						name="branch_id_is_handle"
+						value="yes"
+						id="ticketFilterBranchIdIsHandle"
+						<?=($branchIdIsHandle ? 'checked="checked"' : '')?>
+					/>
+					<label for="ticketFilterBranchIdIsHandle"><?=I18n::tr('handle')?></label>
+				</td>
+	
+				<td class="cell-label" rowspan="4">
+					<label><?=I18n::tr('ticket_status')?></label>
+				</td>
+				<td class="cell-data" rowspan="4">
+					<table id="ticketStatusFilter">
+						<tr>
+							<td>
+								<strong><?=I18n::tr('ticket_status_winnings')?></strong>
+							</td>
+							<td>
+								<input
+									type="checkbox"
+									name="win_t"
+									<?=$isWin ? 'checked="checked"' : ''?>
+									value="1"
+								/>
+							</td>
+							<td>
+								<strong><?=I18n::tr('ticket_status_collected')?></strong>
+							</td>
+							<td>
+								<input
+									type="checkbox"
+									name="collected"
+									<?=$isCollected ? 'checked="checked"' : ''?>
+									value="1"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<strong><?=I18n::tr('ticket_status_not_collected')?></strong>
+							</td>
+							<td>
+								<input
+									type="checkbox"
+									name="not_collected"
+									<?=$isNotCollected ? 'checked="checked"' : ''?>
+									value="1"
+								/>
+							</td>
+							<td>
+								<strong><?=I18n::tr('ticket_status_forfeited')?></strong>
+							</td>
+							<td>
+								<input
+									type="checkbox"
+									name="forfeited"
+									<?=$isForfeited ? 'checked="checked"' : ''?>
+									value="1"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<strong><?=I18n::tr('ticket_status_paid_out')?></strong>
+							</td>
+							<td>
+								<input
+									type="checkbox"
+									name="proplacene"
+									<?=$isPaidOut ? 'checked="checked"' : ''?>
+									value="1"
+								/>
+							</td>
+							<td>
+								<strong><?=I18n::tr('ticket_status_not_paid_out')?></strong>
+							</td>
+							<td>
+								<input
+									type="checkbox"
+									name="not_proplacene"
+									<?=$isNotPaidOut ? 'checked="checked"' : ''?>
+									value="1"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<strong><?=I18n::tr('ticket_status_canceled')?></strong>
+							</td>
+							<td>
+								<input
+									type="checkbox"
+									name="is_canceled"
+									<?=$isCanceled ? 'checked="checked"' : ''?>
+									value="1"
+								/>
+							</td>
+							<td>
+								<strong><?=I18n::tr('is_loss')?></strong>
+							</td>
+							<td>
+								<input
+									type="checkbox"
+									name="is_loss"
+									<?=$isLoss ? 'checked="checked"' : ''?>
+									value="1"
+								/>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td class="cell-label">
+					<label><?=I18n::tr('ticket_id')?></label>
+				</td>
+				<td class="cell-data">
+					<input
+						type="text"
+						name="ticket_id_search"
+						value="<?=$ticketId?>"
+					/>
+				</td>
+	
+				<td class="cell-label">
+					<label><?=I18n::tr('ticket_handle')?></label>
+				</td>
+				<td class="cell-data">
+					<input
+						type="text"
+						name="ticket_handle_search"
+						value="<?=$ticketHandle?>"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<td class="cell-label">
+					<label><?=I18n::tr('bet_id')?></label>
+				</td>
+				<td class="cell-data">
+					<input
+						type="text"
+						name="betId"
+						value="<?=$betId?>"
+					/>
+				</td>
+				
+				<td class="cell-label">
+					<label><?=I18n::tr('rate_greater_then')?></label>
+				</td>
+				<td class="cell-data">
+					<input
+						type="text"
+						name="rate_greater_then"
+						value="<?=$rateGreaterThen?>"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<td class="cell-label">
+					<label><?=I18n::tr('stake_greater_then')?></label>
+				</td>
+				<td class="cell-data">
+					<input
+						type="text"
+						name="stake_greater_then"
+						value="<?=$stakeGreaterThen?>"
+					/>
+				</td>
+	
+				<td class="cell-label">
+					<label><?=I18n::tr('win_greater_then')?></label>
+				</td>
+				<td class="cell-data">
+					<input
+						type="text"
+						name="win_greater_then"
+						value="<?=$winGreaterThen?>"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<td class="cell-label">
+					<label><?=I18n::tr('date_from_payout')?></label>
+				</td>
+				<td class="cell-data">
+					<input
+						type="text"
+						name="od_payout"
+						class="dateTime"
+						value="<?=$payoutFrom?>"
+					/>
+					<img src="images/ico/calendar.gif" class="calendar-icon">
+				</td>
+			
+				<td class="cell-label">
+					<label><?=I18n::tr('date_to_payout')?></label>
+				</td>
+				<td class="cell-data">
+					<input
+						type="text"
+						name="do_payout"
+						class="dateTime"
+						value="<?=$payoutTo?>"
+					/>
+					<img src="images/ico/calendar.gif" class="calendar-icon">
+				</td>
+			
+				<td class="cell-label"></td>
+				<td class="cell-data"></td>
+			</tr>
+			<tr>
+				<td class="cell-label">
+					<label><?=I18n::tr('date_from_collect')?></label>
+				</td>
+				<td class="cell-data">
+					<input
+						type="text"
+						name="od_collect"
+						class="dateTime"
+						value="<?=$collectFrom?>"
+					/>
+					<img src="images/ico/calendar.gif" class="calendar-icon">
+				</td>
+				<td class="cell-label">
+					<label><?=I18n::tr('date_to_collect')?></label>
+				</td>
+				<td class="cell-data">
+					<input
+						type="text"
+						name="do_collect"
+						class="dateTime"
+						value="<?=$collectTo?>"
+					/>
+					<img src="images/ico/calendar.gif" class="calendar-icon">
+				</td>
+				<td class="cell-label"></td>
+				<td class="cell-data"></td>
+			</tr>
+			<tr>
+				<td class="cell-label">
+					<label><?=I18n::tr('date_from')?></label>
+				</td>
+				<td class="cell-data">
+					<input
+						type="text"
+						name="od"
+						class="dateTime"
+						value="<?=$createdFrom?>"
+						style="widthL"
+					/>
+					<img src="images/ico/calendar.gif" class="calendar-icon">
+				</td>
+			
+				<td class="cell-label">
+					<label><?=I18n::tr('date_to')?></label>
+				</td>
+				<td class="cell-data">
+					<input
+						type="text"
+						name="do"
+						class="dateTime"
+						value="<?=$createdTo?>"
+					/>
+					<img src="images/ico/calendar.gif" class="calendar-icon">
+				</td>
+				
+				<td class="cell-label"></td>
+				<td class="cell-data">
+					<input type="submit" class="inputs" value="Vyhledat" />
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<label for="ticket_order"><?i18n::tr('order_col')?></label>
+		<select name="order_col">
+			<?php foreach($orderOpts as $key => $opt) : ?>
+				<option value="<?=$key?>" <?=($orderCol == $key ? 'selected="selected"' : '')?>>
+					<?=i18n::tr($opt['label'])?>
+				</option>
+			<?php endforeach?>
+		</select>
+		
+		<label for="ticket_order_dir"><?=i18n::tr('order_dir')?></label>
+		<select name="order_dir">
+			<option <?=$orderDir == 'ASC' ? 'selected="selected"' : ''?> value="ASC">
+				<?=I18n::tr('ascending')?>
+			</option>
+			<option <?=$orderDir == 'DESC' ? 'selected="selected"' : ''?> value="DESC">
+				<?=I18n::tr('descending')?>
+			</option>
+		</select>
+	</div>
+<!-- </form> -->

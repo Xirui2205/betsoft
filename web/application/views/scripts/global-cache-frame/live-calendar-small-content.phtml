@@ -1,0 +1,221 @@
+<script type="text/javascript">
+	$(function() {
+		var index = 'key-live';
+		var dataStore = window.sessionStorage;
+
+		try {
+			var oldIndex = dataStore.getItem(index);
+		} catch(e) {
+			var oldIndex = 0;
+		}
+		$("#tabs-live").tabs({
+			active : oldIndex,
+			activate : function( event, ui ) {
+				var newIndex = ui.newTab.parent().children().index(ui.newTab);
+				dataStore.setItem( index, newIndex )
+			}
+		});
+		$("#tabs-live").removeClass('ui-corner-all');
+		$("#tabs-live ul").removeClass('ui-corner-all');
+		$("#tabs-live div").removeClass('ui-corner-bottom');
+	});
+</script>
+
+<script type="text/javascript">
+function showhidedetail(id) {
+   var $e = $('#' + id);
+   $e.toggle();
+}
+</script>
+
+<h2 class="boxheader"><?=$this->trans('live'); ?></h2>
+<ul class="nav nav-tabs" role="tablist">
+	<li class="active"><a href="#tab-playing-now" role="tab" data-toggle="tab"><?=$this->trans('running_now')?></a></li>
+	<li><a href="#tab-following" role="tab" data-toggle="tab"><?=$this->trans('comming_up')?></a></li>
+</ul>
+
+<div class="tab-content">
+	<div id="tab-playing-now" class="tab-pane fade in active contentbox no-padding">						
+		<?php
+		if (!empty($this->liveOnline)) {
+			$x = 0;
+			foreach ( $this->liveOnline as $sportId => $sport ): ?>
+				<?php
+				$last = false;
+				$liveOnlineInSportCount = count($sport['matches']);
+				$cnt = 0;
+
+				$_class = $bgimg = "";
+				switch ($sportId) {
+					case 1001:
+						$_class = "live-soccer";
+						$bgimg = "match-soccer";
+						break;
+					case 1011:
+						$_class = "live-icehockey";
+						$bgimg = "match-hockey";
+						break;
+					case 1003:
+						$_class = "live-tennis";
+						$bgimg = "match-tennis";
+						break;
+					case 1006:
+						$_class = "live-basketball";
+						$bgimg = "match-basketball";
+						break;
+					case 1016:
+						$_class = "live-tabletennis";
+						$bgimg = "match-table-tennis";
+						break;
+					case 1013:
+						$_class = "live-volleyball";
+						$bgimg = "match-tennis";
+						break;
+					case 1025:
+						$_class = "live-baseball";
+						$bgimg = "match-baseball";
+						break;
+					case 1057:
+						$_class = "live-badminton";
+						$bgimg = "match-badminton";
+						break;
+					default :
+						$_class = "live-tennis";
+						$bgimg = "match-tennis";
+						break;
+				}
+				?>
+				<h3 class="innerheader"><a href="#" class="ico ico-sport  <?=$_class?>" onclick="showhidedetail('livedetail<?=$sportId?>');" id="t<?=$sportId?>"><?=$sport['sport']?></a></h3>
+				<div id="livedetail<?=$sportId?>">
+				<?php
+				$firstMatch = true;
+				foreach ( $sport['matches'] as $matchId => $match ) : 
+					$cnt++;
+					if ($cnt === $liveOnlineInSportCount) $last = true;
+					?>
+					<?php if ($firstMatch) { $firstMatch = false; ?>
+						<a href="<?=It6_Models_Livebetting::getUrl($match['id'], true, true)?>" class="topmatch <?=$bgimg?>">
+							<?=$match['region']?> - <?=$match['league']?>
+							<span class="matchdetail"><?=$match['homeTeam']?>
+								<span>
+									<?php if($match['scoreHome'] != null && $match['scoreAway'] != null) : ?>
+										<?=$match['scoreHome']?>:<?=$match['scoreAway']?>
+									<?php else : ?>
+										-:-
+									<?php endif?>
+								</span> 
+							<?=$match['awayTeam']?></span>
+							<?=$this->trans('live_state_'. $match['status']); ?>
+						</a>
+						<?php continue; } ?>
+
+						<table>
+							<tr><td colspan="3"><a href="<?=It6_Models_Livebetting::getUrl($match['id'], true, true)?>"><?=$match['homeTeam']?> - <?=$match['awayTeam']?></a></td></tr>
+							<tr>
+								<td>
+									<?php if($match['scoreHome'] != null && $match['scoreAway'] != null) : ?>
+										<?=$match['scoreHome']?>:<?=$match['scoreAway']?>
+									<?php else : ?>
+										-:-
+									<?php endif?>
+								</td>
+								<td colspan="2" class="text-right"><?=$this->trans('live_state_'. $match['status']); ?></td>
+							</tr>
+						</table>
+					<?php
+					++$x;
+				endforeach;
+				?>
+				</div>
+				<?php
+			endforeach;
+		}
+		if ( empty($x) ):?>
+			<div class="liveOnline o-item o-licha"><h5><?=$this->trans('no_bets');?></h5></div>
+		<?php endif;
+		?>
+	</div>
+
+	<div id="tab-following" class="tab-pane fade contentbox no-padding">
+		<?php if (!empty($this->liveComing)) {
+			foreach ( $this->liveComing as $sportId => $sport ):?>
+				<?php
+				$_class = $bgimg = "";
+				switch ($sportId) {
+					case 1001:
+						$_class = "live-soccer";
+						$bgimg = "match-soccer";
+						break;
+					case 1011:
+						$_class = "live-icehockey";
+						$bgimg = "match-hockey";
+						break;
+					case 1003:
+						$_class = "live-tennis";
+						$bgimg = "match-tennis";
+						break;
+					case 1006:
+						$_class = "live-basketball";
+						$bgimg = "match-basketball";
+						break;
+					case 1016:
+						$_class = "live-tabletennis";
+						$bgimg = "match-table-tennis";
+						break;
+					case 1013:
+						$_class = "live-volleyball";
+						$bgimg = "match-tennis";
+						break;
+					case 1025:
+						$_class = "live-baseball";
+						$bgimg = "match-baseball";
+						break;
+					case 1057:
+						$_class = "live-badminton";
+						$bgimg = "match-badminton";
+						break;
+					default :
+						$_class = "live-tennis";
+						$bgimg = "match-tennis";
+						break;
+				}
+				?>
+
+				<h3 class="innerheader"><a href="#" class="ico ico-sport <?=$_class?>" onclick="showhidedetail('following<?=$sportId?>');" id="t<?=$sportId?>"><?=$sport['sport']?></a></h3>
+				<div id="following<?=$sportId?>">
+				<?php
+				$last = false;
+				$cnt = 0;
+				$comingOnlineInSportCount = count($sport['matches']);
+				$x = 0;
+				$firstMatch = true;
+				foreach ( $sport['matches'] as $matchId => $match ) :
+					$cnt++;
+					if ($cnt === $comingOnlineInSportCount) $last = true;
+					?>
+
+					<?php if ($firstMatch) { $firstMatch = false; ?>
+						<a style="padding:0px; margin:0px;" href="<?=It6_Models_Livebetting::getUrl($match->id, true, true)?>" class="topmatch <?=$bgimg?>">
+							<br />	<?=$match['league']?>
+							<span class="matchdetail"><?=$match['homeTeam']?> <span> - </span><?=$match['awayTeam']?></span>
+						</a>
+					<?php continue; } ?>
+					
+					<table class="<?=$_class?> tr">
+						<tr><td colspan="2"><a href="<?=It6_Models_Livebetting::getUrl($match->id, true, true)?>"><?=$match['homeTeam']?> — <?=$match['awayTeam']?></a></td></tr>
+						<tr><td><?=It6_Date::fromDbAsDate($match['start'])?></td><td class="text-right"><?=It6_Date::fromDbAsTime($match['start'])?></td></tr>
+					</table>
+
+					<?php
+					++$x;
+				endforeach;
+				?>
+				</div>
+				<?php
+			endforeach;
+		}
+		?>
+	</div>
+	<!--<div class="contentbox show-more"><a href="#" class="more"><?=$this->trans('show_more_live_bets');?></a></div>-->
+</div>
+					

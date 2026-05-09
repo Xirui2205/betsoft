@@ -1,0 +1,30 @@
+<div class="actions">
+	<button onclick="insertGeneric('<?=$this->insertSectionId?>&superb=1', 'inner');"><?=i18n::tr('Create range')?></button>
+</div>
+<?php if(!$this->empty) : ?>
+	<table class="table-list">
+	  <tr>
+	    <th></th>
+		<th><?=i18n::tr('Sport')?></th>
+	    <th><?=i18n::tr('Event')?></th>
+	    <th><?=i18n::tr('Market')?></th>
+	    <th><?=i18n::tr('From')?></th>
+	    <th><?=i18n::tr('To')?></th>
+	  </tr>
+	  <?php foreach ($this->betHandleRanges as $range) : ?>
+	    <tr>
+			<td>
+				<button onClick="loadGeneric(<?=$this->viewSectionId?>, 'inner', { betHandleRangeId : <?=$range['betHandleRangeId']?> })"><?=i18n::tr('View')?></button>
+				<button onClick="loadGeneric('<?=$this->updateSectionId?>&superb=1', 'inner', { betHandleRangeId : <?=$range['betHandleRangeId']?> })"><?=i18n::tr('Edit')?></button>
+			</td>
+			<td class="border-left"><?=$range['sportId']?></td>
+			<td class="border-left"><?=$range['eventId']?></td>
+			<td class="border-left"><?=$range['typId']?></td>
+			<td class="border-left"><?=$range['from']?></td>
+			<td class="border-left"><?=$range['to']?></td>
+		</tr>
+	  <?php endforeach; ?>
+	</table>
+<?php else: ?>
+	<?=UiUtil::printWarnings(array('No data.'));?>
+<?php endif; ?>

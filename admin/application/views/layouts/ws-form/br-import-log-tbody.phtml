@@ -1,0 +1,11 @@
+<tbody>
+	<?php foreach($this->layout()->data as $log) : ?>
+		<tr>
+			<td class="border-left"><?=$log['sport']?></td>
+			<td class="border-left"><?=$log['region']?></td>
+			<td class="border-left"><?=$log['event']?></td>
+			<td class="border-left txtrt"><?=$log['brTournamentId']?></td>
+			<td class="border-left"><?=$log['importedAt']?></td>
+		</tr>
+	<?php endforeach?>
+</tbody>

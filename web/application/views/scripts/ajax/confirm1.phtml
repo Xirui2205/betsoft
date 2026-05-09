@@ -1,0 +1,542 @@
+<?php if(isset($this->prove['script'])):?>
+  <script type="text/javascript">
+    <?=$this->prove['script']; ?>
+  </script>
+<?php endif;
+
+if(isset($this->response)):?>
+  <?=$this->response;?>
+
+<?php elseif(isset($this->createMessage['ok']) && $this->createMessage['ok'] == 1):?>
+  <script type="text/javascript">
+    $('#ticket_container').hide();
+    $('#box_kupon').addClass('box-kupon-no-tabs');
+  </script>
+  <div class="content">
+    <div class="tabs">
+      <div class="cb"></div>
+    </div>
+    <div class="notify notify-success alert alert-info">
+      <?=$this->trans('ticket_created', 'TICKET', It6_Translate_Web::DICTIONARY); ?>
+    </div>
+    <script type="text/javascript">
+      tick.betsLocked = false;
+      tick.DeleteAll(false);
+      document.getElementById('user-money').innerHTML = '<?=$this->balanceFormated?>';
+      document.getElementById('user-points').innerHTML = '<?=$this->pointsFormated?>';
+    </script>
+	  
+	<?php if (GOOGLE_AD_CONVERSION_BET_PLACED) echo $this->render(GOOGLE_AD_CONVERSION_BET_PLACED); ?>
+
+<?php else:?>
+
+  <script type="text/javascript">
+    $('#ticket_container').hide();
+    $('#box_kupon').addClass('box-kupon-no-tabs');
+
+    <?php if($this->error && is_array($this->error) && isset($this->error['script'])):?>
+      <?=$this->error['script']; ?>
+    <?php endif;?>
+
+    <?php if($this->change && is_array($this->change) && isset($this->change['script'])):?>
+      <?=$this->change['script']; ?>
+    <?php endif;?>
+
+</script>
+
+<div class="content">
+  <div class="tabs">
+    <div class="cb"></div>
+  </div>
+
+	<script type="text/javascript">
+	<?php foreach ($this->prove['action'] as $action): ?>
+		<?= $action ?>
+	<?php endforeach; ?>
+		</script>
+		<?php /* if ($this->change && is_array($this->change) && isset($this->change['message'])):?>
+		  <div class="notify notify-info"><?=$this->change['message']; ?></div>
+		  <?php endif; */ ?>
+
+  <div class="text">
+	  
+<div class="tab-content yellow">
+	
+	<!-- hlášky -->
+	<?php if (isset($this->prove['message'])): ?>
+		<div role="alert" class="alert alert-info">
+			<?= $this->prove['message']; ?>
+		</div>
+	<?php endif; ?>
+
+	<?php foreach ($this->prove['error'] as $err): if (empty($err['bet'])): ?>
+			<div role="alert" class="alert alert-danger">
+				<?= $err['message'] ?>
+			</div>
+		<?php endif;
+	endforeach; ?>
+
+		<?php foreach ($this->prove['warning'] as $warn): if (empty($warn['bet'])): ?>
+			<div role="alert" class="alert alert-warning">
+			<?= $warn['message'] ?>
+			</div>
+		<?php endif;
+	endforeach; ?>
+
+		<?php if ($this->error && is_array($this->error)): ?>
+		<div role="alert" class="alert alert-danger">
+		<?= $this->error['message'] ?>
+		</div>
+	<?php endif; ?>
+
+	<?php if (isset($this->createMessage['error'])): ?>
+	<div role="alert" class="alert alert-danger">
+		<?php foreach ($this->createMessage['error'] as $data): ?>
+		<?php echo $data;
+		break; ?>
+	<?php endforeach; ?>
+	</div>
+	<?php endif; ?>
+	
+	
+<div class="tab-pane fade in active no-padding" id="tab-betslip-single">
+	<ul class="betslip-bets">
+		<form action="" method="POST">
+
+      <?php /*
+        $totalBet = 0.0;
+        $totalWin = 0.0;
+        $totalRate = 1.0;
+        */
+        $i = 1;
+
+        foreach($this->createTicket['bet'] as $data):
+          if (isset($data['visible']) && !$data['visible'])
+            continue;
+          $xclass = ($i == 1 ? ' tp-first' : '');
+          $bet = $this->helper->getBet($data['id_bet'], $data['id_col']);
+          $amount = $this->helper->roundStake($bet['amount']); 
+          $rate = $this->helper->roundRate($bet['rate']);
+          /*
+          $totalBet += $data['amount'];
+          $totalWin += $data['amount'] * $data['rate'];
+          $totalRate *= $data['rate'];
+          */
+      ?>
+
+	<?php if($this->createTicket['type'] == 'simple'){ ?>
+	<li id="bet_item2_<?= $bet['id'] ?>_<?= $bet['column'] ?>">
+		<div class="bet-item"><?= $this->escape($data['mtext']) ?> <span><?= $this->formatRate($rate)?></span></div>
+		<div class="bet-info"><?=$data['tnazev']; ?> <?= $bet['textNote'] ?>: <?=$data['pnazev']; ?><br><?= $this->trans('result_win') ?>: <?= $this->formatCurrency($amount * $rate).' '.$this->mena; ?></div>
+	</li>
+	<?php } ?>	
+<?php /* TODO: ??? upravy tiketu uz asi ne, takze checkbox nedavat a ani krizek v .options .upper .right
+  <div class="chck">
+    <input id="cc1chk<?=$i; ?>" type="checkbox"/>
+  </div>
+  <div>
+  <div class="label">
+    <label for="cc1chk<?=$i; ?>">
+      <a href="/"><?php if(!empty($data['banker'])) echo 'B - '; echo $data['mtext']; ?></a>
+    </label>
+    <br/>
+    <?=$data['tnazev']; ?>: <?=$data['pnazev']; ?>
+  </div>
+*/
+?>
+
+<?php if(false){ // záloha kódu se starým designem ?>
+        <div class="label">
+          <label><a href=""><?= $this->escape($data['mtext']) ?></a></label>
+          <br/>
+          <?=$data['tnazev']; ?> <?= $bet['textNote'] ?>: <?=$data['pnazev']; ?>
+        </div>
+
+        <div class="options">
+          <div class="upper">
+            <?php if ($this->createTicket['type'] == 'simple'): ?>
+              <div class="left"><?php echo $this->formatRate($rate)?></div>
+              <div class="right"></div>
+            <?php else: ?>
+              <div class="left"></div>
+              <div class="right"><strong><?= $this->formatRate($rate)?></strong></div>
+            <?php endif; ?>
+        </div>
+      </div>
+      <?php if($this->createTicket['type'] == 'simple'): ?>
+        <div class="lower">
+          <div class="tp-boxik">
+            <div class="cl"></div>
+            <div class="cc">
+              <span class="short"><?= $this->formatCurrency($amount) //$this->formatCurrency($data['amount']) // , $this->mena; ?></span>
+              <span class="separator" />
+              <span class="short">
+                <strong>
+                  <?= $this->formatCurrency($amount * $rate) // , $this->mena; ?>
+                </strong>
+              </span>
+            </div>
+            <div class="cr"></div>
+          </div>
+        </div>
+      <?php elseif ( ($this->createTicket['type'] == 'system') && $data['banker']): ?>
+        <div class="lower">
+          <img class="bankerimg" src="/images/tp-banker.png" alt="<?= $this->trans('banker', 'TICKET', It6_Translate_Web::DICTIONARY) ?>" />
+        </div>
+      <?php elseif ('maxikombi' == $this->createTicket['type']): ?>
+        <div class="lower groupname">
+           <?= It6_Models_Ticket::getGroupName($data['group']) ?>
+        </div>
+      <?php endif; ?>
+<!--
+  <?php if($this->createTicket['type'] == 'simple'):?> <?= $this->formatCurrency($amount, $this->mena) ?>  <?php endif;?>
+-->
+
+      
+      <?php foreach ($this->prove['error'] as $err):
+        if (!empty($err['bet']) && $err['bet'] == $bet['id'] && $err['column'] == $bet['column']): ?>
+          <div class="notify notify-bet notify-error"><?= $err['message'] ?></div>
+      <?php endif; endforeach; ?>
+
+      <?php foreach ($this->prove['warning'] as $warn):
+        if (!empty($warn['bet']) && $warn['bet'] == $bet['id'] && $warn['column'] == $bet['column']): ?>
+          <div class="notify notify-bet notify-warning"><?= $warn['message'] ?></div>
+      <?php endif; endforeach; ?>
+
+      <?php /* if(isset($this->warning['bet'][$data['id_bet']])):?>
+        <div class="notify notify-info"><?=$this->change['bet'][$data['id_bet']]; ?></div>
+      <?php endif;?>
+
+      <?php if(isset($this->change['bet'][$data['id_bet']])):?>
+        <div class="notify notify-info"><?=$this->change['bet'][$data['id_bet']]; ?></div>
+      <?php endif; */ ?>
+
+   <!-- </div> nově li --> 
+<?php } ?>
+  <?php ++$i; endforeach;?>
+   
+   <?php if($this->createTicket['type'] != 'simple'){
+	   // jednoduché schrnutí pro ostatní typy (stejně se to bude předělávat)
+   ?>
+   <li><div class="betslip-summary">
+		<!-- vsazeno celkem -->
+		<?=$this->trans('totalBet', 'TICKET', It6_Translate_Web::DICTIONARY); ?>: <?= $this->formatCurrency($this->helper->stake, $this->mena) ?>
+		<!-- výhra -->
+		<br><strong><?=$this->trans('totalWin', 'TICKET', It6_Translate_Web::DICTIONARY); ?>: <?= $this->formatCurrency($this->helper->win, $this->mena) ?></strong>
+	   </div></li>
+   <li><?= $this->trans('Are you sure to commit the transaction?'); ?></li>
+   <? } ?>
+   
+	</ul>
+	<?php if($this->createTicket['type'] == 'simple'){ // to-do ostatní typy ?>
+	<div class="betslip-summary">
+		<!-- typ sázky -->
+		<em><?=$this->trans('ticket_simple', 'TICKET', It6_Translate_Web::DICTIONARY) ?></em>
+		<!-- vsazeno celkem -->
+		<br><?=$this->trans('totalBet', 'TICKET', It6_Translate_Web::DICTIONARY); ?>: <?= $this->formatCurrency($this->helper->stake, $this->mena) ?>
+		<!-- výhra -->
+		<br><strong><?=$this->trans('totalWin', 'TICKET', It6_Translate_Web::DICTIONARY); ?>: <?= $this->formatCurrency($this->helper->win, $this->mena) ?></strong>
+	</div>
+	<?php } ?>
+	
+<?php if(false){ // záloha kódu se starým designem ?>
+<!-- Type -->
+    <div class="tp tp-help">
+      <span>
+      <?php if($this->createTicket['type'] == 'simple'):?>
+        <?=$this->trans('ticket_simple', 'TICKET', It6_Translate_Web::DICTIONARY) ?>
+      <?php elseif($this->createTicket['type'] == 'kombi'):?>
+        <?=$this->trans('ticket_combi', 'TICKET', It6_Translate_Web::DICTIONARY) ?>
+      <?php elseif($this->createTicket['type'] == 'system'):?>
+        <?= $this->trans('ticket_system', 'TICKET', It6_Translate_Web::DICTIONARY) ?>
+      <?php elseif($this->createTicket['type'] == 'maxikombi'):?>
+        <?= $this->trans('ticket_maxicombinator', 'TICKET', It6_Translate_Web::DICTIONARY) ?>
+      <?php endif;?>
+      </span>
+    </div>
+
+  <!-- <div class="tp"> -->
+<!-- System -->
+  <?php if($this->createTicket['type'] == 'system'):?>
+    <?php 
+      $n = $this->helper->getGroupCount(false);
+      foreach($this->helper->combinations as $k => $comb): if (!$this->helper->isCombinationUsed($k)) continue; ?>
+      <div class="tp-pole">
+        <span class="point">
+          <?php if($this->helper->hasGroupT()):?>
+            <?= $this->helper->getGroupTSize() . ' Banker + '; ?>
+          <?php endif;?>
+          <?= $k ?>/<?= $n ?> (<?= count($comb['data']) ?> <?=$this->trans('bets', 'TICKET', It6_Translate_Web::DICTIONARY); ?>)
+        </span>
+      </div>
+    <?php endforeach;?>
+  <?php endif;?>
+
+<!-- Maxicombinator -->
+  <?php if('maxikombi' == $this->createTicket['type']): ?>
+    <div class="tp tp-help">
+    <?php
+      $n = $this->helper->getGroupCount(false);
+      foreach($this->helper->combinations as $k => $comb): 
+        if (!$this->helper->isCombinationUsed($k))
+          continue;
+      ?>
+      <div class="tp-pole">
+        <div class="left">
+          <?= $k ?>/<?= $n ?> (<?= count($comb['data']) ?>)
+        </div>  
+        <div class="right">
+          <div class="tp-boxik">
+            <div class="cl"></div>
+            <div class="cc">
+              <span class="withpadding"><strong><?= $this->formatCurrency($comb['stake'], $this->mena) ?></strong></span>
+            </div>
+            <div class="cr"></div>
+          </div>
+        </div>
+      </div>
+    <?php endforeach;?>
+      <div class="tp-pole">
+        <a href="#" onclick="window.open('<?= $this->UrlSet(48) ?>', '== N/A ticket_maxic_detail ==', 'width=570, height=800, resizable=yes, toolbar=no, scrollbars=yes, location=no, menubar=no, copyhistory=no'); return false;"><?= $this->trans('ticket_maxic_detail', 'TICKET', It6_Translate_Web::DICTIONARY) ?></a>
+      </div>
+    </div>
+  <?php endif;?>
+
+<!-- Amount -->
+    <div class="tp tp-help">
+<?php if($this->createTicket['type'] == 'simple'): ?>
+    <div class="tp-pole">
+      <div class="left">
+        <span class="s28"><?=$this->trans('totalBet', 'TICKET', It6_Translate_Web::DICTIONARY); ?>:</span>
+      </div>
+      <div class="right">
+        <div class="tp-boxik">
+          <div class="cl"></div>
+          <div class="cc">
+            <span class="withpadding"><strong><?= $this->formatCurrency($this->helper->stake, $this->mena) ?></strong></span>
+          </div>
+          <div class="cr"></div>
+        </div>
+      </div>
+    </div>
+    <div class="tp-pole">
+      <div class="left">
+        <span class="s22"><?=$this->trans('totalWin', 'TICKET', It6_Translate_Web::DICTIONARY); ?>:</span>
+      </div>
+      <div class="right">
+        <div class="tp-vyhra">
+          <div class="cl"></div>
+          <div class="cc">
+            <span class="withpadding"><strong><?= $this->formatCurrency($this->helper->win, $this->mena) ?></strong></span>
+          </div>
+          <div class="cr"></div>
+        </div>
+      </div>
+    </div>
+<?php else: //else if ('maxikombi' == $this->createTicket['type']): ?>
+    <div class="tp-pole">
+      <div class="left">
+        <span class="s28"><?=$this->trans('totalBet', 'TICKET', It6_Translate_Web::DICTIONARY); ?>:</span>
+      </div>
+      <div class="right">
+        <div class="tp-boxik">
+          <div class="cl"></div>
+          <div class="cc">
+            <?php if ( !$this->helper->isPointTicket() ): ?>
+              <span class="withpadding"><?= $this->formatCurrency($this->helper->stake, $this->mena) ?></strong></span>
+            <?php else: ?>
+              <span class="withpadding"><?= $this->helper->stakeInPoints ?> B</strong></span>
+            <?php endif;?>
+          </div>
+          <div class="cr"></div>
+        </div>
+      </div>
+    </div>
+    <?php if( $this->helper->isPointTicket() ):?>
+      <div class="tp-pole">
+        <div class="left">
+          <span class="s28"><?=$this->trans('stakeInCurrency', 'TICKET', It6_Translate_Web::DICTIONARY); ?>:</span>
+        </div>
+        <div class="right">
+          <div class="tp-boxik">
+            <div class="cl"></div>
+            <div class="cc">
+              <span class="withpadding"><?= $this->formatCurrency($this->helper->stake, $this->mena) ?></strong></span>
+            </div>
+            <div class="cr"></div>
+          </div>
+        </div>
+      </div>
+    <?php endif;?>
+    <?php if(!empty($this->createTicket['rateAdvance']) && $this->createTicket['rateAdvance'] > 1):?>
+    <div class="tp-pole">
+      <div class="left">
+        <span class="s28"><?=$this->trans('rateAdvance', 'TICKET', It6_Translate_Web::DICTIONARY); ?>:</span>
+      </div>
+      <div class="right">
+        <div class="tp-boxik">
+          <div class="cl"></div>
+          <div class="cc">
+            <span class="withpadding"><?= ($this->createTicket['rateAdvance']-1) * 100 ?>%</strong></span>
+          </div>
+          <div class="cr"></div>
+        </div>
+      </div>
+    </div>
+    <div class="tp-pole">
+      <div class="left">
+        <span class="s28"><?=$this->trans('rateAdvanceCost', 'TICKET', It6_Translate_Web::DICTIONARY); ?>:</span>
+      </div>
+      <div class="right">
+        <div class="tp-boxik">
+          <div class="cl"></div>
+          <div class="cc">
+            <span class="withpadding"><?= $this->rateAdvanceCost ?> B</strong></span>
+          </div>
+          <div class="cr"></div>
+        </div>
+      </div>
+    </div>
+    <?php endif;?>
+    <?php if ( $this->createTicket['showGetPoints'] ): ?>
+    <div class="tp-pole">
+      <div class="left">
+        <label for="stejny" class="s28"><?=$this->trans('ticket_get_points', 'TICKET', It6_Translate_Web::DICTIONARY); ?>:</label>
+      </div>
+      <div class="right">
+        <div class="tp-boxik">
+          <div class="cl"></div>
+          <div class="cc">
+            <span class="withpadding"><strong><?=$this->createTicket['getPoints'] ?> B</strong></span>
+          </div>
+          <div class="cr"></div>
+        </div>
+      </div>
+    </div>
+    <?php endif; ?>
+   <?php if ('maxikombi' != $this->createTicket['type']): ?>
+    <div class="tp-pole">
+      <div class="left">
+        <label for="stejny" class="s28"><?=$this->trans('total_odds', 'TICKET', It6_Translate_Web::DICTIONARY); ?>:</label>
+      </div>
+      <div class="right">
+        <div class="tp-boxik">
+          <div class="cl"></div>
+          <div class="cc">
+            <strong><?= $this->formatRate($this->helper->rate) ?></strong>
+          </div>
+          <div class="cr"></div>
+        </div>
+      </div>
+    </div>
+    <div class="tp-pole">
+      <div class="left">
+        <span class="s22"><?=$this->trans('totalWin', 'TICKET', It6_Translate_Web::DICTIONARY); ?>:</span>
+      </div>
+      <div class="right">
+        <div class="tp-vyhra">
+          <div class="cl"></div>
+          <div class="cc">
+            <span class="withpadding">
+              <strong><?= $this->formatCurrency($this->helper->win, $this->mena) ?></strong>
+            </span>
+          </div>
+          <div class="cr"></div>
+        </div>
+      </div>
+    </div>
+    <?php else: ?>
+    <div class="tp-pole">
+      <label for="stejny" class="withpadding"><?=$this->trans('totalWin', 'TICKET', It6_Translate_Web::DICTIONARY); ?>:</label>
+      <div class="tp-boxik">
+        <div class="cl"></div>
+        <div class="cc">
+          <span class="withpadding">
+            <strong><?= $this->formatCurrency($this->helper->win, $this->mena) ?></strong>
+          </span>
+        </div>
+        <div class="cr"></div>
+      </div>
+    </div>
+    <?php endif; ?>
+    </div>
+  <!--
+  <div class="tp">
+    <strong>FreeBet 25 EUR použit</strong>
+  </div>
+  -->
+<?php /*else: ?>
+    <div class="tp-pole">
+      <div class="left">
+        <span class="s28"><?=$this->trans('totalBet', 'TICKET', It6_Translate_Web::DICTIONARY); ?>:</span>
+      </div>
+      <div class="right">
+        <div class="tp-boxik">
+          <div class="cl"></div>
+          <div class="cc">
+            <span class="width4 ta-center"><?= $this->formatCurrency($this->createTicket[], $this->mena) ?></strong></span>
+          </div>
+          <div class="cr"></div>
+        </div>
+      </div>
+    </div>
+    <div class="tp-pole">
+      <label for="stejny" class="width4 s28">Kurz:</label>
+      <div class="tp-boxik">
+        <div class="cl"></div>
+        <div class="cc ta-right width4">
+          <strong><?= round($this->createTicket['helper']->rate, 2) ?></strong>
+        </div>
+        <div class="cr"></div>
+      </div>
+    </div>
+    <div class="tp-pole">
+      <div class="left">
+        <span class="s22"><?=$this->trans('totalWin', 'TICKET', It6_Translate_Web::DICTIONARY); ?>:</span>
+      </div>
+      <div class="right">
+        <div class="tp-vyhra">
+          <div class="cl"></div>
+          <div class="cc">
+            <span class="withpadding">
+              <strong><?= $this->formatCurrency($this->createTicket['helper']->win, $this->mena) ?></strong>
+            </span>
+          </div>
+          <div class="cr"></div>
+        </div>
+      </div>
+    </div>
+  <!--
+  <div class="tp">
+    <strong>FreeBet 25 EUR použit</strong>
+  </div>
+  -->
+<?php */ endif; ?>
+  <!-- tp </div> -->
+<?php } ?>
+<!--
+<?php if($this->createTicket['type'] != 'simple'):?>
+
+
+<div><?=$this->trans('totalBet', 'TICKET', It6_Translate_Web::DICTIONARY); ?>  <?= $this->formatCurrency($this->helper->stake, $this->mena) ?></div>
+
+<?php endif;?>
+-->
+
+<!-- Buttons -->  
+<div class="betslip-buttons">
+	<?php if ($this->backButton !== false){ ?>
+		<a href="#" onclick="TicketBack();"><?=$this->trans($this->backButton, 'TICKET', It6_Translate_Web::DICTIONARY); ?></a>
+	<?php } ?>
+	<?php if (!$this->error && empty($this->prove['error']) && false !== $this->confirmButton):?>
+		<a onclick="confirmTicket2(1,<?= $this->starting ? '1' : '0' ?>);" id="buttonConfirm2" class="btn pull-right"><?=$this->trans(false === $this->confirmButton ? 'sending' : $this->confirmButton, 'TICKET', It6_Translate_Web::DICTIONARY); ?></a>
+	<?php endif;?>
+</div>
+
+    </form>
+  </div>
+</div>
+</div>
+</div>
+
+<?php endif;?>

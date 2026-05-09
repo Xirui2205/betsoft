@@ -1,0 +1,75 @@
+<?php if($this->admin) : ?>
+
+  <input name="adminId" id="adminId" type="hidden" value="<?=$this->admin['adminId']?>" />
+
+    <div class="actions">
+      <button onclick="editAdminDetail(<?=$this->adminId?>)"><?=i18n::tr('Edit')?></button>
+      <button onclick="hideDetail('admin-container')"><?=i18n::tr('Close Detail')?></button>
+    </div>
+
+    <table class="table-detail" >
+    <tr>
+      <th class="header" colspan="2">
+        <?=i18n::tr('admin')?>
+      </th>
+    </tr>
+    <tr>
+      <th><?=i18n::tr('Id')?></th>
+      <td id="branch_id"><?=$this->admin['adminId']?></td>
+    </tr>
+    <tr>
+      <th><?=i18n::tr('nick_name')?></th>
+      <td id="loginName"><?=$this->admin['loginName']?></td>
+    </tr>
+    <tr>
+      <th><?=i18n::tr('Branch_name')?></th>
+      <td id="branchName"><?=$this->admin['branchName']?></td>
+    </tr>
+    <tr>
+      <th><?=i18n::tr('First name')?></th>
+      <td><?=$this->admin['firstName']?></td>
+    </tr>
+    <tr>
+      <th><?=i18n::tr('Last name')?></th>
+      <td id="lastName"><?=$this->admin['lastName']?></td>
+    </tr>
+    <tr>
+      <th><?=i18n::tr('Phone')?></th>
+      <td id="branchStatus"><?=$this->admin['phone']?></td>
+    </tr>
+    <tr>
+      <th><?=i18n::tr('Email')?></th>
+      <td><?=$this->admin['email']?></td>
+    </tr>
+    <tr>
+      <th><?=i18n::tr('Is banned')?></th>
+      <td><?=$this->admin['isBanned']?></td>
+    </tr>
+    <tr>
+      <th><?=i18n::tr('Block')?></th>
+      <td><?=$this->admin['block']?></td>
+    </tr>
+    <tr>
+      <th><?=i18n::tr('Block IP')?></th>
+      <td id="blockIp"><?=$this->admin['blockIp']?></td>
+    </tr>
+    <tr>
+      <th><?=i18n::tr('Last login')?></th>
+      <td><?=It6_Date::fromDb($this->admin['lastLogin'])?></td>
+    </tr>
+    <tr>
+      <th><?= i18n::tr('secondary_branches') ?></th>
+      <td>
+        <?php if (empty($this->admin['secondaryBranches'])): ?>
+          <?= i18n::tr('none') ?>
+        <?php else: foreach($this->admin['secondaryBranches'] as $branch): ?>
+          <?= $branch['name'] ?> (<?= $branch['handle'] ?> / ID <?= $branch['id'] ?>)<br/>
+        <?php endforeach; endif;?>
+      </td>
+    </tr>
+    <tr>
+      <th><?=i18n::tr('partner')?></th>
+      <td id="partnerName"><?=$this->admin['partnerName']?></td>
+    </tr>
+  </table>
+  <?php endif; ?>

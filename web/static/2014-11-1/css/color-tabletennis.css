@@ -1,0 +1,56 @@
+@charset "utf-8";
+body{
+	background-image: url(../images/body_bg_tabletennis.jpg);
+}
+.live-score, .nav-tabs > li.active{
+	background-image: url(../images/live_score_tabletennis.jpg) !important;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th {
+	color: #c6b8d9;
+}
+h2.contentbox, .boxheader{
+	border-bottom: 1px solid #a590c0;
+}
+#left .nav.live a.parent{
+	background-color: #786690;
+	border-top: 1px solid #a590c0;
+}
+#left .nav.live a.parent:hover, #left .nav.live a.parent:focus{
+	background-color: #625375;
+}
+.nav-tabs > li {
+	background-color: #786690 !important;
+}
+.nav-tabs > li a{
+	color: #d8cfe5 !important;
+}
+.nav-tabs li a:hover, .nav-tabs li a:focus{
+	background: #8d77a8;
+}
+.live-info, .match-info{
+	color: #a599b9;
+}
+.odds a.selected{
+	background-color: #c6b8d9;
+}
+.live-score .live-score-result .number{
+	background-position: 0 -240px;
+}
+.live-score .live-score-result .colon{
+	background-position: -75px 0;
+}
+.live-details .table > thead > tr > th{
+	background: #493663;
+	color: #c7bbd4 !important;
+}
+.table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td,
+.table > thead > tr > th, .table > thead > tr > th, .table > thead > tr > th {
+	border-color: rgba(199,187,212,0.2) !important;
+}
+.live-details .table > thead > tr > td, .live-details .table > tbody > tr > td, .live-details .table > tfoot > tr > td,
+.live-details .table > thead > tr > th, .live-details .table > thead > tr > th, .live-details .table > thead > tr > th {
+	border-color: rgba(199,187,212,0.3) !important;
+}
+.live-details{
+	border-top: 1px solid rgba(199,187,212,0.3);
+}

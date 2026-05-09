@@ -1,0 +1,13 @@
+<h4><?=i18n::tr('Create Group')?></h4>
+
+<?=$this->sportOpts; ?>
+<?=$this->eventOpts; ?>
+
+<?php echo $this->feedbackMsg; ?>
+
+<?php echo $this->form; ?>
+
+<div id="list">
+	<!-- seznam vsech hostu -->
+	<?php include('group-list.phtml'); ?>
+</div>

@@ -1,0 +1,128 @@
+<h3><?=I18n::tr('Market summary')?></h3>
+
+<form method="post" action="?superb=1&section=<?=$sectionId?>">
+	<table class="table-detail float-left payout-sum">
+		<tr>
+			<th colspan="2">Celkově</th>
+		</tr>
+		<tr>
+			<td>Celkem sázek:</td>
+			<td class="border-left">
+				<?=(empty($bets['ti']) ? 0 : count($bets['ti']))?>
+			</td>
+		</tr>
+		<tr>
+			<td>Zrušených sázek:</td>
+			<td class="border-left"> <?=$canceledBetCount?></td>
+		</tr>
+		<tr>
+			<td>Správných tipů:</td>
+			<td class="border-left"> <?=$winBetCount?></td>
+		</tr>
+		<tr>
+			<td>Špatných tipů:</td>
+			<td class="border-left"> <?=$lossBetCount?></td>
+		</tr>
+		<tr>
+			<td>Vydělalo:</td>
+			<td class="border-left"> <?=round($lossAmount, 2)?></td>
+		</tr>
+		<tr>
+			<td>Prodělalo:</td>
+			<td class="border-left"> <?=round($winAmount, 2)?></td>
+		</tr>
+	</table>
+
+	<table class="table-detail float-left payout-sum">
+		<tr>
+			<th colspan="2"><strong>Co vydělalo:</strong></th>
+		</tr>
+		<?php if ($topLossBets) : ?>
+			<?php foreach($topLossBets as $h) : ?>
+				<tr>
+					<td>
+						Sázka
+						<a href="?section=146&filtr=1&sazka_id=<?=$h['sazka']?>&udalost[]=0" target="_blank">
+							#<?=$h['id']?>
+						</a>
+					</td>
+					<td class="border-left"><?=round($h['suma'], 2)?></td>
+				</tr>
+			<?php endforeach?>
+		<?php else : ?>
+			<tr>
+				<td colspan="2"><?=UiUtil::printWarnings(I18n::tr('No bets found'))?></td>
+			</tr>
+		<?php endif?>
+	</table>
+
+	<table class="table-detail float-left payout-sum">
+		<tr>
+			<th colspan="2"><strong>Co prodělalo:</strong></th>
+		</tr>
+		<?php if ($topWinBets) : ?>
+			<?php foreach($topWinBets as $h) :?>
+				<tr>
+					<td>
+						Sázka
+						<a href="?section=146&filtr=1&sazka_id=<?=$h['sazka']?>&udalost[]=0" target="_blank">
+							#<?=$h['id']?>
+						</a>
+					</td>
+					<td class="border-left"> <?=round($h['suma'],2)?> </td>
+				</tr>
+			<?php endforeach?>
+		<?php else : ?>
+			<tr>
+				<td colspan="2"><?=UiUtil::printWarnings(I18n::tr('No bets found'))?></td>
+			</tr>
+		<?php endif?>
+	</table>
+
+	<?php if ($queriedBetId && isset($bets['ti'][$queriedBetId])) : ?>
+		<table class="table-detail float-left payout-sum">
+			<tr>
+				<th>Detail sázky</th>
+				<th><?=$queriedBetId?></th>
+			</tr>
+			<?php if ($betStatuses[$queriedBetId] == 1) : ?>
+				Sázka zrušena
+			<?php else : ?>
+				<tr>
+					<td>Správných tipů:</td>
+					<td><?=$bets['ti'][$queriedBetId]['spravne']?></td>
+				</tr>
+				<tr>
+					<td>Špatných tipů:</td>
+					<td><?=$bets['ti'][$queriedBetId]['spatne']?></td>
+				</tr>
+				<tr>
+					<td>Vydělalo:</td>
+					<td><?=round($bets['ti'][$queriedBetId]['vydelalo'], 2)?> </td>
+				</tr>
+				<tr>
+					<td>Prodělalo:</td>
+					<td><?=round($bets['ti'][$queriedBetId]['prodelalo'], 2)?> </td>
+				</tr>
+				<tr>
+					<td>Tickety se sázkou:</td>
+					<td>
+						<?php foreach ($queriedBetTickets as $ticket) : ?>
+							<?php $readableId = It6_Models_Ticket::getReadableId($ticket['id'], $db)?>
+							<a href="/?section=148&ticket_handle_search=<?=$readableId?>">
+								#<?=$readableId?>
+							</a>
+							<br />
+						<?php endforeach?>
+					</td>
+				</tr>
+			<?php endif?>
+		</table>
+	<?php endif?>
+	
+	
+	<div class="actions left width-100">
+		<input type="submit" name="payment_ok" value="<?=I18n::tr('Run markets evaluation')?>" />
+	</div>
+</form>
+<div class="clear-both"?></div>

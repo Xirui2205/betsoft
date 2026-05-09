@@ -1,0 +1,97 @@
+
+<?php $rateNew = array(); ?>
+<?php ob_start(); ?>
+<?php
+
+?>
+
+<?php foreach($this->rate as $k => $h ) : ?>
+
+	<?php if(!ctype_digit($k) ) : ?>
+		<?php continue; ?>
+	<?php endif; ?>
+
+	<?php if ($h['platna_od'] < time() || $h['platna_do'] > time() ) : ?>
+		<?php if ($h['status'] == 0 ) : ?>
+
+			<?php if ($h['jednoducha'] == 1) : ?>
+				<div class="zapasy zapasy-nekombinovane">
+
+			<?php elseif(($h['jednoducha'] == 0) && ($h['no_comb'] == 0)) : ?>
+				<div class="zapasy zapasy-kombinovane1">
+
+			<?php  elseif(($h['jednoducha'] == 0) && ($h['no_comb'] == 1)) : ?>
+				<div class="zapasy zapasy-kombinovane2">
+
+			<?php endif; ?>
+
+		<?php elseif ($h['status'] == 2) : ?>
+				<div class="zapasy zapasy-locked">
+		<?php else: ?>
+				<?php continue; ?>
+		<?php endif; ?>
+
+
+
+		<div class="head">
+			<h3><?=$h['tnazev']?></h3>
+		</div>
+		<div class="content">
+			<table>
+				<tr>
+					<?php foreach($h['sloupec'] as $h2): ?>
+						<td>
+							<?php if ($h['status'] != 2) : ?>
+								<a href="javascript:ticketUpdate(<?=$k .','. $h2['sloupec_id'] .',\''. $h['mtext'] .'\',\''. $h['tnazev'] .'\',\''. $h2['pnazev'] .'\','. $h2['kurz'] .','.  $h['jednoducha'] .',1,'. 1; ?>);void(0);">
+								<?php endif; ?>
+									<?php if ($h2['pnazev'] == 1) : ?>
+										<?=$h['team1']?>
+									<?php elseif ($h2['pnazev'] == 2) : ?>
+										<?=$h['team2']?>
+									<?php elseif ($h2['pnazev'] == 'X') : ?>
+										<?='x'?>
+									<?php else : ?>
+										<?=$h2['pnazev']?>
+									<?php endif;   ?>
+								<?php if ($h['status'] != 2) : ?>
+								</a>
+							<?php endif; ?>
+							<?php $dir = ''; ?>
+							<?php if($h2['move'] == 1  ) $dir = 'up'; ?>
+							<?php if($h2['move'] == -1  ) $dir = 'down'; ?>
+							<span class="right k-<?=$dir?>">
+								<?=$h2['kurz']; ?>
+							</span>
+						</td>
+					<?php endforeach; ?>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<?php endif; ?>
+
+<?php $rateNew[$k]['html'] = trim(ob_get_clean()); ?>
+<?php endforeach; ?>
+
+<?php foreach($this->rate as $k => $h): ?>
+
+  <?php if(!ctype_digit($k)): ?>
+    <?php continue; ?>
+  <?php endif; ?>
+
+  <?php if(!isset($rateNew['js_dynamic'])): ?>
+    <?php $rateNew['js_dynamic'] = ''; ?>
+  <?php endif; ?>
+
+  <?php if($h['close'] == 1  ): ?>
+    <?php $rateNew['js_dynamic'] .= "$('#". $k ."_livebet').remove();"; ?>
+  <?php endif; ?>
+
+<?php endforeach; ?>
+
+
+<?=mb_ereg_replace("[\n|\t|\r]+"," ",Models_Helpers_Help::php2js($rateNew));//echo json_encode($rateNew); ?>
+
+
+

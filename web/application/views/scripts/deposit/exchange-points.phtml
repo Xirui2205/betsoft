@@ -1,0 +1,62 @@
+<!-- controller_convert.zobrazeno = 0, template not up-to-date -->
+<?=$this->render('myaccount/user-profile-left-col.phtml'); ?>
+
+<div id="text">
+  <div class="box-content">
+  <form method="post" action="./">
+		<div class="head">      
+	        <h2><?=$this->trans('exchange_points')?></h2>
+        </div>
+        <div class="content" style="clear: both;">
+        
+          <?=$this->trans('exchange_points_text'); ?>
+        
+          <?php if ( !empty($this->result) ):?>
+            <p><?=$this->result?></p>
+          <?php endif; ?>
+          <table class="tfilter">
+            <tr>
+              <td>
+                <label for="amount"><?=$this->trans('exchange_points_amount'); ?> 
+                    (<?=$this->trans('exchange_points_max'); ?> <?=$this->maximum; ?> => <?=round($this->maxMoney,2)?> <?=$this->currency;?>)</label>
+                 
+              </td>
+              <td>
+                <script type="text/javascript">
+                  
+                </script>
+                <input
+                  type="text"
+                  name="amount"
+                  id="amount"
+                  value="0"
+                  style="width: 6em"
+                  onkeyup="if ( !(this.value > 0) && this.value != '' ) this.value = 0; if (this.value > <?=$this->maximum?>) this.value = <?=floor($this->maximum)?>;  document.getElementById('amount_to').value = document.getElementById('amount_to').value = (this.value*<?=$this->rate?>)"/>
+                <span>=></span>
+                <input
+                  type="text"
+                  readonly="1"
+                  id="amount_to"
+                  value="0"
+                  style="width: 4em"/> <?=$this->currency?>
+              </td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>
+                <input
+                  type="submit"
+                  class="btn"
+                  name="submit"
+                  id="submit"
+                  value="<?=$this->trans('exchange_points_submit'); ?>" />
+              </td>
+            </tr>
+
+          </table>
+        </div>
+        <div class="cb"></div>
+      </div>
+    </form>
+    </div>
+</div>

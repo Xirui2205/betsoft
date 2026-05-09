@@ -1,0 +1,19 @@
+<?=I18n::tr('compbet_bets')?>
+
+<?=I18n::tr('user_message')?>: <?= $this->firstName ?> <?= $this->surname ?> (<?= $this->nick ?>)
+
+===========================================
+
+<?=I18n::tr('following_bet_canceled')?>:
+<?=$this->betInfo['sport']?> - <?=$this->betInfo['region']?> - <?=$this->betInfo['event']?>: <?=$this->betInfo['type']?> -> <?=$this->betInfo['text']?>
+
+
+<?=I18n::tr('following_tickets_affected')?>:
+<?php foreach ($this->tickets as $ticketId => $ticket) : ?>
+#<?=$ticket['handle']?> (<?=I18n::tr($ticket['type'])?>): -<?=$ticket['loss']?> <?=$this->currencyName?> (<?=I18n::tr('created_at')?>: <?=$ticket['createdAt']?>)
+
+<?php endforeach?>
+===========================================
+
+<?=I18n::tr('age_disclaimer')?>
+<?=I18n::tr('copyright')?>

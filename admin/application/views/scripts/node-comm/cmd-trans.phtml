@@ -1,0 +1,20 @@
+<div class="legend">
+  Regeneruje slovníkové soubory na tomto nodu i na ostatních nodech ve skupině.<br />
+  Cache s obsahem stránek apod. není mazána.
+	<br />
+</div>
+<form action="" method="post">
+	<input type="hidden" name="ncc" value="<?= NodeCommController::CMD_TRANS ?>" />
+	<label>Smazat soubory (pouze v případě problémů s právy) <input type="checkbox" name="deleteTranslateDir" value="1" /></label>
+	<?php
+	if ($this->allDeleted === null) {
+		// nic
+	} else if($this->allDeleted == true) {
+		//echo '<span>OK</span>';
+	} else {
+		echo '<span>ERROR</span>';
+	}
+	?>
+	<br />
+	<input type="submit" />
+</form>

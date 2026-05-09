@@ -1,0 +1,466 @@
+<div id="right">
+	<h2 class="boxheader"><?= $this->trans('reg_personal') ?></h2>
+	<?php if ($this->success) { ?>
+		<div class="alert alert-success alert-dismissible no-margin" role="alert">
+			<p><?= !empty($this->result) ? $this->trans($this->result) : ''?></p>
+		</div>
+	<?php } else { ?>
+		<?php if (!empty($this->result)) :?>
+		<div class="alert alert-danger alert-dismissible no-margin" role="alert">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h2><?= $this->trans('reg_general_error_funny_title') ?></h2>
+				<div><?= $this->trans($this->result) ?></div>
+				<?php if (!empty($this->error['myAccountPersonalToken'])) : ?>
+					<div><?= $this->trans('error_csrf_token') ?></div>
+				<?php endif; ?>
+		</div>
+			<!--<div class="notify-larger notify-error bottom10">
+				<p><?=$this->trans($this->result)?></p>
+			</div>-->
+	
+		<?php endif; ?>
+	<?php } ?>
+		<div class="contentbox">
+			<form method="post" action="./">
+			<!--<h3><?=$this->trans('reg_personal'); ?></h3>-->
+				
+				<input 
+					type="hidden"
+					name="myAccountPersonalToken"
+					value="<?=(isset($this->values['myAccountPersonalToken'])?$this->escape($this->values['myAccountPersonalToken']):''); ?>"/>
+				
+				  <table class="table table-striped table-hover">
+					<tr>
+						<td class="w30p">
+						<label><?=$this->trans('reg_gender'); ?> *</label>
+					  </td>
+					  <td>
+						<input
+						  type="radio"
+						  name="gender"
+						  id="gender-woman"
+						  value="zena"
+						  <?= (isset($this->values['gender']) && $this->values['gender'] == 'zena'?'checked="checked"':'') ?> />
+						<label class="gender" for="gender-woman"><?=$this->trans('reg_woman'); ?></label>
+						<input
+						  type="radio"
+						  name="gender"
+						  id="gender-man"
+						  class="left10"
+						  value="muz"
+						  <?= (isset($this->values['gender']) && $this->values['gender'] == 'muz'?'checked="checked"':'') ?> />
+						<label for="gender-man" class="gender"><?=$this->trans('reg_man'); ?></label>
+					  </td>
+
+
+					  <?php if(count($this->error['gender']) > 0): ?>
+						<td class="pozor pozor-active">
+						  <span class="chyba">
+							<img src="/images/vykricnik.png"  id="gender_img"  alt="!!" />
+							<span class="error" id="gender_er_info" style="display:none">
+
+							  <?php foreach($this->error['gender'] as $data): ?>
+								<?=$this->trans('reg_e_'.$data) ; ?>
+							  <?php endforeach; ?>
+
+
+							</span>
+						  </span>
+						  <script>regInfo("gender");</script>
+					  <?php else: ?>
+						<td class="pozor">
+						  <div class="chyba">
+							<img src="/images/vykricnik.png" alt="!!" />
+						  </div>
+					  <?php endif; ?>
+					  </td>
+					</tr>
+
+
+					<tr>
+					  <td>
+						<label><?=$this->trans('reg_name'); ?></label>
+					  </td>
+					  <td>
+						<?=$this->values['user']->name ?>
+					  </td>
+					</tr>
+
+				<tr>
+					  <td>
+						<label><?=$this->trans('reg_surname'); ?></label>
+					  </td>
+					  <td>
+						  <?=$this->values['user']->surname ?>
+					  </td>
+					</tr>
+
+					<tr>
+					  <td>
+						<label><?=$this->trans('reg_op'); ?></label>
+					  </td>
+					  <td>
+						  <?= $this->values['user']->citizenId ?>
+					  </td>
+					</tr>
+
+					<tr>
+					  <td>
+						<label><?=$this->trans('reg_ulice'); ?></label>
+					  </td>
+					  <td>
+						  <?= $this->values['user']->street ?>
+					  </td>
+					</tr>
+
+					<tr>
+					  <td>
+						<label><?=$this->trans('reg_psc'); ?></label>
+					  </td>
+					  <td>
+						  <?= $this->values['user']->zipCode ?>
+					  </td>
+					</tr>
+
+					<tr>
+					  <td>
+						<label><?=$this->trans('reg_mesto'); ?></label>
+					  </td>
+					  <td>
+						<?= $this->values['user']->place ?>
+					  </td>
+					</tr>
+
+					<tr>
+					  <td>
+						<label><?=$this->trans('reg_narozeni'); ?> (dd.mm.YYYY)</label>
+					  </td>
+					  <td>
+						  <?= $this->values['user']->birthDate ?>
+					  </td>
+					</tr>
+
+
+					<tr>
+					  <td>
+						<label><?=$this->trans('reg_email'); ?> *</label>
+					  </td>
+					  <td>
+						<?=(isset($this->values['user']->email)?$this->values['user']->email:''); ?>
+					  </td>
+					</tr>
+
+
+					<tr>
+					  <td>
+						<label for="telefon"><?=$this->trans('reg_tel'); ?></label>
+					  </td>
+					  <td>
+						<input
+						  type="text"
+						  class="txt"
+						  name="telefon"
+						  maxlength="9"
+						  id="telefon"
+						  value="<?=(isset($this->values['telefon'])?$this->values['telefon']:''); ?>"/>
+					  </td>
+					  <?php if(count($this->error['telefon']) > 0): ?>
+						<td class="pozor pozor-active">
+						  <span class="chyba">
+							<img src="/images/vykricnik.png"  id="telefon_img"  alt="!!" />
+							<span class="error" id="telefon_er_info" style="display:none">
+
+							  <?php foreach($this->error['telefon'] as $data): ?>
+								<?=$this->trans('reg_e_'.$data); ?>
+							  <?php endforeach; ?>
+
+							</span>
+						  </span>
+						  <script>regInfo("telefon");</script>
+					  <?php else: ?>
+						<td class="pozor">
+						  <div class="chyba">
+							<img src="/images/vykricnik.png" alt="!!" />
+						  </div>
+					  <?php endif; ?>
+					  </td>
+					</tr>
+
+				  <!--</table>
+			<h5><?=$this->trans('reg_acc'); ?></h5>
+				<table class="w50p table table-striped table-hover">-->
+					<tr>
+					  <td>
+						<label><?=$this->trans('reg_username'); ?></label>
+					  </td>
+					  <td>
+						  <strong><?= $this->values['user']->nick ?></strong>
+					  </td>
+					</tr>
+
+					<tr>
+					  <td>
+						<label for="pass_old"><?=$this->trans('reg_pass_old'); ?></label>
+					  </td>
+					  <td>
+						  <input type="password" class="txt" name="pass_old" id="pass_old" />
+					  </td>
+					  <?php if(count($this->error['pass_old']) > 0): ?>
+						<td class="pozor pozor-active">
+						  <span class="chyba">
+							<img src="/images/vykricnik.png"  id="pass_old_img"  alt="!!" />
+							<span class="error" id="pass_old_er_info" style="display:none">
+
+							  <?php foreach($this->error['pass_old'] as $data): ?>
+								<?=$this->trans('reg_e_'.$data); ?>
+							  <?php endforeach; ?>
+
+							</span>
+						  </span>
+						  <script>regInfo("pass_old");</script>
+					  <?php else: ?>
+						<td class="pozor">
+						  <div class="chyba">
+							<img src="/images/vykricnik.png" alt="!!" />
+						  </div>
+					  <?php endif; ?>
+					  </td>
+					</tr>
+
+					<tr>
+					  <td>
+						<label for="pass_new"><?=$this->trans('reg_pass'); ?></label>
+					  </td>
+					  <td>
+						  <input type="password" class="txt" name="pass_new" id="pass_new" />
+					  </td>
+					  <?php if(count($this->error['pass_new']) > 0): ?>
+						<td class="pozor pozor-active">
+						  <span class="chyba">
+							<img src="/images/vykricnik.png"  id="pass_new_img"  alt="!!" />
+							<span class="error" id="pass_new_er_info" style="display:none">
+
+							  <?php foreach($this->error['pass_new'] as $data): ?>
+								<?=$this->trans('reg_e_'.$data); ?>
+							  <?php endforeach; ?>
+
+							</span>
+						  </span>
+						  <script>regInfo("pass_new");</script>
+					  <?php else: ?>
+						<td class="pozor">
+						  <div class="chyba">
+							<img src="/images/vykricnik.png" alt="!!" />
+						  </div>
+					  <?php endif; ?>
+					  </td>
+					</tr>
+
+
+					<tr>
+					  <td>
+						<label for="pass_again"><?=$this->trans('reg_pass_again'); ?></label>
+					  </td>
+					  <td>
+						  <input type="password" class="txt" name="pass_again" id="pass_again" />
+					  </td>
+					  <?php if(count($this->error['pass_again']) > 0): ?>
+						<td class="pozor pozor-active">
+						  <span class="chyba">
+							<img src="/images/vykricnik.png"  id="pass_again_img"  alt="!!" />
+							<span class="error" id="pass_again_er_info" style="display:none">
+
+							  <?php foreach($this->error['pass_again'] as $data): ?>
+								<?=$this->trans('reg_e_'.$data); ?>
+							  <?php endforeach; ?>
+
+							</span>
+						  </span>
+						  <script>regInfo("pass_again");</script>
+					  <?php else: ?>
+						<td class="pozor">
+						  <div class="chyba">
+							<img src="/images/vykricnik.png" alt="!!" />
+						  </div>
+					  <?php endif; ?>
+					  </td>
+					</tr>
+
+
+					<tr>
+						<td>
+							<label for="account_prefix"><?=$this->trans('reg_account_prefix'); ?></label>
+						</td>
+						<td>
+							<?php if(!empty($this->values['bank']->accountNumber)) : ?>
+								<span id="account_prefix"><?=$this->values['bank']->accountPrefix?></span>
+							<?php else : ?>
+								<input
+									type="text"
+									class="txt"
+									name="account_prefix"
+									id="account_prefix"
+									value="<?=(isset($this->values['account_prefix'])?$this->escape($this->values['account_prefix']):''); ?>"
+								/>
+								</td>
+								<?php if(count($this->error['account_prefix']) > 0): ?>
+									<td class="pozor pozor-active">
+										<span class="chyba">
+											<img src="/images/vykricnik.png"  id="account_prefix_img"  alt="!!" />
+											<span class="error" id="account_prefix_er_info" style="display:none">
+
+											<?php foreach($this->error['account_prefix'] as $data) : ?>
+													<?=$this->trans('reg_e_'.$data); ?>
+											<?php endforeach; ?>
+
+											</span>
+										</span>
+									<script>regInfo("account_prefix");</script>
+								<?php else: ?>
+									<td class="pozor">
+										<div class="chyba">
+											<img src="/images/vykricnik.png" alt="!!" />
+										</div>
+								<?php endif?>
+							<?php endif?>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<label for="account_number"><?=$this->trans('reg_account_number'); ?></label>
+						</td>
+						<td>
+							<?php if(!empty($this->values['bank']->accountNumber)) : ?>
+								<span id="account_number"><?=$this->values['bank']->accountNumber?></span>
+							<?php else : ?>
+								<input
+									type="text"
+									class="txt"
+									name="account_number"
+									id="account_number"
+									value="<?=(isset($this->values['account_number'])?$this->escape($this->values['account_number']):''); ?>"
+								/>
+								</td>
+								<?php if(count($this->error['account_number']) > 0): ?>
+									<td class="pozor pozor-active">
+										<span class="chyba">
+											<img src="/images/vykricnik.png"  id="account_number_img"  alt="!!" />
+											<span class="error" id="account_number_er_info" style="display:none">
+
+											<?php foreach($this->error['account_number'] as $data) : ?>
+													<?=$this->trans('reg_e_'.$data); ?>
+											<?php endforeach; ?>
+
+											</span>
+										</span>
+									<script>regInfo("account_number");</script>
+								<?php else: ?>
+									<td class="pozor">
+										<div class="chyba">
+											<img src="/images/vykricnik.png" alt="!!" />
+										</div>
+								<?php endif?>
+							<?php endif?>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<label for="bankCode"><?=$this->trans('reg_bank_id'); ?></label>
+						</td>
+						<td>
+							<?php if(!empty($this->values['bank']->accountNumber)) : ?>
+								<span id="bankCode"><?=$this->values['bank']->bankCode?></span>
+							<?php else : ?>
+								<select name="bank_id" id="bankCode">
+									<?php foreach($this->banks as $bank) : ?>
+										<option
+											value="<?=$bank['bankId']?>"
+											<?=(isset($this->values['bank_id']) && $this->values['bank_id']==$bank['bankId'] ? 'selected="selected"' : '')?>
+										>
+											<?= empty($bank['bankId']) ? $this->trans('choose') : "{$bank['bankName']} ({$bank['bankCode']})" ?>
+										</option>
+									<?php endforeach?>
+								</select>
+								</td>
+								<?php if(count($this->error['bank_id']) > 0) : ?>
+									<td class="pozor pozor-active">
+										<span class="chyba">
+											<img src="/images/vykricnik.png"  id="bank_id_img"  alt="!!" />
+											<span class="error" id="bank_id_er_info" style="display:none">
+												<?php foreach($this->error['bank_id'] as $data) : ?>
+													<?=$this->trans('reg_e_'.$data)?>
+												<?php endforeach?>
+											</span>
+										</span>
+										<script>regInfo("bank_id");</script>
+								<?php else : ?>
+									<td class="pozor">
+										<div class="chyba">
+											<img src="/images/vykricnik.png" alt="!!" />
+										</div>
+								<?php endif?>
+							<?php endif?>
+						</td>
+					</tr>
+
+					<tr>
+					  <td>
+						<label for="news"><?=$this->trans('reg_news'); ?></label>
+					  </td>
+					  <td>
+						<input type="checkbox" class="txt" name="news" id="news" value="yes" <?= ('yes' == $this->values['news'] ? 'checked="checked"' : '')?> />
+					  </td>
+					  <td class="pozor">
+						<div class="chyba">
+						  <img src="/images/vykricnik.png" alt="!!" />
+						</div>
+					  </td>
+					</tr>
+
+					<!--<tr>
+					  <td>&nbsp;</td>
+					  <td>
+						<input type="submit"
+								class="btn btn-big"
+								name="submit"
+								id="submit"
+								value="<?= $this->trans('Submit'); ?>" />
+					  </td>
+					  <td class="pozor">
+						<div class="chyba">
+						  <img src="/images/vykricnik.png" alt="!!" />
+						</div>
+					  </td>
+					</tr>-->
+          </table>
+		
+				<div class="w100p text-center"><input type="submit"
+								class="btn btn-big"
+								name="submit"
+								id="submit"
+								value="<?= $this->trans('Submit'); ?>" />
+					<p class="small"><br />* <?=$this->trans('reg_error_isEmpty'); ?></p>
+				</div>
+		
+		  
+	</form>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$.each($($('.pozor-active').parent()), function( index, value ) {
+				$('input,select,textarea', this)
+						.addClass('errBg')
+						.attr('data-original-title', $.trim($('span.error', this).text()))
+						.attr('data-placement', 'right')
+						.tooltip();
+			});
+			$('input,select,textarea', $('.pozor-active').parent()).change(function() {
+				$(this).removeClass('errBg').tooltip('disable');
+			});
+		});
+	</script>
+	</div>
+	
+</div>
+<?=$this->render('myaccount/user-profile-left-col.phtml'); ?>

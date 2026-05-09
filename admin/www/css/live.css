@@ -1,0 +1,370 @@
+/*********************/ /*zakladni nasataveni*/ /*********************/
+html {
+    min-height: 100%;
+    _height: 100%;
+}
+#l_minute{
+	width:50px;
+}
+#prove_bet{
+	width:50px;
+}
+#prove_rate{
+	width:50px;
+}
+div#live_bet{
+	float:left;
+}
+div#live_minute{
+font-size: 11px;
+}
+body { /*font-family: Verdana, "Geneva CE", lucida, sans-serif;*/
+    font-family: Arial, sans-serif;
+    font-size: 0.8em; /*MSIE 5*/
+    fo\nt-size: 0.8em;
+    color: #adbbc0;
+    margin: 0px;
+    padding: 0px;
+    /*width: 810px;*/
+    _height: 100%;
+    background: #adbbc0;
+    background-repeat: repeat-y;
+}
+
+samp,code,kbd {
+    font-size: 90%;
+}
+
+html>body {
+    font-size: 0.8em;;
+}
+
+div#live_manipulation{
+	float:left;
+	position: fixed;
+	left:622px;
+	top:295px;
+	width:396px;
+	background-color:#bfbd82;
+	border:2px solid white;
+}
+div#live_info{
+	float:left;
+	position: fixed;
+	left:622px;
+	width:396px;
+color:black;
+	/*height:243px;*/
+	background-color:white;
+	border-top:2px solid white;
+	border-bottom:2px solid white;
+	border-left:2px solid white;
+	text-align:center;
+	padding:2px 2px 6px 0px;
+	margin:20px 0px 0px;
+}
+input.b_begin{
+	background-color: #E3E3E3;
+	border:1px solid #CD5C5C;
+	color:black;
+	font-size:12px;
+	font-weight:bold;
+	width:70px;
+	padding:4px 0px;
+	margin-bottom:6px;
+	margin-right:10px;
+}
+input.b_state{
+	background-color: #db7093;
+	border:1px solid #CD5C5C;
+	color:white;
+	font-weight:bold;
+	padding:4px 0px;
+	margin-bottom:6px;
+}
+input.b_score{
+	border:1px solid #CD5C5C;
+	font-size:12px;
+	font-weight:bold;
+	width:50px;
+	padding:4px;
+	float:left;
+}
+input.b_input{
+	width:118px;
+	padding:1px;
+}
+div#live_time{
+  clear:both;
+  border-top: 2px solid white;
+  color:black;
+  font-weight:bold;
+  padding:4px 0px 4px 4px;
+}
+div#live_action{
+  clear:both;
+  background-color: white;
+  color:black;
+  font-weight:bold;
+  padding:4px 0px 10px 4px;
+}
+span.live_act_time{
+	color:Teal;
+	font-size:15px;
+}
+div.arrow_move{
+	width:12px;
+	float:left;
+	margin-right:5px;
+}
+a.arrow{
+   display:block;
+	margin-bottom: 0px;
+}
+div.live_stav_info{
+	color:#d0b200;
+	font-size:16px;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin:0 0 4px 0;
+	border:1px solid black;
+}
+div.live_stav_sport{
+	color:black;
+	font-size:14px;
+	margin:0px 0px 4px 0px;
+}
+div.live_stav_udalost{
+	color:black;
+	font-size:15px;
+	font-weight:bold;
+	margin:0px 0px 4px 0px;
+}
+div.live_stav_score{
+	color:black;
+	font-size:20px;
+	font-weight:bold;
+	margin:0px 0px 4px 0px;
+}
+div#live_stav_action{
+	float:left;
+	margin:12px 16px 0px 0px;
+	background-color: black;
+	text-align:center;
+	border:2px solid white;
+	border-left:0px;
+	padding:0px 4px 8px;
+	width:175px;
+	color: #FFF;
+}
+div#live_stav_action div{
+	color:black;
+	background-color: #6495ED;
+}
+table.live_stav_scores{
+	margin:0;
+	border-collapse: collapse;
+	float:left;
+}
+table.live_stav_scores td{
+	border: 1px solid white;
+	padding:1px 4px;
+	color:white;
+	font-size:0.9em;
+
+}
+table.live_stav_scores td.live_stav_scores_th{
+	background-color: #c9cfe6;
+	font-size:11px;
+}
+div.live_bet_row{
+   float:left;
+	clear:both;
+	width:608px;
+
+	margin:10px 10px 0px 0px;
+	background-color: #bfbd82;
+
+	border-top:2px solid black;
+}
+div.live_bet_row_head{
+   float:left;
+	width:600px;
+	background-color: white;
+	color:black;
+	padding:1px 2px;
+	font-size:10px;
+}
+div.live_bet_row_left{
+   float:right;
+	width:410px;
+	background-color: #696969;
+}
+*+html div.live_bet_row_left{
+  border:0px solid red;
+}
+div.live_bet_row_right{
+   float:left;
+	width:160px;
+	padding:4px 4px;
+	color:white;
+	background-color: #8a1f11;
+}
+*+html div.live_bet_row_right{
+  border:0px solid black;
+  }
+div.live_bet_row_bottom{
+	float:left;
+	width:608px;
+	border-top:1px solid black;
+}
+
+div.one_rate{
+	width: 120px;
+	float:left;
+	margin:0px 14px 6px 0px;
+}
+*+html div.one_rate{
+	margin:0px 14px 6px 0px;
+}
+div.one_rate_head{
+
+	background-color: #979797;
+	color:white;
+	font-size:11px;
+	text-align: center;
+	font-weight: bold;
+	padding:1px 0px;
+}
+div.one_rate_r{
+	float:left;
+	margin:2px 0px 0px 20px;
+}
+*+html div.one_rate_r{
+	margin:2px 0px 0px 10px;
+}
+input.one_rate_input{
+	float:left;
+	width:62px;
+
+	font-size:12px;
+	font-weight:normal;
+}
+
+div.one_rate_text{
+	float:left;
+	width: 120px;
+	background-color: #6495ED;
+	text-align:center;
+	color:black;
+}
+
+table.ultable{
+ border-collapse: collapse;
+}
+table.ultable table.ul_row{
+
+}
+table.ultable td.ul_cell{
+text-align:center;
+border:1px solid black;
+padding:2px 14px 2px 4px;
+color:black;
+}
+table.ultable td.ol_th{
+	font-weight:bold;
+}
+table.ultable td.rate_up{
+	background-image: url(../_clip/up.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+table.ultable td.rate_down{
+	background-image: url(../_clip/down.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+div.nonactive{
+	opacity: .5;
+	filter: alpha(opacity=50);
+}
+div.period_but{
+	float:left;
+	width:280px;
+}
+.white{
+	color:white;
+}
+.floatleft{
+	float:left;
+}
+.blackWeight{
+	color:black;
+	font-weight: bold;
+}
+.w100{
+	width:80px;
+	font-size: 11px;
+}
+img{
+	border:0px;
+}
+.clear{
+	clear: both;
+}
+.score_input{
+	width:20px;
+	height:14px;
+}
+div#special_info_history{
+	position:absolute;
+	background:black;
+	padding:5px;
+	left:150px;
+	top:240px;
+	width:250px;
+	height:140px;
+	overflow: auto;
+	border:2px solid white;
+	color:white;
+	display:none;
+}
+div#special_info_history span{
+	color:red;
+}
+.download_ticket_info{
+	position:fixed;
+	top:-14px;
+	border:1px solid black;
+	left:622px;
+	width:397px;
+	padding:1px;
+	background:white;
+}
+*+html .download_ticket_info {top:0px;}
+#bettype{
+	position:fixed;
+	display:none;
+	left:622px;
+	top:14px;
+	background-color: #696969;
+	padding:10px;
+	width:378px;
+	border:2px solid white;
+}
+
+#bettype a{
+	color:white;
+	float:left;
+   width:160px;
+   border-right:1px solid white;
+	font-weight:normal;
+	margin:4px 2px;
+	padding-right:8px;
+	padding-left:8px;
+	text-decoration: none;
+}
+#bettype a:hover{
+	color:white;
+	font-weight:bold;
+}

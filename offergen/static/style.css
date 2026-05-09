@@ -1,0 +1,34 @@
+html { font-family: sans-serif; }
+body { background-color: #f1f1f1; }
+a[href] { color: #24b; text-decoration: none; }
+a[href]:hover { text-decoration: underline; }
+h1 { font-size: 120%; }
+h2 { font-size: 100%; }
+li { margin-bottom: 0.2em; }
+hr { margin-top: 2em; }
+fieldset div { margin: 0.3em; }
+fieldset div div { margin-left: 0; }
+legend { font-weight: bold; }
+input[type=radio] + label, input[type=checkbox] + label {margin-right: 0.5em; }
+input[type=text] { margin-right: 1em; }
+input[type=submit] { padding: 0.2em 2em; margin-top: 0.5em; }
+fieldset span { margin-right: 0.5em; }
+select { vertical-align: top; margin-right: 1em; min-width: 9em; }
+select[size="1"] { background-color: white; vertical-align: inherit; }
+.warn { color: #c10; }
+.disabled { color: #bbb; }
+
+.extraforms { color: #082; }
+
+#debug { display: none; }
+a.toggle-on, a.toggle-off, a.toggle-on[href], a.toggle-off[href] {
+    position: relative;
+    width: 1em;
+    height: 1em;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    margin-right: 0.5em;
+    font-weight: bold;
+}
+option.sport { font-weight: bold; }

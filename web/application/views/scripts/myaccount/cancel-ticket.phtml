@@ -1,0 +1,19 @@
+<div class="col1wrap">
+	<div class="col1">
+		<h2 class="boxheader"><span><?=$this->trans('cancel_ticket')?></span></h2>
+		<div class="grayBorder">
+			<?php if ($this->errorAccessDenied) : ?>
+				<?=$this->errorAccessDenied?>
+			<?php else :?>
+				<div style="clear:both"></div>
+				<div class="cancel-ticket">
+					<?=$this->result?>
+					<div style="clear:both"></div>
+					<?=$this->form?>
+				</div>
+				<div class="cb"></div>
+			<?php endif?>
+		</div>
+	</div>
+</div>
+<?=$this->render('myaccount/user-profile-left-col.phtml'); ?>

@@ -1,0 +1,28 @@
+<tbody>
+  <?php if (empty($this->layout()->data)): ?>
+    <tr>
+      <td colspan="12"><?=i18n::tr('no_items')?></td>
+    </tr>
+  <?php else: ?>
+    <?php foreach($this->layout()->data as $row) : ?>
+      <tr>
+        <td><input type="checkbox" class="row-selector" name="handles[]" value="<?=$row['branchHandle']?>" /></td>
+        <td><?=$row['branchHandle']?></td>
+        <td><?=$row['branchName']?></td>
+        <td style="text-align:center;"><?=$row['stem']?></td>
+        <td style="text-align:center;"><?=$row['is_active']?></td>
+        <td style="text-align:center;<?php if ($row['branchActive'] != 1) { echo "color:red;"; }?>"><?php if ($row['branchActive'] == 1) { echo "active"; } else { echo "no active conract"; } ?></td>
+        <td><?=$row['contractType']?></td>
+        <td><?=$row['contracts']?></td>
+        <td style="text-align:center;"><?=It6_Date::fromDbAsDate($row['branchValidFrom'])?></td>
+        <td style="text-align:center;"><?=It6_Date::fromDbAsDate($row['branchValidTo'])?></td>
+        <td style="text-align:right;"><?=number_format($row['branchIn'], 2, ',', ' ')?></td>
+        <td style="text-align:right;"><?=number_format($row['branchOut'], 2, ',', ' ')?></td>
+        <td style="text-align:right;"><?=number_format($row['branchMp'], 2, ',', ' ')?></td>
+        <td style="text-align:right;"><?=number_format($row['branchInMinusOut'], 2, ',', ' ')?></td>
+        <td style="text-align:right;"><?=number_format($row['branchPayoutOut'], 2, ',', ' ')?></td>
+        <td style="text-align:right;<?php if($row['provision'] < 0) { echo "color:red;"; } ?>"><?=number_format($row['provision'], 2, ',', ' ')?></td>
+      </tr>
+    <?php endforeach?>
+  <?php endif; ?>
+</tbody>

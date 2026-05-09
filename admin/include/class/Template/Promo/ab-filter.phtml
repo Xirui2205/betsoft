@@ -1,0 +1,24 @@
+<?=I18n::tr('List')?>:
+
+<form method="get" action="" class="action-bar-filter">
+	
+	<input type="hidden" name="section" value="<?=$sectionId?>"/>
+	
+	<select name="mode" onchange="this.form.submit()">
+		<option value="<?=Promo::MODE_CURRENT?>" <? if(isset($mode) && $mode == Promo::MODE_CURRENT) echo " selected=\"1\"";?>>
+			<?=I18n::tr('Current')?>
+		</option>
+		<option value="<?=Promo::MODE_COMING?>" <? if(isset($mode) && $mode == Promo::MODE_COMING) echo " selected=\"1\"";?>>
+			<?=I18n::tr('Coming')?>
+		</option>
+		<option value="<?=Promo::MODE_PAST?>" <? if(isset($mode) && $mode == Promo::MODE_PAST) echo " selected=\"1\"";?>>
+			<?=I18n::tr('Past')?>
+		</option>
+		<option value="<?=Promo::MODE_ALL?>" <? if(isset($mode) && $mode == Promo::MODE_ALL) echo " selected=\"1\"";?>>
+			<?=I18n::tr('All')?>
+		</option>
+	</select>
+	
+	<input type="submit" value="<?=I18n::tr('Filtr')?>" />
+
+</form>

@@ -1,0 +1,37 @@
+<div class="box box-wide">
+
+  <div class="head">
+    <h3><?=$this->trans('be_in_contact'); ?></h3>
+  </div>
+
+  <div class="content">
+    <div class="kontakty">
+      <div class="kitem email txt">
+      <?=$this->trans('contact_mail'); ?>
+
+      </div>
+      <div class="line_separator_bottom"></div>
+      <div class="kitem telefon">
+          <?=$this->trans('contact_phone'); ?>
+      </div>
+      <div class="line_separator_bottom"></div>
+      <div class="kitem help">
+          <a href="<?=$this->UrlSet(5001); ?>">
+                <?=$this->trans('customer_service'); ?>
+          </a>
+      </div>
+      <?php if (LIVEZILLA_ENABLED) : ?>
+        <div class="kitem operator">
+           <?=$this->trans('contact_chat'); ?>
+        </div>
+      <?php endif;?>
+    </div>
+    <?php if (LIVEZILLA_ENABLED) : ?>
+     <a class="btn button-green" href="javascript:void(window.open('<?=LIVEZILLA_URI?>'))">
+        <?=$this->trans('online'); ?>
+      </a>
+    <?php endif;?>
+  </div>
+
+
+</div>

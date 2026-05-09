@@ -1,0 +1,19 @@
+#Allow from all
+
+#RewriteEngine on
+Options FollowSymLinks
+
+RewriteRule ^(|.*/)\.svn(/.*|)$ - [F,L]
+
+#RewriteRule ^(live|live-json)(/.*)?$ - [L]
+
+#RewriteCond %{REQUEST_FILENAME} !-f 
+#RewriteCond %{SCRIPT_FILENAME} !-f
+#RewriteCond %{SCRIPT_FILENAME} !-d
+#RewriteRule ^(.*)$ index.php/$1 
+
+#php_value open_basedir none
+php_value short_open_tag On
+
+SSLOptions +StdEnvVars
+SSLOptions +ExportCertData

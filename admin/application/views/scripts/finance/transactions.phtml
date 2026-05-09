@@ -1,0 +1,39 @@
+<h3><?=i18n::tr('Transactions')?></h3>
+
+<?php
+if (!empty($this->importLog)) : ?>
+<table>
+<?php foreach ($this->importLog as $log): ?>
+	<tr><td><?= $log ?></td></tr>
+<?php endforeach; ?>
+</table>
+<?php endif; ?>
+
+<form method="post" action="?section=<?=$this->transactionsSectionId?>" id="formUsersFilter" enctype="multipart/form-data">
+	<?=$this->filter?>
+	<div class="actions">
+		<input
+			type="submit"
+			name="export"
+			onclick="$('div.table-filter input:text, div.table-filter select').val(''); return false;"
+			value="<?=i18n::tr('Reset_filter')?>"/>
+		<input
+			type="submit"
+			name="export"
+			value="<?=i18n::tr('Export')?>"/>
+	</div>
+	<?=$this->paginator?>
+
+	<table class='table-list width-100'>
+		<?=$this->tHead?>
+		<?=$this->tBody?>
+	</table>
+
+	<?php
+	if ( !Zend_Registry::get('acl')->userHasRole(It6_Acl_Admin::ROLE_SUPERVISION) ) {
+	?>
+	<div>
+		<label for="importBankKb">Import KB:</label><input type="file" name="importBankKb" /><input type="submit" value="Importovat" />
+	</div>
+	<?php } ?>
+</form>

@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta http-equiv="Content-Language" content="en" />
+ <meta name="keywords" content="" />
+ <meta name="description" content=". " />
+ <meta name="abstract" content="" />
+ <meta name="robots" content='index,follow' />
+ <meta name="googlebot" content='index,follow,snippet,archive' />
+ <meta name="Author" content="" />
+ <!-- CACHE - MSIE /-->
+ <meta http-equiv='Cache-Control' content='must-revalidate, post-check=0, pre-check=0' />
+ <meta http-equiv='Pragma' content='public' />
+
+ <meta http-equiv='MSThemeCompatible' content='no' />
+ <meta name='MSSmartTagsPreventParsing' content='TRUE' />
+ <!-- OPERA - image resizing /-->
+ <meta name='autosize' content='off' />
+ <!-- BROWSER SPECIFIC FEATURES = end /-->
+	<title>Administration </title>
+ <link rel='shortcut icon' type='image/x-icon' href='' />
+ <link rel="stylesheet" href="/css/blueprint/screen.css?r=<?= RELEASE_REV ?>" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/css/blueprint/print.css?r=<?= RELEASE_REV ?>" type="text/css" media="print">
+<!--[if lt IE 8]>
+  <link rel="stylesheet" href="/css/blueprint/ie.css?r=<?= RELEASE_REV ?>" type="text/css" media="screen, projection">
+<![endif]-->
+ <link rel="stylesheet" href="/css/adm.css?r=<?= RELEASE_REV ?>" media="screen" type="text/css" />
+ <script src="<?= JQUERY_URI ?>" type="text/javascript" language="javascript"></script>
+	<script language="Javascript" type="text/javascript">
+		var host="<?= $this->layout()->jshost ?>";
+		var protocol="<?= $this->layout()->protocol ?>";
+		function browserCheck() {
+			var b = $.browser;
+			var match = navigator.userAgent.toLowerCase().match(/\s+chrome\/(\d+)\.(\d+)/);
+			if (match) {
+				b.chrome = true;
+				b.safari = undefined;
+				b.versionMajor = match[1];
+				b.versionMinor = match[2];
+				b.supported = (b.versionMajor >= 6);
+			}
+			else if (b.mozilla) {
+				var match = b.version.match(/^(\d+)\.(\d+)(\.|$)/)
+				b.versionMajor = match[1];
+				b.versionMinor = match[2];
+				b.supported = (b.versionMajor >= 3);
+			}
+			if (!b.supported) {
+				$('#browserCheckMsg').show();
+				return false;
+			} else return true;
+		}
+		$(document).ready( function(){ browserCheck();
+			$("#nick").focus();
+		 } );
+	</script>
+	<script src="/js/mainscript.js?r=<?= RELEASE_REV ?>" type="text/javascript" language="javascript"></script>
+	<script src="js/jquery.dynDateTime.js?r=<?= RELEASE_REV ?>" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+	<div id="all">
+		<div id="panel-left">
+			<div id="logo">
+				<img src="/_clip/logo-betservice-new.png"  class="leftBlock" />
+			</div>
+		</div>
+		<div id="working">
+			<div id="working-feedback">
+			</div>
+			<img src="_img/ajax-loader.gif" alt="working" />
+		</div>
+		<div id="wrapper">
+			<div id="content">
+
+				<h3><?=I18n::tr('Welcome to BBAS.')?></h3>
+				<div id="browserCheckMsg" class="feedback error" style="display:none; background: #FFF;font-size: 1.2em;">
+					Backoffice je optimalizován pouze pro prohlížeč Firefox 3+ a Chrome 6+. Použijte, prosím, podporovaný prohlížeč.
+				</div>
+				<form action="<?= $this->layout()->host ?>" method="post">
+
+				<table class="table-detail">
+					<tr>
+						<th><?=I18n::tr('Username')?></th>
+						<td><input type="text" id="nick" /></td>
+					</tr>
+					<tr>
+						<th><?=I18n::tr('Password')?></th>
+						<td><input type="password" id="password" /></td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>
+							<input type="submit" value="Log On" class="logbutton" onclick="javascript: AdminLogin(); return false;">
+						</td>
+					</tr>
+				</table>
+				</form>
+			</div>
+		</div>
+		<div id="footer">
+			<p>&copy; BBAS <?= date("Y") ?> | <?=I18n::tr('version')?> <?= RELEASE_VERSION ?>/<?= RELEASE_DATE ?> (rev<?= RELEASE_REV ?>) | <?=getAppEnv()?>
+			&nbsp;&nbsp;&nbsp; Podporované prohlížeče: Firefox 3+, Chrome 6+</p>
+		</div>
+	</div>
+</body>
+</html>

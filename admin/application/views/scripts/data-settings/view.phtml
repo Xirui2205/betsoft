@@ -1,0 +1,20 @@
+<?=$this->feedbackMsg?>
+aaaasd
+<div class="actions">
+	<?php if ($this->supervisionLogged == false) :?>
+	<button onclick="editParamDetail(<?=$this->paramId?>);"><?=i18n::tr('Edit')?></button>
+	<?php endif;?>
+	<button onclick="hideDetail('data-settings')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<table class="table-detail" >
+	<tr>
+		<th class="header" colspan="2">
+			<?=i18n::tr('data_typ')?>
+		</th>
+	</tr>
+	<tr>
+		<th><?=i18n::tr('nazev')?></th>
+		<td id="dataTypeHandle"><?=$this->params['nazev']?></td>
+	</tr>
+</table>

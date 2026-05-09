@@ -1,0 +1,90 @@
+	<main id="content" role="main">
+		<div id="true-content" class="welcome">
+			<div class="wrapper">
+		
+				<div id="left">
+					<!--
+					<h2 class="boxheader">Top Bets</h2>
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="active"><a href="#tab-odds" role="tab" data-toggle="tab">Odds</a></li>
+						<li><a href="#tab-live" role="tab" data-toggle="tab">Live</a></li>
+					</ul>
+					<div class="tab-content">
+						<div id="tab-odds" class="tab-pane fade in active no-padding">
+							<ul class="nav icos">
+								<li>
+									<a href="odds.html" class="ico ico-sport ico-soccer parent">Premier League <span class="count">145</span></a>
+									<ul class="no-bg">
+										<li><a href="odds.html" class="ico ico-item ico-star">Barclays Premier <span class="count">145</span></a></li>
+										<li><a href="odds.html" class="ico ico-item ico-star">CocaCola League <span class="count">145</span></a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="odds.html" class="ico ico-sport ico-tennis parent">ATP500 <span class="count">145</span></a>
+									<ul class="no-bg">
+										<li><a href="odds.html" class="ico ico-item ico-star">Australian Open <span class="count">145</span></a></li>
+										<li><a href="odds.html" class="ico ico-item ico-star">Melbourne <span class="count">145</span></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div id="tab-live" class="tab-pane fade no-padding">
+							<ul class="nav icos">
+								<li>
+									<a href="#" class="ico ico-sport ico-soccer">Premier League <span class="count">145</span></a>
+									<ul class="no-bg">
+										<li><a href="odds.html" class="ico ico-item ico-star">Barclays Premier <span class="count">145</span></a></li>
+										<li><a href="odds.html" class="ico ico-item ico-star">CocaCola League <span class="count">145</span></a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+					-->
+
+					<?=$this->render('index/timeFilter.phtml')?>
+
+					<a href="/cs/sazky/?all"><h3 class="boxheader" id="betscount"><span class="highlight" id="all-bets-count">0</span> Bets</h3></a>
+
+					<div id="sportMenuContainer">
+						<?=$this->render('index/sportMenuLoader.phtml')?>
+					</div>
+
+					<div class="boxheader">Bet &amp; Win Live!</div>
+					<div class="contentbox no-padding">
+						<a href="#"><img src="<?=GFX_SERVER?>left_banner.jpg" alt="Bet &amp; Win Live!"></a>
+					</div>
+					<div class="contentbox description">
+						Here could be a description of banner above
+					</div>
+				</div>
+				
+				<div id="center">
+
+				<?php if ( !$this->isAjax ): ?>
+
+					<script type="text/javascript">
+					  var nextOddsUrls = [];
+					</script>
+
+				<?php endif; ?>
+
+				<?=$this->render('sportsbook/sport-matches.phtml');?>
+
+				</div>
+
+				<div id="rightcol">
+					<?=$this->render('sportsbook/ticket.phtml');?>
+
+					<div class="box box-wide box-okna" id="rightColLiveCalendarSmall">
+						<div class="loader-small"></div>
+					</div>
+					<script type="text/javascript">
+						$(document).ready(function() { $('#rightColLiveCalendarSmall').load('<?= $this->urlSet(71) ?>'); });
+						setInterval("$('#rightColLiveCalendarSmall').load('<?=$this->urlSet(71)?>')",<?=LIVECALENDAR_REFRESH_LIST?>);
+					</script>
+				</div>
+
+			</div>
+		</div>
+	</main>

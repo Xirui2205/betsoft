@@ -1,0 +1,23 @@
+<thead>
+	<tr>
+		<th colspan="2" style="text-align: center">Akce</th>
+		<?php foreach($this->layout()->columns as $column) : ?>
+			<th>
+				<?php if(!empty($column[1]) && !is_numeric($column[1])) : ?>
+					<div class="ordering">
+						<input type="image" src="/_img/adm_asc.png" class="setOrder<?php if ( $this->layout()->order[$column[1]] == 'asc') echo "-current"; ?>" value="^" name="order[<?=$column[1]?>_ASC]" />
+						<input type="image" src="/_img/adm_desc.png"  class="setOrder<?php if ( $this->layout()->order[$column[1]] == 'desc') echo "-current"; ?>" value="v" name="order[<?=$column[1]?>_DESC]" />
+						<?php if ( $this->layout()->order[$column[1]] == 'asc'): ?>
+							<input type="hidden" value="1" name="order[<?=$column[1]?>:asc]" />
+						<?php elseif ( $this->layout()->order[$column[1]] == 'desc'): ?>
+							<input type="hidden" value="1" name="order[<?=$column[1]?>:desc]" />
+						<?php endif;?>
+					</div>
+				<?php endif?>
+				<?php if(!empty($column[0])) : ?>
+					<div><?=i18n::tr($column[0])?></div>
+				<?php endif?>
+			</th>
+		<?php endforeach?>
+	</tr>
+</thead>

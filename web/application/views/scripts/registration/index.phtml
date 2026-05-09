@@ -1,0 +1,392 @@
+<div id="full">
+	<h1><?= $this->trans('reg_reg') ?></h1>
+	<div class="contentbox">
+		<?php if (!empty($this->generalError)) { ?>
+			<div class="alert alert-danger alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h2><?= $this->trans('reg_general_error_funny_title') ?></h2>
+				<?= $this->generalError ?>
+			</div>
+		<?php } ?>
+		<div id="forbiddenCountryAlert" class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h2><?= $this->trans('reg_general_error_funny_title') ?></h2>
+			<?= $this->trans('forbidden_country_alert') ?>
+		</div>
+		<div id="invalidAddressAlert" class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h2><?= $this->trans('reg_general_error_funny_title') ?></h2>
+			<?= $this->trans('invalid_address_alert') ?>
+		</div>
+		<div id="addressNotComplete" class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h2><?= $this->trans('reg_general_error_funny_title') ?></h2>
+			<?= $this->trans('reg_address_not_complete') ?>
+		</div>
+		<form id="<?= $this->signUpFormObject->getId() ?>" action="<?= $this->signUpFormObject->getAction() ?>"
+			  method="post" class="form-horizontal form-table clearfix" role="form">
+			<div class="col-half">
+				<table>
+					<?php
+					$elementName='salutation'; include 'inc/tr.phtml';
+					$elementName='name'; include 'inc/tr.phtml';
+					$elementName='surname'; include 'inc/tr.phtml';
+					$elementName='email'; include 'inc/tr.phtml';
+					$elementName='password'; include 'inc/tr.phtml';
+					$elementName='password_check'; include 'inc/tr.phtml';
+					?>
+				</table>
+			</div>
+			<div class="col-half">
+				<table>
+					<?php
+					$elementName='date_of_birth'; include 'inc/tr.phtml';
+					$elementName='address'; include 'inc/tr.phtml';
+					
+					// telefon s předvolbou zvlášť:
+					?>
+					<tr<?= !$this->signUpFormObject->getElement('phone_number')->hasErrors() ? '' : ' class="form-error"' ?>>
+						<td class="col-xs-4"><label for="<?= 'phone_number' ?>"><?= $this->signUpFormObject->getElement('phone_number')->getLabel() ?>:</label></td>
+						<td><?php
+
+					// inputy
+					echo $this->signUpFormObject->getElement('predvolba')->render();
+					echo $this->signUpFormObject->getElement('phone_number')->render();
+
+					// a případně validační hláška
+					if ($this->signUpFormObject->getElement('phone_number')->hasErrors()) {
+						$messages = $this->signUpFormObject->getElement('phone_number')->getMessages();
+						$errorArr = $this->signUpFormObject->getElement('phone_number')->getErrors();
+						$errorMessage = $messages[$errorArr[0]];
+						?>
+							<img src="/new/images/icons/input_alert.png" title="<?= $errorMessage ?>">
+						<?php
+					}else{
+						// pro jquery validate
+						?><img src="/new/images/icons/input_alert.png" title="" style="display:none"><?php
+					}
+					?></td>
+					</tr>
+					<?php
+					$elementName='mena_id'; include 'inc/tr.phtml';
+					$elementName='captcha'; include 'inc/tr.phtml';
+					?>
+				</table>
+			</div>
+			<div id="reg-final" class="clearfix">
+				<div class="float-left w30p reg-chck">
+					<?= $this->signUpFormObject->getElement('newsletter')->render() ?><label for="newsletter"><?= $this->signUpFormObject->getElement('newsletter')->getLabel() ?></label>
+				</div>
+				<div class="float-left w40p reg-chck">
+					<?= $this->signUpFormObject->getElement('confirm_terms')->render() ?><label for="confirm_terms"><?= $this->signUpFormObject->getElement('confirm_terms')->getLabel() ?></label>
+					<a href="<?= $this->UrlSet(20); ?>" target="_blank"><?= $this->trans('reg_terms_2'); ?></a>
+					<?php
+					// a případně validační hláška
+					if ($this->signUpFormObject->getElement('confirm_terms')->hasErrors()) {
+						$messages = $this->signUpFormObject->getElement('confirm_terms')->getMessages();
+						$errorArr = $this->signUpFormObject->getElement('confirm_terms')->getErrors();
+						$errorMessage = $messages[$errorArr[0]];
+						?>
+							<img id="imgConfirmTerms" src="/new/images/icons/input_alert.png" style="margin:0 0 5px 4px">
+						<?php
+					}else{
+						// pro jquery validate
+						?><img id="imgConfirmTerms" src="/new/images/icons/input_alert.png" style="display:none; margin:0 0 5px 4px"><?php
+					}
+					?>
+				</div>
+				<div class="float-left w30p">
+					<?php
+					// hidden a send
+					echo $this->signUpFormObject->getElement('date_of_birth_system_format')->render()
+							. $this->signUpFormObject->getElement('lat')->render()
+							. $this->signUpFormObject->getElement('lng')->render()
+							. $this->signUpFormObject->getElement('postal_code')->render()
+							. $this->signUpFormObject->getElement('misto')->render()
+							. $this->signUpFormObject->getElement('country')->render()
+							. $this->signUpFormObject->getElement('ulice')->render()
+							. $this->signUpFormObject->getElement('send')->render();
+					?>
+				</div>
+			</div>
+			
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&language=<?= LANG_BROWSER ?>"></script>
+<script>
+	var address;
+	var countries = <?= $this->countryJson ?>;
+	var addressData;
+	var countryOk = true;
+	/* volá se v listeneru našeptávače a klasicky v on change, aby docházelo
+	 * k zápisům hodnot v těchto obou případech
+	 * @type Arguments
+	 */
+	function addressOnChange(){
+		addressData = [];
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode( {address:$('#address').val()}, function(results, status){
+			if (status == google.maps.GeocoderStatus.OK) {
+				$('#invalidAddressAlert').hide();
+				$('#send').prop('disabled', false);
+				setAddressData(results);
+				writeAddressData();
+				checkCountry(addressData['country_code']);
+				setCountryDefaults(addressData['country_code']);
+				if (countryOk){
+					checkCompleteAddress();
+				}
+			} else {
+				$('#invalidAddressAlert').show();
+				$('#send').prop('disabled', true);
+			}
+		});
+	}
+	function setAddressData(results) {
+		addressData['lat'] = results[0].geometry.location.lat();
+		addressData['lng'] = results[0].geometry.location.lng();
+		
+		var sublocality, locality, route, street_number, premise, postal_code, country;
+		
+		for (i = 0; i < results[0].address_components.length; ++i) {
+			var component = results[0].address_components[i];
+			if ($.inArray('sublocality', component.types) > -1) {
+				sublocality = component.long_name;
+			}
+			else if ($.inArray('locality', component.types) > -1) {
+				locality = component.long_name;
+			}
+			else if ($.inArray('route', component.types) > -1) {
+				route = component.long_name;
+			}
+			else if ($.inArray('street_number', component.types) > -1) {
+				street_number = component.long_name;
+			}
+			else if ($.inArray('premise', component.types) > -1) {
+				premise = component.long_name;
+			}
+			else if ($.inArray('postal_code', component.types) > -1) {
+				postal_code = component.long_name;
+			}
+			else if ($.inArray('country', component.types) > -1) {
+				country = component.short_name;
+			}
+		}
+
+		addressData['country_code'] = country;
+		addressData['country'] = countries[country][0];
+		addressData['postal_code'] = postal_code;
+		addressData['misto'] = (sublocality !== undefined ? sublocality : '')
+				+ (sublocality !== undefined && locality !== undefined ? ', ' : '')
+				+ (locality !== undefined ? locality : '');
+		// ulice s čísly
+		addressData['ulice'] = (route !== undefined ? route : '')
+				+ (route !== undefined && street_number !== undefined
+						|| premise !== undefined ? ' ' : '')
+				+ (premise !== undefined ? premise : '')
+				+ (premise !== undefined && street_number !== undefined ? '/' : '')
+				+ (street_number !== undefined ? street_number : '');
+		// čísla zvlášť pro validaci kompletní adresy
+		addressData['street_number'] = street_number;
+		addressData['premise'] = premise;
+		addressData['sublocality'] = sublocality;
+	}
+	function writeAddressData() {
+		$('#lat').val(addressData['lat']);
+		$('#lng').val(addressData['lng']);
+		$('#country').val(addressData['country']);
+		$('#postal_code').val(addressData['postal_code']);
+		$('#misto').val(addressData['misto']);
+		$('#ulice').val(addressData['ulice']);
+	}
+	// zakázaná země?
+	function checkCountry(country) {
+		var forbiddenCountries = <?= $this->forbiddenCountries ?>;
+		if ($.inArray(country, forbiddenCountries) > -1) {
+			$('#forbiddenCountryAlert').show();
+			$('#send').prop('disabled', true);
+			$('#address').addClass('errBg');
+			countryOk = false;
+		} else {
+			$('#forbiddenCountryAlert').hide();
+			$('#send').prop('disabled', false);
+			$('#address').removeClass('errBg');
+			countryOk = true;
+		}
+	}
+	// výchozí předvolba a měna podle země
+	function setCountryDefaults(country) {
+		var selectedCountry = countries[country];
+		if (selectedCountry[0] !== undefined) {
+			$('#predvolba').val(selectedCountry[0]);
+		}
+		if (selectedCountry[1] !== undefined) {
+			$('#mena_id').val(selectedCountry[1]);
+		}
+	}
+	function checkCompleteAddress(){
+		var enteredAddress = $('#address').val();
+		// odstraníme nerevantní čísla
+		enteredAddress = enteredAddress.replace(addressData['sublocality'],'');
+		enteredAddress = enteredAddress.replace(addressData['postal_code'],'');
+		if ((addressData['premise'] === undefined
+				&& addressData['street_number'] === undefined) // není číslo popisné ani orientační
+				||
+				// nebo vložená adresa žádné z těchto čísel neobsahuje
+				// tzn. google maps omylem vrátí nějaké výchozí číslo domu
+				(enteredAddress.indexOf(addressData['premise']) == -1
+				&& enteredAddress.indexOf(addressData['street_number']) == -1)) {
+			$('#addressNotComplete').show();
+			$('#send').prop('disabled', true);
+		} else {
+			$('#addressNotComplete').hide();
+			$('#send').prop('disabled', false);
+		}		
+	}
+	
+	$(document).ready(function () {
+		// maps autocomplete
+		initialize();
+		
+		$('#address').change(function () {
+			addressOnChange();
+		});
+		
+		// zabrání odeslání formuláře enterem
+		var input = document.getElementById('address');
+		google.maps.event.addDomListener(input, 'keydown', function(e) { 
+			if (e.keyCode == 13) {
+				e.preventDefault(); 
+			}
+		});
+		
+		// datum narození
+		$('#date_of_birth').datepicker({
+			changeMonth: true, // zobrazí selecty pro měsíc 
+			changeYear: true, // a rok
+			showMonthAfterYear: true, // kvůli omezení měsíců ve výchozím roce pro 18tiny
+			minDate: "-120Y",
+			maxDate: "-18Y",
+			yearRange: '-120:-18', // zobrazí v selectu hned všechny roky (bez překlikávání)
+			altField  : '#date_of_birth_system_format',
+			altFormat : 'yy-mm-dd',
+			onSelect: function (date) {
+				$('#date_of_birth').focus().blur(); // kvůli validátoru
+			}
+		});
+		
+		// telefon - bez mezer
+		$('#phone_number').bind('input', function(){
+			$(this).val(function(_, v){
+				return v.replace(/\D+/g, '');
+			});
+		});
+		
+		// validate
+		$("#regform").validate({
+			rules: {
+				name: {
+					required: true,
+					minlength: 2,
+					maxlength: 50
+				},
+				surname: {
+					required: true,
+					minlength: 2,
+					maxlength: 50
+				},
+				password: {
+					required: true,
+					minlength: 6,
+					maxlength: 40
+				},
+				password_check: {
+					required: true,
+					equalTo: "#password"
+				},
+				email: {
+					required: true,
+					emailstrict: true
+				},
+				date_of_birth: {
+					required: true
+				},
+				address: {
+					required: true,
+					minlength: 2,
+					maxlength: 255
+				},
+				phone_number: {
+					required: false,
+					digits: true,
+					maxlength: 20
+				},
+				confirm_terms: {
+					required: true
+				}
+			},
+			messages: {
+				email: $.validator.messages.email
+			},
+			errorPlacement: function (error, element) {
+				if ($(element).attr('id') !== 'confirm_terms') {
+					// nastavit .form-error pro tr
+					$($(element).parent().parent()).addClass('form-error');
+
+					// nastavit chybu do title k vykřičníku, zobrazit element a nastavit tooltip
+					$('img', $(element).parent())
+								.attr('data-original-title', $(error).text())
+								.show()
+								.tooltip(); // zobrazí tooltip po najetí
+
+					// zobrazit tooltip u aktuální chyby
+					$('img', 'tr.form-error:first').tooltip('show');
+				}else{
+					// souhlasím s podmínkami
+					$('#imgConfirmTerms')
+								.attr('title', $(error).text())
+								.show();
+				}
+			},
+			success: function (label, element) {				
+				// zrušit .form-error pro tr
+				$($(element).parent().parent()).removeClass('form-error');
+				
+				// vymazat chybu v title k vykřičníku, skrýt tooltip a element
+				$('img', $(element).parent())
+						.attr('data-original-title', '')
+						.tooltip('hide')
+						.hide();
+				
+				// zobrazit tooltip u aktuální chyby
+				$('img', 'tr.form-error:first').tooltip('show');
+			}
+		});
+
+		$('img', 'tr.form-error').tooltip();
+		$('img', 'tr.form-error:first').tooltip('show');
+		
+		$('#captcha-input').change(function() {
+			if ($(this).val() != '') {
+				$(this).parent().parent().removeClass('form-error');
+				$('img[src="/new/images/icons/input_alert.png"]', $(this).parent()).hide().tooltip('hide');
+			}
+		});
+		
+		<?= (!$this->test)?'':$this->typePassJs ?>
+	});
+
+	function initialize() {
+		address = new google.maps.places.Autocomplete(
+				/** @type {HTMLInputElement} */(document.getElementById('address')),
+				{
+					types: ['address']
+				}
+		);
+		google.maps.event.addListener(address, 'place_changed', function () {
+			addressOnChange();
+		});
+	}
+</script>

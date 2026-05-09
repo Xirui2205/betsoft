@@ -1,0 +1,65 @@
+<?php echo $this->feedbackMsg?>
+
+<div class="actions">
+	<button onClick="loadGeneric(<?=$this->viewSectionId?>, 'user-notes', { userId : <?=$this->userId?> });"><?=i18n::tr('Wiew')?></button>
+	<button onclick="hideDetail('user-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+
+
+<form method="post" name="UserNotesTemplateForm" id="UserNotesTemplateForm" action="?section=<?=$this->updateSectionId?>">
+	<table>
+		<tr>
+			<td><h3>Template Poznámky</h3></td>
+		</tr>
+		<tr>
+			<td><input type="text" class="classic" name="s_nazev"  /></td>
+		</tr>
+		<tr>
+			<td><textarea name="s_telo" cols="60" rows="10"></textarea></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="Přidat" onClick="submitGeneric(<?=$this->updateSectionId?>, 'UserNotesTemplateForm', 'user-notes', '&saveTemplate=1')" /></td>
+		</tr>
+	</table>
+</form>
+
+<?php if(!empty($this->templateList)):?>
+	<table>
+		<?php foreach($this->templateList as $template):?>
+			<tr>
+				<td><?=$template['predmet']?></td>
+				<td>
+					<input type="button" onclick="setUserNoteTemplate(<?=$template['telo']?>);" value="Přidat" />
+				</td>
+				<td> - </td>
+				<td>
+					<input type="button" onclick="submitGeneric(<?=$this->updateSectionId?>, 'UserNotesTemplateForm', 'user-notes', '&removeTemplate=<?=$template['id']?>')" value="Odebrat" />
+				</td>
+			</tr>
+		<?php endforeach?>
+	</table>
+<?php endif?>
+
+<form method="post" id="UserNotesForm" name="UserNotesForm" action="?section=<?=$this->updateSectionId?>">
+	<table>
+		<tr>
+			<td><h3>Poznámky</h3></td>
+		</tr>
+		<?=$this->templatelist?>
+		<tr>
+			<td><textarea id="userNote" name="poznamka_text" cols="60" rows="10"></textarea></td>
+		</tr>
+		<tr>
+			<td>
+				<input type="button" value="Uložit" onclick="submitGeneric(<?=$this->updateSectionId?>, 'UserNotesForm', 'user-notes', '&save=1&userId=<?=$this->userId?>')" name="send_poznamka" />
+				<!--<input type="button" value="Vyčistit text" onClick="resetUserNote()" />-->
+			</td>
+		</tr>
+	</table>
+
+	<br />
+	<br />
+	<?=$this->note?>
+</form>
+

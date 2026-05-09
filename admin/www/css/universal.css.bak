@@ -1,0 +1,446 @@
+/*********************/
+/*zakladni nasataveni*/
+/*********************/
+
+html {
+	min-height:100%;
+	_height:100%;
+}
+
+body {
+   /*font-family: Verdana, "Geneva CE", lucida, sans-serif;*/
+	font-family: Arial, sans-serif;
+   font-size: 0.8em; /*MSIE 5*/
+   fo\nt-size: 0.8em;  
+   color: #515B73;
+   margin: 0px;
+   padding: 0px;
+   width:1003px;
+   _height:100%;
+   background:white;
+   background-image: url(../_clip/back.gif);
+   background-repeat: repeat-y;
+} 
+
+samp, code, kbd { 
+  font-size: 90%; 
+} 
+
+html>body{
+ font-size: 0.8em;; 
+}
+
+/*konec zakladni nasataveni*/
+
+
+/*******************/
+/*Prvky na strance*/
+/*******************/
+
+/*horni lista*/
+div#hlavicka{
+	width:auto;
+	height:114px;
+	background:#000000;
+}
+
+/*sede pole vedle loga*/
+div#toptext{
+   float:left;
+	width:198px;
+	height:112px;
+	font-size:0.9em;
+	color:#CC0000;
+	padding:2px 0px 0px 2px;
+	background:#E3E3E3;
+}
+
+div#lastaction{
+	border-top: 1px solid  #515B73;
+	font-size:0.9em;
+	margin-top:14px;
+	margin-right:2px;
+	color:#909090;
+}
+
+/*logo*/
+div#toplogo{
+   float:left;
+	width:130px;
+	height:114px;
+	background-image: url(../_clip/logo.jpg);
+	background-repeat: no-repeat;
+	background-position: 10px 10px;
+}
+
+/*text v horni liste*/
+div#toplogo span{
+	color:#CC0000;
+	font-size:16px;
+	font-weight:600;
+	position:relative;
+	top:76px;
+	left:150px;
+}
+
+/*delici cara pod horni listou*/
+div#cara{
+width:auto;
+height:4px;
+background:white;
+border-bottom:4px solid #515B73;
+}
+
+/*delici cara dole*/
+div#carabottom{
+width:auto;
+clear:both;
+height:1px;
+margin-top:8px;
+background:#515B73;
+}
+
+/*lave lista*/
+div#lmenu{
+	float:left;
+	width:200px;
+	background:#909090;
+	padding-bottom:8px;
+}
+
+/*prave menu na strankach*/
+div.rightMenuParent{
+	border-top:1px solid black;border-bottom:1px solid black;margin-right:40px;background:#909090;padding:10px 8px;
+   width:130px;
+}
+
+/*jednotlive polozky praveho menu*/
+a.rightMenu{
+	display:block;padding:2px 3px;margin:1px 0px;background:#575555;text-decoration:none;color:white;font-size:1.0em;font-weight:bold;
+}
+
+a.rightMenu:visited{
+   text-decoration:none;color:white;
+}
+
+a.rightMenu:hover{
+   background:black;
+	text-decoration:none;
+	color:white;
+}
+
+/*odrazky v historii u adminu*/
+.historyli{
+	font-size:1.1em;color:black;font-weight:bold;
+}
+
+/*odrazky v historii u adminu druha uroven*/
+.historyli2{
+	font-size:0.9em;font-weight:500;
+}
+
+/*telo dokumentu*/
+div#body{
+	float:left;
+	padding:30px 0px 0px 24px;
+	width:730px;
+}
+
+
+/*menu prvni uroven*/
+a.menu1{
+   display:block;
+	color:white;
+	border-bottom:1px solid #979797;
+	text-decoration:none;
+	font-size:0.9em;
+	padding: 6px 0px 6px 16px;
+	margin:0px 6px;
+	background-image: url(../_clip/menu1.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 8px;
+}
+
+a.menu1:visited{
+	color:white;
+}
+
+a.menu1:hover{
+	color:white;
+}
+
+/*menu druha uroven*/
+a.menu2{
+   display:block;
+	color:white;
+	font-size:0.8em;
+	padding: 3px 0px 3px 26px;
+	margin:0px 6px;
+	background:#B7B7B7;
+	background-image: url(../_clip/menu2.gif);
+	background-repeat: no-repeat;
+	background-position: 10px 7px;
+}
+
+a.menu2:visited{
+	color:white;
+}
+
+a.menu2:hover{
+	color:white;
+}
+
+/*odkaz na HP*/
+a.homepage{
+   display:block;
+	color:white;
+	text-decoration:none;
+	font-size:0.9em;
+	font-weight:bold;
+	padding: 6px 0px 6px 16px;
+	margin:0px 6px;
+}
+
+a.homepage:visited{
+   color:white;
+}
+
+a.homepage:hover{
+   color:white;
+}
+
+div#logform{
+   height:160px;
+	width:300px;
+	margin:0px auto;
+	background-image: url(../_clip/loglogo.jpg);
+	background-repeat: no-repeat;
+	background-position: 50% 0%;
+	margin-top:10%;
+	padding:80px 0px 0px 0px;
+	text-align:center;
+}
+
+div#logform form{
+   height:90px;
+	width:150px;
+	margin:0px auto;
+}
+
+.meny{
+   border-left:1px solid #CC0000;
+   border-top:1px solid #CC0000;
+}
+
+/************/
+/*Styly tagu a pomocne styly*/
+/************/
+
+/*odkaz obecne*/
+a{
+	color:#586078;
+}
+
+a:hover{
+   color:#CC0000;
+	text-decoration:none;
+}
+
+/*Styl pro obrazky*/
+.img{
+	border: 0px;
+}
+
+/*Vseobecny styl pro formulare*/
+input{
+	border:1px solid  #515B73;
+	color:#515B73;
+	margin-top:2px;
+	width:148px;
+}
+
+input.classic{
+	border:1px solid  #515B73;
+	color:#515B73;
+	width:400px;
+}
+
+input.no{
+	width:auto;
+	border:0px;
+}
+
+/*trida pro mensi button */
+input.sbutton{
+	border:1px solid  #515B73;
+	color:#515B73;
+	width:80px;
+}
+
+/*trida pro mensi input */
+input.sinput{
+	border:1px solid  #515B73;
+	color:#515B73;
+	width:90px;
+}
+
+.licha{
+	background:#E3E3E3;
+}
+
+.suda{
+	background:white;
+}
+
+.textright{
+ text-align:right;	
+}
+
+.textleft{
+ text-align:left;	
+}
+
+.textcenter{
+ text-align: center;	
+}
+
+/*tlacitko na prihlaseni*/
+input.logbutton{
+	width:151px;
+}
+
+/*chybova zprava*/
+.errormsg{
+	margin:0px auto;
+	color:#CC0000;
+	font-weight:600;
+}
+
+/*chybova zprava*/
+.okmsg{
+	margin:0px auto;
+	color: #9DB5D7;
+	font-weight:600;
+}
+
+/*Zarovnani vpravo*/
+.floatright{
+	float:right;
+}
+
+/*Zarovnani vlevo*/
+.floatleft{
+	float:left;
+}
+
+/*Povinny prvek*/
+.mandatory{
+   background-image: url(../_clip/mandatory.gif);
+	background-repeat: no-repeat;
+	background-position: 0% 0%;
+
+}
+
+h2{
+	width:auto;
+	background:#ABABAB;
+	color: white;
+	font-size:1.4em;
+	text-align:left;
+	padding:2px 4px ;
+	margin:0px;
+}
+
+h3{
+	width:auto;
+	background: #ABABAB;
+	color: white;
+	font-size:1.1em;
+	text-align:left;
+	padding:2px 4px ;
+	margin:0px;
+}
+
+.red{
+	color:#CC0000;
+}
+
+.blue{
+	color: #12A0FA;
+}
+
+.warn{
+	background:#CC0000;padding:1px 4px 1px 0px;color:white;font-weight:bold;
+}
+
+.hra_top{
+	width:auto;color:white;background:black;font-size:1.2em;padding:2px 6px;
+}
+
+.hra_bottom{
+	width:auto;color:white;background:#708090;font-size:0.9em;padding:4px 6px;margin-top:2px;
+}
+
+.hra_hraci{
+	width:100%;background:#708090;
+	border-top:4px solid black;
+	border-bottom:4px solid black;
+	color:white;
+	font-size:0.7em;
+	border-collapse:collapse;
+}
+
+table.hra_hraci td{
+	border:1px solid black;
+	border-collapse:collapse;
+}
+
+table.hra_hraci th{
+	border:1px solid black;
+	border-collapse:collapse;
+}
+
+table.hra_hraci a{
+	color:white;
+}
+
+.methods{
+  width:100%;
+  border-collapse:collapse;
+  background:#E3E3E3;
+  border:1px solid black;
+}
+
+table.methods td{
+	border:1px solid black;
+	border-collapse:collapse;
+	color:#515B73;
+}
+
+table.methods th{
+	border:1px solid black;
+	border-collapse:collapse;
+	color:#515B73;
+}
+
+#calendar{
+border-collapse: collapse;
+color:white;
+}
+
+#calendar td{
+	border:1px solid white;
+	text-align:center;
+	border-collapse: collapse;
+	background: #AFD0B0;
+	padding:2px;
+	font-size:0.9em;
+}
+
+#calendar td.day{
+	background: #BDB76B;
+}
+
+#calendar td.year{
+	background: #94903C;
+}

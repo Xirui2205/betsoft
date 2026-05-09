@@ -1,0 +1,27 @@
+<div style="border-bottom: 1px solid"><b><?=I18n::tr('total_tickets')?>:</b></div>
+<?php foreach ($this->data_all as $key => $value) : ?>
+	<?=I18n::tr($key)?>: <?=(strpos($key, 'amount') === false) ? ($key == 'win_ratio' ? number_format($value, '2', '.', '') : number_format($value, '0', '', ' ')) : number_format($value, '2', '.', ' ')?>
+	<?=(strpos($key, 'amount') === false) ? '' : ' kč'?>
+	<?=($key == 'win_ratio') ? '%' : ''?><br />
+<?php endforeach;?><br />
+
+<div style="border-bottom: 1px solid"><b><?=I18n::tr('internet_tickets')?>:</b></div>
+<?php foreach ($this->data_internet as $key => $value) : ?>
+	<?=I18n::tr($key)?>: <?=(strpos($key, 'amount') === false) ? ($key == 'win_ratio' ? number_format($value, '2', '.', '') : number_format($value, '0', '', ' ')) : number_format($value, '2', '.', ' ')?>
+	<?=(strpos($key, 'amount') === false) ? '' : ' kč'?>
+	<?=($key == 'win_ratio') ? '%' : ''?><br />
+<?php endforeach;?><br />
+
+<div style="border-bottom: 1px solid"><b><?=I18n::tr('branch_tickets')?>:</b></div>
+<?php foreach ($this->data_branch as $key => $value) : ?>
+	<?=I18n::tr($key)?>: <?=(strpos($key, 'amount') === false) ? ($key == 'win_ratio' ? number_format($value, '2', '.', '') : number_format($value, '0', '', ' ')) : number_format($value, '2', '.', ' ')?>
+	<?=(strpos($key, 'amount') === false) ? '' : ' kč'?>
+	<?=($key == 'win_ratio') ? '%' : ''?><br />
+<?php endforeach;?><br />
+
+<div style="border-bottom: 1px solid"><b><?=I18n::tr('live_tickets')?>:</b></div>
+<?php foreach ($this->data_live as $key => $value) : ?>
+	<?=I18n::tr($key)?>: <?=(strpos($key, 'amount') === false) ? ($key == 'win_ratio' ? number_format($value, '2', '.', '') : number_format($value, '0', '', ' ')) : number_format($value, '2', '.', ' ')?>
+	<?=(strpos($key, 'amount') === false) ? '' : ' kč'?>
+	<?=($key == 'win_ratio') ? '%' : ''?><br />
+<?php endforeach;?><br />

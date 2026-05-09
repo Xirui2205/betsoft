@@ -1,0 +1,20 @@
+<h3><?=i18n::tr('Newspapers')?></h3>
+
+<?=$this->feedbackMsg?>
+<?=$this->form?>
+<div id="list">
+<form method="post" action="/?section=351" id="formNewspapersFilter">
+	<?=$this->filter?>
+	<div class="actions">
+		<input type="submit" name="reset"
+		onclick="$('div.table-filter input:text, div.table-filter select').val(''); return false;"
+		value="<?=i18n::tr('Reset_filter')?>"/>
+	</div>
+	<?=$this->paginator?>
+
+	<table class='table-list width-100'>
+		<?=$this->tHead?>
+		<?=$this->tBody?>
+	</table>
+</form>
+</div>

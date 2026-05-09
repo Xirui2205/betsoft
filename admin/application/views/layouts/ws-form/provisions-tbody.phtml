@@ -1,0 +1,33 @@
+<tbody>
+  <?php if (empty($this->layout()->data)): ?>
+    <tr>
+      <td colspan="12"><?=i18n::tr('no_items')?></td>
+    </tr>
+  <?php else: ?>
+    <?php foreach($this->layout()->data as $row) : ?>
+      <tr>
+        <td><?=$row['branchHandle']?></td>
+        <td><?=$row['branchName']?></td>
+        <td><?=$row['stem']?></td>
+        <td><?=$row['is_active']?></td>
+        <td><?=$row['contractType']?></td>
+        <td><?=$row['contracts']?></td>
+        <td><?=It6_Date::fromDbAsDate($row['branchValidFrom'])?></td>
+        <td><?=It6_Date::fromDbAsDate($row['branchValidTo'])?></td>
+        <td><?=$row['branchIn']?></td>
+        <td><?=$row['branchOut']?></td>
+        <td><?=$row['branchMp']?></td>
+        <td><?=$row['branchInMinusOut']?></td>
+        <td><?=$row['branchPayoutOut']?></td>
+        <td><?=$row['internetBalanceIn']?></td>
+        <td><?=$row['internetBalanceOut']?></td>
+        <td><?=$row['internetBalance']?></td>
+        
+        <!-- 
+        <td><?=$row['branchProfit']?></td>
+        <td><?=$row['branchProfitNoMp']?></td>
+         -->
+      </tr>
+    <?php endforeach?>
+  <?php endif; ?>
+</tbody>

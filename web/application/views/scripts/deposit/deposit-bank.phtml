@@ -1,0 +1,30 @@
+<div id="right">
+	<h2 class="boxheader"><?= $this->trans('deposit_by_bank') ?></h2>
+	<div class="contentbox">
+		<p><?= $this->trans('deposit_by_bank_text') ?></p>
+		<table class="table table-striped table-hover">
+			<tr>
+				<td><?= $this->trans('bank_name') ?></td>
+				<th><?= VIC_BANK_NAME ?></th>
+			</tr>
+			<tr>
+				<td><?= $this->trans('bank_account') ?></td>
+				<th><?= VIC_BANK_ACCOUNT ?></th>
+			</tr>
+			<tr>
+				<td><?= $this->trans('bank_code') ?></td>
+				<th><?= VIC_BANK_CODE ?></th>
+			</tr>
+			<tr>
+				<td><?= $this->trans('bank_address') ?></td>
+				<th><?= VIC_BANK_ADDRESS ?></th>
+			</tr>
+			<tr>
+				<td><?= $this->trans('var_symbol') ?></td>
+				<th><?= $this->userHandle ?></th>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<?= $this->render('myaccount/user-profile-left-col.phtml') ?>

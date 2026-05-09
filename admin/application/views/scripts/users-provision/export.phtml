@@ -1,0 +1,16 @@
+<div id="exportButtons">
+	<input 
+		type="submit"
+		name="exportCSV"
+		value="<?=i18n::tr('Export to CSV')?>" />
+</div>
+<script type="text/javascript">
+	$(function() {
+		$('#exportButtons input').click(function (){
+			if ($('input.row-selector:checked').size() === 0) {
+				alert('<?= i18n::tr('Choose some user(s).') ?>');
+				return false;
+			}
+		});
+	});
+</script>

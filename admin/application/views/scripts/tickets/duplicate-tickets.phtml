@@ -1,0 +1,54 @@
+<h3><?=i18n::tr('Duplicate-tickets')?></h3>
+
+<?=$this->form?>
+
+<?php if( 0 != count($this->duplicates) ): ?>
+<table class="table-list table-tickets">
+
+<tr>
+  <th><?=i18n::tr('Count')?></th>
+  <th><?=i18n::tr('User')?></th>
+  <th><?=i18n::tr('Type')?></th>
+  <th><?=i18n::tr('Tips')?></th>
+</tr>
+<?php foreach($this->duplicates as $ticket):?>
+<tr>
+  <th><?=$ticket->count?></th>
+  <td>
+    <a href="https://admin.testbook.cz/?section=40&user_id=<?=$ticket->userId?>"><?=$ticket->userName?></a> (#<?=$ticket->userId?>)
+  </td>
+  <td><?=$ticket->type?></td>
+  <td>
+    <table class="ticket">
+      <tr>
+        <th><?=i18n::tr('betId')?></th>
+        <th><?=i18n::tr('Match')?></th>
+        <th><?=i18n::tr('Market')?></th>
+      </tr>
+      <?php foreach( $ticket->groups as $group ):?>
+        
+          <?php if ( $ticket->type == 'maxikombi' ): ?>
+            <tr>
+              <td colspan="3" style="text-align: center; font-weight: bold;">
+                <?=empty($group->group) ? 'T' : chr($group->group + 64) ?>
+              </td>
+            </tr>
+          <?php endif; ?>
+          <?php foreach ( $group->tips as $tip ): ?>
+            <tr>
+              <td><?=$tip->betId?></td> 
+              <td><a href="?section=146&filtr=1&sazka_id=<?=$tip->betId?>&"><?=$tip->betName?></a></td> 
+              <td><?=$tip->oddsTypeName?> : <?=$tip->oddsOutcomeShortCut?></td>
+            </tr>
+          <?php endforeach; ?>
+        </tr>
+      <?php endforeach;?>
+    </table>
+  </td>
+</tr>
+<?php endforeach; ?>
+
+</table>
+<?php elseif ( !empty($_REQUEST['minDuplicity']) ): ?>
+  <?=UiUtil::printWarnings(array('No duplicate tickets.'));?>
+<?php endif; ?>

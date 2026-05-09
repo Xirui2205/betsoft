@@ -1,0 +1,21 @@
+<?php if (!empty($this->main_bet)) : ?>
+	<div>
+		<div style="color:#6c89d0;border-bottom: 1px solid #6c89d0;"><b><?=$this->bet['name']?> (<?=$this->bet["betId"]?>)</b></div>
+		<b><?=$this->bet['typeName']?>: </b>
+		<?php foreach ($this->main_bet as $main) : ?>
+			<?php if (!empty($main["count"])) : ?>
+				<span><b><?=$main["nazev"]?>:</b> <?=$main["count"]?>x - <?=$main["amount"]?>kč, <span>
+			<?php endif?>
+		<?php endforeach?>
+		<br />
+		<?php foreach ($this->childbets as $childbet) : ?>
+			<b><?=$childbet->typeName?>: </b>
+			<?php foreach ($this->columns[$childbet->betId] as $column) : ?>
+				<?php if (!empty($column->count)) : ?>
+					<span><b><?=$column->nazev?>:</b> <?=$column->count?>x - <?=$column->amount?>kč, <span>
+				<?php endif?>
+			<?php endforeach?>
+			<br />
+		<?php endforeach?>
+	</div>
+<?php endif ?>

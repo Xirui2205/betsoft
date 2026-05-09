@@ -1,0 +1,12 @@
+<h4><?=i18n::tr('Edit branch')?></h4>
+
+<?php echo $this->feedbackMsg; ?>
+<div class="actions">
+	<button onclick="viewGeneric('<?=$this->Id?>&superb=1');"><?=i18n::tr('cancel')?></button>
+</div>
+<?php echo $this->form; ?>
+
+<div id="list">
+	<!-- seznam vsech hostu -->
+	<?php include('group-list.phtml'); ?>
+</div>

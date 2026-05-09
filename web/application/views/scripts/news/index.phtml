@@ -1,0 +1,29 @@
+<!-- unused, template not up-to-date -->
+
+<?=$this->render('index/leftCol.phtml'); ?>
+<div id="text">
+  <h2 class="boxheader"><?=$this->trans('news'); ?></h2>
+
+  <div id="typo">
+    <div class="ct"></div>
+    <div class="cc">
+      <h3><?=$this->news[$this->n]['nadpis']; ?></h3>
+      <small><?=$this->news[$this->n]['platna_od']; ?></small>
+      <p>
+        <?php
+          if(isset($this->news[$this->n]['hp_image'])){
+            echo '<img src="/images/gallery/'.$this->news[$this->n]['hp_image'].'" />';
+          }
+        ?>
+        <b><?=$this->news[$this->n]['anotace']; ?></b>
+      </p>
+      <p><?=$this->news[$this->n]['data']; ?><p>
+
+    </div>
+    <div class="cb"></div>
+  </div>
+
+
+</div>
+
+<?=$this->render('index/rightCol.phtml'); ?>

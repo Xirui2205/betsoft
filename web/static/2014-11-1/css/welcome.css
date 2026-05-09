@@ -1,0 +1,124 @@
+@charset "utf-8";
+body{
+	background-image: url(../images/welcome_body_bg.jpg);
+	background-position: center 150px;
+	background-size: auto;
+	background-attachment: inherit;
+	background-color: #0c0c0d;
+}
+#welcome-bg{
+	width: 100%;
+	height: 100%;
+	background-image: url(../images/welcome_body_bg.jpg);
+	background: url(../images/welcome_body_bg_players.jpg) no-repeat center 150px;
+	background-size: auto;
+	position: absolute;
+	z-index: -5;
+	top: 0;
+	left: 0;
+}
+#welcome-bg.welcome-casino{
+	background-image: url(../images/welcome_body_bg_casino.jpg);
+}
+
+#true-content.welcome{
+	margin-top: -3px;
+}
+#welcome{
+	min-height: 330px;
+}
+#welcome .wrapper{
+	padding-left: 650px;
+	padding-top: 50px;
+}
+#welcome p.welcome-big{
+	margin: 0;
+	font-size: 68px;
+	line-height: 1em;
+	text-shadow: 2px 2px 2px rgba(0,0,0,0.35);
+	color: #fff;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+#welcome p.welcome-highlight{
+	color: #cc6;
+}
+.welcome-text{
+	font-size: 16px;
+	padding-top: 15px;
+}
+#welcome .btn{
+	font-size: 24px;
+	padding: 6px 24px;
+	color: #0c1009;
+}
+#welcome .btn:hover, #welcome .btn:focus{
+	box-shadow: 0 0 8px rgba(229,229,115,0.6);
+}
+
+/* === boxes === */
+.boxes-4{
+	padding: 15px 0 15px 0;
+}
+.boxes-4 .box{
+	width: 262px;
+	margin-left: 30px;
+	float: left;
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+}
+.boxes-4 .box:first-child{
+	margin-left: 0;
+}
+.boxes-4 a{
+	display: block;
+	color: #fff;
+	background: #333;
+}
+.boxes-4 a:hover, .boxes-4 a:focus{
+	background: #444;
+}
+.boxes-4 h2{
+	color: #fff;
+	font-size: 18px;
+	text-transform: uppercase;
+	font-weight: 600;
+	border-bottom: 3px solid #cccc66;
+	margin: 0;
+	padding: 20px;
+}
+.boxes-4 .box-image{
+	width: 262px;
+	height: 168px;
+	overflow: hidden;
+}
+.boxes-4 img{
+	opacity: 0.8;
+	transition: all .3s ease;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+}
+.boxes-4 a:hover img, .boxes-4 a:focus img{
+	opacity: 1;
+	transition: all .3s ease;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+}
+.boxes-4 p{
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 0;
+	padding: 20px;
+}
+.boxes-4.boxes-center p{
+	text-align: center;
+	font-size: 1em;
+	font-weight: normal;
+}
+.boxes-4 .btn{
+	margin-top: 10px;
+	font-size: 18px;
+}

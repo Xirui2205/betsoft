@@ -1,0 +1,14 @@
+<?=I18n::tr('host_in_out_status')?>
+
+=======================
+
+<?php if ( empty($this->hosts) ): ?>
+<?=I18n::tr('no_records')?>
+<?php else:?>
+<?=I18n::tr('branch_handle')?>	<?=I18n::tr('branch_name')?>	<?=I18n::tr('balance')?>	<?=I18n::tr('on_the_way_deposit')?>	<?=I18n::tr('on_the_way_withdraw')?>	<?=I18n::tr('win_ticket_cash')?>	<?=I18n::tr('user_withdraw_cash')?>	<?=I18n::tr('total_collect')?>	<?=I18n::tr('recommended_withdraw')?>	<?=I18n::tr('recommended_deposit')?>
+
+<?php foreach($this->hosts as $host) : ?>
+<?=$host['branchHandle']?>	<?=$host['branchName']?>	<?=$host['balance']?>	<?=$host['onTheWayDeposit']?>	<?=$host['onTheWayWithdraw']?>	<?=$host['winTicketsCash']?>	<?=$host['userWithdrawsCash']?>	<?=$host['totalCollect']?>	<?=$host['recommendedWithdraw']?>	<?=$host['recommendedDeposit']?>
+
+<?php endforeach?>
+<?php endif?>

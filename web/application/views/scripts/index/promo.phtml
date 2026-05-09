@@ -1,0 +1,106 @@
+<div class="promo<?= ($promoCountTotal === 1) ? ' onlyOne' : '' ?>">
+
+	<?php
+	$mainBetUrl = '';
+	$promoLink = '';
+	if (!empty($promo['bets']['data'])) {
+		$mainBetId = $promo['bets']['data'][0]['main_bet_id'];
+		$mainBetUrl = $this->urlSet(2) .
+			Zend_Registry::get('ws')->Bet->getSportRegionEventUrl($mainBetId, $_SESSION['lang_id']) .
+			'/id/'.$mainBetId.'-'.$this->seoUrl($promo['bets']['data'][0]['text']);
+	}
+	if (!empty($promo['url'])) {
+		$promoLink = $promo['url'];
+	} else if(!empty($mainBetUrl)) {
+		$promoLink = $mainBetUrl;
+	}
+
+	$promoOnClick = isset($promo['target']) && $promo['target'] == '_blank' ?
+		'window.open (this.href, \'child\'); return false' : '';
+	?>
+
+	<!-- image -->
+	<?php
+	list($width, $height) = getimagesize(('images/gallery/' . $promo['img']));
+	if ($width > 0) :
+	?>
+		<?php if (!empty($promoLink)): ?>
+			<a href="<?= $promoLink ?>"	onclick="<?= $promoOnClick ?>" class="imgLink"
+				title="<?= isset($promo['title']) ? $this->escape($promo['title']) : '' ?>">
+		<?php endif; ?>
+				<img src="/images/gallery/<?=isset($promo['img']) ? rawurlencode($promo['img']) : ''?>" 
+					 alt="<?=isset($promo['img']) ? rawurlencode($promo['img']) : ''?>"
+					 height="<?= $height ?>" width="<?= $width ?>" />
+		<?php if (!empty($promoLink)): ?>
+			</a>
+		<?php endif; ?>
+	<?php endif; ?>
+	<?php if ($promo['without_text'] == 0) : ?>
+
+	<div class="textPart">
+		<h2>
+			<?php if (!empty($promoLink)): ?><a href="<?= $promoLink ?>" onclick="<?= $promoOnClick ?>"><?php endif; ?>
+				<?= isset($promo['title']) ? mb_strtoupper($promo['title'], 'UTF-8') : '' ?>
+			<?php if (!empty($promoLink)): ?></a><?php endif; ?>
+		</h2>
+		<div class="text">
+			<p><?=isset($promo['text']) ? $promo['text'] : ''?>
+				<?php if (!empty($promoLink)) : ?>
+					<a class="more" href="<?= $promoLink ?>"
+					   onclick="<?= $promoOnClick ?>">
+						<?= $this->trans('show_more'); ?>
+					</a>
+				<?php endif; ?>
+			</p>
+		</div>
+		<?php if ( !empty($promo['bets']['data']) ) :?>
+		<table class="promo_match">
+			<thead>
+				<tr class="header1">
+					<th colspan="<?= count($promo['bets']['data']) ?>">
+						<span class="title">
+							<a href="<?= $mainBetUrl ?>">
+								<?php echo(sprintf('%s - %s', $promo['bets']['data'][0]['text'], $promo['bets']['data'][0]['podtyp_sloupce_preklad'])); ?>
+							</a>
+						</span>
+						<span class="plus">
+							<?php
+								$subBetsCount = Zend_Registry::get('ws')->Bet->getSubBetsCount($mainBetId);
+								if ($subBetsCount > 0) {
+									?><a href="<?= $mainBetUrl ?>">+<?= $subBetsCount ?></a><?php
+								}
+							?>
+						</span>
+					</th>
+				</tr>
+				<tr class="header2">
+					<?php foreach ($promo['bets']['data'] as $bet) :?>
+					<th class="imgBgLight"><?php echo($bet['podtyp_sloupce_nazev']); ?></th>
+					<?php endforeach; ?>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<?php foreach ($promo['bets']['data'] as $bet) :?>
+					<td id="b<?php echo($bet['sazka_id'].'c'.$bet['sloupec_id']); ?>" class="imgBgLight">
+						<a class="kurz" href="javascript:void(0);" 
+							onclick="ticketUpdate(<?php echo($bet['sazka_id']);?>, 
+							<?php echo($bet['sloupec_id']);?>,
+							'<?php echo($bet['text']); ?>',
+							'<?php echo($bet['podtyp_sloupce_preklad']); ?>',
+							'<?php echo($bet['podtyp_sloupce_nazev']); ?>',
+							<?php echo($bet['kurz']); ?>,
+							<?php echo($bet['jednoducha']); ?>
+						);">
+						<?php echo($bet['kurz']); ?>
+						</a>
+					</td>
+					<?php endforeach; ?>
+				</tr>
+			</tbody>
+		</table>
+		<?php endif?>
+	</div>
+	<?php endif; ?>
+
+</div>

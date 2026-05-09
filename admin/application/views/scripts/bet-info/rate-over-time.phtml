@@ -1,0 +1,22 @@
+<h3><?=$this->betId?> <?=$this->betName?></h3>
+
+<table class="table-list">
+	<tr>
+		<th><?=I18n::tr('order')?></th>
+		<th><?=I18n::tr('valid_from')?></th>
+		<?php foreach($this->betOdds['colNames'] as $col) : ?>
+			<th><?=$col['name']?></th>
+		<?php endforeach?>
+	</tr>
+	<?php foreach($this->betOdds['rates'] as $rateOrder => $rate) : ?>
+		<tr>
+			<td><?=$rateOrder?></td>
+			<td><?=$rate['validFrom']?></td>
+			<?php foreach($rate['cols'] as $col) : ?>
+				<td><?=$col?></td>
+			<?php endforeach?>
+		</tr>
+	<?php endforeach?>
+</table>
+
+<img src="_graph/sazka_kurzy_<?=$this->betId?>.png" class="img view" />

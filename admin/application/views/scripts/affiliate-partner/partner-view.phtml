@@ -1,0 +1,36 @@
+<?=$this->feedbackMsg?>
+
+<?php if ($this->affiliatePartner) : ?>
+
+	<input name="affiliatePartnerId" id="affiliatePartnerId" type="hidden" value="<?=$this->affiliatePartner['affiliatePartnerId']?>" />
+	<div class="actions">
+		<button onclick="hideDetail('affiliate-partner-container')"><?=i18n::tr('close_detail')?></button>
+	</div>
+
+	<table class="table-detail">
+		<tr>
+			<th class="header" colspan="2"><?=i18n::tr('partner')?></th>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('Id')?></th>
+			<td id="affiliate_partner_id"><?=$this->affiliatePartner['affiliatePartnerId']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('name')?></th>
+			<td id="name"><?=$this->affiliatePartner['name']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('created')?></th>
+			<td id="created"><?=$this->affiliatePartner['created']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('founded')?></th>
+			<td><?=$this->affiliatePartner['adminName']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('url_address')?></th>
+			<td><?=$this->affiliatePartner['url']?></td>
+		</tr>
+	</table>
+
+<?php endif; ?>

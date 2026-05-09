@@ -1,0 +1,5 @@
+<?php foreach($this->layout()->columns as $column) : ?>
+	<?php if(!empty($column[1])) : ?>
+		<td><?=$row[$column[1]]?></td>
+	<?php endif?>
+<?php endforeach?>

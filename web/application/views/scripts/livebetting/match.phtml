@@ -1,0 +1,35 @@
+<!-- /cs/live-sazky/match - unused/old page, template not up-to-date -->
+
+<!--
+<?=$this->UrlSet(1); ?>
+<?=$this->n; ?>,'<?=$this->UrlSet(14,'','','1/4/'); ?>
+-->
+
+<script>
+
+  if(typeof timeout2 == 'undefined'){
+    getLiveMatch('liveMatchInfoCont',<?=$this->n; ?>,'<?=$this->UrlSet(14,'','','1/3/'); ?>');
+    getLiveMatch('liveMatchOdds',<?=$this->n; ?>,'<?=$this->UrlSet(14,'','','1/4/'); ?>');
+    setInterval("getLiveMatch('liveMatchInfoCont',<?=$this->n; ?>,'<?=$this->UrlSet(14,'','','1/3/'); ?>')",<?=LIVEBET_MATCH_REFRESH_INFO?>);
+    setInterval("getLiveMatch('liveMatchOdds',<?=$this->n; ?>,'<?=$this->UrlSet(14,'','','1/4/'); ?>')",<?=LIVEBET_MATCH_REFRESH_ODDS?>);
+    timeout2 = 1;
+  }
+
+</script>
+
+<div id="lcol" class="column">
+  <?=$this->render('index/leftCol.phtml'); ?>
+</div>
+
+<div id="text">
+
+  <div id="liveMatchInfoCont"></div>
+
+  <div id="liveMatchOdds"></div>
+
+</div>
+
+
+<div id="rcol" class="column">
+  <?=$this->render('index/rightCol.phtml'); ?>
+</div>

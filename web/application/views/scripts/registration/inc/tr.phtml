@@ -1,0 +1,30 @@
+<?php
+$elementNameValidation = $elementName != 'date_of_birth' ? $elementName : 'date_of_birth_system_format';
+?>
+<tr<?= !$this->signUpFormObject->getElement($elementNameValidation)->hasErrors() ? '' :
+		' class="form-error"' ?>>
+	<td class="col-xs-4"><label for="<?= $elementName.($elementName!='captcha'?'':'-input') ?>"><?= $this->signUpFormObject->getElement($elementName)->getLabel() ?>:</label></td>
+	<td><?php
+	
+	// input
+	$input = $this->signUpFormObject->getElement($elementName)->render();
+	if ($this->signUpFormObject->getElement($elementName)->getType() != 'Zend_Form_Element_Radio') {
+		echo $input;
+	} else {
+		echo str_replace(array('<br />'), '', $input); 
+	}
+	
+	// a případně validační hláška
+		if ($this->signUpFormObject->getElement($elementNameValidation)->hasErrors()) {
+			$messages = $this->signUpFormObject->getElement($elementNameValidation)->getMessages();
+			$errorArr = $this->signUpFormObject->getElement($elementNameValidation)->getErrors();
+			$errorMessage = $messages[$errorArr[0]];
+			?>
+				<img src="/new/images/icons/input_alert.png" data-original-title="<?= $errorMessage ?>">
+			<?php
+		}else{
+			// dát to tam případně pro jquery validate
+			?><img src="/new/images/icons/input_alert.png" style="display:none"><?php
+		}
+?></td>
+</tr>

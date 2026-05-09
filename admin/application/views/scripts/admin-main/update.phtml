@@ -1,0 +1,8 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="viewAdminDetailOnly(<?=$this->adminId?>);"><?=i18n::tr('View')?></button>
+	<button onclick="hideDetail('admin-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+<?php echo $this->form; ?>
+

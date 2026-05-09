@@ -1,0 +1,9 @@
+<?=Zend_Registry::get('translate')->transParam(
+	'email_change_pass_user_action_created',
+	array(
+		$this->requestDate,
+		$this->requestTime,
+		PROTOCOL.WEBHOST,
+		$this->actionHash
+	)
+)?>

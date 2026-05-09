@@ -1,0 +1,37 @@
+<h3><?=i18n::tr('Types')?></h3>
+
+<?=$this->feedbackMsg?>
+
+<ul class="idTabs" style="display:none">
+	<li>
+		<a class="selected" href="#type-main"><?=i18n::tr('type-main')?></a>
+	</li>
+</ul>
+
+
+<div id="type-container" class="tab-container hidden">
+	<input type="hidden" class="tabsLoaded" id="type-main-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="type-event-loaded" value="0" />
+
+	<input type="hidden" name="typeId" id="typeId" value="">
+
+	<div id="type-main" class="tab" style="display: none;">
+	</div>
+</div>
+
+
+<div id="list">
+
+	<form method="post" action="?section=<?=$this->indexSectionId?>" id="formTypeFilter">
+		<div class="actions">
+			<input type="button" onClick="insertType()" class="input" name="insert_new" value="<?=i18n::tr('insert_type')?>" />
+		</div>
+		<?=$this->filter?>
+		<?=$this->paginator?>
+
+		<table class='table-list width-100'>
+			<?=$this->tHead?>
+			<?=$this->tBody?>
+		</table>
+	</form>
+</div>

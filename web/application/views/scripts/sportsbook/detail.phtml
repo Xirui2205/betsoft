@@ -1,0 +1,84 @@
+<?php
+/*
+echo "<pre>";
+print_r($this->odds);
+
+(
+    [1001] => Array
+        (
+            [1749] => Array
+                (
+                    [oblast_id] => 492
+                    [text] => FOTBAL - Mezinárodní - Přátelsky - Ž
+                    [betradar_udalost_id] => 1039
+                    [type] => Array
+                        (
+                            [35] => Array
+                                (
+                                    [29] => Array
+                                        (
+                                            [text] => Sázka  bez  remízy
+                                            [textNote] => 
+                                            [fullText] => Sázka  bez  remízy
+                                            [radek_sloupec] => 0
+                                            [sloupec_pocet_max] => 0
+                                            [sloupec] => Array
+                                                (
+                                                    [152] => 1
+                                                    [153] => 2
+                                                )
+
+                                            [date] => Array
+                                                (
+                                                    [8.8.2017] => Array
+                                                        (
+                                                            [1190707] => Array
+                                                                (
+                                                                    [hour] => 2:00
+                                                                    [text] => Francie - Brazílie
+                                                                    [info] => 
+                                                                    [alias] => 421304
+                                                                    [alias_new] => 17418
+                                                                    [simple] => 0
+                                                                    [ako] => 0
+                                                                    [plus] => 1
+                                                                    [betradar_match_id] => 6340006
+                                                                    [parent_id] => 1190706
+                                                                    [liveBetId] => 
+                                                                    [sloupec] => Array
+                                                                        (
+                                                                            [152] => 1.46
+                                                                            [153] => 2.6
+                                                                        )
+
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+)
+	*/
+?>
+<?php if(!$this->isAjax):?>
+
+<?php endif;?>
+    <?php if ( empty($this->odds) && !$this->isAjax ): ?>
+    <div class="notify-larger notify-warning">
+      <p><?=$this->trans('no_bets')?></p>
+    </div>
+    <?php endif; ?>
+    <?=$this->render('sportsbook/sport-odds-new.phtml'); ?>
+<?php if(!$this->isAjax):?>
+
+<?php endif;?>

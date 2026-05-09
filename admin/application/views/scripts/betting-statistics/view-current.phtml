@@ -1,0 +1,161 @@
+<?=$this->feedbackMsg?>
+
+<?php if (!empty($this->bet)) : ?>
+	<input name="betId" id="betId" type="hidden" value="<?=$this->bet['betId']?>" />
+	<?php if (!empty($this->current_bet)) : ?>
+		<div style="display:inline-block;margin:5px;">
+			<script type="text/javascript">
+				$(function () {
+					var chart;
+					$(document).ready(function() {
+						chart = new Highcharts.Chart({
+							chart: {
+								renderTo: '<?=$this->bet["betId"]?>',
+								type: 'column'
+							},
+							title: {
+								text: '<?=i18n::tr('bet_rows_qty')?> - <?=$this->bet["typeName"]?>'
+							},
+							exporting: {
+								buttons: {
+									printButton: {
+										enabled: false
+									},
+									exportButton: {
+										enabled: false
+									},
+								}
+							},
+							subtitle: {
+								text: '<?=$this->bet["name"]?>'
+							},
+							xAxis: {
+								categories: [''],
+								title: {
+									text: '<?=i18n::tr('tip')?>'
+								}
+							},
+							yAxis: {
+								min: 0,
+								title: {
+									text: '<?=i18n::tr('bet_rows_qty')?>'
+								}
+							},
+							legend: {
+								layout: 'vertical',
+								backgroundColor: '#FFFFFF',
+								align: 'left',
+								verticalAlign: 'top',
+								x: 300,
+								y: 0,
+								floating: true,
+								shadow: true
+							},
+							tooltip: {
+								formatter: function() {
+									var r = '<p style="font-weight:bolder;color:' + this.series.color + '">';
+									r += '<?=i18n::tr('tip')?> ' + this.series.name + ': </p><br />';
+									r += '<?=i18n::tr('count')?>: <b>' + this.y + 'x</b>';
+									return r;
+								},
+								positioner: function() {
+									return { x: 80, y: 50 };
+								}
+							},
+							plotOptions: {
+								column: {
+									pointPadding: 0.2,
+									borderWidth: 0
+								}
+							},
+							series: [
+								<?php foreach ($this->current_bet as $current) : ?>
+									{name: '<?=$current->nazev?>', data: [<?=$current->count?>]},
+								<?php endforeach?>
+							]
+						});
+					});
+				});
+			</script>
+			<div id="<?=$this->bet["betId"]?>" style="width:400px;height:200px;"></div>
+		</div>
+
+		<div style="display:inline-block;margin:5px;">
+			<script type="text/javascript">
+				$(function () {
+					var chart;
+					$(document).ready(function() {
+						chart = new Highcharts.Chart({
+							chart: {
+								renderTo: 'amount<?=$this->bet["betId"]?>',
+								type: 'column'
+							},
+							title: {
+								text: '<?=i18n::tr('amount')?> - <?=$this->bet["typeName"]?>'
+							},
+							exporting: {
+								buttons: {
+									printButton: {
+										enabled: false
+									},
+									exportButton: {
+										enabled: false
+									},
+								}
+							},
+							subtitle: {
+								text: '<?=$this->bet["name"]?>'
+							},
+							xAxis: {
+								categories: [''],
+								title: {
+									text: '<?=i18n::tr('tip')?>'
+								}
+							},
+							yAxis: {
+								min: 0,
+								title: {
+									text: '<?=i18n::tr('amount')?>'
+								}
+							},
+							legend: {
+								layout: 'vertical',
+								backgroundColor: '#FFFFFF',
+								align: 'left',
+								verticalAlign: 'top',
+								x: 300,
+								y: 0,
+								floating: true,
+								shadow: true
+							},
+							tooltip: {
+								formatter: function() {
+									var r = '<p style="font-weight:bolder;color:' + this.series.color + '">';
+									r += '<?=i18n::tr('tip')?> ' + this.series.name + ': </p><br />';
+									r += '<?=i18n::tr('amount')?>: <b>' + this.y + 'kč</b>';
+									return r;
+								},
+								positioner: function() {
+									return { x: 80, y: 50 };
+								}
+							},
+							plotOptions: {
+								column: {
+									pointPadding: 0.2,
+									borderWidth: 0
+								}
+							},
+							series: [
+								<?php foreach ($this->current_bet as $current) : ?>
+									{name: '<?=$current->nazev?>', data: [<?=$current->amount?>]},
+								<?php endforeach?>
+							]
+						});
+					});
+				});
+			</script>
+			<div id="amount<?=$this->bet["betId"]?>" style="width:400px;height:200px;"></div>
+		</div>
+	<?php endif?>
+
+<?php endif ?>

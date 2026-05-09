@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OfferGen</title>
+  <base href="{{cfg.serverurl}}" />
+  <link rel="stylesheet" href="static/style.css" type="text/css" />
+  <link rel="icon" href="static/favicon.ico" type="image/x-icon"/>
+  {% block head %}
+  {% end %}
+</head>
+<body>
+
+<h1>OfferGen</h1>
+
+{% block content %}
+{% end %}
+
+<hr>
+<div>
+<em>
+<a href="{{cfg.serverurl}}">OfferGen</a>
+{{'%d.%d.%d (%s)' % (cfg.versionmajor, cfg.versionminor, cfg.revision, cfg.date)}}
+</em>
+</div>
+
+</body>
+</html>

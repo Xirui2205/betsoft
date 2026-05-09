@@ -1,0 +1,13 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="loadGeneric(<?=$this->viewSectionId?>, 'branch-host', { branchId : $('#branchId').val() })"><?=i18n::tr('List Hosts')?></button>
+	<button onclick="viewBranchHost(<?=$this->branchId?>,<?=$this->hostId?>);"><?=i18n::tr('View')?></button>
+	<button onclick="createBranchHost(<?=$this->branchId?>);"><?=i18n::tr('Insert host')?></button>
+	<button onclick="hideDetail('branch-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<?=$this->form?>
+
+<?php include('host-list.phtml')?>
+

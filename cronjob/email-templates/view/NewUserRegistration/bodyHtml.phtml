@@ -1,0 +1,72 @@
+<table width="640" cellpadding="0" cellspacing="0" style="color: #8E8D8D; font-size: 11px; font-family: arial, verdana, helvetica, sans-serif; background: url('<?=PROTOCOL?><?=WEBHOSTL3?>/images/email_body_bg.png'); padding: 20px">
+	<tbody>
+		<tr>
+			<td colspan="2">
+				<h1 style="color: #F4CA6D; font-size: 19px; margin: 15px 0;">
+					<?=I18n::tr('new_user_registration')?>
+				</h1>
+			</td>
+		</tr>
+		<tr>
+			<td style="padding-left: 0; font-size: 1.1em">
+				<?=str_replace($this->detailTemplatePlaceholders, $this->detailTemplateValues, I18n::tr('mail_reg_detail_html'))?>
+			</td>
+		</tr>
+		<?php foreach($this->clBranches as $branch) : ?>
+			<tr>
+				<td>
+					<div style="border-top: 2px white solid; margin-top: 10px;">
+						<h3 style="font-size: 13px; font-weight: bold">
+							<?=$branch['town']?>
+							- <?=$branch['street']?>
+							<?=$branch['zip']?>
+							<a href="<?=PROTOCOL?><?=WEBHOST?>/<?=$this->branchController['langIso']?>/<?=$this->branchController['reqController']?><?=$this->branchController['reqAction'] != 'index' ? '/'.$this->branchController['reqAction'] : ''?>?branchId=<?=$branch['id']?>"
+								style="color: #F4CA6D" >
+								<?=I18n::tr('map_detail')?>
+							</a>
+						</h3>
+						<table style="width:100%;color: #8E8D8D;">
+							<tbody>
+								<tr>
+									<?php foreach($branch['openingHours'] as $dayNumber => $day) : ?>
+										<th style="text-align: center; font-size: 11px; font-weight: bold">
+											<?php if($dayNumber == 0) : ?>
+												<?=I18n::tr('monday')?>
+											<?php elseif($dayNumber == 1) : ?>
+												<?=I18n::tr('tuesday')?>
+											<?php elseif($dayNumber == 2) : ?>
+												<?=I18n::tr('wednesday')?>
+											<?php elseif($dayNumber == 3) : ?>
+												<?=I18n::tr('thursday')?>
+											<?php elseif($dayNumber == 4) : ?>
+												<?=I18n::tr('friday')?>
+											<?php elseif($dayNumber == 5) : ?>
+												<?=I18n::tr('saturday')?>
+											<?php elseif($dayNumber == 6) : ?>
+												<?=I18n::tr('sunday')?>
+											<?php endif?>
+										</th>
+									<?php endforeach?>
+								</tr>
+								<tr>
+									<?php foreach($branch['openingHours'] as $day) : ?>
+										<td style="text-align: center; font-size: 11px; font-weight: normal">
+											<?php if(empty($day)) : ?>
+												<?=I18n::tr('closed')?>
+											<?php else : ?>
+												<?php foreach($day as $dayHours) : ?>
+													<?=$dayHours['from']?> - <?=$dayHours['to']?><br />
+												<?php endforeach?>
+											<?php endif?>
+										</td>
+									<?php endforeach?>
+								</tr>
+							</tbody>
+						</table>
+						<?=$branch['info']?>
+					</div>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+	</tbody>
+</table>

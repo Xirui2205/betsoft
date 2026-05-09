@@ -1,0 +1,8 @@
+Requirements:
+
+python-simplejson
+python-lxml
+
+latex - URW Arial font
+http://www.ctan.org/tex-archive/fonts/urw/arial/
+

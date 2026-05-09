@@ -1,0 +1,119 @@
+<form method="post" action="?superb=1&section=<?=$sectionId?>">
+	<table class="table-detail float-left payout-sum">
+		<tr>
+			<th colspan="2">Celkově</th>
+		</tr>
+		<tr>
+			<td>Celkem tiketů ke zpracování:</td>
+			<td class="border-left"><?=count($tickets)?></td>
+		</tr>
+		<tr>
+			<td>Zrušených tiketů:</td>
+			<td class="border-left"><?=$cancelTicketCount?></td>
+		</tr>
+		<tr>
+			<td>Výherních tiketů: </td>
+			<td class="border-left"><?=$lossTicketCount?></td>
+		</tr>
+		<tr>
+			<td>Proherních tiketů:</td>
+			<td class="border-left"><?=$winTicketCount?></td>
+		</tr>
+		<tr>
+			<td>Herna vybrala na tiketech:</td>
+			<td class="border-left"><?=round($winAmount, 2)?></td>
+		</tr>
+		<tr>
+			<td>Herna vyplatí na tiketech:</td>
+			<td class="border-left"><?=round($lossAmount, 2)?></td>
+		</tr>
+	</table>
+
+	<table class="table-detail float-left payout-sum">
+		<tr>
+			<th colspan="2">Nejvíc výdělečné tikety</th>
+		</tr>
+		<?php if (count($topLossTickets)) : ?>
+			<?php foreach ($topLossTickets as $h) : ?>
+				<tr>
+					<td>
+						<?php $readableId = $h['id']?>
+						Tiket
+						<a href="?section=148&ticket_id_search=<?=$readableId?>" target="_blank">
+							#<?=$readableId?>
+						</a>
+					</td>
+					<td><?=round($h['suma'], 2)?></td>
+				</tr>
+			<?php endforeach?>
+		<?php else : ?>
+			<tr>
+				<td><?=UiUtil::printWarnings(I18n::tr('No tickets found.'))?></td>
+			</tr>
+		<?php endif?>
+	</table>
+
+	<table class="table-detail float-left payout-sum">
+		<tr>
+			<th colspan="2">Nejvíc prodělečné tikety</th>
+		</tr>
+	
+		<?php if (count($topWinTickets)) : ?>
+			<?php foreach($topWinTickets as $h) : ?>
+				<tr>
+					<td>
+						Tiket
+						<?php $readableId = $h['id']?>
+						<a href="?section=148&ticket_id_search=<?=$readableId?>" target="_blank">
+							#<?=$readableId?>
+						</a>
+					</td>
+					<td><?=round($h['suma'], 2)?></td>
+				</tr>
+			<?php endforeach?>
+		<?php else : ?>
+			<tr>
+				<td><?=UiUtil::printWarnings(I18n::tr('No tickets found.'))?></td>
+			</tr>
+		<?php endif?>
+	</table>
+
+	<?php if(!empty($detailTicketId)) : ?>
+		<table class="table-detail float-left payout-sum">
+			<tr>
+				<th colspan="2">Detail tiketu #<?=$detailTicketId?></th>
+			</tr>
+			<?php if ($tickets[$detailTicketId]['zruseno'] == 1) : ?>
+				Tiket zrušen
+			<?php else : ?>
+				<tr>
+					<td>Tiket uživatele (nick):</td>
+					<td><?=$tickets[$detailTicketId]['nick']?></td>
+				</tr>
+				<tr>
+					<td>Stav:</td>
+					<td><?=$tickets[$detailTicketId]['stav']?></td>
+				</tr>
+				<tr>
+					<td>Částka:</td>
+					<td><?=round($tickets[$detailTicketId]['castka_eur'], 2)?></td>
+				</tr>
+				<tr>
+					<td>Kurz celkem:</td>
+					<td><?=round($tickets[$detailTicketId]['kurz_celkem'], 2)?></td>
+				</tr>
+				<tr>
+					<td>Výhra:</td>
+					<td>
+						<?=round(($tickets[$detailTicketId]['kurz_celkem'] * $tickets[$detailTicketId]['castka_eur']), 2)?>
+					</td>
+				</tr>
+			<?php endif?>
+		</table>
+	<?php endif?>
+
+	<div class="actions left width-100">
+		<input type="submit" name="ticket_ok" value="<?=I18n::tr('Run the ticket payout')?>" />
+	</div>
+</form>
+<div class="clear-both"></div>

@@ -1,0 +1,36 @@
+<h3><?= $this->trans('node_control_centre') ?></h3>
+<div class="nodecomm-info">
+  <strong><?= $this->trans('this_node_name') ?>: <?= NODE_NAME ?></strong>
+</div>
+<?php
+	foreach ($this->commands as $cmdName => $cmd) {
+		if (!empty($cmd['access'])) {
+			if (isset($cmd['responseError'])) {
+				echo '<div class="' . ($cmd['responseError'] ? 'errormsg' : 'okmsg') . '">';
+				echo '<span>' . $this->trans("nodecomm-cmd-{$cmdName}") . ' : ';
+				echo ($cmd['responseError'] ? 'FAILED' : 'OK'). "</span><br/>\n";
+				if (!empty($cmd['peerResponses'])) {
+					foreach ($cmd['peerResponses'] as $peer => $response) {
+						echo "[$peer] : " . $this->escape($response) . "<br />\n";
+					}
+				}
+				echo "</div>\n";
+			}
+		}
+	}
+	foreach ($this->commands as $cmdName => $cmd) {
+		if (!empty($cmd['access'])) {
+			echo "<div class=\"nodecomm-subsection\">\n";
+  			echo "<h4>" . $this->trans("nodecomm-cmd-{$cmdName}") . "</h4>\n";
+			echo $this->render($cmd['viewScript']);
+			echo "</div>\n";
+		}
+	}
+?>
+
+<?php if(!empty($this->log)) { ?>
+	<div class="nodecomm-subsection">
+		<h4>Log</h4>
+		<?= $this->log ?> 
+	</div>
+<?php } ?>

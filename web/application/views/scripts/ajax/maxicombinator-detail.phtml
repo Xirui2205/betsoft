@@ -1,0 +1,82 @@
+<?php $helper = &$this->createTicket['helper']?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+	
+	
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><?= $this->trans('ticket_maxic_detail') ?></title>
+</head>
+
+
+<body id="maxicombinatorDetail">
+		<h2 class="boxheader"><span><?= $this->trans('ticket_maxic_detail') ?></span></h2>
+		<h2 class="boxheader"><span><?= $this->trans('maxikombi') ?></span></h2>
+		<div class="grayBg">
+			<table class="w100pct">
+				<tbody>
+					<?php foreach ($helper->getGroups() as $i => $g): ?>
+						<tr>
+							<td class="w50pct"><?= $helper->getGroupName($i) ?></td>
+							<td class="w50pct"><?= $this->trans('tip') ?></td>
+						</tr>
+						
+						<?php foreach ($g['bets'] as $betId): ?>
+							<?php $bet = $helper->getBet($betId, null); $bet = $bet[0];?>
+							<tr>
+								<td class="w50pct"><strong><?= $bet['mtext'] ?></strong></td>
+								<td class="w50pct"><?= $bet['tnazev'] ?> <?= $bet['textNote'] ?>: <?= $bet['pnazev'] ?></td>
+							</tr>
+						<?php endforeach?>
+						
+					<?php endforeach?>
+				</tbody>
+			</table>
+			<br />
+			<table class="w100pct">
+				<thead>
+					<tr>
+						<th class="w25pct alignLeft normal"><?= $this->trans('combination') ?></th>
+						<th class="w25pct alignLeft colorGold"><?= $this->trans('stake') ?></th>
+						<th class="w25pct alignLeft colorGold"><?= $this->trans('rate') ?></th>
+						<th class="w25pct alignLeft colorGold"><?= $this->trans('win') ?></th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<?php foreach ($helper->combinations as $i => $c): 
+						if (empty($c) || !array_key_exists('used', $c) || false === $c['used'])
+							continue;
+					?>
+						<?php foreach ($c['data'] as $d) : ?>
+							<tr>
+								<td class="nazev w25pct"><?= $d['name'] ?></td>
+								<td class="w25pct"><?= $this->formatCurrency($c['stake']) ?></td>
+								<td class="w25pct"><?= $this->formatRate($d['rate']) ?></td>
+								<td class="w25pct"><?= $this->formatCurrency($d['win']) ?></td>
+							</tr>
+						<?php endforeach?>
+					<?php endforeach?>
+				</tbody>
+			</table>
+			<br />
+			<table class="w50pct">
+				<thead>
+					<tr>
+						<td class="bold colorGold"><?=$this->trans('stake')?></td>
+						<td colspan="3" class="alignRight">
+							<?= $this->formatCurrency($helper->stake, $this->mena) ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="bold colorGold"><?=$this->trans('win')?></td>
+						<td colspan="3" class="alignRight">
+							<?= $this->formatCurrency($helper->win, $this->mena) ?>
+						</td>
+					</tr>
+				</thead>
+			</table>
+	</div>
+</body>
+</html>

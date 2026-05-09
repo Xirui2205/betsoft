@@ -1,0 +1,122 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="editBranchBankAccount(<?=$this->branchId?>);"><?=i18n::tr('Edit')?></button>
+	<button onclick="hideDetail('branch-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+
+<h4><?=i18n::tr('bank_account_provision')?></h4>
+
+<?php if(isset($this->bank['provision']['bankName'])) :?>
+	<table class="table-detail" >
+		<tr>
+			<th><?=i18n::tr('bank-name')?></th>
+			<td><?=$this->bank['provision']['bankName']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('bank-branch')?></th>
+			<td><?=$this->bank['provision']['bankBranch']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('account-prefix')?></th>
+			<td><?=$this->bank['provision']['accountPrefix']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('account-number')?></th>
+			<td><?=$this->bank['provision']['accountNumber']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('bank-code')?></th>
+			<td><?=$this->bank['provision']['bankCode']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('spec-symbol')?></th>
+			<td><?=$this->bank['provision']['specificSymbol']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('currency')?></th>
+			<td><?=$this->bank['provision']['currencyIso']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('note')?></th>
+			<td><?=$this->bank['provision']['note']?></td>
+		</tr>
+	</table>
+<?php else : ?>
+	<?=UiUtil::printWarnings(I18n::tr('warn_no_bank_account_add_new'))?>
+<?php endif; ?>
+
+
+<h4><?=i18n::tr('bank_account_balance')?></h4>
+
+<?php if(isset($this->bank['balance']['bankName'])) :?>
+	<table class="table-detail" >
+		<tr>
+			<th><?=i18n::tr('bank-name')?></th>
+			<td><?=$this->bank['balance']['bankName']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('bank-branch')?></th>
+			<td><?=$this->bank['balance']['bankBranch']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('account-prefix')?></th>
+			<td><?=$this->bank['balance']['accountPrefix']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('account-number')?></th>
+			<td><?=$this->bank['balance']['accountNumber']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('bank-code')?></th>
+			<td><?=$this->bank['balance']['bankCode']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('spec-symbol')?></th>
+			<td><?=$this->bank['balance']['specificSymbol']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('currency')?></th>
+			<td><?=$this->bank['balance']['currencyIso']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('note')?></th>
+			<td><?=$this->bank['balance']['note']?></td>
+		</tr>
+	</table>
+<?php else : ?>
+	<?=UiUtil::printWarnings(I18n::tr('warn_no_bank_account_add_new'))?>
+<?php endif; ?>
+<?php if (isset($this->bank['archive'])) : ?>
+<h4><?=i18n::tr('Archive')?></h4>
+	<table class="table-list" >
+		<tr>
+			<th><?=i18n::tr('account-type')?></th>
+			<th><?=i18n::tr('time-created')?></th>
+			<th><?=i18n::tr('bank-name')?></th>
+			<th><?=i18n::tr('bank-branch')?></th>
+			<th><?=i18n::tr('account-prefix')?></th>
+			<th><?=i18n::tr('account-number')?></th>
+			<th><?=i18n::tr('bank-code')?></th>
+			<th><?=i18n::tr('spec-symbol')?></th>
+			<th><?=i18n::tr('currency')?></th>
+			<th><?=i18n::tr('note')?></th>
+		</tr>
+
+		<?php foreach($this->bank['archive'] as $archAcc):?>
+			<tr>
+				<td><?=$archAcc['typeName']?></td>
+				<td><?=It6_Date::fromDb($archAcc['timeCreated'])?></td>
+				<td><?=$archAcc['bankName']?></td>
+				<td><?=$archAcc['bankBranch']?></td>
+				<td><?=$archAcc['accountPrefix']?></td>
+				<td><?=$archAcc['accountNumber']?></td>
+				<td><?=$archAcc['bankCode']?></td>
+				<td><?=$archAcc['specificSymbol']?></td>
+				<td><?=$archAcc['currencyIso']?></td>
+				<td><?=$archAcc['note']?></td>
+			</tr>
+		<?php endforeach?>
+	</table>
+<?php endif?>

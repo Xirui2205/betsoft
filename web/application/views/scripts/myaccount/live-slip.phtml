@@ -1,0 +1,25 @@
+<div id="right">
+	<h2 class="boxheader">
+		<?=$this->trans('Live ticket')?>
+		<span class="betslip-result <?= It6_Models_Ticket::getCssClass($this->ticket['state']) ?>"><?=$this->trans('live_'.$this->ticket['state'], 'TICKET', It6_Translate_Web::DICTIONARY) ?></span>
+	</h2>
+	<div class="contentbox">
+		<h1 class="betslip-result <?= It6_Models_Ticket::getCssClass($this->ticket['state']) ?>">
+			<?=$this->trans('ticket')?>
+			<?php
+			$isHandle = (!(isset($this->hideHandle) && ($this->hideHandle == true)));
+			if($isHandle){
+				echo '#'.$this->ticket['handle'];
+			}
+			?>
+		</h1>
+		<?php include('live-ticket-detail.phtml')?>
+		<?php //include('ticket-footer.phtml')?>
+
+		<?php if(!is_array($this->ticket) || count($this->ticket) == 0) : ?>
+			<?=It6_FeedbackMsg::printError('no_ticket2')?>
+		<?php endif?>
+	</div>
+</div>
+
+<?=$this->render('myaccount/user-profile-left-col.phtml'); ?>

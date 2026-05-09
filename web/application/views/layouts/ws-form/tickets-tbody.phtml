@@ -1,0 +1,41 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+		<tr>
+			<td class="w100"><?=It6_Date::fromDb($row['createdTime'])?></td>
+			<td><a href="<?=$this->UrlSet(18)?>t/<?=$row['ticketHandle']?>">#<?=$row['ticketHandle']?></a></td>
+			<td><?=$this->trans($row['type'], 'TICKET', It6_Translate_Web::DICTIONARY) ?></td>
+			<td class="currency"><?= !empty($row['pointTypeId']) ? round($row['pointsAmount']) . ' B' : $this->formatCurrency($row['amount'], $row['currencyName']) ?></td>
+			<td class="rate"><?=($row['type'] == 'maxikombi' ? '-' : $row['totalOdds'])?></td>
+			<td class="currency">
+				<?php if ( 4 == $row['stateNo'] ): ?>
+					<?='-' /*!empty($row['pointTypeId']) ? round($row['pointsAmount']) . ' B' : $this->formatCurrency($row['amount'], $row['currencyName'])*/ ?>
+				<?php elseif ( $row['paidOut'] ): ?>
+					<?=$this->formatCurrency($row['won'],$row['currencyName'])?>
+				<?php else:?>
+					<?=$this->formatCurrency(0, $row['currencyName'])?>
+				<?php endif;?>
+			</td>
+			<td>
+				<?php if($row['state'] == 'ticket_state_1') : ?>
+					<span class="result-open">
+				<?php elseif($row['state'] == 'ticket_state_1w') : ?>
+					<span class="result-open-win">
+				<?php elseif($row['state'] == 'ticket_state_1l') : ?>
+					<span class="result-open-loss">
+				<?php elseif($row['state'] == 'ticket_state_2') : ?>
+					<span class="result-win">
+				<?php elseif($row['state'] == 'ticket_state_3') : ?>
+					<span class="result-loss">
+				<?php elseif($row['state'] == 'ticket_state_4') : ?>
+					<span class="result-canceled">
+				<?php elseif($row['state'] == 'ticket_state_5') : ?>
+					<span class="result-payout">
+				<?php elseif($row['state'] == 'ticket_state_6') : ?>
+					<span class="result-forfeit">
+				<?php endif?>
+					<?=$this->trans($row['state'], 'TICKET', It6_Translate_Web::DICTIONARY) ?>
+				</span>
+			</td>
+		</tr>
+	<?php endforeach?>
+</tbody>

@@ -1,0 +1,48 @@
+<h3><?=i18n::tr('Events')?></h3>
+
+<div id="feedbackContainer">
+<?=$this->feedbackMsg?>
+</div>
+
+<ul class="idTabs" style="display:none">
+	<li><a class="selected" href="#event-main"><?=I18n::tr('main')?></a></li>
+	<li>
+		<a href="#type-event" onClick="loadTabGeneric(<?=$this->updateTypeEventSectionId?>, 'type-event', { eventId : $('#eventId').val() })">
+			<?=i18n::tr('type-event')?>
+		</a>
+	</li>
+</ul>
+
+
+<div id="event-container" class="tab-container hidden">
+	<input type="hidden" class="tabsLoaded" id="event-main-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="type-event-loaded" value="0" />
+
+	<input type="hidden" name="eventId" id="eventId" value="">
+
+	<div id="event-main" class="tab" style="display: none;">
+	</div>
+	<div id="type-event"  class="tab" style="display: none;">
+	</div>
+</div>
+
+
+<div id="list">
+	<form method="get" action="/" id="formEventFilter">
+		<input type="hidden" name="section" value="<?=$this->indexSectionId?>" />
+		<div class="actions">
+			<input type="button" onclick="insertEvent(<?=$this->insertSectionId?>)" name="insert_new" value="<?=i18n::tr('insert_event')?>" />
+		</div>
+		<?=$this->filter?>
+		<?=$this->paginator?>
+
+		<table class='table-list width-100'>
+			<?=$this->tHead?>
+			<?=$this->tBody?>
+		</table>
+		<br />
+		<input type="submit" name="delete_selected" value="<?=i18n::tr('delete')?>"/>
+		<input type="submit" name="hide_selected" value="<?=i18n::tr('hide')?>"/>
+		<input type="submit" name="show_selected" value="<?=i18n::tr('show')?>"/>
+	</form>
+</div>

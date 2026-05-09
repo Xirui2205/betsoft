@@ -1,0 +1,36 @@
+<div class="actions">
+	<button onclick="loadGeneric('<?=$this->insertThresholdSectionId?>','inner',  { approvalGroupId : <?=$this->group['approvalGroupId']?> } );"><?=i18n::tr('Insert new threshold')?></button>
+</div>
+<?php if(count($this->group->thresholdTable)>0) : ?>
+
+	<table class="table-detail" >
+		<tr>
+			<th class="header border-left" colspan="2">
+			</th>
+			<th class="header border-left" colspan="3">
+				<?=i18n::tr('Odd interval')?>
+			</th>
+			<th class="header border-left">
+				<?=i18n::tr('Stake lower threshold')?>
+			</th>
+			<?php foreach ($this->interval as $k => $t) : ?>
+				<?php if ($t['value']!=NULL) : ?>
+				<tr>
+					<td>
+						<button onClick="loadGeneric('<?=$this->updateThresholdSectionId?>&superb=1', 'inner', { thresholdId : <?=$t['id']?>, approvalGroupId : <?=$this->groupId?> })"><?=i18n::tr('Edit')?></button>
+					</td>
+					<td>
+						<button onClick="if (confirm('Delete?')) { loadGeneric('<?=$this->deleteThresholdSectionId?>', 'inner', { thresholdId : <?=$t['id']?>, approvalGroupId : <?=$this->groupId?> }) } else return false;"><?=i18n::tr('Delete')?></button>
+					</td>
+					<td class="border-left trt"><?=$t['left']?></td>
+					<td> - </td>
+					<td ><?=$t['right']?></td>
+					<td class="border-left trt"><?=$t['value']?></td>
+				</tr>
+				<?php endif ;?>
+			<?php endforeach; ?>
+		</tr>
+	</table>
+<?php else : ?>
+	<?=UiUtil::printWarnings(array('No settings for this approval group.'))?>
+<?php endif; ?>

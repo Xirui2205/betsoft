@@ -1,0 +1,101 @@
+<?php if(false){ ?>
+<div id="rightcol">
+	<?php echo $this->render('index/bigButtons.phtml'); ?>
+	<?php It6_GlobalCache::frame('/global-cache-frame/ticket');?>
+	<?=$this->render('index/ticketSearch.phtml'); ?>
+
+	<div class="box box-wide box-okna" id="rightColLiveCalendarSmall">
+		<div class="loader-small"></div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() { $('#rightColLiveCalendarSmall').load('<?= $this->urlSet(71) ?>'); });
+		setInterval("$('#rightColLiveCalendarSmall').load('<?=$this->urlSet(71)?>')",<?=LIVECALENDAR_REFRESH_LIST?>);
+	</script>
+
+	<script type="text/javascript">
+		$(function() {
+			var index = 'key';
+			var dataStore = window.sessionStorage;
+
+			try {
+				var oldIndex = dataStore.getItem(index);
+			} catch(e) {
+				var oldIndex = 0;
+			}
+			$('#tabs').tabs({
+				active : oldIndex,
+				activate : function( event, ui ) {
+					var newIndex = ui.newTab.parent().children().index(ui.newTab);
+					dataStore.setItem( index, newIndex )
+				}
+			});
+
+			$("#tabs").removeClass('ui-corner-all');
+			$("#tabs ul").removeClass('ui-corner-all');
+			$("#tabs div").removeClass('ui-corner-bottom');
+		});
+	</script>
+
+	<div class="box box-wide">
+		<div id="tabs" class="tabs">
+			<ul>
+				<li id="ticketsWinOfMonthli">
+					<a href="#ticketsOfMonth"><?=$this->trans('month_ticket_win')?></a>
+				</li>
+				<li id="ticketsOfMonthli">
+					<a href="#ticketsWinOfMonth"><?=$this->trans('month_ticket')?></a>
+				</li>
+			</ul>
+
+			<div class="content" id="ticketsOfMonth">
+				<div class="loader-small"></div>
+			</div>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$('#ticketsOfMonth').load('<?=$this->urlSet(94)?>g/3');
+				});
+			</script>
+
+			<div class="content" id="ticketsWinOfMonth">
+				<div class="loader-small"></div>
+			</div>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$('#ticketsWinOfMonth').load('<?=$this->urlSet(94)?>g/2');
+				});
+			</script>
+		</div>
+	</div>
+
+	<?=$this->render('index/contact.phtml')?>
+
+	<?php if(!empty($this->bannersRight)) : ?>
+		<?php foreach($this->bannersRight as $banner): ?>
+			<div class="banner banner-wide">
+				<img src="/images/gallery/<?=$banner['imageName']?>" alt="<?=$this->trans('banner image')?>" />
+				<a
+					href="<?=$banner['url']?>"
+					<?php if($banner['target'] == '_blank') : ?>
+						onclick="window.open (this.href, 'child'); return false"
+					<?php endif?>
+					class="layer1"
+				>
+					<?=$banner['title']?>
+				</a>
+				<div class="layer2"></div>
+			</div>
+		<?php endforeach?>
+	<?php endif?>
+</div>
+<?php } ?>
+<div id="rightcol">					
+	<?=$this->render('sportsbook/ticket.phtml');?>
+
+	<div class="box box-wide box-okna" id="rightColLiveCalendarSmall">
+		<div class="loader-small"></div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() { $('#rightColLiveCalendarSmall').load('<?= $this->urlSet(71) ?>'); });
+		setInterval("$('#rightColLiveCalendarSmall').load('<?=$this->urlSet(71)?>')",<?=LIVECALENDAR_REFRESH_LIST?>);
+	</script>
+</div>

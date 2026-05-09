@@ -1,0 +1,230 @@
+<td colspan="18">
+	<div>#<?= $this->ticket['ticketId'] ?> <?= It6_Models_Ticket::getTypeName($this->ticket['type'], true, true)?></div>
+	<table class="ticket-detail-bets">
+		<thead>
+			<tr>
+				<th class="nazev">
+					<?php if($this->ticket['state'] == 'ticket_state_1') : ?>
+						<span class="ticket-open-tag ticket-state">
+					<?php elseif($this->ticket['state'] == 'ticket_state_1w') : ?>
+						<span class="ticket-open-win-tag ticket-state">
+					<?php elseif($this->ticket['state'] == 'ticket_state_1l') : ?>
+						<span class="ticket-open-loss-tag ticket-state">
+					<?php elseif($this->ticket['state'] == 'ticket_state_2') : ?>
+						<span class="ticket-win-tag ticket-state">
+					<?php elseif($this->ticket['state'] == 'ticket_state_3') : ?>
+						<span class="ticket-loss-tag ticket-state">
+					<?php elseif($this->ticket['state'] == 'ticket_state_4') : ?>
+						<span class="ticket-canceled-tag ticket-state">
+					<?php endif?>
+						<?=$this->trans($this->ticket['state'], 'TICKET', It6_Translate_Web::DICTIONARY) ?>
+					</span>
+				</th>
+				<th class="w3"><?=$this->trans('rate')?></th>
+				<th class="w3"><?=$this->trans('tip')?></th>
+				<th class="w3"><strong><?=$this->trans('result')?></strong></th>
+				<th class="w3">&nbsp;</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php $j = 0?>
+			<?php foreach($this->ticket['groups'] as $group) : ?>
+				<?php foreach($group['tips'] as $match) : ?>
+				<tr <?php if (!empty($match['canceled'])) echo 'class="bet-canceled" '?>>
+					<td class="nazev">
+						<div class="l">
+							<?=++$j?>.
+							<?php if ('system' == $this->ticket['type'] || 'maxikombi' == $this->ticket['type']) : ?>
+								<br/><br/>
+								<strong><?=$match['groupName']?></strong>
+							<?php endif?>
+						</div>
+						<div class="r">
+							<a href="?section=146&amp;filtr=1&amp;sazka_id=<?= $match['betId'] ?>&amp;stav[]=0&amp;udalost[]=0">
+								<strong><?=$match['betName']?></strong>
+							</a>
+							<br />
+							<?=$this->escape($match['sportName'])?> - <?=$this->escape($match['regionName'])?> - <?=$this->escape($match['eventName'])?>
+							<br />
+							<?=It6_Date::fromDb($match['validTo'])?>
+							&nbsp;
+							<?=$this->escape($match['typeName'])?><?= empty($match['betTextNote']) ? '' : ' ' . $this->escape($match['betTextNote']) ?>
+						</div>
+					</td>
+					<td class="w3">
+						<?php if (!empty($match['canceled'])):?>
+							<?=$this->trans('rate_1'); ?>
+						<?php else: ?>
+							<?=$match['rate']; ?>
+						<?php endif; ?>
+					</td>
+					<td class="w3"><?=$match['oddsOutcomeName']?></td>
+					<td class="w3 w3-last
+						<?php /*if($this->ticket['state'] == 'ticket_state_2' || $this->ticket['state'] == 'ticket_state_1W') : ?>
+							ticket-win-tag
+						<?php elseif($this->ticket['state'] == 'ticket_state_3' || $this->ticket['state'] == 'ticket_state_1L') : ?>
+							ticket-loss-tag
+						<?php endif*/?>
+						<?php if (It6_Models_Ticket::RESULT_WON == $match['winResult']) : ?>
+							ticket-win-tag
+						<?php elseif (It6_Models_Ticket::RESULT_LOST == $match['winResult']) : ?>
+							ticket-loss-tag
+						<?php endif?>
+					">
+						<?php if(empty($match['resultNames'])) : ?>
+							-
+						<?php else : ?>
+							<?php foreach($match['resultNames'] as $result) : ?>
+								<?=$result?>
+							<?php endforeach?>
+						<?php endif?>
+					</td>
+					<td>
+						<?php if (empty($match['actions'])): ?>
+							&nbsp;
+						<?php elseif (!empty($match['actions']['renew'])): ?>
+							<input type="submit"
+								onclick="if(!confirm('<?= I18n::tr('Do you really want to renew the bet?') ?>')) return false;"
+								value="<?= I18n::tr('Renew') ?>"
+								name="renew_bet[<?= $this->ticket['ticketId'] ?>][<?= $match['betId'] ?>]" /><br />
+							Zrušil <?= empty($match['canceledByBookmaker']) ? '' : $match['canceledByBookmaker'] ?>
+							<?= empty($match['canceledByBookmakerId']) ? '' : '#' . $match['canceledByBookmakerId'] ?>
+							<?= empty($match['cancelationReason']) ? '' : "(".$match['cancelationReason'].")" ?>
+						<?php elseif (!empty($match['actions']['rate1'])): ?>
+							<input type="submit"
+								value="<?= I18n::tr('Rate 1') ?>"
+								onclick="if(!confirm('<?= I18n::tr('Do you really want to delete the bet?') ?>')) return false;"
+								name="delete_bet[<?= $this->ticket['ticketId'] ?>][<?= $match['betId'] ?>]" 
+							/>&nbsp;<input type="text" class="hide" name="duvod_bet_zruseni[<?= $this->ticket['ticketId'] ?>][<?= $match['betId'] ?>]" />
+						<?php endif; ?>
+					</td>
+				</tr>
+				<?php endforeach?>
+			<?php endforeach?>
+		</tbody>
+	</table>
+
+	<?php if ('system' == $this->ticket['type'] || 'maxikombi' == $this->ticket['type']) : ?>
+		<table class="ticket-detail-combinations">
+			<tr class="highlight highlight-normal">
+				<th class="h"><?= $this->trans('combination')?></td>
+				<th class="tar"><?= $this->trans('amount')?></td>
+				<th class="tar"><?= $this->trans('rate')?></td>
+				<th class="tar"><?= $this->trans('win')?></td>
+				<th class="tar"><?= $this->trans('result')?></td>
+			</tr>
+			<?php foreach ($this->ticket['combinations'] as $k => $comb) : ?>
+				<?php foreach ($comb['data'] as $c) : ?>
+					<tr>
+						<td class="nazev"><?= $c['name']?></td>
+						<td class="w3"><?= $this->formatCurrency($comb['stake'])?></td>
+						<td class="w3"><?= $this->formatRate($c['rate'])?></td>
+						<td class="w3"><?= $this->formatCurrency($c['win'])?></td>
+						<td class="w3-last
+							<?php if($c['result'] == 'result_win') : ?>
+								result-win
+							<?php elseif($c['result'] == 'result_loss') : ?>
+								result-loss
+							<?php endif?>
+						">
+							<?= $c['result'] ?>
+						</td>
+					</tr>
+				<?php endforeach?>
+			<?php endforeach?>
+		</table>
+	<?php endif?>
+
+	<table class="ticket-detail-summary">
+		<tr class="highlight highlight-normal">
+			<td class="h"><?=$this->trans('date')?></td>
+			<td class="tar datum">
+				<?=It6_Date::fromDb($this->ticket['createdTime'])?>
+			</td>
+		</tr>
+		<?php if($this->ticket['type'] == 'kombi') : ?>
+			<tr class="highlight highlight-normal">
+				<td class="h"><?=$this->trans('bet_rows_qty')?></td>
+				<td class="tar">
+					<?=sizeof($this->ticket['groups'][1]['tips'])?>
+				</td>
+			</tr>
+		<?php endif?>
+
+		<?php if( !empty($this->ticket['rateAdvance']) && $this->ticket['rateAdvance'] > 1 ) : ?>
+			<tr class="highlight">
+				<td class="h"><?=$this->trans('total_rate_without_advance')?></td>
+				<td class="tar"><?=$this->ticket['rateWithoutAdvance']?></td>
+			</tr>
+			<tr class="highlight">
+				<td class="h"><?=$this->trans('rate_advance')?></td>
+				<td class="tar"><?=$this->ticket['rateAdvance']?></td>
+			</tr>
+		<?php endif?>
+
+		<?php if($this->ticket['type'] != 'simple') : ?>
+			<tr class="highlight">
+				<td class="h"><?=$this->trans('total_rate')?></td>
+				<td class="tar"><?=$this->formatRate($this->ticket['totalOdds'])?></td>
+			</tr>
+		<?php endif?>
+
+		<tr class="highlight">
+			<td class="h"><?=$this->trans('amount')?></td>
+			<td class="tar">
+				<?= $this->formatCurrency($this->ticket['amount'], $this->currency) ?>
+			</td>
+		</tr>
+
+		<tr class="highlight">
+			<td class="h"><?=$this->trans('win')?></td>
+			<td class="tar">
+				<div class="vyhra">
+					<div class="cl"></div>
+					<div class="cc">
+						<?= $this->formatCurrency(
+							($this->ticket['paidOut'] || 4 == $this->ticket['stateNo'] ? $this->ticket['won'] : 0),
+							$this->currency) ?>
+					</div>
+					<div class="cr"></div>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+	<?php if ($this->showSummary): ?>
+		<table class="ticket-detail-summary">
+			<tr class="highlight">
+				<td class="h"><?=$this->trans('coupon_admin')?></td>
+				<td class="tar"><?= $this->escape($this->ticket['couponAdmin']) ?> (#<?= $this->ticket['couponAdminId'] ?>)</td>
+			</tr>
+			<tr class="highlight">
+				<td class="h"><?=$this->trans('confirm_date')?></td>
+				<td class="tar"><?=It6_Date::fromDb($this->ticket['confirmDate'])?></td>
+			</tr>
+			<tr class="highlight">
+				<td class="h"><?=$this->trans('confirm_bookmaker')?></td>
+				<td class="tar"><?= $this->escape($this->ticket['confirmBookmaker']) ?> (#<?= $this->ticket['confirmBookmakerId'] ?>)</td>
+			</tr>
+		</table>
+	<?php endif ?>
+
+	<?php if (!empty($this->ticket['paidOut']) && (!empty($this->ticket['collectionTime']) || $this->ticket['hostId'] == 1)): ?>
+		<table class="ticket-detail-handle">
+			<tr><th class="h"><?=$this->trans('ticket_handle')?></td></tr>
+			<tr><td><?=$this->escape($this->ticket['ticketHandle'])?></td></tr>
+		</table>
+	<?php endif ?>
+
+	<?php if ($this->ticket['freeBetBonus'] == 1): ?>
+		<div class="bonus">
+			<span><?=$this->trans('Na ticket byl uplatněn sázkový bonus')?></span>
+		</div>
+	<?php endif ?>
+
+	<?php if (!empty($this->ticket['transactionsUri'])): ?>
+		<div>
+			<a href="<?= htmlspecialchars($this->ticket['transactionsUri']) ?>" onclick="window.open('<?= htmlspecialchars($this->ticket['transactionsUri']) ?>'); return false;"><?= I18n::tr('transactions') ?></a>
+		</div>
+	<?php endif ?>
+</td>

@@ -1,0 +1,264 @@
+<div class="col1wrap">
+    <div class="col1">
+    <h1 class="bg alone"><span><?= $this->trans('mobile_betting') ?></span></h1>
+<div id="mobile">
+	<script type="text/javascript">
+	$(function() {
+		$('.slideshow').cycle({
+			speed: 'fast',
+			timeout: 5000,
+			pager: '#nav_m'
+		});
+
+		$('.slideshow a, .instructions').fancybox({
+			"titlePosition": "over",
+			"showCloseButton": false
+		});
+	});
+	</script>
+	<style type="text/css">
+    /* fancybox modifications  */
+	#fancybox-title {
+		text-align: center;
+		margin-bottom: 3px !important;
+	}
+	#fancybox-title-over {
+		padding-right: 7px;
+		font-size: 13px;
+	}
+	#fancybox-left/*:hover*/ span {
+		left: 40px !important;
+	}
+	#fancybox-right/*:hover*/ span {
+		right: 44px !important;
+		left: auto !important;
+	}
+	#fancybox-left-ico {
+		background-position: 0px 0px !important;
+		background-repeat: no-repeat !important;
+	}
+	#fancybox-right-ico {
+		background-image: url("/images/fancybox/arrow_in_galery_active_right.png") !important;
+		background-position: 0px 0px !important;
+		background-repeat: no-repeat !important;
+	}
+	#fancybox-left #fancybox-left-ico {
+		background-image: url("/images/fancybox/arrow_in_galery_passive_left.png") !important;
+	}
+	#fancybox-left:hover #fancybox-left-ico {
+		background-image: url("/images/fancybox/arrow_in_galery_active_left.png") !important;
+	}
+	#fancybox-right #fancybox-right-ico {
+		background-image: url("/images/fancybox/arrow_in_galery_passive_right.png") !important;
+	}
+	#fancybox-right:hover #fancybox-right-ico {
+		background-image: url("/images/fancybox/arrow_in_galery_active_right.png") !important;
+	}
+	</style>
+    <div class="mobile-type">
+        <table>
+            <tr style="width: 520px; height: 3px;"></tr>
+            <tr>
+                <td class="mobile-buttons-separator">
+                    <img src="/images/vert-sep-mob.png" />
+                </td>
+                <td> 
+                    <div class="mobile-type-box">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="/images/android_icon.png" />
+                                </td>
+                                <td>
+                                    <div>
+                                        <span class="mobile_span_small">Mobilní aplikace</span>
+                                    </div>
+                                    <div>
+                                        <span class="mobile_span_big">PRO ANDROID</span>
+                                    </div>  
+                                </td>
+                            </tr>
+                        </table>
+
+
+                    </div>
+                </td>
+                <td class="mobile-buttons-separator">
+                    <img src="/images/vert-sep-mob.png" />
+                </td>
+                <td>
+                    <div class="mobile-type-box">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="/images/apple_icon.png" />
+                                </td>
+                                <td><div>
+                                        <span class="mobile_span_small">Mobilní aplikace</span>
+                                    </div>
+                                    <div>
+                                        <span class="mobile_span_big_passive">PRO iOS</span>
+                                    </div>
+                                    <div>
+                                        <span class="mobile_span_small">- připravujeme</span>
+                                    </div> 
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td class="mobile-buttons-separator">
+                    <img src="/images/vert-sep-mob.png" />
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="box-mobile">
+        <div class="tabs">
+            <ul>
+                <li id="mobileAndroidTabAboutli" class="sel">
+                    <a onclick="hpIdSee('mobileAndroidTabAbout', 'mobileAndroidTabDownload');" href="javascript:void(0)">
+                        O aplikaci
+                    </a>
+                </li>
+                <li id="mobileAndroidTabDownloadli">
+                    <a onclick="hpIdSee('mobileAndroidTabDownload','mobileAndroidTabAbout');" href="javascript:void(0)">
+                        <?= $this->trans('download_app'); ?>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mobileAndroidTabAbout" class="content">
+            <div class="androidAboutText">
+                <h4>
+                    Nainstalujte si aplikaci <strong>CompBet do svého Android zařízení</strong>
+                </h4>
+                <p class="alignJustify">
+                    Všem našim sázkařům, kteří vlastní chytré mobilní telefony s OS Android, je k dispozici naše <span class="gold">nová
+                        mobilní aplikace</span>, která umožňuje rychlé a pohodlné uzavírání LIVE sázek na všechny sportovní události
+                    kdykoliv a kdekoliv!
+                </p>
+                <p></p>
+                <img src="/images/ticket-line-separator.jpg" style="background-repeat: repeat-x; width: 486px; height: 2px;" />
+                <p></p>
+               
+                <p></p>
+                <div>
+					
+				<table class="w100pct">
+					<tr>
+						<td>
+							<div class="androiAppInfo">
+								<h4>
+									Výhody mobilní aplikace <strong>CompBet</strong> 
+								</h4>
+							<p></p>
+							<ul>
+								<li>přístup k nabídce <strong>LIVE sázek odkudkoliv</strong></li> 
+
+								<li>Live vsazení <strong>do pár vteřin</strong></li> 
+
+								<li><strong>přehled o</strong> svém <strong>účtu a vsazených tiketech</strong></li> 
+
+								<li>rychlý přístup ke stavu transakcí na účtu</li> 
+
+								<li>dostupnost <strong>24 hodin denně</strong></li> 
+
+								<li>aplikace je <strong>ZDARMA</strong> a data jsou zabezpečena</li> 
+							</ul>
+
+							<p>
+								<img src="/images/ticket-line-separator.jpg" />
+							</p>
+
+							<p>
+								<img class="mobile_gallery_arrow" src="/images/arrow_link_galery_active.png" />
+							</p>
+							</div>
+						</td>
+						<td>
+							<div class="android_mobile_gallery_small">
+								<div class="slideshow">
+									<a title="Vstupní formulář pro přihlášení hráče." rel="small_gallery" href="/images/mobile_1_gallery_bigger.png">
+										<img src="/images/mobile_1_gallery.png" />
+									</a>
+									<a title="Náhled zápasu se skóre, statistikami a aktuálními sázkovými
+					příležitostmi." rel="small_gallery" href="/images/mobile_2_gallery_bigger.png">
+										<img src="/images/mobile_2_gallery.png" />
+									</a>
+									<a title="Seznam tiketů hráče s aktuálními stavy zpracování." rel="small_gallery" href="/images/mobile_3_gallery_bigger.png">
+										<img src="/images/mobile_3_gallery.png" />
+									</a>
+									<a title="Centrum aplikace s upoutávkovými bannery a rozcestníkem." rel="small_gallery" href="/images/mobile_4_gallery_bigger.png">
+										<img src="/images/mobile_4_gallery.png" />
+									</a>
+									<a title="Seznam poboček s provozní dobou rozmístěný na mapě." rel="small_gallery" href="/images/mobile_5_gallery_bigger.png">
+										<img src="/images/mobile_5_gallery.png" />
+									</a>
+									<a title="Seznam finančních transakcí na účtu hráče." rel="small_gallery" href="/images/mobile_6_gallery_bigger.png">
+										<img src="/images/mobile_6_gallery.png" />
+									</a>
+									<a title="Při zadání vsazené částky je možné využít pomocná tlačítka
+					pro&nbsp;úpravu částky v krocích." rel="small_gallery" href="/images/mobile_7_gallery_bigger.png">
+										<img src="/images/mobile_7_gallery.png" />
+									</a>                        
+								</div>
+								<div id="nav_m"></div>
+							</div>
+						</td>
+					</tr>
+				</table>
+            </div>
+            </div>
+        </div>
+        <div id="mobileAndroidTabDownload" style="display:none" class="content">
+            <div class="androidAboutText">
+                <h4>
+                    Instrukce k instalaci
+                </h4>
+                <p class="alignJustify">
+                    Klepnutím na níže uvedené tlačítko <strong class="gold">[Stáhnout a nainstalovat]</strong> začne Vaše Android zařízení stahovat instalační soubor.
+                </p>
+                <p class="alignJustify">
+                    <a id="app_link" href="/mobile/vtmobile.apk"><img src="/images/arrow_link_download_active.png" /></a>
+                </p>
+                <p class="grey alignJustify">
+                    Kliknutím na obrázek se náhledy popisující stáhnutí aplikace zvětší.
+                </p>
+                <p class="alignJustify">1) O dokončení stahování Vás bude informovat stavová lišta. Stáhněte ji prstem dolů a klepněte na oznámení <strong>"Stahování dokončeno"</strong>.
+                </p>
+                <p class="alignJustify">2) Systém Vám nabídne instalaci souboru a požádá Vás o potvrzení oprávnění aplikace. Klepnutím na tlačítko <strong>Instalovat</strong> bude zahájena instalace a <strong>po dokončení je již možné aplikaci spustit.</strong>
+                </p>
+                </p>
+                <p class="alignCenter">
+                    <a rel="instructions" class="instructions" href="/images/mobile_1_instruction_bigger.png">
+                        <img src="/images/mobile_1_instruction.png" />
+                    </a>
+                    <img class="separate_line" src="/images/separate_line.png" />
+                    <a rel="instructions" class="instructions" href="/images/mobile_2_instruction_bigger.png">
+                        <img src="/images/mobile_2_instruction.png" />
+                    </a>
+                </p>
+                <p class="alignJustify">3) Pokud v budoucnu dojde k vydání nové verze, <strong>aplikace Vás na tuto skutečnost sama upozorní</strong> a umožní jednoduše na několik kliknutí stáhnout a nainstalovat novou verzi přímo z aplikace.</p>
+                <p class="alignCenter">
+                    <a rel="instructions" class="instructions" href="/images/mobile_3_instruction_bigger.png">
+                        <img src="/images/mobile_3_instruction.png" />
+                    </a>
+                    <img class="separate_line" src="/images/separate_line.png" />
+                    <img src="/images/QR_code.png" />
+                </p>
+				<br />
+                <h4>Instrukce ke QR kódu</h4>
+                <p class="alignJustify">Pro rozpoznání instalační adresy z <strong>QR kódu</strong> prostřednictvím fotoaparátu Vašeho zařízení je nutné mít nainstalovanou aplikaci pro skenování <strong>QR kódů</strong>, např. Barcode Scanner, Ka stažení z Google Play <a href="https://play.google.com/store/apps/details?id=com.google.zxing.client.android&hl=cs">zde</a>.
+                </p>
+                <p class="alignJustify">Po instalaci spusťte aplikaci a zamiřte na <strong>QR kód</strong>. Po rozpoznání adresy z kódu Vám skener nabídne přechod na nalezenou adresu a dále je postup stejný jako výše uvedený.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+    </div>
+<?= $this->render('index/leftCol.phtml'); ?>
+<?= $this->render('index/rightCol.phtml'); ?>

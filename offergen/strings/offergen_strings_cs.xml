@@ -1,0 +1,28 @@
+<offergen-strings>
+
+  <common>
+    <date>Datum</date>
+    <time>Čas</time>
+  </common>
+
+  <errors>
+    <err-0>Chyba</err-0>
+    <err-4>Chybný požadavek</err-4>
+    <err-10>Žádný výstup</err-10>
+    <err-11>Chyba sazby dokumentu</err-11>
+  </errors>
+
+  <offer>
+    <title-offer-today>Dnešní nabídka</title-offer-today>
+    <title-offer-complete>Celková nabídka</title-offer-complete>
+  </offer>
+
+  <results>
+    <title-results-today>Dnešní výsledky</title-results-today>
+    <title-results-complete>Výsledky</title-results-complete>
+  </results>
+
+  <aliases>
+    <title-aliases>Podtypy sázek</title-aliases>
+  </aliases>
+</offergen-strings>

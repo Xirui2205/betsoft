@@ -1,0 +1,18 @@
+<?php
+if ($this->isAuthorizedForActivation && !$this->alreadyActivated) {
+	?>
+	<h1><?= $this->trans('activation_authorized_title') ?></h1>
+	<p><?= $this->trans('activation_authorized_text') ?></p>
+	<?php
+} else if($this->alreadyActivated) {
+	?>
+		<h1><?= $this->trans('activation_already_authorized_title') ?></h1>
+		<p><?= $this->trans('activation_authorized_text') ?></p>
+	<?php
+} else {
+	?>
+		<h1><?= $this->trans('forbidden_title') ?></h1>
+		<p><?= $this->trans('forbidden_text') ?></p>
+	<?php
+}
+?>

@@ -1,0 +1,29 @@
+<h3><?=I18n::tr('bet_ticket_payout')?></h3>
+
+<form method="post" action="?superb=1&section=<?=$sectionId?>">
+	<?php if($hideBetPayout === false) : ?>
+		<table class="table-detail">
+			<tr>
+				<td>Identifikátor sázky</td>
+				<td><input type="text"  class="span-2 sel-1" name="detailBetId" /></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" name="priprava" value="<?=I18n::tr('evaluate_markets')?>" />
+				</td>
+			</tr>
+		</table>
+	<?php endif?>
+
+	<table class="table-detail">
+		<tr>
+			<td>Identifikátor tiketu</td>
+			<td><input type="text" class="span-2 sel-1" name="detailTicketId" /></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="submit" name="proplatit"  value="<?=I18n::tr('payout_tickets')?>" />
+			</td>
+		</tr>
+	</table>
+</form>

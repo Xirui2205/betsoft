@@ -1,0 +1,176 @@
+<h3><?=i18n::tr('branch funding')?></h3>
+
+<?=$this->filterForm?>
+
+<?=$this->message;?>
+<? if ( $this->confirmation ) : ?>
+
+  <strong><?=i18n::tr('deposits')?></strong>
+  <form method="POST">
+  <input type="hidden" value="<?=isset($_REQUEST['branchHandle'])?$_REQUEST['branchHandle']:''?>" name="branchHandle">
+  <input type="hidden" value="<?=isset($_REQUEST['active'])?$_REQUEST['active']:1?>" name="active">
+  <input type="hidden" value="<?=isset($_REQUEST['inNeedOfFunds'])?$_REQUEST['inNeedOfFunds']:1?>" name="inNeedOfFunds">
+  <input type="hidden" value="<?=isset($_REQUEST['notInNeedOfFunds'])?$_REQUEST['notInNeedOfFunds']:1?>" name="notInNeedOfFunds">
+  <input type="hidden" value="<?=empty($_REQUEST['townInitial'])?'':$_REQUEST['townInitial']?>" name="townInitial">
+  <table  class="table-list">
+    <tr>
+      <th>
+        <?=i18n::tr('id')?>
+      </th>
+      <th class="border-left">
+        <?=i18n::tr('name')?>
+      </th>
+      <th class="border-left">
+        <?=i18n::tr('deposit')?>
+      </th>
+    </tr>
+    <?php foreach ( $this->deposits as $deposit ):?>
+      <tr>
+        <td><?=$deposit['hostId']?></td>
+        <td><?=$deposit['name']?></td>
+        <td>
+          <input
+            type="text"
+            readonly="readonly"
+            value="<?=$deposit['value']?>"
+            name="deposit[<?=$deposit['hostId']?>]"
+            style="width: 4em"/>
+         </td>
+      </tr>
+    <?php endforeach; ?>
+  </table>
+  <br />
+  <strong><?=i18n::tr('withdraws')?></strong>
+  <table  class="table-list">
+    <tr>
+      <th>
+        <?=i18n::tr('id')?>
+      </th>
+      <th class="border-left">
+        <?=i18n::tr('name')?>
+      </th>
+      <th class="border-left">
+        <?=i18n::tr('deposit')?>
+      </th>
+    </tr>
+    <?php foreach ( $this->withdraws as $withdraw ):?>
+      <tr>
+        <td><?=$withdraw['hostId']?></td>
+        <td><?=$withdraw['name']?></td>
+        <td>
+          <input
+            type="text"
+            readonly="readonly"
+            value="<?=$withdraw['value']?>"
+            name="withdraw[<?=$withdraw['hostId']?>]"
+            style="width: 4em"/>
+         </td>
+      </tr>
+    <?php endforeach; ?>
+  </table>
+  <br />
+  <input type="submit" name="confirm_funds" value="<?=i18n::tr('confirm_funds')?>"/>
+  <input type="submit" name="cancel_funds" value="<?=i18n::tr('cancel_funds')?>"/>
+  </form>
+<? else: ?>
+<form method="POST">
+  <input type="hidden" value="<?=isset($_REQUEST['branchHandle'])?$_REQUEST['branchHandle']:''?>" name="branchHandle">
+  <input type="hidden" value="<?=isset($_REQUEST['active'])?$_REQUEST['active']:1?>" name="active">
+  <input type="hidden" value="<?=isset($_REQUEST['inNeedOfFunds'])?$_REQUEST['inNeedOfFunds']:1?>" name="inNeedOfFunds">
+  <input type="hidden" value="<?=isset($_REQUEST['notInNeedOfFunds'])?$_REQUEST['notInNeedOfFunds']:1?>" name="notInNeedOfFunds">
+  <input type="hidden" value="<?=empty($_REQUEST['townInitial'])?'':$_REQUEST['townInitial']?>" name="townInitial">
+  <?php if ( !empty($this->hosts) ) { ?>
+      <table class="table-list">
+        <tr>
+          <th style="width:25px">
+          </th>
+          <th style="width:60px" class="border-left">
+            <?=i18n::tr('id')?>
+          </th>
+          <th class="border-left">
+            <?=i18n::tr('name')?>
+          </th>
+          <th class="border-left">
+            <?=i18n::tr('balance')?>
+          </th>
+          <th class="border-left">
+            <?=i18n::tr('expected-collects')?>
+          </th>
+          <th class="border-left">
+            <?=i18n::tr('new-expected-collects')?>
+          </th>
+          <th class="border-left">
+            <?=i18n::tr('recommended-deposit')?>
+          </th>
+          <th class="border-left">
+            <?=i18n::tr('recommended-withdraw')?>
+          </th>
+          <th class="border-left">
+            <?=i18n::tr('deposit')?>
+          </th>
+          <th class="border-left">
+            <?=i18n::tr('withdraw')?>
+          </th>
+          <th  class="border-left" colspan="3"><?=i18n::tr('actions')?></th>
+        </tr>
+        <?php $i = 0; foreach ( $this->hosts as $item ): ++$i;?>
+          <tr>
+            <td>
+              <input type="checkbox" name="selected_hosts[]" value="<?=$item->hostId ?>" />
+            </td>
+            <td>
+              <?=$item->hostId?>
+            </td>
+            <td>
+              <?=$item->name?>
+            </td>
+            <td>
+              <?=round($item->balance)?>
+            </td>
+            <td>
+              <?=round($item->winTicketsCash)?>&nbsp;(<?=$item->winTicketsCount?>)
+            </td>
+            <td>
+              <?=round($item->newWinTicketsCash)?>&nbsp;(<?=$item->newWinTicketsCount?>)
+            </td>
+            <td>
+              <?=$item->recommendedDeposit?>
+            </td>
+            <td>
+              <?=$item->recommendedWithdraw?>
+            </td>
+            <td>
+              <input
+                name="deposit[<?=$item->hostId?>]"
+                id="deposit_<?=$item->hostId?>"
+                type="text"
+                value="<?=is_numeric($item->recommendedDeposit) ? $item->recommendedDeposit : 0?>"
+                style="width: 4em"/>
+            </td>
+            <td>
+              <input
+                name="withdraw[<?=$item->hostId?>]"
+                id="withdraw_<?=$item->hostId?>"
+                type="text"
+                value="<?=is_numeric($item->recommendedWithdraw) ? $item->recommendedWithdraw : 0?>"
+                style="width: 4em"/>
+            </td>
+            <td>
+              <?=$item->fundButton?>
+            </td>
+            <td>
+              <?=$item->resetButton?>
+            </td>
+            <td>
+              <?=$item->nullButton?>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      </table>
+      <br />
+      <input type="submit" name="fund_selected" value="<?=i18n::tr('fund_selected')?>"/>
+      <input type="submit" name="fund_all" value="<?=i18n::tr('fund_all')?>"/>
+      <input type="reset" name="reset_all" value="<?=i18n::tr('reset_all')?>"/>
+  <?php } ?>
+</form>
+<? endif; ?>

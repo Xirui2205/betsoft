@@ -1,0 +1,92 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="loadGeneric(<?=$this->viewSectionId?>, 'branch-host', { branchId : $('#branchId').val() })"><?=i18n::tr('list_hosts')?></button>
+	<?php if(!empty($this->hostId)) : ?>
+		<button onclick="editBranchHost(<?=$this->branchId?>,<?=$this->hostId?>);"><?=i18n::tr('Edit')?></button>
+	<?php endif?>
+	<?php if ($this->callcenterLogged == false) :?>
+	<button onclick="createBranchHost(<?=$this->branchId?>);"><?=i18n::tr('insert_host')?></button>
+	<?php endif;?>
+	<button onclick="hideDetail('branch-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+
+
+<?php if(!empty($this->host)) : ?>
+
+	<table class="table-detail" >
+		<tr>
+			<th><?=i18n::tr('host_name')?></th>
+			<td><?=$this->host['name']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('ip_address')?></th>
+			<td><?=$this->host['ip']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('hardware')?></th>
+			<td><?=$this->host['hardware']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('printer')?></th>
+			<td><?=$this->host['printer']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('display')?></th>
+			<td><?=$this->host['display']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('windows_serial')?></th>
+			<td><?=$this->host['winSn']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('provider_dns')?></th>
+			<td><?=$this->host['providerDns']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('provider_gateway')?></th>
+			<td><?=$this->host['providerGateway']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('provider_username')?></th>
+			<td><?=$this->host['providerUsername']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('provider_password')?></th>
+			<td><?=$this->host['providerPassword']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('vic_email')?></th>
+			<td><?=$this->host['vicEmail']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('vic_email_password')?></th>
+			<td><?=$this->host['vicEmailPassword']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('vic_admin_password')?></th>
+			<td><?=$this->host['vicAdminPassword']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('vic_employee_password1')?></th>
+			<td><?=$this->host['vicEmployeePassword1']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('vic_employee_password2')?></th>
+			<td><?=$this->host['vicEmployeePassword2']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('hw_fingerprinting_active')?></th>
+			<td><?=(empty($this->host['fingerprint']) ? '0' : '1')?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('Note')?></th>
+			<td><?=$this->host['note']?></td>
+		</tr>
+	</table>
+<?php endif; ?>
+
+<!-- seznam vsech hostu -->
+<?php include('host-list.phtml'); ?>
+

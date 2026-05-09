@@ -1,0 +1,24 @@
+<div class="actions">
+	<?php if ($this->supervisionLogged == false) :?>
+	<button onClick="loadGeneric(<?=$this->updateSectionId?>, 'user-booknotes', { userId : <?=$this->userId?> });"><?=i18n::tr('Edit')?></button>
+	<?php endif;?>
+	<button onclick="hideDetail('user-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<?=$this->feedbackMsg?>
+
+<?php if(!empty($this->bookNote)):?>
+	<table class="table-list">
+		<thead>
+			<th><?=i18n::tr('Bookmaker note')?></th>
+		</thead>
+		<tbody>
+			<tr>
+				<td><?=$this->bookNote?></td>
+			</tr>
+		</tbody>
+	</table>
+<?php else:?>
+	<?=i18n::tr('There are no bookmaker notes attached to this user.')?>
+<?php endif?>
+

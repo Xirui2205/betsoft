@@ -1,0 +1,13 @@
+<h4><?=i18n::tr('Players')?></h4>
+
+<?php echo $this->feedbackMsg; ?>
+
+<div class="actions">
+	<button onclick="loadGeneric('<?=$this->playersSectionId?>', 'inner', { teamId : <?=$this->teamId?> })"><?=i18n::tr('List of players')?></button>
+	<button onclick="hideInner();"><?=i18n::tr('Cancel')?></button>
+</div>
+
+
+<?php echo $this->form; ?>
+
+

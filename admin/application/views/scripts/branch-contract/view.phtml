@@ -1,0 +1,67 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="editBranchContract(<?=$this->branchId?>);"><?=i18n::tr('Edit')?></button>
+	<button onclick="hideDetail('branch-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<?php
+echo "<pre>";
+print_r($this->contract);
+?>
+
+<?php if(!empty($this->contract['activeContract'])):?>
+	<h3><?=i18n::tr('Active')?></h3>
+	<div id="subTab-ContractActive">
+		<?=Models_Branch::getContractTemplate($this->contract['activeContract'])?>
+	</div>
+<?php endif?>
+
+<?php if(!empty($this->contract['signedNAContract'])):?>
+	<h3><?=i18n::tr('Signed, but not Active')?></h3>
+	<div id="subTab-ContractOpen">
+		<?php foreach($this->contract['signedNAContract'] as $cont):?>
+			<?=Models_Branch::getContractTemplate($cont)?>
+			<hr />
+		<?php endforeach?>
+	</div>
+<?php endif?>
+
+<?php if(!empty($this->contract['openContract'])):?>
+	<h3><?=i18n::tr('Open')?></h3>
+	<div id="subTab-ContractOpen">
+		<?php foreach($this->contract['openContract'] as $cont):?>
+			<?=Models_Branch::getContractTemplate($cont)?>
+			<hr />
+		<?php endforeach?>
+	</div>
+<?php endif?>
+
+<?php if(!empty($this->contract['expiredContract'])):?>
+	<h3><?=i18n::tr('Expired')?></h3>
+	<div id="subTab-ContractExpired">
+		<?php foreach($this->contract['expiredContract'] as $cont):?>
+			<?=Models_Branch::getContractTemplate($cont)?>
+			<hr />
+		<?php endforeach?>
+	</div>
+<?php endif?>
+
+
+<?php if(!empty($this->contract['canceledContract'])):?>
+	<h3><?=i18n::tr('Canceled')?></h3>
+	<div id="subTab-ContractCanceled">
+		<?php foreach($this->contract['canceledContract'] as $cont):?>
+			<?=Models_Branch::getContractTemplate($cont)?>
+			<hr />
+		<?php endforeach?>
+	</div>
+<?php endif?>
+
+
+
+<?php if(empty($this->contract)):?>
+	<?=UiUtil::printWarnings(array('No Contracts. Click "Edit" to add a new one.'))?>
+<?php endif?>
+
+

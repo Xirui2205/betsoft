@@ -1,0 +1,15 @@
+<?php
+/* $Id:$
+* template with language tabs
+* IN:
+*    $tabs - instance of class LanguageTabs
+*    $data - array('ISO of language' => 'XHTML content')
+*/
+
+if (!isset($tabs))
+	return;
+foreach ($data as $iso => $content): ?>
+<div id="<?= $tabs->getTabId($iso) ?>">
+  <?= $content ?>
+</div>
+<?php endforeach;

@@ -1,0 +1,43 @@
+<?=$this->feedbackMsg?>
+
+<input name="affiliatePartnerId" id="affiliatePartnerId" type="hidden" value="<?=$this->affiliatePartnerId?>" />
+<div class="actions">
+	<button onclick="hideDetail('affiliate-partner-container')"><?=i18n::tr("close_detail")?></button>
+</div>
+
+<table class="table-detail">
+	<tr>
+		<th rowspan="2" class="header"><?=i18n::tr("id")?></th>
+		<th rowspan="2" class="header"><?=i18n::tr("First name")?></th>
+		<th rowspan="2" class="header"><?=i18n::tr("nick")?></th>
+		<th rowspan="2" class="header"><?=i18n::tr("from")?></th>
+		<th rowspan="2" class="header"><?=i18n::tr("date_activation")?></th>
+		<th rowspan="2" class="header"><?=i18n::tr("branch")?></th>
+		<th colspan="4" class="header" style="text-align:center;border:0;"><?=i18n::tr("collect_ticket_count")?></th>
+	</tr>
+	<tr>
+		<th class="header"><?=i18n::tr("count")?></th>
+		<th class="header"><?=i18n::tr("amount")?></th>
+		<th class="header"><?=i18n::tr("totalWin")?></th>
+		<th class="header"><?=i18n::tr("provision")?></th>
+	</tr>
+
+	<?php if (!empty($this->users)) : ?>
+		<?php foreach ($this->users as $user) : ?>
+			<tr>
+				<td><?=$user["user_id"]?></td>
+				<td><?=$user["jmeno"].' '.$user["prijmeni"]?></td>
+				<td><?=$user["nick"]?></td>
+				<td><?=$user["datum_registrace"]?></td>
+				<td><?=$user["datum_aktivace"]?></td>
+				<td><?=$user["branch_id"]?></td>
+				<td><?=empty($user["pocet"]) ? '0' : number_format($user["pocet"], '0', '', ' ')?></td>
+				<td><?=empty($user["castka"]) ? '0.00' : number_format($user["castka"], '2', '.', ' ')?></td>
+				<td><?=empty($user["vyhra"]) ? '0.00' : number_format($user["vyhra"], '2', '.', ' ')?></td>
+				<td><b><?=empty($user["provize"]) ? '0.00' : number_format($user["provize"], '2', '.', ' ')?></b></td>
+			</tr>
+		<?php endforeach;?>
+	<?php else : ?>
+		<tr><td colspan="8"><?=i18n::tr("no_users")?></td></tr>
+	<?php endif; ?>
+</table>

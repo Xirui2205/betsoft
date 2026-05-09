@@ -1,0 +1,40 @@
+<h3><?=i18n::tr('Global Parameters')?></h3>
+
+<ul class="idTabs" style="display:block">
+	<li>
+		<a class="selected" href="#parameter-system" onClick="loadTabGeneric(250, 'parameter-system')">
+			<?=i18n::tr('system_params')?>
+		</a>
+	</li>
+	<li>
+		<a href="#parameter-branch" onClick="loadTabGeneric(206, 'parameter-branch')">
+			<?=i18n::tr('branch_params')?>
+		</a>
+	</li>
+	<li>
+		<a href="#parameter-user" onClick="loadTabGeneric(207, 'parameter-user')">
+			<?=i18n::tr('user_params')?>
+		</a>
+	</li>
+</ul>
+
+<div id="parameter-container" class="tab-container">
+	<input type="hidden" class="tabsLoaded" id="parameter-system-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="parameter-branch-loaded" value="0" />
+	<input type="hidden" class="tabsLoaded" id="parameter-user-loaded" value="0" />
+
+
+	<div id="parameter-system" class="tab">
+		<?php include('view-system.phtml'); ?>
+	</div>
+
+	<div id="parameter-branch" class="tab" style="display: none;">
+		<?php include('view-branch.phtml'); ?>
+	</div>
+
+	<div id="parameter-user"  class="tab" style="display: none;">
+		<?php include('view-user.phtml'); ?>
+	</div>
+
+</div>
+

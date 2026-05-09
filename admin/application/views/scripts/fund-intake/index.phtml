@@ -1,0 +1,129 @@
+<form action="/" method="get">
+	<input type="hidden" value="302" name="section" />
+	<table class="table-filter">
+		<caption><?=I18n::tr('filter')?> + <?=I18n::tr('order')?></caption>
+
+		<tr>
+			<td><?=I18n::tr('sport')?></td>
+			<td><?=I18n::tr('event')?></td>
+			<td><?=I18n::tr('bet_type')?></td>
+			<td><?=I18n::tr('bet_subtype')?></td>
+			
+		</tr>
+		<tr>
+			<td>
+				<select
+					onClick="loadEvents()"
+					name="filter[sport-id]"
+					id="sport-id-selector"
+				>
+					<option value="0"><?=I18n::tr('select')?></option>
+					<?=$this->eventFilter[0]?>
+				</select>
+			</td>
+			<td rowspan="5">
+				<select name="filter[event-ids][]" id="event-ids-selector" size="7" onChange="loadTypes()" multiple="multiple">
+					<?=$this->eventFilter[1]?>
+				</select>
+			</td>
+			<td rowspan="5">
+				<select name="filter[type-ids][]" multiple="multiple" onChange="loadOddTypes()" id="type-ids-selector" size="7">
+					<?php if(!empty($this->types)) : ?>
+						<?php foreach($this->types as $type) : ?>
+							<option
+								value="<?=$type['betTypeId']?>"
+								<?php if(
+									!empty($this->filtOrdData['filter']['type-ids'])
+									&& in_array($type['betTypeId'], $this->filtOrdData['filter']['type-ids'])		
+								) : ?>
+									selected="selected"
+								<?php endif?>
+							>
+								<?=$type['name']?>
+							</option>
+						<?php endforeach?>
+					<?php endif?>
+				</select>
+			</td>
+			<td rowspan="5">
+				<select name="filter[odd-type-ids][]" multiple="multiple" id="odd-type-ids-selector" size="7">
+					<?php if(!empty($this->oddTypes)) : ?>
+						<?php foreach($this->oddTypes as $oddTypeId => $type) : ?>
+							<option
+								value="<?=$oddTypeId?>"
+								<?php if(
+									!empty($this->filtOrdData['filter']['odd-type-ids'])
+									&& in_array($oddTypeId, $this->filtOrdData['filter']['odd-type-ids'])		
+								) : ?>
+									selected="selected"
+								<?php endif?>
+							>
+								<?=$type['name']?>
+							</option>
+						<?php endforeach?>
+					<?php endif?>
+				</select>
+			</td>
+			
+		</tr>
+		<tr>
+			<td><?=I18n::tr('bet_alias')?></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>
+				<input
+					type="text"
+					value="<?=!empty($this->filtOrdData['filter']['bet-alias']) ? $this->filtOrdData['filter']['bet-alias'] : ''?>"
+					name="filter[bet-alias]"
+					id="bet-alias-input"
+				/>
+			</td>
+			<td><?=I18n::tr('order')?></td>
+		</tr>
+		<tr>
+			<td><?=I18n::tr('bet_id')?></td>
+			<td>
+				<select name="order[col-type]" id="order-selector">
+					<option
+						value="risk_limit_balance"
+						<?=!empty($this->filtOrdData['order']['col-type']) && $this->filtOrdData['order']['col-type'] == 'risk_limit_balance' ? 'selected="selected"' : ''?>
+					>
+						<?=I18n::tr('risk_limit_balance')?>
+					</option>
+					<option
+						value="absolute_stake"
+						<?=!empty($this->filtOrdData['order']['col-type']) && $this->filtOrdData['order']['col-type']  == 'absolute_stake' ? 'selected="selected"' : ''?>	
+					>
+						<?=I18n::tr('absolte_stake')?>
+					</option>
+					<option
+						value="bet_count"
+						<?=!empty($this->filtOrdData['order']['col-type']) && $this->filtOrdData['order']['col-type']  == 'bet_count' ? 'selected="selected"' : ''?>
+					>
+						<?=I18n::tr('bet_count')?>
+					</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input
+					type="text"
+					value="<?=!empty($this->filtOrdData['filter']['bet-id']) ? $this->filtOrdData['filter']['bet-id'] : ''?>"
+					name="filter[bet-id]"
+					id="bet-id-input"
+				/>
+			</td>
+			<td>
+				<input type="submit" value="Vyhledat" name="submit" />
+			</td>
+		</tr>
+	</table>
+	
+</form>
+
+
+<div id="data-table-container">
+	<?=$this->render('fund-intake/data-table.phtml')?>
+</div>

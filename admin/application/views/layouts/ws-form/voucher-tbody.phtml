@@ -1,0 +1,18 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+		<tr>
+			<td><?=$row['voucherId']?></td>
+			<td><?=$row['setName']?></td>
+			<td><?=$row['handle']?></td>
+			<td><?=It6_Date::fromDb($row['created'])?></td>
+			<td><?=It6_Date::fromDb($row['validTo'])?></td>
+			<td><?=It6_Date::fromDb($row['validFrom'])?></td>
+			<td><?=$row['used']?></td>
+			<td><?=It6_Date::fromDb($row['usedTime'])?></td>
+			<td><?=$row['amount']?> B</td>
+			<td><?=$row['pointTypeId']?></td>
+			<td><?=$row['userNick']?></td>
+			<td><?=$row['pointTransactionId']?></td>
+		</tr>
+	<?php endforeach?>
+</tbody>

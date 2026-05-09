@@ -1,0 +1,93 @@
+CompBet - <?=I18n::tr('bets', 'TICKET', It6_Translate_Web::DICTIONARY)?>
+
+
+<?php foreach($this->tickets as $ticket_id => $ticket) : ?>
+
+<?=I18n::tr('ticket_no', 'TICKET', It6_Translate_Web::DICTIONARY)?>: <?=$ticket['ticketHandle']?>
+
+<?php foreach($ticket['groups'] as $group) : ?>
+<?php foreach($group['tips'] as $match) : ?>
+*******************************************
+<?=$match['betName']?>
+
+*******************************************
+<?=I18n::tr('rate', 'TICKET', It6_Translate_Web::DICTIONARY)?>:<?="\t"?><?="\t"?><?="\t"?><?=$this->formatRate($match['rate'])?>
+
+<?=I18n::tr('tip', 'TICKET', It6_Translate_Web::DICTIONARY)?>:<?="\t"?><?="\t"?><?="\t"?><?=$match['oddsOutcomeName']?>
+
+<?=I18n::tr('result', 'TICKET', It6_Translate_Web::DICTIONARY)?>:<?="\t"?><?="\t"?>
+<?php foreach($match['resultNames'] as $result) : ?>
+<?=I18n::tr($result)?>
+<?php endforeach?>
+
+
+<?php endforeach?>
+<?php endforeach?>
+-------------------------------------------
+<?php if($ticket['type'] == 'maxikombi' || $ticket['type'] == 'system') : ?>
+<?=I18n::tr('combination', 'TICKET', It6_Translate_Web::DICTIONARY)?><?="\t"?><?="\t"?><?=I18n::tr('rate', 'TICKET', It6_Translate_Web::DICTIONARY)?><?="\t"?><?="\t"?><?=I18n::tr('won', 'TICKET', It6_Translate_Web::DICTIONARY)?><?="\t"?><?="\t"?><?=I18n::tr('result', 'TICKET', It6_Translate_Web::DICTIONARY)?>
+<?php foreach ($ticket->combinations as $k => $comb) : ?>
+<?php foreach ($comb['data'] as $c) : ?>
+<?= $c['name'] ?><?="\t"?><?="\t"?><?= $this->formatRate($c['rate']) ?><?="\t"?><?="\t"?><?= $this->formatCurrency($c['win']) ?><?="\t"?><?="\t"?><?=I18n::tr($c['result'])?>
+<?php endforeach?>
+<?php endforeach?>
+
+-------------------------------------------
+<?php endif?>
+
+<?php if($ticket['type'] == 'kombi') : ?>
+<?=I18n::tr('bet_rows_qty', 'TICKET', It6_Translate_Web::DICTIONARY)?>:<?="\t"?><?="\t"?><?="\t"?><?=sizeof($ticket['groups'][1]['tips'])?>
+<?php endif?>
+<?php if( !empty($this->ticket['rateAdvance']) && $this->ticket['rateAdvance'] > 1 ) : ?>
+
+<?=I18n::tr('total_rate_without_advance', 'TICKET', It6_Translate_Web::DICTIONARY)?>:<?="\t"?><?="\t"?><?="\t"?><?=$this->formatRate($this->ticket['rateWithoutAdvance'])?>
+
+<?=I18n::tr('rate_advance', 'TICKET', It6_Translate_Web::DICTIONARY)?>:<?="\t"?><?="\t"?><?="\t"?><?=$this->formatRate($this->ticket['rateAdvance'])?>
+
+<?php endif?>
+
+<?=I18n::tr('bet_type', 'TICKET', It6_Translate_Web::DICTIONARY)?>:<?="\t"?><?="\t"?><?="\t"?><?=$ticket['type']?>
+
+<?=I18n::tr('date', 'TICKET', It6_Translate_Web::DICTIONARY)?>:<?="\t"?><?="\t"?><?="\t"?><?=It6_Date::fromDb($ticket['createdTime'])?>
+
+<?=I18n::tr('amount', 'TICKET', It6_Translate_Web::DICTIONARY)?>:<?="\t"?><?="\t"?><?="\t"?><?=$this->formatCurrency($ticket['amount'], $ticket['currencyName'], 2, 'text')?>
+
+<?=I18n::tr('win', 'TICKET', It6_Translate_Web::DICTIONARY)?>:<?="\t"?><?="\t"?><?="\t"?><?=$this->formatCurrency($ticket['won'], $ticket['currencyName'], 2, 'text')?>
+
+<?php if($ticket['type'] != 'simple') : ?>
+<?=I18n::tr('total_rate')?><?="\t"?><?="\t"?><?="\t"?><?=$this->formatRate($ticket['totalOdds'])?>
+<?php endif?>
+
+<?=I18n::tr('result', 'TICKET', It6_Translate_Web::DICTIONARY)?>:<?="\t"?><?="\t"?><?="\t"?><?=I18n::tr($ticket['state'], 'TICKET', It6_Translate_Web::DICTIONARY)?>
+
+===========================================
+===========================================
+<?php endforeach?>
+<?php if(!empty($this->terno)) : ?>
+*******************************************
+<?=I18n::tr('terno', 'TICKET', It6_Translate_Web::DICTIONARY)?>
+
+*******************************************
+<?=I18n::tr('terno_desc', 'TICKET', It6_Translate_Web::DICTIONARY)?>
+
+<?php foreach($this->terno as $terno) : ?>
+
+<?=I18n::tr('match', 'TICKET', It6_Translate_Web::DICTIONARY)?><?="\t"?><?="\t"?><?=$terno['mtext']?>
+
+<?=I18n::tr('time', 'TICKET', It6_Translate_Web::DICTIONARY)?><?="\t"?><?="\t"?><?=$terno['date']?>
+
+1<?="\t"?><?="\t"?>x<?="\t"?><?="\t"?>2
+<?php if($terno['typ_id'] == 19) : ?>
+<?=!empty($terno['sloupec'][138]['rate']) ? $terno['sloupec'][138]['rate'] : '-'?><?="\t"?><?="\t"?><?=!empty($terno['sloupec'][139]['rate']) ? $terno['sloupec'][139]['rate'] : '-'?><?="\t"?><?="\t"?><?=!empty($terno['sloupec'][140]['rate']) ? $terno['sloupec'][140]['rate'] : '-'?>
+<?php elseif($terno['typ_id'] == 22) : ?>
+<?=$terno['sloupec'][152]['rate'] != 1 ? $terno['sloupec'][152]['rate'] : '-'?><?="\t"?><?="\t"?>-<?="\t"?><?="\t"?><?=$terno['sloupec'][153]['rate'] != 1 ? $terno['sloupec'][153]['rate'] : '-'?>
+<?php endif?>
+
+
+<?php endforeach?>
+<?php endif?>
+
+
+<?=I18n::tr('age_disclaimer', 'TICKET', It6_Translate_Web::DICTIONARY)?>
+
+<?=I18n::tr('copyright', 'TICKET', It6_Translate_Web::DICTIONARY)?>

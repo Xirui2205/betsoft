@@ -1,0 +1,14 @@
+<h3><?=i18n::tr('user-provision')?></h3>
+
+<form method="post" action="?section=<?=UsersProvisionController::USERS_PROVISION_SECTION_ID?>" id="formUsersFilter">
+  <input type="hidden" name="form-submited" value="1"/>
+  <?=$this->filter?>
+  <div class="actions">
+  	<?=$this->render('users-provision/export.phtml')?>
+  </div>
+
+  <table class='table-list width-100'>
+    <?=$this->tHead?>
+    <?=$this->tBody?>
+  </table>
+</form>

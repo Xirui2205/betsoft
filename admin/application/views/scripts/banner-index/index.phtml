@@ -1,0 +1,30 @@
+<h3><?=I18n::tr('Banners')?></h3>
+
+<div class="actions">
+	<a href="?section=<?=$this->insertSectionId?>"><?=i18n::tr('Insert Banner')?></a>
+</div>
+
+<?=(!empty($this->feedbackMsg) ? $this->feedbackMsg : '')?>
+
+
+<ul class="idTabs">
+	<?php foreach ($this->languages as $lang) : ?>
+		<li><a href="#langtab-<?=$lang['iso']?>"><?=$lang['name']?></a></li>
+	<?php endforeach?>
+</ul>
+
+<div class="tab-container" id="tab-container">
+	<?php foreach ($this->languages as $lang) : ?>
+		<?php if(!empty($this->bannerForms[$lang['languageId']])) : ?>
+			<div id="langtab-<?=$lang['iso']?>">
+				<?php foreach($this->bannerForms[$lang['languageId']] as $location) : ?>
+					<?php foreach($location as $banner) : ?>
+					<?=$banner?>
+					<?php endforeach?>
+				<?php endforeach?>
+			</div>
+		<?php endif?>
+	<?php endforeach?>
+</div>
+
+

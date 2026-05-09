@@ -1,0 +1,1091 @@
+/*********************/ /*zakladni nasataveni*/ /*********************/
+html {
+    min-height: 100%;
+    _height: 100%;
+}
+
+body { /*font-family: Verdana, "Geneva CE", lucida, sans-serif;*/
+    font-family: Arial, sans-serif;
+    font-size: 0.8em; /*MSIE 5*/
+    fo\nt-size: 0.8em;
+    color: #515B73;
+    margin: 0px;
+    padding: 0px;
+    width: 1203px;
+
+    _height: 100%;
+    background: white;
+    background-image: url(../_clip/body_back.gif);
+    background-repeat: repeat-y;
+}
+
+samp,code,kbd {
+    font-size: 90%;
+}
+
+html>body {
+    font-size: 0.8em;;
+}
+
+/*konec zakladni nasataveni*/ /*******************/ /*Prvky na strance*/
+    /*******************/ /*horni lista*/
+	 
+div.liveEvent{
+	border:2px solid black;
+	background-color: #FFEBD9;
+	padding:4px;
+	margin-top:10px;
+	float:left;
+}	 
+div.live_event_head strong{
+color:Highlight;
+}
+div.live_event_head{
+	background-color: #EDE383;
+	color:black;
+	font-weight: bold;
+	padding:2px;
+}
+table.betsTab{
+	border:2xp solid #9E642A;
+	background-color:#D3B2B2;
+	float:left;
+	margin:5px;
+	height:150px;
+	width:300px;
+	border-collapse:collapse;
+} 
+table.betsTab td.rate_up{
+	background-image: url(../_clip/up.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+table.betsTab td.rate_down{
+	background-image: url(../_clip/down.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+	
+}
+div#liveBody{
+	float:left;
+}
+input.betsTabInput{
+	width:80px;
+	color:Navy;
+	font-weight:bold;
+}
+input.betsTabInputS{
+	width:80px;
+	color:Navy;
+	background-color: #FFF0F5;
+	font-weight:bold;
+}
+input.betsTabInputR{
+	width:80px;
+	color:Red;
+	font-weight:bold;
+}
+input.betsTabInputB{
+	width:80px;
+	color:#6B8BE7;
+	font-weight:bold;
+}
+input.betsTabInputT{
+	width:40px;
+font-size:0.9em;
+}
+table.betsTab td{
+	border:1px solid #9E642A;
+	text-align:center;
+	border-collapse:collapse;
+	width:50px;
+	color:black;
+	font-size:0.8em;
+}
+table.betsTab td.itext{
+font-weight:bold;
+font-size:12px;
+background-color: #FFAD8E;
+color:black;
+}
+table.betsTab td.itext2{
+background-color: #FFAD8E;
+color:black;
+}
+table.betsTab td.betsTabRow{
+	background-color: #DCDCDC;
+	
+}
+div#hlavicka {
+    width: auto;
+    height: 114px;
+    background: #000000;
+	 font:
+}
+div#lb_message{
+	padding:6px;
+	position:fixed;
+	top:0px;
+	left:100px;
+	border:2px solid Silver;
+	background-color: ThreedLightShadow;
+	color:black;
+	display:none;
+}
+.chbox{
+	width:15px;
+	
+}
+span.run{
+	color:red;
+	font-weight: bold;
+}
+span.ora{
+	color:#DF84A2;
+	
+	font-weight: bold;
+}
+div#liveB{
+	border:1px solid #708090;
+	background-color: #DBE6F2;
+	height:260px;
+	overflow: auto;
+}
+div#liveB div.lbh{
+
+	background-color: #FFFFE1;
+	color:black;
+	font-size:1.3em;
+	padding:6px 2px;
+}
+table#liveBHead{
+	width:100%;
+	border-collapse: collapse;
+}
+table#liveBHead th{
+	border-bottom: 3px solid #A2B6EE;
+	padding:2px 2px;
+	text-align: center;
+	font-size:0.9em;
+}
+table#liveBHead td{
+	border-bottom: 1px solid #A2B6EE;
+	padding:2px 2px;
+	text-align: center;
+	font-size:0.9em;
+}
+table#liveBHead tr:hover{
+	background-color: #E5EBF9;
+}
+/*sede pole vedle loga*/
+div#toptext {
+    float: left;
+    width: 198px;
+    height: 112px;
+    font-size: 0.9em;
+    color: #CC0000;
+    padding: 2px 0px 0px 2px;
+    background: #E3E3E3;
+}
+
+div#lastaction {
+    border-top: 1px solid #515B73;
+    font-size: 0.9em;
+    margin-top: 14px;
+    margin-right: 2px;
+    color: #909090;
+}
+
+/*logo*/
+div#toplogo {
+    float: left;
+    width: 130px;
+    height: 114px;
+    background-image: url(../_clip/logo.jpg);
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+}
+
+/*text v horni liste*/
+div#toplogo span {
+    color: #CC0000;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    top: 76px;
+    left: 150px;
+}
+
+/*delici cara pod horni listou*/
+div#cara {
+    width: auto;
+    height: 4px;
+    background: white;
+    border-bottom: 4px solid #515B73;
+}
+
+/*delici cara dole*/
+div#carabottom {
+    width: auto;
+    clear: both;
+    height: 1px;
+    margin-top: 8px;
+    background: white;
+}
+
+/*lave lista*/
+div#lmenu {
+    float: left;
+    width: 200px;
+     height:100%;
+    background: #2d4c8a;
+    padding-bottom: 8px;
+}
+
+/*prave menu na strankach*/
+div.rightMenuParent {
+    border-top: 1px solid black;;
+    border-bottom: 1px solid black;;
+    margin-right: 40px;;
+    background: #909090;;
+    padding: 10px 8px;
+    width: 130px;
+}
+
+/*jednotlive polozky praveho menu*/
+a.rightMenu {
+    display: block;;
+    padding: 2px 3px;;
+    margin: 1px 0px;;
+    background: #575555;;
+    text-decoration: none;;
+    color: white;;
+    font-size: 1.0em;;
+    font-weight: bold;
+}
+
+a.rightMenu:visited {
+    text-decoration: none;;
+    color: white;
+}
+
+a.rightMenu:hover {
+    background: black;
+    text-decoration: none;
+    color: white;
+}
+
+/*odrazky v historii u adminu*/
+.historyli {
+    font-size: 1.1em;;
+    color: black;;
+    font-weight: bold;
+}
+
+/*odrazky v historii u adminu druha uroven*/
+.historyli2 {
+    font-size: 0.9em;;
+    font-weight: 500;
+}
+
+/*telo dokumentu*/
+div#body {
+    float: left;
+    padding: 30px 0px 0px 24px;
+    width:970px;
+
+
+}
+
+/*Oznaceni vyhodnocene sazky*/
+.chbet {
+    background: #DA2B2A;
+    color: white;
+}
+
+.chbet a {
+    color: white;
+}
+
+/*menu prvni uroven*/
+a.menu1 {
+    display: block;
+    color: white;
+    border-bottom: 1px solid #979797;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 6px 0px 6px 16px;
+    margin: 0px 6px;
+    background-image: url(../_clip/menu1.gif);
+    background-repeat: no-repeat;
+    background-position: 0px 8px;
+}
+
+a.menu1:visited {
+    color: white;
+}
+
+a.menu1:hover {
+    color: white;
+}
+
+/*menu druha uroven*/
+div#lmenu a.menu2 {
+    display: block;
+    color: black;
+    font-size: 0.9em;
+    padding: 3px 0px 3px 26px;
+    margin: 0px 6px;
+    background: #9EABDE;
+    background-image: url(../_clip/menu2.gif);
+    background-repeat: no-repeat;
+    background-position: 10px 7px;
+}
+
+a.menu2:visited {
+    color: white;
+}
+
+a.menu2:hover {
+    color: white;
+}
+
+/*menu treti uroven*/
+a.menu3 {
+    display: block;
+    color: white;
+    font-size: 0.8em;
+    padding: 3px 0px 3px 42px;
+    margin: 0px 6px;
+    background: #B7B7B7;
+    background-image: url(../_clip/menu2.gif);
+    background-repeat: no-repeat;
+    background-position: 26px 7px;
+}
+
+a.menu3:visited {
+    color: white;
+}
+
+a.menu3:hover {
+    color: white;
+}
+
+/*odkaz na HP*/
+a.homepage {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 6px 0px 6px 16px;
+    margin: 0px 6px;
+}
+
+a.homepage:visited {
+    color: white;
+}
+
+a.homepage:hover {
+    color: white;
+}
+
+table.bettab2 {
+    background: #979797;
+    margin: 8px 0px;
+    width: 100%;
+}
+
+table.bettab2 .bettabhead2 {
+    background: #BABABA;
+    font-weight: bold;
+}
+
+table.bettab2 .licha,.suda {
+    text-align: right;
+}
+
+table.bettab2 td strong {
+    font-size: 0.9em;
+}
+
+table.bettab2 th {
+    color: white;
+}
+
+table.bettab2 td.kurz {
+    width: 34px;
+    text-align: center;
+}
+
+table.bettab2 td.propojene {
+    width: 28px;
+    text-align: center;
+}
+
+table.bettab {
+    background: #979797;
+    margin: 4px 0px;
+}
+
+table.bettab td {
+    color: white;
+}
+
+table.bettab td.bettabhead3 {
+    color: Gray;
+    background: #D2D2D2;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+table.bettab th {
+    color: white;
+}
+
+table.bettab .bettabhead {
+    background: #BABABA;
+    font-weight: bold;
+}
+
+table.bettab .bettabhead2 {
+    background: #D2D2D2;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+table.bettab table {
+    background: #98B1D1;
+    margin: 4px;
+    table-layout: fixed;
+}
+
+table.bettab table th {
+    color: #515B73;
+}
+
+table.bettab table.sloupec th {
+    text-align: left;
+}
+
+table.bettab table.radek td {
+    text-align: center;
+}
+
+table.prava {
+    border-collapse: collapse;
+    color: #708090;
+}
+
+table.prava td {
+    border: 1px solid black;
+    font-size: 0.9em;
+    padding: 4px 8px;
+}
+
+table.prava th {
+    background: #B0C4DE;
+    border: 1px solid black;
+    font-size: 0.9em;
+    padding: 2px 4px;
+    color: white;
+}
+
+div#logform {
+    height: 160px;
+    width: 300px;
+    margin: 0px auto;
+    background-image: url(../_clip/loglogo.jpg);
+    background-repeat: no-repeat;
+    background-position: 100% 0%;
+    margin-top: 10%;
+    padding: 80px 0px 0px 0px;
+    text-align: center;
+}
+
+div#logform form {
+    height: 90px;
+    width: 150px;
+    margin: 0px auto;
+}
+
+.meny {
+    border-left: 1px solid #CC0000;
+    border-top: 1px solid #CC0000;
+}
+
+/************/ /*Styly tagu a pomocne styly*/ /************/
+    /*odkaz obecne*/
+a {
+    color: #586078;
+}
+
+a:hover {
+    color: #CC0000;
+    text-decoration: none;
+}
+
+/*Styl pro obrazky*/
+.img {
+    border: 0px;
+}
+
+/*Vseobecny styl pro formulare*/
+input {
+    border: 1px solid #515B73;
+    color: #515B73;
+    margin-top: 2px;
+    width: 150px;
+}
+input.digit5{
+	width:40px;
+}
+input.digit6{
+	width:104px;
+}
+input.digit7{
+	width:300px;
+}
+input.classic {
+    border: 1px solid #515B73;
+    color: #515B73;
+    width: 400px;
+}
+fieldset{
+	width: auto;
+	margin-top:20px;
+}
+legend{
+	font-size: 16px;
+}
+table.fTable td{
+	padding:2px;
+}
+table.fTable td.fHead{
+	font-weight: bold;
+	width:240px;
+}
+input.chck{
+	width:10px;
+}
+input.no {
+    width: auto;
+    border: 0px;
+}
+
+/*trida pro mensi button */
+input.sbutton {
+    border: 1px solid #515B73;
+    color: #515B73;
+    width: 80px;
+}
+
+input.sbutton2 {
+    border: 1px solid #515B73;
+    width: 40px;
+}
+
+/*trida pro mensi input */
+input.sinput {
+    border: 1px solid #515B73;
+    color: #515B73;
+    width: 90px;
+}
+
+input.sinput2 {
+    border: 1px solid #515B73;
+    color: #515B73;
+    font-size: 0.9em;
+    width: 50px;
+}
+
+input.sinput3 {
+    border: 1px solid #515B73;
+    color: #515B73;
+    font-size: 0.7em;
+    width: 85px;
+}
+
+.licha {
+    background: #9EABDE;
+}
+
+.suda {
+    background: white;
+}
+
+.textright {
+    text-align: right;
+}
+
+.textleft {
+    text-align: left;
+}
+
+.textcenter {
+    text-align: center;
+}
+
+/*tlacitko na prihlaseni*/
+input.logbutton {
+    width: 151px;
+}
+
+/*chybova zprava*/
+.errormsg {
+    margin: 0px auto;
+    color: #CC0000;
+    font-weight: 600;
+}
+
+/*varovani*/
+.warningmsg {
+    margin: 0px auto;
+    color: #DC8056;
+    font-weight: 600;
+}
+
+/*ok zprava*/
+.okmsg {
+    margin: 0px auto;
+    color: #9DB5D7;
+    font-weight: 600;
+}
+
+/*Zarovnani vpravo*/
+.floatright {
+    float: right;
+}
+
+/*Zarovnani vlevo*/
+.floatleft {
+    float: left;
+}
+
+/*Povinny prvek*/
+.mandatory {
+    background-image: url(../_clip/mandatory.gif);
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
+}
+
+h2 {
+    width: auto;
+    background: #ABABAB;
+    color: white;
+    font-size: 1.4em;
+    text-align: left;
+    padding: 2px 4px;
+    margin: 0px;
+    clear: both;
+}
+
+h3 {
+    width: auto;
+    background: #1b3281;
+    color: white;
+    font-size: 1.1em;
+    text-align: left;
+    padding: 2px 4px;
+    margin: 0px;
+    clear: both;
+}
+
+.red {
+    color: #CC0000;
+}
+
+.blue {
+    color: #12A0FA;
+}
+
+.warn {
+    background: #CC0000;;
+    padding: 1px 4px 1px 0px;;
+    color: white;;
+    font-weight: bold;
+}
+
+.hra_top {
+    width: auto;;
+    color: white;;
+    background: black;;
+    font-size: 1.2em;;
+    padding: 2px 6px;
+}
+
+.hra_bottom {
+    width: auto;;
+    color: white;;
+    background: #708090;;
+    font-size: 0.9em;;
+    padding: 4px 6px;;
+    margin-top: 2px;
+}
+
+.hra_hraci {
+    width: 100%;;
+    background: #708090;
+    border-top: 4px solid black;
+    border-bottom: 4px solid black;
+    color: white;
+    font-size: 0.7em;
+    border-collapse: collapse;
+}
+
+table.hra_hraci td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table.hra_hraci th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table.hra_hraci a {
+    color: white;
+}
+
+table.userTab{
+	border-collapse: collapse;
+}
+table.userTab td{
+	padding:4px;
+}
+.methods {
+    width: 100%;
+    border-collapse: collapse;
+    background: #E3E3E3;
+    border: 1px solid black;
+}
+
+table.methods td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    color: #515B73;
+}
+
+table.methods th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    color: #515B73;
+}
+
+#calendar {
+    border-collapse: collapse;
+    color: white;
+}
+
+#calendar td {
+    border: 1px solid white;
+    text-align: center;
+    border-collapse: collapse;
+    background: #AFD0B0;
+    padding: 2px;
+    font-size: 0.9em;
+}
+
+#calendar td.day {
+    background: #BDB76B;
+}
+
+#calendar td.year {
+    background: #94903C;
+}
+
+table.ticket {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 500px;
+    background: #708090;
+    color: white
+}
+
+table.ticket th {
+    border: 1px solid #FFB426;
+    background: #eac800;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    padding: 4px;
+    margin: 0px;
+    color: #708090;
+}
+
+table.ticket td {
+    border-top: 1px solid #FFB426;
+    border-bottom: 1px solid #FFB426;
+    font-size: 0.8em;
+    padding: 3px;
+}
+
+table.ticket input {
+    border: 1px solid #515B73;
+    color: #515B73;
+    width: auto;
+    font-size: 0.9em;
+}
+
+table.ticket td.summary {
+    font-size: 0.9em;
+    font-weight: bold;
+    background: #bdb76b;
+    padding-left: 10px;
+}
+
+table.ticket td.summary_sum {
+    font-size: 0.9em;
+    font-weight: bold;
+    background: #1b3281;
+    padding-left: 10px;
+}
+
+table.ticket td.renew_ticket {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+table.ticket input.delete_ticket {
+    background: #FF4500;
+    color: white;
+}
+
+table.ticket_delete {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 500px;
+    background: #999999;
+    color: #000000
+}
+
+table.ticket_delete th {
+    border: 1px solid #aeaeae;
+    background: #808080;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    padding: 4px;
+    margin: 0px;
+    color: #000000;
+}
+
+table.ticket_delete td {
+    border-top: 1px solid #aeaeae;
+    border-bottom: 1px solid #aeaeae;
+    font-size: 0.8em;
+    padding: 3px;
+}
+
+table.ticket_delete input {
+    border: 1px solid #515B73;
+    color: #515B73;
+    width: auto;
+    font-size: 0.9em;
+}
+
+td.delete_td {
+    background: #999999;
+    color: #000000;
+}
+
+.bet_info {
+    float: left;
+    overflow: auto;
+    width: 363px;
+    height: 260px;
+    border: 1px solid black;
+    background: #515B73
+}
+
+.bet_info table {
+    width: 340px;
+    border-collapse: collapse;
+    margin: 1px;
+}
+
+.bet_info .bet_info_headline {
+    background: #AFD0B0;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.bet_info .bet_info_td_left {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    padding: 2px;
+    background: #ABABAB;
+    color: white;
+    font-size: 0.9em;
+}
+
+.bet_info .bet_info_td_right {
+    border-bottom: 1px solid black;
+    padding: 2px;
+    background: #ABABAB;
+    color: white;
+    font-size: 0.9em;
+}
+
+.orange {
+    background: #CD853F;
+    color: white;
+}
+
+.backblue {
+    background: #5F9EA0;
+    color: white;
+}
+
+table#vyhernost td {
+    padding: 0px 2px;
+}
+
+table#vyhernost th {
+    padding: 4px;
+    width: 115px;
+}
+
+div#evidence table td{
+    font-size:11px;
+}
+table.globalstat{border-collapse:collapse;margin:8px 0px;}
+table.globalstat td{border:1px solid black;padding:4px;font-size:0.7em}
+table.globalstat th{border:1px solid black;padding:4px;background:#F1A600;font-size:0.7em;}
+
+table.globalstat2{border-collapse:collapse;margin:8px 0px;}
+table.globalstat2 td{border:1px solid black;padding:4px;font-size:0.8em}
+table.globalstat2 th{border:1px solid black;padding:4px;background:#F1A600;font-size:0.8em;}
+
+h1.livebet{
+    color:Red;
+    font-size:1.6em;
+    font-weight: 400;
+    padding-left:20px;
+    background-image: url(../_clip/football.gif);
+    background-position: 0px 5px;
+    background-repeat: no-repeat;
+}
+table.af_table{
+    border-collapse:collapse;
+}
+table.af_table td{
+    padding:6px 12px;
+    text-align:center;
+    border-top:1px solid #F08080;
+    border-bottom:1px solid #F08080;
+}
+
+table.af_table th{
+    padding:8px 14px;
+}
+
+table.af td.af_table_act{
+    background-color:#DEB887;
+}
+table.noline td{
+    border:1px solid white;
+}
+
+table.week_live{
+    border-collapse:collapse;
+    width:1200px;
+    position:absolute;
+}
+
+table.week_live tr.live_head_row td{
+    background-color: #E0B756;
+}
+table.week_live tr.live_head_row td.live_head_row_1{
+    background-color: #94B5EE;
+}
+table.week_live td.live_td_hour{
+    background-color: #E0B756;
+}
+table.week_live td{
+    padding:6px 2px;
+    text-align:center;
+    border: 1px solid #8FBC8F;
+}
+
+table.week_live th{
+    padding:8px 6px;
+}
+table.week_live tr.live_active_point{
+    background-color: #E0B756;
+}
+div.match_sport{
+    border:1px solid #94B5EE;
+    background-color: #9A6767;
+    margin: 8px 0px;
+    font-size:0.8em;
+    width:164px;
+    color:ThreedLightShadow;
+}
+div.live_state{
+    background-color: #848484;
+   font-size:1.2em;
+    color:#F0FFFF;
+    margin:0px 0px 2px 0px;
+    padding:1px 0px;
+    width:144px;
+}
+div.live_state span{
+    color:#FF6347;
+}
+div.match_sport a{
+    font-weight:bold;
+    font-size:1.2em;
+    color:#88CAD5;
+}
+div.match_sport a:hover{
+    font-weight:bold;
+    font-size:1.2em;
+    color:#88CAD5;
+}
+span.match_hover{
+    font-weight:bold;
+    font-size:1.2em;
+    color:#88CAD5;
+}
+div.live_owner{
+    background-color: #727272;
+    width:144px;
+    margin:2px 0px 0px 0px;
+}
+div.match_sport input{
+    width:140px;
+}
+span.bold{
+    font-weight:bold;
+}
+div.match{
+    padding-left:10px;
+    padding-bottom:10px;
+}
+div.sport_1001{
+    background-image: url(../_clip/football.gif);
+    background-repeat: no-repeat;
+}
+div.sport_1003{
+    background-image: url(../_clip/tennis.gif);
+    background-repeat: no-repeat;
+}
+div.sport_1006{
+    background-image: url(../_clip/basketb.gif);
+    background-repeat: no-repeat;
+}
+div.sport_1011{
+    background-image: url(../_clip/hokej.gif);
+    background-repeat: no-repeat;
+}
+div.sport_1013{
+    background-image: url(../_clip/volleyball.png);
+    background-repeat: no-repeat;
+}
+div.sport_1020{
+	background-image: url(../_clip/handball.png);
+	background-repeat: no-repeat;
+}
+div.sport_1029{
+	background-image: url(../_clip/F1.png);
+	background-repeat: no-repeat;
+}

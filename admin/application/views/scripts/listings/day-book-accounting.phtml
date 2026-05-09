@@ -1,0 +1,33 @@
+<h3><?=i18n::tr('Day book accounting')?></h3>
+
+<form method="post" action="?section=<?=ListingsController::DAY_BOOK_SECTION_ID?>" id="formUsersFilter">
+  <?=$this->filter?>
+  <div class="actions">
+    <input
+      type="submit"
+      name="export"
+      onclick="$('div.table-filter input:text, div.table-filter select').val(''); return false;"
+      value="<?=i18n::tr('Reset_filter')?>"/>
+    <input
+      type="submit"
+      name="export"
+      value="<?=i18n::tr('Export')?>"/>
+    <input
+      type="submit"
+      name="sum"
+      value="<?=i18n::tr('Sum')?>"/>
+  </div>
+  
+
+  <?php if ( !empty($this->sum) ): ?>
+    <p><strong><?=i18n::tr('Sum')?>: <?=$this->sum?></strong></p>
+  <?php else:?>
+
+  <?=$this->paginator?>
+
+  <table class='table-list width-100'>
+    <?=$this->tHead?>
+    <?=$this->tBody?>
+  </table>
+  <?php endif;?>
+</form>

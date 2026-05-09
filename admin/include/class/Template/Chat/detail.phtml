@@ -1,0 +1,23 @@
+<?php if(!empty($chat)):?>
+	<table width="100%" style="border-collapse:collapse;">
+		<tr style="background-color: #9BE1FB">
+			<td><strong>Datum</strong></td>
+			<td><strong>Nick</strong></td>
+			<td><strong>User ID</strong></td>
+			<td><strong>ISO</strong></td>
+		</tr>
+	<?php 
+	$i=0;
+	while ($row = $chat->fetchRow()): ?>
+		<tr style="background-color: <?php if($i % 2 == 1): ?>#EAEEEA<?php else: ?>#C5EFFD<?php endif;?>;">
+			<td><?php print $row["dt_datum"]; ?></td>
+			<td><a href="?section=40&user_id=<?php print $row["nl_id_user"]; ?>"><?php print $row["s_nick"]; ?></a></td>
+			<td><?php print $row["nl_id_user"]; ?></td>
+			<td><?php print $row["s_jazyk_iso"]; ?></td>
+		</tr>
+		<tr style="background-color: <?php if($i % 2 == 1): ?>#EAEEEA<?php else: ?>#C5EFFD<?php endif;?>;">
+			<td colspan="4"><?php print $row["s_chat"]; ?></td>
+		</tr>
+	<?php $i++; endwhile; ?>
+	</table>
+<?php endif; ?>

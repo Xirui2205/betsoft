@@ -1,0 +1,32 @@
+<h3><?=i18n::tr('Teams')?></h3>
+<input type="hidden" name="teamCount" id="teamCount" value="0" />
+<div id="inner" class="hidden">
+	<?php if($this->team) : ?>
+		<h4><?=i18n::tr('Team')?> <?=$this->team['name']?></h4>
+	<?php endif; ?>
+</div>
+
+
+<!--<div class="actions">
+	<button onclick="insertGeneric('<?=$this->insertSectionId?>&superb=1', 'inner');"><?=i18n::tr('Create team')?></button>
+</div>-->
+
+<form method="post" action="?section=<?=$this->indexSectionId?>" id="formUsersFilter">
+	<input type="hidden" name="opener" id="opener" value="<?=$this->opener?>" />
+	<input type="hidden" name="opener2" id="opener2" value="<?=$this->opener2?>" />
+	<?=$this->filter?>
+	<?=$this->paginator?>
+
+	<table class='table-list width-100'>
+		<tr>
+			<th></th>
+			<th><?=i18n::tr('Id')?></th>
+			<th><?=i18n::tr('Sport')?></th>
+			<th><?=i18n::tr('Team')?></th>
+			<th><?=i18n::tr('Ticket team')?></th>
+		</tr>
+		<?=$this->tBody?>
+	</table>
+</form>
+
+

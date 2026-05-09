@@ -1,0 +1,90 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="loadGeneric(<?=$this->updateSectionId?>, 'event-main',{ eventId : <?=$this->eventId?> });"><?=i18n::tr('Edit')?></button>
+	<button onclick="hideDetail('event-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<table class="table-list">
+	<tr>
+		<th><?=i18n::tr('title')?></th>
+		<td><?=$this->event['name']?></td>
+	</tr>
+	<tr>
+		<th><?=i18n::tr('key')?></th>
+		<td><?=$this->event['key']?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('Betradar_id')?></th>
+		<td><?=$this->event['betradarId']?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('alias_from')?></th>
+		<td><?=$this->event['betAliasFrom']?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('alias_to')?></th>
+		<td><?=$this->event['betAliasTo']?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('valid_from')?></th>
+		<td><?=It6_Date::fromDb($this->event['validFromTime'])?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('valid_to')?></th>
+		<td><?=It6_Date::fromDb($this->event['validToTime'])?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('sport')?></th>
+		<td><?=$this->event['sportName']?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('order')?></th>
+		<td><?=$this->event['navigationOrder']?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('order_in_print')?></th>
+		<td><?=$this->event['navigationOrderOffergen']?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('region')?></th>
+		<td><?=$this->event['regionName']?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('navigation_visible')?></th>
+		<td><?=$this->event['navigationVisible']?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('betradar_time_offset')?></th>
+		<td><?=$this->event['betradarTimeOffset']?></td>
+	</tr>
+		
+	<?php foreach ($this->langs as $lang) : ?>
+		<tr>
+			<th><?=I18n::tr('seo_url')?> <?=$lang['name']?></th>
+			<td><?=!empty($this->event['seoUrl'.$lang['languageId']]) ? $this->event['seoUrl'.$lang['languageId']] : ''?></td>
+		</tr>
+	<?php endforeach; ?>
+	<tr>
+		<th><?=I18n::tr('ticket_game')?></th>
+		<td><?php
+			if (!empty($this->event['ticketGames'])) {
+				foreach ($this->event['ticketGames'] as $game) {
+					echo $this->trans($game['name']) . "</br>\n";
+				}
+			}
+		?></td>
+	</tr>
+
+<!-- 
+	<tr>
+		<th><?=I18n::tr('Marked')?></th>
+		<td><?=($this->event['navigationHighlight'] == 1 ? I18n::tr('yes') : I18n::tr('no'))?></td>
+	</tr>
+    
+	<tr>
+		<th><?=I18n::tr('separate')?></th>
+		<td><?=($this->event['navigationDelimiter'] == 1 ? I18n::tr('yes') : I18n::tr('no'))?></td>
+	</tr>
+-->
+</table>

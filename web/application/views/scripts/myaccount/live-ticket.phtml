@@ -1,0 +1,29 @@
+<div class="col1wrap">
+<div class="col1">
+	<h1 class="bg alone"><span><?= $this->trans('all_live_tickets') ?></span></h1>
+
+	<form method="get" action="<?=$this->UrlSet(70)?>" id="formUsersFilter">
+		<?=$this->filter?>
+		<?=$this->paginator?>
+
+		<div class="clear"></div>
+
+			<?php if(!empty($this->tickets)) : ?>
+				<div class="tabs">
+					<div class="ct"></div>
+				</div>
+				<div class="grayBg">
+					<table class="overview">
+						<?=$this->thead?>
+						<?=$this->tbody?>
+					</table>
+				</div>
+				<div class="cb"></div>
+			<?php else : ?>
+				<?=It6_FeedbackMsg::printWarning('no_tickets')?>
+			<?php endif?>
+	</form>
+</div>
+</div>
+
+<?=$this->render('myaccount/user-profile-left-col.phtml'); ?>

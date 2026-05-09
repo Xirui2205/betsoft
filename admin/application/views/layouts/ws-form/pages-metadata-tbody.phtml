@@ -1,0 +1,16 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+		<tr class="<?=(!empty($row["title"]) && !empty($row["description"]) && !empty($row["keywords"])) ? 'full': 'not-full'?>">
+			<td>
+				<input type="checkbox" class="row-selector" value="<?=$row['controllerId']?>" name="selectedItems[]" />
+				<input 
+					type="button" 
+					onClick="viewPageMetadataDetail(<?=$row['controllerId']?>, <?=$this->viewSectionId?>, <?=$row['langId']?>)" 
+					class="sbutton" 
+					value="<?=i18n::tr('view')?>" 
+				/>
+			</td>
+			<?php include('partial-iter-cols.phtml')?>
+		</tr>
+	<?php endforeach?>
+</tbody>

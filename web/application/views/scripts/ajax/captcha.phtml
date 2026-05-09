@@ -1,0 +1,8 @@
+<img src="<?php echo $this->captchaImgUrl; ?>"
+  width="<?php echo $this->captchaImgWidth; ?>"
+  height="<?php echo $this->captchaImgHeight; ?>"
+  alt="<?php echo $this->translate($this->captchaImgAlt); ?>"
+/>
+<br />
+<input type="text" name="<?php echo $this->captchaName; ?>[input]" value="" size="<?php echo $this->captchaWordlen; ?>" />
+<input type="hidden" name="<?php echo $this->captchaName; ?>[id]" value="<?php echo $this->captchaId; ?>" />

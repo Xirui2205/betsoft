@@ -1,0 +1,18 @@
+<?php if (!empty($this->articles)) { ?>
+<div class="grayBg bottom10" id="articles">
+	<?php
+	$firstArticle = true;
+	foreach ($this->articles as $article) {
+		include 'article-list-item.phtml';
+	}
+
+	if($this->hp){
+	?>
+		<!--<a href="<?= $this->urlSet(ArticleController::$articlesSectionId) ?>" id="archive" class="right"><?= $this->trans('article_archive') ?></a>
+		<div class="clear"></div>-->
+	<?php
+	}
+	?>
+
+</div><!-- #articles -->
+<? } ?>

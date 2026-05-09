@@ -1,0 +1,9 @@
+<div class="ticket-footer-container">
+	<a class="table-a left" href="javascript:history.go(-1)"><?=$this->trans('back')?></a>
+	<?php if(!empty($this->userId)) : ?>
+		<a class="table-a right" href="" onclick="window.open('<?=$this->printUrl?>', '_blank',
+				'width=550, height=800, resizable=yes, toolbar=no, location=no, menubar=no, copyhistory=no'); return false;">
+			<?=$this->trans('print')?>
+		</a>
+	<?php endif?>
+</div>

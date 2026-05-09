@@ -1,0 +1,180 @@
+<?php if ( empty($this->ajax) ): ?>
+<h3><?=i18n::tr('Last-tickets')?></h3>
+<form action="" method="get" class="table-filter">
+<input type="hidden" name="section" value="293"/>
+<table class="form">
+  <tr>
+    <th>
+      <label for="stakeFrom"><?=i18n::tr('stake_from')?></label>
+    </th>
+    <td>
+      <input type="text" name="stakeFrom" value="<?=$this->stakeFrom?>"/>
+    </td>
+    <th>
+      <label for="stakeFrom"><?=i18n::tr('stake_to')?></label>
+    </th>
+    <td>
+      <input type="text" name="stakeTo" value="<?=$this->stakeTo?>"/><br />
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <label for="stakeFrom"><?=i18n::tr('rate_from')?></label>
+    </th>
+    <td>
+      <input type="text" name="rateFrom" value="<?=$this->rateFrom?>"/>
+    </td>
+    <th>
+      <label for="stakeFrom"><?=i18n::tr('rate_to')?></label>
+    </th>
+    <td>
+      <input type="text" name="rateTo" value="<?=$this->rateTo?>"/><br />
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <label for="stakeFrom"><?=i18n::tr('win_from')?></label>
+    </th>
+    <td>
+      <input type="text" name="winFrom" value="<?=$this->winFrom?>"/>
+    </td>
+    <th>
+      <label for="stakeFrom"><?=i18n::tr('win_to')?></label>
+    </th>
+    <td>
+      <input type="text" name="winTo" value="<?=$this->winTo?>"/><br/>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <input type="submit" value="<?=i18n::tr('filter')?>"/>
+    </td>
+    <td colspan="2">
+      <input type="submit" value="<?=i18n::tr('reset_filter')?>" onclick="$('.table-filter input:text, .table-filter select').val(''); return false;"/>
+    </td>
+  </tr>
+</table>
+</form>
+<script>
+  $(window).load(function() {
+    setInterval(addNewRow,<?=100*TicketsController::LAST_TICKETS_REFRESH_IN?>); 
+  });
+
+  from = '<?=$this->to?>';
+  function addNewRow() {
+    $.ajax({
+      url: '?section=293&ajax=1&from=' + from +
+        '&stakeFrom=' + stakeFrom +
+        '&stakeTo=' + stakeTo +
+        '&rateFrom=' + rateFrom +
+        '&rateTo=' + rateTo +
+        '&winFrom=' + winFrom +
+        '&winTo=' + winTo
+      ,
+      success: function(data,status){
+        var signature = /^\s*<!--\s+LAST TICKETS RESPONSE\s+-->/;
+        if (!signature.test(data)) {
+            alert('<?= i18n::tr('page_will_be_reloaded') ?>');
+            window.location.reload();
+        }
+        else {
+            $('#header').remove();
+            $('#ticket-list').prepend(data);
+            $("#working").hide();
+            $('#ticket-list').find('tr:gt(<?=TicketsController::LAST_TICKETS_COUNT_LIMIT + 1?>)').remove();
+        }
+      },
+    })
+  }
+</script>
+<a href="#" onclick="addNewRow()"><?=i18n::tr('Refresh')?></a>
+<script type="text/javascript">
+function toggleTicketDetail(ticketId) {
+  var container = $("#ticketDetail_" + ticketId);
+  if (container.is(":visible")) {
+    container.hide();
+    return false;
+  }
+  else
+    loadGeneric(<?=TicketsController::TICKET_DETAIL_SECTION_ID?>, "ticketDetail_" + ticketId, {ticketId:ticketId});
+  return false;
+}
+</script>
+<table class="table-list table-tickets" id="ticket-list">
+<?php endif; ?>
+<?php /* following HTML comment is used on client side to distinguish valid response */ ?>
+<!-- LAST TICKETS RESPONSE -->
+<tr id="header">
+  <th></th>
+  <th class="id"><?=i18n::tr('ticket_id')?></th>
+
+  <th class="user"><?=i18n::tr('User')?></th>
+  <th><?=i18n::tr('ticket_branch')?></th>
+
+  <th><?=i18n::tr('ticket_bet_count')?></th>
+  <th><?=i18n::tr('ticket_group_count')?></th>
+  <th class="txtrt"><?=i18n::tr('Stake')?></th>
+  <th class="txtrt"><?=i18n::tr('Rate')?></th>
+  <th class="txtrt"><?=i18n::tr('ticket_winning')?></th>
+  <th class="date"><?=i18n::tr('ticket_date_created')?></th>
+</tr>
+<?php foreach($this->last as $ticket):?>
+<tr class="head"
+    id="ticket-row-<?=$ticket->ticketId?>"
+    <?= ( !empty($this->inspectedBranches) && in_array($ticket->branchId, $this->inspectedBranches) ) ? 'style="background-color:red;"' : '' ?>
+>
+  <td class="magn">
+    <img onclick="toggleTicketDetail(<?=$ticket->ticketId?>);" src="_img/magnifier.png" alt="detail" title="detail"/>
+  </td>
+  <td class="id" onclick="toggleTicketDetail(<?=$ticket->ticketId?>);" src="_img/magnifier.png">
+    <strong>
+      <?=$ticket->ticketId?>
+    </strong>
+  </td>
+
+  <?php
+    /*
+     * tak následující blok je fakt výsměch, to fakt může udělat jen klinger,
+     * ale už vážně nemám sílu to přepisovat...
+     */
+    $user = $this->ws->User->getById($ticket['userId'])
+  ?>
+  <?php if ($this->acl->isResourceAllowed('section:40','read')): ?>
+  <td><a href="?section=40&user_id=<?=$ticket['userId']?>"><?=$user->username?></a></td>
+  <?php elseif ($this->acl->isResourceAllowed('section:318','read')): ?>
+  <td><a href="?section=318&user_id=<?=$ticket['userId']?>"><?=$user->username?></a></td>
+  <?php else: ?>
+  <td class="user"><?=$user->username?></td>
+  <?php endif; ?>
+
+  <td><?=$ticket->hostName?></td>
+  
+  <?php $betCount = 0; foreach( $ticket['groups'] as $group ) $betCount += count($group['tips']);?>
+  <td class="txtrt"><?=$betCount?></td>
+  <td class="txtrt"><?=count($ticket['groups'])?></td>
+  <td class="txtrt"><?=$ticket['amount']?></td>
+  <td class="txtrt"><?=$ticket['totalOdds']?></td>
+  <td class="txtrt"><?=$ticket['winAmount']?></td>
+  <td class="date"><?=It6_Date::fromDb($ticket['createdTime'])?></td>
+</tr>
+
+<tr class="ticket-detail" id="ticketDetail_<?=$ticket['ticketId']?>" style="display:none"></tr>
+<?php endforeach; ?>
+<?php if ( empty($this->ajax) ): ?>
+</table>
+<?php endif; ?>
+
+<?php if ( !empty($this->ajax) ): ?>
+<script type="text/javascript">
+  from = '<?=$this->to?>';
+</script>
+<?php endif;?>
+<script type="text/javascript">
+  stakeFrom = '<?=$this->stakeFrom?>';
+  stakeTo = '<?=$this->stakeTo?>';
+  rateFrom = '<?=$this->rateFrom?>';
+  rateTo = '<?=$this->rateTo?>';
+  winFrom = '<?=$this->winFrom?>';
+  winTo = '<?=$this->winTo?>';
+</script>
+

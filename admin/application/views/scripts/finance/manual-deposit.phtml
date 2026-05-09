@@ -1,0 +1,45 @@
+<h3><?=i18n::tr('Manual transaction')?></h3>
+
+
+<ul class="idTabs" style="display: block">
+  <li><a class="selected" href="?section=226"><?=i18n::tr('manual-deposit')?></a></li>
+  <li><a href="?section=244"><?=i18n::tr('manual-withdraw')?></a></li>
+  <li><a href="?section=245"><?=i18n::tr('manual-balance')?></a></li>
+  <li><a href="?section=246"><?=i18n::tr('manual-points')?></a></li>
+  <li><a href="?section=309"><?=i18n::tr('manual-voucher-points')?></a></li>
+</ul>
+<div class="tab-container">
+  <?=i18n::tr($this->message)?>
+    <? if ( !empty($this->user) ): ?>
+    <table class="table-detail">
+      <tr>
+       <th>
+         <?=i18n::tr('User')?>
+       </th>
+       <td>
+         #<?=$this->user->userHandle?>
+         <?=$this->user->firstName?>
+         <?=$this->user->lastName?>
+         (<?=$this->user->username?>)
+       </td>
+     </tr>
+     <tr>
+       <th>
+         <?=i18n::tr('Amount')?>
+       </th>
+       <td>
+         <?=$this->values['amount']?> <?=$this->currency['name']?>
+       </td>
+     </tr>
+     <tr>
+       <th>
+         <?=i18n::tr('deposit type')?>
+       </th>
+       <td>
+         <?=i18n::tr($this->values['transactionTypeName'])?>
+       </td>
+     </tr>
+    </table>
+  <? endif; ?>
+  <?=$this->form?>
+</div>

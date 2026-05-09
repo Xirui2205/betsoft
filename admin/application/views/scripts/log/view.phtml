@@ -1,0 +1,11 @@
+<h3><?=i18n::tr('Logs')?></h3>
+
+<form method="post" action="?section=<?=$this->viewSectionId?>" id="formUsersFilter">
+	<?=$this->filter?>
+	<?=$this->paginator?>
+
+	<table class="table-list width-100 table-log">
+		<?=$this->thead?>
+		<?=$this->tbody?>
+	</table>
+</form>

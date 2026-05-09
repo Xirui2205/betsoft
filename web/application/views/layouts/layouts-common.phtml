@@ -1,0 +1,106 @@
+<?php
+if ($this->log == 7) {
+	header('Location:'.$this->UrlSet(17)); // Myaccount/ticket
+	exit;
+}
+
+$isIndex = Zend_Controller_Front::getInstance()->getRequest()->getControllerName() === 'index'
+		&& Zend_Controller_Front::getInstance()->getRequest()->getActionName() === 'index';
+?><!doctype html>
+<!--[if IE 7 ]> <html lang="<?=$this->isoLang; ?>" class="isie ie7 oldie no-js"> <![endif]-->
+<!--[if IE 8 ]> <html lang="<?=$this->isoLang; ?>" class="isie ie8 oldie no-js"> <![endif]-->
+<!--[if IE 9 ]> <html lang="<?=$this->isoLang; ?>" class="isie ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="<?=$this->isoLang; ?>" class="no-js"> <!--<![endif]-->
+
+<head>
+	<title><?= $this->title ?></title>
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico<?= V_PARAM ?>">
+
+	<!-- *** META *** -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="keywords" content="<?= $this->keywords ?>">
+	<meta name="description" content="<?= $this->description ?>">
+	<!--<meta name="google-site-verification" content="" />-->
+
+	<!-- *** FONTS *** -->
+	<?php $cyrillic = !$isIndex ? '' : ',cyrillic-ext';	?>
+	<link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic&amp;subset=latin,latin-ext<?= $cyrillic ?>" rel="stylesheet" type="text/css">
+	<link href="//fonts.googleapis.com/css?family=Roboto:400,400italic&amp;subset=latin,latin-ext<?= $cyrillic ?>" rel="stylesheet" type="text/css">
+
+	<!--[if lt IE 9]>
+		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- *** CSS *** -->
+	<!-- * podle nových šablon -->
+	<link href="/new/css/reset.css<?= V_PARAM ?>" rel="stylesheet">
+	<!-- bootstrap css verze 3.3.1 obarví tabulky, proto 3.2.0 při updatu zkontrolovat -->
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<!-- font-awesome - to-do: redukovat, pokud jde o pár ikonek -->
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/new/css/animations.min.css<?= V_PARAM ?>" rel="stylesheet">
+	<link href="/new/css/main.css<?= V_PARAM ?>" rel="stylesheet">
+	<?php  if($isIndex){ ?><link href="/new/css/welcome.css<?= V_PARAM ?>" rel="stylesheet"><?php } ?>
+	<!-- * přidáno navíc -->
+	<!-- css pro jquery ui - to-do: načíst pouze, pokud je potřeba -->
+	<!-- le frog theme, radius (nepouzito): -->
+	<!--<link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/le-frog/jquery-ui.css" rel="stylesheet" type="text/css" media="screen" />-->
+	<!-- le frog theme, úprava: no radius -->
+	<link href="/css/ui/jquery-ui.css" rel="stylesheet">
+	<link href="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.4.5/jquery-ui-timepicker-addon.min.css" rel="stylesheet">
+	<!-- * původní -->
+	<link href="/css/fancybox.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="/new/css/additional.css<?= V_PARAM ?>" rel="stylesheet">
+	
+	<!-- *** JS *** -->
+	<!-- jquery bylo 1.8.3, 1.9.1 je teď kvůli verzi bootstrapu -->
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<!-- jquery migrate - kvůli upgradu jquery; jinak nefunguje např. přihlášení -->
+	<script src="//code.jquery.com/jquery-migrate-1.1.1.js"></script>
+	<script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.4.5/jquery-ui-timepicker-addon.min.js"></script>
+	<?php if (LANG_BROWSER !== 'en') { ?>
+	<script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/localization/messages_<?= LANG_BROWSER ?>.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/i18n/jquery-ui-i18n.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.4.5/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script>
+	<?php $jqLangSetting = '$.datepicker.setDefaults($.datepicker.regional["'.LANG_BROWSER.'"]);'
+			. '$.timepicker.setDefaults($.timepicker.regional["'.LANG_BROWSER.'"]);'
+			;
+	} ?>
+	<!-- bootstrap js musí být za jquery ui kvůli tooltipu; verze 3.3.1 kvůli zobrazení tooltipu -->
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script src="/new/js/appear.min.js"></script>
+	<script src="/new/js/animations.min.js"></script>
+	<script src="/new/js/main.js"></script>
+	
+	<!-- * původní -->
+	<!--<script type="text/javascript" src="/js/floating-1.12.js<?= V_PARAM ?>"></script>-->
+	<script type="text/javascript" src="/js/main.js<?= V_PARAM ?>"></script>
+	<!--<script type="text/javascript" src="/js/tooltip/jquery.tooltip.min.js<?= V_PARAM ?>"></script>
+	<script type="text/javascript" src="/js/slides.jquery.js<?= V_PARAM ?>"></script>
+	<script type="text/javascript" src="/js/menu_slider.js<?= V_PARAM ?>"></script>
+	<script type="text/javascript" src="/js/jquery.fancybox.js"></script>
+	<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src="/js/jquery.countdown.js"></script>
+	<script type="text/javascript" src="/js/jquery.countdown-cs.js"></script>-->
+	<!--<script type="text/javascript" src="/js/jquery.dynDateTime/jquery.dynDateTime.pack.js<?= V_PARAM ?>"></script>
+	<script type="text/javascript" src="/js/jquery.dynDateTime/lang/calendar-cs-utf8.custom.js<?= V_PARAM ?>"></script>-->
+	<script type="text/javascript" src="/js/json2.js<?= V_PARAM ?>"></script>
+	<!--<script type="text/javascript" src="/js/jquery-ui-1.9.0.custom.min.js<?= V_PARAM ?>"></script>-->
+	<!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>-->
+	
+	<script type="text/javascript">
+		var lang_id = <?= $this->lang_id ?>;
+		var currency = '<?= $this->currencyName ?>';
+		var precisionStake = <?= $this->currencyPrecisionStake ?>;
+		var precisionWin = <?= $this->currencyPrecisionWin ?>;
+
+		jQuery(document).ready(function() {
+		<?php
+			if (isset($jqLangSetting)) { echo $jqLangSetting; }
+		?>
+		});
+	</script>

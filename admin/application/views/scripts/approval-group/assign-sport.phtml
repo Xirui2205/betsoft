@@ -1,0 +1,27 @@
+<h4><?=i18n::tr('Assign a sport to an approval group')?></h4>
+<?=$this->feedbackMsg?>
+
+
+<form id="assignSportForm">
+	<table class="table-filter">
+		<tr>
+			<th>1. <?=i18n::tr('Choose a sport(s)')?></th>
+			<th>2. <?=i18n::tr('Choose an approval group')?></th>
+		</tr>
+		<tr>
+			<td class="vlgntp"><?=$this->sportOpts?></td>
+			<td class="vlgntp" style="width:300px">
+				<div class="actions">
+					<?=$this->groups?>
+					<button onclick="submitGeneric('<?=$this->assignSportSectionId?>&superb=1', 'assignSportForm', 'inner', '&submit=1');return false;"><?=i18n::tr('Submit')?></button>
+				</div>
+			</td>
+		</tr>
+	</table>
+</form>
+<div class="clear-both"></div>
+
+<div id="list">
+	<!-- seznam vsech hostu -->
+	<!--<?php include('group-list.phtml'); ?>-->
+</div>

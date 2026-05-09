@@ -1,0 +1,20 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="loadGeneric(<?=$this->updateSectionId?>, 'document',{ documentId : <?=$this->document['documentId']?> });"><?=i18n::tr('Edit')?></button>
+	<button onclick="hideDetail('document')"><?=i18n::tr('Close Detail')?></button>
+</div>
+<table class="table-list">
+	<tr>
+		<th><?=i18n::tr('Document ID')?></th>
+		<td><?=$this->document['documentId']?></td>
+	</tr>
+	<tr>
+		<th><?=i18n::tr('name')?></th>
+		<td><?=$this->document['name']?></td>
+	</tr>
+	<tr>
+		<th><?=i18n::tr('url')?></th>
+		<td><?=$this->document['url']?></td>
+	</tr>
+</table>

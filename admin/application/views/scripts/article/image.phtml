@@ -1,0 +1,39 @@
+<script type="text/javascript">
+/* article image */
+var chooseArticleImageButton = '<button onclick="chooseArticleImage(); return false;">' + '<?=i18n::tr('article_image_choose')?>' + '</button>';
+function chooseArticleImage() {
+    window.open('/galery.php?type=1&cbfunc=setArticleImage','','width=640,height=480,scrollbars=yes');
+}
+function setArticleImage(imageArr) {
+    $('#articleImage').remove();
+    $('#articleImageDiv').html('');
+    if (imageArr['id']>0) {
+        $('#articleImageId').after('<div id="articleImageDiv">\n\
+                                    <img id="articleImage" alt="articleImage" src="<?= GALLERY_URL ?>' + imageArr['name'] + '" />\n\
+                                    <br /><button onclick="removeArticleImage(); return false;">' + '<?=i18n::tr('article_image_remove')?>' 
+                                    + chooseArticleImageButton + '\n\
+                                </div>');
+		
+        $('#articleImageId').val(imageArr['id']);
+		//alert(imageArr['name']);
+        $('#imageName').val(imageArr['name']);
+		//alert('article image name: '+$('#articleImageName').val());
+    } else {
+        $('#articleImageId').after('<div id="articleImageDiv"></div>');
+        removeArticleImage(); // set no image 
+    }
+}
+function removeArticleImage() {
+    $('#articleImageId').val('');
+    $('#articleImageName').val('');
+    // /?section=80
+    $('#articleImageDiv').html(chooseArticleImageButton
+            + '<button onclick="window.open(\'/?section=80\',\'_blank\'); return false;">' + '<?=i18n::tr('article_image_add')?>' + '</button>');
+}
+
+$(function() {
+	// load saved image
+    setArticleImage({id   : $('#articleImageId').val(),
+                     name : $('#imageName').val()});
+});
+</script>

@@ -1,0 +1,18 @@
+<?php foreach ($this->layout()->data as $player) : ?>
+	<tr>
+		<td>
+			<input
+				type="button"
+				onClick="loadGeneric('<?=$this->updatePlayerSectionId?>', 'inner', { teamId : <?=$player['teamId']?>, teamPlayerId : <?=$player['teamPlayerId']?> })"
+				value="<?=i18n::tr('Edit')?>"
+			/>
+			<input
+				type="button"
+				onClick="if (confirm('Opravdu chcete odstranit tohoto hráče ?')){ loadGeneric('<?=$this->deletePlayerSectionId?>', 'inner', { teamId : <?=$player['teamId']?>, teamPlayerId : <?=$player['teamPlayerId']?> });} else {return false;}"
+				value="<?=i18n::tr('Remove')?>"
+			/>
+			</td>
+		<td class="border-left"><?=$player['teamPlayerId']?></td>
+		<td class="border-left"><?=$player['name']?></td>
+	</tr>
+<?php endforeach; ?>

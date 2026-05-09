@@ -1,0 +1,50 @@
+<?php include 'layouts-common.phtml'; ?>
+
+</head>
+<body>
+	<!-- header -->
+	<header id="header" class="sticky">
+		<?php It6_GlobalCache::frame('/global-cache-frame/head') ?>
+		<nav id="main-nav">
+			<div id="true-nav">
+				<div class="wrapper">
+					<ul class="nav navbar-nav">
+						<li><a href="<?= $this->urlSet(1) ?>" <?= (strlen($_SERVER['REQUEST_URI'])<5) ? ' class="active"' : '' ?>><?= $this->trans('homepage') ?></a></li>
+						<li><a href="<?= $this->urlSet(117) ?>"<?= (strlen($_SERVER['REQUEST_URI']) < 5 || strpos($this->urlSet(117), $_SERVER['REQUEST_URI']) === false) ? '' : ' class="active"' ?>><?= $this->trans('bets') ?></a></li>
+						<li><a href="<?= It6_Models_Livebetting::getUrl(null, true) ?>"><?= $this->trans('live') ?></a></li>
+						<li><a href="#">Casino</a></li>
+						<li><a href="#">Poker</a></li>
+						<li><a href="#">Bonus</a></li>
+					</ul>
+					<div id="searchbar">
+						<form action="" method="get">
+							<input style="width: 140px" name="search" type="text" placeholder="player or team">
+							<input name="" type="image" value="Search" src="/new/images/search.png">
+						</form>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+	
+	<div class="clearfix"></div>
+	
+	<main id="content" role="main">
+		<div id="true-content" class="welcome">
+			<div class="wrapper">
+				<?php
+				// výchozí levý sloupec
+				if ($defaultColsTemplate = isset($this->defaultCols) && $this->defaultCols === true) {
+					echo $this->render('index/leftCol.phtml').'<div id="center">';
+				}
+				// hlavní obsah
+				echo $this->layout()->content;
+				// výchozí pravý sloupec
+				echo $defaultColsTemplate ? '</div>' . $this->render('index/rightCol.phtml') : '';
+				?>
+			</div>
+		</div>
+	</main>
+	<?php It6_GlobalCache::frame('/global-cache-frame/foot');?>
+	<?php if (GOOGLE_ANALYTICS_CODE) echo $this->render(GOOGLE_ANALYTICS_CODE) ?>
+</body>

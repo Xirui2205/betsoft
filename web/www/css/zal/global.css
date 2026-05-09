@@ -1,0 +1,1262 @@
+/* common ------------------------------------------------------------------- */
+* {
+	margin: 0;
+	padding: 0;
+}
+.clear {
+	clear: both;
+	height: 0;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.alignLeft {
+	text-align: left;
+}
+.alignRight {
+	text-align: right;
+}
+.alignCenter {
+	text-align: center;
+}
+.alignJustify {
+	text-align: justify;
+}
+.pointer {
+	cursor: pointer;
+}
+.bold {
+	font-weight: bold;
+}
+.normal {
+	font-weight: normal;
+}
+.colorBlack {
+	color: #000;
+}
+.colorGold {
+	color: #d6b46a;
+}
+.bottom10 {
+	margin-bottom: 10px;
+}
+.margin2 {
+	margin: 2px;
+}
+.bottom0 {
+	margin-bottom: 0;
+}
+.left10 {
+	margin-left: 10px;
+}
+.padding0 {
+	padding: 0;
+}
+.topRightRadius {
+	-webkit-border-top-right-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	border-top-right-radius: 3px;
+}
+.topLeftRadius {
+	-webkit-border-top-right-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	border-top-right-radius: 3px;
+}
+.bottomRightRadius {
+	-webkit-border-bottom-right-radius: 3px;
+	-moz-border-radius-bottomright: 3px;
+	border-bottom-right-radius: 3px;
+}
+.displayNone {
+	display: none;
+}
+.w100pct {
+	width: 100%;
+}
+.w50pct {
+	width: 50%;
+}
+.w33pct {
+	width: 33.3%;
+}
+.w25pct {
+	width: 25%;
+}
+
+/* todo: from main: font settings, ... */
+
+h2.bg, h1.bg {
+	background: url("../images/h2-bg-core.png") repeat-x;
+    font-size: 14px;
+    font-weight: normal;
+    height: 36px;
+    width: 100%;
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-moz-border-radius-topleft: 3px;
+	-moz-border-radius-topright: 3px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+h2.bg.alone, h1.bg.alone {
+	background: transparent url("../images/h2-bg-core-2.png") repeat-x;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	height: 30px;
+	margin-bottom: 6px;
+}
+h2.bg span:first-child, h1.bg span:first-child {
+	margin-left: 10px;
+	line-height: 30px;
+	font-weight:bold;
+	font-size:12.5px;
+}
+h2.bg span a.imgBg, h2.bg span.imgBg, h1.bg span a.imgBg, h1.bg span.imgBg {
+	background-color: #212121;
+	height: 30px;
+	-webkit-border-top-right-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	border-top-right-radius: 3px;
+}
+h2.bg span a.imgBg:hover, h1.bg span a.imgBg:hover {
+	background: #212121;
+}
+
+h3 {
+	font-size: 13px;
+	margin: 0 0 7px 0;
+}
+
+h3.under {
+	border-bottom: 1px solid #d6b46a;
+    padding-bottom: 5px;
+    margin: 10px 0;
+}
+
+/* tables */
+table.matchTable {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: center;
+}
+table.matchTable thead tr th, table.matchTable tbody tr td {
+	border: 1px solid #1a1a1a;
+	height: 26px;
+	padding: 0 5px;
+	height: 26px;
+	line-height: 26px;
+}
+table.matchTable thead tr th {
+	background: #1A1A1A;
+	font-weight: normal;
+	text-align: left;
+	color: #a6a6a6;
+}
+table.w100pctCenter {
+	width: 100%;
+	text-align: center;
+}
+
+/* input */
+.input110 {
+	background: url("/images/input-bg-110.png") no-repeat scroll 0 0 transparent;
+    border: none;
+    width: 110px;
+    padding: 5px;
+}
+
+/* select */
+.goldSelect192 {
+	background-color: #d6b46a !important;
+    background-image: url("/images/qselect-bg.png") !important;
+    background-repeat: no-repeat;
+    border-style: none;
+    display: inline !important;
+    font-size: 11px;
+    height: 22px;
+    line-height: normal;
+    padding: 3px;
+    width: 192px;
+}
+
+/* buttons */
+.goldBtn {
+	background: url("../images/ticket-input-button-gold.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+	
+	border: none;
+    display: block;
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    width: 100px;
+	height: 30px;
+}
+.goldBtn:hover {
+	background: url("../images/ticket-input-button-gold-hover.png") no-repeat scroll 0 0 transparent;
+}
+.vic-button,
+#formUsersFilter .content.grayBg input[type="submit"],
+#voucherContainer input[type="submit"] {
+    background: url("/images/btn-submit.png") no-repeat scroll 0 0 transparent !important;
+	border: none;
+    color: #212121 !important;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    width: 101px;
+	cursor: pointer;
+}
+a.vic-button {
+	margin: 0 auto;
+	display: block;
+	line-height: 30px;
+}
+
+div.provider_registration {
+	background: #212121;
+
+}
+
+/* forms */
+div.provider_registration form.legendBg fieldset{
+margin-top:10px;
+position: relative;
+}
+
+div.provider_registration form.legendBg legend {
+    font-size: 12.5px;
+    font-weight: normal;
+    color: #d6b469;
+    padding-top:12px;
+    padding-bottom:12px;
+    display:block;
+    border-top:2px solid #1a1a1a;
+    border-bottom:2px solid #1a1a1a;
+    margin-bottom: 30px;
+    width: 100%;
+	text-transform: uppercase;
+}
+
+div.provider_registration form.legendBg label{
+	font-size: 12.5px;
+	width:140px;
+	display: inline-block;
+}
+
+div.provider_registration form.legendBg .cell-element label{
+	float:right;
+	width:50%;
+	line-height: 25px;
+	height:28px;
+	display:block;
+	color: #f1f2f2;
+	padding-bottom:3px;
+}
+
+div.provider_registration form.legendBg .cell-element br {
+display: none;
+}
+
+div.provider_registration form.legendBg .cell-element label input{
+margin-right: 10px;
+}
+
+
+div.provider_registration form.legendBg tr{
+	height:35px;
+}
+
+div.provider_registration input[type="text"]{
+	background: url("/images/line.png") no-repeat scroll 0 0 transparent !important;
+	padding:1px;
+	width: 469px;
+	height: 20px;
+	border:none;
+}
+
+div.provider_registration span#captcha input[type="text"], div.provider_registration #captcha input[type="text"] {
+	border:none;
+	background: url("/images/line_smaller.png") no-repeat scroll 0 0 transparent !important;
+	height: 20px;
+	width: 158px;
+	display: block;
+}
+
+div.provider_registration input#submit{
+	font-family: 'Open Sans', sans-serif;
+	display: block;
+	width: 105px;
+	height: 23px;
+	background: url("../images/button_registration.png");
+	text-align: center;
+	float: right;
+	font-weight: bold;
+	font-size: 12.5px;
+	text-decoration: none !important;
+	color: #f1f2f2;
+	border:none;
+	position:absolute;
+	left: 550px;
+	bottom:20px;
+	padding-bottom: 1px;
+}
+
+div.provider_registration form#dd input#submit{
+	position:relative;
+	padding:0;
+	left: 0;
+	bottom:0;
+	margin: 30px 0px 30px 360px;
+	padding-bottom: 1px;
+}
+
+div.provider_registration > p{
+	width: 620px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 12.5px;
+    font-weight: normal;
+    color: #d6b469;
+    padding-top:12px;
+    padding-bottom:12px;
+    display:block;
+    margin-bottom: 10px;
+	text-transform: uppercase;
+}
+
+div.provider_registration form{
+
+	width:620px;
+	display:block;
+	margin: 0 auto 0 auto;
+}
+
+div.provider_registration p.hint {
+	padding: 0 0 30px 0;
+}
+
+
+form.legendBg fieldset {
+	border: none;
+}
+
+/* tabs */
+div.tabs.flex ul li a {
+	display: block;
+	float: left;
+	height: 25px;
+	padding: 10px 20px 0 20px;
+	-webkit-border-top-left-radius: 2px;
+	-webkit-border-top-right-radius: 2px;
+	-moz-border-radius-topleft: 2px;
+	-moz-border-radius-topright: 2px;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	font-size: 12.5px;
+    font-weight: bold;
+	color: #fff;
+	background: url("/images/tab-core.png") repeat-x;
+	margin-right: 3px;
+}
+div.tabs.flex ul li.sel a {
+	background: url("/images/tab-core-selected.png") repeat-x;
+	color: #fff;
+	text-decoration: underline;
+}
+div.tabs.flex ul li a:hover {
+	background: url("/images/tab-core-over.png") repeat-x;
+	color: #d6b46a;
+	text-decoration: underline; /* not good */
+}
+div.tabs.flex ul li {
+	list-style-type: none;
+}
+div.tabs.flex ul li.sel.alone a {
+	text-decoration: none;
+	background: url("/images/tab-core-selected.png") repeat-x;
+	color: #fff;
+	cursor: auto;
+}
+
+hr {
+	border: none;
+	height: 14px;
+	background: url(/images/ticket-line-separator-small.png) repeat-x center center;
+}
+
+/* pagination */
+.pagination1 {
+	clear: both;
+	padding-top: 10px;
+	text-align: center;
+	color: #a6a6a6;
+}
+
+/* holy grail layout http://tomkay.me/projects/holygrail-generator ---------- */
+.colmask {
+	position:relative;
+	clear:both;
+	float:left;
+	width:100%;
+	/*overflow:hidden;*/				  /* removed because of div#box_kupon */
+}
+.holygrail .colmid {
+	float:left;
+	width:200%;
+	position:relative;
+	right:100%;
+}
+.holygrail .colleft {
+	float:left;
+	width:100%;
+	margin-left:-50%;
+	position:relative;
+}
+.holygrail .col1wrap {
+	float:left;
+	width:50%;
+	position:relative;
+	padding-bottom:1em;
+}
+.holygrail .col1 {
+	position:relative;
+	left:200%;
+	overflow:hidden;
+}
+.holygrail .col2 {
+	float:left;
+	float:right;
+	position:relative;
+}
+.holygrail .col3 {
+	float:left;
+	float:right;
+	position:relative;
+	left:50%;
+}
+
+.holygrail .colmid{margin-left:-240px}
+.holygrail .colleft{left:445px}
+.holygrail .col1wrap{right:205px}
+.holygrail .col1{margin:0 250px 0 215px}
+.holygrail .col2{width:205px; right:0px}
+.holygrail .col3{width:240px; margin-right:0px}
+
+/* other layout settings ---------------------------------------------------- */
+.wrapper {
+	max-width: 1262px;
+	min-width: 985px;
+	margin: 0 auto;
+}
+.holygrail.noRight .col1 { margin-right: 0; } 
+
+/* head, menu --------------------------------------------------------------- */
+header {
+	height: 91px;
+}
+div#header-bg {
+	border-bottom: 1px solid rgb(119, 95, 44);
+}
+div#header-bg .logo img {
+	margin-top: -3px;
+}
+#menu {
+	width: 90%;
+	margin: 0 auto;
+	background: green
+}
+.colmask {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/* middle column ------------------------------------------------------------ */
+/* content divs */
+div.grayBg {
+	background: #212121;
+	padding: 10px;
+}
+div.grayBorder {
+	border: 10px solid #212121;
+	background-color: #000;
+	padding: 10px;
+}
+div.topLine {
+	background: #212121;
+	padding: 12px 10px 10px;
+    background-image: url("../images/decoration-top-main.png");
+    background-repeat: repeat-x;
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-moz-border-radius-topleft: 3px;
+	-moz-border-radius-topright: 3px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+div.twin {
+	width: 49.5%;
+}
+
+
+/* typo & cc (should be reworked within new font definition)
+changes: #typo -> .typo, #typo .cc -> .typo.cc
+skipped any width settings
+*/
+div.typo {
+	color:#f1f2f2;
+	font-size:12px
+}
+
+div.typo .ct, div.typo .cb {
+	height:7px;
+}
+div.typo strong {
+	color: #d6b46a;
+	font-weight: bold;
+	font-size: 13px;
+}
+div.typo a, .cc a {
+	text-decoration: underline !important;
+}
+div.typo.cc a:hover {
+	color: #000;
+	background-color: #d6b46a;
+	text-decoration: none;
+}
+div.typo p {
+	text-align:justify
+}
+div.typo h4 {
+	color:#d6b46a;
+	font-weight:bold;
+	font-size:14px;
+	border-bottom: 1px solid #d6b46a;
+	clear: both;
+	padding-top: 15px;
+}
+div.typo.cc ul, div.typo .cc ol {
+	padding-left:20px
+}
+div.typo.cc li span {
+	font-weight:normal;
+	color:#3f3f3f
+}
+div.typo.cc li {
+	margin-bottom: 10px !important;
+	float: left;
+	width: 250px;
+	clear: both;
+	text-align: justify;
+}
+div.typo ol>li>ul {
+	list-style-type:upper-alpha;
+	margin-top:10px
+}
+div.typo ol>li>ul>li>ul {
+	list-style-type:lower-alpha;
+	margin-top:10px
+}
+div.typo p img {
+	float:left;
+	margin:0 5px 5px 0
+}
+div.typo ul.arrows {
+	list-style-type:square;
+	list-style-image:url(/images/typo-li.png);
+	float:left;
+	margin-top:25px
+}
+div.typo table td {
+	padding:3px 5px;
+}
+
+/* new styles for static page */
+div.staticpage {
+	background: #212121;
+	line-height: 20px;
+	font-size: 12.5px;
+	color:#f1f2f2;
+}
+
+div.staticpage h1{
+	text-transform:uppercase;
+	font-size: 14px;
+	color:#d6b46a;
+}
+
+div.staticpage h2{
+	font-size: 13px;
+	color:#d6b46a;
+}
+
+div.staticpage h3{
+	margin-top: 15px;
+	font-size:12.5px;
+	color:#d6b46a;
+}
+
+div.staticpage .content_block li {
+	margin-left:20px;
+	margin-top: 12px;
+	list-style: disc;
+	text-align: justify;
+}
+
+div.staticpage p{
+	margin-top: 15px;
+	text-align: justify;
+	line-height: 20px;
+
+}
+
+div.staticpage p:first-child{
+	margin-top: 0px;
+}
+
+div.staticpage p.note{
+	font-style: italic;
+	color: #737373;
+}
+
+div.staticpage strong{
+	color:#f1f2f2;
+	font-size: 12.5px;
+}
+
+div.staticpage div.inner_content{
+	background: #1a1a1a;
+	padding:10px;
+}
+
+div.line_separator_top{
+	margin: 25px 0 5px 0;
+	background: url(/images/ticket-line-separator.jpg) repeat-x;
+	height: 2px;
+	clear:both;
+	position: relative;
+}
+
+div.line_separator_bottom{
+	margin: 5px 0 5px 0;
+	background: url(/images/ticket-line-separator.jpg) repeat-x;
+	height: 2px;
+	clear:both;
+}
+
+div.inner_content table.inner_content_table{
+	font-weight:bold;
+	width:100%;
+}
+
+div.inner_content table.inner_content_table td{
+	width:50%;
+}
+
+div.inner_content table.inner_content_table th{
+	padding-left: 10px;
+	text-align:left;
+}
+
+div.inner_content table.inner_content_table th h3{
+	margin-top: 5px;
+}
+
+div.inner_content h3{
+	margin-top: 0;
+}
+
+div.staticpage div.inner_content td{
+	padding: 0;
+}
+
+div.staticpage div.inner_content table.inner_content_table table td.ico_cell{
+	width : 50px;
+}
+
+div.staticpage div.inner_content table.inner_content_table tbody tr > td:first-child + td table{
+	margin-left:5px;
+}
+
+div.staticpage td.table_separator{
+	border-right: 2px solid #212121;
+}
+
+div.staticpage div.inner_content table.inner_content_table table td{
+	width:auto;
+	border:none;
+	padding-left:10px;
+}
+
+
+div.staticpage div.inner_content table.inner_content_table table td span.ico_content_cell{
+	margin-left: 10px;
+}
+
+div.staticpage div.content_separator{
+	background: black;
+	height: 10px;
+}
+
+div.staticpage div.content_block{
+	padding: 20px 20px 1px 20px;
+}
+
+div.staticpage a:link{
+	font-weight: bold;
+}
+
+div.staticpage a#btn-registrace{
+	float:right;
+	font-weight:bold;
+	padding-top:1px;
+	font-size: 12.5px;
+	color: #f1f2f2;
+	text-decoration: none !important;
+	height:22px;
+}
+
+div.staticpage div.about_us_block{
+	float: left;
+	width: 50%;
+}
+
+div.staticpage div#about_us_helper{
+	height:200px;
+}
+
+div.staticpage div.about_us_block div#about_us_contacts{
+	margin-top:50px;
+}
+
+div.staticpage div.about_us_block p{
+	margin-right: 40px;
+}
+
+div.staticpage div.about_us_contact{
+		height:50px;
+	font-weight:bold;
+	margin-top: 5px;
+	background: #1a1a1a;
+}
+
+/* headers */
+div.col1 div.topLine h2 {
+	color: #d6b46a;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0 0 8px;
+}
+div.col1 a {
+	text-decoration: none; /* not good */
+	font-weight: normal;
+	color: #d6b46a;
+}
+div.col1 a:hover {
+	background: #d6b46a;
+	color: #000;
+}
+div.staticpage.typo h2.normalCase {
+	font-size: 14px;
+	font-weight: bold;
+	color: #d6b46a;
+	text-transform: none;
+}
+
+/* bet offer tables (commmon) ----------------------------------------------- */
+/* live, info, ako */
+span.liveInfoAko,
+a.liveInfoAko,
+table.betOfferTable.narrower span.liveInfoAko
+{
+	display: inline-block;
+	float: right;
+	background: url(/images/live_info_ako_background.png) center center;
+	background-repeat: no-repeat;
+	text-align: center;
+	cursor: pointer;
+	color: #d6b46a;
+	margin: 0 10px 0 0 !important;
+	
+	/* smaller */
+	margin: 0 3px 0 0 !important;
+	background-size: 21px 18px;
+	width: 18px;
+	height: 18px;
+	line-height: 18px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+span.liveInfoAko a {
+	text-decoration: none;
+}
+
+/* course styles (standard bet offers + promo + article tips) */
+table.betOfferTable td.rate a,
+table.promo_match td a.kurz,
+table#articleTips td.rate a
+{
+	display: block;
+	height: 26px;
+	line-height: 26px;
+	width: 48px;
+	margin: 0 auto;
+	font-weight: bold;
+	text-decoration: none;
+	color: #d6b46a;
+	text-align: center;
+}
+table.betOfferTable td.active-rate a,
+table.betOfferTypeResultsTable td.active-rate a,
+table.promo_match td.active-rate a.kurz,
+table#articleTips td.active-rate a
+{
+	background: url(/images/active_course_button_48x26.png) center center no-repeat !important;
+	color: #1a1a1a;
+}
+table.betOfferTable td.rate a:hover,
+table.betOfferTypeResultsTable td.rateB a:hover,
+table.promo_match td a.kurz:hover,
+table#articleTips td.rate a:hover
+{
+	background: url(/images/active_course_button_48x26_lighter.png) center center no-repeat;
+	color: #1a1a1a;
+}
+
+
+/*  special pages ----------------------------------------------------------- */
+
+/* branches - fine tuning */
+div#branchFilter div.allBranchesDiv {
+	margin-top: 5px;
+}
+div#branchFilter div.regionDiv,
+div#branchFilter div.townDiv {
+	margin-top: 8px;
+}
+div#branchFilter .goldSelect192 {
+	margin-left: 3px;
+}
+#branch-map {
+	height:400px;
+	text-align: center;
+}
+#branch-map img#mapLoader {
+	margin-top: 50px;
+}
+
+/* user section --------------------------------------------------------------*/
+.chyba img {
+	display: none;
+}
+.pozor .chyba {
+    float: left;
+    position: relative;
+}
+.pozor-active .chyba img {
+	display: inline;
+}
+table.userData .pozor {
+	width: 160px;
+}
+table.userData {
+	width: 100%;
+}
+table.userData tr {
+	height: 35px;
+}
+table.userData input.txt[type="text"],
+table.userData input.txt[type="password"] {
+    background: url("/images/reg-input-bg.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    height: 24px;
+	line-height: 24px;
+    padding-left: 4px;
+    width: 151px;
+}
+table.userData select {
+	background: url("/images/reg-select-bg.png") no-repeat scroll 0 0 #D6B46A;
+    border: medium none;
+    height: 22px;
+    line-height: normal;
+    padding: 2px 0;
+    width: 155px;
+}
+table.userData #submit {
+    height: 30px;
+    padding: 2px;
+    width: 101px;
+}
+
+table.overview {
+	background: #212121;
+	width: 100%;
+	border-collapse: collapse;
+    border-spacing: 0;
+	/*font-size: 10px;*/
+	text-align: left;
+}
+
+table.overview thead th {
+	color: #d6b46a;
+	font-weight: bolder;
+	padding: 0 10px 0 7px;
+	text-align: left;
+}
+
+table.overview tbody td {
+	padding: 7px 10px 7px 7px;
+}
+
+/* withdraw */
+form#withdrawBranch table tr input,
+form#withdrawBranch table tr select {
+	margin-bottom: 5px;
+}
+
+form#withdrawBranch table tr label {
+	margin-bottom: 5px;
+}
+
+/* todo from main.css ... */
+
+/* point transactions limit */
+div#pointAcountLimitsContent {
+	height: 60px;
+}
+
+#paymentMethodsTables table {
+	font-size: 10px;
+	text-align: left;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#paymentMethodsTables table th {
+	color: #d6b46a;
+	font-weight: bold;
+}
+
+#paymentMethodsTables table td {
+	border-bottom: 1px solid #2c2c2c;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#paymentMethodsTables table tr:last-child td {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
+#paymentMethodsTables table td.type-image {
+	width: 25%;
+}
+
+#paymentMethodsTables table td.type-desc {
+	width: 50%;
+}
+
+#paymentMethodsTables table td.type-time {
+	width: 25%;
+}
+
+#paymentMethodsTables table td.type-image a {
+	background: none;
+}
+
+/* maxicombinator-detail.phtml (popup) */
+#maxicombinatorDetail {
+	padding-left: 10px;
+}
+#maxicombinatorDetail div#main,
+#maxicombinatorDetail div.wrapper {
+	width: 520px !important;
+	min-width: 520px !important;
+	max-width: 520px !important;
+}
+#maxicombinatorDetail div.grayBg {
+	width: 520px;
+	border: 10px solid #212121;
+}
+#maxicombinatorDetail div.ctable.ctable-ticket {
+	margin-bottom: 0;
+}
+
+/* voucher fixes */
+#fieldset-voucherHandle {
+	background: #212121;
+	padding-bottom: 10px;
+}
+#fieldset-voucherHandle .cell-label {
+	padding-left: 10px;
+}
+
+/* ticket details */
+table.ticketDetail {
+	width: 100%;
+	background: #1a1a1a;
+	border-collapse: collapse;
+	font-size: 12.5px;
+}
+table.ticketDetail td, table.ticketDetail th {
+	border: 2px solid #212121;
+	height: 31px;
+	padding: 4px 10px;
+}
+table.ticketDetail td {
+	text-align: left;
+}
+table.ticketDetail th {
+	text-align: center;
+	color: #d6b46a;
+	font-weight: normal;
+}
+table.ticketDetail td.bigger {
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center
+}
+table.ticketDetail td.betName div.number {
+	width: 7%;
+}
+table.ticketDetail td.betName div.info {
+	color: #939292;
+}
+table.ticketDetail.second tr,
+table.ticketDetail.second td {
+	height: 23px;
+}
+table.ticketDetail.second td.tar {
+	width:394px;
+	text-align: right;
+}
+table.ticketDetail.second td.tar.victory {
+	background: url("/images/number_box_bigger.png") no-repeat;
+	background-color: #d6b46a;
+	font-size: 15px;
+	font-weight: bold;
+	color: #1a1a1a;
+}
+/* narrower */
+table.ticketDetail.second.narrower td.tar {
+	width: 186px;
+}
+table.ticketDetail.second.narrower td.tar.victory {
+	background: url("/images/number_box_smaller.png") no-repeat;
+	background-size: 226px 31px; /* chrome bug (?) */
+}
+div.ticket-footer-container {
+	height: 41px;
+}
+div.ticket-footer-container a.table-a, .redButton {
+	background-image: url("/images/red_button.png");
+	background-repeat: no-repeat;
+	background-color: transparent;
+	font-weight: bold;
+	font-size: 12.5px;
+	color: #f1f2f2;
+	width: 131px;
+	height: 41px;
+	line-height: 41px;
+	text-align: center;
+	border: none;
+	cursor: pointer;
+}
+div.ticket-footer-container a.table-a:hover, .redButton {
+	background-image: url("/images/red_button.png");
+	background-repeat: no-repeat;
+	background-color: transparent;
+	color: #f1f2f2;
+}
+
+/* status colors
+ticketState      | old class
+--------------------------------------
+ticket_state_1   | ticket-open-tag
+ticket_state_1w  | result-open-win
+ticket_state_1l  | result-open-loss
+ticket_state_2   | ticket-win-tag
+ticket_state_3   | ticket-loss-tag
+ticket_state_4   | ticket-canceled-tag
+ticket_state_5   | ticket-win-tag
+ticket_state_6   | ticket-canceled-tag
+*/
+/*.ticket_state_2, .ticket_state_5 {
+	color: #00FF00;
+}
+.ticket_state_3, .ticket_state_4, .ticket_state_6, .ticket_state_1l {
+	color:#fd2e2e
+}*/
+
+p.bonus {
+	padding-left:30px;
+	background:transparent url(/images/ico-bonus.png) no-repeat left center;
+	height:20px;
+	line-height:20px;
+	margin-left:10px;
+	margin-bottom:15px
+}
+
+/* responsible betting */
+div#psychotest div.goldHeaderBox {
+	background:transparent url(/images/box_header.png) no-repeat;
+	padding: 10px;
+	background-size: 100% 68px;
+}
+div#psychotest div.goldHeaderBox h2 {
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: none;
+}
+div#psychotest div.goldHeaderBox h2,
+div#psychotest div.goldHeaderBox p strong {
+	color: #1a1a1a;
+}
+div#psychotest div.goldHeaderBox p {
+	margin-top: 5px;
+}
+div#psychotest div.question p strong {
+	color: #d6b46a;
+}
+div#psychotest div.question {
+	background-color: #1a1a1a;
+	background-image: url(/images/ticket-line-separator-small.png);
+	background-repeat: repeat-x;
+	background-position: center top;
+	padding: 10px;
+}
+div#psychotest #ending {
+	background-image: url(/images/ticket-line-separator-small.png);
+	background-position: center bottom;
+	background-repeat: repeat-x;
+	width: 100%;
+	height: 4px;
+}
+div#psychotest div.question p {
+	margin-top: 0px;
+}
+
+table.ticketDetail .ticket-win-tag, table.ticketDetail .ticket-score-win-tag, table.ticketDetail .result-win, table.ticketDetail .result-open-win, table.ticketDetail .result-payout {
+	color: green;
+}
+
+table.ticketDetail .ticket-loss-tag, table.ticketDetail.ticket-canceled-tag, table.ticketDetail .result-loss,table.ticketDetail .result-open-loss, .result-canceled, .result-forfeit {
+	color:#fd2e2e
+}
+
+div#entryBonusWrapper {
+	position: relative;
+	font-size:10px;
+	float: right;
+	margin-right:76px !important;
+	width: 610px;
+	height:23px;
+	background:url(/images/bonus_line.png) no-repeat 0 0;
+	color: #bcbec0;
+}
+
+div#entryBonusWrapper span.eBspan{
+	line-height: 23px;
+	padding-top: 1px;
+}
+
+div#entryBonusWrapper .slashSeparator, div#fancyLogoutWrapper .slashSeparator {
+}
+
+div#entryBonusWrapper .ico-eb, div#fancyLogoutWrapper .ico-eb{
+	vertical-align: middle;
+	margin-bottom: 1px;
+}
+
+div#fancyLogoutWrapper {
+	background:url(/images/main_line.png) no-repeat 0 0;
+	width: 686px;
+	margin-left:145px;
+	height:23px;
+	line-height: 23px;
+	font-size: 10px;
+	color: #f1f2f2;
+}
+
+div#fancyLogoutWrapper a:link,div#fancyLogoutWrapper a:visited {
+	color: #f1f2f2;
+	font-size: 10px;
+	line-height: 23px;
+	float: none;
+	margin-left: 0;
+}
+
+div#fancyLogoutWrapper span.nickLabel, div#entryBonusWrapper span.entryBonusLabel {
+	padding-left: 10px;
+	width:120px;
+}
+
+div#entryBonusWrapper .entryBonusBalance, div#fancyLogoutWrapper .myTickets{
+	margin-left:3px;
+	width:85px;
+}
+
+div#entryBonusWrapper .entryBonusTarget, div#fancyLogoutWrapper .myLiveTickets {
+	width:85px;
+}
+
+div#entryBonusWrapper .entryBonusBonus, div#fancyLogoutWrapper .happyHour {
+	width: 110px;
+}
+
+div#entryBonusWrapper .entryBonusBonus, div#fancyLogoutWrapper span.happyHour a:link , div#fancyLogoutWrapper span.happyHour a:visited {
+	text-transform: uppercase;
+	color: #d2b067 !important;
+}
+
+div#fancyLogoutWrapper .balance {
+	padding-left:2px;
+	margin-left:3px;
+	width:168px;
+} 
+
+div#entryBonusWrapper .entryBonusCountdown{
+	margin-left:3px;
+	width:160px;
+} 
+
+div#fancyLogoutWrapper .logOffButton {
+	text-align:center;
+	margin-left:4px;
+	width: 60px;
+}
+div#fancyLogoutWrapper .logOffButton a:link{
+	font-size:10px;
+}
+
+div#outsideFancyWrapper {
+	display:inline-block;
+	float:left;
+	width:145px;
+}
+
+span.eBspan{
+	display: inline-block !important;;
+}
+
+span.balance span.slashSeparator{
+	margin-left:3px;
+}
+
+div#entryBonusWrapper a:hover, div#fancyLogoutWrapper a:hover{
+	color: #d2b067 !important;
+}
+
+div#fancyLogoutWrapper span.happyHour span.notHappyHour {
+	color: #bcbec0;
+}
+
+div#entryBonusWrapper span.entryBonusCountdown img.ico-eb {
+	margin-right: 2px;
+}

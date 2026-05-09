@@ -1,0 +1,27 @@
+<?=$this->feedbackMsg?>
+
+<input name="affiliatePartnerId" id="affiliatePartnerId" type="hidden" value="<?=$this->affiliatePartnerId?>" />
+<div class="actions">
+	<button onclick="hideDetail('affiliate-partner-container')"><?=i18n::tr("close_detail")?></button>
+</div>
+
+<table class="table-detail">
+	<tr>
+		<th class="header"><?=i18n::tr("month")?></th>
+		<th class="header"><?=i18n::tr("date_from")?></th>
+		<th class="header"><?=i18n::tr("date_to")?></th>
+		<th class="header"><?=i18n::tr("collect_ticket_count")?></th>
+		<th class="header"><?=i18n::tr("amount")?></th>
+		<th class="header"><?=i18n::tr("totalWin")?></th>
+		<th class="header"><?=i18n::tr("provision")?></th>
+	</tr>
+	<tr>
+		<td><?=$this->actualMonth?></td>
+		<td><?=$this->firstDay?></td>
+		<td><?=$this->lastDay?></td>
+		<td><?=$this->provision->pocet?></td>
+		<td><?=number_format($this->provision->castka, '2', '.', ' ')?></td>
+		<td><?=number_format($this->provision->vyhra, '2', '.', ' ')?></td>
+		<td><b><?=number_format($this->provision->provize, '2', '.', ' ')?></b></td>
+	</tr>
+</table>

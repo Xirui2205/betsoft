@@ -1,0 +1,44 @@
+<div id="right">
+	<h2 class="boxheader"><?= $this->trans('entry_bonus') ?></h2>
+	<div class="contentbox">
+		<?php if (!empty($this->bonus) && !empty($this->bonus['from'])): ?>
+			<table class="table table-striped table-hover">
+				<tr>
+					<th><?= $this->trans('from') ?></th>
+					<td><?= $this->bonus['from'] ?></td>
+				</tr>
+				<tr>
+					<th><?= $this->trans('first_stake') ?></th>
+					<td><?= $this->formatCurrency($this->bonus['base'], $this->bonus['currencyName']) ?></td>
+				</tr>
+				<tr>
+					<th><?= $this->trans('bonus') ?></th>
+					<td><?= $this->formatCurrency($this->bonus['bonus'], $this->bonus['currencyName']) ?></td>
+				</tr>
+				<tr>
+					<th><?= $this->trans('target_balance') ?></th>
+					<td><?= $this->formatCurrency($this->bonus['target'], $this->bonus['currencyName']) ?></td>
+				</tr>
+				<tr>
+					<th><?= $this->trans('balance') ?></th>
+					<td><?= $this->formatCurrency($this->bonus['balance'], $this->bonus['currencyName']) ?></td>
+				</tr>
+				<tr>
+					<th><?= $this->trans('days_left') ?></th>
+					<td><?= false === $this->bonus['daysLeft'] ? '-' : $this->bonus['daysLeft'] ?></td>
+				</tr>
+				<tr>
+					<th><?= $this->trans('received') ?></th>
+					<td><?= isset($this->bonus['applied']) ? $this->formatCurrency($this->bonus['applied'], $this->bonus['currencyName']) : '-' ?></td>
+				</tr>
+				<tr>
+					<th><?= $this->trans('received_at') ?></th>
+					<td><?= isset($this->bonus['appliedAt']) ? $this->bonus['appliedAt'] : '-' ?></td>
+				</tr>
+			</table>
+		<?php else: ?>
+			<p><?= $this->trans('no_entry_bonus') ?></p>
+		<?php endif; ?>
+    </div>
+</div>
+<?= $this->render('myaccount/user-profile-left-col.phtml'); ?>

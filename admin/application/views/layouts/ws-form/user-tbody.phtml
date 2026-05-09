@@ -1,0 +1,73 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+		<tr>
+			<?php if (!$this->layout()->modeBookmaker): ?>
+			<td>
+				<input type="checkbox" class="no" name="selectUser[<?=$row['userId']?>]" value="<?=$row['userId']?>"/>
+			</td>
+
+			<td>
+				<?php
+				if( $row['isForbiden'] != '1' ) {
+					$style = "color:green";
+					$onClickEvent = "allow_bann_user(".$row['userId'].", 'bann')";
+				} else {
+					$style = "color:red";					
+					$onClickEvent = "allow_bann_user(".$row['userId'].", 'allow')";
+				}
+				?>
+				<label style="cursor: pointer; font-weight: bold;<?=$style?>" onclick="<?=$onClickEvent?>"><?php if( $row['isForbiden'] != '1' ) { echo i18n::tr('ban_user'); } else { echo i18n::tr('allow_user'); } ?></label>
+
+				<!--<input type="submit" value="<?php if( $row['isForbiden'] != '1' ) { echo i18n::tr('ban_user'); } else { echo i18n::tr('allow_user'); } ?>" id="select_user_<?=$row['userId']?>"/>-->
+			</td>
+
+			<!--
+			<td>
+				<input
+					type="submit"
+					name="<?=($row['isForbiden'] == '1' ? "allow" : "ban")?>[<?=$row['userId']?>]"
+					value="<?=($row['isForbiden'] == '1' ? i18n::tr('allow_user') : i18n::tr('ban_user'))?>"
+					<?php if( $row['isForbiden'] != '1' ):?>
+					onclick="return confirm('<?=i18n::tr('question_ban_user')?>')"
+					<?php else:?>
+				    onclick="return confirm('<?=i18n::tr('question_allow_user')?>')"
+					<?php endif;?>
+				/>
+
+			</td>-->
+			<?php else: ?>
+			<td></td>
+			<?php endif; ?>
+			<td>
+				<input
+					type="button"
+					onClick="viewUserDetail(<?=intval($row['userId'])?><?= $this->layout()->modeBookmaker ? ',319' : '' ?>)"
+					class="sbutton"
+					value="<?=i18n::tr('user_detail')?>"
+				/>
+			</td>
+			<td class="textcenter" <?=($this->shoda->isShodaPC($row['userId']) || $this->shoda->isShodaIP($row['userId'])?'style="background:yellow"':'')?> >
+				<?=$row['userId']?>
+			</td>
+			<td><?=Help::Html($row['firstName'])?></td>
+			<td><?=Help::Html($row['lastName'])?></td>
+			<td><?=Help::Html($row['username'])?></td>
+			<?php if (!$this->layout()->modeBookmaker): ?>
+			<td><?=Help::Html($row['email'])?></td>
+			<?php endif; ?>
+			<td class="text-right"><?=Help::Html(round($row['balance'],2))?></td>
+			<td><?=Help::Html($row['currencyName'])?></td>
+			<td class="text-right"><?=Help::Html(round($row['points'][0]['balance'],0))?></td>
+			<td><?=It6_Date::fromDbAsDate($row['birthDate'])?></td>
+			<td class="textcenter" >
+				<?=It6_Date::fromDb($row['registrationTime'])?>
+			</td>
+			<td class="text-right"<?=($row['winRatio']>100?"background:red;color:white":"")?>" nowrap="nowrap" >
+				<?=$row['winRatio']?> %
+			</td>
+			<td class="text-right"><?=Help::Html($row['financeRating'])?></td>
+			<!--url encoded string (by encodeURI) specifying the id of branch to load the detail of-->
+			<td><a href="/?section=159#%7B%22branchId%22:%22<?=$row['branchId']?>%22%7D"?><?=$row['branchName']?></a></td>
+		</tr>
+	<?php endforeach?>
+</tbody>

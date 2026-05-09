@@ -1,0 +1,18 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+		<tr>
+			<td style="width: 1%;">
+			<input 
+				type="button" 
+				value="<?=i18n::tr('Detail')?>" 
+				onClick="loadGeneric('<?=$this->updateSectionId?>', 'branch-stem', { stemId : <?=$row['stemId']?> })" 
+			/>
+			</td>
+			<td class="border-left"><?=$row['name']?></td>
+			<td class="border-left"><?=$row['adminFirstName'] . ' ' . $row['adminLastName']?></td>
+			<td class="border-left"><?=$row['desc']?></td>
+			<td class="border-left"><?=$row['fileName']?></td>
+			<td class="border-left"><?=($row['sendMail'] == 1) ? i18n::tr('ano') : i18n::tr('ne')?></td>
+		</tr>
+	<?php endforeach?>
+</tbody>

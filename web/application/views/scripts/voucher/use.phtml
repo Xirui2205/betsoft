@@ -1,0 +1,13 @@
+<div id="right">
+	<h2 class="boxheader"><?= $this->trans('voucher') ?></h2>
+	<div class="contentbox" id="voucherContainer">
+		<?=$this->feedbackMsg?>
+		<?php if( !$this->blocked ):?>
+		<form action="<?=$this->form->getAction()?>" method="post" class="legendBg">
+			<?= $this->form ?>
+		</form>
+		<?php endif;?>
+	</div>
+</div>
+
+<?=$this->render('myaccount/user-profile-left-col.phtml'); ?>

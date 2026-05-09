@@ -1,0 +1,31 @@
+<?php
+	$articleDetailUrl = $this->urlSet(ArticleController::$articlesReadSectionId).$article['articleId']."/".$article['articleUrl'];
+	// zvyrazneni casti nadpisu pred dvojteckou
+	$titleParts = explode(':', $article['articleTitle']);
+	$titleExtra = $article['articleTitle'];
+	
+	$articlePublished = "";
+	if(!is_null($article['articlePublished'])) {
+		$articlePublished = It6_Date::fromDbAsDate($article['articlePublished']).' - ';
+	}
+	
+	if (isset($titleParts[1])) {
+		$titleExtra = '<strong>'.$articlePublished.$this->escape($titleParts[0]).'</strong>:'.$this->escape($titleParts[1]);
+	}
+	?>
+	
+	<h2 class="boxheader"><a href="<?= $articleDetailUrl ?>"><?= $titleExtra ?></a></h2>
+
+	<div class="contentbox promo promo-left">
+		<?php
+		// image:
+		if (!empty($article['imageName'])) { ?>
+		<a href="#"><img src="<?=GFX_SERVER?><?=rawurlencode($article['imageName'])?>" alt="<?=$article['imageName']?>"></a>
+		<?php } ?>
+
+		<!--<h3 class="highlight"></h3>-->
+		<p><?=$this->escape($article['articlePerex'])?></p>
+		<a href="<?= $articleDetailUrl ?>" class="btn btn-big">více</a>
+	</div>
+
+<?php $firstArticle = false; ?>

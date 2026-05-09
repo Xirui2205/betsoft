@@ -1,0 +1,50 @@
+<form method="post" action="{ACTION}">
+
+<h2>Pobočky</h2>
+
+
+<table>
+  <tr>
+   <td>Fulltext:</td>
+   <td><input type="text" value="{FILTR_FULLTEXT}"  name="filtr_fulltext"  class="" /></td>
+   <td>Pobočka ID:</td>
+   <td><input type="text" value="{FILTR_ID}" name="filtr_id"  class="" /></td>
+   <td>Pouze aktivní:</td>
+   <td><input type="checkbox" {FILTR_AKTIVNI} name="filtr_aktivni"  class="" /></td>
+   <td><input type="submit" value="Hledat" name="filr"  class="" /></td>
+  </tr>
+</table>
+
+<br /><br />
+<table class="prava" >
+
+  <tr>
+   <th class="bettabhead2"> Pobočka ID</th>
+   <th class="bettabhead2"> Jméno </th>
+   <th class="bettabhead2"> Ulice </th>
+   <th class="bettabhead2"> Město</th>
+   <th class="bettabhead2"> Email</th>
+   <th class="bettabhead2"> Telefon</th>
+   <th class="bettabhead2"> Stav</th>
+   <th class="bettabhead2"> &nbsp;</th>
+  </tr>
+  
+  <!-- START BLOCK : list -->
+  <tr>
+   <td style="text-align:center">#{POBOCKA_ID}</td>
+   <td style="text-align:center">{JMENO}</td>
+   <td style="text-align:center">{ULICE}</td>
+   <td style="text-align:center">{MESTO}</td>
+   <td style="text-align:center">{EMAIL}</td>
+   <td style="text-align:center">{TELEFON}</td>
+   <td style="text-align:center">{STAV}</td>
+   <td style="text-align:center"><input type="submit" value="Detail" name="detail"  onclick="$('#pobocka_id').attr('value',{POBOCKA_ID})" class="" /></td>
+  </tr>
+  <!-- END BLOCK : list --> 
+  
+</table>
+
+{PAGE}
+
+<input type="hidden" value="" id="pobocka_id" name="pobocka_id"  class="" />
+</form>

@@ -1,0 +1,9 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="viewBranchOpeningHours(<?=$this->branchId?>);"><?=i18n::tr('View')?></button>
+	<button onclick="hideDetail('branch-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<?=UiUtil::printWarnings(I18n::tr('branch_opening_hours_edit_description'))?></p>
+<?php echo $this->form?>

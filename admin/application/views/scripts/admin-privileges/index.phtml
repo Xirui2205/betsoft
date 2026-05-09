@@ -1,0 +1,13 @@
+<?php if ( $this->editable ): ?>
+  <?=$this->feedbackMsg?>
+  <?=$this->form?>
+<?php else:?>
+  <p><?=i18n::tr('Just admins with one role can be edited.')?></p>
+  <h4><?=i18n::tr('Roles')?></h4>
+  <?php foreach( $this->roles as $role ):?>
+    <ul>
+      <li><?=$role?></li>
+    </ul>
+  <?php endforeach;?>
+<?php endif;?>
+

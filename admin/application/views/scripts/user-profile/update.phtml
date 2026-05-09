@@ -1,0 +1,8 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="loadGeneric(<?=$this->viewSectionId?>, 'user-profile', { userId : <?=$this->userId?> })"><?=i18n::tr('View')?></button>
+	<button onclick="hideDetail('user-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<?=$this->userProfileForm?>

@@ -1,0 +1,11 @@
+<?php if($GLOBALS['ses_status'] != 2 && $GLOBALS['ses_status'] != 3): ?>
+	<a id="btn-registrace" href="<?=$this->UrlSet(24); ?>"><?=$this->trans('registration');?></a>
+	<a class="txt" href="<?=$this->UrlSet(25); ?>"><?=$this->trans('forget_pass');?></a>
+	<form method="post" action="/" id="loginForm">
+		<input class="txt" type="text" id="nick" placeholder="<?=$this->trans('reg_email'); ?>" />
+		<input class="txt" type="password" id="pass" placeholder="<?=$this->trans('password'); ?>" />
+		<input type="submit" value="<?=$this->trans('login')?>" id="login" class="sbm" />
+	</form>
+	<span id="loginFeedback"></span>
+<?php endif; ?>
+<?=$this->render('index/languageSelector.phtml')?>

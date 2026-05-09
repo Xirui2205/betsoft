@@ -1,0 +1,34 @@
+<?php /*
+
+<h2><?=$this->trans('news'); ?></h2>
+
+<div class="aktuality">
+	<?php foreach($this->news as $news_id=>$data): ?>
+		<div class="aktualita">
+
+			<div class="img">
+				<a href="<?=$this->UrlSet(28,'','','index/n/'.$news_id.'/'); ?>">
+					<img src="<?=GALERY_PATH.$data['hp_image']?>" alt="<?=$this->trans('news image')?>"/>
+				</a>
+			</div>
+
+			<div class="txt">
+				<h3>
+					<a href="<?=$this->UrlSet(28,'','','index/n/'.$news_id.'/'); ?>">
+						<?=$data['nadpis']; ?>
+					</a>
+				</h3>
+				<p>
+					<?=Models_Helpers_Help::Html($data['anotace']); ?>
+				</p>
+			</div>
+
+			<div class="odkazy">
+				<a href="<?=$this->UrlSet(28,'','','index/n/'.$news_id.'/'); ?>">
+					<?=$this->trans('more'); ?>
+				</a>
+			</div>
+		</div>
+	<?php endforeach; ?>
+</div>
+*/?>

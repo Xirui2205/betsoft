@@ -1,0 +1,172 @@
+<?=$this->msg?>
+
+<form method="post" enctype="multipart/form-data" action="?section=<?=$this->section?>">
+  <div>
+    <?=I18n::tr('Search')?>
+    <input
+      type="text"
+      name="search"
+      value="<?=$_REQUEST['search']?>" />
+    <input type="submit" name="search_button" value="<?=I18n::tr('Search')?>" />
+  </div>
+  <div>
+    <?=I18n::tr('New Menu Item')?>:
+    <input type="text" class="sinput" maxlength="100" name="new_gmenu" />
+    <input type="submit" value="<?=I18n::tr('Create')?>" class="sbutton" name="cgm" />
+  </div>
+
+
+  <div>
+    <a
+      href="?section=<?=$this->section?>"
+      <?php if(!isset($_REQUEST['gmenu']) || $_REQUEST['gmenu'] == 'all'):?>
+        style="font-weight: bold;"
+      <?php endif?>
+    >
+      <?=I18n::tr('Show all')?>
+    </a>
+
+
+    <?php foreach($menuItems as $item):?>
+      &nbsp;|
+      <input
+				type="checkbox"
+				class="no"
+				name="galery_menu[<?=$item['galerie_menu_id']?>]"
+			/>
+			<a
+        href="?section=<?=$this->section?>&gmenu=<?=$item['galerie_menu_id']?>"
+        <?php if($_REQUEST['gmenu'] == $item['galerie_menu_id']):?>
+          style="font-weight: bold;"
+        <?php endif?>
+      >
+        <?=Help::Html($item['nazev'])?>
+      </a>
+			<a href="?section=<?=$this->section?>&gmenud=<?=$item['galerie_menu_id']?>&search=<?=$_REQUEST['search']?>">
+				x
+			</a>
+    <?php endforeach?>
+  </div>
+
+
+
+    <table class="">
+      <tr>
+        <td valign="top" nowrap="nowrap">
+
+        </td>
+        <td>
+          <h3 ><?=I18n::tr('New Image')?></h3>
+          <table>
+            <tr>
+              <td colspan="2">
+                <?=I18n::tr('Allowed file types: .jpg, .gif, .swf, .png')?><br />
+                <?=I18n::tr('Max file size 4 mb')?>
+              </td>
+              <td rowspan="7" valign="top">
+              </td>
+            </tr>
+
+            <tr>
+              <td><h4><?=I18n::tr('Image Description')?>:</h4></td>
+              <td>
+                <input type="text" name="imageDesc" maxlength="255" />
+              </td>
+            </tr>
+
+            <tr>
+              <td><h4><?=I18n::tr('File')?>:</h4></td>
+              <td>
+                <input
+                  type="file"
+                  name="imageFile"
+                  onchange="document.getElementById(\'gimage\').src = this.value"
+                  accept="image/gif,image/jpeg"
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="2"><h4><?=I18n::tr('Alt Text')?>:</h4></td>
+              <td>&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td colspan="2">
+                <?php foreach($languages as $language):?>
+                  <div>
+                    <label class="floatleft"><?=$language['alt_text']?>:</label>
+                    <input type="text" name="imageAlt[<?=$language['lang_id']?>]" maxlength="255" />
+                  </div>
+                <?php endforeach?>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <input type="submit" name="insertimage" value="<?=I18n::tr('Insert')?>">
+              </td>
+            </tr>
+          </table>
+
+
+          <h3><?=I18n::tr('Images')?></h3>
+
+          <table class="floatleft">
+
+            <?php foreach($images as $image):?>
+              <tr>
+                <td>
+                  <a href="<?=$image['pathFullSize']?>" target="_blank">
+                    <img src="<?=$image['path']?>" class="img" />
+                  </a>
+                </td>
+
+                <td>
+                  <div>
+                    <label><?=I18n::tr('File Name')?>:</label>
+                    <?=Help::Html($image['name'])?>
+                  </div>
+
+                  <div>
+                    <label><?=I18n::tr('Image Description')?>:</label>
+                    <?=Help::Html($image['popis'])?>
+                  </div>
+
+                  <div>
+                    <label><?=I18n::tr('Alt Text')?>:</label>
+
+                      <?php foreach($image['alt'] as $alt):?>
+                        <div>
+                          &nbsp;
+                          <label><?=$alt['alt_text']?>:</label>
+                          <?=Help::Html($alt['alt'])?>
+                        </div>
+                      <?php endforeach?>
+                  </div>
+                </td>
+
+                <td>
+                  <input
+                    type="submit"
+                    class="sinput"
+                    name="editimage[<?=$image['image_id']?>]"
+                    value="<?=I18n::tr('Edit')?>"
+                  />
+
+                  <input
+                    type="submit"
+                    class="sinput"
+                    name="deleteimage[<?=$image['image_id']?>]"
+                    value="<?=I18n::tr('Delete')?>"
+                  />
+                </td>
+              </tr>
+            <?php endforeach?>
+
+
+          </table>
+        </td>
+      </tr>
+  </table>
+</form>

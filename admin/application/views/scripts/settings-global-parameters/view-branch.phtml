@@ -1,0 +1,73 @@
+<?=$this->feedbackMsg?>
+
+<div id="new-param-form" style="border: 1px solid white; background-color:#0099FF; color:white;">
+	<table>
+	    <tr>
+	    	<td>
+			    <h3><?=i18n::tr('new_param')?><br /><br />
+			    <?=i18n::tr('name')?>: <input type="text" name="name" id="name" value="" />
+			    <?=i18n::tr('value')?>: <input type="text" name="value" id="value" value="" />
+			    <?=i18n::tr('description')?>: <input type="text" name="description" id="description" value="" />
+				<button onclick="newParam(document.getElementById('name').value,document.getElementById('value').value,document.getElementById('description').value)"><?=i18n::tr('new_param')?></button>
+	    	</td>
+	    </tr>
+	</table>
+</div>
+
+<script type="text/javascript">
+function getInfo($paramId) {
+	if ( $('#info').length ) {
+		$("#info").remove();
+	}
+	var $data = infoParameterBranch($paramId);
+
+}
+</script>
+
+<script type="text/javascript">
+function closeInfo() {
+	$("#info").remove();
+}
+
+$( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) { // ESC
+		$("#info").remove();
+    }
+});
+</script>
+
+<div class="actions">
+	<button onclick="editParameterBranch()"><?=i18n::tr('edit')?></button>
+</div>
+
+<table class="table-detail">
+
+	<tr>
+		<th class="header" colspan="6">
+			<?=i18n::tr('branch_parameter_defaults')?>
+		</th>
+	</tr>
+
+	<?php foreach($this->branchParameters as $key=>$value):?>
+		<tr>
+			<td><?=$value['name']?></td>
+			<td><?=$value['value']?></td>
+			<td><?=($value['isEditable'] == 1 ? I18n::tr('editable') : I18n::tr('not_editable'))?></td>
+			<td><?=$value['description']?></td>
+			<td>
+				<?php
+				if ($value['manually_inserted'] == 1) {
+				?>
+					<button onclick="if(confirm('Are you sure you want to delete parameter: <?="[".$value["name"]."]"?>')) deleteParam(<?=$key?>)"><?=i18n::tr('smazat')?></button>
+				<?php
+				} else {
+					echo '&nbsp;';
+				}
+				?>
+			</td>
+			<!--<td><a class="stat tip" title="" href='#' onmouseenter='getInfo(<?=$key?>);' onmouseleave='closeInfo();'><div>&nbsp;</div></a></td>-->
+			<td><a class="stat tip" title="" href='#' onClick='getInfo(<?=$key?>);'><div>&nbsp;</div></a></td>
+		</tr>
+	<?php endforeach?>
+
+</table>

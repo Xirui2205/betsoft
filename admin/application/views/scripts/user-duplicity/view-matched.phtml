@@ -1,0 +1,74 @@
+<?php 
+/*
+userId
+matchCount
+firstMatchTime
+lastMatchTime
+persistentId
+remoteIp
+name
+surname
+*/
+?>
+<script text/javascript>
+//<![CDATA[
+	function sendPagerXhr() {
+		var data = {
+			'userId': <?= $this->userId ?>,
+			'byCookie': <?= $this->matchByCookie ? 1 : 0 ?>,
+			'byIp': <?= $this->matchByIp ? 1 : 0 ?>,
+			'umatchPager[recsPerPage]' : parseInt($('#umatchPager_recsPerPage').val()),
+			'umatchPager[pageNum]' : parseInt($('#umatchPager_targetPage').val())
+		};
+		loadGeneric(<?=$this->viewMatchedSectionId?>, 'user-duplicity', data);
+		return false;
+	}
+//]]>
+</script>
+<div class="actions">
+	<button onClick="loadGeneric(<?=$this->viewSectionId?>, 'user-duplicity', { userId : <?=$this->userId?> });"><?=i18n::tr('Back')?></button>
+</div>
+
+<?= $this->feedbackMsg ?>
+
+<?php if(!empty($this->matches)):?>
+	<form id="umatchPagerForm" onsubmit="return sendPagerXhr();" action="" method="post">
+		<?= $this->pager ?>
+	</form>
+
+	<table class="table-detail">
+		<thead>
+			<th>Uživatel</th>
+			<?php if ($this->matchByCookie): ?>
+			<th>PC</th>
+			<?php endif; ?>
+			<?php if ($this->matchByIp): ?>
+			<th>IP</th>
+			<?php endif; ?>
+			<th>Počet</th>
+			<th>První shoda</th>
+			<th>Poslední shoda</th>
+		</thead>
+		<tbody>
+			<?php foreach($this->matches as $match):?>
+				<tr>
+					<td>
+						<a href="javascript:void(0)" onclick="viewUserDetail(<?=$match['userId']?>)"><?=$match['username']?></a>
+						(#<?=$match['userId']?>)
+					</td>
+					<?php if ($this->matchByCookie): ?>
+					<td><?=$match['persistentId']?></td>
+					<?php endif; ?>
+					<?php if ($this->matchByIp): ?>
+					<td><?=$match['remoteIp']?></td>
+					<?php endif; ?>
+					<td><?=$match['matchCount']?></td>
+					<td><?=It6_Date::fromDb($match['firstMatchTime'])?></td>
+					<td><?=It6_Date::fromDb($match['lastMatchTime'])?></td>
+				</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+<?php else:?>
+	<?=i18n::tr('There are no matches.')?>
+<?php endif?>

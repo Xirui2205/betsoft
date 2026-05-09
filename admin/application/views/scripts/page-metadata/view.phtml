@@ -1,0 +1,49 @@
+<?=$this->feedbackMsg?>
+
+<?php if ($this->pageMetadata) : ?>
+
+	<input name="controllerId" id="controllerId" type="hidden" value="<?=$this->pageMetadata['controllerId']?>" />
+	<div class="actions">
+		<button onClick="editPageMetadataDetail(<?=$this->pageMetadata['controllerId']?>, <?=$this->pageMetadata['langId']?>)"><?=i18n::tr('edit')?></button>
+		<button onclick="hideDetail('page-metadata-container')"><?=i18n::tr('close_detail')?></button>
+	</div>
+
+	<table class="table-detail">
+		<tr>
+			<th class="header" colspan="2"><?=i18n::tr('metadata')?></th>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('Id')?></th>
+			<td id="page_metadata_id"><?=$this->pageMetadata['controllerId']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('lang_id')?></th>
+			<td><?=$this->pageMetadata['langId']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('request_controller')?></th>
+			<td><?=$this->pageMetadata['requestController']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('request_action')?></th>
+			<td><?=$this->pageMetadata['requestAction']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('actionless')?></th>
+			<td><?=i18n::tr( $this->pageMetadata['actionless'] ? 'yes' : 'no' )?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('title')?></th>
+			<td><?=$this->pageMetadata['title']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('meta_description')?></th>
+			<td><?=$this->pageMetadata['description']?></td>
+		</tr>
+		<tr>
+			<th><?=i18n::tr('meta_keywords')?></th>
+			<td><?=$this->pageMetadata['keywords']?></td>
+		</tr>
+	</table>
+
+<?php endif; ?>

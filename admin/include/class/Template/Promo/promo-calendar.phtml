@@ -1,0 +1,48 @@
+<div class="actions">
+	<?php include('ab-new-promo.phtml')?>
+	<?php include('ab-filter.phtml')?>
+</div>
+
+
+<?php if(!empty($promos)) : ?>
+	<?php for($i=0; $i < $calendarScope; $i++) : ?>
+		<div class="promo-calendar-date-block" style="width: <?=($pxPerHour * 24) - 1?>px">
+			<?=It6_Date::timestampToDate(It6_Date::nowAsTimestamp() + ($i * 24 * 3600))?>
+		</div>
+	<?php endfor?>
+
+	<?php foreach($promos as $promo) : ?>
+		<div
+			class="promo-calendar-container-block"
+			style="width: <?=($pxPerHour * 24 * $calendarScope) ?>px"
+		>
+			<table>
+				<tr>
+					<?php for($i=0; $i < $calendarScope; $i++) : ?>
+						<td style="width: <?=($pxPerHour * 24) - 1?>px"></td>
+					<?endfor?>
+				</tr>
+			</table>
+
+			<div
+				class="promo-calendar-promo-block
+					<?=(It6_Date::nowAsTimestamp() < It6_Date::fromDbAsTimestamp($promo['platne_od']) ? 'promo-coming' : 'promo-current')?>"
+				style="width:<?=$promo['width']?>px; left: <?=$promo['offset']?>px"
+				title="<?=It6_Date::fromDbAsDate($promo['platne_od'])?> <?=It6_Date::fromDbAsTime($promo['platne_od'], It6_Date::PART_TIME_SHORT)?> | <?=$promo['title']?> | <?=It6_Date::fromDbAsDate($promo['platne_do'])?> <?=It6_Date::fromDbAsTime($promo['platne_do'], It6_Date::PART_TIME_SHORT)?>"
+			>
+				<span class="date-to">
+					<?=($promo['validToOverflow'] == true ? It6_Date::fromDbAsDate($promo['platne_do']) : '')?> <?=It6_Date::fromDbAsTime($promo['platne_do'], It6_Date::PART_TIME_SHORT)?>
+				</span>
+				<b><?=$promo['title']?></b>
+				<span class="date-from">
+					<?=($promo['validFromOverflow'] == true ? It6_Date::fromDbAsDate($promo['platne_od']) : '')?> <?=It6_Date::fromDbAsTime($promo['platne_od'], It6_Date::PART_TIME_SHORT)?>
+				</span>
+			</div>
+		</div>
+	<?php endforeach?>
+
+	<div style="clear: left"></div>
+<?php else : ?>
+	<?=UiUtil::printErrors(I18n::tr('no_data'))?>
+<?php endif?>
+	

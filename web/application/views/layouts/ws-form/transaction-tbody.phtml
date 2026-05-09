@@ -1,0 +1,33 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+		<tr class="transaction-<?=$row['bhStatus']?>">
+			<td class="id"><?=$row['handle']?></td>
+			<td class="name">
+				<?php if ( !empty($row['canceledTransactionId']) ):?>
+				  <span style="color: red; font-weight: bold"><?=$this->trans('cancel_of')?></span>
+				<?php endif; ?>
+				<?= ($row["typeName"] == Webservice_TransactionType::NAME_USER_BONUS_ENTRY && !empty($row["notes"])) ? $row["notes"] : $this->trans('transactions-' . $row['typeName']) ?>
+				<?=empty($row['ticketHandle']) ? '' : '<a href="'.$this->UrlSet(18).'t/'. $row['ticketHandle'].'">#' . $row['ticketHandle'].'</a>'?>
+                <?=empty($row['liveTicketHandle']) ? '' : '<a href="'.$this->UrlSet(75).'t/'. $row['liveTicketHandle'].'">#' . $row['liveTicketHandle'].'</a><img src="/new/images/icons/live.png" class="float-right" />'?>
+			</td>
+            <?php if( is_numeric($row['value']) ): ?>
+			<td class="value text-right <?php
+				if ($row['startBalance'] == $row['endBalance'])
+					echo 'text-grey';
+				else
+					echo ($row['value'] <= 0 ? 'text-red' : 'text-green'); ?>">
+				<?=$this->formatCurrency($row['value'])?> <?=$row['currencyCode']?>
+			</td>
+            <?php else:?>
+            <td class="text-right">
+        		<?=$row['value']?>
+            </td>
+            <?php endif; ?>
+            <td class="status text-right">
+              <?=$this->trans('transaction-' . $row['bhStatus']) ?>
+            </td>
+			<td class="value text-right"><?= It6_Date::fromDb($row['bhTime']) ?></td>
+			<td class="value text-right"><?=$this->formatCurrency($row['endBalance'])?> <?=$row['currencyCode']?></td>
+		</tr>
+	<?php endforeach?>
+</tbody>

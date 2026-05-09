@@ -1,0 +1,108 @@
+<?php if ($GLOBALS['ses_status'] != 2 && $GLOBALS['ses_status'] != 3): ?>
+	<?=$this->render('index/login.phtml')?>
+<?php else:?>
+	<div id="topnav">
+	<div id="logoutWrapper" class="right">
+			<div id="outsideFancyWrapper">
+			<!--
+			<a id="operationTime" class="txt" href="<?php //$this->UrlSet(116); ?>">
+				<?php //$this->trans('operation_time');?>
+			</a>-->
+			<a class="txt" href="<?=$this->UrlSet(20); ?>">
+			<?=$this->trans('game_plan');?>
+			</a>
+			<a class="txt" href="<?= $this->UrlSet(21) /* 21 was deposit/withdraw info page, 53 is bank deposit */ ?>">
+				<?=$this->trans('dep_with');?>
+			</a>
+			</div>
+			<div id="fancyLogoutWrapper">
+				<span class="eBspan nickLabel">
+				<a class="txt" href="<?=$this->UrlSet(35); ?>">
+					<img class="ico-eb" src="/images/person_icon.png" />
+					<?=Zend_Registry::get('nick'); ?>
+				</a>
+				</span>
+				<span class="eBspan myTickets">
+				<a class="txt" href="<?=$this->UrlSet(17); ?>">
+				<img class="ico-eb" src="/images/ticket_icon.png" />
+					<?=$this->trans('my_ticket');?>
+				</a>
+				</span>
+				<span class="slashSeparator"> / </span>
+				<span class="eBspan myLiveTickets">
+				<a class="txt" href="<?=$this->UrlSet(70); ?>">
+				<img class="ico-eb" src="/images/ticket_live_icon.png" />
+					<?=$this->trans('my_live_ticket');?>
+				</a>
+				</span>
+				<span class="slashSeparator"> / </span>
+				<span class="eBspan happyHour">
+				
+					<img class="ico-eb" src="/images/smail_icon.png" />
+					<?php if (!empty($this->showVisitHappyHour) ): ?>
+						<a class="txt wide" href="<?=$this->UrlSet(90); ?>">
+							<?=$this->trans('visit_happy_hour')?>
+						</a>
+					<? else : ?>
+					<span class="notHappyHour tooltip" title="<?=$this->trans('happy_hour_not_active')?>">
+						<?=$this->trans('visit_happy_hour')?>
+					</span>
+					<?php endif;?>
+				</span>
+				<span class="eBspan balance">
+				<img class="ico-eb" src="/images/money_icons.png" />
+				<a class="txt wide" id="user-money" href="<?=$this->UrlSet(50); ?>">
+					<?=$this->balanceFormated; ?>
+				</a>
+				<span class="slashSeparator"> / </span>
+				<img class="ico-eb" src="/images/score_icon.png" />
+				<a class="txt wide" id="user-points" href="<?=$this->UrlSet(58); ?>">
+					<?=$this->pointsFormated; ?>
+				</a>
+				</span>
+				<span class="eBspan logOffButton">
+				<a href="<?=$this->UrlSet(63); ?>">
+					<?=$this->trans('logoff');?>
+				</a>
+				</span>
+			</div>
+			<?=$this->render('index/languageSelector.phtml')?>
+		</div>
+
+	</div>
+
+		<?php if ($this->bonus["to"] ) : ?> 
+		<div id="entryBonusWrapper" class="right">
+			<span class="eBspan entryBonusLabel"><?= $this->trans("entry_bonus"); ?></span>
+
+			<span class="eBspan entryBonusBalance"><img class="ico-eb" src="/images/bet_money_icon.png" />
+					<span class="tooltip" title="<?= $this->trans("balance") ?>"><?= $this->formatCurrencyPrecision($this->bonus['balance'], $this->bonus['currencyName'], 0) ?>
+					</span>
+			</span>
+			<span class="slashSeparator"> / </span>
+			<span class="eBspan entryBonusTarget"><img class="ico-eb" src="/images/put_in_icon.png" />
+					<span class="tooltip" title="<?= $this->trans("target_balance") ?>"><?= $this->formatCurrencyPrecision($this->bonus['target'], $this->bonus['currencyName'], 0) ?>
+					</span></span>
+			<span class="slashSeparator">&nbsp;/ </span>
+			<span class="eBspan entryBonusBonus"><img class="ico-eb" src="/images/star_icon.png" />
+					<span class="tooltip" title="<?= $this->trans("entry_bonus") ?>"><?= $this->formatCurrencyPrecision($this->bonus['bonus'], $this->bonus['currencyName'], 0) ?></span>
+			</span>
+			<span class="eBspan entryBonusCountdown"> <img class="ico-eb" src="/images/clock_icon.png" /><span class="tooltip" id="eb_countdown"  title="<?= $this->trans("entry_bonus_left") ?>"></span> 
+			</span>
+					
+			<script type="text/javascript">
+				$("#eb_countdown").countdown({
+					until: new Date(<?=$this->bonus["to"]?>*1000),
+					compact: true
+				});
+
+			</script>
+
+			 </span>
+
+		</div>
+	<?php endif; ?>
+	<script type="text/javascript">
+				$(".tooltip").tooltip();
+			</script>
+<?php endif;?>

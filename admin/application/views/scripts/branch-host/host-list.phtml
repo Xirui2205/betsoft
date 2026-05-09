@@ -1,0 +1,30 @@
+<?php if(count($this->hosts) > 0) : ?>
+	<table class="table-list" >
+		<tr>
+			<th></th>
+			<th></th>
+			<th><?=i18n::tr('host_name')?></th>
+			<th><?=i18n::tr('ip_address')?></th>
+			<th><?=i18n::tr('Banned')?></th>
+			<th><?=i18n::tr('Is online')?></th>
+			<th><?=i18n::tr('Note')?></th>
+		</tr>
+		<?php foreach($this->hosts as $host) : ?>
+			<tr>
+				<td>
+					<button onclick="viewBranchHost(<?=$this->branchId?>,<?=$host['hostId']?>);"><?=i18n::tr('view')?></button>
+				</td>
+				<td>
+					<button onclick="editBranchHost(<?=$this->branchId?>,<?=$host['hostId']?>);"><?=i18n::tr('edit')?></button>
+				</td>
+				<td><?=$host['name']?></td>
+				<td><?=$host['ip']?></td>
+				<td><?=$host['banned']?></td>
+				<td><img src="/_img/but_<?= $host['onlineStatus'] ? 'green' : 'red' ?>.gif"/><?= $host['lastAccess'] ? $host['lastAccess'] : '' ?></td>
+				<td><?=$host['note']?></td>
+			</tr>
+		<?php endforeach; ?>
+	</table>
+<?php else : ?>
+	<?=UiUtil::printWarnings(array('No hosts for this branch.'))?>
+<?php endif?>

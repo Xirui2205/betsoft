@@ -1,0 +1,21 @@
+<?php if(!empty($sazky)):?>
+	<table width="100%" style="border-collapse:collapse;">
+		<tr style="background-color: #9BE1FB">
+			<td><strong>Event Id</strong></td>
+			<td><strong>Datum</strong></td>
+			<td><strong>Sázka Text</strong></td>
+			<td><strong>Počet příspěvků</strong></td>
+		</tr>
+	<?php 
+	$i = 0;
+	while ($row = $sazky->fetchRow()): ?>
+		<tr style="background-color: <?php if($i % 2 == 1): ?>#EAEEEA<?php else: ?>#C5EFFD<?php endif;?>;">
+			<td><?php print $row["nl_id_sazka"]; ?></td>
+			<td><?php print $row["dt_zacatek"]; ?></td>
+			<td><a href="?section=<?php print $_GET['section']; ?>&pageId=detail&sazkaId=<?php print $row['nl_id_sazka']; ?>"><?php print $row["s_sazka"]; ?></a></td>
+			<td><?php print $row["nl_chat"]; ?></td>
+		</tr>
+	<?php $i++; endwhile; ?>
+	</table>
+	
+<?php endif; ?>

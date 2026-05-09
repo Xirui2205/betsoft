@@ -1,0 +1,234 @@
+<div class="actions">
+	<?php include('ab-promo-calendar.phtml')?>
+	<?php include('ab-filter.phtml')?>
+</div>
+
+
+<script type="text/javascript">
+	var maxLengths = new Array();
+	maxLengths['titleFieldMaxLength']	= <?=$promoTitleMaxLength?>;
+	maxLengths['textFieldMaxLength']	= <?=$promoTextMaxLength?>;
+	
+	countFields = new Array();
+	countFields[0] = 'titleField';
+	countFields[1] = 'textField';
+</script>
+<?php include 'alias-to-bet-id.phtml'; ?>
+
+
+<form method="post" enctype="multipart/form-data" action="?section=<?=$sectionId?>">
+	
+	<table class="table-list">
+		<tr>
+			<th><?=I18n::tr('Language')?></th>
+			<td>
+				<select name="lang_id">
+					<?php foreach($languages as $lang) : ?>
+						<option value="<?=$lang['lang_id']?>" <?=(!empty($fieldData['langId']) && $fieldData['langId'] == $lang['lang_id'] ? 'selected="selected"' : '') ?>>
+							<?=$lang['alt_text']?>
+						</option>
+					<?php endforeach?>
+				</select>
+			</td>
+		</tr>
+		
+		<tr>
+			<th>
+				<?=I18n::tr('Title')?>
+			</th>
+			<td>
+				<textarea name="title" id="titleField" class="superSmallTa" onKeyup="updatePreviewTitle(this)"><?=(!empty($fieldData['title']) ? $fieldData['title'] : '')?></textarea>
+				<div>
+					<?=I18n::tr('Characters Left:')?>
+					<span id="titleFieldCounter" class="char-counter"></span>
+				</div>
+			</td>
+		</tr>
+		
+		<tr>
+			<th><?=I18n::tr('Image')?></th>
+			<td>
+				<input
+					type="text"
+					name="img_name"
+					id="img_name"
+					value="<?=(!empty($fieldData['imgName']) ? $fieldData['imgName'] : '')?>"
+				/>
+				<a href="javascript:window.open('/galery.php?type=1&node=img_name','','width=640,height=480,scrollbars=yes');void(0);">
+					<img src="_clip/image_aktivni.gif" alt="" class="img" />
+				</a>
+			</td>
+		</tr>
+		
+		<tr>
+					<th><?=I18n::tr('Without text part')?></th>
+					<td>
+						<input type="checkbox" value="1" name="without_text"
+							   <?= (!empty($fieldData['withoutText']) && $fieldData['withoutText'] == 1) ? 'checked="checked"' : '' ?> />
+					</td>
+				</tr>
+		
+		<tr>
+			<th><?=I18n::tr('URL')?></th>
+			<td>
+				<input
+					type="text"
+					name="url"
+					value="<?=(!empty($fieldData['url']) ? $fieldData['url'] : '')?>"
+				/>
+			</td>
+		</tr>
+		
+		<tr>
+			<th><?=I18n::tr('bet_alias')?></th>
+			<td>
+				<input
+					type="text"
+					class="span-2"
+					name="bet_alias"
+					id="bet_alias"
+					onblur="setPromoBetId(this, 'sazka_id')"
+					onclick="$('#bet_alias-info').show();"
+					value="<?=(!empty($fieldData['betAlias']) ? $fieldData['betAlias'] : '')?>"
+				/>
+				<span id="bet_alias-info" style="display:none"><a href="javascript:void(0)"><?=I18n::tr('load')?></a></span>
+			</td>
+		</tr>
+		
+		<tr style="display:none">
+			<th><?=I18n::tr('Match Id')?></th>
+			<td>
+				<input
+					type="text"
+					class="span-2"
+					name="sazka_id"
+					id="sazka_id"
+					value="<?=(!empty($fieldData['betId']) ? $fieldData['betId'] : '')?>"
+				/>
+			</td>
+		</tr>
+		
+		<tr>
+			<th><?=I18n::tr('Page Id')?></th>
+			<td>
+				<input
+					type="text"
+					class="span-2"
+					name="menu_id"
+					value="<?=(!empty($fieldData['menuId']) ? $fieldData['menuId'] : '')?>"
+				/>
+			</td>
+		</tr>
+		
+		<tr>
+			<th><?=I18n::tr('Open in')?></th>
+			<td>
+				<select name="promo_okno">
+					<option value="_self"><?=I18n::tr('Same Window')?></option>
+					<option value="_blank" <?=(!empty($fieldData['target']) && $fieldData['target'] == '_blank' ? 'selected="selected"' : '')?>>
+						<?=I18n::tr('New Window')?>
+					</option>
+				</select>
+			</td>
+		</tr>
+		
+		<tr>
+			<th><?=I18n::tr('Active from')?></th>
+			<td>
+				<input
+					type="text"
+					class="promoInputField dateTime"
+					name="platne_od"
+					value="<?=(!empty($fieldData['validFrom']) ? $fieldData['validFrom'] : '')?>"
+				/>
+				<img src="images/ico/calendar.gif" class="calendar-icon">
+			</td>
+		</tr>
+		
+		<tr>
+			<th><?=I18n::tr('Active until')?></th>
+			<td>
+				<input
+					type="text"
+					class="promoInputField dateTime"
+					name="platne_do"
+					value="<?=(!empty($fieldData['validUntil']) ? $fieldData['validUntil'] : '')?>"
+				/>
+				<img src="images/ico/calendar.gif" class="calendar-icon">
+			</td>
+		</tr>
+		
+		<tr>
+			<th><?=I18n::tr('Show')?></th>
+			<td>
+				<table>
+				<?php foreach($controllers as $controller) : ?>
+					<tr>
+						<td>
+							<label for="show-on-<?=$controller['c_id']?>">
+								<?=$controller['text']?> (<?=$controller['c_id']?>)
+							</label>
+						</td>
+						<td>
+							<input
+								type="checkbox"
+								id="show-on-<?=$controller['c_id']?>"
+								class="promoInputField"
+								value="true"
+								name="show[<?=$controller['c_id']?>]"
+								<?=($controller['c_id'] == $preSelController ? 'checked=checked' : '')?>
+							/>
+						</td>
+					</tr>
+				<?php endforeach?>
+				</table>
+			</td>
+		</tr>
+		
+		<tr>
+			<th><?=I18n::tr('Priority')?></th>
+			<td>
+				<input
+					type="text"
+					name="priority"
+					value="<?=(!empty($fieldData['priority']) ? $fieldData['priority'] : '')?>"
+				/>
+			</td>
+		</tr>
+		
+		<tr>
+			<th><?=I18n::tr('Button Text')?></th>
+			<td>
+				<input
+					type="text"
+					class="promoInputField"
+					name="button_text"
+					value="<?=(!empty($fieldData['buttonText']) ? $fieldData['buttonText'] : '')?>"
+				/>
+			</td>
+		</tr>
+		
+		<tr>
+			<th><?=I18n::tr('Text')?></th>
+			<td>
+				<textarea name="text" class="smallTa" id="textField" onKeyup="updatePreviewText(this)"><?=(!empty($fieldData['text']) ? $fieldData['text'] : '')?></textarea>
+				<div>
+					<?=I18n::tr('Characters Left:')?>
+					<span id="textFieldCounter" class="char-counter"></span>
+				</div>
+			</td>
+		</tr>
+		
+		<tr>
+			<th></th>
+			<td>
+				<input type="submit" value="<?=I18n::tr('Insert')?>" name="save" />
+				<!--<button
+					onClick="return openPreviewWin()">
+						<?=i18n::tr('preview')?>
+				</button>-->
+			</td>
+		</tr>
+	</table>
+	
+</form>

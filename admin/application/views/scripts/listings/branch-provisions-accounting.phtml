@@ -1,0 +1,17 @@
+<h3><?=i18n::tr('Branch provisions accounting')?></h3>
+
+<form method="post" action="?section=<?=ListingsController::BRANCH_PROVISIONS_SECTION_ID?>" id="formUsersFilter">
+  <input type="hidden" name="form-submited" value="1"/>
+  <?=$this->filter?>
+  <div class="actions">
+    <input
+      type="submit"
+      name="export"
+      value="<?=i18n::tr('Export')?>"/>
+  </div>
+
+  <table class='table-list width-100'>
+    <?=$this->tHead?>
+    <?=$this->tBody?>
+  </table>
+</form>

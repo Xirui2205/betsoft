@@ -1,0 +1,11 @@
+<?php
+	foreach($data as $fieldName => $fieldType){
+		if(is_array($fieldType)){
+			foreach($fieldType as $subFieldName => $subFieldType) {
+				echo '-'.$subFieldName.' = '.$subFieldType.'<br />';
+			}
+		}
+		else{
+			echo $fieldName.' = '.$fieldType.'<br />';
+		}
+	}

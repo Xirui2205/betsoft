@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<base href="<?=PROTOCOL?><?=WEBHOSTL3 ?>/" />
+<title></title>
+</head>
+<body>
+	<table
+		style="width: 100%; background: url('<?=PROTOCOL?><?=WEBHOSTL3?>/images/email_bg.png');">
+		<tbody>
+			<tr>
+				<td style="padding: 35px 0;">
+					<div style="width: 640px; margin: auto; padding: 0;">
+
+						<table width="640" cellpadding="0" cellspacing="0"
+							style="color: #ffffff; font-size: 11px; font-family: arial, verdana, helvetica, sans-serif;">
+							<tr>
+								<td colspan="2"
+									style="padding: 20px 0 0 0; border-bottom: 1px solid #765f2b; background: url('<?=PROTOCOL?><?=WEBHOSTL3?>/images/email_head_bg.png')">
+									<a href="<?=PROTOCOL?><?=WEBHOSTL3?>" title="CompBet logo"
+									style="background: url('<?=PROTOCOL?><?=WEBHOSTL3?>/images/email_logo.png') no-repeat center bottom; height: 54px; width: 254px; margin: 0 auto; display: block;"></a>
+								</td>
+							</tr>
+						</table>
+
+						<!-- #### CONTENT - START #### -->
+
+						<?=$this->layout()->content?>
+
+						<!-- #### CONTENT - END #### -->
+
+						<table width="640" cellpadding="0" cellspacing="0"
+							style="font-size: 11px; font-family: arial, verdana, helvetica, sans-serif; color: #222222; background: #f5ca6c;">
+							<tr>
+								<td style="border-top: 1px solid #fee4a7;">
+									<p style="font-size: 10px; margin: 10px 10px;">
+										<?=I18n::tr('age_disclaimer')?>
+									</p>
+								</td>
+								<td style="text-align: right; border-top: 1px solid #fee4a7;">
+									<p style="font-size: 10px; margin: 10px 10px;">
+										<?=I18n::tr('rights')?>
+									</p>
+								</td>
+							</tr>
+						</table>
+
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="/css/smoothness/jquery-ui-1.10.1.custom.min.css" />
+
+<h3><?=i18n::tr('printed-pages-counter')?></h3>
+
+<?=$this->feedbackMsg?>
+
+<div id="list">
+	<form method="post" action="?section=<?=$this->indexSectionId?>">
+		<input type="hidden" value="<?=$this->indexSectionId?>" name="section" />
+		<table class="table-filter">
+			<tr>
+				<td style="vertical-align:top; text-align:left;" colspan="2">
+					<b><?=Help::Html(I18n::tr('filter'))?>:</b>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="vertical-align:top; text-align:right;">
+					<b>Host ID:</b>
+				</td>
+				<td>
+					<input type="text" name="filter[host_id]" id="host_id" style="width: 150px;" value="<?=$this->hostId?>" />
+				</td>
+			</tr>
+
+			<tr>
+				<td style="vertical-align:top; text-align:left;">
+					<b>from:</b>
+				</td>
+				<td>
+					<input type="text" name="filter[from]" id="from" class="sinput3 dateTime" style="width: 150px;"
+						value="<?=$this->from?>" />
+					<img src="images/ico/calendar.gif" class="calendar-icon" />
+				</td>
+			</tr>
+
+			<tr>
+				<td style="vertical-align: top;">
+					<b>to:</b>
+				</td>
+				<td>
+					<input type="text" name="filter[to]" id="to" class="sinput3 dateTime" style="width: 150px;"
+						value="<?=$this->to?>" />
+					<img src="images/ico/calendar.gif" class="calendar-icon" />
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="2" style="text-align:center;">
+				    <input type="submit" name="exportXLS" value="<?=i18n::tr('Export to XLS')?>"/>
+				</td>
+			</tr>
+
+		</table>
+
+		<?=$this->choice?>
+		<?//=$this->filter?>
+		<?=$this->paginator?>
+		<?php if (!empty($this->paginator)) :?>
+			<table id="tab1" class='table-list width-100'>
+				<?=$this->tHead?>
+				<?=$this->tBody?>
+			</table>
+		<?php endif?>
+
+	</form>
+</div>

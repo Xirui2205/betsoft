@@ -1,0 +1,20 @@
+<h3><?=i18n::tr('Administrators')?></h3>
+
+<ul class="idTabs" style="display: none;">
+	<li><a class="selected" href="#admin-main"><?=i18n::tr('admin_profile')?></a></li>
+	<li><a href="#admin-privileges" onClick="loadTabGeneric(285, 'admin-privileges', { adminId : $('#adminId').val() })"><?=i18n::tr('admin_role')?></a></li>
+</ul>
+
+<div id="admin-container" class="tab-container hidden">
+	<input type="hidden" class="tabsLoaded" id="admin-privileges-loaded" value="0" />
+
+	<div id="admin-main" class="tab">
+	</div>
+	<div id="admin-privileges"  class="tab" style="display: none;">
+	</div>
+
+</div>
+<div id="list">
+	<!-- seznam vsech adminu -->
+	<?php include('admin-list.phtml'); ?>
+</div>

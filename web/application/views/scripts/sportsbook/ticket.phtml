@@ -1,0 +1,407 @@
+<script src="/<?=MINIFY_PREFIX ?>js/x.tk.js?r=<?=RELEASE_REV ?>" type="text/javascript"></script>
+
+<div id="box_kupon" class="box-kupon">
+	<div class="head">
+		<h2 class="boxheader yellow"><?=$this->trans('Sázkový kupon', 'TICKET', It6_Translate_Web::DICTIONARY) ?>
+			<!-- <img 
+				id="ticket-pin" 
+				class="<?=(isset($_SESSION['ticketPin']) && $_SESSION['ticketPin'] == 'on') ? 'on' : 'off'?>" 
+				src="<?=(isset($_SESSION['ticketPin']) && $_SESSION['ticketPin'] == 'on') ? '/images/pin-on.png' : '/images/pin-off.png'?>"
+				alt="<?=(isset($_SESSION['ticketPin']) && $_SESSION['ticketPin'] == 'on') ? 'pin-on' : 'pin-off'?>"
+			/>-->
+		</h2>
+	</div>
+	<div id="ticket_container2"></div>
+	<div id="ticket_container">
+
+<script type="text/javascript">
+$(window).bind('scroll', function() {
+	scrollTiket();
+});
+
+function scrollTiket() {
+	// scroll zatím ne, způsobuje chyby, to-do
+	/*if ($('#ticket-pin').hasClass('off')) {
+		var tiket = $('div#box_kupon');
+		var scroll = $(window).scrollTop();
+		var offset_top = tiket.offsetParent().offset().top;
+		var tiket_height = tiket.height();
+		var window_height = $(window).height();
+		var data_scroll = tiket.data('scroll');
+
+		if ((scroll - offset_top) < 0) {
+			tiket.clearQueue().animate({'top' : "0px"}, {"duration" : 600, "queue" : true});
+			tiket.data('scroll', 0);
+		} else {
+			if (tiket_height > window_height) {
+				if ((scroll - offset_top) > data_scroll) {
+					// down
+					if ((scroll + window_height - offset_top) > (tiket.offset().top - offset_top + tiket_height)) {
+						tiket.clearQueue().animate({'top': scroll + (window_height - tiket_height) - offset_top}, {"duration" : 600, "queue" : true});
+						tiket.data('scroll', scroll + (window_height - tiket_height) - offset_top);
+					}
+				} else {
+					// up
+					if ((scroll - offset_top) < data_scroll) {
+						tiket.clearQueue().animate({'top': scroll - offset_top}, {"duration" : 600, "queue" : true});
+						tiket.data('scroll', scroll - offset_top);
+					}
+				}
+			} else {
+				tiket.clearQueue().animate({"top": scroll - offset_top}, {"duration" : 600, "queue" : true});
+				tiket.data('scroll', scroll - offset_top);
+			}
+		}
+	}*/
+}
+
+$("#ticket-pin").click(function() {
+	var url = ('<?=$this->UrlSet(111)?>');
+	if ($(this).hasClass("on")) {
+		$.post(url, {ticketPin: 'off'});
+		$(this).removeClass("on");
+		$(this).addClass("off");
+		$(this).attr("src","/images/pin-off.png");
+	} else {
+		$.post(url, {ticketPin: 'on'});
+		$(this).removeClass("off");
+		$(this).addClass("on");
+		$(this).attr("src", "/images/pin-on.png");
+	}
+});
+
+var tick = new TTCupon();
+tick.prtA('type1','<?=$this->escape($this->trans('single_bet', 'TICKET', It6_Translate_Web::DICTIONARY))?>');
+tick.prtA('type2','<?=$this->escape($this->trans('multi_bet', 'TICKET', It6_Translate_Web::DICTIONARY))?>');
+tick.prtA('okf1','<?=$this->trans('no_bet_selected', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf2','<?=$this->escape($this->trans('ticket_er_9', 'TICKET', It6_Translate_Web::DICTIONARY))?>');
+tick.prtA('okf3','<?=$this->escape($this->trans('stake_deposit', 'TICKET', It6_Translate_Web::DICTIONARY))?>');
+tick.prtA('okf4','<?=$this->trans('bet_rows_qty')?>');
+tick.prtA('okf5','<?=$this->escape($this->trans('stake', 'TICKET', It6_Translate_Web::DICTIONARY))?>');
+tick.prtA('okf6','<?=$this->escape($this->trans('Winnings', 'TICKET', It6_Translate_Web::DICTIONARY))?>');
+tick.prtA('okf06','<?=$this->escape($this->trans('result_win', 'TICKET', It6_Translate_Web::DICTIONARY))?>');
+tick.prtA('okf7','<?=$this->escape($this->trans('total_odds', 'TICKET', It6_Translate_Web::DICTIONARY))?> ');
+tick.prtA('okf8','<?=$this->escape($this->trans('Continue', 'TICKET', It6_Translate_Web::DICTIONARY))?>');
+tick.prtA('okf9','<?=$this->escape($this->trans('ticket_er_20', 'TICKET', It6_Translate_Web::DICTIONARY))?>');
+tick.prtA('okf10','<?=$this->escape($this->trans('sending', 'TICKET', It6_Translate_Web::DICTIONARY))?>…');
+tick.prtA('okf11','<?=$this->trans('ticket_er_19', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+// tick.prtA('okf12','<?php /* $this->trans('ticket_er_17', 'TICKET', It6_Translate_Web::DICTIONARY) */ ?>');
+// tick.prtA('okf13','<?php /* $this->trans('ticket_er_18', 'TICKET', It6_Translate_Web::DICTIONARY) */ ?>');
+tick.prtA('okf14','<?=$this->trans('delete_bet', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf15','<?=$this->trans('code', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf16','<?=$this->trans('system', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf17','<?=$this->trans('system', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf18','<?=$this->trans('with_banker', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf19','<?=$this->trans('without_banker', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf20','<?=$this->trans('bets', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf21','<?=$this->escape($this->trans('system_bet', 'TICKET', It6_Translate_Web::DICTIONARY))?>');
+tick.prtA('okf22','<?=$this->escape($this->trans('stake_on_one_bet', 'TICKET', It6_Translate_Web::DICTIONARY))?>');
+tick.prtA('okf23','<?=$this->escape($this->trans('totalBet', 'TICKET', It6_Translate_Web::DICTIONARY))?>');
+tick.prtA('okf24','<?=$this->escape($this->trans('maximum_system_bets', 'TICKET', It6_Translate_Web::DICTIONARY))?>');
+tick.prtA('okf25','<?=$this->trans('ticket_er_10', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf26','<?=$this->trans('banker', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf27','<?=$this->trans('bets_on_ticket', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf28','<?=$this->trans('freebet', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf29','<?=$this->mena?>');
+tick.prtA('okf30','<?=$this->trans('email_result', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf40','<?=$this->trans('sms_result', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf31','<?=$this->trans('betting_ticket', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf32','<?=$this->trans('what_is_free_bet', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf33','<?=$this->trans('marketing_desc_here', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf34','<?=$this->trans('ticket_er_11', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf35','<?=$this->trans('freebet_awarded', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf36','<?=$this->trans('rate_advance', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf37','<?=$this->trans('ticket_er_3', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf38','<?=$this->trans('loading', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf39','<?=$this->trans('recalculate', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('okf41','<?=$this->trans('save_coupon', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('act1','<?=$this->trans('select_all', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('act2','<?=$this->trans('deselect_all', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('act3','<?=$this->trans('clear_ticket', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('act4','<?=$this->trans('lock_scroll_ticekt', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('out-of-money','<?=$this->trans('out_of_money', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('out-of-points','<?=$this->trans('out_of_points', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('rate-advance-out-of-points','<?=$this->trans('rate_advance_out_of_points', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('must-be-logged-in','<?=$this->trans('ticket_er_1', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('confirming-another-ticket','<?=$this->trans('ticket_er_22', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('ticket-valid-no-more','<?=$this->trans('ticket_er_23', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('total','<?=$this->trans('total', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('getPoints','<?=$this->trans('ticket_get_points', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+tick.prtA('stakeInCurrency','<?=$this->trans('stake_in_currency', 'TICKET', It6_Translate_Web::DICTIONARY)?>');
+
+TTCupon.bproveText = '<?=$this->trans('tick_auth_process', 'TICKET', It6_Translate_Web::DICTIONARY)?>';
+tick.width = 180;
+// tick.maxBet = 20;
+tick.minSum = 0.5;
+tick.maxSum = 10000000;
+tick.block = false;
+tick.objName = 'tick';
+tick.action = '';
+tick.method = 'post';
+tick.url = '<?=$this->UrlSet(10)?>';
+//tick.position = 'absolute';
+tick.top = 155;
+tick.left = 1030;
+
+tick.maxBetNumSimple = <?= $this->createTicket['maxBetNum'][It6_Models_Ticket::TYPE_SIMPLE] ?>;
+tick.maxBetNumKombi = <?= $this->createTicket['maxBetNum'][It6_Models_Ticket::TYPE_COMBI] ?>;
+tick.maxBetNumMaxi = <?= $this->createTicket['maxBetNum'][It6_Models_Ticket::TYPE_MAXI] ?>;
+tick.maxBetNumSystem = <?= $this->createTicket['maxBetNum'][It6_Models_Ticket::TYPE_SYSTEM] ?>;
+tick.maxGroupCount = <?= $this->createTicket['maxBetNum'][It6_Models_Parameter::NAME_TICKET_MAX_GROUPS_MAXIKOMBI] ?>;
+
+tick.simpleSum=0;
+
+tick.showPoints = <?= $this->createTicket['showPoints'] ? 'true' : 'false' ?>;
+tick.showRateAdvance = <?= $this->createTicket['showRateAdvance'] ? 'true' : 'false' ?>;
+tick.rateAdvanceCost = <?= $this->createTicket['rateAdvanceCost'] ?>;
+tick.pointType = <?= empty($this->createTicket['helper']->pointType) ? 'null' : $this->createTicket['helper']->pointType ?>;
+tick.rateAdvance = <?= empty($this->createTicket['helper']->rateAdvance) ? 'null' : $this->createTicket['helper']->rateAdvance ?>;
+tick.balance = <?=floatval($this->balance)?>;
+tick.pointBalance = <?=intval($this->points)?>;
+tick.userLoggedIn = <?= $this->createTicket['helper']->isUserLoggedIn() ? 'true' : 'false' ?>;
+tick.couponId = <?= empty($this->createTicket['couponId']) ? 0 : $this->createTicket['couponId'] ?>;
+tick.confirmationStep = <?= empty($this->createTicket['confirmationStep']) ? 0 : intval($this->createTicket['confirmationStep']) ?>;
+tick.givenTotalBet = <?= false === $this->createTicket['helper']->givenStake ? 'false' : $this->createTicket['helper']->givenStake ?>;
+
+<?php if (is_array($this->freeBet)) { foreach($this->freeBet as $data): ?>
+	tick.FreeBet('<?=$data[0]; ?>',<?=$data[1]; ?>);
+<?php endforeach; } ?>
+
+<?php if(isset($this->createTicket['type'])): ?>
+	<?php if($this->createTicket['type'] == 'simple'): ?>
+		tick.simpleSum=0;
+	<?php else: ?>
+		tick.totalBet=<?=!empty($this->createTicket['totalSum']) ? floatval($this->createTicket['totalSum']) : 0; ?>;
+	<?php endif; ?>
+<?php endif; ?>
+
+tick.Prepare();
+tick.ticketNumber = 1;
+var tick2 = jQuery.extend(true, {}, tick);
+tick2.ticketNumber = 2;
+var tick3 = jQuery.extend(true, {}, tick);
+tick3.ticketNumber = 3;
+var tick4 = jQuery.extend(true, {}, tick);
+tick4.ticketNumber = 4;
+
+function createTicket() {
+	tick.initializing = true;
+	<?php if (isset($this->createTicket['bet'])): ?>
+		<?php foreach($this->createTicket['bet'] as $data): ?>
+			tick.ChangeBet(<?= $data['id_bet'] .','. $data['id_col'] .',"'
+			. (empty($data['mtext'])?'':$this->escapeJs($data['mtext'], true, true)) .'","'
+			. $this->escapeJs((empty($data['tnazev'])?'':$data['tnazev'] . (empty($data['textNote']) ? '' : " {$data['textNote']}")), true, true) . '","'
+			. (!isset($data['pnazev'])?'':$data['pnazev']) .'",'
+			. $data['rate'] .','
+			. (empty($data['simple'])?0:$data['simple']) . ', 0, null, '
+			. $data['amount'] .','
+			. (empty($data['live'])?0:$data['live']) .','
+			. $data['group'] . ", '"
+			. (empty($data['couponTime'])?'':$data['couponTime']) . "'" ?>);
+		<?php endforeach; ?>
+		<?php if ($this->createTicket['type'] != 'simple'): ?>
+			tick.totalBet=<?=!empty($this->createTicket['totalSum']) ? floatval($this->createTicket['totalSum']) : 0; ?>;
+		<?php endif; ?>
+		<?php if ($this->createTicket['type'] == 'kombi'): ?>
+			tick.pointType=<?=empty($this->createTicket['pointType']) ? 'null' : $this->createTicket['pointType']; ?>;
+			tick.rateAdvance=<?=empty($this->createTicket['rateAdvance']) ? 'null' : $this->createTicket['rateAdvance']; ?>;
+		<?php endif; ?>
+		<?php if ($this->createTicket['type'] == 'maxikombi'): ?>
+			tick.updateGroupCounts();
+			tick.updateCombinations( 0, false, new Array(<?php for ($i = 1, $n = count($this->createTicket['combinations']); $i < $n; ++$i) {
+				$data = $this->createTicket['combinations'][$i];
+				echo (1 < $i ? ',' : '') . '{stake:' . (empty($data['stake']) ? 0 : floatval($data['stake'])) . ',used:' . (!isset($data['used']) || false !== $data['used'] ? 'true' : 'false') . '}' ; } ?>) );
+		<?php endif; ?>
+		tick.rateAdvanceCost = 0;
+	<?php endif; ?>
+	tick.page = tick.page_help = <?= It6_Models_Ticket::TYPE_SIMPLE == $this->createTicket['helper']->type ? 0 : 1 ?>;
+
+	tick.initializing = false;
+	if (1 == tick.confirmationStep)
+		confirmTicket(tick.getCouponData(true), 1);
+	else if (1 < tick.confirmationStep)
+		tick.confirmationStart(undefined, true);
+	else {
+		tick.blockSysDel = true;
+		tick.UpdateAll(undefined, 1);
+		tick.blockSysDel = false;
+	}
+}
+
+if(document.attachEvent) {
+	// Syntaxe u IE
+	window.attachEvent('onload',createTicket);
+} else if(document.addEventListener) {
+	window.addEventListener('load',createTicket, false);
+} else {
+	window.onload = createTicket;
+}
+
+function confirmTicket(data,act) {
+	if (act == 1) {
+		if (tick.confirming) {
+			return false;
+		}
+		tick.confirming = true;
+		tick.betsLocked = true;
+		tick.clearNotifications();
+		var parm = {couponId:tick.couponId,coupon:data};
+		$.post('<?=$this->UrlSet(11)?>',parm,function(retdata) {
+			if (retdata.search(/^\s*json:/) >= 0) {
+				var data = JSON.parse(retdata.substr(5));
+				if (undefined !== data.commands)
+					tick.executeCommands(data.commands);
+				$('#ticket_data_sender').attr('value', tick.words['okf8']);
+			} else if(retdata != 1) {
+				$('#ticket_container2').html(retdata)
+				$('#ticket_container2').show();
+				$('#ticket_data_sender').attr('value', tick.words['okf8']);
+			} else {
+				$('#ticket_data_sender').show();
+				for (var x=2; x<10; x++)
+					$('#ghtr'+x).hide();
+				$('#ghtr1').html(Ticket.bit1);
+				$('#ghtr3').show().html(Ticket.bproveText);
+			}
+			tick.confirming = false;
+			$('#ticket_content :input').removeProp('disabled');
+			//tick.scrollToNotification();
+		}, "html");
+	}
+}
+
+function confirmTicket2(confirm, start) {
+	if (tick.confirming)
+		return false;
+	tick.confirming = true;
+	tick.betsLocked = true;
+	var buttonVisible = ('hidden' != $('#buttonConfirm2').css('visibility'));
+	$('#buttonConfirm2').attr('value',tick.words['okf10']);
+	if (!buttonVisible)
+		$('#buttonConfirm2').css('visibility', 'visible');
+
+	if (undefined === confirm)
+		confirm = true;
+	if (undefined === start)
+		start = (0 == tick.confirmationRuns);
+	++tick.confirmationRuns;
+
+	var url = (tick.preapproved ? '<?=$this->UrlSet(59)?>' : '<?=$this->UrlSet(12)?>');
+	var data = (start ? tick.getCouponData(true) : false);
+
+	$.post(url,
+		{confirm: (confirm ? 1 : 0), start: (start ? 1 : 0), couponId: tick.couponId, coupon: data},
+		function(retdata) {
+			if (!buttonVisible)
+				$('#buttonConfirm2').css('visibility', 'hidden');
+			$('#buttonConfirm2').attr('value', tick.words['okf8']);
+			if (retdata.search(/^\s*json:/) >= 0) {
+				retdata = retdata.replace(/^\s*json:/, '');
+				var data = JSON.parse(retdata);
+				if (undefined !== data.commands)
+					tick.executeCommands(data.commands);
+			}
+			else if (retdata != 1) {
+				$('#ticket_container').hide();
+				$('#box_kupon').addClass('box-kupon-no-tabs');
+				$('#ticket_container2').html(retdata);
+				$('#ticket_container2').show();
+				$('#ticket_data_sender').attr('value', tick.words['okf8']);
+			}
+			else {
+				for(var x=2;x<10;x++)
+					$('#ghtr'+x).hide();
+
+				$('#ghtr1').html(Ticket.bit1);
+				$('#ghtr3').show().html('<div class="notify notify-info">'+Ticket.bproveText+'</div>');
+			}
+			tick.confirming = false;
+			//tick.scrollToNotification();
+		},
+		"html"
+	);
+}
+
+function parseCombinationStakes() {
+	if (tick.betsLocked)
+		return false;
+	var result = true;
+	if (tick.isMaxicombinator()) {
+		if (false === tick.combinations) {
+			tick.totalBet = 0;
+		}
+		else {
+			tick.totalBet = 0;
+			for (var i = 0; i < tick.combinations.length; ++i) {
+				var k = i + 1;
+				var stake = tick.updatedAmount('mcStake'+k, $('#mcStake' + k).val(), tick.combinations[i].stake);
+				if (false === stake) {
+					tick.alternateCss($('#mcStake' + k), 'background-color', 'red', 6, 300);
+					result = false;
+					continue;
+				}
+				if (stake != tick.combinations[i].stake)
+					tick.givenTotalBet = false;
+				//$('#mcStake' + k).val(tick.formatCurrency(stake));
+				var enabled = (0 < stake);
+				tick.enableCombination(i, enabled);
+				$('#mcUsed' + k).attr('checked', (enabled ? 'checked' : '') );
+				tick.combinations[i].stake = stake;
+				if (tick.combinations[i].used)
+					tick.totalBet += stake * tick.combinations[i].betCount;
+			}
+		}
+		tick.SetTotalSum();
+	}
+	return result;
+}
+
+function parseTotalBet() {
+	if (tick.betsLocked) return false;
+	var result = true;
+	if (tick.isMaxicombinator()) {
+		var total = tick.updatedAmount('total_bet', $('#total_bet').val(), tick.totalBet);
+		if (false === total || total == tick.totalBet) {
+			tick.givenTotalBet = false;
+			result = false;
+		} else {
+			tick.givenTotalBet = total;
+			tick.totalBet = total;
+			//tick.updateCombinationStakes();
+			updateMaxicombinator();
+		}
+	}
+	return result;
+}
+
+function enableCombination(i, enabled) {
+	if (tick.betsLocked)
+		return false;
+	if (tick.isMaxicombinator()) {
+		tick.enableCombination(i, enabled);
+		updateMaxicombinator();
+	}
+}
+
+function updateMaxicombinator() {
+	if (tick.givenTotalBet)
+		tick.updateCombinationStakes();
+	else
+		tick.totalBet = updateCombinationStakes();
+	tick.SetTotalSum();
+}
+
+function updateCombinationStakes() {
+	var total = 0;
+	for (var i = 0; i < tick.combinations.length; ++i) {
+		var comb = tick.combinations[i];
+		if (comb.used)
+			total += comb.stake * comb.betCount;
+		$('#mcStake' + (i + 1)).val(tick.formatCurrency(comb.stake));
+	}
+	return total;
+}
+//]]>
+</script>
+</div>
+</div>

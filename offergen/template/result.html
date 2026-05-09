@@ -1,0 +1,53 @@
+
+<h2>Výstup</h2>
+
+{% for docid,ext,pcount in [result['output']] %}
+<div>
+<a href="{{cfg.outputurl}}/{{docid}}.{{ext}}"><strong>{{ext.upper()}}</strong></a>
+({{pcount}} stran{% if 'fromcache' in result %}, z cache{% end %})
+</div>
+<!-- <div>
+<a href="{{cfg.outputurl}}/{{docid}}.txt"><strong>TXT</strong></a> (náhled)
+</div> -->
+{% end %}
+
+
+{% if 'parameters' in result %}
+<h2>Parameters</h2>
+  {% for par in result['parameters'] %}
+    {{par[0]}} = <strong>{{repr(par[1])}}</strong>
+    {% if not par[2] %}
+      <em>ERROR</em>
+    {% end %}
+    <br/>
+  {% end %}
+{% end %}
+
+{% if 'query' in result %}
+<h2>Query</h2>
+  {% for q in result['query'] %}
+    <pre>{{q}}</pre>
+  {% end %}
+{% end %}
+
+
+{% if 'texsource' in result %}
+<h2>TeX Source</h2>
+  <pre style="height:80ex;overflow:auto;">{{escape(result['texsource'])}}</pre>
+{% end %}
+
+
+{% if 'delays' in result %}
+<h2>Delays</h2>
+  {% for delay in result['delays'] %}
+  <div>
+    {{delay[0]}}: <strong>{{'%.5fs' % delay[1]}}</strong>
+  </div>
+  {% end %}
+{% end %}
+
+{% if 'xml' in result %}
+<h2>XML</h2>
+<pre>{{escape(result['xml'])}}</pre>
+{% end %}
+

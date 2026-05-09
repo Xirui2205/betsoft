@@ -1,0 +1,16 @@
+<h3><?=i18n::tr('Bet Handle Range')?></h3>
+<div id="inner">
+	<?php if($this->betHandleRange) : ?>
+	<!--	<div class="actions">
+			<button onclick="editBranchDetail(<?=$this->branchId?>);"><?=i18n::tr('edit')?></button>
+		</div>-->
+		<h4><?=i18n::tr('Approval Group')?> <?=$this->group['name']?></h4>
+		<div id="threshold-edit">
+		</div>
+
+	<?php endif; ?>
+</div>
+<div id="list">
+	<!-- seznam vsech rozsahu -->
+	<?php include('bet-handle-range-list.phtml'); ?>
+</div>

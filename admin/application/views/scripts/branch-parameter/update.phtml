@@ -1,0 +1,8 @@
+<?php echo $this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="viewBranchParameter(<?=$this->branchId?>);"><?=i18n::tr('View')?></button>
+	<button onclick="hideDetail('branch-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<?php echo $this->branchParameterForm?>

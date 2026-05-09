@@ -1,0 +1,94 @@
+<?php $data = array(); ?>
+
+<?php
+  $data['html'] = "
+    <div id=\"liveMatchInfo\" class=\"tabule tabule-hokej\">
+
+    <table class=\"tabule\">
+      <thead>
+        <tr>
+          <td colspan=\"2\">".$this->info['unazev']."</td>
+          <td class=\"misc\">
+            <span id=\"stav\">".$this->trans('live_state_'. $this->info['stav'])."</span>
+            <span id=\"minute\">".$this->info['minute']."'</span>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id=\"home\">".$this->info['home_team']."</td>
+          <td id=\"score\" class=\"skore\">
+            <strong>
+              <span id=\"score_home\">".$this->info['score_home']."</span>
+              :
+              <span id=\"score_away\">".$this->info['score_away']."</span>
+            </strong>
+          </td>
+          <td id=\"away\">".$this->info['away_team']."</td>
+        </tr>
+      </tbody>
+    </table>
+  ";
+?>
+
+
+<?php
+  $data['html'] .= "
+    <table class=\"tabule tabule-bottom\">
+      <thead>
+        <tr>
+          <td colspan=\"6\">
+            <div id=\"lastNote\">".$this->info['lastNote']['time']." - ".$this->info['lastNote']['text']." - ".$this->info['lastNote']['book_text']."</div>
+            <div id=\"dropDownWrapper\">
+              <img src=\"".PROTOCOL.BASEDOMAIN."/images/vtab-hokej-darr.png\" alt=\"&darr;\" id=\"dropdownDivControl\"/>
+  ";
+?>
+
+<?php $data['html'] .= "<div id=\"bookTextDropdown\" class=\"goneToLeft hockeyColors\">"; ?>
+<?php foreach($this->info['info'] as $datax): ?>
+      <?php $data['html'] .= $datax['time']." - ". $datax['text']." - ". $datax['book_text']."<br />"; ?>
+<?php endforeach; ?>
+<?php $data['html'] .= "</div>"; ?>
+
+<?php
+  $data['html'] .= "
+            </div>
+            <a href=\"/\"><img src=\"".PROTOCOL.BASEDOMAIN."/images/vtab-hokej-stats.png\" alt=\"statistiky\" /></a>
+          </td>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td colspan=6 id=\"note\">
+            ".$this->info['note']."
+          </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr>
+          <th>kluby</th>
+          <th class=\"cntr\">".$this->trans('live_state_5')."</th>
+          <th class=\"cntr\">".$this->trans('live_state_6')."</th>
+          <th class=\"cntr\">".$this->trans('live_state_7')."</th>
+        </tr>
+        <tr>
+          <td class=\"teamName\">". $this->info['home_team']."</td>
+          <td id=\"tretina_1_home\" class=\"cntr\">".$this->info['tretina_1_home']."</td>
+          <td id=\"tretina_2_home\" class=\"cntr\">".$this->info['tretina_2_home']."</td>
+          <td id=\"tretina_3_home\" class=\"cntr\">".$this->info['tretina_3_home']."</td>
+        </tr>
+        <tr>
+          <td class=\"teamName\">". $this->info['away_team']."</td>
+          <td id=\"tretina_1_away\" class=\"cntr\">".$this->info['tretina_1_away']."</td>
+          <td id=\"tretina_2_away\" class=\"cntr\">".$this->info['tretina_2_away']."</td>
+          <td id=\"tretina_3_away\" class=\"cntr\">".$this->info['tretina_3_away']."</td>
+        </tr>
+      </tbody>
+    </table>
+
+    </div>
+  ";
+?>
+
+<?=json_encode($data); ?>
+

@@ -1,0 +1,137 @@
+<?php if($this->log == 7):?>
+  <?php //Header('Location:'.$this->UrlSet(17));exit; ?>
+<?php endif;?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?=$this->isoLang; ?>" lang="<?=$this->isoLang; ?>">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Language" content="cs" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="abstract" content="" />
+  <meta name="robots" content='index,follow' />
+  <meta name="googlebot" content='index,follow,snippet,archive' />
+  <meta name="Author" content="" />
+
+  <!-- CACHE - MSIE /-->
+  <meta http-equiv='Cache-Control' content='must-revalidate, post-check=0, pre-check=0' />
+  <meta http-equiv='Pragma' content='public' />
+  <!-- CACHE - MSIE end /-->
+  <!-- CACHE - other browsers /-->
+  <meta http-equiv='Cache-Control' content='no-cache' />
+  <meta http-equiv='Pragma' content='no-cache' />
+  <meta http-equiv='Expires' content='-1' />
+  <!-- OPERA - image resizing /-->
+
+  <meta name='autosize' content='off' />
+  <!-- BROWSER SPECIFIC FEATURES = end /-->
+  <title>BBAS Admin | <?= str_replace('&#187;',' | ',strip_tags($this->layout()->breadCrumb)) ?> </title>
+  <link rel="stylesheet" href="/css/blueprint/screen.css?r=<?= RELEASE_REV ?>" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="/css/blueprint/print.css?r=<?= RELEASE_REV ?>" type="text/css" media="print">
+
+  <!--[if lt IE 8]>
+  <link rel="stylesheet" href="/css/blueprint/ie.css?r=<?= RELEASE_REV ?>" type="text/css" media="screen, projection">
+  <![endif]-->
+  <link rel="stylesheet" href="/css/adm.css?r=<?= RELEASE_REV ?>" media="screen" type="text/css" />
+  <link rel="stylesheet" href="<?= JQUERY_UI_CSS_URI ?>" media="screen" type="text/css" />
+  
+
+  <script language="Javascript" type="text/javascript">
+   // <!--
+   var host = "<?= $this->layout()->jshost ?>";
+   var protocol = "<?= $this->layout()->protocol ?>";
+   // -->
+  </script>
+
+  <script src="<?= JQUERY_URI ?>" type="text/javascript" language="javascript"></script>
+  <script src="/js/jquery.ajaxmanager.js?r=<?= RELEASE_REV ?>" type="text/javascript" language="javascript"></script>
+  <script src="/js/jquery.dynDateTime.js?r=<?= RELEASE_REV ?>" type="text/javascript" language="javascript"></script>
+  <script src="/js/calendar-cs.js?r=<?= RELEASE_REV ?>" type="text/javascript" language="javascript"></script>
+
+  <script type="text/javascript" src="/js/tinymce/jscripts/tiny_mce/tiny_mce.js?r=<?= RELEASE_REV ?>" ></script >
+  <script language="javascript" type="text/javascript" src="/js/tinymce/jscripts/tiny_mce/jquery.tinymce.js?r=<?= RELEASE_REV ?>"></script>
+  
+  <script src="/js/editinplace.js?r=<?= RELEASE_REV ?>" type="text/javascript" language="javascript"></script>
+  <script src="/js/mainscript.js?r=<?= RELEASE_REV ?>" type="text/javascript" language="javascript"></script>
+  <script src="/js/navmenu.js?r=<?= RELEASE_REV ?>" type="text/javascript" language="javascript"></script>
+  <script src="<?= JQUERY_UI_URI ?>" type="text/javascript" language="javascript"></script>
+
+  <!-- custom js files begin -->
+  <?php foreach ($this->layout()->jsIncludes->getActiveFiles() as $jsFile): ?>
+    <script src="<?= preg_match('/^https?:/', $jsFile) ? '' : '/js/'?><?= $jsFile ?>?r=<?= RELEASE_REV ?>" type="text/javascript" language="javascript"></script>
+  <?php endforeach; ?>
+  <!-- custom js files end -->
+  
+  <script src="/js/jquery.idTabs.min.js?r=<?= RELEASE_REV ?>" type="text/javascript" language="javascript"></script>
+  
+  <link rel="stylesheet" href="/css/calendar-vic.css?r=<?= RELEASE_REV ?>" type="text/css">
+
+</head>
+<body>
+  <?php 
+    switch (getAppEnv()) {
+      case 'BBAS_PRODUCTION':
+        $this->environment_color = 'darkred';
+        break;
+
+      case 'DEVEL_LOCAL':
+       $this->environment_color = 'black';
+        break;
+        
+      case 'BBAS_TESTING':
+        $this->environment_color = 'darkgreen';
+        break;
+      
+      default:
+        $this->environment_color = 'white';
+        break;
+    }
+  ?>
+	<div id="all">
+		<div id="panel-left">
+			<div id="logo" 
+           onclick="toggleMenu()"
+           <?php if (!empty($this->environment_color)) { ?>
+           style="background-color: <?=$this->environment_color ?>"
+           <?php } ?>
+      >
+				<img id="menu-toggler-minus" src="/_img/minus.png" alt="hide menu" />
+				<img src="/_clip/logo-betservice-new.png"  class="leftBlock" />
+			</div>
+			<div class="tools" >
+				<a href="<?= $this->layout()->host ?>?logoff=1" id="logoff" >
+					<img src="/_clip/logout.png" alt="<?=i18n::tr('Logout')?>"/>
+				</a>
+				<span class="profile"><strong><a href="?section=280"><?= $this->layout()->user ?></a></strong></span>
+<!--
+				<a href="javascript:self.print();void(0)">
+					<img src="/_clip/print.gif" alt="Tisk" class="img" />
+				</a>
+-->
+			</div>
+			<ul id="navmenu">
+				<?= $this->layout()->menu ?>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<div id="working">
+			<div id="working-feedback">
+			</div>
+			<img src="_img/ajax-loader.gif" alt="working" />
+		</div>
+		<div id="wrapper">
+			<div id="menu-toggler" onclick="toggleMenu()"><img src="/_img/plus.png" alt="show menu" /></div>
+			<ul id="breadcrumb"><?= $this->layout()->breadCrumb ?></ul>
+			<div id="content">
+				<!--<noscript><strong class="red">Musíte mít zapnutý Javascript</strong></noscript>-->
+				<?= $this->layout()->content ?>
+			</div>
+		</div>
+		<div id="footer">
+			<p>&copy; BBAS <?= date("Y") ?> | <?=I18n::tr('version')?> <?= RELEASE_VERSION ?>/<?= RELEASE_DATE ?> (rev<?= RELEASE_REV ?>) | <?=getAppEnv()?>
+			&nbsp;&nbsp;&nbsp; Podporované prohlížeče: Firefox 3+, Chrome 6+</p>
+		</div>
+	</div>
+</body>
+</html>
+
+

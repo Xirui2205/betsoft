@@ -1,0 +1,12 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="viewBranchBankAccount(<?=$this->branchId?>);"><?=i18n::tr('View')?></button>
+	<button onclick="hideDetail('branch-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<h4><?=i18n::tr('bank_account_provision')?></h4>
+<?=$this->branchBankForm['provision']?>
+
+<h4><?=i18n::tr('bank_account_balance')?></h4>
+<?=$this->branchBankForm['balance']?>

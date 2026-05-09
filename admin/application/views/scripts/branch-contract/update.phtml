@@ -1,0 +1,43 @@
+<div class="actions">
+	<button onclick="viewBranchContract(<?=$this->branchId?>);"><?=i18n::tr('View')?></button>
+	<button onclick="hideDetail('branch-container')"><?=i18n::tr('Close Detail')?></button>
+</div>
+
+<?=$this->feedbackMsg?>
+
+
+<?php if(!empty($this->contract['activeContract'])):?>
+	<h3><?=i18n::tr('Active')?></h3>
+	<?=Models_Branch::getContractTemplate($this->contract['activeContract'])?>
+	<button onClick="cancelContract(<?=$this->branchId?>)"><?=i18n::tr('Cancel Contract')?></button>
+	<?=$this->activeContractForm?>
+<?php elseif (!empty($this->contract['signedNAContract'])): ?>
+	<h3><?=i18n::tr('Signed, but not Active')?></h3>
+	<?=Models_Branch::getContractTemplate($this->contract['signedNAContract'][0])?>
+	<button onClick="cancelContract(<?=$this->branchId?>)"><?=i18n::tr('Cancel Contract')?></button>
+	<?=$this->signedNAContractForm?>
+<?php endif?>
+
+
+<?php if(!empty($this->openContractForms)):?>
+	<h3><?=i18n::tr('Open')?></h3>
+	<?php foreach($this->openContractForms as $form):?>
+		<?=$form?>
+	<?php endforeach?>
+<?php endif?>
+
+
+<h3><?=i18n::tr('New')?></h3>
+<?=$this->newFormFix?>
+<div class="actions">
+<div><?=i18n::tr('Select contract template')?>: </div>
+<form>
+	<select id="new-contract-template-picker" onChange="loadContractForm(<?=$this->branchId?>)">
+		<option><?=i18n::tr('Choose..')?></option>
+		<?php foreach($this->contractTemplates as $template):?>
+			<option value="<?=$template->templateId?>"><?=$template->name?></option>
+		<?php endforeach?>
+	</select>
+</form>
+</div>
+<div id="new-contract-form"></div>

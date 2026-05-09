@@ -1,0 +1,18 @@
+<h3><?=i18n::tr('Approval Groups')?></h3>
+<div id="inner">
+	<?php if($this->group) : ?>
+	<!--	<div class="actions">
+			<button onclick="editBranchDetail(<?=$this->branchId?>);"><?=i18n::tr('edit')?></button>
+		</div>-->
+		<h4><?=i18n::tr('Approval Group')?> <?=$this->group['name']?></h4>
+		<div id="threshold-edit">
+		</div>
+
+		<!-- seznam limitu -->
+		<?php include('threshold-list.phtml'); ?>
+	<?php endif; ?>
+</div>
+<div id="list">
+	<!-- seznam vsech hostu -->
+	<?php include('group-list.phtml'); ?>
+</div>

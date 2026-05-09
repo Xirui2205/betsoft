@@ -1,0 +1,37 @@
+<div class="actions">
+	<button onclick="javascript:location.href='?section=245&amount=&currencyId=8&userId=<?=$this->user['userId']?>&insert=Insert-transaction';">
+		<?=I18n::tr('Change user balance')?>
+	</button>
+	<button onclick="javascript:location.href='?section=224&filter[userId]=<?=$this->user['userId']?>';">
+		<?=I18n::tr('User transaction history')?>
+	</button>
+	<button onclick="javascript:location.href='?section=225&userId=<?=$this->user['userId']?>&typeId=&value=&fromDate=&toDate=&filter=Filter';">
+		<?=I18n::tr('User withdrawal requests')?>
+	</button>
+	<button onclick="javascript:location.href='?section=246&amount=&userId=<?=$this->user['userId']?>&insert=Insert-transaction';">
+		<?=I18n::tr('Change user points balance')?>
+	</button>
+<!--	<button onClick="loadGeneric(<?=$this->updateSectionId?>, 'user-balance', { userId : <?=$this->userId?> });"><?=i18n::tr('Edit')?></button>
+	<button onclick="hideDetail('user-container')"><?=i18n::tr('Close Detail')?></button>-->
+</div>
+
+<?=$this->feedbackMsg?>
+<table class="table-detail" >
+	<tr>
+			<th><?=I18n::tr('Balance')?></th>
+			<td class="border-left"><font style="font-size:1.4em"><?=$this->user['balance']?> <?=$this->user['currency']?></font></td>
+	</tr>
+	<tr>
+			<th><?=I18n::tr('Debt')?></th>
+			<td class="border-left"><?=$this->user['debit']?> <?=$this->user['currency']?></td>
+	</tr>
+	<tr>
+		<th><?=I18n::tr('Points')?></th>
+		<td class="border-left">
+			<font style="font-size:1.4em">
+			<?=round($this->user['points'][0]['balance'],0)?> <?=i18n::tr('Pts')?> ( <?=i18n::tr('in')?>=<?=round($this->user['points'][0]['balanceGet'],0)?>, <?=i18n::tr('out')?>=<?=round($this->user['points'][0]['balanceSpent'],0)?>, <?=i18n::tr('exchanged')?>=<?=round($this->user['points'][0]['exchnage'],0)?>)
+			</font>
+		</td>
+	</tr>
+</table>
+

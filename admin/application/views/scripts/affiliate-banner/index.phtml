@@ -1,0 +1,34 @@
+<h3><?=i18n::tr('affiliate-banners')?></h3>
+
+<?=$this->feedbackMsg?>
+
+<ul class="idTabs" style="display:none">
+	<li><a class="selected" href="#affiliate-banner-main"><?=i18n::tr('affiliate-banner')?></a></li>
+	<li>
+		<a href="#affiliate-banner-image" 
+		onClick="loadTabGeneric(384, 'affiliate-banner-image', { affiliateBannerId : $('#affiliateBannerId').val() })">
+			<?=i18n::tr('article_image')?>
+		</a>
+	</li>
+</ul>
+
+<div id="affiliate-banner-container" class="tab-container hidden">
+	<input type="hidden" name="affiliateBannerId" id="affiliateBannerId" value="" />
+	<input type="hidden" class="tabsLoaded" id="affiliate-banner-image-loaded" value="0" />
+	<div id="affiliate-banner-main" class="tab"></div>
+	<div id="affiliate-banner-image" class="tab" style="display: none;"></div>
+</div>
+
+<div id="list">
+	<form method="post" action="?section=<?=$this->indexSectionId?>" id="affiliate-banner-index-form">
+		<div class="actions">
+			<input type="button" onClick="insertAffiliateBanner()" class="input" name="insert_new" value="<?=i18n::tr('insert_new_banner')?>" />
+		</div>
+		<?=$this->filter?>
+		<?=$this->paginator?>
+		<table class='table-list width-100'>
+			<?=$this->tHead?>
+			<?=$this->tBody?>
+		</table>
+	</form>
+</div>

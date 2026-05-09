@@ -1,0 +1,15 @@
+<?=I18n::tr('ticket_duplicate')?>
+
+=======================
+
+<?=I18n::tr('user_id')?>: <?=$this->userId?>
+
+<?php if ( empty($this->tickets) ): ?>
+<?=I18n::tr('no_records')?>
+<?php else:?>
+<?=I18n::tr('tickets')?>:
+<?php foreach( $this->tickets as $ticket ):?>
+<?=$ticket['ticketId']?>
+
+<?php endforeach;?>
+<?php endif;?>

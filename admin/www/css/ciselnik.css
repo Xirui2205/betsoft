@@ -1,0 +1,105 @@
+/*********************/
+/*zakladni nasataveni*/
+/*********************/
+
+html {
+	min-height:100%;
+	_height:100%;
+	font-size: .8em;
+}
+h4{
+	font-size: 1.1em;
+}
+body {
+	font-family: Arial, sans-serif;
+	color: white;
+	margin: 10px !important;
+	padding: 0px;
+	background:#eee;
+	color: #000;
+}
+
+.textright{
+	text-align:right;
+}
+
+.textleft{
+	text-align:left;
+}
+
+.right{
+	float:right;
+}
+
+/* TABLE LIST */
+
+
+table.table-list {
+	background-color:#FFFFFF;
+	border:1px solid #000000;
+	border-collapse:collapse;
+}
+
+table.table-list tr th {
+	background-color: #6C89D0;
+
+	color: #FFF;
+}
+
+table.table-list tr th button {
+	border: none;
+	background: none;
+	color: #000;
+	cursor: pointer;
+	font-weight: bold;
+	width: 18px;
+}
+
+table.table-list tr th button:hover,
+table.table-list tr th button.active {
+	background-color: #1C3E80;
+	color: #FFF;
+	font-weight: bold;
+}
+
+table.table-list tr th.border-left,
+table.table-list tr td.border-left {
+	border-left: 1px dotted #000000;
+}
+
+table.table-list tr td {
+	border-bottom: 1px solid #DDDDDD;
+	padding: 2px 2px;
+}
+
+table.table-list tr.clickable:hover td {
+	background-color: #EEE;
+}
+
+table.table-list tr.clickable {
+	cursor: pointer;
+}
+
+table.table-list tr.odd td {
+	background-color: #eee;
+
+}
+
+table.table-list tr.even td {
+	background-color: #ddd;
+}
+table.table-list tr.flag-special td {
+	background-color: #BBB;
+}
+
+table.table-list tr th a {
+	color: #FFF;
+}
+
+
+table.table-detail tr:nth-child(2n), table.table-list tr:nth-child(2n) {
+	background: none ! important;
+}
+table tr.noBg td {
+	background: none ! important;
+}

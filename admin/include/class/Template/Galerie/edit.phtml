@@ -1,0 +1,51 @@
+<form action="?section=<?=$this->section?>" method="post">
+
+  <table>
+    <tr>
+      <td colspan="2">
+        <a href="<?=$image['pathFullSize']?>" target="_blank">
+          <img src="<?=$image['path']?>" class="img" />
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <td><h4><?=I18n::tr('Image Description')?>:</h4></td>
+      <td>
+        <input type="text" name="imageDesc" maxlength="255" value="<?=$image['popis']?>"/>
+      </td>
+    </tr>
+
+    <tr>
+      <td><h4><?=I18n::tr('Alt Text')?>:</h4></td>
+      <td colspan="2">
+        <?php foreach($languages as $language):?>
+          <div>
+            <label class="floatleft"><?=$language['alt_text']?>:</label>
+            <input
+              type="text"
+              name="imageAlt[<?=$language['lang_id']?>]"
+              maxlength="255"
+              value="<?=$image['alt'][$language['lang_id']]['alt']?>"
+            />
+          </div>
+        <?php endforeach?>
+      </td>
+    </tr>
+
+    <input type="hidden" name="image_id" value="<?=$image_id?>" />
+
+    <tr>
+      <td>
+        <input
+          type="submit"
+          class="sinput"
+          name="saveEdit[<?=$image['image_id']?>]"
+          value="<?=I18n::tr('Save')?>"
+        />
+      </td>
+      <td>
+      </td>
+    </tr>
+  </table>
+</form>

@@ -1,0 +1,102 @@
+<?php if ( isset($_REQUEST['CSV']) ): ?>
+"<?=i18n::tr($this->group1)?>",<?php if ( !empty($this->group2) ) echo '"'.i18n::tr($this->group2).'",';?>"<?=i18n::tr('amount')?>","<?=i18n::tr('win')?>","<?=i18n::tr('balance')?>","<?=i18n::tr('risk')?>","<?=i18n::tr('share')?>","<?=i18n::tr('count')?>","<?=i18n::tr('winRatio')?>","<?=i18n::tr('amountTotal')?>","<?=i18n::tr('winTipCount')?>","<?=i18n::tr('lostTipCount')?>","<?=i18n::tr('wonCount')?>","<?=i18n::tr('lostCount')?>"
+<?php foreach ( $this->statistics as $item ): ?>
+"<?=$item['group1']?> (#<?=$item[$this->group1]?>)",<?php if ( !empty($this->group2) ) echo '"",' ;?>"<?=round($item['amount'])?>","<?=round($item['won'])?>","<?=round($item['balance'])?>","<?=round($item['risk'])?>","<?=round($item['share']*100,2)?>%","<?=round($item['count'])?>","<?=round($item['winRatio'] * 100)?>%","<?=round($item['amountRel']*100,2)?>%","<?=$item['winTipCount']?>","<?=$item['lostTipCount']?>","<?=$item['wonCount']?>","<?=$item['lostCount']?>"
+<?php if ( !empty($this->group2) ):?>
+<?php foreach ( $item['items'] as $item2 ): ?>
+"","<?=$item2['group2']?> (#<?=$item2[$this->group2]?>)","<?=round($item2['amount'])?>","<?=round($item2['won'])?>","<?=round($item2['balance'])?>","<?=round($item2['risk'])?>","<?=round($item2['share']*100,2)?>%","<?=round($item2['count'])?>","<?=round($item2['winRatio'] * 100)?>%","<?=round($item2['amountRel']*100,2)?>%","<?=$item2['winTipCount']?>","<?=$item2['lostTipCount']?>","<?=$item2['wonCount']?>","<?=$item2['lostCount']?>"
+<?php endforeach;?>
+<?php endif; ?>
+<?php endforeach;?>
+<?php else: ?>
+
+<?= $this->form?>
+
+<?php if ( !empty($this->statistics) ): ?>
+<h3><?=i18n::tr('statistics')?></h3>
+<form action="" method="GET">
+<?php foreach( $_GET as $k => $v ):?>
+  <?php if ('order' == $k) continue; ?>
+  <input type="hidden" name="<?=$k?>" value="<?=$v?>"/>
+<?php endforeach;?>
+<table class="table-list">
+  <tr>
+    <th class="border-left;"><?=i18n::tr('statistics_'.$this->group1)?></th>
+    <?php if ( !empty($this->group2) ):?>
+      <th class="border-left"><?=i18n::tr('statistics_'.$this->group2)?></th>
+    <?php endif; ?>
+    <th class="border-left">
+      <div class="ordering">
+        <input type="image" src="/_img/adm_asc.png" class="setOrder" value="^" name="order[amount_ASC]" />
+        <input type="image" src="/_img/adm_desc.png"  class="setOrder" value="v" name="order[amount_DESC]" />
+      </div>
+      <?=i18n::tr('statistics_amount')?>
+    </th>
+    <th class="border-left">
+      <div class="ordering">
+        <input type="image" src="/_img/adm_asc.png" class="setOrder" value="^" name="order[win_ASC]" />
+        <input type="image" src="/_img/adm_desc.png"  class="setOrder" value="v" name="order[win_DESC]" />
+      </div>
+      <?=i18n::tr('statistics_win')?>
+    </th>
+    <th class="border-left">
+       <div class="ordering">
+        <input type="image" src="/_img/adm_asc.png" class="setOrder" value="^" name="order[balance_ASC]" />
+        <input type="image" src="/_img/adm_desc.png"  class="setOrder" value="v" name="order[balance_DESC]" />
+      </div>
+      <?=i18n::tr('statistics_balance')?>
+    </th>
+       <th class="border-left">
+      <div class="ordering">
+        <input type="image" src="/_img/adm_asc.png" class="setOrder" value="^" name="order[winRatio_ASC]" />
+        <input type="image" src="/_img/adm_desc.png"  class="setOrder" value="v" name="order[winRatio_DESC]" />
+      </div>
+      <?=i18n::tr('statistics_winRatio')?>
+		</th>
+  </tr>
+  <?php foreach ( $this->statistics as $item ): ?>
+  <tr>
+    <th style="text-align: left;">      
+    <?php if($this->group1 == "branchId"):?>
+      <a href="?section=148&branch_id=<?=$item['branchId']?>">
+      <?php endif;?>
+      <?=$item['group1']?> (#<?=$item[$this->group1]?>)
+      <?php if($this->group1 == "branchId"):?>
+      </a>
+      <?php endif;?>)</th>
+    <?php if ( !empty($this->group2) ):?>
+      <td style="background: #edf;"></td>
+    <?php endif; ?>
+    <td style="background: #edf; text-align: right;"><?=round($item['amount'])?></td>
+    <td style="background: #edf; text-align: right;"><?=round($item['won'])?></td>
+    <td style="background: #edf; text-align: right;"><?=round($item['balance']*-1)?></td>
+   	<td style="background: #edf; text-align: right;"><?=round($item['winRatio'] * -100)?>%</td>
+  </tr>
+  <?php if ( !empty($this->group2) ):?>
+    <?php foreach ( $item['items'] as $item2 ): ?>
+    <tr>
+      <th></th>
+      <th style="text-align: left;">
+      <?php if($this->group2 == "branchId"):?>
+      <a href="?section=148&branch_id=<?=$item2['branchId']?>">
+      <?php endif;?>
+      <?=$item2['group2']?> (#<?=$item2[$this->group2]?>)
+      <?php if($this->group2 == "branchId"):?>
+      </a>
+      <?php endif;?>
+      </th>
+      <td style="text-align: right;"><?=round($item2['amount'])?></td>
+      <td style="text-align: right;"><?=round($item2['won'])?></td>
+      <td style="text-align: right;"><?=round($item2['balance']*-1)?></td>
+      <td style="text-align: right;"><?=round($item2['winRatio'] * -100)?>%</td>
+    </tr>
+    <?php endforeach;?>
+  <?php endif; ?>
+  <?php endforeach;?>
+  
+</table>
+</form>
+<?php else: ?>
+	<?=UiUtil::printWarnings(array('No statistics data.'));?>
+<?php endif; ?>
+<?php endif; ?>

@@ -1,0 +1,26 @@
+<h3><?=i18n::tr('SMS')?></h3>
+
+<ul class="idTabs" style="display:none">
+	<li><a class="selected" href="#sms-view"><?=i18n::tr('sms_view')?></a></li>
+</ul>
+
+<div id="sms-container" class="tab-container hidden">
+	<input type="hidden" class="tabsLoaded" id="sms-view-loaded" value="0" />
+	<input type="hidden" name="smsId" id="smsId" value="">
+
+	<div id="sms-view" class="tab" style="display: none;">
+    </div>
+</div>
+
+<div id="list">
+    <form method="post" action="?section=<?=$this->indexSectionId?>" id="formSmsFilter">
+        <!--<div class="actions"></div>-->
+        <?=$this->filter?>
+        <?=$this->paginator?>
+
+        <table class='table-list width-100'>
+            <?=$this->tHead?>
+            <?=$this->tBody?>
+        </table>
+    </form>
+</div>

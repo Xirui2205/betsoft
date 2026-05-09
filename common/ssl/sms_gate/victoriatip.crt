@@ -1,0 +1,61 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 11 (0xb)
+        Signature Algorithm: md5WithRSAEncryption
+        Issuer: C=CZ, ST=Czech Republic, L=Hradec Kralove, O=FOXINUS solutions s.r.o., OU=Certification Services Division, CN=FX SMS Root CA/emailAddress=admin@foxinus.cz
+        Validity
+            Not Before: Jun 19 13:14:33 2012 GMT
+            Not After : Jun 19 13:14:33 2014 GMT
+        Subject: CN=BetService (SB)/emailAddress=info@betservice.eu
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+            RSA Public Key: (1024 bit)
+                Modulus (1024 bit):
+                    00:c9:d9:f4:99:13:86:67:9c:03:5f:24:79:91:83:
+                    40:1c:96:b0:cb:b7:8b:a9:fa:28:52:0d:9d:19:92:
+                    74:ae:cb:9e:f0:43:3a:5b:00:fa:0f:01:0b:cf:2b:
+                    f2:c7:51:73:bc:9a:b7:92:b4:62:9a:87:42:21:07:
+                    22:f5:c5:94:e2:01:96:25:6d:c7:78:38:7a:f1:f0:
+                    ca:68:63:a7:38:89:d4:61:3b:e1:54:f8:4f:94:54:
+                    13:2d:ca:e1:47:99:2e:cb:b5:08:f1:cf:c3:29:07:
+                    99:ea:eb:23:23:6d:7a:f6:a4:b5:65:0c:4e:20:90:
+                    24:e6:aa:84:79:4f:cd:6d:19
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Subject Alternative Name: 
+                email:info@betservice.eu
+            X509v3 Basic Constraints: critical
+                CA:FALSE
+            X509v3 Authority Key Identifier: 
+                keyid:62:51:9F:AE:4F:9E:A6:72:78:9F:5C:DD:86:0C:02:6B:FB:E6:94:F1
+
+            X509v3 Extended Key Usage: 
+                TLS Web Client Authentication, E-mail Protection
+    Signature Algorithm: md5WithRSAEncryption
+        4a:1a:e5:08:93:f7:f5:cc:18:91:b8:78:d7:24:e1:96:84:a0:
+        8e:4b:db:4d:f2:8a:16:95:3f:ff:ff:51:d4:48:16:04:b6:ea:
+        a1:6b:89:7b:b4:73:2a:af:14:e1:30:76:0e:26:73:08:c6:16:
+        33:d3:37:b3:34:d0:62:de:95:3b:e9:c5:62:10:98:85:bc:29:
+        45:c3:7a:52:0a:e8:a6:ea:8c:7c:e6:24:a3:2b:6c:31:a7:05:
+        4b:30:ea:96:06:4e:f2:f5:85:d1:b9:4d:00:b2:71:65:03:7d:
+        9b:2e:fd:29:d3:9e:b4:6f:9b:98:f1:56:61:f6:dd:d4:1a:e1:
+        ea:19
+-----BEGIN CERTIFICATE-----
+MIIC3DCCAkWgAwIBAgIBCzANBgkqhkiG9w0BAQQFADCBxjELMAkGA1UEBhMCQ1ox
+FzAVBgNVBAgTDkN6ZWNoIFJlcHVibGljMRcwFQYDVQQHEw5IcmFkZWMgS3JhbG92
+ZTEhMB8GA1UEChMYRk9YSU5VUyBzb2x1dGlvbnMgcy5yLm8uMSgwJgYDVQQLEx9D
+ZXJ0aWZpY2F0aW9uIFNlcnZpY2VzIERpdmlzaW9uMRcwFQYDVQQDEw5GWCBTTVMg
+Um9vdCBDQTEfMB0GCSqGSIb3DQEJARYQYWRtaW5AZm94aW51cy5jejAeFw0xMjA2
+MTkxMzE0MzNaFw0xNDA2MTkxMzE0MzNaMDcxGTAXBgNVBAMTEFZpY3RvcmlhVGlw
+IChTQikxGjAYBgkqhkiG9w0BCQEWC2luZm9AaGJxLmN6MIGfMA0GCSqGSIb3DQEB
+AQUAA4GNADCBiQKBgQDJ2fSZE4ZnnANfJHmRg0AclrDLt4up+ihSDZ0ZknSuy57w
+QzpbAPoPAQvPK/LHUXO8mreStGKah0IhByL1xZTiAZYlbcd4OHrx8MpoY6c4idRh
+O+FU+E+UVBMtyuFHmS7LtQjxz8MpB5nq6yMjbXr2pLVlDE4gkCTmqoR5T81tGQID
+AQABo2gwZjAWBgNVHREEDzANgQtpbmZvQGhicS5jejAMBgNVHRMBAf8EAjAAMB8G
+A1UdIwQYMBaAFGJRn65PnqZyeJ9c3YYMAmv75pTxMB0GA1UdJQQWMBQGCCsGAQUF
+BwMCBggrBgEFBQcDBDANBgkqhkiG9w0BAQQFAAOBgQBKGuUIk/f1zBiRuHjXJOGW
+hKCOS9tN8ooWlT///1HUSBYEtuqha4l7tHMqrxThMHYOJnMIxhYz0zezNNBi3pU7
+6cViEJiFvClFw3pSCuim6ox85iSjK2wxpwVLMOqWBk7y9YXRuU0AsnFlA32bLv0p
+0560b5uY8VZh9t3UGuHqGQ==
+-----END CERTIFICATE-----

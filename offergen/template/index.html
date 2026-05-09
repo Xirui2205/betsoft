@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <script type="text/javascript" src="static/js/jquery.min.js"></script>
+  <script type="text/javascript" src="static/js/jquery.form.js"></script>
+  <script>
+    var optionsOffer = ['StationId','Group','Customer','PageFormat','SortBy','GameFilter','DateFilter','DateFilterAll','SportFilter','Sport','Action','DateFrom','DateTo','Category','BetType'];
+    var optionsChanges = ['StationId','Group','PageFormat','SortBy','GameFilter','Sport','Action','DateFrom','TimeFrom'];
+    var optionsResults = ['StationId','Group','PageFormat','SortBy','GameFilter','DateFilter','DateFilterAll','SportFilter','Sport','Action','DateFrom','DateTo','BetType'];
+    var optionsAliases = ['StationId','Group','PageFormat']
+    {% for f in forms.keys() %}
+    var options{{forms[f].name}} = {{repr(forms[f].options)}};
+    {% end %}
+
+    var doctype = 'Offer';
+
+    $(document).ready(init);
+
+    function init()
+    {
+      $('*[name="DocumentType"]').change(changeDocumentType);
+      $('*[name="DateFilter"]').change(changeDateFilter);
+      $('*[name="DocumentType"][value="Offer"]').attr('checked','checked').each(changeDocumentType);
+      $('#datefilter-yesterday-box').hide();
+      
+      $('#forminput').submit(function(){
+        var queryString = $(this).formSerialize();
+        $('#formresult').html('<h2>Generuji...</h2>');
+        window.status='Generuji...';
+        $.ajax({
+          url:  '{{cfg.serverurl}}docrq',
+          data: queryString,
+          dataType: 'json',
+          success: function(res)
+          {
+            $('#formresult').hide().html(res.content).slideDown('fast');
+            window.status='OK ' + res.name;
+          },
+          error: function(req)
+          {
+            $('#formresult').html(req.responseText);
+            window.status='ERROR';
+          }
+        });
+        return false;
+      });
+    }
+
+    function toggleOption(control, optionId) {
+        if ($(control).hasClass('toggle-on')) {
+            $(control).removeClass('toggle-on').addClass('toggle-off').html('-');
+            $('#'+optionId).show().removeAttr('disabled');
+        }
+        else {
+            $(control).removeClass('toggle-off').addClass('toggle-on').html('+');
+            $('#'+optionId).attr({disabled:'disabled'}).hide();
+        }
+    }
+
+    function changeDocumentType()
+    {
+      $('.option_block').hide().find(':input').attr('disabled', 'disabled');
+
+      if ($('*[name="DocumentType"]:checked').val() == 'Results') {
+        $('#datefilter-today-box').hide();
+        $('#datefilter-yesterday-box').show();
+        $('#datefilter-yesterday').attr({ checked : 'checked' });
+      } else {
+        $('#datefilter-today-box').show();
+        $('#datefilter-yesterday-box').hide();
+      }
+      
+      var optionsThis = window['options' + this.value];
+      for (var i in optionsThis)
+      {
+        var id = optionsThis[i];
+        $('#b'+id).show().find(':input').removeAttr('disabled');
+        if ($('#'+id).hasClass('toggle-option')) {
+            $('#toggle'+id).remove();
+            $('#'+id).attr({disabled:'disabled'}).hide().before('<a href="javascript:void(0)" onclick="toggleOption(this,\'' + id + '\');" class="toggle-on" id="toggle'+id+'">+</a>');
+        }
+      }
+
+      doctype = this.value;
+
+      if (optionsThis.indexOf('DateFilter') == -1)
+        $('*[name="DateFilter"][value="FromTo"]').attr('checked', 'checked').each(changeDateFilter);
+      else
+        $('*[name="DateFilter"]:checked').each(changeDateFilter);
+    }
+
+    function changeDateFilter()
+    {
+      if (this.value != 'FromTo') //this.value == 'Today' || this.value == 'All')
+      {
+        // disable DateFrom, DateTo
+        $('input[name="DateFrom"]').attr('disabled', 'disabled');
+        $('input[name="DateTo"]').attr('disabled', 'disabled');
+        $('#bDateFrom').addClass('disabled');
+        $('#bDateTo').addClass('disabled');
+      }
+      else
+      {
+        // FromTo - enable
+        $('#bDateFrom').removeClass('disabled');
+        $('#bDateTo').removeClass('disabled');
+        $('input[name="DateFrom"]').removeAttr('disabled');
+        $('input[name="DateTo"]').removeAttr('disabled');
+      }
+
+      if (this.value == 'Today')
+      {
+        // always sort by date - disable SortBy
+        $('input[name="SortBy"]').attr('disabled', 'disabled');
+        $('#bSortBy').addClass('disabled');
+      }
+      else
+      {
+        $('#bSortBy').removeClass('disabled');
+        $('input[name="SortBy"]').removeAttr('disabled');
+      }
+    }
+
+    function addMoneyListRow(prepend)
+    {
+      var row = $('#mlmodelrow').clone().removeAttr('id');
+      if (prepend)
+        row.insertAfter($('#mltable tr:first'));
+      else
+        row.appendTo($('#mltable'));
+      row.find('input').attr('value','');
+      row.find('input:first').focus();
+      return false;
+    }
+  </script>
+{% end %}
+
+{% block content %}
+
+<form id="forminput" action="{{cfg.serverurl}}docrq" method="get">
+  <fieldset>
+    <legend>Dokument</legend>
+    <div>
+      <input type="radio" name="DocumentType" id="offer" value="Offer" checked /> <label for="offer">Nabídka</label>
+      <input type="radio" name="DocumentType" id="results" value="Results"/> <label for="results">Výsledky</label>
+      <input type="radio" name="DocumentType" id="aliases" value="Aliases"/> <label for="aliases">Aliasy</label>
+    </div>
+    <div>
+      {% for f in forms.keys() %}
+      <input type="radio" name="DocumentType" id="{{f}}" value="{{forms[f].name}}" />
+      <label for="{{f}}" class="extraforms">{{forms[f].name}}</label>
+      {% end %}
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Volby</legend>
+
+    <div class="option_block" id="bCategory">
+      <span>Kategorie:</span>
+      <input type="radio" name="Category" id="category-main" value="1" checked /> <label for="category-main">Hlavní</label>
+      <input type="radio" name="Category" id="category-with-correlated" value="2" /> <label for="category-with-correlated">Včetně podpůrek</label>
+      <input type="radio" name="Category" id="category-with-scores" value="3" /> <label for="category-with-scores">Včetně přesn.výsledků</label>
+    </div>
+
+    <div class="option_block" id="bPageFormat">
+      <span>Formát stránky:</span>
+      <input type="radio" name="PageFormat" id="pageformat-portrait" value="Portrait" checked /> <label for="pageformat-portrait">Na výšku</label>
+      <input type="radio" name="PageFormat" id="pageformat-landscape" value="Landscape" /> <label for="pageformat-landscape">Na šířku</label>
+    </div>
+
+    <div class="option_block" id="bDateFilter">
+      <span>Typ podle data:</span>
+      <span id="datefilter-today-box"><input type="radio" name="DateFilter" id="datefilter-today" value="Today" checked /> <label for="datefilter-today">Dnešní</label></span>
+      <span id="datefilter-yesterday-box"><input type="radio" name="DateFilter" id="datefilter-yesterday" value="Yesterday" /> <label for="datefilter-yesterday">Včerejší</label></span>
+      <input type="radio" name="DateFilter" id="datefilter-fromto" value="FromTo" /> <label for="datefilter-fromto">Od-do</label>
+      <span class="option_block" id="bDateFilterAll">
+        <input type="radio" name="DateFilter" id="datefilter-all" value="All" /> <label for="datefilter-all">Vše</label>
+      </span>
+    </div>
+
+    <div>
+      <span class="option_block" id="bDateFrom">
+        <label for="datefrom">Od:</label>
+        <input type="text" name="DateFrom" id="datefrom" size="8" value="{{time.strftime('%F')}}" />
+      </span>
+      <span class="option_block" id="bDateTo">
+        <label for="dateto">Do:</label>
+        <input type="text" name="DateTo" id="dateto" size="8" value="{{time.strftime('%F')}}" />
+      </span>
+    </div>
+
+    <div>
+      <span class="option_block" id="bBetType">
+        <label for="bettype">Druhy sázek:</label>
+        <select name="BetType" id="BetType" multiple="multiple" size="30" class="toggle-option">
+            {% for t in betTypes %}
+                <option class="bet-type" value="{{t['typ_id']}}">{{t['nazev']}}</option>
+            {% end %}
+        </select>
+      </span>
+    </div>
+
+    <div class="option_block" id="bSportFilter">
+        <label for="sport">Sport/Událost:</label>
+        <select name="Sport" id="Sport" multiple="multiple" size="30" class="toggle-option">
+            {% for s in sports %}
+                <option class="sport" value="s{{s['sport_id']}}">{{s['nazev']}}</option>
+                {% if s['sport_id'] in actions %}
+                    {% for u in actions[s['sport_id']] %}
+                    <option value="u{{u['udalost_id']}}">&nbsp;&nbsp;&nbsp;{{u['nazev']}}</option>
+                    {% end %}
+                {% end %}
+            {% end %}
+        </select>
+    </div>
+
+  </fieldset>
+
+  <fieldset id="debug">
+    <legend>Debug</legend>
+
+    <div>
+      <input type="checkbox" name="Debug" id="debug-nocache" value="NoCache" />
+      <label for="debug-nocache">NoCache</label>
+      <input type="checkbox" name="Debug" id="debug-parameters" value="Parameters" />
+      <label for="debug-parameters">Parameters</label>
+      <input type="checkbox" name="Debug" id="debug-texsource" value="TexSource" />
+      <label for="debug-texsource" title="Return .tex file contents">Tex</label>
+      <input type="checkbox" name="Debug" id="debug-delays" value="Delays" />
+      <label for="debug-delays">Delays</label>
+    </div>
+  </fieldset>
+
+  <div>
+    <input type="submit" name="submit" value="Generovat"/>
+  </div>
+</form>
+
+<div id="formresult">
+</div>
+
+{% end %}

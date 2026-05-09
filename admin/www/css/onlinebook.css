@@ -1,0 +1,126 @@
+          /* Not required for Tabs, just to make this demo look better... */
+
+            body {
+                font-size: 16px; /* @ EOMB */
+            }
+            * html body {
+                font-size: 100%; /* @ IE */
+            }
+            body * {
+                font-size: 87.5%;
+                font-family: "Trebuchet MS", Trebuchet, Verdana, Helvetica, Arial, sans-serif;
+            }
+            body * * {
+                font-size: 100%;
+            }
+            p {
+                margin: 0;
+            }
+            pre, pre+p, p+p {
+                margin: 1em 0 0;
+            }
+            code {
+                font-family: "Courier New", Courier, monospace;
+            }
+            img{border:0px;}
+          table td{border:1px solid black;font-size:11px;}
+           
+            table.bettab{
+                 border-collapse:collapse;
+                 width:100%;
+            }
+
+           table.sloupec td{border:0px;}
+           table.radek td{border:0px;}
+table.ticket {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 500px;
+    background: #708090;
+    color: white
+}
+
+table.ticket th {
+    border: 1px solid #FFB426;
+    background: #FFB426;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    padding: 4px;
+    margin: 0px;
+    color: #708090;
+}
+
+table.ticket td {
+    border-top: 1px solid #FFB426;
+    border-bottom: 1px solid #FFB426;
+    font-size: 0.8em;
+    padding: 3px;
+}
+
+table.ticket input {
+    border: 1px solid #515B73;
+    color: #515B73;
+    width: auto;
+    font-size: 0.9em;
+}
+
+table.ticket td.summary {
+    font-size: 0.9em;
+    font-weight: bold;
+    background: #FFC04A;
+    padding-left: 10px;
+}
+
+table.ticket td.summary_sum {
+    font-size: 0.9em;
+    font-weight: bold;
+    background: #9EAAB6;
+    padding-left: 10px;
+}
+
+table.ticket td.renew_ticket {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+table.ticket input.delete_ticket {
+    background: #FF4500;
+    color: white;
+}
+
+table.ticket_delete {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 500px;
+    background: #999999;
+    color: #000000
+}
+
+table.ticket_delete th {
+    border: 1px solid #aeaeae;
+    background: #808080;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    padding: 4px;
+    margin: 0px;
+    color: #000000;
+}
+
+table.ticket_delete td {
+    border-top: 1px solid #aeaeae;
+    border-bottom: 1px solid #aeaeae;
+    font-size: 0.8em;
+    padding: 3px;
+}
+
+table.ticket_delete input {
+    border: 1px solid #515B73;
+    color: #515B73;
+    width: auto;
+    font-size: 0.9em;
+}
+
+td.delete_td {
+    background: #999999;
+    color: #000000;
+}

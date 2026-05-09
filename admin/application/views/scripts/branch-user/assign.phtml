@@ -1,0 +1,7 @@
+<h4><?=i18n::tr('Users')?></h4>
+<?php $exists =  (count($this->users) > 0); ?>
+<?php echo $this->feedbackMsg; ?>
+
+<!-- seznam vsech uzivatelu na pobocce -->
+<?php include('user-list.phtml'); ?>
+

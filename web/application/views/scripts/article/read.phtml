@@ -1,0 +1,106 @@
+<?php
+// zvyrazneni casti nadpisu pred dvojteckou
+$titleParts = explode(':', $this->article['articleTitle']);
+$titleExtra = $this->article['articleTitle'];
+if (isset($titleParts[1])) {
+	$titleExtra = '<strong>' . $this->escape($titleParts[0]) . '</strong>:' . $this->escape($titleParts[1]);
+}
+?>
+<h2 class="boxheader"><?= $titleExtra ?></h2>
+<div class="contentbox">
+	<?php if (!is_null($this->article['imageName'])) { ?>
+		<img src="/images/gallery/<?= $this->article['imageName'] ?>"
+			 class="float-left-img"
+			 id="image"
+			 alt="article image" />
+		 <? } ?>
+
+	<p id="perex">
+		<?php
+		if (!is_null($this->article['articlePublished'])) {
+			?><span id="article-detail-date"><?= substr($this->article['articlePublished'], 0, -9) ?></span><?php
+		}
+		?>
+		<em><?= $this->article['articlePerex'] ?></em>
+	</p>
+	<div class="clear"></div>
+	<br />
+	<div id="articleContent"><?= $this->article['articleContent'] ?></div>
+
+	<?php if (!empty($this->tips)) { ?>
+		<h3><?= $this->trans('bookmaker_tips') ?></h3>
+		<table id="articleTips" class="matchTable">
+			<thead>
+				<tr>
+					<th><?= $this->trans('bet_category') ?></th>
+					<th><?= $this->trans('alias') ?></th>
+					<th><?= $this->trans('name') ?></th>
+					<th><?= $this->trans('bet_result') ?></th>
+					<th class="rateTd"><?= $this->trans('rate') ?></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+				$prevTypeId = -1;
+				$firstRow = true;
+				foreach ($this->tips as $tip) {
+					$onclick = '';
+					$class = 'inactive';
+
+					if ($tip['current'] && $tip['status'] == 0) {
+						$onclick = "ticketUpdate(" . $tip['betId'] . ",
+										   	" . $tip['columnId'] . ",
+											'" . $this->escapeJs($tip['ticketName'], true, true) . "',
+											'" . $this->escapeJs($tip['typeName2'] . (!empty($tip['betNote']) ? ' ' . $tip['betNote'] : ''), true, true) . "',
+											'" . $tip['columnName'] . "',
+											" . $tip['rate'] . ",
+											'" . $tip['simple'] . "')";
+						$class = '';
+						$fullAlias = $tip['alias_new'];
+					} else {
+						$fullAlias = '-';
+					}
+					?>
+					<tr>
+						<td class="tipCategory alignLeft"><?= $prevTypeId !== $tip['typ_id'] ? $tip['typeName2'] . (!empty($tip['betNote']) ? ' ' . $tip['betNote'] : '') : '' ?></td>
+						<?php $prevTypeId = $tip['typ_id']; ?>
+						<td class="alignLeft"><?= $fullAlias ?></td>
+						<td class="alignLeft"><strong><?= $tip['ticketName'] ?></strong></td>
+						<td><?= $tip['columnName'] ?></td>
+						<td class="rate" id="b<?= $tip['betId'] ?>c<?= $tip['columnId'] ?>_bookmakertip">
+							<a href="javascript:void(0);" onclick="<?= $onclick ?>" class="<?= $class ?>"><?= $tip['rate'] ?></a>
+						</td>
+					</tr>
+					<?php
+					$firstRow = false;
+				}
+				?>
+			</tbody>
+		</table>
+	<?php } ?>
+</div>
+<?php
+if ($this->betLoadUrl !== '') {
+	?>
+	<script type="text/javascript">
+		$(function () {
+			$.get('<?= $this->betLoadUrl ?>', function (data) {
+
+				$('div#article').after(data);
+
+				// perform (+) onclick codes
+				var code = $("td.plus a").attr('href');
+				if (typeof code === 'string') {
+					eval(code);
+				} else if (typeof code === 'array') {
+					for (var i = 0; i <= code.length; i++) {
+						eval(code[i]);
+					}
+				}
+
+				// hide +
+				$(".col1 td.plus a").hide();
+			});
+		});
+	</script>
+<?php } ?>

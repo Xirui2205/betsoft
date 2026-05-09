@@ -1,0 +1,137 @@
+<div class="col1wrap">
+	<div class="col1">
+		<h2 class="boxheader"><span><?= $this->trans('responsible_betting') ?></span></h2>
+		<div class="staticpage typo">
+			<div class="content_block">
+				<?php if ($this->result == false): ?>
+					<h2 class="normalCase">Zodpovědné hraní</h2>
+					<p>Cílem společnosti <strong>CompBet</strong> je poskytovat svoje sázky tak, aby byli pro hráče atraktivní a přinášeli jim zábavu a radost.
+						Zároveň se společnost snaží o <strong>udržení bezpečného hráčského prostředí a minimalizaci negativních vlivů na hráče</strong>
+						souvisejícíh s hraním hazardních her.</p>
+
+					<br /><br />
+					<h2 class="normalCase">Organizace zabývající se prevencí a léčbou problémů spojených s hráčstvím</h2>
+
+					<p>
+						<div class="w50pct left">
+							<strong>Psychiatrická léčebna Bohnice</strong><br />
+							Ústavní 91, 181 02 Praha 8<br />
+							Tel.: 284 016 111<br />
+							Centrum krizové intervence tel.: 284 016 666<br />
+							Web: <a href="http://www.plbohnice.cz/">http://www.plbohnice.cz/</a>
+						</div>
+						<div class="w50pct left">
+							<strong>Anonymní Gambleři Brno</strong><br />
+							TIC “Bílý dům”, Žerotinovo náměstí 6, Brno<br />
+							E-mail: <a href="mailto:info@anonymnigambleri.cz">info@anonymnigambleri.cz</a><br />
+							Web: <a href="http://anonymnigambleri.cz/">http://anonymnigambleri.cz/</a>
+						</div>
+					</p>
+					<div class="clear"></div>
+					<br /><br /><br />
+				<?php endif; ?>
+				
+				<div id="psychotest">
+					<div class="goldHeaderBox bottom10">
+						<h2>Test zodpovědného hraní</h2>
+						<p><strong>V následujícím testu můžete zjistit jestli máte sázení pod kontrolou.</strong></p>
+					</div>
+					
+					<?php if ($this->result == true): ?>
+						<h2 class="normalCase">Výsledek testu:</h2>
+						<p><strong>Počet bodů: <?= $this->totalSum ?></strong></p>
+						<p><strong>Shrnutí:</strong></p>
+						<p>
+							<? if ($this->totalSum < 13): ?>
+								Pravděpodobně věnujete sázení přiliš mnoho času, zamyslete se nad svými odpověďmi a pokuste se dostat hraní pod kontrolu. Zamyslete se nad tím, jak hraní ovlivnilo váš osobní život, rodinu, přátele a práci. Pokud máte pocit, že si sami už nedokážete poradit, neváhejte vyhledat odbornou pomoc, a nebo se svěřte svým blízkým.
+							<? elseif ($this->totalSum < 30): ?>
+								Zvažte svoje hráčské návyky. Některé z odpovědí nasvědčují, že hraní pro vás znamená více, než jste si ochotni přiznat. Stanovte si zásady svého hraní, které budete dodržovat (určete si finanční částku, kterou jste ochotní za hraní utratit, a také čas, který chcete hráním strávit.).
+							<? else : ?>
+								Hraní máte pod kontrolou.
+							<?php endif; ?>
+						</p>
+					<?php else: ?>	
+						<form method="post">
+							<div class="question">
+								<p><strong>Máte stanovený finanční limit předtím, než začnete hrát?</strong></p>
+								<span id="M4_rblO1">
+									<input value="5" name="M4:rblO1" id="M4_rblO1_0" class="respbetting" type="radio"><label for="M4_rblO1_0">Ano, samozřejmě.</label><br>
+									<input id="M4_rblO1_1" name="M4:rblO1" value="3" class="respbetting" type="radio"><label for="M4_rblO1_1">Většinou ano, ne vždy ho ale dodržím.</label><br>
+									<input id="M4_rblO1_2" name="M4:rblO1" value="0" class="respbetting" type="radio"><label for="M4_rblO1_2">Nestanovuji si žádné limity.</label>
+								</span>
+							</div>
+							<div class="question">
+								<p><strong>Dokážete odolat touze výhrat?</strong></p>
+								<span id="M4_rblO2">
+									<input id="M4_rblO2_0" name="M4:rblO2" value="5" class="respbetting" type="radio"><label for="M4_rblO2_0">Ano, bez problémů.</label><br>
+									<input id="M4_rblO2_1" name="M4:rblO2" value="3" class="respbetting" type="radio"><label for="M4_rblO2_1">Obvykle ano, někdy zásady poruším a hraji dál.</label><br>
+									<input id="M4_rblO2_2" name="M4:rblO2" value="0" class="respbetting" type="radio"><label for="M4_rblO2_2">Ne, musím hrát dále.</label>
+								</span>
+							</div>
+							<div class="question">
+								<p><strong>Sázíte proto, abyste zapomněli na svoje problémy a unikli stresu? </strong></p>
+								<span id="M4_rblO3">
+									<input id="M4_rblO3_0" name="M4:rblO3" value="0" class="respbetting" type="radio"><label for="M4_rblO3_0">Ano, je to příjemný způsob, jak uniknout z každodenního života. </label><br>
+									<input id="M4_rblO3_1" name="M4:rblO3" value="3" class="respbetting" type="radio"><label for="M4_rblO3_1">Někdy, ale znám i jiné způsoby, jak si oddychnout.</label><br>
+									<input id="M4_rblO3_2" name="M4:rblO3" value="5" class="respbetting" type="radio"><label for="M4_rblO3_2">Ne, sázení je pro mě pouze zábava.</label>
+								</span>
+							</div>
+							
+							<div class="question">
+								<p><strong>Když hrajete, máte  přehled o tom, kolik jste vyhráli nebo prohráli? </strong></p>
+								<span id="M4_rblO4">
+									<input id="M4_rblO4_0" name="M4:rblO4" value="5" class="respbetting" type="radio"><label for="M4_rblO4_0">Ano, vím přesně kolik jsem prohrál a kolik jsem vyhrál.</label><br>
+									<input id="M4_rblO4_1" name="M4:rblO4" value="3" class="respbetting" type="radio"><label for="M4_rblO4_1">Většinou ano, ale ne vždy mám o tom během hry přehled.</label><br>
+									<input id="M4_rblO4_2" name="M4:rblO4" value="0" class="respbetting" type="radio"><label for="M4_rblO4_2">Ne, jak hraji, na vše zapomenu.</label>
+								</span>
+							</div>
+							
+							<div class="question">
+								<p><strong>Máte problém mluvit o tom,  kolik jste vyhráli nebo prohráli?</strong></p>
+								<span id="M4_rblO5">
+									<input id="M4_rblO5_0" name="M4:rblO5" value="5" class="respbetting" type="radio"><label for="M4_rblO5_0">Ne, nemám s tím problém</label><br>
+									<input id="M4_rblO5_1" name="M4:rblO5" value="3" class="respbetting" type="radio"><label for="M4_rblO5_1">Někdy s tím mám problém.</label><br>
+									<input id="M4_rblO5_2" name="M4:rblO5" value="0" class="respbetting" type="radio"><label for="M4_rblO5_2">Ano, mám s tím problem, ale jen to jen moje věc.</label>
+								</span>
+							</div>
+							
+							<div class="question">
+								<p><strong>Půjčili jste si někdy peníze, aby jste si mohli vsadit? </strong></p>
+								<span id="M4_rblO6">
+									<input id="M4_rblO6_0" name="M4:rblO6" value="0" class="respbetting" type="radio"><label for="M4_rblO6_0">Ano, více než bych chtěl.</label><br>
+									<input id="M4_rblO6_1" name="M4:rblO6" value="3" class="respbetting" type="radio"><label for="M4_rblO6_1">Občas, ale hned jsem peníze vrátil zpět.</label><br>
+									<input id="M4_rblO6_2" name="M4:rblO6" value="5" class="respbetting" type="radio"><label for="M4_rblO6_2">Ně, nikdy bych si peníze nepujčil, abych si mohl vsadit.</label>
+								</span>
+							</div>
+							
+							<div class="question">
+								<p><strong>Hráli jste někdy proto, aby jste vyhráli zpět peníze, které jste prohráli?</strong></p>
+								<span id="M4_rblO7">
+									<input id="M4_rblO7_0" name="M4:rblO7" value="0" class="respbetting" type="radio"><label for="M4_rblO7_0">Ano, štěstí může přijít kdykoliv. </label><br>
+									<input id="M4_rblO7_1" name="M4:rblO7" value="3" class="respbetting" type="radio"><label for="M4_rblO7_1">Někdy, ale uvědomuji si, že můžu vše prohrát.</label><br>
+									<input id="M4_rblO7_2" name="M4:rblO7" value="5" class="respbetting" type="radio"><label for="M4_rblO7_2">Ne, nikdy. Jak prohraji, nesnažím se svoje peníze získat zpět dalším hraním.</label>
+								</span>
+							</div>
+
+							<div class="question">
+								<p><strong>Myslíte si, že existuje "systém" na to, jak zaručeně vyhrát?</strong></p>
+								<span id="M4_rblO8">
+									<input id="M4_rblO8_0" name="M4:rblO8" value="0" class="respbetting" type="radio"><label for="M4_rblO8_0">Ano, zaručeně existuje.</label><br>
+									<input id="M4_rblO8_1" name="M4:rblO8" value="3" class="respbetting" type="radio"><label for="M4_rblO8_1">Občas si myslím, že nějaký systém musí existovat.</label><br>
+									<input id="M4_rblO8_2" name="M4:rblO8" value="5" class="respbetting" type="radio"><label for="M4_rblO8_2">Ne, šanci vyhrát nemůžu ovlivnit.</label>
+								</span>
+							</div>
+							<div id="ending"></div>
+							
+							<p class="right"><input id="submit" type="submit" value="Odeslat" name="submit" class="redButton" /></p>
+							<div class="clear"></div>
+						</form>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?=$this->render('index/leftCol.phtml')?>
+<?=$this->render('index/rightCol.phtml')?>

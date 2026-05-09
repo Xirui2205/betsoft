@@ -1,0 +1,136 @@
+<form action="?superb=<?php print $_GET['superb'];?>&section=<?php print $_GET['section'];?>" method="post">
+	<table class="unitable">
+		<tr>
+			<td><strong>Název</strong></td>
+			<td><input type="text" name="s_nazev" /></td>
+		</tr>
+		<tr>
+			<td><strong>Priorita</strong></td>
+			<td>
+				<select name="nl_priorita">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><strong>Text</strong></td>
+			<td>
+				<textarea name="s_text" cols="60" rows="10"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" value="Vlož" name="btnAdd" /></td>
+		</tr>
+
+	</table>
+</form>
+<br />
+<br />
+<form action="?superb=<?php print $_GET['superb'];?>&section=<?php print $_GET['section'];?>" method="post">
+	<table class="unitable">
+		<tr>
+			<td><strong>Priorita</strong></td>
+			<td>
+				<select name="nl_priorita">
+					<option value="0">Všechny</option>
+					<option value="1" <?php if($_POST['nl_priorita'] == 1):?>selected="selected"<?php endif;?>>1</option>
+					<option value="2" <?php if($_POST['nl_priorita'] == 2):?>selected="selected"<?php endif;?>>2</option>
+					<option value="3" <?php if($_POST['nl_priorita'] == 3):?>selected="selected"<?php endif;?>>3</option>
+					<option value="4" <?php if($_POST['nl_priorita'] == 4):?>selected="selected"<?php endif;?>>4</option>
+					<option value="5" <?php if($_POST['nl_priorita'] == 5):?>selected="selected"<?php endif;?>>5</option>
+				</select>
+			</td>
+			<td><strong>Bookmaker</strong></td>
+			<td>
+				<select name="nl_bookmaker">
+					<option value="0">Všichni</option>
+					<?php if(!empty($bookmakers)):?>
+					<?php while ($bookmaker = $bookmakers->fetchRow()): ?>
+					<option value="<?php print $bookmaker['bookmaker_id']; ?>" <?php if($_POST['nl_bookmaker'] == $bookmaker['bookmaker_id']):?>selected="selected"<?php endif;?>><?php print $bookmaker['jmeno']; ?> <?php print $bookmaker['prijmeni']; ?></option>
+					<?php endwhile; ?>
+					<?php endif; ?>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><strong>Zadáno mezi</strong></td>
+			<td colspan="4">
+				<input
+					class="dateTime"
+					type="text"
+					name="date_from"
+					value="<?php print $_POST['date_from']; ?>"
+				/>
+				<img src="_clip/calendar.gif" class="calendar-icon">
+				-
+				<input
+					class="dateTime"
+					type="text"
+					name="date_to"
+					value="<?php print $_POST['date_to']; ?>"
+				/>
+				<img src="_clip/calendar.gif" class="calendar-icon">
+			</td>
+		</tr>
+		<tr>
+			<td><strong>Seřadit podle</strong></td>
+			<td>
+				<select name="nl_order">
+					<option value="1" <?php if($_POST['nl_order'] == 1):?>selected="selected"<?php endif;?>>Id</option>
+					<option value="2" <?php if($_POST['nl_order'] == 2):?>selected="selected"<?php endif;?>>BookmakerId</option>
+					<option value="3" <?php if($_POST['nl_order'] == 3):?>selected="selected"<?php endif;?>>Datum Vložení</option>
+					<option value="4" <?php if($_POST['nl_order'] == 4):?>selected="selected"<?php endif;?>>Předmět</option>
+					<option value="5" <?php if($_POST['nl_order'] == 5):?>selected="selected"<?php endif;?>>Text</option>
+					<option value="6" <?php if($_POST['nl_order'] == 6):?>selected="selected"<?php endif;?>>Priorita</option>
+					<option value="7" <?php if($_POST['nl_order'] == 7):?>selected="selected"<?php endif;?>>Jméno</option>
+					<option value="8" <?php if($_POST['nl_order'] == 8):?>selected="selected"<?php endif;?>>Přijmení</option>
+					<option value="9" <?php if($_POST['nl_order'] == 9):?>selected="selected"<?php endif;?>>Nick</option>
+				</select>
+			</td>
+			<td><strong>Seřadit</strong></td>
+			<td>
+				<select name="nl_orderType">
+					<option value="0" <?php if($_POST['nl_orderType'] == 0):?>selected="selected"<?php endif;?>>Sestupně</option>
+					<option value="1" <?php if($_POST['nl_orderType'] == 1):?>selected="selected"<?php endif;?>>Vzestupně</option>
+				</select>
+			</td>
+			<td></td>
+			<td><input type="submit" value="Vypiš" name="btnSearch" /></td>
+		</tr>
+	</table>
+</form>
+<?php if(!empty($rows)):?>
+<br /><br />
+<table class="unitable2">
+		<thead><tr style="background-color: #9BE1FB">
+			<th><strong>Id</strong></th>
+			<th><strong>Priorita</strong></th>
+			<th><strong>Čas vložení</strong></th>
+			<th><strong>Předmět</strong></th>
+			<th><strong>Vložil</strong></th>
+		</tr></thead>
+		<?php while ($row = $rows->fetchRow()): ?>
+
+		<tr style="background-color: <?php if($row["id"] % 2 == 1): ?>#EAEEEA<?php else: ?>#C5EFFD<?php endif;?>;">
+			<td><?php print $row["id"]; ?></td>
+			<td><?php print $row["priority"]; ?></td>
+			<td><?php print $row["date"]; ?></td>
+			<td><?php print $row["subject"]; ?></td>
+			<td><?php print $row["jmeno"] .  ' ' . $row["prijmeni"] . ' - ' . $row["nick"]; ?></td>
+		</tr>
+		<tr style="background-color: <?php if($row["id"] % 2 == 1): ?>#EAEEEA<?php else: ?>#C5EFFD<?php endif;?>;">
+			<td valign="top"><strong>Text</strong></td>
+			<td colspan="4"><?php print $row["body"]; ?></td>
+		</tr>
+		<tr>
+			<td colspan="5">&nbsp;</td>
+		</tr>
+		<?php endwhile; ?>
+</table>
+<?php endif; ?>
+

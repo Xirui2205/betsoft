@@ -1,0 +1,44 @@
+<div class="actions">asd
+	<button onclick="insertGeneric('<?=$this->insertSectionId?>&superb=1', 'inner');"><?=i18n::tr('Create team')?></button>
+	$this->opener
+</div>
+<?php if(!$this->empty) : ?>
+	<table class="table-list">
+		<tr>
+			<th></th>
+			<th><?=i18n::tr('Team Id')?></th>
+
+			<th><?=i18n::tr('Abbreviation')?></th>
+			<th><?=i18n::tr('Team name')?></th>
+		</tr>
+		<?php foreach ($this->teams as $team) ss: ?>
+		
+		<tr>
+			<td>ddd
+			<button onclick="
+				<?='javascript:window.opener.document.getElementById(\''.$this->opener.'\').value+=\''.$team['name'].'\';
+				if ('.$team['shortName'].'=="???" || '.$team['shortName'].'=="")
+					javascript:window.opener.document.getElementById(\'ticket_text\').value+=\''.$team['name'].'\';
+				else javascript:window.opener.document.getElementById(\'ticket_text\').value+=\''.$team['shortName'].'\';
+				var tc= document.getElementById(\'teamCount\');
+				tc.value = parseInt(tc.value)+1;
+				if (document.getElementById(\'teamCount\').value == 1) {
+						javascript:window.opener.document.getElementById(\''.$this->opener.'\').value+=\' - \'; void(0);
+						javascript:window.opener.document.getElementById(\'ticket_text\').value+=\' - \'; void(0);
+					} else if (document.getElementById(\'teamCount\').value == 2) {
+						self.close(); void(0);
+					};"'
+				?>"
+			 add
+			</button>
+			<td class="border-left"><?=$team['teamId']?></td>
+			<td class="border-left"><?=$this->sportsCollection[$team['sportId']]?></td>
+			<td class="border-left"><?=$team['betradarId']?></td>
+			<td class="border-left"><?=$team['shortName']?></td>
+			<td class="border-left"><?=$team['name']?></td>
+		</tr>
+	  <?php endforeach; ?>
+	</table>
+<?php else: ?>
+	<?=UiUtil::printWarnings(array('No data.'));?>
+<?php endif; ?>

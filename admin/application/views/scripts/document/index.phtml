@@ -1,0 +1,19 @@
+<h3><?=i18n::tr('documents')?></h3>
+
+<?=$this->feedbackMsg?>
+<div id="document">
+</div>
+
+<div id="list">
+<form method="post" action="/?section=<?= $this->indexSectionId?>" id="formDocumentsFilter">
+	<div class="actions">
+		<input type="button" name="insert"
+		onclick="viewGeneric(<?= $this->insertSectionId?>, 'document', [])"
+		value="<?=i18n::tr('new')?>"/>
+	</div>
+	<table class='table-list width-100'>
+		<?=$this->tHead?>
+		<?=$this->tBody?>
+	</table>
+</form>
+</div>

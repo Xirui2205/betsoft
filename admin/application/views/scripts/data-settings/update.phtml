@@ -1,0 +1,7 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="viewParamDetail(<?=$this->paramId?>);"><?=i18n::tr('View')?>DATA-SETTINGS-UPDATE</button>
+	<button onclick="hideParamDetail('parameters-settings-main')"><?=i18n::tr('Close Detail')?></button>
+</div>
+<?php echo $this->form; ?>

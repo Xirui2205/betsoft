@@ -1,0 +1,14 @@
+<h4><?=i18n::tr('Players')?></h4>
+
+<?php echo $this->feedbackMsg; ?>
+
+<div class="actions">
+	<button onclick="hideInner();"><?=i18n::tr('Cancel')?></button>
+</div>
+
+<table class='table-list width-30'>
+		<?=$this->tHead?>
+		<?=$this->tBody?>
+	</table>
+
+<?php echo $this->form; ?>

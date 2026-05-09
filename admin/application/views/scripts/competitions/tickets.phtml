@@ -1,0 +1,18 @@
+<h3><?=i18n::tr('Competition')?></h3>
+
+<?=$this->feedbackMsg?>
+
+<form method="post" action="?section=<?=CompetitionsController::COMPETITIONS_SECTION_ID?>" id="formUsersFilter">
+	<?=$this->filter?>
+	<div class="actions">
+		<input type="submit" name="reset"
+		onclick="$('div.table-filter input:text, div.table-filter select').val(''); return false;"
+		value="<?=i18n::tr('Reset_filter')?>"/>
+	</div>
+	<?=$this->paginator?>
+
+	<table class='table-list width-100'>
+		<?=$this->tHead?>
+		<?=$this->tBody?>
+	</table>
+</form>

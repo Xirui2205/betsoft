@@ -1,0 +1,14 @@
+<h2 class="boxheader"><?= $this->trans('unsubscribe_title') ?></h2>
+<div class="contentbox">
+	<?php if (!empty($this->email) && !empty($this->unsubscribeHash)) { ?>
+		<form action="" method="post">
+			<p><strong>E-mail: <?= $this->email ?></strong></p>
+			<input type="hidden" name="email" value="<?= $this->email ?>" />
+			<input type="hidden" name="x" value="<?= $this->unsubscribeHash ?>" />
+			<input type="submit" class="btn" name="unsubscribe"
+				   value="<?= $this->trans('unsubscribe') ?>" />
+		</form>
+	<?php } else { ?>
+		<p><?= $this->trans('unsubscribe_wrong'); ?></p>
+	<?php } ?>
+</div>

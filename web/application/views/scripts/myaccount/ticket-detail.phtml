@@ -1,0 +1,217 @@
+<?php if (!empty($match['canceled'])) echo 'class="bet-canceled" '?>
+<table class="ticketDetail table table-striped table-hover <?= ('system' == $this->ticket['type'] || 'maxikombi' == $this->ticket['type']) ? 'no-margin' : '' ?>">
+	<thead>
+		<tr>
+			<th class="text-right">#</th>
+			<th><?= $this->trans('match') ?></th>
+			<th><?= $this->trans('ticket_competition') ?></th>
+			<th class="text-center"><?= $this->trans('rate') ?></th>
+			<th class="text-center"><?= $this->trans('tip') ?></th>
+			<th class="text-center"><?= $this->trans('result') ?></th>
+			<th class="text-right"><?= $this->trans('date') ?></th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php $j = 1?>
+		<?php foreach($this->ticket['groups'] as $group) { ?>
+			<?php foreach($group['tips'] as $match) { ?>
+			<tr>
+				<td><?=$j++?>.</td>
+				<!-- Zápas -->
+				<td>
+					<?=$this->escape($match['betName'])?>
+					<div>
+						<?php if ('system' == $this->ticket['type'] || 'maxikombi' == $this->ticket['type']) : ?>
+							<strong><?=$match['groupName']?></strong>
+						<?php endif ?>
+					</div>
+				</td>
+				<!-- Soutěž -->
+				<td>
+					<?=$this->escape($match['sportName'])?> - <?=$this->escape($match['regionName'])?> - <?=$this->escape($match['eventName'])?>
+				</td>
+				<!-- Kurz -->
+				<td>
+					<?php if (!empty($match['canceled'])):?>
+						<?=$this->trans('rate_1'); ?>
+					<?php else: ?>
+						<?= $this->formatRate($match['rate']) ?>
+					<?php endif; ?>
+				</td>
+				<!-- Tip -->
+				<td>
+					<?=$match['typeName']?><?= empty($match['betTextNote']) ? '' : ' ' . $this->escape($match['betTextNote']) ?>: <?=$match['oddsOutcomeName']?>
+				</td>
+				<!-- Výsledek -->
+				<td class="<?php if (It6_Models_Ticket::RESULT_WON == $match['winResult']) : ?>
+						ticket-score-win-tag
+					<?php elseif (It6_Models_Ticket::RESULT_LOST == $match['winResult']) : ?>
+						ticket-loss-tag
+					<?php endif?>">
+						<?php if(empty($match['resultNames'])) : ?>
+							-
+						<?php else : ?>
+							<?php foreach($match['resultNames'] as $result) : ?>
+							<?=$this->trans($result, null, null, false)?>
+							<?php endforeach?>					
+						<?php endif?>
+				</td>
+				<!-- Datum -->
+				<td>
+					<?= It6_Date::fromDb($match['validTo']) ?>
+				</td>
+			</tr>
+			<?php } ?>
+		<?php } ?>
+
+		<?php if ('system' == $this->ticket['type'] || 'maxikombi' == $this->ticket['type']) : ?>
+			</tbody></table><table class="ticketDetail table table-striped table-hover">
+			<tr><thead>
+				<th><em><?= $this->trans('combination')?></em></th>
+				<th><em><?= $this->trans('rate')?></em></th>
+				<th><em><?= $this->trans('stake')?></em></th>
+				<th><em><?= $this->trans('win')?></em></th>
+				<th><em><?= $this->trans('result')?></em></th>
+			</tr>
+			</thead><tbody>
+			<?php foreach ($this->ticket['combinations'] as $k => $comb) : ?>
+				<?php foreach ($comb['data'] as $c) : ?>
+					<tr>
+						<td class="betName"><?= $c['name']?></td>
+						<td><?= $this->formatRate($c['rate']) ?></td>
+						<td><?= $this->formatCurrency($comb['stake']) ?></td>
+						<td><?= $this->formatCurrency($c['win']) ?></td>
+						<td class="<?php if($c['result'] == 'result_win') : ?>result-win
+						<?php elseif($c['result'] == 'result_loss') : ?>
+							result-loss
+						<?php endif?>">
+							<?php if($c['result'] == 'result_win') : ?>
+								<?= $this->trans('result_win')?>
+							<?php elseif($c['result'] == 'result_loss') : ?>
+								<?= $this->trans('result_loss')?>
+							<?php endif?>
+						</td>
+					</tr>
+				<?php endforeach?>
+			<?php endforeach?>
+		<?php endif?>
+		</tbody>
+</table>
+<div class="summary">
+	<table class="table">
+		<tbody>
+			<?php if(empty($this->hideHandle)){ ?>
+			<!-- url tiketu -->
+			<tr>
+				<td colspan="6">
+					<?=$this->trans('ticket_public_url')?>
+				</td>
+				<td class="text-right">
+					<a href="<?=$this->UrlSet(83)?>?t=<?=$this->ticketHandle?>">
+						<?=$this->UrlSet(83,'',null,'',true)?>?t=<?=$this->ticketHandle?>
+					</a>
+				</td>
+			</tr>
+			<?php } ?>
+			<!-- založeno -->
+			<tr>
+				<td colspan="6"><?=$this->trans('date')?></td>
+				<td class="text-right">
+					<?=It6_Date::fromDb($this->ticket['createdTime'])?>
+				</td>
+			</tr>
+			
+			<tr>
+			<?php if(BRANCHES_ENABLED){ ?>
+				<td colspan="6">
+					<?=$this->trans('branch')?>
+				</td>
+				<td class="text-right">
+					<?=$this->ticket['hostName']?>
+				</td>
+			<?php } ?>
+		</tr>
+		
+		<?php if($this->ticket['type'] == 'kombi' || $this->ticket['type'] == 'maxikombi') : ?>
+			<tr>
+				<td colspan="6"><?=$this->trans('bet_rows_qty')?></td>
+				<td class="text-right">
+					<?php
+					$ticketCount = 0;
+					for ($i=1; $i<=sizeof($this->ticket['groups']); $i++) {
+						$ticketCount = $ticketCount + sizeof($this->ticket['groups'][$i]['tips']);
+					}
+					echo $ticketCount;
+					?>
+				</td>
+			</tr>
+		<?php endif?>
+
+		<?php if(!empty($this->ticket['rateAdvance']) && $this->ticket['rateAdvance'] > 1 ) : ?>
+			<tr>
+				<td colspan="6"><?=$this->trans('total_rate_without_advance')?></td>
+				<td class="text-right"><?=$this->ticket['rateWithoutAdvance']?></td>
+			</tr>
+			<tr>
+				<td colspan="6"><?=$this->trans('rate_advance')?></td>
+				<td class="text-right"><?=$this->ticket['rateAdvance']?></td>
+			</tr>
+		<?php endif?>
+
+		<?php if(It6_Models_Ticket::TYPE_MAXI != $this->ticket['type']
+			&& It6_Models_Ticket::TYPE_SIMPLE != $this->ticket['type']) : ?>
+			<tr>
+				<td colspan="6"><?=$this->trans('total_rate')?></td>
+				<td class="text-right"><?=$this->formatRate($this->ticket['totalOdds'])?></td>
+			</tr>
+		<?php endif?>
+
+		<tr>
+			<td colspan="7" class="summary-money"><?=$this->trans('stake')?>
+				<span>
+				<?= !empty($this->ticket['pointTypeId']) ? round($this->ticket['pointsAmount']) . ' B' : $this->formatCurrency($this->ticket['amount'], $this->currency) ?>
+				</span>
+			</td>
+		</tr>
+		
+		<?php if(!empty($this->ticket['pointTypeId'])): ?>
+		<tr>
+			<td colspan="7" class="summary-money"><?=$this->trans('stakeInCurrency')?>
+				<span>
+					<?= $this->formatCurrency($this->ticket['amount'], $this->currency) ?>
+				</span>
+			</td>
+		</tr>
+		<?php endif; ?>
+
+		<tr>
+			<td colspan="7" class="summary-money highlight">
+				<?php if ( 4 == $this->ticket['stateNo'] ): ?>
+					<?=$this->trans('stake_returned')?>
+				<?php elseif ( '1w' == $this->ticket['stateNo'] && $this->ticket['type'] != 'maxikombi' ): ?>
+					<?=$this->trans('expected_win')?>				
+				<?php elseif ( $this->ticket['paidOut'] ): ?>					
+					<?=$this->trans('win')?>
+				<?php endif;?>
+				<span>
+					<?php if ( '1w' == $this->ticket['stateNo'] && $this->ticket['type'] != 'maxikombi' ): ?>
+						<?= $this->formatCurrency($this->ticket['winAmount'], $this->currency) ?>
+					<?php elseif ( 4 == $this->ticket['stateNo'] ): ?>
+						<?= !empty($this->ticket['pointTypeId']) ? round($this->ticket['pointsAmount']) . ' B' : $this->formatCurrency($this->ticket['amount'], $this->ticket['currencyName']) ?>
+					<?php elseif ( $this->ticket['paidOut'] ): ?>
+						<?=$this->formatCurrency($this->ticket['won'],$this->ticket['currencyName'])?>
+					<?php else:?>
+						<?=$this->formatCurrency(0, $this->ticket['currencyName'])?>
+					<?php endif;?>
+				</span>
+			</td>
+		</tr>
+			
+		</tbody>
+	</table>
+</div>
+
+<?php if($this->ticket['freeBetBonus'] == 1) : ?>
+	<p><?=$this->trans('Na ticket byl uplatněn sázkový bonus')?></p>
+<?php endif; ?>
+	

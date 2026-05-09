@@ -1,0 +1,15 @@
+<div id="content" style="margin-left:30%">
+	<h2 class="boxheader"><span><?=$this->trans('card_deposit_result')?></span></h2>
+	<div class="grayBorder">
+		<p>
+			<?php if (!empty($this->result)):?>
+				<?=$this->trans($this->result)?>
+			<?php endif;?>
+		</p>
+		<p>
+			<a title="<?=$this->trans('back_to_transactions')?>" href="<?=$this->url?>">
+				<?=$this->trans('back_to_transactions')?>
+			</a>
+		</p>
+	</div>
+</div>

@@ -1,0 +1,12 @@
+<div class="col1wrap">
+	<div class="col1">
+		<h2 class="boxheader"><span><?= $this->trans($this->gameName) ?> #<?= $this->rank ?> - <?= $this->ticket['username'] ?></span></h2>
+			<?= $this->render('myaccount/ticket-head.phtml') ?>
+			<div class="clear"></div>
+			<div class="grayBg">
+				<?= $this->render('myaccount/ticket-detail.phtml') ?>
+			</div>
+	</div>
+</div>
+<?=$this->render('index/leftCol.phtml')?>
+<?=$this->render('index/rightCol.phtml')?>

@@ -1,0 +1,21 @@
+<?php if($exists) : ?>
+	<table class="table-list" >
+		<tr>
+			<th></th>
+			<th><?=i18n::tr('nick_name')?></th>
+			<th><?=i18n::tr('full_name')?></th>
+			<th><?=i18n::tr('banned')?></th>
+		</tr>
+		<?php foreach($this->employees as $employee) : ?>
+			<tr>
+				<td>
+					<button onclick="viewBranchEmployee(<?=$this->branchId?>,<?=$employee['adminId']?>);"><?=i18n::tr('view')?></button>
+				</td>
+				<td><?=$employee['loginName']?></td>
+				<td><?=$employee['firstName']?> <?=$employee['lastName']?></td>
+				<td><img src="/_img/but_<?=$employee['isBanned'] == 1 ? 'red' : 'green'?>.gif" alt="online status"/></td>
+			</tr>
+		<?php endforeach; ?>
+	</table>
+<?php endif; ?>
+

@@ -1,0 +1,68 @@
+<div>
+	<div class="layer1">
+		<h2>
+			<a
+				href="<?=isset($promo['url']) ? $promo['url'] : ''?>"
+				<?php if(isset($promo['target']) && $promo['target'] == '_blank') : ?>
+					onclick="window.open (this.href, 'child'); return false"
+				<?php endif?>
+			>
+				<?=isset($promo['title']) ? $promo['title'] : ''?>
+			</a>
+		</h2>
+		<div class="text">
+			<p>
+				<?=isset($promo['text']) ? $promo['text'] : ''?>
+			</p>
+		</div>
+		<?php if ( !empty($promo['bets']['data']) ) :?>
+		<div class="promo_match_name">
+			<?php echo(sprintf('%s - %s', $promo['bets']['data'][0]['text'], $promo['bets']['data'][0]['podtyp_sloupce_preklad'])); ?>
+		</div>
+		<table class="promo_match" border="1">
+			<tr>
+				<?php foreach ($promo['bets']['data'] as $bet) :?>
+				<th class="bet_type"><?php echo($bet['podtyp_sloupce_nazev']); ?></th>
+				<?php endforeach; ?>
+			</tr>
+			<tr>
+				<?php foreach ($promo['bets']['data'] as $bet) :?>
+				<td class="w2" id="b<?php echo($bet['sazka_id'].'c'.$bet['sloupec_id']); ?>">
+					<a class="kurz" href="javascript:void(0);" 
+						onclick="ticketUpdate(<?php echo($bet['sazka_id']);?>, 
+						<?php echo($bet['sloupec_id']);?>,
+						'<?php echo($bet['text']); ?>',
+						'<?php echo($bet['podtyp_sloupce_preklad']); ?>',
+						'<?php echo($bet['podtyp_sloupce_nazev']); ?>',
+						<?php echo($bet['kurz']); ?>,
+						<?php echo($bet['jednoducha']); ?>
+					);">
+					<?php echo($bet['kurz']); ?>
+					</a>
+				</td>
+				<?php endforeach; ?>
+			</tr>
+		</table>
+		<?php endif?>
+		<a 
+			href="<?=isset($promo['url']) ? $promo['url'] : ''?>"
+			<?php if(isset($promo['target']) && $promo['target'] == '_blank') : ?>
+				onclick="window.open (this.href, 'child'); return false"
+			<?php endif?>
+			class="more"
+		>
+			<?php
+				if(class_exists('i18n')) {
+					echo i18n::tr('show_more');
+				}
+				else {
+					echo $this->trans('show_more');
+				}
+			?>
+		</a>
+	</div>
+	<div class="layer2"></div>
+	<div class="layer3">
+		<img src="/images/gallery/<?=isset($promo['img']) ? $promo['img'] : ''?>" alt="img" />
+	</div>
+</div>

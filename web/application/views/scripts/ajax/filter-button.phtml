@@ -1,0 +1,10 @@
+<script type="text/javascript">$('#tooltipFilter').tooltip();</script>
+
+<input id="tooltipFilter" 
+title="<?=(isset($_SESSION['rateMin']) && isset($_SESSION['rateMax']) && empty($_GET['button'])) 
+	? $this->trans('reset_filter')
+	: $this->trans('filter')?>" 
+class="sbm" 
+type="submit" 
+name="send" 
+value="<?=(isset($_SESSION['rateMin']) && isset($_SESSION['rateMax']) && empty($_GET['button'])) ? 'X': 'OK'?>" />

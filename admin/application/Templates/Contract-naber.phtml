@@ -1,0 +1,14 @@
+<?php
+	foreach($data as $fieldName => $fieldType){
+		if(is_array($fieldType)){
+			foreach($fieldType as $subFieldName => $subFieldType) {
+				if($subFieldName == 'parameters') {
+					var_dump($subFieldType);
+				}
+				echo '-'.$subFieldName.' = '.$subFieldType.'<br />';
+			}
+		}
+		else{
+			echo $fieldName.' = '.$fieldType.'<br />';
+		}
+	}

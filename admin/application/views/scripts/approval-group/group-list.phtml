@@ -1,0 +1,22 @@
+<div class="actions">
+	<button onclick="insertGeneric('<?=$this->insertSectionId?>&superb=1', 'content');"><?=i18n::tr('Create group')?></button>
+	<button onclick="loadGeneric('<?=$this->assignSportSectionId?>&superb=1', 'inner');"><?=i18n::tr('Assign group to a sport')?></button>
+	<button onclick="loadGeneric('<?=$this->assignEventSectionId?>&superb=1', 'inner');"><?=i18n::tr('Assign group to an event')?></button>
+</div>
+	<?php if(!$this->empty) : ?>
+	<table class="table-list">
+	  <tr>
+	    <th></th>
+	    <th><?=i18n::tr('Group name')?></th>
+	  </tr>
+	  <?php foreach ($this->groups as $group) : ?>
+	    <tr>
+			<td>
+				<button onClick="loadGeneric('<?=$this->viewSectionId?>&superb=1','content', { approvalGroupId : <?=$group['approvalGroupId']?> })"><?=i18n::tr('View')?></button>
+				<button onClick="loadGeneric('<?=$this->updateSectionId?>&superb=1','content', { approvalGroupId : <?=$group['approvalGroupId']?> })"><?=i18n::tr('Rename')?></button>
+			</td>
+			<td class="border-left"><?=$group['name']?></td>
+		</tr>
+	  <?php endforeach; ?>
+	</table>
+<?php endif; ?>

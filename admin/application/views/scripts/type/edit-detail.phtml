@@ -1,0 +1,8 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="hideDetail('type-container')"><?=i18n::tr('Close Detail')?></button>
+	<button onclick="deleteType('<?=$this->typeId?>')"><?=i18n::tr('Delete')?></button>
+</div>
+
+<?=$this->typeDetailForm?>

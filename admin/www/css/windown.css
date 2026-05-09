@@ -1,0 +1,191 @@
+body {
+    _height: 100%;
+    background: #FFFFFF;
+    background-repeat: repeat-y;
+    color: black;
+    fo\nt-size: 0.8em;
+    font-family: Arial, sans-serif;
+    /*font-family: Verdana, "Geneva CE", lucida, sans-serif;*/
+    font-size: 0.8em; /*MSIE 5*/
+    margin: 0px;
+    padding: 0px;
+    width: 1003px;
+}
+
+.clWin {
+    position: absolute;
+    z-index: 2;
+    visibility: hidden;
+    overflow: hidden;
+    background-color: blue
+}
+
+.clWindow {
+    position: absolute;
+    background-color: blue;
+    overflow: hidden;
+    z-index: 15;
+    width: 200
+}
+
+.clWinHead {
+    position: absolute;
+    width: 200;
+    top: 0;
+    font-family: arial, arial, helvetica;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: transparent
+}
+
+.clText {
+    position: absolute;
+    z-index: 50;
+    font-family: arial, helvetica;
+    font-size: 11px;
+    background-color: transparent
+}
+
+.clWinResize {
+    position: absolute;
+    z-index: 30;
+    width: 30;
+    height: 30;;
+    clip: rect(0, 30, 30, 0);
+    background-image: url(../_clip/resize.gif);
+}
+
+.clLogo {
+    position: absolute
+}
+
+.clUp {
+    position: absolute;
+    width: 12;
+    height: 12;
+    z-index: 60;
+}
+
+.clDown {
+    position: absolute;
+    width: 12;
+    height: 12;
+    z-index: 60;
+}
+
+.clWinButtons {
+    position: absolute;
+    font-family: arial, helvetica;
+    font-size: 12px
+}
+
+table.tab1 {
+    border-collapse: collapse;
+}
+
+table.tab1 td {
+    border-bottom: 2px solid black;
+    padding: 6px 4px;
+}
+
+.important {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #CC0000;
+}
+
+table#tickettab {
+    border-collapse: collapse;
+    width: 100%;
+    height: 600px;
+    background-image: url(../_clip/onback.gif)
+}
+
+table#tickettab td {
+    padding: 0px 5px 0px 0px;
+}
+table.t_show_table td{
+	 font-size: 1.5em;
+}
+div.ticket_column2 {
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    background: #BB0000;
+    color: black;
+    width: 140px;
+}
+div.ticket_column2 div.ticket_id {
+    background: #ffffcc;
+    padding: 4px;
+    font-size: 1.5em;
+    float: left;
+    width: 132px;
+}
+div.ticket_column2 div.ticket_rate {
+    background: #FFA07A;
+    padding: 1px;
+    font-size: 1.5em;
+    float: left;
+    width: 138px;
+}
+div.ticket_column2 div.ticket_user {
+    background: Black;
+    padding: 3px;
+    font-size: 1.6em;
+    clear: both;f
+	 letter-spacing:2px;
+	 color:white;
+}
+div.ticket_column2 div.ticket_user a{
+	color:white;
+}
+div.ticket_column {
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    background: #BB0000;
+    color: black;
+    width: 80px;
+}
+
+div.ticket_id {
+    background: #ffffcc;
+    padding: 1px;
+    font-size: 0.9em;
+    float: left;
+    width: 78px;
+}
+
+div.ticket_rate {
+    background: #FFA07A;
+    padding: 1px;
+    font-size: 0.9em;
+    float: left;
+    width: 78px;
+}
+
+div.ticket_user {
+    background: #9DBDF4;
+    padding: 1px;
+    font-size: 0.9em;
+    clear: both;
+	 color:black;
+}
+div.ticket_user a{
+	color:Black;
+	text-decoration:none;
+}
+div#tinfo{
+	position:absolute;
+	visibility:hidden;
+	top:0px;
+	left:0px;
+	background:#CC0000;
+	padding:2px;
+	color:white;
+	border:2px solid black;
+	width:900px;
+	z-index:20
+}

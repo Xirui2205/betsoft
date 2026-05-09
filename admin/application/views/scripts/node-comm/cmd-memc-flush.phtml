@@ -1,0 +1,10 @@
+<div class="legend">
+  Kompletně vymaže cache společnou pro všechny nody.<br />
+  Pozor, pokud na jednom Memcached serveru běží více aplikačních prostředí,
+  bude vymazána cache všech (měl by to být případ pouze testovacích prostředí
+  a nemělo by to způsobovat problémy).
+</div>
+<form action="" method="post">
+  <input type="hidden" name="ncc" value="<?= NodeCommController::CMD_MEMC_FLUSH ?>" />
+  <input type="submit" />
+</form>

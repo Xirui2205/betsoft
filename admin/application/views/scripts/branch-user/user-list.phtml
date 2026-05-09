@@ -1,0 +1,37 @@
+<form id="usersToAssignForm" >
+<?php if($exists) : ?>
+<div class="actions">
+	<input type="hidden" name="branchId" value="<?=$this->branchId?>" />
+	<button onclick="assignUsersToBranch();return false;"><?=i18n::tr('assign_users_to_branch')?></button>
+	<?=$this->branchesCombo?>
+</div>
+	<table class="table-list" >
+		<tr>
+			<th></th>
+			<th></th>
+			<th><?=i18n::tr('nick_name')?></th>
+			<th><?=i18n::tr('full_name')?></th>
+		</tr>
+		<?php foreach($this->users as $user) : ?>
+			<?php if( 1 == $user['anonymous']) : ?>
+				<tr class="flag-special">
+			<?php else : ?>
+				<tr>
+			<?php endif; ?>
+				<td>
+					<?php if(!$user['anonymous']) : ?>
+						<input type="checkbox" name="usersToAssign[]" value="<?=$user['userId']?>" />
+					<?php endif; ?>
+				</td>
+				<td>
+					<?php if(!$user['anonymous']) : ?>
+						<button onclick="viewBranchUser(<?=$this->branchId?>,<?=$user['userId']?>);return false;"><?=i18n::tr('view')?></button>
+					<?php endif; ?>
+				</td>
+				<td><?=$user['username']?></td>
+				<td><?=$user['firstName']?> <?=$user['lastName']?></td>
+			</tr>
+		<?php endforeach; ?>
+	</table>
+<?php endif; ?>
+</form>

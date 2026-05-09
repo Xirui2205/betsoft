@@ -1,0 +1,20 @@
+@charset "utf-8";
+.live-score, .nav-tabs > li.active{
+	background-image: url(../images/live_score_soccer.jpg) !important;
+}
+.live-score .live-score-result .number{
+	background-position: 0 -192px;
+}
+.live-score .live-score-result .colon{
+	background-position: -60px 0;
+}
+.live-details .table > thead > tr > th{
+	background: #496516;
+}
+.live-details .table > thead > tr > td, .live-details .table > tbody > tr > td, .live-details .table > tfoot > tr > td,
+.live-details .table > thead > tr > th, .live-details .table > thead > tr > th, .live-details .table > thead > tr > th {
+	border-color: rgba(131,150,93,0.3) !important;
+}
+.live-details{
+	border-top: 1px solid rgba(131,150,93,0.3);
+}

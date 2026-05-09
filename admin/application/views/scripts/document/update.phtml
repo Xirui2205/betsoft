@@ -1,0 +1,7 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onClick="viewGeneric(<?=$this->viewSectionId?>,'document', {document_id: <?=$this->documentId?>});return false;"><?=i18n::tr('View')?></button>
+	<button onclick="hideDetail('document')"><?=i18n::tr('Close Detail')?></button>
+</div>
+<?=$this->form?>

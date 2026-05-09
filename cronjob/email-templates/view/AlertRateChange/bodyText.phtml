@@ -1,0 +1,12 @@
+<?=I18n::tr('odds_change')?>, <?=I18n::tr('bet')?>: #<?=$this->betId?>, <?=I18n::tr('bookmaker')?>: '<?=$this->bookmaker?>'
+===============================================================
+
+<?php if ( empty($this->changes) ): ?>
+<?=I18n::tr('no_records')?>
+<?php else:?>
+<?php foreach( $this->changes as $change ) : ?>
+Column: #<?=$change['id']?>, change:<?=$change['change']?>%, old value:<?=$change['oldValue']?>, new value: <?=$change['newValue']?>
+
+
+<?php endforeach?>
+<?php endif; ?>

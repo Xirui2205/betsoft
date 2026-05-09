@@ -1,0 +1,12 @@
+<?=I18n::tr('forbiden_users')?>
+
+=======================
+
+<?php if ( empty($this->blacklist) ): ?>
+<?=I18n::tr('no_records')?>
+<?php else:?>
+<?php foreach( $this->blacklist as $user ) : ?>
+#<?=$user['userId']?> <?=$user['username']?>
+
+<?php endforeach;?>
+<?php endif;?>

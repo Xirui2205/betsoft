@@ -1,0 +1,24 @@
+<script type="text/javascript">
+	// called onchange on bet alias field
+	function setPromoBetId(aliasElement, idBetId) {
+		var alias = $(aliasElement).val();
+		$.post('?section=369', {'alias':alias}, function(data) {
+			// clear
+			$('#' + idBetId).val('');
+			$('#' + $(aliasElement).attr('id') + '-info').html('');
+			
+			// bet id + info
+			var result = jQuery.parseJSON(data);
+			if (result && result.bet.betId > 0) {
+				$('#' + idBetId).val(result.bet.betId);
+				if (typeof result.bet.name !== 'undefined') {
+					$('#' + $(aliasElement).attr('id') + '-info').html(result.bet.name
+							+ ', ' + result.bet.sportName + ', '
+							+ result.bet.regionName + ', ' + result.bet.eventName);
+				}
+			} else {
+				$('#' + $(aliasElement).attr('id') + '-info').html('<a href="javascript:void(0)"><?=I18n::tr('load')?></a>');
+			}
+		});
+	}
+</script>

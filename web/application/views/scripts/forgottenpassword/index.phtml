@@ -1,0 +1,8 @@
+<h2 class="boxheader"><?= $this->trans('forget_pass') ?></h2>
+<div class="contentbox">
+	<?php if(!empty($this->feedbackMsg)):?>
+			<p><?=$this->feedbackMsg?></p>
+		<?php endif?>
+			<p><?= $this->trans('pass_change_prompt') ?></p>
+		<?=$this->forgottenPassForm?>
+</div>

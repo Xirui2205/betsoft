@@ -1,0 +1,20 @@
+<?=$this->feedbackMsg?>
+
+<div class="actions">
+	<button onclick="hideDetail('article-container')"><?=i18n::tr('close')?></button>
+</div>
+
+<?=$this->insertForm?>
+
+<span id="tipsDataJson" style="display:none"><?=$this->tipsDataJson?></span>
+<script type="text/javascript">
+    $(function() {
+		var tipsDataJson = $.parseJSON($('#tipsDataJson').text());
+		loadOddTips(tipsDataJson);
+	});
+</script>
+
+<?php
+include 'image.phtml';
+include(ROOT.'admin/include/class/Template/tinymce.phtml');
+?>

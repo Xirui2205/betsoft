@@ -1,0 +1,309 @@
+<div class="col1wrap">
+<div class="col1">
+	<?php if(false){ ?>
+	<!--<h2 class="boxheader"><span><?=$this->trans('dep_with')?></span></h2>-->
+	<h2 class="boxheader"><span><?=$this->trans('deposit_methods')?></span></h2>
+	
+	<div class="ctable ctable-notabs">
+		<div class="content">
+			<table class="payment-methods">
+				<thead>
+					<tr>
+						<th colspan="2"><strong><?=$this->trans('bank_transfer')?></strong></th>
+						<th><?=$this->trans('time_req')?></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td class="type-image">
+							<a href="<?=$this->urlSet(53)?>">
+								<img src="/images/banktransfer_logo_<?=$this->langIso?>.png" alt="bank transfer logo"/>
+							</a>
+						</td>
+						<td class="type-desc">
+							<a href="<?=$this->urlSet(53)?>">
+								<?=$this->trans('bank_transfer')?>
+							</a>
+						</td>
+						<td class="type-time">
+							<?=$this->trans('bank_transfer_time_req')?>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="content">
+			<table class="payment-methods">
+				<thead>
+					<tr>
+						<th colspan="2"><strong><?=$this->trans('branch_deposit')?></strong></th>
+						<th><?=$this->trans('time_req')?></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td class="type-image">
+							<a href="<?=$this->urlSet(54)?>">
+								<img src="/images/branchdeposit_logo.png" alt="branch deposit logo"/>
+							</a>
+						</td>
+						<td class="type-desc">
+							<a href="<?=$this->urlSet(54)?>">
+								<?=$this->trans('branch_deposit')?>
+							</a>
+						</td>
+						<td class="type-time">
+							<?=$this->trans('branch_deposit_time_req')?>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="content">
+			<table class="payment-methods">
+				<thead>
+					<tr>
+						<th colspan="2"><strong><?=$this->trans('bank_card')?></strong></th>
+						<th><?=$this->trans('time_req')?></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td class="type-image">
+							<a href="<?=(!empty($this->userId) ? $this->urlSet(52) : $this->urlSet(88, 'redirect='.urlencode($this->urlSet(52))))?>">
+								<img alt="visa logo" src="/images/visa_logo.png" />
+							</a>
+						</td>
+						<td class="type-desc">
+							<a href="<?=(!empty($this->userId) ? $this->urlSet(52) : $this->urlSet(88))?>">
+								<?=$this->trans('visa')?>
+							</a>
+						</td>
+						<td class="type-time">
+							<?=$this->trans('visa_time_req')?>
+						</td>
+					</tr>
+					<tr>
+						<td class="type-image">
+							<a href="<?=(!empty($this->userId) ? $this->urlSet(52) : $this->urlSet(88))?>">
+								<img alt="mastercard logo" src="/images/mastercard_logo.png" />
+							</a>
+						</td>
+						<td class="type-desc">
+							<a href="<?=(!empty($this->userId) ? $this->urlSet(52) : $this->urlSet(88))?>">
+								<?=$this->trans('mastercard')?>
+							</a>
+						</td>
+						<td class="type-time">
+							<?=$this->trans('mastercard_time_req')?>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<h2 class="boxheader"><span><?=$this->trans('withdraw_methods')?></span></h2>
+	<div class="ctable ctable-notabs">
+		<div class="content">
+			<table class="payment-methods">
+				<thead>
+					<tr>
+						<th colspan="2"><strong><?=$this->trans('withdrawel')?></strong></th>
+						<th><?=$this->trans('time_req')?></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td class="type-image">
+							<a href="<?=(!empty($this->userId) ? $this->urlSet(51, 'trgt=branch') : $this->urlSet(88, 'redirect='.urlencode($this->urlSet(51, 'trgt=branch'))))?>">
+								<img src="/images/branchdeposit_logo.png" alt="withdraw funds" />
+							</a>
+						</td>
+						<td class="type-desc">
+							<a href="<?=(!empty($this->userId) ? $this->urlSet(51, 'trgt=branch') : $this->urlSet(88, 'redirect='.urlencode($this->urlSet(51, 'trgt=branch'))))?>">
+								<?=$this->trans('branch_withdrawel')?>
+							</a>
+						</td>
+						<td class="type-time">
+							<?=$this->trans('branch_withdrawel_time_req')?>
+						</td>
+					</tr>
+					<tr>
+						<td class="type-image">
+							<a href="<?=(!empty($this->userId) ? $this->urlSet(51, 'trgt=bank') : $this->urlSet(88, 'redirect='.urlencode($this->urlSet(51, 'trgt=bank'))))?>">
+								<img src="/images/banktransfer_logo_<?=$this->langIso?>.png" alt="withdraw funds" />
+							</a>
+						</td>
+						<td class="type-desc">
+							<a href="<?=(!empty($this->userId) ? $this->urlSet(51, 'trgt=bank') : $this->urlSet(88, 'redirect='.urlencode($this->urlSet(51, 'trgt=bank'))))?>">
+								<?=$this->trans('bank_withdrawel')?>
+							</a>
+						</td>
+						<td class="type-time">
+							<?=$this->trans('bank_withdrawel_time_req')?>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<?php } ?>
+	<div id="paymentMethodsTables">
+	<h1 class="bg"><span><?=$this->trans('deposit_methods')?></span></h1>
+		<div class="grayBg bottom10">
+			<table>
+				<thead>
+					<tr>
+						<th colspan="2"><strong><?=$this->trans('bank_transfer')?></strong></th>
+						<th><?=$this->trans('time_req')?></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="type-image">
+							<a href="<?=$this->urlSet(53)?>">
+								<img src="/images/banktransfer_logo_<?=$this->langIso?>.png" alt="bank transfer logo"/>
+							</a>
+						</td>
+						<td class="type-desc">
+							<a href="<?=$this->urlSet(53)?>">
+								<?=$this->trans('bank_transfer')?>
+							</a>
+						</td>
+						<td class="type-time">
+							<?=$this->trans('bank_transfer_time_req')?>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="grayBg bottom10">
+			<table>
+				<thead>
+					<tr>
+						<th colspan="2"><strong><?=$this->trans('branch_deposit')?></strong></th>
+						<th><?=$this->trans('time_req')?></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="type-image">
+							<a href="<?=$this->urlSet(54)?>">
+								<img src="/images/branchdeposit_logo.png" alt="branch deposit logo"/>
+							</a>
+						</td>
+						<td class="type-desc">
+							<a href="<?=$this->urlSet(54)?>">
+								<?=$this->trans('branch_deposit')?>
+							</a>
+						</td>
+						<td class="type-time">
+							<?=$this->trans('branch_deposit_time_req')?>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="grayBg bottom10">
+			<table>
+				<thead>
+					<tr>
+						<th colspan="2"><strong><?=$this->trans('bank_card')?></strong></th>
+						<th><?=$this->trans('time_req')?></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="type-image">
+							<a href="<?=(!empty($this->userId) ? $this->urlSet(52) : $this->urlSet(88, 'redirect='.urlencode($this->urlSet(52))))?>">
+								<img alt="visa logo" src="/images/visa_logo.png" />
+							</a>
+						</td>
+						<td class="type-desc">
+							<a href="<?=(!empty($this->userId) ? $this->urlSet(52) : $this->urlSet(88))?>">
+								<?=$this->trans('visa')?>
+							</a>
+						</td>
+						<td class="type-time">
+							<?=$this->trans('visa_time_req')?>
+						</td>
+					</tr>
+					<tr>
+						<td class="type-image">
+							<a href="<?=(!empty($this->userId) ? $this->urlSet(52) : $this->urlSet(88))?>">
+								<img alt="mastercard logo" src="/images/mastercard_logo.png" />
+							</a>
+						</td>
+						<td class="type-desc">
+							<a href="<?=(!empty($this->userId) ? $this->urlSet(52) : $this->urlSet(88))?>">
+								<?=$this->trans('mastercard')?>
+							</a>
+						</td>
+						<td class="type-time">
+							<?=$this->trans('mastercard_time_req')?>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	<h1 class="bg"><span><?=$this->trans('withdraw_methods')?></span></h1>
+	<div class="grayBg bottom10">
+			<table>
+				<thead>
+					<tr>
+						<th colspan="2"><strong><?=$this->trans('withdrawel')?></strong></th>
+						<th><?=$this->trans('time_req')?></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="type-image">
+							<a href="<?=(!empty($this->userId) ? $this->urlSet(51, 'trgt=branch') : $this->urlSet(88, 'redirect='.urlencode($this->urlSet(51, 'trgt=branch'))))?>">
+								<img src="/images/branchdeposit_logo.png" alt="withdraw funds" />
+							</a>
+						</td>
+						<td class="type-desc">
+							<a href="<?=(!empty($this->userId) ? $this->urlSet(51, 'trgt=branch') : $this->urlSet(88, 'redirect='.urlencode($this->urlSet(51, 'trgt=branch'))))?>">
+								<?=$this->trans('branch_withdrawel')?>
+							</a>
+						</td>
+						<td class="type-time">
+							<?=$this->trans('branch_withdrawel_time_req')?>
+						</td>
+					</tr>
+					<tr>
+						<td class="type-image">
+							<a href="<?=(!empty($this->userId) ? $this->urlSet(51, 'trgt=bank') : $this->urlSet(88, 'redirect='.urlencode($this->urlSet(51, 'trgt=bank'))))?>">
+								<img src="/images/banktransfer_logo_<?=$this->langIso?>.png" alt="withdraw funds" />
+							</a>
+						</td>
+						<td class="type-desc">
+							<a href="<?=(!empty($this->userId) ? $this->urlSet(51, 'trgt=bank') : $this->urlSet(88, 'redirect='.urlencode($this->urlSet(51, 'trgt=bank'))))?>">
+								<?=$this->trans('bank_withdrawel')?>
+							</a>
+						</td>
+						<td class="type-time">
+							<?=$this->trans('bank_withdrawel_time_req')?>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	
+	
+	</div>
+</div>
+</div>
+
+<?=$this->render('index/leftCol.phtml')?>
+<?=$this->render('index/rightCol.phtml')?>

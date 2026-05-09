@@ -1,0 +1,31 @@
+<script type="text/javascript">
+	var eventValueCol = '<?=$this->eventValueCol?>';
+	var eventId = <?=$this->eventId?>;
+	var submitButton = '<?=$this->submitButton?>';
+</script>
+
+
+<h3><?=I18n::tr('pick_event')?></h3>
+<form>
+	<div>
+		<select
+			onClick="loadEventOptsForSport(this, '[name=\'udalost[]\']', false, '<?=$this->eventValueCol?>')"
+			name="sport_opt"
+			id="sport-selector"
+		>
+			<?=$this->filter[0]?>
+		</select>
+	</div>
+	<div>
+		<select name="udalost[]" id="event-selector">
+			<?=$this->filter[1]?>
+		</select>
+	</div>
+	<div>
+		<input
+			type="button"
+			onClick="submitEventNavigationOrder()"
+			value="<?=$this->trans('set')?>"
+		/>
+	</div>
+</form>

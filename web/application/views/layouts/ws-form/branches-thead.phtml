@@ -1,0 +1,10 @@
+<thead>
+	<tr>
+		<?php foreach($this->layout()->columns as $column) : ?>
+			<?php if ( $column[1] == 'banned' ) continue;?>
+			<th>
+				<?=$this->trans($column[0])?><br/>
+			</th>
+		<?php endforeach?>
+	</tr>
+</thead>

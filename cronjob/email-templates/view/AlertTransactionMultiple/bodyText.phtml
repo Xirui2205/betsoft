@@ -1,0 +1,12 @@
+<?=I18n::tr('multiple_transactions')?>
+
+===============================================================
+
+<?php if ( empty($this->transactions) ): ?>
+<?=I18n::tr('no_records')?>
+<?php else:?>
+<?php foreach( $this->transactions as $transaction ):?>
+transactionId:<?=$transaction['transactionId']?> branchId:<?=$transaction['branchId']?> userId:<?=$transaction['userId']?> value:<?=$transaction['value']?> date:<?=$transaction['time']?>
+
+<?php endforeach;?>
+<?php endif;?>

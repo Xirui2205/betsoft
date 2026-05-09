@@ -1,0 +1,34 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		var parentWin = window.opener;
+		
+		var title = $('#titleField<?=$_GET['promo_id']?>', parentWin.document).val();
+		$(parentWin.titleDomSelector).html(title);
+		
+		var text = $('#textField<?=$_GET['promo_id']?>', parentWin.document).val();
+		$(parentWin.textDomSelector).html(text);
+
+		var imgSrc = $('#imgSrcField<?=$_GET['promo_id']?>', parentWin.document).val();
+		var imgPath = $(parentWin.imgSrcDomSelector).attr('src');
+		$(parentWin.imgSrcDomSelector).attr('src', imgPath + imgSrc);
+	});
+</script>
+
+<script type="text/javascript">
+setTimeout(function(){
+	window.opener.updatePreviewWin(<?=$_GET['promo_id']?>)
+}, 100);
+</script>
+
+<div style="background-color:#01001f; color:#ffffff;padding: 10px">
+	<h2><?=i18n::tr('promo_home')?></h2>
+	<div class="mbanner ad-gallery slides_container">
+		<?php include('It6/promo/promo-standart.phtml')?>
+	</div>
+
+
+	<h2><?=i18n::tr('promo_superhome')?></h2>
+	<div class="mbanner ad-gallery-wide slides_container">
+		<?php include('It6/promo/promo-wide.phtml')?>
+	</div>
+</div>

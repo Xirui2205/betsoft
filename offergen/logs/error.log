@@ -1,0 +1,140 @@
+13-06-28 14:09:03 ERROR Worker exception (3)
+Traceback (most recent call last):
+  File "/home/tamok/bewa/offergen/offergen/worker.py", line 59, in run
+    gen.format(req, rows, fmt, self.strings)
+  File "/home/tamok/bewa/offergen/offergen/report/offers_gen.py", line 124, in format
+    print trashed_files(kurzy)
+NameError: global name 'trashed_files' is not defined
+13-06-28 14:09:03 ERROR handleRequest() error
+Traceback (most recent call last):
+  File "offergen.py", line 33, in do_GET
+    self.handleRequest(path, args)
+  File "offergen.py", line 130, in handleRequest
+    raise result['exception']
+NameError: global name 'trashed_files' is not defined
+13-06-28 14:15:26 ERROR Worker exception (6)
+Traceback (most recent call last):
+  File "/home/tamok/bewa/offergen/offergen/worker.py", line 59, in run
+    gen.format(req, rows, fmt, self.strings)
+  File "/home/tamok/bewa/offergen/offergen/report/offers_gen.py", line 126, in format
+    kurzy[i] = value.replace(kurzy[i], kurzy[i] * pow(10,2) / pow(10,2))
+TypeError: unsupported operand type(s) for /: 'str' and 'int'
+13-06-28 14:15:26 ERROR handleRequest() error
+Traceback (most recent call last):
+  File "offergen.py", line 33, in do_GET
+    self.handleRequest(path, args)
+  File "offergen.py", line 130, in handleRequest
+    raise result['exception']
+TypeError: unsupported operand type(s) for /: 'str' and 'int'
+13-06-28 14:16:19 ERROR Worker exception (7)
+Traceback (most recent call last):
+  File "/home/tamok/bewa/offergen/offergen/worker.py", line 59, in run
+    gen.format(req, rows, fmt, self.strings)
+  File "/home/tamok/bewa/offergen/offergen/report/offers_gen.py", line 126, in format
+    kurzy[i] = value.replace(kurzy[i], str(int(kurzy[i]) * pow(10,2) / pow(10,2)))
+ValueError: invalid literal for int() with base 10: '2.00'
+13-06-28 14:16:19 ERROR handleRequest() error
+Traceback (most recent call last):
+  File "offergen.py", line 33, in do_GET
+    self.handleRequest(path, args)
+  File "offergen.py", line 130, in handleRequest
+    raise result['exception']
+ValueError: invalid literal for int() with base 10: '2.00'
+13-06-28 14:17:48 ERROR Worker exception (8)
+Traceback (most recent call last):
+  File "/home/tamok/bewa/offergen/offergen/worker.py", line 59, in run
+    gen.format(req, rows, fmt, self.strings)
+  File "/home/tamok/bewa/offergen/offergen/report/offers_gen.py", line 126, in format
+    kurzy[i] = value.replace(kurzy[i], int(kurzy[i]) * pow(10,2) / pow(10,2))
+ValueError: invalid literal for int() with base 10: '2.00'
+13-06-28 14:17:48 ERROR handleRequest() error
+Traceback (most recent call last):
+  File "offergen.py", line 33, in do_GET
+    self.handleRequest(path, args)
+  File "offergen.py", line 130, in handleRequest
+    raise result['exception']
+ValueError: invalid literal for int() with base 10: '2.00'
+13-06-28 14:20:03 ERROR Worker exception (10)
+Traceback (most recent call last):
+  File "/home/tamok/bewa/offergen/offergen/worker.py", line 59, in run
+    gen.format(req, rows, fmt, self.strings)
+  File "/home/tamok/bewa/offergen/offergen/report/offers_gen.py", line 126, in format
+    a = int(kurzy[i]) * pow(10,2) / pow(10,2)
+ValueError: invalid literal for int() with base 10: '2.00'
+13-06-28 14:20:03 ERROR handleRequest() error
+Traceback (most recent call last):
+  File "offergen.py", line 33, in do_GET
+    self.handleRequest(path, args)
+  File "offergen.py", line 130, in handleRequest
+    raise result['exception']
+ValueError: invalid literal for int() with base 10: '2.00'
+13-06-28 14:34:18 ERROR Worker exception (12)
+Traceback (most recent call last):
+  File "/home/tamok/bewa/offergen/offergen/worker.py", line 59, in run
+    gen.format(req, rows, fmt, self.strings)
+  File "/home/tamok/bewa/offergen/offergen/report/offers_gen.py", line 130, in format
+    a = myformat(kurzy[i]) #('%.2f' % float(kurzy[i])).rstrip('0').rstrip('.')
+NameError: global name 'myformat' is not defined
+13-06-28 14:34:19 ERROR handleRequest() error
+Traceback (most recent call last):
+  File "offergen.py", line 33, in do_GET
+    self.handleRequest(path, args)
+  File "offergen.py", line 130, in handleRequest
+    raise result['exception']
+NameError: global name 'myformat' is not defined
+13-06-28 14:39:55 ERROR Worker exception (13)
+Traceback (most recent call last):
+  File "/home/tamok/bewa/offergen/offergen/worker.py", line 59, in run
+    gen.format(req, rows, fmt, self.strings)
+  File "/home/tamok/bewa/offergen/offergen/report/offers_gen.py", line 127, in format
+    a = decimalformat(kurzy[i]) #('%.2f' % float(kurzy[i])).rstrip('0').rstrip('.')
+NameError: global name 'decimalformat' is not defined
+13-06-28 14:39:55 ERROR handleRequest() error
+Traceback (most recent call last):
+  File "offergen.py", line 33, in do_GET
+    self.handleRequest(path, args)
+  File "offergen.py", line 130, in handleRequest
+    raise result['exception']
+NameError: global name 'decimalformat' is not defined
+13-06-28 14:40:31 ERROR Worker exception (14)
+Traceback (most recent call last):
+  File "/home/tamok/bewa/offergen/offergen/worker.py", line 59, in run
+    gen.format(req, rows, fmt, self.strings)
+  File "/home/tamok/bewa/offergen/offergen/report/offers_gen.py", line 127, in format
+    a = fmt.decimalformat(kurzy[i]) #('%.2f' % float(kurzy[i])).rstrip('0').rstrip('.')
+AttributeError: FormatTxt instance has no attribute 'decimalformat'
+13-06-28 14:40:31 ERROR handleRequest() error
+Traceback (most recent call last):
+  File "offergen.py", line 33, in do_GET
+    self.handleRequest(path, args)
+  File "offergen.py", line 130, in handleRequest
+    raise result['exception']
+AttributeError: FormatTxt instance has no attribute 'decimalformat'
+13-06-28 14:43:17 ERROR Worker exception (15)
+Traceback (most recent call last):
+  File "/home/tamok/bewa/offergen/offergen/worker.py", line 59, in run
+    gen.format(req, rows, fmt, self.strings)
+  File "/home/tamok/bewa/offergen/offergen/report/offers_gen.py", line 131, in format
+    a = decimalformat(kurzy[i]) #('%.2f' % float(kurzy[i])).rstrip('0').rstrip('.')
+NameError: global name 'decimalformat' is not defined
+13-06-28 14:43:18 ERROR handleRequest() error
+Traceback (most recent call last):
+  File "offergen.py", line 33, in do_GET
+    self.handleRequest(path, args)
+  File "offergen.py", line 130, in handleRequest
+    raise result['exception']
+NameError: global name 'decimalformat' is not defined
+13-06-28 14:45:49 ERROR Worker exception (16)
+Traceback (most recent call last):
+  File "/home/tamok/bewa/offergen/offergen/worker.py", line 59, in run
+    gen.format(req, rows, fmt, self.strings)
+  File "/home/tamok/bewa/offergen/offergen/report/offers_gen.py", line 127, in format
+    a = float(kurzy[i]).rstrip('0').rstrip('.')
+AttributeError: 'float' object has no attribute 'rstrip'
+13-06-28 14:45:49 ERROR handleRequest() error
+Traceback (most recent call last):
+  File "offergen.py", line 33, in do_GET
+    self.handleRequest(path, args)
+  File "offergen.py", line 130, in handleRequest
+    raise result['exception']
+AttributeError: 'float' object has no attribute 'rstrip'

@@ -1,0 +1,32 @@
+<h3><?=i18n::tr('page-metadata')?></h3>
+
+<?=$this->feedbackMsg?>
+
+<ul class="idTabs" style="display:none">
+	<li><a class="selected" href="#page-metadata-main"><?=i18n::tr('page_metadata')?></a></li>
+</ul>
+
+<div id="page-metadata-container" class="tab-container hidden">
+	<input type="hidden" name="controllerId" id="controllerId" value="" />
+	<div id="page-metadata-main" class="tab"></div>
+</div>
+
+<div id="list">
+	<form method="post" action="?section=<?=$this->indexSectionId?>" id="page-metadata-index-form">
+		<!-- <div class="actions">
+			<input type="button" onClick="insertAffiliatePartner()" class="input" name="insert_new" value="<?//=i18n::tr('insert_new_partner')?>" />
+		</div> -->
+		<?=$this->filter?>
+		<?=$this->paginator?>
+		<table class='table-list width-100'>
+			<?=$this->tHead?>
+			<?=$this->tBody?>
+		</table>
+		<table class="legend">
+			<tr>
+				<td class="yesFully"><?=i18n::tr('filled')?></td>
+				<td class="noFully"><?=i18n::tr('no_filled')?></td>
+			</tr>
+		</table>
+	</form>
+</div>

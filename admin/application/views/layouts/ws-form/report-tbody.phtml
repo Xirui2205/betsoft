@@ -1,0 +1,10 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+		<tr>
+			<td class="border-left"><?=$row['itemName']?></td>
+			<td class="border-left" style="text-align: right"><?=$this->formatFloat($row['amount'])?></td>
+			<td class="border-left"><?=$row['correction']?></td>
+			<td class="border-left" style="text-align: right"><?=$this->formatFloat($row['total'])?></td>
+		</tr>
+	<?php endforeach?>
+</tbody>

@@ -1,0 +1,265 @@
+<?php $data = array(); ?>
+
+
+<?php
+  $data['html'] = "
+    <div id=\"liveMatchInfo\" class=\"tabule tabule-tenis\">
+
+    <table class=\"tabule\">
+      <thead>
+        <tr>
+          <td colspan=\"2\">".$this->info['unazev']."</td>
+          <td class=\"misc\">
+            <span id=\"stav\">".$this->trans('live_state_'. $this->info['stav'])."</span>
+            <span id=\"tiebreak\">".$this->info['tiebreak']."</span>
+            <span id=\"minute\">".$this->info['minute']."'</span>
+          </td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td id=\"home\">".$this->info['home_team']."</td>
+          <td id=\"score\" class=\"skore\">
+            <strong>
+              <span id=\"score_home\">".$this->info['score_home']."</span>
+              :
+              <span id=\"score_away\">".$this->info['score_away']."</span>
+            </strong>
+          </td>
+          <td id=\"away\">".$this->info['away_team']."</td>
+        </tr>
+      </tbody>
+    </table>
+  ";
+?>
+
+<?php
+  $data['html'] .= "
+    <table class=\"tabule tabule-bottom\">
+      <thead>
+        <tr>
+          <td colspan=\"6\"><div id=\"lastNote\">".$this->info['lastNote']['time']." - ".$this->info['lastNote']['text']." - ".$this->info['lastNote']['book_text']."</div>
+            <div id=\"dropDownWrapper\">
+              <img src=\"".PROTOCOL.BASEDOMAIN."/images/vtab-tenis-darr.png\" alt=\"&darr;\" id=\"dropdownDivControl\"/>
+  ";
+?>
+
+<?php $data['html'] .= "<div id=\"bookTextDropdown\" class=\"goneToLeft tenisColors\">"; ?>
+<?php foreach($this->info['info'] as $datax): ?>
+      <?php $data['html'] .= $datax['time']." - ". $datax['text']." - ". $datax['book_text']."<br />"; ?>
+<?php endforeach; ?>
+<?php $data['html'] .= "</div>"; ?>
+
+<?php
+  $data['html'] .= "
+            </div>
+            <a href=\"/\"><img src=\"".PROTOCOL.BASEDOMAIN."/images/vtab-tenis-stats.png\" alt=\"statistiky\" /></a>
+          </td>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td colspan=6>
+            ".$this->trans('tenis_court_type').":
+            <span id=\"court\">".$this->info['court']."</span>
+            |
+            <span id=\"note\">".$this->info['note']."</span>
+          </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr>
+          <td class=\"\"></td>
+          <td class=\"cntr\">".$this->trans('live_state_14')."</td>
+          <td class=\"cntr\">".$this->trans('live_state_15')."</td>
+          <td class=\"cntr\">".$this->trans('live_state_16')."</td>
+  ";
+
+  if($this->info['set_num'] == 5){
+    $data['html'] .= "
+          <td class=\"cntr\">".$this->trans('live_state_17')."</td>
+          <td class=\"cntr\">".$this->trans('live_state_18')."</td>
+    ";
+  }
+  else{
+      $data['html'] .= "
+          <td class=\"cntr\"></td>
+          <td class=\"cntr\"></td>
+    ";
+  }
+
+  $data['html'] .= "
+        </tr>
+        <tr>
+          <td
+            id=\"teamNameHome\"
+            class=\"teamName
+  ";
+
+  if($this->info['service']=='home'){
+    $data['html'].= 'tenisService';
+  }
+
+  $data['html'] .= "
+          \">
+            ".$this->info['home_team']."
+          </td>
+          <td
+            id=\"set_1_home\"
+            class=\"cntr
+            ";
+            if($this->info['stav'] == 14){
+              $data['html'] .= "third";
+            }
+            $data['html'] .=
+          "\">".$this->info['set_1_home']."</td>
+          <td
+            id=\"set_2_home\"
+            class=\"cntr
+            ";
+            if($this->info['stav'] == 15){
+              $data['html'] .= "third";
+            }
+            $data['html'] .=
+          "\">".$this->info['set_2_home']."</td>
+          <td
+            id=\"set_3_home\"
+            class=\"cntr
+            ";
+            if($this->info['stav'] == 16){
+              $data['html'] .= "third";
+            }
+            $data['html'] .=
+          "\">".$this->info['set_3_home']."</td>
+  ";
+
+  if($this->info['set_num'] == 5){
+    $data['html'] .= "
+          <td
+            id=\"set_4_home\"
+            class=\"cntr
+            ";
+            if($this->info['stav'] == 17){
+              $data['html'] .= "third";
+            }
+            $data['html'] .=
+          "\">".$this->info['set_4_home']."</td>
+          <td
+            id=\"set_5_home\"
+            class=\"cntr
+            ";
+            if($this->info['stav'] == 18){
+              $data['html'] .= "third";
+            }
+            $data['html'] .=
+          "\">".$this->info['set_5_home']."</td>
+    ";
+  }
+  else{
+    $data['html'] .= "
+          <td class=\"cntr\"></td>
+          <td class=\"cntr\"></td>
+    ";
+  }
+
+  $data['html'] .= "
+        </tr>
+        <tr>
+          <td
+            id=\"teamNameAway\"
+            class=\"teamName
+  ";
+
+  if($this->info['service']=='away'){
+    $data['html'].= 'tenisService';
+  }
+
+  $data['html'] .= "\">
+            ".$this->info['away_team']."
+          </td>
+          <td
+            id=\"set_1_away\"
+            class=\"cntr
+  ";
+  if($this->info['stav'] == 14){
+    $data['html'] .= "third";
+  }
+  $data['html'] .="
+          \">
+            ".$this->info['set_1_away']."
+          </td>
+
+
+          <td
+            id=\"set_2_away\"
+            class=\"cntr
+  ";
+  if($this->info['stav'] == 15){
+    $data['html'] .= "third";
+  }
+  $data['html'] .= "
+          \">
+            ".$this->info['set_2_away']."
+          </td>
+
+
+          <td
+            id=\"set_3_away\"
+            class=\"cntr
+            ";
+            if($this->info['stav'] == 16){
+              $data['html'] .= "third";
+            }
+            $data['html'] .=
+          "\">".$this->info['set_3_away']."</td>
+  ";
+
+  if($this->info['set_num'] == 5){
+
+
+    $data['html'] .= "
+          <td
+            id=\"set_4_away\"
+            class=\"cntr
+    ";
+    if($this->info['stav'] == 17){
+      $data['html'] .= "third";
+    }
+    $data['html'] .= "
+          \"
+          id>
+            ".$this->info['set_4_away']."
+          </td>
+
+
+          <td
+            id=\"set_5_away\"
+            class=\"cntr
+    ";
+    if($this->info['stav'] == 18){
+      $data['html'] .= "third";
+    }
+    $data['html'] .= "
+          \">
+            ".$this->info['set_5_away']."
+          </td>
+    ";
+  }
+  else{
+    $data['html'] .= "
+          <td class=\"cntr\"></td>
+          <td class=\"cntr\"></td>
+    ";
+  }
+
+  $data['html'] .= "
+        </tr>
+
+      </tbody>
+    </table>
+  ";
+?>
+
+<?=json_encode($data); ?>
+

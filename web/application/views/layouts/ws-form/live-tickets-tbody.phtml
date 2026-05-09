@@ -1,0 +1,29 @@
+<tbody>
+	<?php foreach($this->layout()->data as $row) : ?>
+		<tr>
+			<td class="w100"><?=It6_Date::fromDb($row['timeCreated'])?></td>
+			<td><a href="<?=$this->UrlSet(75)?>t/<?=$row['handle']?>">#<?=$row['handle']?></a></td>
+			<td><?=$this->trans($row['type'], 'TICKET', It6_Translate_Web::DICTIONARY) ?></td>
+			<td class="currency"><?=$this->formatCurrency($row['stake'], $row['currencyName']) ?></td>
+			<td class="rate"><?=($row['type'] == 'maxikombi' ? '-' : $row['rate'])?></td>
+			<td class="currency"><?=$this->formatCurrency($row['paidOut'] || 4 == $row['stateNo'] ? $row['won'] : 0, $row['currencyName'])?></td>
+			<td>
+				<?php if($row['state'] == 'ticket_state_1') : ?>
+					<span class="result-open">
+				<?php elseif($row['state'] == 'ticket_state_1w') : ?>
+					<span class="result-open-win">
+				<?php elseif($row['state'] == 'ticket_state_1l') : ?>
+					<span class="result-open-loss">
+				<?php elseif($row['state'] == 'ticket_state_2') : ?>
+					<span class="result-win">
+				<?php elseif($row['state'] == 'ticket_state_3') : ?>
+					<span class="result-loss">
+				<?php elseif($row['state'] == 'ticket_state_4') : ?>
+					<span class="result-canceled">
+				<?php endif?>
+					<?=$this->trans('live_' . $row['state'], 'TICKET', It6_Translate_Web::DICTIONARY) ?>
+				</span>
+			</td>
+		</tr>
+	<?php endforeach?>
+</tbody>
